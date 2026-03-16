@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Background -->
+  <rect width="400" height="400" rx="32" fill="#1a2744"/>
+
+  <!-- Geometric mark: stylized columns/pillars suggesting municipal buildings -->
+  <g transform="translate(200, 155)">
+    <!-- Three pillars -->
+    <rect x="-65" y="-50" width="24" height="100" rx="4" fill="#4a9eff"/>
+    <rect x="-12" y="-70" width="24" height="120" rx="4" fill="#4a9eff"/>
+    <rect x="41" y="-35" width="24" height="85" rx="4" fill="#4a9eff"/>
+
+    <!-- Alpha triangle overlay -->
+    <polygon points="0,-85 -80,60 80,60" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.9"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="200" y="280" text-anchor="middle" font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif" font-weight="700" font-size="36" fill="#ffffff" letter-spacing="1">MUNICIPAL</text>
+  <text x="200" y="322" text-anchor="middle" font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif" font-weight="300" font-size="36" fill="#4a9eff" letter-spacing="4">ALPHA</text>
+</svg>
