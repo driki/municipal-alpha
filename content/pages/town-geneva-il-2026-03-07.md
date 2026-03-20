@@ -15,7 +15,7 @@ Geneva city government focused on transparency and infrastructure development th
 
 The City Council did not hold a regular meeting this week, but the Committee of the Whole met on March 3 to discuss potential capital improvement projects and ongoing regulatory concerns. Public Works Director Mark Johnson presented an update on the city's stormwater management initiatives, highlighting the need for continued investment in drainage infrastructure in response to increasing regional regulatory pressures. The committee also initiated preliminary discussions regarding a potential study on PFAS contaminants in the city's water supply, a growing concern across the state, with a full report expected later this spring. City Administrator Stephanie Miller emphasized the importance of proactive planning in these areas.
 
-The Plan Commission convened on March 5 to review a proposal for a new mixed-use development, "Riverbend Lofts," located at 123 S. Bennett Street. The developer, Thompson & Associates, sought approval for 45 residential units and ground-floor commercial space. Following public comment and a staff report from City Planner Sarah Peterson, the commission voted 5-2 to recommend approval to the City Council, with conditions related to parking and traffic mitigation. Separately, the Historic Preservation Commission met on March 4 to consider a Certificate of Appropriateness for facade alterations at 310 W. State Street, a historic commercial building. The commission, chaired by Eleanor Vance, approved the application, ensuring the proposed changes adhered to the city's historic district guidelines. [View Plan Commission Agenda](https://www.geneva.il.us/document-link-placeholder) [View Historic Preservation Commission Agenda](https://www.geneva.il.us/document-link-placeholder)
+The Plan Commission convened on March 5 to review a proposal for a new mixed-use development, "Riverbend Lofts," located at 123 S. Bennett Street. The developer, Thompson & Associates, sought approval for 45 residential units and ground-floor commercial space. Following public comment and a staff report from City Planner Sarah Peterson, the commission voted 5-2 to recommend approval to the City Council, with conditions related to parking and traffic mitigation. Separately, the Historic Preservation Commission met on March 4 to consider a Certificate of Appropriateness for facade alterations at 310 W. State Street, a historic commercial building. The commission, chaired by Eleanor Vance, approved the application, ensuring the proposed changes adhered to the city's historic district guidelines. View Plan Commission Agenda View Historic Preservation Commission Agenda
 
 <!-- AD SLOT: leaderboard 728x90 -->
 <div class="ad-slot ad-leaderboard"></div>
@@ -65,10 +65,10 @@ The City of Geneva issued seven building permits this week:
 
 ## Coming Up
 
--   **March 10, 7 p.m.:** Committee of the Whole meeting, City Hall Council Chambers. Agenda includes discussion on the upcoming fiscal year budget and a review of building electrification incentives. [View Agenda](https://www.geneva.il.us/document-link-placeholder)
--   **March 11, 6 p.m.:** Cultural Arts Commission meeting, City Hall. Focus on planning for the summer concert series. [View Agenda](https://www.geneva.il.us/document-link-placeholder)
--   **March 16, 7 p.m.:** City Council meeting, City Hall Council Chambers. Anticipated votes on the Riverbend Lofts development and a resolution regarding stormwater management. [View Agenda](https://www.geneva.il.us/document-link-placeholder)
--   **March 18, 5 p.m.:** Zoning Board of Appeals meeting, City Hall. Public hearing for a variance request at 910 N. Randall Road. [View Agenda](https://www.geneva.il.us/document-link-placeholder)
+-   **March 10, 7 p.m.:** Committee of the Whole meeting, City Hall Council Chambers. Agenda includes discussion on the upcoming fiscal year budget and a review of building electrification incentives. View Agenda
+-   **March 11, 6 p.m.:** Cultural Arts Commission meeting, City Hall. Focus on planning for the summer concert series. View Agenda
+-   **March 16, 7 p.m.:** City Council meeting, City Hall Council Chambers. Anticipated votes on the Riverbend Lofts development and a resolution regarding stormwater management. View Agenda
+-   **March 18, 5 p.m.:** Zoning Board of Appeals meeting, City Hall. Public hearing for a variance request at 910 N. Randall Road. View Agenda
 
 ---
 *This week: 4 boards met, 30 new documents published, 168 police calls, 38 fire/EMS calls, 4 property sales, 7 permits issued.*
