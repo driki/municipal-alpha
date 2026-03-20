@@ -187,14 +187,22 @@ body {
     color: var(--slate);
 }
 
+.verticals .metric-grid {
+    max-width: 720px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
 .verticals .metric-value {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .verticals .metric-label {
     line-height: 1.5;
-    max-width: 300px;
+    max-width: 260px;
     margin: 8px auto 0;
+    font-size: 14px;
 }
 
 /* Problem / general sections */
