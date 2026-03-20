@@ -11,22 +11,22 @@ Summary: Falmouth Planning Board reviews subdivision and solar array. Town Counc
 
 ## Town Government
 
-The Falmouth Planning Board continued its review of a proposed 20-unit cluster subdivision on Route 100 at its Tuesday meeting. The developer, Signature Homes, presented updated plans incorporating feedback from a previous session. An engineering review by Gorrill Palmer is underway, and a traffic study prepared by Stantec references modeling from the town's 2024 regional transportation plan. Public comment remains open through April 1.
+The Falmouth Planning Board continued its review of a proposed 20-unit cluster subdivision on Route 100 at its Tuesday meeting ([agenda](https://www.falmouthme.org/planning-board/agenda/march-18-2026), [meeting packet](https://www.falmouthme.org/planning-board/packets/march-18-2026)). The developer, Signature Homes, presented updated plans incorporating feedback from a previous session. An engineering review by Gorrill Palmer is underway, and a traffic study prepared by Stantec references modeling from the town's 2024 regional transportation plan. Public comment remains open through April 1.
 
-Also before the Planning Board, Revision Energy submitted an amended site plan for a 2.3-megawatt ground-mounted solar array on a Depot Road parcel. The board is reviewing fire department access requirements and stormwater management conditions before a decision.
+Also before the Planning Board, Revision Energy submitted an amended site plan for a 2.3-megawatt ground-mounted solar array on a Depot Road parcel ([application materials](https://www.falmouthme.org/planning-board/packets/march-18-2026#solar)). The board is reviewing fire department access requirements and stormwater management conditions before a decision.
 
-The Town Council held its second FY2027 budget workshop Monday evening. The public works budget includes $340,000 for road paving and $85,000 for vehicle replacement. The council also discussed the upcoming Waste Management contract renewal, with the current three-year term set to expire in June.
+The Town Council held its second FY2027 budget workshop Monday evening ([agenda](https://www.falmouthme.org/town-council/agenda/march-17-2026), [budget document](https://www.falmouthme.org/town-council/packets/march-17-2026#budget)). The public works budget includes $340,000 for road paving and $85,000 for vehicle replacement. The council also discussed the upcoming Waste Management contract renewal, with the current three-year term set to expire in June.
 
-During the same meeting, Town Manager Nathan Poore provided an update on PFAS water testing. Phase II sampling results from the Portland Water District supply showed no exceedances in Falmouth wells. The council voted to continue quarterly monitoring.
+During the same meeting, Town Manager Nathan Poore provided an update on PFAS water testing ([staff report](https://www.falmouthme.org/town-council/packets/march-17-2026#pfas)). Phase II sampling results from the Portland Water District supply showed no exceedances in Falmouth wells. The council voted to continue quarterly monitoring.
 
-The Conservation Commission met Wednesday to review draft language for a proposed 75-foot wetland buffer setback, responding to recent state guidance updates. The commission plans to present the draft ordinance to the Town Council in April.
+The Conservation Commission met Wednesday to review draft language for a proposed 75-foot wetland buffer setback ([draft ordinance](https://www.falmouthme.org/conservation-commission/agenda/march-19-2026)), responding to recent state guidance updates. The commission plans to present the draft ordinance to the Town Council in April.
 
 <!-- AD SLOT: leaderboard 728x90 -->
 <div class="ad-slot ad-leaderboard"></div>
 
 ## Schools
 
-The Falmouth School Board approved the 2026-2027 academic calendar at its Wednesday meeting. School will begin September 1 and end June 12, with February and April vacation weeks preserved. Superintendent Jessica Berry noted the calendar includes three built-in snow days; any unused snow days will be added to the June break.
+The Falmouth School Board approved the 2026-2027 academic calendar at its Wednesday meeting ([agenda](https://www.falmouth.k12.me.us/schoolboard/agenda/march-19-2026)). School will begin September 1 and end June 12, with February and April vacation weeks preserved. Superintendent Jessica Berry noted the calendar includes three built-in snow days; any unused snow days will be added to the June break.
 
 The board also heard an enrollment projection report from the superintendent's office. Elementary enrollment is expected to decline by approximately 40 students next year, continuing a five-year trend, while the middle school and high school remain stable. Berry said the district is not considering school consolidation at this time but will revisit staffing ratios in the spring.
 
@@ -36,7 +36,7 @@ Falmouth High School's indoor track team qualified three athletes for the Class 
 
 ## Police
 
-The Falmouth Police Department responded to 47 calls for service this week.
+The Falmouth Police Department responded to 47 calls for service this week ([weekly log](https://www.falmouthme.org/police/weekly-log/march-15-21-2026)).
 
 A three-vehicle accident on Route 1 near the Walmart entrance Tuesday afternoon sent one person to Maine Medical Center with non-life-threatening injuries. The road was reduced to one lane for approximately 90 minutes during cleanup. Police cited the driver of the rear vehicle for following too closely.
 
@@ -50,7 +50,7 @@ No arrests were made this week aside from the retail theft case.
 
 ## Fire & EMS
 
-Falmouth Fire-Rescue responded to 19 calls this week.
+Falmouth Fire-Rescue responded to 19 calls this week ([run report](https://www.falmouthme.org/fire-rescue/weekly-report/march-15-21-2026)).
 
 The department responded to a kitchen fire at a residence on Woodlands Road Friday evening. The fire was contained to the stovetop and range hood. Damage was estimated at $8,000. No injuries were reported. The cause was determined to be unattended cooking.
 
@@ -65,7 +65,7 @@ Chief Howard Rice Jr. reminded residents that outdoor burning permits are requir
 
 ## Real Estate
 
-Three properties changed hands in Falmouth this week, according to the Cumberland County Registry of Deeds.
+Three properties changed hands in Falmouth this week, according to the [Cumberland County Registry of Deeds](https://www.cumberlandcounty.org/168/Registry-of-Deeds).
 
 - **22 Waites Landing Road** -- Sold for $1,225,000. 4-bedroom colonial on 1.2 acres with Casco Bay views. Previously sold in 2018 for $820,000.
 - **7 Lunt Road** -- New construction sold for $685,000. 3-bedroom Cape on 0.8 acres in the Lunt Road subdivision.
