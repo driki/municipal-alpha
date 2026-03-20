@@ -1,6 +1,6 @@
 Title: Data Stories
 Slug: data-stories
-Sortorder: 1
+Sortorder: 2
 Summary: Cross-municipal patterns from live pipeline data across 1,800+ municipalities. Updated weekly.
 
 Cross-municipal patterns that are only visible when you monitor 1,800+ municipalities at once. Every story below is built from live pipeline data -- contagion events, entity sightings, and signal classification across hundreds of jurisdictions. Updated weekly.
