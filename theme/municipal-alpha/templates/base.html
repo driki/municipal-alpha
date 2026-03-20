@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}Building the canonical structured understanding of US public records.{% endblock %}">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="{{ SITEURL }}/" class="nav-brand">Municipal Alpha</a>
+            <div class="nav-links">
+                {% for p in pages %}
+                <a href="{{ SITEURL }}/{{ p.url }}"{% if p == page %} class="active"{% endif %}>{{ p.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Municipal Alpha LLC</p>
+        </div>
+    </footer>
+</body>
+</html>
