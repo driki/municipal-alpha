@@ -13,7 +13,9 @@
             <a href="{{ SITEURL }}/" class="nav-brand">Municipal Alpha</a>
             <div class="nav-links">
                 {% for p in pages %}
+                {% if '/' not in p.slug %}
                 <a href="{{ SITEURL }}/{{ p.url }}"{% if p == page %} class="active"{% endif %}>{{ p.title }}</a>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
