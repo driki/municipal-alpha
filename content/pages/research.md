@@ -10,6 +10,7 @@ Cross-municipal patterns that are only visible when you monitor 1,800+ municipal
 - [The Company That Shows Up in 123 Towns](/research/company-footprint/) -- Entity resolution across 1,800+ municipalities reveals which public companies have the deepest municipal government footprint. Verizon: 6,183 sightings. Tyler Technologies: 88 towns. Amazon: 2,932 sightings.
 - [The Housing Density Wave Is Rewriting Municipal Zoning in Real Time](/research/housing-density-wave/) -- 399 events across 130+ municipalities in 27 states. ADU mandates, density increases, and short-term rental regulation are one wave, moving through regions at different speeds.
 - [Lead Pipes Are a $50B Problem Hiding in Municipal Agendas](/research/lead-pipes/) -- 77 events across 39 municipalities in 13 states. The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending, and the earliest signals are already in the pipeline.
+- [The Pickleball Boom Is Now a Line Item in Municipal Budgets](/research/pickleball-wave/) -- 29 signals across 14 municipalities in 9 states. From federal grants to tennis court conversions to liquor license amendments, pickleball infrastructure spending is the full lifecycle of a consumer trend becoming municipal capital expenditure.
 
 ## Town Profiles
 
