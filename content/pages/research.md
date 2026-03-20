@@ -2,6 +2,8 @@ Title: Research
 Slug: research
 Sortorder: 3
 
+We monitor 1,800+ municipalities. The United States has 19,500. Everything below is a sample of what the pipeline sees today -- and a preview of what it sees at scale.
+
 ## Town Profiles
 
 Auto-generated intelligence profiles built from continuous pipeline monitoring. Each profile shows what our system sees in a single municipality -- document volume, signal classification, entity resolution, infrastructure data, and vendor landscape. Updated weekly.
@@ -12,7 +14,12 @@ Auto-generated intelligence profiles built from continuous pipeline monitoring. 
 
 ## Data Stories
 
-*Coming soon.* Narrative analyses built from cross-municipal patterns -- contagion signals, regional spending trends, entity tracking across jurisdictions.
+Cross-municipal patterns that are only visible at scale. Each story is built from actual pipeline data -- contagion events, entity sightings, and signal classification across hundreds of jurisdictions.
+
+- [PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater](/research/pfas-contagion/) -- 120 events across 72 municipalities in 23 states. The remediation wave is visible in town council agendas months before EPA enforcement actions.
+- [The Company That Shows Up in 123 Towns](/research/company-footprint/) -- Entity resolution across 1,800+ municipalities reveals which public companies have the deepest municipal government footprint. Verizon: 6,183 sightings. Tyler Technologies: 88 towns. Amazon: 2,932 sightings.
+- [The Housing Density Wave Is Rewriting Municipal Zoning in Real Time](/research/housing-density-wave/) -- 399 events across 130+ municipalities in 27 states. ADU mandates, density increases, and short-term rental regulation are one wave, moving through regions at different speeds.
+- [Lead Pipes Are a $50B Problem Hiding in Municipal Agendas](/research/lead-pipes/) -- 77 events across 39 municipalities in 13 states. The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending, and the earliest signals are already in the pipeline.
 
 ## Use Cases
 
