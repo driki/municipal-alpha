@@ -1,3 +1,22 @@
+import json
+from pathlib import Path
+
+# Load metrics from data file (auto-updated weekly by VPS)
+_metrics_file = Path(__file__).parent / "data" / "metrics.json"
+if _metrics_file.exists():
+    with open(_metrics_file) as f:
+        METRICS = json.load(f)
+else:
+    METRICS = {
+        "municipalities": "1,800+",
+        "states": "50",
+        "documents": "292,000+",
+        "signals": "53,000+",
+        "tower_sites": "3,800+",
+        "permits": "43,000+",
+        "updated": "2026-03-20",
+    }
+
 AUTHOR = "Municipal Alpha"
 SITENAME = "Municipal Alpha"
 SITEURL = ""
