@@ -1,6 +1,8 @@
 Title: The Housing Density Wave Is Rewriting Municipal Zoning in Real Time
 Slug: research/housing-density-wave
 Sortorder: 22
+Header_image: story-housing-wave.png
+Summary: 390+ housing policy events across 130+ municipalities in 27 states. ADU mandates, density increases, and short-term rental regulation are one wave moving through regions at different speeds.
 
 *Analysis based on 390+ housing policy events detected across 130+ municipalities in 27 states.*
 

@@ -1,6 +1,8 @@
 Title: PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater
 Slug: research/pfas-contagion
 Sortorder: 20
+Header_image: story-pfas.png
+Summary: 120+ PFAS-related events across 70+ municipalities in 23 states. The remediation wave is visible in town council agendas months before EPA enforcement actions.
 
 *Analysis based on 120+ PFAS-related events detected across 70+ municipalities in 23 states.*
 

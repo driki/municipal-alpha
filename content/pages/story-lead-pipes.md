@@ -1,6 +1,8 @@
 Title: Lead Pipes Are a $50B Problem Hiding in Municipal Agendas
 Slug: research/lead-pipes
 Sortorder: 23
+Header_image: story-lead-pipes.png
+Summary: 75+ lead service line events across 39 municipalities in 13 states. The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending.
 
 *Analysis based on 75+ lead service line events detected across 39 municipalities in 13 states.*
 

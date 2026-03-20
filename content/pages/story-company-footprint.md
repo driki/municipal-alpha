@@ -1,6 +1,8 @@
 Title: The Company That Shows Up in 123 Towns
 Slug: research/company-footprint
 Sortorder: 21
+Header_image: story-company-footprint.png
+Summary: Entity resolution across 1,800+ municipalities reveals which public companies have the deepest municipal government footprint.
 
 *Analysis based on entity resolution across 1,800+ municipalities.*
 
