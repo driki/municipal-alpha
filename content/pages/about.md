@@ -26,7 +26,7 @@ Municipal governments under fiscal stress show it in AP data first -- delayed ve
 
 When rates are high, we're a credit signal. When rates are low, we're an equity signal -- vendor payment anomalies predict government contractor revenue. Either way, someone needs what we see.
 
-## Five Revenue Verticals
+## Revenue Verticals
 
 Applications built on the intelligence layer, not separate businesses.
 
@@ -40,7 +40,7 @@ Applications built on the intelligence layer, not separate businesses.
 
 ## The Compounding Effect
 
-![Diagram showing one jurisdiction at top funneling into five revenue verticals below]({static}/images/compounding-effect.png)
+![Diagram showing one jurisdiction at top funneling into multiple revenue verticals below]({static}/images/compounding-effect.png)
 
 This platform's understanding of a jurisdiction improves every time a new document is ingested, a new entity is resolved, a new parcel is screened, or a new relationship is mapped. The intelligence compounds. After 2-3 years, the platform doesn't just have data -- it has understanding of how US local government works, who owns what, who pays whom, and how infrastructure, money, and people flow through the system.
 
