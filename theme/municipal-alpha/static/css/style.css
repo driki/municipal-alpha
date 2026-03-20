@@ -295,7 +295,8 @@ body {
 /* Page images (in markdown content) */
 .page img {
     display: block;
-    max-width: 100%;
+    max-width: 600px;
+    width: 100%;
     margin: 32px auto;
     border-radius: 8px;
 }
