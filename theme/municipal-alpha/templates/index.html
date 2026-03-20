@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Municipal Alpha — Public Record Intelligence{% endblock %}
+{% block title %}Municipal Alpha — A Knowledge Graph of US Public Records{% endblock %}
 
 {% block content %}
 <section class="hero">
     <div class="container">
         <h1>Public Record Intelligence</h1>
-        <p class="hero-sub">Building the canonical structured understanding of US public records.</p>
+        <p class="hero-kicker">Structured entities from unstructured government data</p>
+        <p class="hero-sub">A knowledge graph of US public records.</p>
         <p class="hero-desc">
             The United States generates an enormous volume of financially valuable public records every day.
             Insurance rate filings that predict earnings. Probate inventories that reveal asset transfers.
             Mineral deeds that identify tradeable royalty positions. Municipal check registers that signal
             government contractor revenue. Assessor records that map infrastructure lease holders.
-            All of it is public by law. None of it is accessible at scale.
+            All of it is public by law. None of it is structured into entities and relationships.
+            We're building that graph.
         </p>
         <a href="{{ SITEURL }}/how-it-works/" class="btn">How It Works</a>
     </div>
@@ -52,7 +54,7 @@
 
 <section class="verticals">
     <div class="container">
-        <h2>Many Verticals, One Intelligence Layer</h2>
+        <h2>Many Verticals, One Knowledge Graph</h2>
         <p>
             Every vertical is an application built on the same underlying data asset, not a separate business.
             Every new jurisdiction added to the pipeline activates data for every vertical simultaneously.

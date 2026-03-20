@@ -20,7 +20,7 @@ else:
 AUTHOR = "Municipal Alpha"
 SITENAME = "Municipal Alpha"
 SITEURL = ""
-SITESUBTITLE = "Public Record Intelligence"
+SITESUBTITLE = "A Knowledge Graph of US Public Records"
 
 PATH = "content"
 THEME = "theme/municipal-alpha"

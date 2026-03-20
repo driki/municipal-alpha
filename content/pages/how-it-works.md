@@ -2,9 +2,11 @@ Title: How It Works
 Slug: how-it-works
 Sortorder: 1
 
-## Not Five Databases -- One Intelligence
+## A Knowledge Graph of US Public Records
 
-This is not five separate products stitched together. It is a single, continuously growing structured understanding of US jurisdictions, parcels, entities, filings, and the relationships between them. Every new data source makes all existing products better. Different data types from different jurisdictions connect into a unified picture.
+This is not five separate products stitched together. It is a knowledge graph -- entities, types, properties, and the relationships between them, continuously growing as new documents are ingested. Every municipality we add, every document we parse, every entity we resolve adds nodes and edges to the graph. Different data types from different jurisdictions connect into a unified picture because the graph connects them.
+
+Google built its Knowledge Graph by acquiring Metaweb, the company behind Freebase, turning the messy open web from strings into things. We are doing the same thing for US public records. 19,500 municipalities publishing in their own formats, their own portals, their own filing systems. We resolve that into a single graph of entities and relationships: which town paid which vendor, which parcel has which lease, which estate disclosed which assets.
 
 ## How a Parcel Connects Everything
 
@@ -18,23 +20,23 @@ A single parcel in Falmouth, Maine appears in:
 - **Municipal check register** -- lease payment to landowner, amount, frequency
 - **Planning board agenda** -- zoning variance, public hearing, conditions
 
-Each source adds to the understanding of that parcel. None is complete alone. Together, they produce a lead that no single-source competitor can match.
+Each source adds nodes and edges to that parcel's place in the graph. None is complete alone. Together, they produce a lead that no single-source competitor can match.
 
 ## How an Entity Connects Everything
 
-An entity like American Tower appears in assessor records across 50 states, FCC registrations nationwide, FAA filings, municipal RFPs, insurance rate filings (tower liability coverage), and county recorder mineral lease assignments. Each appearance enriches the entity profile.
+An entity like American Tower appears in assessor records across 50 states, FCC registrations nationwide, FAA filings, municipal RFPs, insurance rate filings (tower liability coverage), and county recorder mineral lease assignments. Each appearance enriches the entity's node in the graph, connecting it to new jurisdictions, new document types, new relationships.
 
-Resolving "Waste Management of Maine" to ticker WM in AP data simultaneously improves entity resolution for insurance rate filings, permit data, and contract tracking. One resolution, four improvements.
+Resolving "Waste Management of Maine" to ticker WM in AP data simultaneously improves entity resolution for insurance rate filings, permit data, and contract tracking. One resolution, four graph improvements.
 
 ## How a Jurisdiction Connects Everything
 
 A single jurisdiction like Cumberland County, Maine produces assessor data (tower + solar + utility leases), probate filings (estate property transfers), recorder data (mineral rights, if applicable), municipal spending (AP + permits), and insurance territory data. All from one county.
 
-Every new jurisdiction added to the pipeline activates data for every active vertical simultaneously.
+Every new jurisdiction added to the pipeline activates data for every active vertical simultaneously. The graph gets denser, and denser graphs produce better intelligence.
 
 ## The AI Agent Architecture
 
-Every product on this platform shares the same core capability: AI agents that discover data sources, file records requests, navigate government portals, parse unfamiliar document formats, extract structured data, and deliver qualified leads or signals. The agents are general-purpose. What changes per vertical is the detection patterns, the data sources, and the buyer. The infrastructure is built once.
+Every product on this platform shares the same core capability: AI agents that discover data sources, file records requests, navigate government portals, parse unfamiliar document formats, extract structured data, and resolve entities into the knowledge graph. The agents are general-purpose. What changes per vertical is the detection patterns, the data sources, and the buyer. The infrastructure is built once.
 
 | Agent Capability | Verticals It Serves |
 |---|---|
