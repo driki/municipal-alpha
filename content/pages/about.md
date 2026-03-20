@@ -14,6 +14,8 @@ US public records have the same problem music had. 19,500 municipalities, 3,100 
 
 All of it is public by law. None of it is accessible at scale. No one aggregates it because the acquisition cost has always been too high -- too many jurisdictions, too many formats, too much human labor.
 
+The big data vendors cover New York and Chicago. Nobody is systematically reading Gorham, Maine or Franklin, New Hampshire. But small and mid-sized municipalities issue the same building permits, the same check registers, the same assessor records as large cities -- just on worse websites, with less standardization, behind more obscure FOIA statutes. That's where the gap is widest and the signal is least picked-over. Building permits alone tell you which contractors are winning work, which developers are active in a geography, and where infrastructure spending is accelerating -- months before it shows up in earnings.
+
 AI agents change the math. What used to require a team of 50 people filing FOIA requests and parsing PDFs can now be done by one person with an automated pipeline. We built that pipeline. It runs daily, autonomously. The same architecture extends to every public record type in the country.
 
 ## Why This Matters Now
@@ -51,6 +53,7 @@ The cost of acquiring a jurisdiction is paid once. The revenue is collected from
 - **Compounding data asset.** Every jurisdiction scraped, every FOIA response received, every document classified, every entity resolved adds to a proprietary database that no competitor has. The data is public in theory. In practice, acquiring it across thousands of jurisdictions takes years.
 - **Agent sophistication is cumulative.** Every edge case -- a quirky CMS, a state-specific FOIA statute, an unusual assessor format, a complex chain of title -- becomes embedded knowledge in the agent workflows. A competitor starting from scratch has to rediscover every one of these. There are hundreds.
 - **The work is unglamorous.** Parsing 15 assessor data formats, navigating 50 state FOIA statutes, building connectors for 6 CMS platforms, tracing mineral title chains through 100-year-old deeds. This is exactly the kind of messy, real-world infrastructure that well-funded competitors find unappealing. That ugliness is the moat.
+- **Learned FOIA/FOAA intelligence.** The platform files public records requests autonomously, adapted to each state's statute (FOIA, FOIL, OPRA, Right-to-Know). Over hundreds of requests, the system has learned which contact roles respond, which email formats get through, which request language produces data vs. denials, and how long to wait before following up. It tracks every interaction, scores outcomes, and evolves its approach. A competitor can read the statute, but they can't replicate what we've learned from the responses.
 
 ## The Team
 

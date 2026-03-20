@@ -46,8 +46,22 @@ Every product on this platform shares the same core capability: AI agents that d
 | Lead scoring + qualification | Tower leases, mineral rights, probate |
 | Cross-reference with federal databases | Tower (FCC/FAA), mineral (BLM), insurance (NAIC) |
 
+## Automated Public Records Requests
+
+Most valuable government data isn't on a website. Assessor records, detailed check registers, and permit databases usually require a formal public records request -- FOIA at the federal level, but every state has its own statute with its own rules, deadlines, contact roles, and fee structures. Maine calls it FOAA. New Hampshire calls it Right-to-Know. New York calls it FOIL.
+
+The platform files these requests autonomously, adapted to each state's statute. But the real advantage isn't the filing -- it's the learning. Over hundreds of requests, the system tracks which contact roles respond (town clerks vs. assessors vs. finance directors), which email formats get through, which request language produces usable data vs. form-letter denials, optimal cooling periods between follow-ups, and which towns respond to the first request vs. the third. Every interaction is scored. Successful patterns propagate to similar jurisdictions automatically. Failed approaches get deprioritized.
+
+A competitor can read the statute. They can't replicate what we've learned from the responses.
+
+## Building Permits as a Signal Source
+
+Building permits are one of the most underrated public data sources. Every commercial construction project, infrastructure upgrade, and development phase starts with a permit. The data tells you which contractors are winning work, which developers are active in a geography, where infrastructure spending is accelerating, and how local construction activity maps to public company revenue -- months before any of it shows up in earnings or analyst reports.
+
+Small and mid-sized municipalities issue the same permits as large cities, just on worse websites with less standardization. That's where the coverage gap is widest. We structure 16,000+ permit records and growing, resolved to entities and tickers where possible.
+
 ## The Pipeline
 
-The system runs daily, autonomously. It crawls municipal portals, classifies documents, resolves entities to public company tickers, scores signals, and delivers qualified leads. Self-healing automation detects when a municipality changes its website and adapts. A reward-based learning system tracks which automated actions succeed and evolves strategy over time.
+The system runs daily, autonomously. It crawls municipal portals, classifies documents, resolves entities to public company tickers, scores signals, and delivers qualified leads. Self-healing automation detects when a municipality changes its website and adapts. A reward-based learning system tracks which automated actions succeed and evolves strategy over time. When a fix works for one town, the system propagates it to similar towns with decaying confidence by similarity.
 
-Every day the pipeline runs, it gets better at running.
+The pipeline doesn't just collect data. It files records requests, processes responses, follows up on non-responses, onboards new jurisdictions, retrains its own classifiers, and evaluates the business value of every action it takes. Every day it runs, it gets better at running.
