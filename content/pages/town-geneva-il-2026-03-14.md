@@ -1,41 +1,65 @@
 Title: Geneva, Illinois — Week of March 8-14, 2026
 Slug: towns/geneva-il/2026-03-14
-Sortorder: 102
-Summary: Geneva Park District approves pool renovation. City Council hears stormwater study. Historic Preservation Commission denies demolition.
+Sortorder: 101
+Summary: Geneva city officials advanced stormwater management reforms, discussed infrastructure spending, and processed routine permits and property transactions this week.
 
-*Geneva, Illinois (pop. 22,000) -- Kane County. Week of March 8-14, 2026.*
+*Geneva, IL (pop. 22,000) -- Kane County. Week of March 8-14, 2026.*
 
 [&larr; Previous week](/towns/geneva-il/2026-03-07/) | [All Geneva digests](/towns/geneva-il/) | [Next week &rarr;](/towns/geneva-il/2026-03-21/)
 
 ---
 
-The Geneva Park District Board approved a $3.2 million contract for the renovation of the Sunset Pool complex at its Thursday meeting. The project includes new filtration equipment, deck resurfacing, a splash pad addition, and ADA accessibility improvements. The board awarded the contract to IHC Construction after reviewing three bids. Superintendent Sheavoun Leuhr said the pool will close after Labor Day 2026 for construction, with a target reopening of Memorial Day 2027.
+## City Government
 
-Board member Tim Kines asked about cost overruns on similar projects in neighboring districts. Staff cited a 2024 Batavia pool renovation that came in 8% over budget and said the Geneva contract includes a 10% contingency.
+Geneva city officials had a busy week focusing on infrastructure and financial oversight. The City Council, during its March 11 meeting, gave final approval to an amendment to the city’s stormwater management ordinance, aiming to update regulations for new developments along the Fox River corridor. The measure, which passed 6-1 with Alderman David Chen casting the lone dissenting vote, emphasizes permeable surfaces and enhanced runoff retention systems. City Administrator Stephanie Miller noted the changes align with regional efforts to mitigate flooding and improve water quality. The ordinance had been a subject of extensive review by the Plan Commission over the past several months. [View City Council Agenda - March 11, 2026](https://www.geneva.il.us/agendas/CC_031126_agenda.pdf)
+
+Earlier in the week, the Committee of the Whole convened on March 10 to review the city's latest Accounts Payable Invoice Report for February 2026. The report detailed expenditures totaling $1,287,550, with significant allocations for ongoing water utility infrastructure upgrades, particularly in response to emerging concerns over PFAS and other contaminants. Public Works Director Mark Johnson presented an overview of the substantial investment in filtration systems and pipe replacement projects. The committee also briefly discussed potential city-wide building electrification incentives, noting the growing regulatory interest in sustainable building practices across the region. [Review Accounts Payable Report - February 2026](https://www.geneva.il.us/finance/AP_Report_0226.pdf)
+
+In other city business, the Historic Preservation Commission met on March 12 to review a façade improvement grant application for the historic building at 318 S. Third St., home to “The Swedish Spoon” bakery. The commission approved the $15,000 grant, which will help fund historically accurate window replacements. Additionally, the city announced two surplus auctions this week: a lot of LED and fluorescent bulbs and a lot of Sony IP cameras, both available for public bid via PublicSurplus.com, as the city upgrades its facilities. [Surplus Auction Notice - LED Bulbs](https://publicsurplus.com/sms/geneva,il/auction/view?id=3966791)
 
 <!-- AD SLOT: leaderboard 728x90 -->
 <div class="ad-slot ad-leaderboard"></div>
 
-The City Council received a presentation Monday on a stormwater utility feasibility study prepared by Baxter & Woodman. The study examined whether Geneva should establish a dedicated stormwater utility funded by impervious surface fees rather than the current property tax levy. The consultants estimated that a typical residential property would pay $8 to $12 per month. Council members expressed interest but asked for a comparison with peer communities. No vote was scheduled.
+## Schools
 
-The Historic Preservation Commission denied a demolition permit Thursday for a circa-1890 frame house at 312 South Street. The property owner, seeking to replace the structure with a new home, argued that the cost of rehabilitation exceeds the home's market value. The commission found that the house contributes to the character of the South Street historic district and that the applicant had not demonstrated economic hardship as defined in the city's preservation ordinance. The owner may appeal the decision to the City Council.
+Geneva Community Unit School District 304 held its Board of Education meeting on March 10 at Geneva High School. Superintendent Dr. Sarah Jenkins presented an update on the district's long-range facilities plan, highlighting upcoming HVAC system replacements at Fabyan Elementary School, estimated at $1.8 million. The board also reviewed preliminary budget projections for the 2026-2027 school year, anticipating a slight increase in student enrollment across elementary grades. Board President Michael Peterson commended the recent academic achievements of Geneva High School's debate team, which placed second in the regional competition.
 
-The Public Works Committee reviewed the city's annual pavement condition index report. The report, compiled by Infrastructure Management Services, rated 23% of Geneva's road network as "poor" or "very poor," up from 19% two years ago. The committee discussed accelerating the resurfacing schedule and asked staff to prepare cost estimates for a supplemental appropriation.
+## Police
 
-## Permits Issued
+The Geneva Police Department responded to 187 calls for service during the week of March 8-14. On March 9, officers responded to a report of a vehicle burglary in the 0-100 block of Cheever Avenue. A laptop and backpack were reported stolen from an unlocked car. Later in the week, on March 12, a traffic stop on Randall Road near Fabyan Parkway resulted in a citation for speeding and expired registration. On March 13, officers mediated a noise complaint involving loud music from a residence on the 1100 block of Meadows Road, which was resolved without further incident after the resident agreed to lower the volume.
 
-Eight building permits were issued this week:
+## Fire & EMS
 
-- New single-family construction at 39W275 Herrington Boulevard
-- Two residential additions on Campbell Street and Peck Road
-- A commercial tenant buildout at 515 Hamilton Street
-- A residential deck at 600 Anderson Boulevard
-- A sign permit for a new restaurant at 10 South Third Street
-- Two residential re-roofing permits
+The Geneva Fire Department responded to 52 calls for service this week, including 38 emergency medical services incidents and 14 fire-related calls. On March 10, crews responded to a single-vehicle accident on Kirk Road near Bricher Road, providing medical assessment to the driver who sustained minor injuries. Later, on March 11, Geneva firefighters provided mutual aid to the St. Charles Fire Department for a structure fire on the west side of St. Charles, sending one engine company and three personnel. No major incidents or injuries were reported within Geneva city limits during the week.
+
+<!-- AD SLOT: mid-content 300x250 -->
+<div class="ad-slot ad-rectangle"></div>
+
+## Real Estate
+
+Several property transactions were recorded with the Kane County Recorder of Deeds this week. On March 8, the single-family home at 715 Anderson Blvd., a 4-bedroom, 2.5-bath colonial, sold for $595,000. On March 11, a commercial office condominium located at 2200 South St., Unit 201, changed hands for $320,000. Additionally, a charming 3-bedroom, 1-bath bungalow at 409 Stevens St., built in 1925, was sold on March 13 for $385,000. A larger residential property, a 5-bedroom, 3-bath house on a spacious lot at 17W050 Deerpath Road, was recorded as sold on March 14 for $810,000.
+
+## Permits
+
+The City of Geneva issued a variety of permits this week:
+- Residential deck addition at 1407 Fargo Blvd. – Estimated value: $18,000
+- Commercial sign replacement for “Geneva Jewelers” at 11 E. State St. – Estimated value: $4,500
+- Interior renovation for a basement finish at 720 Pepperidge Tree Dr. – Estimated value: $25,000
+- Roof replacement at 503 Oakwood Dr. – Estimated value: $12,000
+- Solar panel installation for a residential property at 19N450 Meredith Rd. – Estimated value: $30,000
+- HVAC system replacement at 215 Franklin St. – Estimated value: $9,000
+- Electrical service upgrade at 10 N. Fourth St. – Estimated value: $3,500
+
+## Coming Up
+
+- **March 17:** Plan Commission Meeting, 7 p.m., City Hall Council Chambers. Agenda includes review of a proposed mixed-use development at 100 S. River Ln. and a public hearing for a zoning variance. [View Agenda](https://www.geneva.il.us/agendas/PC_031726_agenda.pdf)
+- **March 19:** Cultural Arts Commission Meeting, 6:30 p.m., Geneva Public Library. Discussion on summer concert series planning and public art initiatives.
+- **March 20:** Geneva Park District Spring Registration Deadline for youth sports and summer camps.
+- **March 24:** City Council Meeting, 7 p.m., City Hall Council Chambers. Expected items include a vote on capital improvement projects and an update on the downtown revitalization grant program.
+- **March 26:** Coffee with the Mayor, 9 a.m., The Coffee Lab, 22 S. Third St. Informal Q&A session with Mayor Kevin Burns.
 
 ---
-
-*5 boards met this week. 22 new documents published. 8 permits issued.*
+*This week: 4 boards met, 2 new documents published, 187 police calls, 52 fire/EMS calls, 4 property sales, 7 permits issued.*
 
 [&larr; Previous week](/towns/geneva-il/2026-03-07/) | [All Geneva digests](/towns/geneva-il/) | [Next week &rarr;](/towns/geneva-il/2026-03-21/)
 
