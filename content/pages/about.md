@@ -4,51 +4,54 @@ Sortorder: 2
 
 ## The Precedent
 
-The Echo Nest built a structured understanding of music from fragmented public sources... audio fingerprints, blogs, reviews, social signals, listening data. No single source was complete. But by ingesting everything, structuring it, and building intelligence on top, they created the canonical understanding of music that Spotify, Pandora, and the rest of the streaming industry built on. They didn't sell music. They sold structured understanding of music. Multiple revenue streams on one underlying data asset: APIs for developers, data licensing to streaming services, recommendation engines, advertising targeting. Every new data source ingested made all products better. Acquired by Spotify for ~$100M in 2014 because the data asset was irreplaceable and would take years to rebuild.
+The Echo Nest built a structured understanding of music from fragmented public sources -- audio fingerprints, blogs, reviews, social signals, listening data. No single source was complete. But by ingesting everything, structuring it, and building intelligence on top, they created the canonical understanding of music that Spotify, Pandora, and the rest of the streaming industry built on. They didn't sell music. They sold structured understanding of music. Multiple revenue streams on one underlying data asset: APIs for developers, data licensing to streaming services, recommendation engines, advertising targeting. Every new data source ingested made all products better. Started with a small team at MIT Media Lab, grew to ~50 people at acquisition. Acquired by Spotify for ~$100M in 2014 because the data asset was irreplaceable and would take years to rebuild.
 
 We are building the same thing for US public records.
 
 ## The Same Problem, Different Domain
 
-The music industry had valuable data scattered across millions of sources in incompatible formats, with no unified view. The Echo Nest solved it by ingesting everything, structuring it, and building intelligence on top.
+US public records have the same problem music had. 19,500 municipalities, 3,100 counties, 50 state agencies, and thousands of special-purpose courts and commissions, each publishing in its own format, on its own website, behind its own filing system. Insurance rate filings that predict earnings. Probate inventories that reveal asset transfers. Mineral deeds that identify tradeable royalty positions. Municipal check registers that signal government contractor revenue. Assessor records that map infrastructure lease holders.
 
-US public records have the same problem. 19,500 municipalities, 3,100 counties, 50 state agencies, each publishing in their own format. Insurance rate filings that predict earnings. Probate inventories that reveal asset transfers. Municipal check registers that signal government contractor revenue. Assessor records that map infrastructure lease holders.
+All of it is public by law. None of it is accessible at scale. No one aggregates it because the acquisition cost has always been too high -- too many jurisdictions, too many formats, too much human labor.
 
-All of it is public by law. None of it is accessible at scale.
-
-We are building the canonical structured understanding of US public records... the layer that infrastructure companies, hedge funds, wealth managers, and anyone who needs structured government data will build on.
+AI agents change the math. What used to require a team of 50 people filing FOIA requests and parsing PDFs can now be done by one person with an automated pipeline. We built that pipeline. It runs daily, autonomously. The same architecture extends to every public record type in the country.
 
 ## Why This Matters Now
 
-Bond yields set the price of money. In a high-rate environment, municipal credit quality is the highest-stakes bet in fixed income. The cost of being wrong about a municipal credit position goes up when replacement capital is expensive. Muni bond portfolios can't refinance cheaply, so credit quality matters more. Default risk is more consequential. Institutional investors need better intel on what they're already holding.
+Bond yields set the price of money. In a high-rate environment, municipal credit quality is the highest-stakes bet in fixed income. The cost of being wrong about a municipal credit position goes up when replacement capital is expensive.
 
-Municipal governments under fiscal stress show it in AP data first... delayed vendor payments, vendor concentration shifts, spending velocity drops. We see these patterns daily, from the actual source documents, months before they surface in bond ratings or credit downgrades.
+Municipal governments under fiscal stress show it in AP data first -- delayed vendor payments, vendor concentration shifts, spending velocity drops. We see these patterns daily, from the actual source documents, months before they surface in bond ratings or credit downgrades.
 
-When rates are high, we're a credit signal. When rates are low, we're an equity signal... vendor payment anomalies predict government contractor revenue. Either way, someone needs what we see.
+When rates are high, we're a credit signal. When rates are low, we're an equity signal -- vendor payment anomalies predict government contractor revenue. Either way, someone needs what we see.
 
 ## Five Revenue Verticals
 
 Applications built on the intelligence layer, not separate businesses.
 
-| Vertical | Data Source | Buyer |
-|---|---|---|
-| Infrastructure lease intelligence | Municipal assessor records + FCC/FAA | Tower REITs, aggregators, solar/wind developers |
-| Municipal alternative data | Municipal AP, permits, agendas | Hedge funds, permit aggregators |
-| Mineral rights intelligence | County recorder deeds + state O&G commissions | Mineral aggregators, energy PE |
-| Probate & estate intelligence | County probate courts | Wealth mgmt, RE investors, PE |
-| Insurance rate filing intelligence | State DOI filing portals | Hedge funds, insurers, research |
+| Vertical | Data Source | Buyer | Status |
+|---|---|---|---|
+| Infrastructure lease intelligence | Municipal assessor records + FCC/FAA | Tower REITs, aggregators, solar/wind developers | Pilot live |
+| Municipal alternative data | Municipal AP, permits, agendas | Hedge funds, permit aggregators | Signal validated |
+| Insurance rate filing intelligence | State DOI filing portals | Hedge funds, insurers, research | Ready to build |
+| Mineral rights intelligence | County recorder deeds + state O&G commissions | Mineral aggregators, energy PE | Ready to build |
+| Probate & estate intelligence | County probate courts | Wealth mgmt, RE investors, PE | Ready to build |
+
+## The Compounding Effect
+
+This platform's understanding of a jurisdiction improves every time a new document is ingested, a new entity is resolved, a new parcel is screened, or a new relationship is mapped. The intelligence compounds. After 2-3 years, the platform doesn't just have data -- it has understanding of how US local government works, who owns what, who pays whom, and how infrastructure, money, and people flow through the system.
+
+- Assessor data for tower lease screening simultaneously produces solar/wind/utility lease leads, property tax delinquency signals, municipal fiscal health indicators, and the parcel-level foundation for probate property matching. One FOIA request, five products.
+- Resolving "Waste Management of Maine" to ticker WM in AP data simultaneously improves entity resolution for insurance rate filings, permit data, and contract tracking. One resolution, four improvements.
+- Adding a new municipality to the pipeline adds documents to alt data, parcels to infrastructure screening, jurisdiction coverage to insurance territory mapping, and a new court for probate monitoring. One onboarding, multiple revenue streams activated.
+
+The cost of acquiring a jurisdiction is paid once. The revenue is collected from every vertical that uses it.
 
 ## The Moat
 
-Every municipality we add feeds every vertical we serve. Every edge case our agents learn makes the next municipality cheaper to onboard. The data compounds, and so does the intelligence.
-
-| Attribute | Status |
-|---|---|
-| **Durable moat** | 286K+ documents, 45K+ classified signals, hundreds of CMS edge cases encoded. Years to replicate. |
-| **Pricing power** | Unique structured data from sources nobody else reads systematically. No direct competitor at this coverage level. |
-| **Low capital intensity** | One person + AI agents replaces a 50-person FOIA team. $20/day operating cost. 80%+ projected margins at scale. |
-| **Capital discipline** | Automated cost tracking, session ROI measurement, programmatic cost ceilings. |
+- **Compounding data asset.** Every jurisdiction scraped, every FOIA response received, every document classified, every entity resolved adds to a proprietary database that no competitor has. The data is public in theory. In practice, acquiring it across thousands of jurisdictions takes years.
+- **Agent sophistication is cumulative.** Every edge case -- a quirky CMS, a state-specific FOIA statute, an unusual assessor format, a complex chain of title -- becomes embedded knowledge in the agent workflows. A competitor starting from scratch has to rediscover every one of these. There are hundreds.
+- **The work is unglamorous.** Parsing 15 assessor data formats, navigating 50 state FOIA statutes, building connectors for 6 CMS platforms, tracing mineral title chains through 100-year-old deeds. This is exactly the kind of messy, real-world infrastructure that well-funded competitors find unappealing. That ugliness is the moat.
 
 ## The Team
 
-Built and operated by Matt MacDonald. One person, one automated pipeline, running daily. The same architecture extends to every public record type in the country.
+Built and operated by Matt MacDonald. One person, one automated pipeline, running daily.

@@ -170,6 +170,33 @@ body {
     margin: 8px auto 0;
 }
 
+/* Verticals section */
+.verticals {
+    padding: 80px 0;
+}
+
+.verticals h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+    color: var(--navy);
+}
+
+.verticals > .container > p {
+    max-width: 720px;
+    margin-bottom: 40px;
+    color: var(--slate);
+}
+
+.verticals .metric-value {
+    font-size: 22px;
+}
+
+.verticals .metric-label {
+    line-height: 1.5;
+    max-width: 300px;
+    margin: 8px auto 0;
+}
+
 /* Problem / general sections */
 .problem, .cta {
     padding: 80px 0;
