@@ -40,6 +40,8 @@ Applications built on the intelligence layer, not separate businesses.
 
 ## The Compounding Effect
 
+![Diagram showing one jurisdiction at top funneling into five revenue verticals below]({static}/images/compounding-effect.png)
+
 This platform's understanding of a jurisdiction improves every time a new document is ingested, a new entity is resolved, a new parcel is screened, or a new relationship is mapped. The intelligence compounds. After 2-3 years, the platform doesn't just have data -- it has understanding of how US local government works, who owns what, who pays whom, and how infrastructure, money, and people flow through the system.
 
 - Assessor data for tower lease screening simultaneously produces solar/wind/utility lease leads, property tax delinquency signals, municipal fiscal health indicators, and the parcel-level foundation for probate property matching. One FOIA request, five products.

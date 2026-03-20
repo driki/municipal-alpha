@@ -8,6 +8,8 @@ This is not five separate products stitched together. It is a single, continuous
 
 ## How a Parcel Connects Everything
 
+![Diagram showing a single parcel connected to five data sources: Assessor Records, FCC Registry, FAA Database, Check Register, and Planning Board]({static}/images/intelligence-layer.png)
+
 A single parcel in Falmouth, Maine appears in:
 
 - **Assessor data** -- tower lease, landowner identity, property valuation
@@ -61,6 +63,8 @@ Building permits are one of the most underrated public data sources. Every comme
 Small and mid-sized municipalities issue the same permits as large cities, just on worse websites with less standardization. That's where the coverage gap is widest. We structure 16,000+ permit records and growing, resolved to entities and tickers where possible.
 
 ## The Pipeline
+
+![Diagram showing the self-improving pipeline cycle: Crawl, Classify, Score, Improve, Learn]({static}/images/pipeline-loop-v2.png)
 
 The system runs daily, autonomously. It crawls municipal portals, classifies documents, resolves entities to public company tickers, scores signals, and delivers qualified leads. Self-healing automation detects when a municipality changes its website and adapts. A reward-based learning system tracks which automated actions succeed and evolves strategy over time. When a fix works for one town, the system propagates it to similar towns with decaying confidence by similarity.
 
