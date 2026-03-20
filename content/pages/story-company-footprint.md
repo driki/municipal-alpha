@@ -70,4 +70,12 @@ The applications are straightforward:
 
 We see all of these. Across every municipality in the pipeline. Every day.
 
-Interested in entity-resolved municipal vendor data? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+Entity-resolved vendor payment data, updated daily across 1,800+ municipalities. 100+ public tickers tracked.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[See how we resolve entities](/methodology/#entity-resolution)** -- our approach to matching vendor names to tickers
+- **[Get entity data for specific tickers](mailto:matt@municipalalpha.com?subject=Entity%20data%20inquiry)** -- tell us which companies you're tracking

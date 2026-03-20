@@ -1,0 +1,51 @@
+signal_id,date,state,municipality,doc_type,board,vendor_raw,vendor_resolved,ticker,amount_usd,signal_priority,category
+SIG-001,2026-03-14,IL,Geneva,check_register,Finance,W W GRAINGER INC,Grainger,GRI,4287.50,HIGH,MRO / Industrial supply
+SIG-002,2026-03-14,IL,Geneva,check_register,Finance,COMCAST CABLE,Comcast,CMCSA,1892.00,HIGH,Telecommunications
+SIG-003,2026-03-12,IL,Geneva,check_register,Finance,HOME DEPOT USA,Home Depot,HD,3156.78,HIGH,Building materials
+SIG-004,2026-03-12,ME,Town A,agenda,Planning Board,,,,0.00,MEDIUM,Tower lease renewal hearing
+SIG-005,2026-03-11,ME,Town B,check_register,Finance,WASTE MANAGEMENT OF MAINE,Waste Management,WM,8742.00,HIGH,Waste services
+SIG-006,2026-03-11,ID,Town C,minutes,City Council,,,,0.00,HIGH,PFAS testing resolution
+SIG-007,2026-03-10,ME,Town D,check_register,Finance,AT&T MOBILITY,AT&T,T,2341.67,HIGH,Telecommunications
+SIG-008,2026-03-10,IL,Geneva,check_register,Finance,CORE & MAIN LP,Core & Main,CNM,12450.00,HIGH,Water infrastructure
+SIG-009,2026-03-09,NH,Town E,permit,Building,NATIONAL CONTRACTOR A,REDACTED,REDACTED,0.00,MEDIUM,Commercial construction
+SIG-010,2026-03-09,ME,Town F,agenda,Select Board,,,,0.00,HIGH,Lead service line inventory vote
+SIG-011,2026-03-08,IL,Geneva,check_register,Finance,AMAZON CAPITAL SERVICES,Amazon,AMZN,987.54,HIGH,General procurement
+SIG-012,2026-03-08,ID,Town G,check_register,Finance,STANTEC CONSULTING,Stantec,STN,34500.00,HIGH,Engineering services
+SIG-013,2026-03-07,ME,Town H,minutes,Planning Board,,,,0.00,MEDIUM,ADU ordinance first reading
+SIG-014,2026-03-07,IL,Geneva,check_register,Finance,VERIZON WIRELESS,Verizon,VZ,1567.00,HIGH,Telecommunications
+SIG-015,2026-03-06,VT,Town I,agenda,Select Board,,,,0.00,HIGH,PFAS remediation RFP discussion
+SIG-016,2026-03-06,ME,Town J,check_register,Finance,SHERWIN WILLIAMS CO,Sherwin-Williams,SHW,2890.00,HIGH,Coatings / building materials
+SIG-017,2026-03-05,ID,Town K,permit,Building,REGIONAL CONTRACTOR B,REDACTED,REDACTED,0.00,MEDIUM,Residential multi-unit
+SIG-018,2026-03-05,ME,Town L,agenda,Town Council,,,,0.00,MEDIUM,Short-term rental ordinance vote
+SIG-019,2026-03-04,IL,Geneva,check_register,Finance,UPS,UPS,UPS,456.23,MEDIUM,Shipping / logistics
+SIG-020,2026-03-04,WI,Town M,check_register,Finance,BADGER METER INC,Badger Meter,BMI,7823.00,HIGH,Water metering
+SIG-021,2026-03-03,ME,Town N,minutes,Water District,,,,0.00,HIGH,Lead pipe replacement Phase 2 vote
+SIG-022,2026-03-03,IL,Geneva,check_register,Finance,NEXTERA ENERGY SERVICES,NextEra Energy,NEE,5678.90,HIGH,Energy / utilities
+SIG-023,2026-03-02,NH,Town O,agenda,Planning Board,,,,0.00,MEDIUM,Cell tower height variance
+SIG-024,2026-03-02,ME,Town P,check_register,Finance,XYLEM WATER SOLUTIONS,Xylem,XYL,15670.00,HIGH,Water treatment equipment
+SIG-025,2026-03-01,CT,Town Q,minutes,Town Council,,,,0.00,MEDIUM,Density increase public hearing
+SIG-026,2026-03-01,IL,Geneva,check_register,Finance,AIRGAS USA LLC,Airgas (Air Liquide),AI.PA,1234.56,MEDIUM,Industrial gases
+SIG-027,2026-02-28,ME,Town R,agenda,Select Board,,,,0.00,HIGH,PFAS water testing results
+SIG-028,2026-02-28,ID,Town S,check_register,Finance,AMERICAN WATER WORKS,American Water Works,AWK,9876.00,HIGH,Water infrastructure
+SIG-029,2026-02-27,MA,Town T,permit,Building,NATIONAL CONTRACTOR C,REDACTED,REDACTED,0.00,HIGH,Solar installation commercial
+SIG-030,2026-02-27,ME,Town U,check_register,Finance,TYLER TECHNOLOGIES,Tyler Technologies,TYL,22500.00,HIGH,Government software
+SIG-031,2026-02-26,VT,Town V,minutes,Planning Commission,,,,0.00,MEDIUM,ADU setback amendment
+SIG-032,2026-02-26,IL,Geneva,check_register,Finance,CHARTER COMMUNICATIONS,Charter,CHTR,2100.00,HIGH,Telecommunications
+SIG-033,2026-02-25,ME,Town W,agenda,School Board,,,,0.00,MEDIUM,PFAS in school water supply
+SIG-034,2026-02-25,WI,Town X,check_register,Finance,MUELLER WATER PRODUCTS,Mueller Water,MWA,6543.00,HIGH,Water infrastructure
+SIG-035,2026-02-24,NH,Town Y,check_register,Finance,EVERSOURCE ENERGY,Eversource,ES,4321.00,HIGH,Energy / utilities
+SIG-036,2026-02-24,ME,Town Z,minutes,Town Council,,,,0.00,HIGH,Pickleball court federal grant acceptance
+SIG-037,2026-02-23,IL,Town AA,permit,Building,REGIONAL CONTRACTOR D,REDACTED,REDACTED,0.00,MEDIUM,Multi-family 12 units
+SIG-038,2026-02-23,ID,Town BB,check_register,Finance,VEOLIA WATER NORTH AMERICA,Veolia,VEOEY,11200.00,HIGH,Water treatment
+SIG-039,2026-02-22,ME,Town CC,agenda,Conservation Commission,,,,0.00,MEDIUM,Wetland buffer ordinance
+SIG-040,2026-02-22,CT,Town DD,check_register,Finance,EATON CORPORATION,Eaton,ETN,3456.00,HIGH,Electrical equipment
+SIG-041,2026-02-21,ME,Town EE,minutes,Select Board,,,,0.00,HIGH,Tower lease renewal American Tower
+SIG-042,2026-02-21,IL,Geneva,check_register,Finance,MENARDS,Menard Inc (private),PRIVATE,876.54,LOW,Building materials
+SIG-043,2026-02-20,VT,Town FF,agenda,Housing Committee,,,,0.00,MEDIUM,Inclusionary zoning proposal
+SIG-044,2026-02-20,ME,Town GG,check_register,Finance,CLEAN HARBORS INC,Clean Harbors,CLH,7890.00,HIGH,Environmental services
+SIG-045,2026-02-19,NH,Town HH,permit,Building,NATIONAL CONTRACTOR E,REDACTED,REDACTED,0.00,MEDIUM,Commercial renovation
+SIG-046,2026-02-19,ID,Town II,minutes,Airport Commission,,,,0.00,MEDIUM,Hangar lease amendment
+SIG-047,2026-02-18,ME,Town JJ,check_register,Finance,TETRA TECH INC,Tetra Tech,TTEK,18900.00,HIGH,Environmental consulting
+SIG-048,2026-02-18,IL,Town KK,agenda,Village Board,,,,0.00,HIGH,Water main replacement bond
+SIG-049,2026-02-17,MA,Town LL,minutes,Conservation Commission,,,,0.00,LOW,Stormwater management
+SIG-050,2026-02-17,ME,Town MM,check_register,Finance,JACOBS ENGINEERING,Jacobs Solutions,J,25600.00,HIGH,Engineering services

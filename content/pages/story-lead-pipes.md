@@ -85,4 +85,12 @@ The LCRI requires all water systems to complete initial inventories by October 2
 
 The $50 billion question isn't whether the money will be spent. It's which municipalities are committed, what phase they're in, and which vendors are winning the work. The answer is in the agendas.
 
-Interested in lead service line replacement data for specific regions? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+Lead service line events tracked daily -- inventory progress, funding approvals, contractor awards -- with municipality, phase, and supply chain tickers.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
+- **[Get lead pipe data for specific regions](mailto:matt@municipalalpha.com?subject=Lead%20pipe%20data%20inquiry)** -- tell us which states or water systems you're watching

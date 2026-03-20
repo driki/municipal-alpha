@@ -46,8 +46,12 @@ SOCIAL = ()
 DEFAULT_PAGINATION = False
 
 # Static paths
-STATIC_PATHS = ["images", "extra/CNAME"]
-EXTRA_PATH_METADATA = {"extra/CNAME": {"path": "CNAME"}}
+STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data"]
+EXTRA_PATH_METADATA = {
+    "extra/CNAME": {"path": "CNAME"},
+    "extra/sample-data/tower-prospects-sample.csv": {"path": "sample-data/tower-prospects-sample.csv"},
+    "extra/sample-data/signals-sample.csv": {"path": "sample-data/signals-sample.csv"},
+}
 
 # Clean URLs
 PAGE_URL = "{slug}/"

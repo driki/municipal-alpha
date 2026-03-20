@@ -84,4 +84,13 @@ Pocatello is the answer to "why does this matter for small cities?" It matters b
 
 The patterns aren't visible from any single town. They're visible from 1,800.
 
-Interested in what the full dataset looks like? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+Pocatello's 38 tower sites and 280+ signals are a sample of what the full pipeline produces. Coverage spans 1,800+ municipalities.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals
+- **[Download sample tower prospects (CSV)](/sample-data/tower-prospects-sample.csv)** -- 25 redacted tower prospects
+- **[See our tower lead gen product](/solutions/tower-leads/)** -- how we deliver infrastructure prospects
+- **[Get data for specific regions](mailto:matt@municipalalpha.com?subject=Regional%20data%20inquiry)** -- tell us which states or municipalities you need

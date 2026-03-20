@@ -76,4 +76,12 @@ The question isn't whether PFAS remediation will be a significant infrastructure
 
 We know. It's in their agendas.
 
-Interested in PFAS exposure data for specific municipalities or regions? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+We track PFAS contagion events daily across 1,800+ municipalities. The dataset includes event type, municipality, date, related entities, and supply chain tickers.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
+- **[Get PFAS data for your coverage area](mailto:matt@municipalalpha.com?subject=PFAS%20data%20inquiry)** -- tell us which states or municipalities you're watching

@@ -92,4 +92,12 @@ Geneva demonstrates what becomes possible when you apply entity resolution to mu
 
 Nobody at Grainger's investor relations desk knows how often Geneva, Illinois pays them. We do. And we know the same thing for every municipality in the pipeline.
 
-Interested in what the full dataset looks like? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+Geneva's check register data is a sample of what entity resolution produces at scale. The full dataset spans 1,800+ municipalities and 100+ public tickers.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals including Geneva check register entries
+- **[See our alt data product](/solutions/alt-data/)** -- how we deliver municipal vendor data
+- **[Get entity data for specific tickers](mailto:matt@municipalalpha.com?subject=Alt%20data%20inquiry)** -- tell us which companies you're tracking

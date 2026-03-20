@@ -117,4 +117,13 @@ Falmouth is one town. One of 1,800+ in our pipeline. The data shown here -- deve
 
 Nobody reads Falmouth's Long Range Planning Advisory Committee minutes for investment signals. We do. Every day, for every town in the pipeline. And the patterns visible in one town become predictive when you see them across hundreds.
 
-Interested in what the full dataset looks like? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+Falmouth is one of 1,800+ municipalities generating structured intelligence daily. The full dataset includes signals, entities, tower sites, and vendor payments.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals
+- **[Download sample tower prospects (CSV)](/sample-data/tower-prospects-sample.csv)** -- 25 redacted tower prospects
+- **[See our methodology](/methodology/)** -- coverage, freshness, known gaps
+- **[Get data for specific municipalities](mailto:matt@municipalalpha.com?subject=Municipality%20data%20inquiry)** -- tell us which towns you're watching

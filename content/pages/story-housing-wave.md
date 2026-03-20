@@ -88,4 +88,12 @@ A developer looking at Maine already knows housing is tight. What they don't kno
 
 The same pattern is starting in Massachusetts, Vermont, Connecticut, and Rhode Island. By the time it reaches the Midwest and West (and it will -- ADU events are already in 24 states), the pipeline will be watching.
 
-Interested in housing policy data for specific states or municipalities? [Get in touch](/contact/).
+---
+
+### Want this data?
+
+Housing policy signals tracked daily -- density increases, ADU mandates, STR regulation -- with municipality, event type, date, and supply chain tickers.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
+- **[Get housing data for specific states](mailto:matt@municipalalpha.com?subject=Housing%20data%20inquiry)** -- tell us which regions you're watching
