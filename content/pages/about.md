@@ -1,6 +1,6 @@
 Title: About
 Slug: about
-Sortorder: 2
+Sortorder: 4
 
 ## Two Precedents
 

@@ -1,6 +1,6 @@
 Title: How It Works
 Slug: how-it-works
-Sortorder: 1
+Sortorder: 3
 
 ## A Knowledge Graph of US Public Records
 

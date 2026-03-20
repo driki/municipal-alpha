@@ -1,40 +1,38 @@
 {% extends "base.html" %}
 
-{% block title %}Municipal Alpha — A Knowledge Graph of US Public Records{% endblock %}
+{% block title %}Municipal Alpha — Structured Data from US Public Records{% endblock %}
 
 {% block content %}
 <section class="hero">
     <div class="container">
-        <h1>Public Record Intelligence</h1>
-        <p class="hero-kicker">Structured entities from unstructured government data</p>
-        <p class="hero-sub">A knowledge graph of US public records.</p>
-        <p class="hero-desc">
-            The United States generates an enormous volume of financially valuable public records every day.
-            Insurance rate filings that predict earnings. Probate inventories that reveal asset transfers.
-            Mineral deeds that identify tradeable royalty positions. Municipal check registers that signal
-            government contractor revenue. Assessor records that map infrastructure lease holders.
-            All of it is public by law. None of it is structured into entities and relationships.
-            We're building that graph.
-        </p>
-        <a href="{{ SITEURL }}/how-it-works/" class="btn">How It Works</a>
+        <h1>We read every town hall so you don't have to</h1>
+        <p class="hero-sub">Structured, investable data from {{ METRICS.municipalities }} municipalities across {{ METRICS.states }} states. Updated daily.</p>
+        <div class="hero-jobs">
+            <div class="hero-job">
+                <strong>Find tower lease prospects</strong> before aggregators do
+            </div>
+            <div class="hero-job">
+                <strong>Track government contractor revenue</strong> from vendor payment data
+            </div>
+            <div class="hero-job">
+                <strong>Monitor municipal credit quality</strong> from the source documents ratings agencies eventually read
+            </div>
+        </div>
+        <a href="{{ SITEURL }}/data-stories/" class="btn">See the Data</a>
+        <a href="{{ SITEURL }}/contact/" class="btn btn-outline">Get in Touch</a>
     </div>
 </section>
 
 <section class="metrics">
     <div class="container">
-        <h2>What Exists Today</h2>
         <div class="metric-grid">
             <div class="metric">
                 <span class="metric-value">{{ METRICS.municipalities }}</span>
-                <span class="metric-label">Municipalities covered</span>
-            </div>
-            <div class="metric">
-                <span class="metric-value">{{ METRICS.states }}</span>
-                <span class="metric-label">States</span>
+                <span class="metric-label">Municipalities monitored</span>
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.documents }}</span>
-                <span class="metric-label">Source documents ingested</span>
+                <span class="metric-label">Documents ingested</span>
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.signals }}</span>
@@ -46,90 +44,91 @@
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.permits }}</span>
-                <span class="metric-label">Structured permit records</span>
+                <span class="metric-label">Permit records structured</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">{{ METRICS.states }}</span>
+                <span class="metric-label">States</span>
             </div>
         </div>
     </div>
 </section>
 
-<section class="verticals">
+<section class="stories">
     <div class="container">
-        <h2>Many Verticals, One Knowledge Graph</h2>
-        <p>
-            Every vertical is an application built on the same underlying data asset, not a separate business.
-            Every new jurisdiction added to the pipeline activates data for every vertical simultaneously.
-        </p>
-        <div class="metric-grid">
-            <div class="metric">
-                <span class="metric-value">Infrastructure Leases</span>
-                <span class="metric-label">Tower, solar, wind, pipeline -- assessor records + FCC/FAA cross-referenced to identify private landowners</span>
+        <h2>Data Stories</h2>
+        <p>Cross-municipal patterns that are only visible when you read every town hall at once. Built from live pipeline data, not desk research.</p>
+        <div class="story-grid">
+            <a href="{{ SITEURL }}/research/pfas-contagion/" class="story-card">
+                <span class="story-stat">120+ events, 72 municipalities, 23 states</span>
+                <h3>PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater</h3>
+                <p>Remediation spending signals visible in town council agendas months before EPA enforcement.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/company-footprint/" class="story-card">
+                <span class="story-stat">100+ tickers, 1,800+ municipalities</span>
+                <h3>The Company That Shows Up in 123 Towns</h3>
+                <p>Entity resolution reveals which public companies have the deepest municipal government footprint.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/housing-density-wave/" class="story-card">
+                <span class="story-stat">390+ events, 130+ municipalities, 27 states</span>
+                <h3>The Housing Density Wave Is Rewriting Municipal Zoning</h3>
+                <p>ADU mandates, density increases, and STR regulation moving through regions at different speeds.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/lead-pipes/" class="story-card">
+                <span class="story-stat">$50B problem, 39 municipalities, 13 states</span>
+                <h3>Lead Pipes Are a $50B Problem Hiding in Municipal Agendas</h3>
+                <p>The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending.</p>
+            </a>
+        </div>
+        <div class="stories-more">
+            <a href="{{ SITEURL }}/data-stories/">All data stories and town profiles &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<section class="solutions">
+    <div class="container">
+        <h2>What You Can Do With This</h2>
+        <div class="solution-grid">
+            <div class="solution-card">
+                <h3>Infrastructure Lead Gen</h3>
+                <p>Tower, solar, and pipeline lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. Delivered as actionable prospect lists.</p>
             </div>
-            <div class="metric">
-                <span class="metric-value">Municipal Alt Data</span>
-                <span class="metric-label">Vendor payments, building permits, and budget signals resolved to public company tickers</span>
+            <div class="solution-card">
+                <h3>Municipal Alt Data</h3>
+                <p>Vendor payments and building permits resolved to public company tickers. Check registers are the source documents that earnings eventually reflect.</p>
             </div>
-            <div class="metric">
-                <span class="metric-value">Insurance Rate Filings</span>
-                <span class="metric-label">Proposed rate changes filed with state DOIs -- causal, not statistical, signal to premiums</span>
+            <div class="solution-card">
+                <h3>Credit Quality Monitoring</h3>
+                <p>Spending patterns, budget approvals, and fiscal stress indicators structured daily from {{ METRICS.municipalities }} municipalities. Leading, not lagging.</p>
             </div>
-            <div class="metric">
-                <span class="metric-value">Mineral Rights</span>
-                <span class="metric-label">County recorder deeds, royalty assignments, and conveyances with chain-of-title tracing</span>
+            <div class="solution-card">
+                <h3>Insurance Rate Intelligence</h3>
+                <p>Proposed rate changes filed with state DOIs. Causal signal to premiums, not statistical correlation.</p>
             </div>
-            <div class="metric">
-                <span class="metric-value">Probate & Estate</span>
-                <span class="metric-label">Asset inventories, heir identification, and creditor claims from county probate courts</span>
+            <div class="solution-card">
+                <h3>Mineral Rights</h3>
+                <p>County recorder deeds, royalty assignments, and conveyances with chain-of-title tracing across producing basins.</p>
+            </div>
+            <div class="solution-card">
+                <h3>Custom Data Products</h3>
+                <p>The knowledge graph covers every public record type. If a municipality publishes it, we can structure it for your use case.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="problem">
+<section class="how-brief">
     <div class="container">
-        <h2>The Problem</h2>
-        <p>
-            The data is scattered across 19,500 municipalities, 3,100 counties, 50 state agencies, and
-            thousands of special-purpose courts and commissions. Each jurisdiction publishes in its own format,
-            on its own website, behind its own filing system. No one aggregates it because the acquisition cost
-            has always been too high -- too many jurisdictions, too many formats, too much human labor.
-        </p>
         <img src="{{ SITEURL }}/images/small-town-v3.png" alt="Map showing hundreds of small municipalities being monitored across the eastern United States" class="section-img">
-        <p>
-            The big data vendors cover New York and Chicago. Nobody is systematically reading
-            Gorham, Maine or Franklin, New Hampshire. But small and mid-sized municipalities issue the same
-            building permits, the same check registers, the same assessor records as large cities -- just on
-            worse websites, with less standardization, behind more obscure FOIA statutes. That's where the
-            gap is widest and the signal is least picked-over.
-        </p>
-        <p>
-            AI agents change the math. What used to require a team of 50 people filing FOIA requests and
-            parsing PDFs can now be done by one person with an automated pipeline. We built that pipeline.
-            It runs daily, autonomously. The same architecture extends to every public record type in the country.
-        </p>
-    </div>
-</section>
-
-<section class="signal">
-    <div class="container">
-        <h2>Leading Indicators, Not Lagging Reports</h2>
-        <p>
-            Municipal check registers, vendor payments, and budget approvals are the source documents
-            that bond ratings eventually reflect. We structure them daily. When a town's spending pattern
-            shifts, that's the signal, months before rating agencies act.
-        </p>
-        <div class="metric-grid">
-            <div class="metric">
-                <span class="metric-value">Credit Signal</span>
-                <span class="metric-label">When rates are high, spending patterns reveal fiscal stress before downgrades</span>
-            </div>
-            <div class="metric">
-                <span class="metric-value">Equity Signal</span>
-                <span class="metric-label">When rates are low, vendor payments predict government contractor revenue</span>
-            </div>
-            <div class="metric">
-                <span class="metric-value">Always On</span>
-                <span class="metric-label">Counter-cyclical demand -- someone needs what we see in any rate environment</span>
-            </div>
+        <div class="how-brief-text">
+            <h2>Nobody else reads Gorham, Maine</h2>
+            <p>
+                The big data vendors cover New York and Chicago. We cover the 19,500 small and mid-sized municipalities
+                that issue the same building permits, check registers, and assessor records, just on worse websites,
+                behind more obscure FOIA statutes. AI agents make that possible. Our pipeline runs daily, autonomously.
+            </p>
+            <a href="{{ SITEURL }}/how-it-works/">How it works &rarr;</a>
         </div>
     </div>
 </section>

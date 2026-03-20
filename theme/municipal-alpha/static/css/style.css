@@ -152,66 +152,182 @@ body {
     margin-top: 4px;
 }
 
-/* Signal section */
-.signal {
-    padding: 80px 0;
+/* Hero jobs */
+.hero-jobs {
+    display: flex;
+    gap: 32px;
+    margin: 32px 0 40px;
+    flex-wrap: wrap;
 }
 
-.signal h2 {
-    font-size: 32px;
-    margin-bottom: 24px;
-    color: var(--navy);
-}
-
-.signal > .container > p {
-    max-width: 720px;
-    margin-bottom: 40px;
-    color: var(--slate);
-}
-
-.signal .metric-value {
-    font-size: 24px;
-}
-
-.signal .metric-label {
+.hero-job {
+    font-size: 16px;
+    color: var(--gray-200);
     line-height: 1.5;
     max-width: 280px;
-    margin: 8px auto 0;
 }
 
-/* Verticals section */
-.verticals {
+.hero-job strong {
+    color: var(--white);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    margin-left: 16px;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Data Stories section */
+.stories {
     padding: 80px 0;
 }
 
-.verticals h2 {
+.stories h2 {
     font-size: 32px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     color: var(--navy);
 }
 
-.verticals > .container > p {
+.stories > .container > p {
     max-width: 720px;
     margin-bottom: 40px;
     color: var(--slate);
 }
 
-.verticals .metric-grid {
-    max-width: 720px;
-    margin: 0 auto;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
 }
 
-.verticals .metric-value {
+.story-card {
+    display: block;
+    padding: 28px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.story-card:hover {
+    border-color: var(--navy-light);
+    box-shadow: 0 2px 12px rgba(26, 54, 93, 0.08);
+}
+
+.story-stat {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+.story-card h3 {
     font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
 }
 
-.verticals .metric-label {
-    line-height: 1.5;
-    max-width: 260px;
-    margin: 8px auto 0;
-    font-size: 14px;
+.story-card p {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.stories-more {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.stories-more a {
+    color: var(--navy-light);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.stories-more a:hover {
+    color: var(--navy);
+}
+
+/* Solutions section */
+.solutions {
+    padding: 80px 0;
+    background: var(--gray-100);
+}
+
+.solutions h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: var(--navy);
+}
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.solution-card {
+    padding: 24px;
+}
+
+.solution-card h3 {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.solution-card p {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.6;
+}
+
+/* How-brief section */
+.how-brief {
+    padding: 80px 0;
+}
+
+.how-brief .container {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+}
+
+.how-brief .section-img {
+    max-width: 400px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.how-brief-text h2 {
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 16px;
+}
+
+.how-brief-text p {
+    color: var(--slate);
+    margin-bottom: 16px;
+}
+
+.how-brief-text a {
+    color: var(--navy-light);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.how-brief-text a:hover {
+    color: var(--navy);
 }
 
 /* Problem / general sections */
@@ -331,6 +447,12 @@ body {
 @media (max-width: 640px) {
     .hero h1 { font-size: 32px; }
     .hero-sub { font-size: 18px; }
+    .hero-jobs { flex-direction: column; gap: 16px; }
+    .btn-outline { margin-left: 0; margin-top: 12px; }
     .metric-grid { grid-template-columns: 1fr; gap: 24px; }
+    .story-grid { grid-template-columns: 1fr; }
+    .solution-grid { grid-template-columns: 1fr; }
+    .how-brief .container { flex-direction: column; }
+    .how-brief .section-img { max-width: 100%; }
     .nav-links a { margin-left: 16px; font-size: 14px; }
 }
