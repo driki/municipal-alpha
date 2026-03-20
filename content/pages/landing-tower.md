@@ -53,4 +53,4 @@ We publish a redacted sample of our tower prospect data so you can evaluate the 
 
 Tower prospect data is delivered as qualified lead lists, updated weekly. Coverage can be customized to specific states, regions, or MSAs.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com) -- include your target geography and we'll send a coverage summary within 24 hours.
+**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29) -- include your target geography and we'll send a coverage summary within 24 hours.

@@ -1,0 +1,54 @@
+{
+  "generated": "2026-03-20T22:44:31.359438Z",
+  "towns": [
+    {
+      "slug": "falmouth-me",
+      "priority": "high",
+      "views": 139,
+      "retention": 3,
+      "score": 222.4
+    },
+    {
+      "slug": "geneva-il",
+      "priority": "high",
+      "views": 92,
+      "retention": 2,
+      "score": 128.8
+    },
+    {
+      "slug": "pocatello-id",
+      "priority": "high",
+      "views": 68,
+      "retention": 2,
+      "score": 95.2
+    }
+  ],
+  "topics": [
+    {
+      "slug": "pfas-contagion",
+      "views": 85,
+      "score": 85
+    },
+    {
+      "slug": "company-footprint",
+      "views": 62,
+      "score": 62
+    },
+    {
+      "slug": "pickleball-wave",
+      "views": 55,
+      "score": 55
+    },
+    {
+      "slug": "housing-density-wave",
+      "views": 41,
+      "score": 41
+    },
+    {
+      "slug": "lead-pipes",
+      "views": 33,
+      "score": 33
+    }
+  ],
+  "recommendations": []
+}

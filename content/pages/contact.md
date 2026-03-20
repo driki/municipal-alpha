@@ -6,7 +6,7 @@ Sortorder: 6
 
 We work with hedge funds, infrastructure companies, permit aggregators, insurers, and data platforms who need structured government data.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com)
+**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Inquiry%20%28via%20contact%20page%29)
 
 **LinkedIn:** [Matt MacDonald](https://www.linkedin.com/in/matthewmacdonald/)
 

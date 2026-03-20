@@ -76,4 +76,4 @@ When we say "120+ PFAS events across 72 municipalities," that means 120+ documen
 
 If you want to understand our coverage for a specific jurisdiction, entity, or data type, reach out. We'll tell you exactly what we have and what we don't.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com)
+**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Data%20methodology%20question)

@@ -60,4 +60,4 @@ See our [full methodology](/methodology/) for coverage details, known gaps, and 
 
 Alt data is delivered as structured feeds (CSV, JSON, or API), updated daily. Historical backfill available for covered municipalities.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com) -- tell us which tickers or sectors you're watching and we'll send a coverage report.
+**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Alt%20data%20inquiry%20%28via%20landing%20page%29) -- tell us which tickers or sectors you're watching and we'll send a coverage report.
