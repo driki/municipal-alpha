@@ -2,33 +2,26 @@ Title: PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater
 Slug: research/pfas-contagion
 Sortorder: 20
 
-*Analysis based on 120 PFAS-related events detected across 72 municipalities in 23 states. Data current as of March 2026.*
+*Analysis based on 120+ PFAS-related events detected across 70+ municipalities in 23 states.*
 
 ## The Pattern
 
 PFAS contamination is a public health story. But before it becomes a public health story, it's a municipal agenda story. Somewhere between the first water test and the EPA press release, a planning board discusses it, a town council votes on a study, and an ordinance committee drafts new language. All of that activity is in public documents. We read them.
 
-Our pipeline has detected 120 PFAS-related events across 72 municipalities in 23 states. The events range from initial studies and water testing to ordinances, moratoriums, compliance actions, and remediation contracts. The pattern is consistent: once one town in a region starts testing, neighboring towns follow within months.
+Our pipeline has detected 120+ PFAS-related events across 70+ municipalities in 23 states. The events range from initial studies and water testing to ordinances, moratoriums, compliance actions, and remediation contracts. The pattern is consistent: once one town in a region starts testing, neighboring towns follow within months.
 
 ## The Acceleration
 
 The trend line tells the story. PFAS was a slow trickle of events for years, then it went vertical.
 
-| Quarter | Events | Towns | States |
+| Period | Events | Towns | States |
 |---|---|---|---|
-| 2023-Q3 | 2 | 2 | 1 |
-| 2023-Q4 | 3 | 3 | 3 |
-| 2024-Q1 | 2 | 2 | 2 |
-| 2024-Q2 | 3 | 2 | 2 |
-| 2024-Q3 | 1 | 1 | 1 |
-| 2024-Q4 | 3 | 3 | 3 |
-| 2025-Q1 | 2 | 2 | 2 |
-| 2025-Q2 | 14 | 8 | 7 |
-| 2025-Q3 | 2 | 2 | 2 |
-| 2025-Q4 | 4 | 4 | 4 |
-| **2026-Q1** | **119** | **80** | **22** |
+| 8-10 quarters ago | 2-3/quarter | 2-3 | 1-3 |
+| 4-6 quarters ago | 2-3/quarter | 2-3 | 2-3 |
+| 2-3 quarters ago | 4-14/quarter | 4-8 | 4-7 |
+| **Current quarter** | **119** | **80** | **22** |
 
-Read that last row again. In a single quarter, PFAS events exploded from single digits to 119, across 80 towns in 22 states. This isn't gradual adoption. It's a regulatory compliance wave hitting simultaneously, driven by federal and state deadlines converging.
+In a single quarter, PFAS events exploded from single digits to 119, across 80 towns in 22 states. This isn't gradual adoption. It's a regulatory compliance wave hitting simultaneously, driven by federal and state deadlines converging.
 
 ## Where It's Showing Up
 
@@ -75,7 +68,7 @@ The 49 PFAS ordinances we've detected are the leading indicator. An ordinance cr
 
 A municipal bond analyst looking at PFAS exposure is reading EPA enforcement actions -- lagging indicators. We're reading the ordinances that create the spending obligation. The signal is the same. The timing is different.
 
-## 72 Towns and Counting
+## 70+ Towns and Counting
 
 New PFAS events enter our pipeline every week. The federal regulatory framework is still tightening (the EPA's PFAS National Primary Drinking Water Regulation took effect in 2024), and state-level implementation is driving local action. Every town that starts testing has a non-zero probability of finding something, and every finding triggers a cascade of municipal activity that our pipeline captures automatically.
 

@@ -2,7 +2,7 @@ Title: The Housing Density Wave Is Rewriting Municipal Zoning in Real Time
 Slug: research/housing-density-wave
 Sortorder: 22
 
-*Analysis based on 399 housing policy events detected across 130+ municipalities in 27 states. Data current as of March 2026.*
+*Analysis based on 390+ housing policy events detected across 130+ municipalities in 27 states.*
 
 ## Three Policies, One Wave
 
@@ -16,29 +16,20 @@ Across the United States, municipalities are simultaneously debating three close
 
 These aren't three separate stories. They're one wave -- municipalities responding to the same housing affordability pressure with overlapping policy tools. When a town allows ADUs, it changes the density calculation. When it regulates short-term rentals, it shifts supply from tourists to residents. When it upzones, it creates construction demand. All three show up in planning board agendas, ordinance committee discussions, and town council votes. Our pipeline reads all of them.
 
-399 events. 130+ municipalities. 27 states. The wave is national, but it's hitting different regions at different speeds.
+390+ events. 130+ municipalities. 27 states. The wave is national, but it's hitting different regions at different speeds.
 
 ## The Acceleration
 
 The quarterly trend shows a policy wave that was building slowly, then went exponential.
 
-| Quarter | Events | Towns | States |
+| Period | Events | Towns | States |
 |---|---|---|---|
-| 2023-Q1 | 5 | 5 | 3 |
-| 2023-Q2 | 6 | 4 | 3 |
-| 2023-Q3 | 6 | 4 | 2 |
-| 2023-Q4 | 9 | 7 | 4 |
-| 2024-Q1 | 5 | 4 | 4 |
-| 2024-Q2 | 7 | 5 | 3 |
-| 2024-Q3 | 4 | 2 | 1 |
-| 2024-Q4 | 7 | 5 | 4 |
-| 2025-Q1 | 4 | 4 | 3 |
-| 2025-Q2 | 14 | 9 | 7 |
-| 2025-Q3 | 16 | 10 | 5 |
-| 2025-Q4 | 34 | 11 | 6 |
-| **2026-Q1** | **273** | **111** | **24** |
+| 8-12 quarters ago | 5-9/quarter | 4-7 | 2-4 |
+| 4-7 quarters ago | 4-7/quarter | 2-5 | 1-4 |
+| 2-3 quarters ago | 14-34/quarter | 9-11 | 5-7 |
+| **Current quarter** | **273** | **111** | **24** |
 
-For two years, housing policy events trickled in at single-digit rates per quarter. Then 2025-Q4 doubled. Then Q1 2026 produced more events than all previous quarters combined -- 273 events across 111 towns in 24 states. State-level mandates created compliance deadlines, and municipalities are responding all at once. This is what a regulatory wave looks like in the data.
+For two years, housing policy events trickled in at single-digit rates per quarter. Then the pace doubled. Then the current quarter produced more events than all previous quarters combined -- 273 events across 111 towns in 24 states. State-level mandates created compliance deadlines, and municipalities are responding all at once. This is what a regulatory wave looks like in the data.
 
 ## Where It's Moving Fastest
 

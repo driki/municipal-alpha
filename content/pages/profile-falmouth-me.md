@@ -2,25 +2,25 @@ Title: Falmouth, Maine
 Slug: profiles/falmouth-me
 Sortorder: 10
 
-*Last updated: March 20, 2026. This profile is generated from continuous automated monitoring and updates weekly as new documents are published.*
+*This profile is generated from continuous automated monitoring and updates weekly as new documents are published.*
 
 ## 12,000 People, 18 Boards, 45 Tickers
 
 Falmouth is a coastal town just north of Portland, Maine. It has a Town Council, a Planning Board, a Finance Committee, a Recycling & Energy Advisory Committee, a Long Range Planning Advisory Committee, a Community Wellness Committee, and 12 more. Most people outside Cumberland County have never heard of it. Our pipeline reads all of them.
 
-Since February 2026, we've ingested 689 documents from Falmouth across 11 document types. Not once -- continuously. New documents are picked up within 24 hours of publication. So far, those documents have produced 107 classified signals touching 45 distinct publicly-traded companies.
+We've ingested 680+ documents from Falmouth across 11 document types. Not once -- continuously. New documents are picked up within 24 hours of publication. So far, those documents have produced 100+ classified signals touching 45 distinct publicly-traded companies.
 
 It's a town of 12,000. Forty-five tickers.
 
 | Metric | Value |
 |---|---|
-| Documents ingested | 689 |
+| Documents ingested | 680+ |
 | Document types | 11 (agendas, minutes, attachments, reports, budgets, ordinances, permits, RFPs...) |
 | Active boards monitored | 18 |
-| Classified signals | 107 (5 HIGH, 102 MEDIUM) |
+| Classified signals | 100+ (HIGH and MEDIUM) |
 | Public company tickers touched | 45 |
 | Tower structures registered | 8 |
-| Monitoring since | February 2026 |
+| Monitoring | Active, continuous |
 
 ## Pipeline Activity
 
@@ -28,27 +28,25 @@ The pipeline doesn't visit Falmouth once and move on. It watches continuously an
 
 | Week | Documents | Boards Active | Signals |
 |---|---|---|---|
-| Feb 17 | 60 | 8 | 28 |
-| Feb 24 | 529 | 18 | 68 |
-| Mar 3 | 44 | 9 | 1 |
-| Mar 10 | 50 | 10 | 6 |
-| Mar 17 | 6 | 3 | 4 |
+| Week 1 | 60 | 8 | 28 |
+| Week 2 (backfill) | 520+ | 18 | 68 |
+| Week 3 | 44 | 9 | 1 |
+| Week 4 | 50 | 10 | 6 |
+| Week 5 | 6 | 3 | 4 |
 
-Week of Feb 24 was a backfill -- we pulled the full document archive. Since then, the pipeline picks up new documents as they're posted. The signal count fluctuates with board meeting schedules. Town Council and Planning Board meet twice a month, so those weeks spike.
+Week 2 was a backfill -- we pulled the full document archive. Since then, the pipeline picks up new documents as they're posted. The signal count fluctuates with board meeting schedules. Town Council and Planning Board meet twice a month, so those weeks spike.
 
 ## Two Data Channels
 
-What you see above is Channel 1: the public website. Agendas, minutes, attachments, reports -- everything a town publishes on its portal. This is useful, and it's where most of our document volume comes from. It's also, in theory, something a competitor could replicate. They'd need to build connectors for six CMS platforms and handle a few hundred edge cases, but the documents are public.
+What you see above is Channel 1: the public website. Agendas, minutes, attachments, reports -- everything a town publishes on its portal. This is useful, and it's where most of our document volume comes from.
 
 Channel 2 is harder to replicate.
 
 The highest-value municipal data -- assessor records, detailed check registers, vendor payment files, parcel-level ownership data -- usually isn't published online. Getting it requires a formal public records request. In Maine, that's a Freedom of Access Act (FOAA) request. New Hampshire calls it Right-to-Know. Every state has its own statute, its own deadlines, its own rules about format, fees, and who to ask.
 
-We file these requests autonomously, adapted to each state's statute. But the real advantage isn't the filing -- it's what happens after. Over hundreds of requests across dozens of jurisdictions, the system has learned which contact roles respond fastest, which request language produces usable structured data versus a scanned PDF of a handwritten ledger, which towns respond on the first ask and which need a follow-up, and what the optimal timing is between requests to the same office.
+We file these requests autonomously, adapted to each state's statute. The result is structured data that isn't available on any website -- assessor records that identify tower landowners, check registers that map vendor payments to public company tickers, parcel data that connects infrastructure to ownership. The system improves its acquisition success rate over time as coverage expands. A competitor starting today can read the statutes, but they can't shortcut the learning curve.
 
-Every interaction gets scored. Successful patterns propagate automatically to similar towns. Failed approaches get deprioritized. The system's FOAA success rate improves every week, and that improvement is cumulative -- a competitor starting today wouldn't just need to build the filing system, they'd need to re-learn everything we've already learned from the responses.
-
-This is how we get the assessor data that identifies tower landowners. It's how we get the check register data that maps vendor payments to public company tickers. The website gives us the signal. The FOAA gives us the resolution.
+This is how we get the data that turns a document signal into an actionable lead. The website gives us the signal. The records request gives us the resolution.
 
 ## Development Signals
 
@@ -70,31 +68,30 @@ We're aggregating it.
 
 ## Infrastructure Leases
 
-Falmouth has 8 registered tower structures in our database.
+Falmouth has 8 registered tower structures in our database, owned by a mix of national tower operators. Structure heights range from 28 to 131 meters.
 
-| Owner | Structures | Height Range |
-|---|---|---|
-| American Tower | 2 | 37 - 55m |
-| SBA Communications | 2 | 28 - 64m |
-| Tower Specialists | 2 | 128 - 131m |
-| K2 Towers | 1 | 114m |
-| Other | 1 | 30m |
+| Detail | Value |
+|---|---|
+| Total structures | 8 |
+| Distinct operators | 5 |
+| Height range | 28 - 131m |
+| Landowner data | Available via records request |
 
-Each tower sits on land owned by a private party, a landowner receiving annual lease payments typically in the $15,000-$40,000/year range. Tower companies and aggregators acquire these lease positions at 15-20x annual rent. Identifying the landowner requires cross-referencing FCC registration data with municipal assessor records -- and those assessor records come through Channel 2. A FOAA request to the town assessor's office, filed in the right format, to the right person, with the right follow-up cadence.
+Each tower sits on land owned by a private party, a landowner receiving annual lease payments typically in the $15,000-$40,000/year range. Tower companies and aggregators acquire these lease positions at 15-20x annual rent. Identifying the landowner requires cross-referencing FCC registration data with municipal assessor records -- and those assessor records come through Channel 2.
 
-The FCC tells us there's a tower. The FOAA response tells us who owns the land under it. One data source is public and crawlable. The other is public and requestable. The combination produces a qualified lead that neither source provides alone.
+The FCC tells us there's a tower. The records request tells us who owns the land under it. One data source is public and crawlable. The other is public and requestable. The combination produces a qualified lead that neither source provides alone.
 
 ## Who's Winning Work
 
-The entities that appear most frequently in Falmouth's public documents paint a picture of who's active in this town.
+The entities that appear most frequently in Falmouth's public documents paint a picture of who's active in this town. Showing 5 of 20+ resolved entities:
 
 | Entity | Appearances | Role |
 |---|---|---|
-| Land Design Solutions | 16 | Site engineering |
-| Archetype Architects | 15 | Project design |
-| Falmouth Center LLC | 14 | Development |
-| GPCOG | 13 | Regional planning |
-| Falmouth Land Trust | 13 | Conservation |
+| Land Design Solutions | 15+ | Site engineering |
+| Archetype Architects | 15+ | Project design |
+| Falmouth Center LLC | 10+ | Development |
+| GPCOG | 10+ | Regional planning |
+| Falmouth Land Trust | 10+ | Conservation |
 
 These are local and regional firms. But the products they specify, the utilities they coordinate with, and the materials they purchase flow to public companies. The local architect specifies a Carrier HVAC system. The site engineer specs ADS drainage pipe. The electrician pulls permits for Eaton panels. Each specification is a micro-signal that maps to a ticker.
 
@@ -102,12 +99,12 @@ Individually they're noise. Aggregated across 1,800 municipalities, they're a da
 
 ## The Boring Part That Matters
 
-Here's what the boards in Falmouth are actually producing, by volume:
+Here's what the boards in Falmouth are actually producing, by volume. Showing 5 of 18 monitored boards:
 
 | Board | Attachments | Agendas | Minutes | Reports | Other |
 |---|---|---|---|---|---|
 | Town Council | 125 | 22 | 10 | -- | 14 |
-| Planning Board | 103 | 10 | 13 | 13 | 5 |
+| Planning Board | 100+ | 10 | 13 | 13 | 5 |
 | Community Development | 21 | 12 | 16 | -- | 4 |
 | Finance Committee | -- | 14 | -- | -- | 20 |
 | Board of Zoning Appeals | 12 | 10 | 11 | -- | -- |

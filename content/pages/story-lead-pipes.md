@@ -2,33 +2,26 @@ Title: Lead Pipes Are a $50B Problem Hiding in Municipal Agendas
 Slug: research/lead-pipes
 Sortorder: 23
 
-*Analysis based on 77 lead service line events detected across 39 municipalities in 13 states. Data current as of March 2026.*
+*Analysis based on 75+ lead service line events detected across 39 municipalities in 13 states.*
 
 ## The Federal Mandate Nobody's Tracking Locally
 
 In 2024, the EPA finalized the Lead and Copper Rule Improvements (LCRI), requiring all water systems to identify and replace lead service lines within 10 years. The estimated national cost: $20-50 billion, depending on who's counting. The money will flow through municipalities -- and the spending decisions are already showing up in their public documents.
 
-Our pipeline has detected 77 lead service line events across 39 municipalities in 13 states. The events include studies, inventory surveys, compliance plans, construction contracts, and funding allocations. This is the leading edge of a national infrastructure mandate, visible in municipal agendas before it shows up in any federal spending report.
+Our pipeline has detected 75+ lead service line events across 39 municipalities in 13 states. The events include studies, inventory surveys, compliance plans, construction contracts, and funding allocations. This is the leading edge of a national infrastructure mandate, visible in municipal agendas before it shows up in any federal spending report.
 
 ## The Ramp
 
 The quarterly trend shows a mandate moving from study phase to action phase.
 
-| Quarter | Events | Towns | Primary Activity |
+| Period | Events | Towns | Primary Activity |
 |---|---|---|---|
-| 2023-Q1 | 1 | 1 | Study |
-| 2023-Q2 | 1 | 1 | Study |
-| 2023-Q3 | 3 | 1 | Maintenance |
-| 2023-Q4 | 2 | 2 | Study |
-| 2024-Q1 | 4 | 2 | Construction begins |
-| 2024-Q2 | 6 | 3 | Ordinances passed |
-| 2024-Q4 | 4 | 2 | Reporting |
-| 2025-Q1 | 4 | 3 | Contract awards |
-| 2025-Q2 | 5 | 3 | Study |
-| 2025-Q4 | 3 | 2 | Ordinances |
-| **2026-Q1** | **43** | **33** | **Votes, compliance** |
+| 8-12 quarters ago | 1-3/quarter | 1-2 | Studies, inventory |
+| 4-7 quarters ago | 4-6/quarter | 2-3 | Ordinances, construction begins |
+| 2-3 quarters ago | 3-5/quarter | 2-3 | Contract awards, compliance |
+| **Current quarter** | **43** | **33** | **Votes, compliance surge** |
 
-The pattern: studies in 2023, ordinances in 2024, contract awards in 2025, and then 43 events across 33 towns in Q1 2026 as the compliance wave hits. The October 2027 inventory deadline is 18 months away, and municipalities are moving from planning to action. The spending ramp hasn't started yet -- this is the pre-spending signal.
+The pattern: studies first, ordinances next, contract awards following, and then 43 events across 33 towns in the current quarter as the compliance wave hits. The October 2027 inventory deadline is approaching, and municipalities are moving from planning to action. The spending ramp hasn't started yet -- this is the pre-spending signal.
 
 ## Where It's Happening
 
@@ -86,7 +79,7 @@ Each funding source creates its own paper trail in municipal documents -- grant 
 
 The funding events are the earliest signal that spending is imminent. By the time a contractor starts digging, the grant was accepted months ago. We saw the grant acceptance in the town council minutes.
 
-## 39 Towns and Growing
+## 39 Towns and Counting
 
 The LCRI requires all water systems to complete initial inventories by October 2027. That's 50,000+ water systems nationally. We're watching 39 municipalities that are already in motion. As more systems begin their inventories and compliance plans, the event count in our pipeline will accelerate.
 
