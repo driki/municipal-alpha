@@ -1,6 +1,7 @@
 Title: Methodology
 Slug: methodology
 Sortorder: 5
+Summary: Coverage, data freshness, source types, entity resolution, and known gaps. How we build structured intelligence from municipal public records.
 
 ## Coverage
 

@@ -2,15 +2,19 @@
 
 {% block title %}{{ page.title }} — {{ SITENAME }}{% endblock %}
 
-{% if page.header_image %}
-{% block og_image %}
+{% block meta %}
+    <meta name="description" content="{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
+    <meta property="og:title" content="{{ page.title|e }}">
+    <meta property="og:description" content="{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="{{ SITENAME }}">
+    {% if page.header_image %}
     <meta property="og:image" content="{{ SITEURL }}/images/{{ page.header_image }}">
+    {% else %}
+    <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
 {% endblock %}
-{% endif %}
-
-{% if page.summary %}
-{% block description %}{{ page.summary }}{% endblock %}
-{% endif %}
 
 {% block content %}
 <section class="page">

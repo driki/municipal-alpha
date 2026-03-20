@@ -1,6 +1,7 @@
 Title: Municipal Alt Data
 Slug: solutions/alt-data
 Sortorder: 31
+Summary: Vendor payments and building permits resolved to 100+ public company tickers from 1,800+ municipalities. Updated daily.
 
 ## Government contractor revenue from the source documents
 

@@ -1,6 +1,7 @@
 Title: Tower & Infrastructure Leads
 Slug: solutions/tower-leads
 Sortorder: 30
+Summary: Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 3,800+ sites screened across 1,800+ municipalities.
 
 ## Find tower lease prospects before aggregators do
 

@@ -4,16 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-    <meta name="description" content="{% block description %}A knowledge graph of US public records, built by AI agents.{% endblock %}">
-    <!-- Open Graph -->
-    <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
-    <meta property="og:description" content="{{ self.description() }}">
-    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    {% block meta %}
+    <meta name="description" content="A knowledge graph of US public records, built by AI agents.">
+    <meta property="og:title" content="{{ SITENAME }}">
+    <meta property="og:description" content="A knowledge graph of US public records, built by AI agents.">
+    <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ SITENAME }}">
-    {% block og_image %}
     <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
-    {% endblock %}
     <meta name="twitter:card" content="summary_large_image">
+    {% endblock %}
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css?v=2">
 </head>
 <body>

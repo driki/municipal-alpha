@@ -1,10 +1,9 @@
 Title: Data Stories
 Slug: data-stories
 Sortorder: 1
+Summary: Cross-municipal patterns from live pipeline data across 1,800+ municipalities. Updated weekly.
 
 Cross-municipal patterns that are only visible when you monitor 1,800+ municipalities at once. Every story below is built from live pipeline data -- contagion events, entity sightings, and signal classification across hundreds of jurisdictions. Updated weekly.
-
-## Data Stories
 
 - [PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater](/research/pfas-contagion/) -- 120 events across 72 municipalities in 23 states. The remediation wave is visible in town council agendas months before EPA enforcement actions.
 - [The Company That Shows Up in 123 Towns](/research/company-footprint/) -- Entity resolution across 1,800+ municipalities reveals which public companies have the deepest municipal government footprint. Verizon: 6,183 sightings. Tyler Technologies: 88 towns. Amazon: 2,932 sightings.
