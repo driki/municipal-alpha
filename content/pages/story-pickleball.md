@@ -1,6 +1,8 @@
 Title: The Pickleball Boom Is Now a Line Item in Municipal Budgets
 Slug: research/pickleball-wave
 Sortorder: 24
+Header_image: story-pickleball.png
+Summary: 29 pickleball-related signals across 14 municipalities in 9 states. From federal grants to tennis court conversions, the pickleball boom is now a capital improvement line item.
 
 *Analysis based on 29 pickleball-related signals detected across 14 municipalities in 9 states.*
 
@@ -77,6 +79,16 @@ These regulatory signals, both permissive and restrictive, are the kind of early
 Pickleball infrastructure is a small but real signal in the broader municipal recreation spending story. The 29 signals we've detected are almost certainly undercounting the actual activity, since our pipeline currently covers 1,800+ municipalities out of 19,500 nationally.
 
 The interesting part isn't the sport. It's the pattern: a consumer trend becomes a community demand, which becomes a parks commission agenda item, which becomes a budget line item, which becomes a federal grant application, which becomes a construction contract. Every step in that chain produces a public document. We read them all.
+
+---
+
+### Want this data?
+
+Municipal recreation and infrastructure spending signals, tracked daily. From federal grants to zoning amendments to construction contracts.
+
+- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
+- **[Get municipal spending data](mailto:matt@municipalalpha.com?subject=Municipal%20spending%20data%20inquiry)** -- tell us which categories or regions you're watching
 
 ---
 

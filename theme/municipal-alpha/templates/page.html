@@ -2,9 +2,22 @@
 
 {% block title %}{{ page.title }} — {{ SITENAME }}{% endblock %}
 
+{% if page.header_image %}
+{% block og_image %}
+    <meta property="og:image" content="{{ SITEURL }}/images/{{ page.header_image }}">
+{% endblock %}
+{% endif %}
+
+{% if page.summary %}
+{% block description %}{{ page.summary }}{% endblock %}
+{% endif %}
+
 {% block content %}
 <section class="page">
     <div class="container">
+        {% if page.header_image %}
+        <img src="{{ SITEURL }}/images/{{ page.header_image }}" alt="{{ page.title }}" class="story-header-image">
+        {% endif %}
         <h1>{{ page.title }}</h1>
         {{ page.content }}
     </div>

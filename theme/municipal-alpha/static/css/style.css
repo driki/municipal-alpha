@@ -278,6 +278,32 @@ body {
 
 .solution-card {
     padding: 24px;
+    text-decoration: none;
+    display: block;
+    border-radius: 8px;
+}
+
+a.solution-featured {
+    border: 2px solid var(--navy);
+    transition: box-shadow 0.15s;
+    position: relative;
+}
+
+a.solution-featured:hover {
+    box-shadow: 0 2px 12px rgba(26, 54, 93, 0.12);
+}
+
+.solution-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--navy);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .solution-card h3 {
@@ -290,6 +316,7 @@ body {
     font-size: 15px;
     color: var(--slate);
     line-height: 1.6;
+    margin: 0;
 }
 
 /* How-brief section */
@@ -441,6 +468,15 @@ body {
     padding: 32px 0;
     text-align: center;
     font-size: 14px;
+}
+
+/* Story header images */
+.story-header-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 24px;
 }
 
 /* Responsive */
