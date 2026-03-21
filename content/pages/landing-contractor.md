@@ -48,6 +48,10 @@ US municipalities spend $3.9 trillion annually. That spending flows through chec
 
 At current coverage, we've resolved 100+ public company tickers from 1,800+ municipalities. At national scale, every company that sells to local government, from Grainger and Fastenal to AECOM and Waste Management, gets bottom-up revenue tracking from the source transaction records. Nationally, municipalities issue roughly 1.5 million building permits per year, each one a forward-looking signal on contractor revenue that earnings models don't capture.
 
+## Why Nobody Else Has This
+
+Vendor payment records and check registers live inside municipal CMS platforms at URLs that nothing links to. In our testing, roughly 99% of the documents we ingest have no public navigation path. You can't Google for a town's check register and find it, because the CMS stored it without ever surfacing it in a menu or sitemap. AI agents face the same problem. The documents are public, the URLs exist, but no web crawler or AI tool will ever discover them without understanding how each CMS platform stores data internally. That's what our connectors do.
+
 ## Who This Is For
 
 - **Fundamental L/S equity analysts** covering industrials, infrastructure, or govtech

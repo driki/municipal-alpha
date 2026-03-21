@@ -53,6 +53,10 @@ At our current coverage of 1,800+ municipalities, we've resolved 100+ public com
 
 The pipeline adds ~25 municipalities per week. The marginal cost of each addition is near zero.
 
+## Why You Can't Google This
+
+Check registers and AP warrants are the most financially valuable municipal documents, and they are almost never discoverable through search engines or AI assistants. In our testing, roughly 99% of the documents we ingest exist at CMS URLs with no public navigation link. A finance director uploads a check register to the town portal, it gets stored, and nothing ever links to it. Google can't index what it can't find. AI agents browse the same pages Google does. The documents are public record, sitting on public servers, at URLs that nothing points to. We find them because we built connectors for each municipal CMS platform, not a general-purpose crawler.
+
 ## Who This Is For
 
 - **Quantitative hedge funds** looking for non-consensus revenue signals from public records

@@ -40,6 +40,10 @@ The US municipal bond market is $4 trillion. Rating agencies cover the largest i
 
 We monitor 1,800+ municipalities daily across 50 states. At national scale, this becomes continuous fiscal health surveillance across the full universe of municipal issuers, built from the same source documents that rating agencies eventually read, just months earlier.
 
+## Why This Data Stays Hidden
+
+The spending documents that reveal fiscal stress, check registers, AP warrants, budget amendments, are stored in municipal CMS platforms at URLs with no public navigation link. In our testing, roughly 99% of the documents we ingest are invisible to search engines and AI assistants. A town posts a check register to its portal and nothing on the site links to it. The document is public record, but it might as well not exist for anyone relying on web search or browsing. Rating agencies that review these documents do it manually, on a schedule. We read them daily because our connectors reach into the CMS platforms where the documents actually live, not the navigation menus where they don't.
+
 ## Who This Is For
 
 - **Muni bond portfolio managers** monitoring credit quality across holdings

@@ -36,6 +36,10 @@ ASCE estimates a $2.6 trillion infrastructure investment gap in the US. That gap
 
 We monitor 1,800+ municipalities daily and track contagion patterns (PFAS remediation, lead pipe replacement, housing code changes) as they spread across jurisdictions. At national scale, this becomes a leading indicator layer for the full municipal risk universe, built from the spending records that predict infrastructure failures, not the claims data that confirms them after the fact.
 
+## Why This Data Is Invisible to Underwriters
+
+Capital plans, emergency appropriations, and infrastructure spending records are stored inside municipal CMS platforms at URLs with no navigation link. In our testing, roughly 99% of the documents we ingest are undiscoverable through search engines or AI tools. A town uploads a capital improvement plan to its portal and no menu, sitemap, or link points to it. An underwriter would need to know the exact URL to find it. Multiply that by 19,500 municipalities and the documents that reveal deferred maintenance and infrastructure risk are effectively dark. Our connectors reach into each CMS platform's document store directly, reading what the navigation tree never shows.
+
 ## Who This Is For
 
 - **Property & casualty carriers** underwriting municipal policies

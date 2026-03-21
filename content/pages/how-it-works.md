@@ -62,6 +62,20 @@ We're not building a better way to read New York City's budget. We're building t
 
 The marginal cost of adding a municipality to the pipeline is near zero once the CMS connector exists, and six connector platforms cover roughly 80% of US municipal websites. The graph gets denser with every town added, and denser graphs produce better intelligence.
 
+## The Dark Document Problem
+
+You can Google for municipal documents. You can ask an AI agent to find them. You will miss almost everything.
+
+We tested this. Across a sample of municipalities where we have deep coverage, roughly 99% of the documents in our database exist at URLs with no public navigation link. They are stored in the content management system, they are public record, but no menu points to them. No sitemap lists them. No search engine has ever seen them.
+
+This is not a search engine problem. It is a platform architecture problem. The six CMS vendors that power most US municipal websites store documents in flat file directories and sequential archive IDs. A town clerk uploads a check register to the portal, it gets a URL like `/ArchiveCenter/ViewFile/Item/4605`, and that URL is never linked from any navigation page. The document exists. It is public. It is invisible.
+
+Google indexes what it can find through links. AI agents browse the same public-facing pages Google does. Neither has any way to discover a document that the CMS stored but never surfaced. In one Maine city, we found 3,600+ documents, all stored in a deep upload directory with no inbound links from the site's navigation. Planning board agendas, septic permits, zoning documents, all public record, all effectively dark.
+
+This is why scraping municipal websites the normal way produces almost nothing. The navigation tree shows what the CMS vendor's default menu structure exposes. The actual document store is orders of magnitude larger. Our connectors understand how each platform stores data internally, not just what it shows visitors.
+
+For data teams, research firms, and AI companies building on public records: the documents you are missing are not behind a paywall or a login. They are sitting on a public server at a URL that nothing links to. We know where they are because we built connectors for each platform, not a general-purpose web crawler.
+
 ## The AI Agent Architecture
 
 Every product on this platform shares the same core capability: AI agents that discover data sources, file records requests, navigate government portals, parse unfamiliar document formats, extract structured data, and resolve entities into the knowledge graph. The agents are general-purpose. What changes per vertical is the detection patterns, the data sources, and the buyer. The infrastructure is built once.

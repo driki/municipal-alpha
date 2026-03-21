@@ -42,6 +42,10 @@ There are 130,000+ FCC-registered tower structures in the United States. Most si
 
 We've screened 3,800+ tower sites across 1,800+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. The pipeline adds municipalities weekly, and every new town with assessor data activates tower screening automatically.
 
+## Why This Data Doesn't Show Up in Search
+
+Assessor records and planning board attachments are stored inside municipal CMS platforms at URLs with no navigation link. A zoning variance for a tower site gets attached to a planning board agenda packet, stored in the system, and never linked from the public site. In our testing, roughly 99% of the documents we ingest are invisible to search engines and AI agents because nothing on the site points to them. FCC and FAA data is public, but the municipal records that connect a tower to a landowner, a lease payment, and a zoning decision live in these dark CMS paths. We built connectors that reach them directly.
+
 ## Who This Is For
 
 - **Tower lease aggregators** looking for acquisition targets before competitors

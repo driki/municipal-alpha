@@ -357,6 +357,36 @@ a.solution-featured:hover {
     color: var(--navy);
 }
 
+/* Dark docs section */
+.dark-docs {
+    padding: 80px 0;
+    background: var(--navy);
+    color: var(--white);
+}
+
+.dark-docs h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.dark-docs p {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 16px;
+    max-width: 720px;
+}
+
+.dark-docs a {
+    color: var(--gray-200);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dark-docs a:hover {
+    color: var(--white);
+}
+
 /* Scale section */
 .scale {
     padding: 80px 0;
