@@ -91,8 +91,9 @@ The $50 billion question isn't whether the money will be spent. It's which munic
 
 ### Want this data?
 
-Lead service line events tracked daily -- inventory progress, funding approvals, contractor awards -- with municipality, phase, and supply chain tickers.
+This story is built from [contagion and policy signals](/data-stories/#contagion-and-policy-signals) (lead pipe compliance events) and [entity-resolved vendor payments](/data-stories/#entity-resolved-vendor-payments) (water infrastructure supply chain tickers from check registers). Both updated daily.
 
-- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[Download contagion signal sample (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- contagion events with municipality chains and risk categories
+- **[Download vendor payment sample (CSV)](/sample-data/signals-sample.csv)** -- entity-resolved signals with tickers and amounts
 - **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
 - **[Get lead pipe data for specific regions](mailto:matt@municipalalpha.com?subject=Lead%20pipe%20data%20inquiry)** -- tell us which states or water systems you're watching

@@ -76,8 +76,8 @@ We see all of these. Across every municipality in the pipeline. Every day.
 
 ### Want this data?
 
-Entity-resolved vendor payment data, updated daily across 1,800+ municipalities. 100+ public tickers tracked.
+This story is built from [entity-resolved vendor payments](/data-stories/#entity-resolved-vendor-payments) -- vendor names from check registers and AP warrants resolved to public company tickers across 200+ municipalities. Updated daily.
 
-- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[Download vendor payment sample (CSV)](/sample-data/signals-sample.csv)** -- entity-resolved signals with tickers, amounts, and municipality
 - **[See how we resolve entities](/methodology/#entity-resolution)** -- our approach to matching vendor names to tickers
 - **[Get entity data for specific tickers](mailto:matt@municipalalpha.com?subject=Entity%20data%20inquiry)** -- tell us which companies you're tracking

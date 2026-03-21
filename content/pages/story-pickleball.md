@@ -84,9 +84,10 @@ The interesting part isn't the sport. It's the pattern: a consumer trend becomes
 
 ### Want this data?
 
-Municipal recreation and infrastructure spending signals, tracked daily. From federal grants to zoning amendments to construction contracts.
+This story is built from [contagion and policy signals](/data-stories/#contagion-and-policy-signals) (recreation infrastructure events) and [credit quality indicators](/data-stories/#credit-quality-indicators) (budget line items and capital plans). Both updated daily.
 
-- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[Download contagion signal sample (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- contagion events with municipality chains and risk categories
+- **[Download credit quality sample (CSV)](/sample-data/credit-sample.csv)** -- budget and fiscal signals with monetary amounts
 - **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
 - **[Get municipal spending data](mailto:matt@municipalalpha.com?subject=Municipal%20spending%20data%20inquiry)** -- tell us which categories or regions you're watching
 

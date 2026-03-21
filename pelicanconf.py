@@ -46,6 +46,18 @@ SOCIAL = ()
 
 DEFAULT_PAGINATION = False
 
+# Markdown extensions -- toc adds heading IDs for anchor links
+MARKDOWN = {
+    "extension_configs": {
+        "markdown.extensions.toc": {"permalink": False},
+        "markdown.extensions.tables": {},
+        "markdown.extensions.codehilite": {"css_class": "highlight"},
+        "markdown.extensions.extra": {},
+        "markdown.extensions.meta": {},
+    },
+    "output_format": "html5",
+}
+
 # Static paths
 STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data"]
 EXTRA_PATH_METADATA = {

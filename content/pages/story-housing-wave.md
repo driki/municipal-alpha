@@ -94,8 +94,9 @@ The same pattern is starting in Massachusetts, Vermont, Connecticut, and Rhode I
 
 ### Want this data?
 
-Housing policy signals tracked daily -- density increases, ADU mandates, STR regulation -- with municipality, event type, date, and supply chain tickers.
+This story is built from [contagion and policy signals](/data-stories/#contagion-and-policy-signals) (housing policy events across jurisdictions) and [building permits](/data-stories/#building-permits-and-contractor-signals) (construction activity that follows zoning changes). Both updated daily.
 
-- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[Download contagion signal sample (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- contagion events with municipality chains and risk categories
+- **[Download contractor signal sample (CSV)](/sample-data/contractor-signals-sample.csv)** -- permit and contractor data with tickers
 - **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
 - **[Get housing data for specific states](mailto:matt@municipalalpha.com?subject=Housing%20data%20inquiry)** -- tell us which regions you're watching

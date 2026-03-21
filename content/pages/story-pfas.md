@@ -82,8 +82,9 @@ We know. It's in their agendas.
 
 ### Want this data?
 
-We track PFAS contagion events daily across 1,800+ municipalities. The dataset includes event type, municipality, date, related entities, and supply chain tickers.
+This story is built from two datasets: [contagion and policy signals](/data-stories/#contagion-and-policy-signals) (event tracking across jurisdictions) and [entity-resolved vendor payments](/data-stories/#entity-resolved-vendor-payments) (supply chain tickers from check registers). Both updated daily.
 
-- **[Download a sample of our signal data (CSV)](/sample-data/signals-sample.csv)** -- 50 entity-resolved signals showing the data structure
+- **[Download contagion signal sample (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- contagion events with municipality chains and risk categories
+- **[Download vendor payment sample (CSV)](/sample-data/signals-sample.csv)** -- entity-resolved signals with tickers and amounts
 - **[See our full methodology](/methodology/)** -- coverage, freshness, known gaps
 - **[Get PFAS data for your coverage area](mailto:matt@municipalalpha.com?subject=PFAS%20data%20inquiry)** -- tell us which states or municipalities you're watching
