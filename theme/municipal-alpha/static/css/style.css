@@ -598,6 +598,24 @@ a.solution-featured:hover {
     height: 250px;
 }
 
+/* CTA button (inline in page content) */
+.cta-button {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 36px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background 0.15s;
+    margin: 8px 0 16px;
+}
+
+.cta-button:hover {
+    background: var(--navy-light);
+}
+
 /* Town CTA */
 .town-cta {
     background: var(--gray-100);
