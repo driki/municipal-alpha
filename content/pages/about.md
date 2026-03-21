@@ -28,6 +28,23 @@ Municipal governments under fiscal stress show it in AP data first -- delayed ve
 
 When rates are high, we're a credit signal. When rates are low, we're an equity signal -- vendor payment anomalies predict government contractor revenue. Either way, someone needs what we see.
 
+## The Scale of the Opportunity
+
+The numbers behind the coverage gap:
+
+| What exists nationally | Volume | What's structured today |
+|---|---|---|
+| US municipalities | 19,500 | We monitor 1,800+ daily |
+| Building permits issued annually | ~1.5 million (Census Bureau) | 43,000+ structured in our pipeline |
+| Annual municipal government spending | $3.9 trillion (Census of Governments) | Vendor payments from 1,800+ towns, 100+ resolved tickers |
+| Municipal bond market | $4 trillion (SIFMA) | Credit signals from source spending documents |
+| FCC-registered tower structures | 130,000+ | 3,800+ screened with parcel cross-reference |
+| Municipal infrastructure investment gap | $2.6 trillion (ASCE) | Deferred maintenance signals from spending patterns |
+
+These records all exist as public documents. The acquisition cost has been too high for anyone to aggregate them, too many jurisdictions, too many CMS platforms, too many state-specific FOIA statutes. AI agents change the unit economics. Six CMS connectors cover roughly 80% of US municipal websites, and the marginal cost of adding a municipality to the pipeline is near zero once the connector exists.
+
+We add ~25 municipalities per week. The pipeline infrastructure scales past 5,000. Every new municipality activated produces data for every revenue vertical simultaneously, the cost is paid once and the revenue compounds across verticals.
+
 ## Revenue Verticals
 
 Applications built on the knowledge graph, not separate businesses.
