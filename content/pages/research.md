@@ -18,3 +18,9 @@ What the pipeline sees in a single municipality -- document volume, signal class
 - [Falmouth, Maine](/profiles/falmouth-me/) -- 689 documents, 18 boards, 45 tickers, 8 tower sites. Coastal New England town with active development, climate, and infrastructure lease signals.
 - [Geneva, Illinois](/profiles/geneva-il/) -- 1,338 documents, 45 boards, 50 tickers, 257 check registers. The alt data story: entity resolution maps vendor payments to public company revenue across 1,700+ sightings.
 - [Pocatello, Idaho](/profiles/pocatello-id/) -- 2,244 documents, 39 boards, 98 HIGH signals, 38 tower sites. The town nobody's watching, producing more high-priority signals than cities ten times its profile.
+
+---
+
+## What should we investigate next?
+
+The pipeline monitors 1,800+ municipalities in real time. If there's a trend, policy wave, or spending pattern you'd like us to dig into, we'll build the data story. [Tell us what you're curious about](mailto:matt@municipalalpha.com?subject=Data%20story%20request).
