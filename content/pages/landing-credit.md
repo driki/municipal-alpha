@@ -47,6 +47,10 @@ In a 4.5% rate environment, the cost of being wrong about a municipal credit pos
 
 Municipal fiscal stress shows up in AP data first -- delayed vendor payments, vendor concentration shifts, spending velocity drops. We read those signals daily.
 
+## Sample Data
+
+**[Download sample credit signals (CSV)](/sample-data/credit-sample.csv)** -- 50 fiscal health signals showing the data structure: municipality, document type, priority, summary, and monetary amounts.
+
 ## Get Started
 
 Credit intelligence data is delivered as structured feeds or custom reports, filtered to your coverage universe.

@@ -50,7 +50,7 @@ The combination surfaces revenue acceleration and deceleration signals that top-
 
 ## Sample Data
 
-**[Download sample signals (CSV)](/sample-data/signals-sample.csv)** -- 50 redacted entity-resolved signals showing the data structure.
+**[Download sample contractor signals (CSV)](/sample-data/contractor-signals-sample.csv)** -- 50 entity-resolved signals showing vendor names, tickers, document types, and context.
 
 ## Get Started
 

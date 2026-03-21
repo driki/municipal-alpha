@@ -43,6 +43,10 @@ Some risks spread across municipalities in predictable patterns. When one state 
 
 We track these contagion patterns across jurisdictions, identifying which municipalities are proactively addressing infrastructure risks and which are accumulating deferred liability.
 
+## Sample Data
+
+**[Download sample infrastructure risk signals (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- 50 infrastructure and environmental risk signals showing the data structure: municipalities, risk category, contagion patterns, and monetary amounts.
+
 ## Get Started
 
 Infrastructure risk data is delivered as structured reports or custom feeds, filtered to your coverage geography.

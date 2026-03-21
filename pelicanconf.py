@@ -51,6 +51,9 @@ EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},
     "extra/sample-data/tower-prospects-sample.csv": {"path": "sample-data/tower-prospects-sample.csv"},
     "extra/sample-data/signals-sample.csv": {"path": "sample-data/signals-sample.csv"},
+    "extra/sample-data/credit-sample.csv": {"path": "sample-data/credit-sample.csv"},
+    "extra/sample-data/contractor-signals-sample.csv": {"path": "sample-data/contractor-signals-sample.csv"},
+    "extra/sample-data/infrastructure-risk-sample.csv": {"path": "sample-data/infrastructure-risk-sample.csv"},
 }
 
 # Clean URLs
