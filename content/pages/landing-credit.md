@@ -34,6 +34,12 @@ When a municipality's vendor payment velocity drops 15%+ from its trailing avera
 
 See our [methodology](/methodology/) for details on data freshness, known gaps, and quality metrics.
 
+## The Scale of What's Unmonitored
+
+The US municipal bond market is $4 trillion. Rating agencies cover the largest issuers, but the long tail of small and mid-sized municipalities, the ones most likely to experience fiscal stress quietly, gets reviewed infrequently if at all. There are 19,500 municipalities issuing bonds, publishing budgets, and processing vendor payments. The spending patterns that predict fiscal deterioration are in those public records, just not structured or monitored by anyone.
+
+We monitor 1,800+ municipalities daily across 50 states. At national scale, this becomes continuous fiscal health surveillance across the full universe of municipal issuers, built from the same source documents that rating agencies eventually read, just months earlier.
+
 ## Who This Is For
 
 - **Muni bond portfolio managers** monitoring credit quality across holdings

@@ -34,6 +34,34 @@ A single jurisdiction like Cumberland County, Maine produces assessor data (towe
 
 Every new jurisdiction added to the pipeline activates data for every active vertical simultaneously. The graph gets denser, and denser graphs produce better intelligence.
 
+## Why 19,500 Municipalities
+
+The big data vendors cover New York and Chicago. We cover the 19,500 small and mid-sized municipalities that issue the same building permits, check registers, and assessor records, just on worse websites, behind more obscure FOIA statutes. AI agents make that possible. Our pipeline runs daily, autonomously.
+
+Nobody else reads Gorham, Maine. Or Pocatello, Idaho. Or the thousands of other towns where the finance director posts a check register to a CivicPlus portal and nobody outside city hall ever looks at it. Those check registers contain the same vendor payment data that Bloomberg terminals show for federal contracts, just at the local level, where 19,500 jurisdictions spend a combined $3.9 trillion annually on payroll, infrastructure, services, and procurement.
+
+The coverage gap is the product. US municipalities collectively issue roughly 1.5 million building permits per year, process billions in vendor payments, publish thousands of planning board decisions, and file hundreds of thousands of public records annually. Almost none of it is structured. The few vendors that touch municipal data focus on the largest cities or aggregate at the state level, missing the transaction-level detail where the signal lives.
+
+We're not building a better way to read New York City's budget. We're building the first way to read Gorham's check register, and Pocatello's building permits, and Geneva's vendor payments, at the same time, every day, automatically.
+
+**Where we are today:**
+
+- **1,800+** municipalities monitored daily, all 50 states
+- **292,000+** documents ingested and classified
+- **43,000+** building permits structured
+- **100+** public company tickers resolved from municipal vendor names
+- Adding ~25 new municipalities per week, with infrastructure built to scale past 5,000
+
+**Where this goes:**
+
+- **19,500** US municipalities issuing these same records
+- **~1.5M** building permits issued nationally per year (Census Bureau)
+- **$3.9T** in annual municipal government spending (Census of Governments)
+- **$4T** municipal bond market
+- **130,000+** FCC-registered tower structures
+
+The marginal cost of adding a municipality to the pipeline is near zero once the CMS connector exists, and six connector platforms cover roughly 80% of US municipal websites. The graph gets denser with every town added, and denser graphs produce better intelligence.
+
 ## The AI Agent Architecture
 
 Every product on this platform shares the same core capability: AI agents that discover data sources, file records requests, navigate government portals, parse unfamiliar document formats, extract structured data, and resolve entities into the knowledge graph. The agents are general-purpose. What changes per vertical is the detection patterns, the data sources, and the buyer. The infrastructure is built once.

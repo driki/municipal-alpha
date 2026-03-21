@@ -36,6 +36,12 @@ A single prospect in our dataset connects:
 
 No single public database contains all of this. The value is in the cross-reference.
 
+## The Scale of What's Out There
+
+There are 130,000+ FCC-registered tower structures in the United States. Most sit on privately owned land with ground leases that renew, transfer, or expire without anyone outside the immediate parties knowing about it. The public records that reveal lease terms, landowner identity, and property valuation exist in 19,500 municipal assessor databases, most of which have never been systematically screened.
+
+We've screened 3,800+ tower sites across 1,800+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. The pipeline adds municipalities weekly, and every new town with assessor data activates tower screening automatically.
+
 ## Who This Is For
 
 - **Tower lease aggregators** looking for acquisition targets before competitors

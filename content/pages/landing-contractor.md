@@ -42,6 +42,12 @@ The combination surfaces revenue acceleration and deceleration signals that top-
 - **Waste:** Waste Management (WM), Casella Waste (CWST), Clean Harbors (CLH)
 - **Industrial/MRO:** Grainger (GWW), Fastenal (FAST)
 
+## The Scale of What's Unstructured
+
+US municipalities spend $3.9 trillion annually. That spending flows through check registers and vendor payment records that exist as public documents in 19,500 jurisdictions. The big data vendors cover federal contracts (USASpending, GovWin) and large-city procurement. Nobody aggregates the local-level vendor payments where most government contractors actually do their work.
+
+At current coverage, we've resolved 100+ public company tickers from 1,800+ municipalities. At national scale, every company that sells to local government, from Grainger and Fastenal to AECOM and Waste Management, gets bottom-up revenue tracking from the source transaction records. Nationally, municipalities issue roughly 1.5 million building permits per year, each one a forward-looking signal on contractor revenue that earnings models don't capture.
+
 ## Who This Is For
 
 - **Fundamental L/S equity analysts** covering industrials, infrastructure, or govtech

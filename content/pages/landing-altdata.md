@@ -45,6 +45,14 @@ Multiply this by 1,800+ municipalities and 100+ resolved tickers. That's the dat
 
 See our [full methodology](/methodology/) for coverage details, known gaps, and data freshness.
 
+## The Scale of What's Uncovered
+
+US municipalities spend $3.9 trillion annually (Census of Governments). Almost none of that spending data is structured or available to financial markets. The big data vendors cover federal contracts and large-city budgets. We cover the 19,500 small and mid-sized municipalities where the same vendor payments happen, just on worse websites.
+
+At our current coverage of 1,800+ municipalities, we've resolved 100+ public company tickers from municipal vendor names. At national scale, that number grows to 500+ tickers across every sector that touches local government, from construction materials to waste management to municipal IT. Building permits alone total roughly 1.5 million per year nationally (Census Bureau), each one a leading indicator of contractor revenue 3-6 months before earnings.
+
+The pipeline adds ~25 municipalities per week. The marginal cost of each addition is near zero.
+
 ## Who This Is For
 
 - **Quantitative hedge funds** looking for non-consensus revenue signals from public records
