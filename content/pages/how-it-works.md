@@ -76,9 +76,9 @@ This is why scraping municipal websites the normal way produces almost nothing. 
 
 For data teams, research firms, and AI companies building on public records: the documents you are missing are not behind a paywall or a login. They are sitting on a public server at a URL that nothing links to. We know where they are because we built connectors for each platform, not a general-purpose web crawler.
 
-## The AI Agent Architecture
+## The Recipe Library
 
-Every product on this platform shares the same core capability: AI agents that discover data sources, file records requests, navigate government portals, parse unfamiliar document formats, extract structured data, and resolve entities into the knowledge graph. The agents are general-purpose. What changes per vertical is the detection patterns, the data sources, and the buyer. The infrastructure is built once.
+The agents share a growing library of learned approaches, what we call recipes. A recipe is a proven combination: this source type, plus this extraction method, applied in this context, delivered to this buyer segment. Some recipes were designed. Most were discovered, the system tried something, it worked, it got recorded. Recipes that work three or more times get promoted to playbooks. The library grows with every jurisdiction touched, every FOIA response processed, every edge case solved. What changes per vertical is the recipe, not the infrastructure.
 
 | Agent Capability | Verticals It Serves |
 |---|---|
@@ -112,4 +112,10 @@ Small and mid-sized municipalities issue the same permits as large cities, just 
 
 The system runs daily, autonomously. It crawls municipal portals, classifies documents, resolves entities to public company tickers, scores signals, and delivers qualified leads. Self-healing automation detects when a municipality changes its website and adapts. A reward-based learning system tracks which automated actions succeed and evolves strategy over time. When a fix works for one town, the system propagates it to similar towns with decaying confidence by similarity.
 
-The pipeline doesn't just collect data. It files records requests, processes responses, follows up on non-responses, onboards new jurisdictions, retrains its own classifiers, and evaluates the business value of every action it takes. Every day it runs, it gets better at running.
+The pipeline doesn't just collect data. It files records requests, processes responses, follows up on non-responses, onboards new jurisdictions, retrains its own classifiers, and evaluates the business value of every action it takes. Every day it runs, it gets better at locating things.
+
+## What "Gets Better" Means
+
+A landowner in an unorganized territory in northern Maine sits on a cell tower lease worth $50,000 a year. The tower does not appear in the FCC's standard registration database. There is no municipal assessor, no town website, no CMS platform to scrape. The system found it anyway, by combining an FCC land mobile license, an FAA obstruction filing, a trail database entry for "Cell Tower Access Road," USGS elevation data showing the only viable ridge in the area, and a state unorganized territory tax roll. Five sources, none sufficient alone, each one a recipe the system learned from a previous dead end somewhere else.
+
+That is what getting better means. Not faster hardware or bigger databases, more recipes for locating things that nobody else is looking for.

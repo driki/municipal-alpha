@@ -387,6 +387,27 @@ a.solution-featured:hover {
     color: var(--white);
 }
 
+/* Locate example section */
+.locate-example {
+    padding: 60px 0;
+    background: var(--gray-100);
+    border-top: 3px solid var(--navy);
+}
+
+.locate-example h2 {
+    font-size: 24px;
+    color: var(--navy);
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.locate-example p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--slate);
+    max-width: 720px;
+}
+
 /* Scale section */
 .scale {
     padding: 80px 0;

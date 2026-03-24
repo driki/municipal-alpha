@@ -18,7 +18,7 @@ All of it is public by law. None of it is structured into entities and relations
 
 The big data vendors cover New York and Chicago. Nobody is systematically reading Gorham, Maine or Franklin, New Hampshire. But small and mid-sized municipalities issue the same building permits, the same check registers, the same assessor records as large cities -- just on worse websites, with less standardization, behind more obscure FOIA statutes. That's where the gap is widest and the signal is least picked-over. Building permits alone tell you which contractors are winning work, which developers are active in a geography, and where infrastructure spending is accelerating -- months before it shows up in earnings.
 
-AI agents change the math. What used to require a team of 50 people filing FOIA requests and parsing PDFs can now be done by one person with an automated pipeline. We built that pipeline. It runs daily, autonomously. The same architecture extends to every public record type in the country.
+The system is good at finding things because it has spent a year learning the system it operates in. Which CMS platforms hide documents behind JavaScript. Which FOIA statutes require which language. Which assessor offices respond to email and which require certified mail. Which board names mean "check registers" in which towns. None of this was designed upfront. It was learned through contact with 1,800+ jurisdictions, thousands of FOIA interactions, and hundreds of dead ends that each taught the system something. Every interaction produces a recipe. The recipes accumulate.
 
 ## Why This Matters Now
 
@@ -61,20 +61,23 @@ Applications built on the knowledge graph, not separate businesses.
 
 ![Diagram showing one jurisdiction at top funneling into multiple revenue verticals below]({static}/images/compounding-effect.png)
 
-This platform's understanding of a jurisdiction improves every time a new document is ingested, a new entity is resolved, a new parcel is screened, or a new relationship is mapped. The graph gets denser, and denser graphs produce better intelligence. After 2-3 years, the platform doesn't just have data -- it has a knowledge graph of how US local government works, who owns what, who pays whom, and how infrastructure, money, and people flow through the system.
+Two things compound in this system, and the second one is less obvious. The data compounds: more jurisdictions, more documents, more cross-references, more history. But the operational intelligence also compounds. Every FOIA interaction teaches the system something about that jurisdiction. Every failed crawl produces a recipe for the next attempt. Every edge case solved becomes available to every future jurisdiction. The system does not just get bigger. It gets better at locating things.
 
-- Assessor data for tower lease screening simultaneously produces solar/wind/utility lease leads, property tax delinquency signals, municipal fiscal health indicators, and the parcel-level foundation for probate property matching. One FOIA request, five products.
-- Resolving "Waste Management of Maine" to ticker WM in AP data simultaneously improves entity resolution for insurance rate filings, permit data, and contract tracking. One resolution, four graph improvements.
-- Adding a new municipality to the pipeline adds documents to alt data, parcels to infrastructure screening, jurisdiction coverage to insurance territory mapping, and a new court for probate monitoring. One onboarding, multiple revenue streams activated.
+- One FOIA request to a municipal assessor produces tower lease leads, solar lease leads, property tax signals, AND feeds alt data scoring. Five products from one acquisition.
+- One entity resolution ("Waste Management of Maine" resolves to ticker WM) simultaneously improves insurance rate filing data, permit tracking, and contract award detection.
+- One new jurisdiction activates documents for alt data, parcels for infrastructure screening, jurisdiction coverage for insurance territory mapping, and a new court for probate monitoring. And it onboards faster than the last one, because the recipe library is larger.
+- One dead end: the FCC tower registration database missed a $50K/year tower lease in rural Maine. That dead end produced a recipe combining ULS licenses, FAA filings, trail databases, and elevation data. That recipe now applies to every rural tower search, not just the one that produced it.
 
-The cost of acquiring a jurisdiction is paid once. The revenue is collected from every vertical that uses it.
+The cost of acquiring a jurisdiction is paid once. The revenue is collected from every vertical that uses it. And the recipe learned from acquiring it makes the next acquisition cheaper.
 
 ## The Moat
 
-- **Compounding knowledge graph.** Every jurisdiction scraped, every FOIA response received, every document classified, every entity resolved adds nodes and edges to a proprietary graph that no competitor has. The data is public in theory. In practice, acquiring and structuring it across thousands of jurisdictions takes years.
-- **Agent sophistication is cumulative.** Every edge case -- a quirky CMS, a state-specific FOIA statute, an unusual assessor format, a complex chain of title -- becomes embedded knowledge in the agent workflows. A competitor starting from scratch has to rediscover every one of these. There are hundreds.
-- **The work is unglamorous.** Parsing 15 assessor data formats, navigating 50 state FOIA statutes, building connectors for 6 CMS platforms, tracing mineral title chains through 100-year-old deeds. This is exactly the kind of messy, real-world infrastructure that well-funded competitors find unappealing. That ugliness is the moat.
-- **Learned FOIA/FOAA intelligence.** The platform files public records requests autonomously, adapted to each state's statute (FOIA, FOIL, OPRA, Right-to-Know). Over hundreds of requests, the system has learned which contact roles respond, which email formats get through, which request language produces data vs. denials, and how long to wait before following up. It tracks every interaction, scores outcomes, and evolves its approach. A competitor can read the statute, but they can't replicate what we've learned from the responses.
+The mess is why nobody starts. The recipes are why nobody catches up.
+
+- **Recipes compound faster than data.** The data asset grows linearly with jurisdictions covered. The recipe library grows combinatorially, because a recipe learned in one context often applies in others. The recipe for extracting tower data from unorganized territories came from combining five techniques each learned in a different jurisdiction. A competitor would need to hit those same dead ends to develop the same recipe.
+- **Time is the ingredient you cannot buy.** The system knows which FOIA language works in Maine vs New Hampshire, which assessor offices send Vision caidump format vs custom exports, which CMS platforms require JavaScript rendering, which board names correspond to financial data in which towns. This is not infrastructure. It is accumulated operational intelligence. It took a year of daily interactions to learn. A well-funded competitor starting today starts with zero recipes.
+- **The work is unglamorous.** Nobody wants to parse 15 assessor data formats, navigate 50 state FOIA statutes, build connectors for 6 CMS platforms, or trace mineral title chains through 100-year-old deeds. This is exactly the kind of messy, real-world work that well-funded competitors find unappealing. That is fine. We like it here.
+- **Cross-domain recipes transfer.** A FOIA playbook developed for Maine municipal assessors applies to Maine school districts and special districts too, same statute, same language. A CMS connector built for one CivicPlus municipality works for hundreds. Every new domain entered activates recipes already in the library.
 
 ## The Team
 
