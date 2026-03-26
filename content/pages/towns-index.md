@@ -19,4 +19,5 @@ See what a weekly digest looks like:
 
 - **[Falmouth, Maine](/towns/falmouth-me/)** -- 12,000 people, 18 boards monitored. Coastal New England town with active development, PFAS testing, and infrastructure projects.
 - **[Geneva, Illinois](/towns/geneva-il/)** -- 22,000 people, 45 boards monitored. Historic Fox River city west of Chicago with deep check register data and active preservation commission.
+- **[Portland, Maine](/towns/portland-me/)** -- 68,000 people, 59 boards monitored. Maine's largest city with active waterfront governance, affordable housing programs, and federal grant activity.
 - **[Pocatello, Idaho](/towns/pocatello-id/)** -- 56,000 people, 39 boards monitored. Infrastructure-heavy city at the I-15/I-86 junction with water treatment, airport expansion, and lead pipe replacement activity.
