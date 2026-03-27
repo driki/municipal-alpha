@@ -14,6 +14,67 @@
     <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
     {% endif %}
     <meta name="twitter:card" content="summary_large_image">
+    {% if page.slug.startswith('solutions/') %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "{{ page.title|e }}",
+        "description": "{{ page.summary|default('')|striptags|e }}",
+        "url": "{{ SITEURL }}/{{ page.url }}",
+        "provider": {
+            "@type": "Organization",
+            "name": "Municipal Alpha",
+            "url": "https://municipalalpha.com"
+        },
+        "spatialCoverage": "United States",
+        "temporalCoverage": "2025/..",
+        "license": "https://municipalalpha.com/legal/terms/",
+        "isAccessibleForFree": false,
+        "distribution": [
+            {
+                "@type": "DataDownload",
+                "encodingFormat": "text/csv",
+                "contentUrl": "{{ SITEURL }}/{{ page.url }}"
+            }
+        ],
+        "variableMeasured": [
+            "Municipal government documents",
+            "RFPs and bid tabulations",
+            "Capital improvement plans",
+            "Check registers and vendor payments",
+            "Building permits",
+            "Legislative documents"
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "Municipal Alpha",
+            "url": "https://municipalalpha.com"
+        }
+    }
+    </script>
+    {% endif %}
+    {% if page.slug == 'methodology' %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "name": "Municipal Alpha Data Methodology",
+        "description": "{{ page.summary|default('')|striptags|e }}",
+        "url": "{{ SITEURL }}/{{ page.url }}",
+        "author": {
+            "@type": "Organization",
+            "name": "Municipal Alpha",
+            "url": "https://municipalalpha.com"
+        },
+        "about": {
+            "@type": "Dataset",
+            "name": "Municipal Alpha Knowledge Graph",
+            "description": "Structured data from 2,100+ US municipalities, updated daily. Covers agendas, minutes, check registers, permits, RFPs, capital plans, and assessor records across 50 states."
+        }
+    }
+    </script>
+    {% endif %}
 {% endblock %}
 
 {% block content %}

@@ -2,6 +2,52 @@
 
 {% block title %}Municipal Alpha — Structured Data from US Public Records{% endblock %}
 
+{% block meta %}
+    <meta name="description" content="Structured, investable data from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. Municipal RFPs, capital plans, check registers, permits, and tower data updated daily.">
+    <meta property="og:title" content="Municipal Alpha — Structured Data from US Public Records">
+    <meta property="og:description" content="Structured, investable data from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. Updated daily.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ SITENAME }}">
+    <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Municipal Alpha",
+        "url": "https://municipalalpha.com",
+        "description": "A knowledge graph of US public records. Structured data from 2,100+ municipalities across 50 states, updated daily. Municipal RFPs, capital plans, check registers, vendor payments, building permits, tower infrastructure data, and legislative documents.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "matt@municipalalpha.com",
+            "contactType": "sales"
+        },
+        "knowsAbout": [
+            "Municipal government data",
+            "Public records intelligence",
+            "Municipal RFPs and bid tabulations",
+            "Capital improvement plans",
+            "Municipal check registers and vendor payments",
+            "Building permits",
+            "Tower and infrastructure lease data",
+            "Municipal credit quality indicators",
+            "Government contractor revenue signals",
+            "PFAS remediation tracking",
+            "Municipal alternative data"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Municipal Alpha",
+        "url": "https://municipalalpha.com",
+        "description": "Structured, investable data from US municipal public records"
+    }
+    </script>
+{% endblock %}
+
 {% block content %}
 <section class="hero">
     <div class="container">

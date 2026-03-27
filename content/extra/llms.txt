@@ -1,0 +1,56 @@
+# Municipal Alpha
+
+> Structured, investable data from US municipal public records. A knowledge graph of 19,500 municipalities built from daily automated collection of agendas, minutes, check registers, permits, RFPs, capital plans, and assessor records.
+
+Municipal Alpha monitors 2,100+ municipalities across 50 states, collecting 300,000+ documents from municipal CMS platforms. Documents are classified by type, entities are resolved to public company tickers, and signals are structured for investment research, infrastructure prospecting, and government intelligence.
+
+## What Municipal Alpha Does
+
+- Reads municipal government portals daily across 15+ CMS platforms (CivicPlus, Granicus, BoardDocs, WordPress, Catalis, Revize, and others)
+- Classifies documents into 14 canonical types: agenda, minutes, check_register, budget, capital_plan, ordinance, permit, rfp, bid_tabulation, legislative_document, engineering_report, and others
+- Resolves vendor names to public company tickers (100+ tickers across 2,100+ municipalities)
+- Cross-references municipal records against federal databases (FCC, FAA, SAM.gov, FERC, EPA, EMMA)
+- Tracks contagion patterns as policy spreads across jurisdictions (PFAS remediation, housing density, lead pipe replacement)
+
+## Data Products
+
+- Tower & Infrastructure Leads: https://municipalalpha.com/solutions/tower-leads/
+- Municipal Alternative Data: https://municipalalpha.com/solutions/alt-data/
+- Municipal Credit Intelligence: https://municipalalpha.com/solutions/credit-intelligence/
+- Government Contractor Signals: https://municipalalpha.com/solutions/contractor-signals/
+- Infrastructure Risk Indicators: https://municipalalpha.com/solutions/infrastructure-risk/
+
+## Coverage
+
+- 2,100+ municipalities monitored daily
+- 50 states
+- 300,000+ documents ingested
+- 53,000+ classified signals
+- 3,800+ tower sites screened with parcel cross-reference
+- 43,000+ building permits structured
+- 100+ public company tickers resolved from vendor payment data
+
+## Key Pages
+
+- About: https://municipalalpha.com/about/
+- How It Works: https://municipalalpha.com/how-it-works/
+- Methodology: https://municipalalpha.com/methodology/
+- Data Stories: https://municipalalpha.com/data-stories/
+- Contact: https://municipalalpha.com/contact/
+
+## Sample Data
+
+- Tower prospects sample (CSV): https://municipalalpha.com/sample-data/tower-prospects-sample.csv
+- Signals sample (CSV): https://municipalalpha.com/sample-data/signals-sample.csv
+- Credit indicators sample (CSV): https://municipalalpha.com/sample-data/credit-sample.csv
+- Contractor signals sample (CSV): https://municipalalpha.com/sample-data/contractor-signals-sample.csv
+- Infrastructure risk sample (CSV): https://municipalalpha.com/sample-data/infrastructure-risk-sample.csv
+
+## Why This Data Is Unique
+
+Roughly 99% of the documents in our pipeline are invisible to search engines and AI agents. Municipal CMS platforms store documents at URLs with no navigation link. A town clerk uploads a check register, it gets a URL, and nothing on the site points to it. Google cannot index what it cannot find. We built connectors for each CMS platform that reach into the document store directly.
+
+## Contact
+
+Email: matt@municipalalpha.com
+Website: https://municipalalpha.com

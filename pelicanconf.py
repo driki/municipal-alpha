@@ -59,9 +59,10 @@ MARKDOWN = {
 }
 
 # Static paths
-STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data"]
+STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/llms.txt"]
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},
+    "extra/llms.txt": {"path": "llms.txt"},
     "extra/sample-data/tower-prospects-sample.csv": {"path": "sample-data/tower-prospects-sample.csv"},
     "extra/sample-data/signals-sample.csv": {"path": "sample-data/signals-sample.csv"},
     "extra/sample-data/credit-sample.csv": {"path": "sample-data/credit-sample.csv"},
