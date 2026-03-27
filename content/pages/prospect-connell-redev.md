@@ -54,6 +54,10 @@ construction-related documents from our pipeline.
 | 2026-03-27 | Delmar, CA | San Dieguito Lagoon Habitat Enhancement & Trail Project |
 | 2026-03-27 | US (federal) | SAM.gov: IDIQ Small Business MACC for Commercial and Institutional Construction |
 
+## Download Sample Report
+
+**[Real Estate Development Intelligence Sample (PDF)](/sample-data/connell-redev-sample-2026-03-27.pdf)** — 17,057 development-relevant documents broken down by category: zoning activity, master plans, redevelopment designations, tax incentives, capital plans, housing, and RFPs. Includes the most active municipalities for planning and zoning activity.
+
 ## Who This Data Serves
 
 - **REITs and institutional owners repositioning properties for mixed-use densification**
