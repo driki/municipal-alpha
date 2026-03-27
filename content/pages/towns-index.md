@@ -17,6 +17,7 @@ We can build a digest for any municipality that publishes documents online. It t
 
 See what a weekly digest looks like:
 
+- **[Millinocket, Maine](/towns/millinocket-me/)** -- 4,000 people, 7 boards monitored. Former mill town reinventing around outdoor recreation and remote work at the gateway to Baxter State Park.
 - **[Falmouth, Maine](/towns/falmouth-me/)** -- 12,000 people, 18 boards monitored. Coastal New England town with active development, PFAS testing, and infrastructure projects.
 - **[Geneva, Illinois](/towns/geneva-il/)** -- 22,000 people, 45 boards monitored. Historic Fox River city west of Chicago with deep check register data and active preservation commission.
 - **[Portland, Maine](/towns/portland-me/)** -- 68,000 people, 59 boards monitored. Maine's largest city with active waterfront governance, affordable housing programs, and federal grant activity.
