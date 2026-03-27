@@ -68,6 +68,7 @@ EXTRA_PATH_METADATA = {
     "extra/sample-data/credit-sample.csv": {"path": "sample-data/credit-sample.csv"},
     "extra/sample-data/contractor-signals-sample.csv": {"path": "sample-data/contractor-signals-sample.csv"},
     "extra/sample-data/infrastructure-risk-sample.csv": {"path": "sample-data/infrastructure-risk-sample.csv"},
+    "extra/sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf": {"path": "sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf"},
 }
 
 # Clean URLs

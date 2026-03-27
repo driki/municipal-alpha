@@ -51,6 +51,10 @@ environmental, and construction testing firms.
 | 2026-03-27 | TX (federal) | SAM.gov: Sam Houston Trail Bridge Replacement |
 | 2026-03-27 | US (federal) | SAM.gov: Nationwide A&E IDIQ for Dam Safety, USFWS |
 
+## Download Sample Report
+
+**[New England Infrastructure Sample (PDF)](/sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf)** — 1,045 infrastructure-relevant documents from 243 New England municipalities, broken down by category: capital improvement plans, bids & RFPs, utility & stormwater, and infrastructure committee activity.
+
 ## Who This Data Serves
 
 - **Geotechnical engineering firms competing for municipal site investigation contracts**
