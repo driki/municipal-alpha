@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Municipal Alpha — Tower Intelligence</title>
+<style>
+body { margin: 0; padding: 0; background: #f4f4f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+.wrapper { max-width: 660px; margin: 0 auto; background: #ffffff; }
+.header { background: #1a1a2e; padding: 28px 32px 16px; }
+.header h1 { color: #ffffff; font-size: 20px; margin: 0 0 4px; font-weight: 700; letter-spacing: -0.3px; }
+.header .tagline { color: #8888aa; font-size: 12px; margin: 0; }
+
+/* Product tabs */
+.product-tabs { display: flex; background: #0f3460; }
+.product-tab { flex: 1; padding: 14px 20px; color: #8899bb; font-size: 13px; font-weight: 600; text-align: center; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
+.product-tab:hover { color: #ffffff; background: rgba(255,255,255,0.05); }
+.product-tab.active { color: #ffffff; border-bottom-color: #ffffff; background: rgba(255,255,255,0.08); }
+.product-tab .tab-label { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 2px; }
+
+.product-section { display: none; }
+.product-section.active { display: block; }
+
+.summary-bar { background: #16213e; padding: 10px 32px; display: flex; justify-content: space-between; align-items: center; }
+.summary-bar span { color: #aabbdd; font-size: 11px; }
+.summary-bar .count { font-weight: 700; font-size: 13px; color: #fff; }
+
+.content { padding: 24px 32px; }
+.date-header { color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+
+.alert-card { border-left: 4px solid #0f3460; background: #fafbfc; border-radius: 0 6px 6px 0; padding: 16px 18px; margin-bottom: 16px; }
+.alert-card.competitor { border-left-color: #e76f51; }
+.alert-card.opportunity { border-left-color: #0f3460; }
+.alert-card.ground-lease { border-left-color: #7c3aed; }
+.alert-card.legislation { border-left-color: #2d6a4f; }
+
+.alert-card .label { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; }
+.alert-card.opportunity .label { background: #e8f0fe; color: #0f3460; }
+.alert-card.competitor .label { background: #fde8e4; color: #e76f51; }
+.alert-card.ground-lease .label { background: #ede9fe; color: #7c3aed; }
+.alert-card.legislation .label { background: #e8f5e9; color: #2d6a4f; }
+
+.alert-card .municipality { font-size: 11px; color: #888; margin-bottom: 4px; }
+.alert-card .title { font-size: 15px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; line-height: 1.3; }
+.alert-card .title a { color: #0f3460; text-decoration: none; }
+.alert-card .title a:hover { text-decoration: underline; }
+.alert-card .excerpt { font-size: 13px; color: #444; line-height: 1.5; margin-bottom: 8px; }
+.alert-card .meta { font-size: 11px; color: #888; }
+.alert-card .meta span { margin-right: 16px; }
+.alert-card .source-link { display: inline-block; margin-top: 6px; font-size: 11px; }
+.alert-card .source-link a { color: #0f3460; text-decoration: none; border-bottom: 1px dashed #0f3460; }
+.alert-card .source-link a:hover { border-bottom-style: solid; }
+.alert-card .insight { background: #fff8e1; border-radius: 4px; padding: 8px 12px; margin-top: 10px; font-size: 12px; color: #6d5a00; line-height: 1.4; }
+.alert-card .insight strong { color: #4a3d00; }
+
+/* Parcel enrichment section */
+.parcel-section { background: #f8f5ff; border: 1px solid #e8e0f5; border-radius: 4px; padding: 12px 14px; margin-top: 10px; }
+.parcel-section .parcel-header { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #7c3aed; margin-bottom: 8px; }
+.parcel-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.parcel-table th { text-align: left; font-size: 10px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.3px; padding: 4px 8px 4px 0; border-bottom: 1px solid #e8e0f5; }
+.parcel-table td { padding: 5px 8px 5px 0; color: #333; border-bottom: 1px solid #f0ecf5; }
+.parcel-table .owner-name { font-weight: 600; color: #1a1a2e; }
+.parcel-table .amt-tag { display: inline-block; font-size: 9px; font-weight: 700; background: #e76f51; color: white; padding: 1px 5px; border-radius: 2px; margin-left: 4px; }
+.parcel-table .tower-tag { display: inline-block; font-size: 9px; font-weight: 600; background: #e8f0fe; color: #0f3460; padding: 1px 5px; border-radius: 2px; }
+.parcel-note { font-size: 11px; color: #666; margin-top: 6px; font-style: italic; }
+
+.provenance-box { background: #f0f4ff; border-radius: 6px; padding: 14px 18px; margin-top: 8px; margin-bottom: 8px; }
+.provenance-box .prov-title { font-size: 11px; font-weight: 600; color: #0f3460; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.provenance-box .prov-body { font-size: 12px; color: #444; line-height: 1.5; }
+
+.divider { border: none; border-top: 1px solid #eee; margin: 0; }
+.footer { padding: 20px 32px; text-align: center; background: #f8f9fa; border-top: 1px solid #eee; }
+.footer p { margin: 4px 0; font-size: 11px; color: #888; }
+.footer a { color: #0f3460; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<div class="header">
+  <h1>Municipal Alpha</h1>
+  <p class="tagline">Public Record Intelligence for Wireless Infrastructure</p>
+</div>
+
+<!-- Two Product Tabs -->
+<div class="product-tabs">
+  <div class="product-tab active" onclick="showProduct('defend')">
+    <span class="tab-label">Product 1</span>
+    Portfolio Defense
+  </div>
+  <div class="product-tab" onclick="showProduct('intel')">
+    <span class="tab-label">Product 2</span>
+    Competitive Intelligence
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PRODUCT 1: PORTFOLIO DEFENSE                                  -->
+<!-- ============================================================ -->
+<div id="product-defend" class="product-section active">
+
+<div class="summary-bar">
+  <span><span class="count">2</span> alerts affecting your portfolio</span>
+  <span>Monitoring 384 of your 545 US positions</span>
+</div>
+
+<div class="content">
+  <div class="date-header">Friday, March 28, 2026 &mdash; Portfolio Defense</div>
+
+  <!-- Defense Alert 1: Greenville SC Planning Commission -->
+  <div class="alert-card opportunity">
+    <div class="label">Zoning Activity Near Your Towers</div>
+    <div class="municipality">Greenville, SC &mdash; Planning Commission</div>
+    <div class="title"><a href="https://greenvillesc.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4882,plainText=false)">Planning Commission Agenda Packet &mdash; March 5, 2026</a></div>
+    <div class="excerpt">
+      Full agenda packet for Greenville Planning Commission meeting. Includes rezoning applications, site plan reviews, and land development regulation amendments affecting Districts 4 and 7.
+    </div>
+    <div class="meta">
+      <span>Mar 5, 2026</span>
+      <span>Board: Planning Commission</span>
+      <span>Source: CivicClerk</span>
+    </div>
+    <div class="source-link">&#128196; <a href="https://greenvillesc.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4882,plainText=false)">View original document on greenvillesc.gov</a> (PDF)</div>
+
+    <div class="parcel-section">
+      <div class="parcel-header">Your Positions in Affected Area &mdash; 3 of 28 Greenville towers</div>
+      <table class="parcel-table">
+        <tr><th>Parcel</th><th>Landowner</th><th>Tower</th><th>District</th></tr>
+        <tr>
+          <td>0542-00-017.00</td>
+          <td><span class="owner-name">Piedmont Natural Gas Co</span></td>
+          <td><span class="tower-tag">AMT</span></td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>0538-00-042.00</td>
+          <td><span class="owner-name">JMB Properties LLC</span></td>
+          <td><span class="tower-tag">AMT</span></td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>0551-00-008.01</td>
+          <td><span class="owner-name">Margaret R. Townsend Trust</span></td>
+          <td><span class="tower-tag">AMT</span></td>
+          <td>7</td>
+        </tr>
+      </table>
+      <div class="parcel-note">Land development changes in these districts directly affect your tower operations and any future co-location or height modification plans.</div>
+    </div>
+
+    <div class="insight">
+      <strong>Action:</strong> Review agenda packet for zoning amendments that may affect setbacks, permitted uses, or height limits on your 3 positions in Districts 4 and 7. This document was posted to a CivicClerk portal not indexed by Google.
+    </div>
+  </div>
+
+  <!-- Defense Alert 2: Kennebunk — competitor near your Falmouth site -->
+  <div class="alert-card ground-lease">
+    <div class="label">Competitor Building Near Your Position</div>
+    <div class="municipality">Kennebunk, ME &mdash; Select Board</div>
+    <div class="title"><a href="https://www.kennebunkmaine.us/DocumentCenter/View/18770/Kennebunk-Wireless-EDGE-Presentation-2-12-25-v2">Wireless Edge Tower Proposal &mdash; Full Presentation to Town</a></div>
+    <div class="excerpt">
+      Wireless Edge Towers presented a cell tower proposal to Kennebunk. Includes site selection, visual simulations, RF coverage analysis, and proposed lease terms. Select Board selected Wireless Edge as preferred vendor, pending lease negotiation.
+    </div>
+    <div class="meta">
+      <span>Feb 12, 2025 (ongoing)</span>
+      <span>Board: Select Board</span>
+      <span>Source: Document Center</span>
+    </div>
+    <div class="source-link">&#128196; <a href="https://www.kennebunkmaine.us/DocumentCenter/View/18770/Kennebunk-Wireless-EDGE-Presentation-2-12-25-v2">View presentation on kennebunkmaine.us</a> (PDF) &nbsp;|&nbsp; <a href="https://www.kennebunkmaine.us/DocumentCenter/View/19392/Visual-Assessment---Wireless-Edge---Kennebunk---6-5-2025">Visual assessment</a></div>
+
+    <div class="parcel-section">
+      <div class="parcel-header">Your Nearest Position</div>
+      <table class="parcel-table">
+        <tr><th>Parcel</th><th>Landowner</th><th>Tower</th><th>Status</th></tr>
+        <tr>
+          <td>U04-021-A-T</td>
+          <td><span class="owner-name">Paul R. Cloutier</span></td>
+          <td><span class="tower-tag">AMT</span> FCC# A0010271 <span class="amt-tag">YOUR SITE</span></td>
+          <td>Falmouth, ME &mdash; 8 mi south</td>
+        </tr>
+      </table>
+      <div class="parcel-note">Competitor tower in your coverage region. If the Cloutier ground lease isn't secured, densification from Wireless Edge could reduce the strategic value of this position. We identified Cloutier as a private landowner from assessor records &mdash; mailing address available.</div>
+    </div>
+
+    <div class="insight">
+      <strong>Action:</strong> Evaluate ground lease defense on the Cloutier position. Wireless Edge is actively negotiating 8 miles from your tower. This 47-page presentation was buried in a CivicPlus Document Center &mdash; click the link.
+    </div>
+  </div>
+
+  <div class="provenance-box">
+    <div class="prov-title">Portfolio Defense</div>
+    <div class="prov-body">
+      Monitors municipal activity around your tower positions. Alerts when zoning changes, land use decisions, or competitor infrastructure builds affect parcels near your sites. Cross-references planning board documents with parcel ownership data and FCC tower registrations. Currently tracking 384 of your 545 US positions across 2,000+ municipalities.
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PRODUCT 2: COMPETITIVE INTELLIGENCE                           -->
+<!-- ============================================================ -->
+<div id="product-intel" class="product-section">
+
+<div class="summary-bar">
+  <span><span class="count">3</span> competitor alerts</span>
+  <span>Tracking Crown Castle, SBA, Vertical Bridge, Tillman + 200 more</span>
+</div>
+
+<div class="content">
+  <div class="date-header">Friday, March 28, 2026 &mdash; Competitive Intelligence</div>
+
+  <!-- Intel Alert 1: Hingham ZBA — AT&T wireless facility -->
+  <div class="alert-card competitor">
+    <div class="label">Competitor Permit Approved</div>
+    <div class="municipality">Hingham, MA &mdash; Zoning Board of Appeals</div>
+    <div class="title"><a href="https://www.hingham-ma.gov/ArchiveCenter/ViewFile/Item/1308">ZBA Decision: New Cingular Wireless PCS, LLC d/b/a AT&amp;T</a></div>
+    <div class="excerpt">
+      Zoning Board of Appeals published decision on AT&amp;T wireless facility application. AT&amp;T securing zoning approval for wireless infrastructure in Hingham, MA.
+    </div>
+    <div class="meta">
+      <span>Hingham, MA</span>
+      <span>Board: Zoning Board of Appeals</span>
+      <span>Source: Town Archives</span>
+    </div>
+    <div class="source-link">&#128196; <a href="https://www.hingham-ma.gov/ArchiveCenter/ViewFile/Item/1308">View original decision on hingham-ma.gov</a> (scanned PDF)</div>
+
+    <div class="insight">
+      <strong>Intel:</strong> AT&amp;T obtained ZBA approval for wireless infrastructure in Hingham. This is a scanned PDF buried in the town's archive system &mdash; not findable through any search engine or industry database. Click the link to see the actual government document.
+    </div>
+  </div>
+
+  <!-- Intel Alert 2: Christiansburg — Wireless Edge + SBA in same town -->
+  <div class="alert-card competitor">
+    <div class="label">Market Hotspot &mdash; Multiple Competitors</div>
+    <div class="municipality">Christiansburg, VA</div>
+    <div class="title"><a href="#">Two Competitors Active in Christiansburg, VA</a></div>
+    <div class="excerpt">
+      <strong>Wireless Edge:</strong> Town Council approved tower lease on consent agenda (Feb 3, 2026). No competing bids solicited publicly.<br>
+      <strong>SBA Towers:</strong> Filed FAA Form 7460-1 for 105-ft structure VA11583-B (Mar 10, 2026). Construction expected within 45-90 days.
+    </div>
+    <div class="meta">
+      <span>Feb-Mar 2026</span>
+      <span>Sources: Town Council Minutes + FAA OE/AAA</span>
+    </div>
+
+    <div class="insight">
+      <strong>Intel:</strong> Two competitors securing tower infrastructure in the same municipality within 5 weeks. Wireless Edge won a lease AMT could have bid on. SBA is building new. Christiansburg is a hotspot &mdash; consider whether coverage demand justifies an AMT response.
+    </div>
+  </div>
+
+  <!-- Intel Alert 3: State legislation -->
+  <div class="alert-card legislation">
+    <div class="label">State Legislation</div>
+    <div class="municipality">West Virginia &mdash; State Legislature</div>
+    <div class="title"><a href="#">HB4624: County Commissions to Lease County-Owned Wireless Towers</a></div>
+    <div class="excerpt">
+      Proposed bill would permit county commissions to enter lease agreements for county-owned wireless tower infrastructure. If passed, creates new leasing opportunities across 55 WV counties.
+    </div>
+    <div class="meta">
+      <span>2026 Session</span>
+      <span>Source: State Legislature</span>
+    </div>
+
+    <div class="insight">
+      <strong>Intel:</strong> Enabling legislation for county-level tower leasing in WV. AMT has 7 towers in Morgantown alone. If this passes, county-owned towers become available for lease &mdash; first mover advantage to whoever is watching.
+    </div>
+  </div>
+
+  <!-- Intel Alert 4: FAA competitor filings summary -->
+  <div class="alert-card competitor">
+    <div class="label">Weekly FAA Filing Summary</div>
+    <div class="municipality">National &mdash; FAA OE/AAA Filings</div>
+    <div class="title">14 New Competitor Tower Filings This Week</div>
+    <div class="excerpt">
+      <table style="width:100%; font-size: 12px; border-collapse: collapse; margin-top: 4px;">
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 4px 8px 4px 0; font-weight: 600;">Crown Castle</td>
+          <td style="padding: 4px 0;">4 filings</td>
+          <td style="padding: 4px 0; color: #888;">TX (2), OH, NC</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 4px 8px 4px 0; font-weight: 600;">SBA Towers</td>
+          <td style="padding: 4px 0;">3 filings</td>
+          <td style="padding: 4px 0; color: #888;">VA, MI, GA</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 4px 8px 4px 0; font-weight: 600;">TowerCo V</td>
+          <td style="padding: 4px 0;">3 filings</td>
+          <td style="padding: 4px 0; color: #888;">MI, IL, KS</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 4px 8px 4px 0; font-weight: 600;">Vertical Bridge</td>
+          <td style="padding: 4px 0;">2 filings</td>
+          <td style="padding: 4px 0; color: #888;">DE, FL</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 8px 4px 0; font-weight: 600;">Tillman Infra</td>
+          <td style="padding: 4px 0;">2 filings</td>
+          <td style="padding: 4px 0; color: #888;">LA, OK</td>
+        </tr>
+      </table>
+    </div>
+    <div class="meta">
+      <span>Week of Mar 22-28, 2026</span>
+      <span>4,742 total sites tracked</span>
+    </div>
+
+    <div class="insight">
+      <strong>Intel:</strong> FAA filings appear 45-90 days before construction and 3-6 months before FCC registration. This is the earliest public signal of competitor build plans. Full filing details available on request.
+    </div>
+  </div>
+
+  <div class="provenance-box">
+    <div class="prov-title">Competitive Intelligence</div>
+    <div class="prov-body">
+      Tracks competitor activity across 2,000+ municipalities. Monitors FAA filings, planning board permits, zoning approvals, and state legislation affecting wireless infrastructure. Identifies market hotspots where multiple competitors are active. Sources include municipal CMS portals, town archives, FAA databases, and state legislatures &mdash; none of which are indexed by search engines.
+    </div>
+  </div>
+
+</div>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+  <p><strong>Municipal Alpha</strong> &mdash; Public Record Intelligence</p>
+  <p>matt@municipalalpha.com &nbsp;|&nbsp; <a href="https://municipalalpha.com">municipalalpha.com</a></p>
+  <p style="margin-top: 8px; color: #aaa; font-size: 10px;">Portfolio Defense &nbsp;|&nbsp; Competitive Intelligence &nbsp;|&nbsp; Two products, one platform</p>
+</div>
+
+</div>
+
+<script>
+function showProduct(id) {
+  document.querySelectorAll('.product-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('product-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>
