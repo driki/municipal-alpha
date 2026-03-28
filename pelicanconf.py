@@ -71,6 +71,7 @@ EXTRA_PATH_METADATA = {
     "extra/sample-data/connell-redev-sample-2026-03-27.pdf": {"path": "sample-data/connell-redev-sample-2026-03-27.pdf"},
     "extra/sample-data/simon-redev-sample-2026-03-27.pdf": {"path": "sample-data/simon-redev-sample-2026-03-27.pdf"},
     "extra/sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf": {"path": "sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf"},
+    "extra/sample-data/desri-energy-sample-2026-03-28.pdf": {"path": "sample-data/desri-energy-sample-2026-03-28.pdf"},
 }
 
 # Clean URLs
