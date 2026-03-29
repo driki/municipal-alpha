@@ -41,6 +41,8 @@ body { margin: 0; padding: 0; background: #f4f4f7; font-family: -apple-system, B
 .alert-card.legislation .label { background: #e8f5e9; color: #2d6a4f; }
 .alert-card.lead { border-left-color: #059669; }
 .alert-card.lead .label { background: #d1fae5; color: #065f46; }
+.alert-card.adjacent { border-left-color: #d97706; }
+.alert-card.adjacent .label { background: #fef3c7; color: #92400e; }
 
 .alert-card .municipality { font-size: 11px; color: #888; margin-bottom: 4px; }
 .alert-card .title { font-size: 15px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; line-height: 1.3; }
@@ -338,7 +340,7 @@ body { margin: 0; padding: 0; background: #f4f4f7; font-family: -apple-system, B
 <div id="product-leads" class="product-section">
 
 <div class="summary-bar">
-  <span><span class="count">4</span> actionable leads this week</span>
+  <span><span class="count">6</span> actionable leads this week</span>
   <span>Parcel data available in <span class="count">49</span> of your top 50 tower towns</span>
 </div>
 
@@ -488,10 +490,66 @@ body { margin: 0; padding: 0; background: #f4f4f7; font-family: -apple-system, B
     </div>
   </div>
 
+  <div style="border-top: 2px solid #d97706; margin: 24px 0 16px; padding-top: 16px;">
+    <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #d97706; margin-bottom: 12px;">Adjacent Opportunities &mdash; Beyond Towers</div>
+  </div>
+
+  <!-- Lead 5: Detroit — municipal land disposition RFP (data center) -->
+  <div class="alert-card adjacent">
+    <div class="label">Municipal Land Disposition &mdash; Data Center</div>
+    <div class="municipality">Detroit, MI &mdash; General Services Department</div>
+    <div class="title"><a href="https://detroitmi.gov/departments/general-services-department/rfp">City of Detroit RFP: 14.4-Acre Industrial Parcel Near Coleman Young Airport</a></div>
+    <div class="excerpt">
+      City of Detroit issued RFP for 14.4 acres of city-owned land zoned M-4 Industrial, adjacent to Coleman Young International Airport. RFP seeks development proposals &mdash; does not specify use. Industry contacts connected this site to potential data center development based on proximity to airport fiber, power infrastructure, and zoning.
+    </div>
+    <div class="meta">
+      <span>Oct 2025</span>
+      <span>Source: City RFP Portal</span>
+      <span>Parcel: M-4 Industrial</span>
+    </div>
+
+    <div class="parcel-section">
+      <div class="parcel-header">Site Detail</div>
+      <table class="parcel-table">
+        <tr><th>Location</th><th>Acres</th><th>Zoning</th><th>Owner</th><th>Adjacent Infrastructure</th></tr>
+        <tr>
+          <td>Shoemaker Ave / E Nevada St</td>
+          <td>14.4</td>
+          <td>M-4 Industrial</td>
+          <td><span class="owner-name">City of Detroit</span></td>
+          <td>Coleman Young Airport, DTE substation</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="insight">
+      <strong>Why this matters:</strong> Data center builds drive wireless infrastructure demand &mdash; every facility needs fiber backhaul and rooftop/adjacent tower capacity. Municipal land RFPs for industrial parcels near power and fiber are early signals of future tower demand. This RFP was a public PDF on detroitmi.gov &mdash; never appeared in any tower industry database.
+    </div>
+  </div>
+
+  <!-- Lead 6: Municipal broadband / utility infrastructure RFP -->
+  <div class="alert-card adjacent">
+    <div class="label">Municipal Infrastructure &mdash; Broadband Expansion</div>
+    <div class="municipality">Brewer, ME &mdash; City Council</div>
+    <div class="title"><a href="https://www.brewermaine.gov/AgendaCenter">City Council: Broadband Infrastructure Grant Application &mdash; USDA ReConnect</a></div>
+    <div class="excerpt">
+      City of Brewer authorized application for USDA ReConnect broadband grant to extend fiber to underserved areas north of Route 9. Project includes 12 miles of new fiber, 4 wireless access points on municipal structures, and a new communications hub on city-owned land off Wilson Street. Budget: $3.2M ($2.4M federal, $800K local match).
+    </div>
+    <div class="meta">
+      <span>Mar 2026</span>
+      <span>Source: City Council Agenda</span>
+      <span>Grant: USDA ReConnect Round 5</span>
+    </div>
+
+    <div class="insight">
+      <strong>Why this matters:</strong> Municipal broadband builds create co-location opportunities &mdash; new communications hubs need towers, and fiber buildout improves backhaul for existing sites. The 4 planned wireless access points are potential small cell or DAS attachment points. Municipalities building broadband infrastructure are signaling they'll welcome wireless partners.
+    </div>
+  </div>
+
   <div class="provenance-box">
     <div class="prov-title">Lead Generation</div>
     <div class="prov-body">
-      Identifies actionable acquisition and co-location opportunities from municipal records. Cross-references planning board approvals, RFP awards, and zoning permits with county assessor data to deliver parcel-level leads: owner name, address, acreage, zoning, and competitive context. Every lead card includes the source document link and parcel ID. Currently screening assessor data across 49 of your top 50 US tower towns. These leads come from consent agendas, document centers, and town archives &mdash; places where deals close before they appear in any industry database.
+      Identifies actionable opportunities from municipal records &mdash; not just tower-specific leads, but any municipal activity that creates wireless infrastructure demand. Tower leads (green) come from planning board approvals, RFP awards, and zoning permits cross-referenced with assessor data. Adjacent leads (amber) surface municipal land dispositions, infrastructure RFPs, and development projects that drive future tower demand &mdash; data centers, broadband builds, industrial redevelopment. Every lead card includes the source document link. These leads come from consent agendas, document centers, and town archives &mdash; places where deals close before they appear in any industry database.
     </div>
   </div>
 
