@@ -75,6 +75,7 @@ These stories are built entirely from the datasets above. Each one demonstrates 
 - [The Housing Density Wave Is Rewriting Municipal Zoning in Real Time](/research/housing-density-wave/) -- 399 events across 130+ municipalities in 27 states. ADU mandates, density increases, and short-term rental regulation are one wave, moving through regions at different speeds. *Built from: contagion signals, building permits*
 - [Lead Pipes Are a $50B Problem Hiding in Municipal Agendas](/research/lead-pipes/) -- 77 events across 39 municipalities in 13 states. The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending. *Built from: contagion signals, entity-resolved vendor payments*
 - [The Pickleball Boom Is Now a Line Item in Municipal Budgets](/research/pickleball-wave/) -- 29 signals across 14 municipalities in 9 states. From federal grants to tennis court conversions, a consumer trend becoming municipal capex. *Built from: contagion signals, credit quality indicators*
+- [Data Centers Are Now a Zoning Fight in 20 States](/research/data-center-zoning/) -- 58 signals across 30 jurisdictions in 20 states. Moratoriums, tax breaks, and electricity caps are hitting municipal agendas faster than the power grid can keep up. *Built from: contagion signals, state legislature tracking, federal solicitations*
 
 ## Town Profiles
 
