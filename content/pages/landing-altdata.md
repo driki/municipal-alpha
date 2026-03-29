@@ -1,11 +1,11 @@
 Title: Municipal Alt Data
 Slug: solutions/alt-data
 Sortorder: 31
-Summary: Vendor payments and building permits resolved to 100+ public company tickers from 1,800+ municipalities. Updated daily.
+Summary: Vendor payments and building permits resolved to 100+ public company tickers from 2,100+ municipalities. Updated daily.
 
 ## Government contractor revenue from the source documents
 
-Municipal check registers, vendor payments, and building permits are the source records that earnings eventually reflect. We structure them daily across 1,800+ municipalities and resolve vendor names to 100+ public company tickers.
+Municipal check registers, vendor payments, and building permits are the source records that earnings eventually reflect. We structure them daily across 2,100+ municipalities and resolve vendor names to 100+ public company tickers.
 
 When Grainger ships to Geneva, Illinois, it shows up in their check register weeks before it shows up in quarterly revenue. We read the check register. Every day. For every town in the pipeline.
 
@@ -23,7 +23,7 @@ When Grainger ships to Geneva, Illinois, it shows up in their check register wee
 | Category | MRO / Industrial supply |
 | Signal priority | HIGH |
 
-Multiply this by 1,800+ municipalities and 100+ resolved tickers. That's the dataset.
+Multiply this by 2,100+ municipalities and 100+ resolved tickers. That's the dataset.
 
 ## Signal Types
 
@@ -37,9 +37,9 @@ Multiply this by 1,800+ municipalities and 100+ resolved tickers. That's the dat
 
 ## Coverage and Methodology
 
-- **1,800+ municipalities** monitored daily across 50 states
+- **2,100+ municipalities** monitored daily across 50 states
 - **100+ public tickers** resolved from municipal vendor names
-- **292,000+ documents** ingested and classified
+- **309,000+ documents** ingested and classified
 - **Daily pipeline** with same-day classification and entity resolution
 - **Golden-set validated** classifier, retrained weekly
 
@@ -49,7 +49,7 @@ See our [full methodology](/methodology/) for coverage details, known gaps, and 
 
 US municipalities spend $3.9 trillion annually (Census of Governments). Almost none of that spending data is structured or available to financial markets. The big data vendors cover federal contracts and large-city budgets. We cover the 19,500 small and mid-sized municipalities where the same vendor payments happen, just on worse websites.
 
-At our current coverage of 1,800+ municipalities, we've resolved 100+ public company tickers from municipal vendor names. At national scale, that number grows to 500+ tickers across every sector that touches local government, from construction materials to waste management to municipal IT. Building permits alone total roughly 1.5 million per year nationally (Census Bureau), each one a leading indicator of contractor revenue 3-6 months before earnings.
+At our current coverage of 2,100+ municipalities, we've resolved 100+ public company tickers from municipal vendor names. At national scale, that number grows to 500+ tickers across every sector that touches local government, from construction materials to waste management to municipal IT. Building permits alone total roughly 1.5 million per year nationally (Census Bureau), each one a leading indicator of contractor revenue 3-6 months before earnings.
 
 The pipeline adds ~25 municipalities per week. The marginal cost of each addition is near zero.
 

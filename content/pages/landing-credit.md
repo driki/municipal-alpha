@@ -1,7 +1,7 @@
 Title: Municipal Credit Intelligence
 Slug: solutions/credit-intelligence
 Sortorder: 32
-Summary: Leading indicators of municipal fiscal health from source spending documents. Vendor payment velocity, budget-to-actual variance, and spending concentration across 1,800+ municipalities.
+Summary: Leading indicators of municipal fiscal health from source spending documents. Vendor payment velocity, budget-to-actual variance, and spending concentration across 2,100+ municipalities.
 
 ## See fiscal stress before rating agencies do
 
@@ -21,13 +21,13 @@ Check registers show vendor payment velocity. Budget documents show appropriatio
 
 ## How It Works
 
-We read municipal documents daily from 1,800+ municipalities. Check registers, budget documents, capital plans, and AP warrants are classified, entity-resolved, and monitored for changes in spending patterns.
+We read municipal documents daily from 2,100+ municipalities. Check registers, budget documents, capital plans, and AP warrants are classified, entity-resolved, and monitored for changes in spending patterns.
 
 When a municipality's vendor payment velocity drops 15%+ from its trailing average, that's a signal. When spending concentration shifts, when capital projects stall, when budget amendments redirect funds, those patterns surface in our data before they surface in rating actions.
 
 ## Coverage
 
-- **1,800+ municipalities** monitored daily across 50 states
+- **2,100+ municipalities** monitored daily across 50 states
 - **Same-day classification** of new documents
 - **Historical depth** varies by municipality (6 months to 3+ years of structured data)
 - **Deepest coverage** in New England, Illinois, Idaho, expanding weekly
@@ -38,7 +38,7 @@ See our [methodology](/methodology/) for details on data freshness, known gaps, 
 
 The US municipal bond market is $4 trillion. Rating agencies cover the largest issuers, but the long tail of small and mid-sized municipalities, the ones most likely to experience fiscal stress quietly, gets reviewed infrequently if at all. There are 19,500 municipalities issuing bonds, publishing budgets, and processing vendor payments. The spending patterns that predict fiscal deterioration are in those public records, just not structured or monitored by anyone.
 
-We monitor 1,800+ municipalities daily across 50 states. At national scale, this becomes continuous fiscal health surveillance across the full universe of municipal issuers, built from the same source documents that rating agencies eventually read, just months earlier.
+We monitor 2,100+ municipalities daily across 50 states. At national scale, this becomes continuous fiscal health surveillance across the full universe of municipal issuers, built from the same source documents that rating agencies eventually read, just months earlier.
 
 ## Why This Data Stays Hidden
 

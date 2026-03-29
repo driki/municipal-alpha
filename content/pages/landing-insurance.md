@@ -19,13 +19,13 @@ Claims history tells you what already went wrong. Municipal spending data tells 
 
 ## How It Works
 
-We read municipal documents daily from 1,800+ municipalities. When infrastructure spending drops relative to historical norms, when capital projects stall, when emergency appropriations spike, those patterns are visible in the data.
+We read municipal documents daily from 2,100+ municipalities. When infrastructure spending drops relative to historical norms, when capital projects stall, when emergency appropriations spike, those patterns are visible in the data.
 
 A municipality that defers water main replacement for three consecutive budget cycles is accumulating risk. That shows up in our data as declining infrastructure vendor payments and stalled capital project approvals, long before it shows up as a burst pipe or a boil-water notice.
 
 ## Coverage
 
-- **1,800+ municipalities** monitored daily across 50 states
+- **2,100+ municipalities** monitored daily across 50 states
 - **43,000+ building permits** with contractor and project type data
 - **Contagion tracking** for spreading policy patterns (PFAS remediation, lead pipe replacement, housing code changes)
 - **Historical depth** varies by municipality
@@ -34,7 +34,7 @@ A municipality that defers water main replacement for three consecutive budget c
 
 ASCE estimates a $2.6 trillion infrastructure investment gap in the US. That gap shows up as deferred maintenance in municipal spending records long before it shows up as claims. There are 19,500 municipalities managing water systems, roads, bridges, and public buildings, all publishing spending data that reveals their maintenance posture. Almost none of this data is used in underwriting.
 
-We monitor 1,800+ municipalities daily and track contagion patterns (PFAS remediation, lead pipe replacement, housing code changes) as they spread across jurisdictions. At national scale, this becomes a leading indicator layer for the full municipal risk universe, built from the spending records that predict infrastructure failures, not the claims data that confirms them after the fact.
+We monitor 2,100+ municipalities daily and track contagion patterns (PFAS remediation, lead pipe replacement, housing code changes) as they spread across jurisdictions. At national scale, this becomes a leading indicator layer for the full municipal risk universe, built from the spending records that predict infrastructure failures, not the claims data that confirms them after the fact.
 
 ## Why This Data Is Invisible to Underwriters
 

@@ -1,9 +1,9 @@
 Title: Data Stories
 Slug: data-stories
 Sortorder: 2
-Summary: Structured datasets and cross-municipal patterns from live pipeline data across 1,800+ municipalities. Updated daily.
+Summary: Structured datasets and cross-municipal patterns from live pipeline data across 2,100+ municipalities. Updated daily.
 
-We read municipal documents -- agendas, minutes, check registers, permits, budgets, ordinances -- across 1,800+ municipalities. The pipeline classifies every document, resolves vendor names to public company tickers, and tracks policy contagion across jurisdictions. Here's what comes out.
+We read municipal documents -- agendas, minutes, check registers, permits, budgets, ordinances -- across 2,100+ municipalities. The pipeline classifies every document, resolves vendor names to public company tickers, and tracks policy contagion across jurisdictions. Here's what comes out.
 
 ## The Datasets
 
@@ -26,7 +26,7 @@ Cross-municipal event tracking for regulatory waves, infrastructure mandates, an
 
 **Source documents:** Meeting agendas, minutes, ordinances, compliance reports, public hearing notices
 **Output fields:** municipality, state, event_type, contagion_chain, date, risk_category, supply_chain_tickers
-**Coverage:** 1,800+ municipalities, 23+ contagion patterns tracked, 50 states
+**Coverage:** 2,100+ municipalities, 23+ contagion patterns tracked, 50 states
 [Download sample CSV](/sample-data/infrastructure-risk-sample.csv)
 
 ---
@@ -37,7 +37,7 @@ Cell tower sites cross-referenced across assessor records, FCC antenna structure
 
 **Source documents:** Assessor/property records, FCC ASR filings, FAA OE data, municipal check registers, GIS parcels
 **Output fields:** municipality, state, lat/lon, structure_height, fcc_asr_id, tenant_type, owner_type, data_sources, confidence_score
-**Coverage:** 3,800+ sites screened across covered municipalities
+**Coverage:** 4,700+ sites screened across covered municipalities
 [Download sample CSV](/sample-data/tower-prospects-sample.csv)
 
 ---
@@ -59,7 +59,7 @@ Budget trends, fund balances, debt service patterns, and fiscal stress signals s
 
 **Source documents:** Annual budgets, financial reports, capital improvement plans, debt schedules, audit reports
 **Output fields:** municipality, doc_type, priority, summary, monetary_amounts, detected_at
-**Coverage:** 1,800+ municipalities
+**Coverage:** 2,100+ municipalities
 [Download sample CSV](/sample-data/credit-sample.csv)
 
 ---
@@ -68,10 +68,10 @@ Every dataset is documented in our [methodology](/methodology/), including cover
 
 ## Data Stories
 
-These stories are built entirely from the datasets above. Each one demonstrates a pattern that's only visible when you monitor 1,800+ municipalities at once.
+These stories are built entirely from the datasets above. Each one demonstrates a pattern that's only visible when you monitor 2,100+ municipalities at once.
 
 - [PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater](/research/pfas-contagion/) -- 120 events across 72 municipalities in 23 states. The remediation wave is visible in town council agendas months before EPA enforcement actions. *Built from: contagion signals, entity-resolved vendor payments*
-- [The Company That Shows Up in 123 Towns](/research/company-footprint/) -- Entity resolution across 1,800+ municipalities reveals which public companies have the deepest municipal government footprint. Verizon: 6,183 sightings. Tyler Technologies: 88 towns. *Built from: entity-resolved vendor payments*
+- [The Company That Shows Up in 123 Towns](/research/company-footprint/) -- Entity resolution across 2,100+ municipalities reveals which public companies have the deepest municipal government footprint. Verizon: 6,183 sightings. Tyler Technologies: 88 towns. *Built from: entity-resolved vendor payments*
 - [The Housing Density Wave Is Rewriting Municipal Zoning in Real Time](/research/housing-density-wave/) -- 399 events across 130+ municipalities in 27 states. ADU mandates, density increases, and short-term rental regulation are one wave, moving through regions at different speeds. *Built from: contagion signals, building permits*
 - [Lead Pipes Are a $50B Problem Hiding in Municipal Agendas](/research/lead-pipes/) -- 77 events across 39 municipalities in 13 states. The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending. *Built from: contagion signals, entity-resolved vendor payments*
 - [The Pickleball Boom Is Now a Line Item in Municipal Budgets](/research/pickleball-wave/) -- 29 signals across 14 municipalities in 9 states. From federal grants to tennis court conversions, a consumer trend becoming municipal capex. *Built from: contagion signals, credit quality indicators*
@@ -88,4 +88,4 @@ What the pipeline sees in a single municipality -- document volume, signal class
 
 ## What should we investigate next?
 
-The pipeline monitors 1,800+ municipalities in real time. If there's a trend, policy wave, or spending pattern you'd like us to dig into, we'll build the data story. [Tell us what you're curious about](mailto:matt@municipalalpha.com?subject=Data%20story%20request).
+The pipeline monitors 2,100+ municipalities in real time. If there's a trend, policy wave, or spending pattern you'd like us to dig into, we'll build the data story. [Tell us what you're curious about](mailto:matt@municipalalpha.com?subject=Data%20story%20request).

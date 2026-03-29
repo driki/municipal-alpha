@@ -18,7 +18,7 @@ All of it is public by law. None of it is structured into entities and relations
 
 The big data vendors cover New York and Chicago. Nobody is systematically reading Gorham, Maine or Franklin, New Hampshire. But small and mid-sized municipalities issue the same building permits, the same check registers, the same assessor records as large cities -- just on worse websites, with less standardization, behind more obscure FOIA statutes. That's where the gap is widest and the signal is least picked-over. Building permits alone tell you which contractors are winning work, which developers are active in a geography, and where infrastructure spending is accelerating -- months before it shows up in earnings.
 
-The system is good at finding things because it has spent a year learning the system it operates in. Which CMS platforms hide documents behind JavaScript. Which FOIA statutes require which language. Which assessor offices respond to email and which require certified mail. Which board names mean "check registers" in which towns. None of this was designed upfront. It was learned through contact with 1,800+ jurisdictions, thousands of FOIA interactions, and hundreds of dead ends that each taught the system something. Every interaction produces a recipe. The recipes accumulate.
+The system is good at finding things because it has spent a year learning the system it operates in. Which CMS platforms hide documents behind JavaScript. Which FOIA statutes require which language. Which assessor offices respond to email and which require certified mail. Which board names mean "check registers" in which towns. None of this was designed upfront. It was learned through contact with 2,100+ jurisdictions, thousands of FOIA interactions, and hundreds of dead ends that each taught the system something. Every interaction produces a recipe. The recipes accumulate.
 
 ## Why This Matters Now
 
@@ -34,9 +34,9 @@ The numbers behind the coverage gap:
 
 | What exists nationally | Volume | What's structured today |
 |---|---|---|
-| US municipalities | 19,500 | We monitor 1,800+ daily |
+| US municipalities | 19,500 | We monitor 2,100+ daily |
 | Building permits issued annually | ~1.5 million (Census Bureau) | 43,000+ structured in our pipeline |
-| Annual municipal government spending | $3.9 trillion (Census of Governments) | Vendor payments from 1,800+ towns, 100+ resolved tickers |
+| Annual municipal government spending | $3.9 trillion (Census of Governments) | Vendor payments from 2,100+ towns, 100+ resolved tickers |
 | Municipal bond market | $4 trillion (SIFMA) | Credit signals from source spending documents |
 | FCC-registered tower structures | 130,000+ | 3,800+ screened with parcel cross-reference |
 | Municipal infrastructure investment gap | $2.6 trillion (ASCE) | Deferred maintenance signals from spending patterns |

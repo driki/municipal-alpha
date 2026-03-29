@@ -48,11 +48,11 @@ We're not building a better way to read New York City's budget. We're building t
 
 **Where we are today:**
 
-- **1,800+** municipalities monitored daily, all 50 states
-- **292,000+** documents ingested and classified
+- **2,100+** municipalities monitored daily, all 50 states
+- **309,000+** documents ingested and classified
 - **43,000+** building permits structured
 - **100+** public company tickers resolved from municipal vendor names
-- Adding ~25 new municipalities per week, with infrastructure built to scale past 5,000
+- Adding new municipalities weekly, with infrastructure built to scale past 5,000
 
 **Where this goes:**
 
@@ -106,7 +106,7 @@ A competitor can read the statute. They can't replicate what we've learned from 
 
 Building permits are one of the most underrated public data sources. Every commercial construction project, infrastructure upgrade, and development phase starts with a permit. The data tells you which contractors are winning work, which developers are active in a geography, where infrastructure spending is accelerating, and how local construction activity maps to public company revenue -- months before any of it shows up in earnings or analyst reports.
 
-Small and mid-sized municipalities issue the same permits as large cities, just on worse websites with less standardization. That's where the coverage gap is widest. We structure 16,000+ permit records and growing, resolved to entities and tickers where possible.
+Small and mid-sized municipalities issue the same permits as large cities, just on worse websites with less standardization. That's where the coverage gap is widest. We structure 43,000+ permit records and growing, resolved to entities and tickers where possible.
 
 ## The Pipeline
 

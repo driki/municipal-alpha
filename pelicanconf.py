@@ -8,14 +8,14 @@ if _metrics_file.exists():
         METRICS = json.load(f)
 else:
     METRICS = {
-        "municipalities": "1,800+",
+        "municipalities": "2,100+",
         "states": "50",
-        "documents": "292,000+",
-        "signals": "53,000+",
-        "tower_sites": "3,800+",
+        "documents": "309,000+",
+        "signals": "57,000+",
+        "tower_sites": "4,700+",
         "permits": "43,000+",
         "tickers": "100+",
-        "updated": "2026-03-20",
+        "updated": "2026-03-29",
     }
 
 AUTHOR = "Municipal Alpha"

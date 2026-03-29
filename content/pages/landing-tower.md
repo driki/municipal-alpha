@@ -1,7 +1,7 @@
 Title: Tower & Infrastructure Leads
 Slug: solutions/tower-leads
 Sortorder: 30
-Summary: Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 3,800+ sites screened across 1,800+ municipalities.
+Summary: Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 4,700+ sites screened across 2,100+ municipalities.
 
 ## Find tower lease prospects before aggregators do
 
@@ -22,7 +22,7 @@ Tower lease aggregation is a land rush. The difference between a good deal and a
 
 ## Coverage
 
-We've screened 3,800+ tower sites across 1,800+ municipalities. Coverage is deepest in New England, Illinois, and Idaho, expanding weekly.
+We've screened 4,700+ tower sites across 2,100+ municipalities. Coverage is deepest in New England, Illinois, and Idaho, expanding weekly.
 
 ### What a prospect looks like
 
@@ -40,7 +40,7 @@ No single public database contains all of this. The value is in the cross-refere
 
 There are 130,000+ FCC-registered tower structures in the United States. Most sit on privately owned land with ground leases that renew, transfer, or expire without anyone outside the immediate parties knowing about it. The public records that reveal lease terms, landowner identity, and property valuation exist in 19,500 municipal assessor databases, most of which have never been systematically screened.
 
-We've screened 3,800+ tower sites across 1,800+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. The pipeline adds municipalities weekly, and every new town with assessor data activates tower screening automatically.
+We've screened 4,700+ tower sites across 2,100+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. The pipeline adds municipalities weekly, and every new town with assessor data activates tower screening automatically.
 
 ## Why This Data Doesn't Show Up in Search
 

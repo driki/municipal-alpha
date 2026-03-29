@@ -21,4 +21,4 @@ Geneva is a city in Kane County, Illinois, approximately 40 miles west of Chicag
 
 ---
 
-*[Municipal Alpha](/) monitors 1,800+ municipalities across 50 states. The structured data behind these digests is available for [institutional data buyers](/solutions/alt-data/), [infrastructure companies](/solutions/tower-leads/), and [research teams](/contact/).*
+*[Municipal Alpha](/) monitors 2,100+ municipalities across 50 states. The structured data behind these digests is available for [institutional data buyers](/solutions/alt-data/), [infrastructure companies](/solutions/tower-leads/), and [research teams](/contact/).*
