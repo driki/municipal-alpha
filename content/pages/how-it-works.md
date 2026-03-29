@@ -2,6 +2,8 @@ Title: How It Works
 Slug: how-it-works
 Sortorder: 3
 
+![Data Layer Stack: a query enters through four data layers (Federal, County, Municipal, FOAA) and returns as an enriched Data Package]({static}/images/data-layer-stack.png)
+
 ## A Knowledge Graph of US Public Records
 
 This is not five separate products stitched together. It is a knowledge graph -- entities, types, properties, and the relationships between them, continuously growing as new documents are ingested. Every municipality we add, every document we parse, every entity we resolve adds nodes and edges to the graph. Different data types from different jurisdictions connect into a unified picture because the graph connects them.
