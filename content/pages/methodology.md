@@ -71,24 +71,9 @@ Current resolution covers 100+ public company tickers across 2,100+ municipaliti
 
 ## Investment Vectors
 
-Each classified document is evaluated against 12 investment vectors:
+Each classified document is evaluated against 12 proprietary investment vectors spanning vendor relationships, infrastructure assets, regulatory patterns, real estate dynamics, and fiscal health indicators. A single document may generate signals across multiple vectors.
 
-| Vector | Name | Example Signal |
-|---|---|---|
-| A | Vendor Alpha | Check register payment to publicly-traded contractor |
-| B | Regulatory Contagion | PFAS testing mandate spreading across municipalities |
-| C | Physical Surplus | Fleet auction, equipment disposition |
-| D | Zoning Arbitrage | Upzoning, overlay district creation |
-| E | Lien Arbitrage | Tax lien sale, tax-acquired property |
-| F | Entitlement Moat | Development moratorium, building cap |
-| G | Infrastructure Tollbooth | Tower lease, sewer/water project |
-| H | Institutional Tombstone | School construction, surplus property RFP |
-| I | Brownfield Lazarus | EPA assessment, environmental cleanup |
-| J | Franchise Flip | Cable franchise renewal, waste hauling contract |
-| K | Zombie Developments | Stalled project, expired permit |
-| L | Grandfathered Non-Conformity | Zoning variance, pre-existing use rights |
-
-A single document may generate signals across multiple vectors.
+Vector definitions and example signals are available under NDA. [Contact us](/contact/?subject=Investment%20vector%20details) to learn more.
 
 ## Alpha Measurement
 
