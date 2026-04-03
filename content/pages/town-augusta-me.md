@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/augusta-me/2026-04-03/) -- FY27 budget and new communication tower filing discussed. Schools planned bond referendum, emergency services responded to calls.
+- [Week of March 22-28, 2026](/towns/augusta-me/2026-03-28/) -- New energy codes and stormwater management addressed, development plans reviewed, spring events preparation.
 - [Week of March 20-26, 2026](/towns/augusta-me/2026-03-26/) -- Energy efficiency codes, stormwater management, school budget review, structure fire response.
 
 ## About Augusta

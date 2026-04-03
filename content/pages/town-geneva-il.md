@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/geneva-il/2026-04-03/) -- Stormwater, PFAS, and development tackled alongside school board actions, public safety reports, and real estate updates.
+- [Week of March 22-28, 2026](/towns/geneva-il/2026-03-28/) -- Stormwater regulations discussed, vendor contracts approved, planning projects advanced.
 - [Week of March 15-21, 2026](/towns/geneva-il/2026-03-21/) -- City Council approves Third Street streetscape project. Plan Commission reviews downtown mixed-use proposal. Finance Committee discusses pension funding shortfall.
 - [Week of March 8-14, 2026](/towns/geneva-il/2026-03-14/) -- Geneva Park District approves pool renovation contract. City Council hears stormwater utility feasibility study. Historic Preservation Commission denies demolition permit on South Street.
 - [Week of March 1-7, 2026](/towns/geneva-il/2026-03-07/) -- City Council adopts updated liquor ordinance adding Class Z license. Plan Commission approves Randall Road retail center. Public Works Committee reviews five-year capital plan.

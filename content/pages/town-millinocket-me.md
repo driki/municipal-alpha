@@ -9,6 +9,8 @@ Automated weekly digest of town government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/millinocket-me/2026-04-03/) -- Town Council discussed broadband expansion and recreation grant, Planning Board approved new business permit and housing plans.
+- [Week of March 22-28, 2026](/towns/millinocket-me/2026-03-28/) -- Town council discussed infrastructure projects, community grants, and future budget planning.
 - [Week of March 21-27, 2026](/towns/millinocket-me/2026-03-27/) -- CDBG housing renovation projects near completion, Age Friendly committee plans summer event, school budget cycle begins.
 
 ## About Millinocket

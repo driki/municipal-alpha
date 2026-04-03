@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/portland-me/2026-04-03/) -- Utility rate cases reviewed, federal grant allocations for education, urban development and sustainability discussions.
+- [Week of March 22-28, 2026](/towns/portland-me/2026-03-28/) -- Extensive FAA filings for new antennas, City Council debates affordable housing, continued development and public safety activity.
 - [Week of March 20-26, 2026](/towns/portland-me/2026-03-26/) -- FAA tower filings for 16 new antenna structures, 2027 Capital Improvement Program released, $76K federal health grant awarded.
 - [Week of March 15-21, 2026](/towns/portland-me/2026-03-21/) -- Federal HHS grant, Maine PUC infrastructure docket activity, FAA tower filings, City Council housing discussions.
 - [Week of March 8-14, 2026](/towns/portland-me/2026-03-14/) -- $7.2M federal transportation grants, CDBG allocation review, City Council goal-setting sessions, Land Bank affordable housing efforts.

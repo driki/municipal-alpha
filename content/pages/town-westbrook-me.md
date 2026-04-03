@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/westbrook-me/2026-04-03/) -- Housing density, parking reform, and environmental protection addressed. School Building Committee advanced a new project.
+- [Week of March 22-28, 2026](/towns/westbrook-me/2026-03-28/) -- City Council reviewed FY25 audit and CMP rate case, Planning Board advanced downtown housing project.
 - [Week of March 8-14, 2026](/towns/westbrook-me/2026-03-14/) -- Economic Action Initiative reviews downtown revitalization, Kirtland Landing riverfront project advances, school facilities planning.
 - [Week of March 1-7, 2026](/towns/westbrook-me/2026-03-07/) -- Downtown redevelopment discussions, economic initiatives reviewed, community planning sessions.
 

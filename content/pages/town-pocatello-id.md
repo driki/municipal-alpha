@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/pocatello-id/2026-04-03/) -- Housing density and stormwater regulations debated, local boards held regular meetings, emergency services responded to calls.
+- [Week of March 22-28, 2026](/towns/pocatello-id/2026-03-28/) -- Housing density, stormwater management, and upcoming city projects addressed alongside public safety and real estate activity.
 - [Week of March 15-21, 2026](/towns/pocatello-id/2026-03-21/) -- City Council approves $4.2M water treatment plant upgrade. Airport Commission reviews terminal expansion bids. Planning and Zoning hears Northgate subdivision proposal.
 - [Week of March 8-14, 2026](/towns/pocatello-id/2026-03-14/) -- Public Works presents lead service line inventory results. City Council debates recreation center fee schedule. Housing Alliance reviews CDBG allocation priorities.
 - [Week of March 1-7, 2026](/towns/pocatello-id/2026-03-07/) -- City Council adopts updated floodplain ordinance. Airport Commission approves hangar lease amendment. Environmental Fairness Committee hears Superfund cleanup update.

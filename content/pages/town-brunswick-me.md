@@ -9,6 +9,8 @@ Automated weekly digest of town government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/brunswick-me/2026-04-03/) -- Budget reviews advanced, housing density and environmental protection discussed, local departments reported weekly activity.
+- [Week of March 22-28, 2026](/towns/brunswick-me/2026-03-28/) -- Town Council discussed housing density and climate action, Planning Board reviewed mixed-use development at Brunswick Landing.
 - [Week of March 20-26, 2026](/towns/brunswick-me/2026-03-26/) -- Infrastructure funding, new development review, emergency service activity.
 
 ## About Brunswick

@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/sanford-me/2026-04-03/) -- Energy efficiency code advanced, development plans reviewed, FY27 budget discussions continued.
+- [Week of March 22-28, 2026](/towns/sanford-me/2026-03-28/) -- City Council reviewed FY27 budget, Planning Board approved airport district development, new ADU ordinance progressed.
 - [Week of March 20-26, 2026](/towns/sanford-me/2026-03-26/) -- Budget discussions, accessory dwelling unit policy, airport district economic development.
 
 ## About Sanford

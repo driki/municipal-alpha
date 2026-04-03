@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/lewiston-me/2026-04-03/) -- Stormwater regulations advanced, housing and downtown revitalization discussed during a busy week of municipal activity.
+- [Week of March 22-28, 2026](/towns/lewiston-me/2026-03-28/) -- City council actions, planning board decisions, school board updates, public safety incidents, real estate transactions.
 - [Week of March 20-26, 2026](/towns/lewiston-me/2026-03-26/) -- Energy efficiency codes, downtown development approval, community needs.
 
 ## About Lewiston

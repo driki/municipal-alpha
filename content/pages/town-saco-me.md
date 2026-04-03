@@ -9,6 +9,8 @@ Automated weekly digest of city government activity, generated from public recor
 
 ## Weekly Digests
 
+- [Week of March 28 - April 3, 2026](/towns/saco-me/2026-04-03/) -- Utility rate cases discussed, new stormwater ordinance advanced, development plans reviewed alongside routine police and fire activity.
+- [Week of March 22-28, 2026](/towns/saco-me/2026-03-28/) -- Budget discussions advanced, new environmental regulations considered, development projects reviewed.
 - [Week of March 20-26, 2026](/towns/saco-me/2026-03-26/) -- Budget discussions, zoning proposals, emergency service responses.
 
 ## About Saco
