@@ -60,7 +60,7 @@ The Lewiston Code Enforcement Office issued six permits this week:
 -   **April 1, 2026, 6:00 PM**: City Council Meeting at City Hall Council Chambers. Agenda to include budget review and public hearings on proposed ordinance revisions.
 -   **April 2, 2026, 5:30 PM**: Library Board of Trustees Meeting at Lewiston Public Library, discussing summer reading programs and facility improvements.
 -   **April 3, 2026, 9:00 AM**: Downtown Neighborhood Action Committee Meeting at the Lewiston Armory, focusing on spring clean-up initiatives and local business support.
--   **April 7, 2026, 4:00 PM**: Public forum on Accessory Dwelling Unit (ADU) ordinance updates at the Lewiston Public Library Community Room, hosted by the Planning Department.
+-   **April 7, 2026, 4:00 PM**: Public forum on accessory dwelling unit ordinance updates at the Lewiston Public Library Community Room, hosted by the Planning Department.
 -   **April 8, 2026**: Deadline for applications for the Small Business Façade Improvement Grant program.
 
 ---
