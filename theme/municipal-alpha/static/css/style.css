@@ -679,6 +679,20 @@ a.solution-featured:hover {
     margin-top: 0;
 }
 
+/* Social proof */
+.social-proof {
+    padding: 32px 0;
+    background: var(--gray-100);
+    text-align: center;
+}
+.social-proof-text {
+    font-size: 15px;
+    color: var(--gray-600);
+    letter-spacing: 0.01em;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
 /* Story header images */
 .story-header-image {
     width: 100%;

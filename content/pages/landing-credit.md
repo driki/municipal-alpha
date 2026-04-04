@@ -61,8 +61,17 @@ Municipal fiscal stress shows up in AP data first -- delayed vendor payments, ve
 
 **[Download sample credit signals (CSV)](/sample-data/credit-sample.csv)** -- 50 fiscal health signals showing the data structure: municipality, document type, priority, summary, and monetary amounts.
 
+## Delivery & Integration
+
+- **Format:** Structured feeds (CSV, JSON, or API) or custom reports
+- **Cadence:** Daily updates, same-day classification
+- **Backfill:** Full historical data for covered municipalities
+- **Filtering:** By issuer, state, CUSIP universe, or risk indicator type
+
 ## Get Started
 
-Credit intelligence data is delivered as structured feeds or custom reports, filtered to your coverage universe.
+Custom pricing based on issuer coverage and delivery format. Pilot programs available.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Credit%20intelligence%20inquiry%20%28via%20landing%20page%29) -- tell us which issuers or states you're watching and we'll send a custom coverage report within 24 hours.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which issuers or states you're watching and we'll show you coverage live.
+
+Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Credit%20intelligence%20inquiry%20%28via%20landing%20page%29) -- we'll send a custom coverage report within one business day.

@@ -57,8 +57,17 @@ We track these contagion patterns across jurisdictions, identifying which munici
 
 **[Download sample infrastructure risk signals (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- 50 infrastructure and environmental risk signals showing the data structure: municipalities, risk category, contagion patterns, and monetary amounts.
 
+## Delivery & Integration
+
+- **Format:** Structured feeds (CSV, JSON, or API) or custom reports
+- **Cadence:** Daily updates with contagion pattern alerts
+- **Backfill:** Full historical data for covered municipalities
+- **Filtering:** By state, region, risk category, or contagion pattern
+
 ## Get Started
 
-Infrastructure risk data is delivered as structured reports or custom feeds, filtered to your coverage geography.
+Custom pricing based on geographic coverage and delivery format. Pilot programs available.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Infrastructure%20risk%20inquiry%20%28via%20landing%20page%29) -- tell us which states or regions you underwrite and we'll send a coverage summary.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which states or regions you underwrite and we'll show you coverage live.
+
+Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Infrastructure%20risk%20inquiry%20%28via%20landing%20page%29) -- we'll send a coverage summary within one business day.

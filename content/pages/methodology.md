@@ -96,6 +96,18 @@ A detailed methodology paper is available on request for quantitative analysts e
 - **Noise filter validation:** Every pattern requires 20+ matching documents with 0% signal rate before deployment
 - **Self-healing pipeline:** Automated health checks, structural drift detection, and remediation
 
+## Data Security & Handling
+
+All data originates from publicly available government records or formal public records requests. No authentication-gated, paywalled, or restricted sources.
+
+- **Encryption:** Data delivered via encrypted channels (HTTPS, encrypted email, or secure file transfer)
+- **No PII in delivered datasets:** Delivered data products contain business entities, government records, and public filings. Private citizen PII is not included in delivered datasets beyond what appears in public government records (e.g., property owner names in public tax rolls)
+- **Access control:** Data licensing agreements govern access. No self-service access to raw data without agreement
+- **Infrastructure:** Pipeline runs on dedicated infrastructure with daily encrypted backups
+- **Confidentiality:** Coverage requests, evaluation data, and client identity are treated as confidential. NDA available on request
+
+For questions about data handling or security requirements, [contact us](/contact/).
+
 ## What We Don't Do
 
 - We don't access paywalled or subscription-only data sources

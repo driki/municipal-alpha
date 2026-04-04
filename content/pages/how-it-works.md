@@ -62,7 +62,7 @@ We're not building a better way to read New York City's budget. We're building t
 - **$4T** municipal bond market
 - **130,000+** FCC-registered tower structures
 
-The marginal cost of adding a municipality to the pipeline is near zero once the CMS connector exists, and six connector platforms cover roughly 80% of US municipal websites. The graph gets denser with every town added, and denser graphs produce better intelligence.
+The marginal cost of adding a municipality to the pipeline is near zero once the CMS connector exists, and six connector platforms cover the majority of US municipal websites. The graph gets denser with every town added, and denser graphs produce better intelligence.
 
 ## The Dark Document Problem
 

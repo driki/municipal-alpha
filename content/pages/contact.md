@@ -2,19 +2,30 @@ Title: Contact
 Slug: contact
 Sortorder: 6
 
-## Get in Touch
+## Talk to Us
 
-We work with hedge funds, infrastructure companies, permit aggregators, insurers, and data platforms who need structured government data.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- see coverage for your tickers, geography, or sector. No pitch, just data.
 
 **Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Inquiry%20%28via%20contact%20page%29)
 
 **LinkedIn:** [Matt MacDonald](https://www.linkedin.com/in/matthewmacdonald/)
 
-### What We Can Talk About
+We typically respond within one business day.
 
-- **Data licensing** -- structured municipal spending, permit, and filing data for quant strategies or research
-- **Infrastructure leads** -- qualified tower lease, solar, and utility infrastructure prospects with landowner data
-- **Insurance rate intelligence** -- structured rate filings from state DOI portals, mapped to insurers and territories
-- **Mineral rights leads** -- county recorder data with chain-of-title tracing and owner resolution
-- **Custom data products** -- specific jurisdiction coverage, entity tracking, or filing type extraction
-- **Partnership** -- if you're building on government data and want to go deeper
+---
+
+### What to Expect
+
+- **Data licensing** -- structured municipal spending, permit, and filing data delivered as daily feeds (CSV, JSON, or API). Scoped to your tickers, sectors, or geography. Pilot programs available.
+- **Infrastructure leads** -- qualified tower lease, solar, and utility infrastructure prospects with landowner data. Delivered as weekly prospect lists.
+- **Credit intelligence** -- municipal fiscal health indicators from source spending documents. Custom monitoring for your issuer universe.
+- **Government contractor signals** -- vendor payments and permits resolved to public company tickers. Daily delivery with historical backfill.
+- **Custom data products** -- specific jurisdiction coverage, entity tracking, or filing type extraction. If a municipality publishes it, we can structure it.
+
+### Delivery
+
+All data products are available as structured feeds (CSV, JSON) or via API, updated daily. Historical backfill is available for covered municipalities. Custom coverage and delivery cadence by arrangement.
+
+### Pricing
+
+Custom pricing based on coverage scope, delivery format, and update frequency. Pilot programs available for new data segments.

@@ -59,8 +59,17 @@ We publish a redacted sample of our tower prospect data so you can evaluate the 
 
 **[Download sample tower prospects (CSV)](/sample-data/tower-prospects-sample.csv)** -- 25 redacted prospects showing the data structure: location, height, tenant, owner type, data sources, and confidence score.
 
+## Delivery & Integration
+
+- **Format:** Qualified lead lists delivered as CSV, JSON, or via API
+- **Cadence:** Weekly updates with full historical backfill
+- **Customization:** Filter by state, region, MSA, or tower tenant
+- **Enrichment:** Parcel data, owner identification, FCC/FAA cross-reference included
+
 ## Get Started
 
-Tower prospect data is delivered as qualified lead lists, updated weekly. Coverage can be customized to specific states, regions, or MSAs.
+Custom pricing based on geography scope and delivery requirements. Pilot programs available.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29) -- include your target geography and we'll send a coverage summary within 24 hours.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us your target geography and we'll walk through coverage live.
+
+Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29) -- include your target geography and we'll send a coverage summary within one business day.

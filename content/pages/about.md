@@ -41,7 +41,7 @@ The numbers behind the coverage gap:
 | FCC-registered tower structures | 130,000+ | 3,800+ screened with parcel cross-reference |
 | Municipal infrastructure investment gap | $2.6 trillion (ASCE) | Deferred maintenance signals from spending patterns |
 
-These records all exist as public documents. The acquisition cost has been too high for anyone to aggregate them, too many jurisdictions, too many CMS platforms, too many state-specific FOIA statutes. AI agents change the unit economics. Six CMS connectors cover roughly 80% of US municipal websites, and the marginal cost of adding a municipality to the pipeline is near zero once the connector exists.
+These records all exist as public documents. The acquisition cost has been too high for anyone to aggregate them, too many jurisdictions, too many CMS platforms, too many state-specific FOIA statutes. AI agents change the unit economics. Six CMS connector platforms cover the majority of US municipal websites, and the marginal cost of adding a municipality to the pipeline is near zero once the connector exists.
 
 We add ~25 municipalities per week. The pipeline infrastructure scales past 5,000. Every new municipality activated produces data for every revenue vertical simultaneously, the cost is paid once and the revenue compounds across verticals.
 
@@ -81,4 +81,10 @@ The mess is why nobody starts. The recipes are why nobody catches up.
 
 ## The Team
 
-Built and operated by Matt MacDonald. One person, one automated pipeline, running daily.
+Municipal Alpha is built and operated by Matt MacDonald.
+
+Previously: engineering and data leadership at Spotify/The Echo Nest (music intelligence platform, acquired 2014) and Acast (podcast infrastructure, $35M+ ARR at IPO). A decade of building data products from fragmented, unstructured sources at scale, first in audio, now in public records.
+
+The pipeline runs autonomously: 2,100+ municipalities crawled daily, documents classified and entity-resolved same-day, self-healing infrastructure that detects and adapts to website changes without human intervention. One person built it. The automation operates it.
+
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com).

@@ -62,8 +62,17 @@ Vendor payment records and check registers live inside municipal CMS platforms a
 
 **[Download sample contractor signals (CSV)](/sample-data/contractor-signals-sample.csv)** -- 50 entity-resolved signals showing vendor names, tickers, document types, and context.
 
+## Delivery & Integration
+
+- **Format:** Structured feeds via CSV, JSON, or API
+- **Cadence:** Daily updates, same-day classification and entity resolution
+- **Backfill:** Full historical data for covered municipalities
+- **Filtering:** By ticker, sector, geography, or document type
+
 ## Get Started
 
-Contractor signal data is delivered as structured feeds (CSV, JSON, or API), updated daily.
+Custom pricing based on ticker coverage and delivery format. Pilot programs available.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Contractor%20signals%20inquiry%20%28via%20landing%20page%29) -- tell us which tickers or sectors you cover and we'll send a coverage report.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you cover and we'll show you what we see.
+
+Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Contractor%20signals%20inquiry%20%28via%20landing%20page%29) -- we'll send a coverage report within one business day.

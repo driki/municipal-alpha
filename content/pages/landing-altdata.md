@@ -68,8 +68,17 @@ Check registers and AP warrants are the most financially valuable municipal docu
 
 **[Download sample signals (CSV)](/sample-data/signals-sample.csv)** -- 50 redacted entity-resolved signals showing the data structure: municipality, document type, vendor, ticker, signal priority, and date.
 
+## Delivery & Integration
+
+- **Format:** Structured feeds via CSV, JSON, or API
+- **Cadence:** Daily updates, same-day classification
+- **Backfill:** Full historical data for covered municipalities
+- **Filtering:** By ticker, sector, geography, document type, or signal priority
+
 ## Get Started
 
-Alt data is delivered as structured feeds (CSV, JSON, or API), updated daily. Historical backfill available for covered municipalities.
+Custom pricing based on ticker universe, coverage scope, and delivery format. Pilot programs available.
 
-**Email:** [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Alt%20data%20inquiry%20%28via%20landing%20page%29) -- tell us which tickers or sectors you're watching and we'll send a coverage report.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you're watching and we'll show you coverage live.
+
+Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Alt%20data%20inquiry%20%28via%20landing%20page%29) -- we'll send a coverage report within one business day.
