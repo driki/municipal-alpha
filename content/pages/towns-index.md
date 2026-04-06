@@ -1,6 +1,6 @@
 Title: Towns
 Slug: towns
-Sortorder: 1
+Sortorder: 3
 Summary: Weekly town government digests from 2,000+ municipalities. What your town council, planning board, and public works department did this week, from public records.
 
 Weekly digests of town government activity, generated from public records. What your local boards discussed, what permits were issued, and what's coming next, written in plain language from the actual documents.

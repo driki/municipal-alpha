@@ -1,6 +1,6 @@
 Title: Contact
 Slug: contact
-Sortorder: 6
+Sortorder: 5
 
 ## Talk to Us
 

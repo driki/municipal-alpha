@@ -1,6 +1,6 @@
 Title: How It Works
 Slug: how-it-works
-Sortorder: 3
+Sortorder: 4
 
 ![Data Layer Stack: a query enters through four data layers (Federal, County, Municipal, FOAA) and returns as an enriched Data Package]({static}/images/data-layer-stack.png)
 

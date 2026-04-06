@@ -23,7 +23,7 @@
             <a href="{{ SITEURL }}/" class="nav-brand">Municipal Alpha</a>
             <div class="nav-links">
                 {% for p in pages %}
-                {% if '/' not in p.slug %}
+                {% if p.slug in ['solutions', 'data-stories', 'towns', 'how-it-works', 'contact'] %}
                 <a href="{{ SITEURL }}/{{ p.url }}"{% if p == page %} class="active"{% endif %}>{{ p.title }}</a>
                 {% endif %}
                 {% endfor %}
@@ -37,7 +37,8 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Municipal Alpha LLC &middot; <a href="{{ SITEURL }}/legal/privacy/">Privacy</a> &middot; <a href="{{ SITEURL }}/legal/terms/">Terms</a></p>
+            <p><a href="{{ SITEURL }}/about/">About</a> &middot; <a href="{{ SITEURL }}/methodology/">Methodology</a> &middot; <a href="{{ SITEURL }}/legal/privacy/">Privacy</a> &middot; <a href="{{ SITEURL }}/legal/terms/">Terms</a></p>
+            <p>&copy; 2026 Municipal Alpha LLC</p>
         </div>
     </footer>
 </body>
