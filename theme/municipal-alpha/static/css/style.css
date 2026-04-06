@@ -508,6 +508,26 @@ a.solution-featured:hover {
     margin: 0 auto 32px;
 }
 
+.cta .btn {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.cta .btn:hover {
+    background: var(--navy-light);
+}
+
+.cta .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--navy);
+}
+
+.cta .btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+}
+
 /* Pages */
 .page {
     padding: 64px 0 96px;

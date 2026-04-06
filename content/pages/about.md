@@ -83,7 +83,7 @@ The mess is why nobody starts. The recipes are why nobody catches up.
 
 Municipal Alpha is built and operated by Matt MacDonald.
 
-Previously: engineering and data leadership at Spotify/The Echo Nest (music intelligence platform, acquired 2014) and Acast (podcast infrastructure, $35M+ ARR at IPO). A decade of building data products from fragmented, unstructured sources at scale, first in audio, now in public records.
+Previously: Chief Product Officer at Acast (podcast infrastructure, $200M revenue, NASDAQ IPO), co-founder of RadioPublic (raised $3.5M, grew to acquisition). Two decades building data products from fragmented, unstructured sources at scale, first in audio, now in public records.
 
 The pipeline runs autonomously: 2,100+ municipalities crawled daily, documents classified and entity-resolved same-day, self-healing infrastructure that detects and adapts to website changes without human intervention. One person built it. The automation operates it.
 
