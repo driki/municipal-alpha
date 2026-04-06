@@ -59,7 +59,7 @@ MARKDOWN = {
 }
 
 # Static paths
-STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/llms.txt"]
+STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/llms.txt"]
 # Prevent Pelican from treating HTML in extra/ as content
 READERS = {"html": None}
 EXTRA_PATH_METADATA = {
@@ -75,6 +75,9 @@ EXTRA_PATH_METADATA = {
     "extra/sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf": {"path": "sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf"},
     "extra/sample-data/desri-energy-sample-2026-03-28.pdf": {"path": "sample-data/desri-energy-sample-2026-03-28.pdf"},
     "extra/sample-data/amt-combined-alert-2026-03-28.html": {"path": "sample-data/amt-combined-alert-2026-03-28.html"},
+    "extra/case-studies/amherst-nh-procurement-chain.pdf": {"path": "case-studies/amherst-nh-procurement-chain.pdf"},
+    "extra/case-studies/infrastructure-equity-signals.pdf": {"path": "case-studies/infrastructure-equity-signals.pdf"},
+    "extra/case-studies/muni-credit-early-warning.pdf": {"path": "case-studies/muni-credit-early-warning.pdf"},
 }
 
 # Clean URLs

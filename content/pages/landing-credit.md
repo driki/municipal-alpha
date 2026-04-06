@@ -68,9 +68,19 @@ Municipal fiscal stress shows up in AP data first -- delayed vendor payments, ve
 - **Backfill:** Full historical data for covered municipalities
 - **Filtering:** By issuer, state, CUSIP universe, or risk indicator type
 
+## What This Looks Like in Practice
+
+A weekly alert for a New England portfolio manager:
+
+> 3 towns added water rate increase hearings this week. 2 new PFAS briefings in Michigan. Bangor ME filed year 12 of EPA consent decree compliance. Goochland County VA bond referendum materials published.
+
+Each item links to the source document. You decide what matters for your portfolio. The system provides the signal, not the opinion.
+
+For a deeper dive, read our **[Municipal Credit Early Warning one-pager (PDF)](/case-studies/muni-credit-early-warning.pdf)** -- real examples of fiscal stress signals from our current pipeline.
+
 ## Get Started
 
-Custom pricing based on issuer coverage and delivery format. Pilot programs available.
+Pilot programs start at **$500-750/month** per state or issuer portfolio. Custom pricing for broader coverage.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which issuers or states you're watching and we'll show you coverage live.
 

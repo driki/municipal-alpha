@@ -64,9 +64,17 @@ We track these contagion patterns across jurisdictions, identifying which munici
 - **Backfill:** Full historical data for covered municipalities
 - **Filtering:** By state, region, risk category, or contagion pattern
 
+## What This Looks Like in Practice
+
+An underwriter evaluating a municipal portfolio in New England could receive:
+
+> 3 municipalities cut water infrastructure budgets for the 2nd consecutive year. Bangor ME is in year 12 of EPA consent decree -- compliance spending has been flat while requirements increased. 2 towns in Cumberland County started emergency water main repairs this quarter after 0 in the prior 4 quarters. PFAS testing mandates spreading: 5 new state bills introduced this session.
+
+Each item traces to source documents. The underwriter sees which municipalities are accumulating risk and which are investing proactively.
+
 ## Get Started
 
-Custom pricing based on geographic coverage and delivery format. Pilot programs available.
+Custom pricing based on geographic footprint and delivery format. Pilot programs available for specific states or regions.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which states or regions you underwrite and we'll show you coverage live.
 

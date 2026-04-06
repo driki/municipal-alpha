@@ -69,9 +69,19 @@ Vendor payment records and check registers live inside municipal CMS platforms a
 - **Backfill:** Full historical data for covered municipalities
 - **Filtering:** By ticker, sector, geography, or document type
 
+## What This Looks Like in Practice
+
+An equity analyst covering Waste Management (WM) could receive a weekly signal:
+
+> WM appeared in 14 municipal check registers this week across 8 states. Total payments: $287K. New market entry: Geneva IL (first payment, $12,400). Competitive displacement: Falmouth ME stopped paying WM, started paying Casella (CWST) in March.
+
+That's primary-source revenue intelligence from the payment records themselves. No surveys, no credit card panels, no web scraping proxies.
+
+For more on how this works, read our **[Infrastructure Equity Signals one-pager (PDF)](/case-studies/infrastructure-equity-signals.pdf)** -- real examples from the current pipeline.
+
 ## Get Started
 
-Custom pricing based on ticker coverage and delivery format. Pilot programs available.
+Pilot programs start at **$500-1,000/month** based on ticker coverage. Custom pricing for broader universes and historical backfill.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you cover and we'll show you what we see.
 

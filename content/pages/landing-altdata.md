@@ -3,11 +3,11 @@ Slug: solutions/alt-data
 Sortorder: 31
 Summary: Vendor payments and building permits resolved to 100+ public company tickers from 2,100+ municipalities. Updated daily.
 
-## Government contractor revenue from the source documents
+## Non-consensus signals from documents that don't exist on the internet
 
-Municipal check registers, vendor payments, and building permits are the source records that earnings eventually reflect. We structure them daily across 2,100+ municipalities and resolve vendor names to 100+ public company tickers.
+Municipal governments publish financial records -- check registers, budgets, capital plans, legislative votes -- to CMS platforms that search engines and AI agents can't reach. We built connectors to 15+ municipal CMS platforms and read these documents daily across 2,100+ municipalities.
 
-When Grainger ships to Geneva, Illinois, it shows up in their check register weeks before it shows up in quarterly revenue. We read the check register. Every day. For every town in the pipeline.
+When Grainger ships to Geneva, Illinois, it shows up in their check register weeks before it shows up in quarterly revenue. When a town council votes to authorize a $5M infrastructure bond, that's a forward-looking signal that no earnings model captures. We read these documents every day, for every town in the pipeline, and resolve vendor names to 100+ public company tickers.
 
 ## What the Data Looks Like
 
@@ -75,9 +75,15 @@ Check registers and AP warrants are the most financially valuable municipal docu
 - **Backfill:** Full historical data for covered municipalities
 - **Filtering:** By ticker, sector, geography, document type, or signal priority
 
+## How It Differs From Federal Contract Data
+
+Federal procurement databases (USASpending, GovWin, Shovels) cover top-down government spending. Municipal Alpha covers bottom-up: the 19,500 local governments where the same companies do work but nobody aggregates the data. Federal contracts are competed, awarded, and publicly tracked. Municipal vendor payments happen quietly in check registers that no one reads.
+
+The two datasets are complementary, not competitive. Federal data tells you who won the big contracts. Municipal data tells you who's winning the small ones everywhere, and whether that's accelerating or slowing.
+
 ## Get Started
 
-Custom pricing based on ticker universe, coverage scope, and delivery format. Pilot programs available.
+Pilot programs start at **$1,000/month** for a ticker universe. Custom pricing for broader coverage and historical backfill.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you're watching and we'll show you coverage live.
 

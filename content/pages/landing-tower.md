@@ -66,9 +66,17 @@ We publish a redacted sample of our tower prospect data so you can evaluate the 
 - **Customization:** Filter by state, region, MSA, or tower tenant
 - **Enrichment:** Parcel data, owner identification, FCC/FAA cross-reference included
 
+## What a Deal Looks Like
+
+A real example from our pipeline: A New Hampshire municipality's planning board approved a cell tower height variance in meeting minutes. Cross-referencing the parcel with assessor records shows a private landowner. FCC data shows American Tower as the current tenant. The check register shows quarterly lease payments of $2,400. The lease renewal window is 8 months away.
+
+That's one prospect. We have 4,700+.
+
+For more on how the signal chain works, read our **[Amherst NH case study (PDF)](/case-studies/amherst-nh-procurement-chain.pdf)** -- a full walkthrough of 18 signals extracted from one municipality over 23 months.
+
 ## Get Started
 
-Custom pricing based on geography scope and delivery requirements. Pilot programs available.
+Pilot programs start at **$500-750/month** for a target geography. Custom pricing for broader coverage.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us your target geography and we'll walk through coverage live.
 
