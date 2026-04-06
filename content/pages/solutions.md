@@ -40,6 +40,14 @@ Municipal vendor payments and building permits mapped to 100+ public company tic
 
 ---
 
+### [Renewable Energy Siting Intelligence](/solutions/energy-development/)
+
+Zoning decisions, planning board approvals, environmental permits, and site plan reviews across 2,300+ municipalities. Early signals for greenfield origination and siting campaigns.
+
+**Starting at $500-750/month**
+
+---
+
 ### [Municipal Infrastructure Risk](/solutions/infrastructure-risk/)
 
 Infrastructure spending patterns, deferred maintenance signals, and contagion tracking (PFAS, lead pipes, consent decrees). For P&C carriers, risk pools, and reinsurers.
