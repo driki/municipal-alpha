@@ -76,7 +76,7 @@ For more on how the signal chain works, read our **[Amherst NH case study (PDF)]
 
 ## Get Started
 
-Pilot programs start at **$500-750/month** for a target geography. Custom pricing for broader coverage.
+Pilot programs scoped to your target geography, with broader coverage available.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us your target geography and we'll walk through coverage live.
 

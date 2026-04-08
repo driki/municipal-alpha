@@ -12,15 +12,11 @@ We monitor 2,100+ municipalities daily and structure the documents that search e
 
 Non-consensus revenue signals from vendor payments and building permits, resolved to 100+ public company tickers. For quant funds and fundamental analysts.
 
-**Starting at $1,000/month**
-
 ---
 
 ### [Tower & Infrastructure Leads](/solutions/tower-leads/)
 
 Qualified tower lease prospects with parcel data, landowner identification, and FCC/FAA cross-reference. 4,700+ sites screened. For aggregators and infrastructure REITs.
-
-**Starting at $500-750/month**
 
 ---
 
@@ -28,15 +24,11 @@ Qualified tower lease prospects with parcel data, landowner identification, and 
 
 Leading indicators of municipal fiscal health from source spending documents. Vendor payment velocity, budget-to-actual variance, and spending concentration. For bond portfolio managers and credit analysts.
 
-**Starting at $500-750/month**
-
 ---
 
 ### [Government Contractor Signals](/solutions/contractor-signals/)
 
 Municipal vendor payments and building permits mapped to 100+ public company tickers. Bottom-up revenue signals that top-down models miss. For equity analysts covering industrials, infrastructure, and govtech.
-
-**Starting at $500-1,000/month**
 
 ---
 
@@ -44,15 +36,11 @@ Municipal vendor payments and building permits mapped to 100+ public company tic
 
 Zoning decisions, planning board approvals, environmental permits, and site plan reviews across 2,300+ municipalities. Early signals for greenfield origination and siting campaigns.
 
-**Starting at $500-750/month**
-
 ---
 
 ### [Municipal Infrastructure Risk](/solutions/infrastructure-risk/)
 
 Infrastructure spending patterns, deferred maintenance signals, and contagion tracking (PFAS, lead pipes, consent decrees). For P&C carriers, risk pools, and reinsurers.
-
-**Custom pricing based on geographic footprint**
 
 ---
 

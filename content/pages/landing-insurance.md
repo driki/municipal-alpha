@@ -74,7 +74,7 @@ Each item traces to source documents. The underwriter sees which municipalities 
 
 ## Get Started
 
-Custom pricing based on geographic footprint and delivery format. Pilot programs available for specific states or regions.
+Pilot programs available for specific states or regions, scoped to your geographic footprint.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which states or regions you underwrite and we'll show you coverage live.
 

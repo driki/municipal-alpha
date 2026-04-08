@@ -80,7 +80,7 @@ For a deeper dive, read our **[Municipal Credit Early Warning one-pager (PDF)](/
 
 ## Get Started
 
-Pilot programs start at **$500-750/month** per state or issuer portfolio. Custom pricing for broader coverage.
+Pilot programs scoped to your state or issuer portfolio, with broader coverage available.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which issuers or states you're watching and we'll show you coverage live.
 

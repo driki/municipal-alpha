@@ -81,7 +81,7 @@ For more on how this works, read our **[Infrastructure Equity Signals one-pager 
 
 ## Get Started
 
-Pilot programs start at **$500-1,000/month** based on ticker coverage. Custom pricing for broader universes and historical backfill.
+Pilot programs scoped to your ticker coverage, with broader universes and historical backfill available.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you cover and we'll show you what we see.
 

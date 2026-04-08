@@ -83,7 +83,7 @@ The two datasets are complementary, not competitive. Federal data tells you who 
 
 ## Get Started
 
-Pilot programs start at **$1,000/month** for a ticker universe. Custom pricing for broader coverage and historical backfill.
+Pilot programs scoped to your ticker universe, with custom coverage and historical backfill available.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you're watching and we'll show you coverage live.
 

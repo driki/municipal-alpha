@@ -28,4 +28,4 @@ All data products are available as structured feeds (CSV, JSON) or via API, upda
 
 ### Pricing
 
-Custom pricing based on coverage scope, delivery format, and update frequency. Pilot programs available for new data segments.
+Scoped to your coverage needs. Pilot programs available. **[Book a call](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** to discuss.

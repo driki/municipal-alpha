@@ -72,7 +72,7 @@ We monitor **2,300+ municipalities across 50 states**, with the deepest coverage
 
 ## Get Started
 
-Pilot programs start at **$500-750/month** for a target geography. Custom pricing for multi-state coverage.
+Pilot programs scoped to your target geography, with multi-state coverage available.
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell me where you're developing and I'll walk through coverage live.
 
