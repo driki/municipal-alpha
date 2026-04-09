@@ -1,192 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>municipαl — Lora Final</title>
+<title>municipαl — Brand Concept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d1117; color: #fff; font-family: system-ui; padding: 40px 40px 100px; }
+  body { background: #0d1117; color: #fff; font-family: system-ui, -apple-system, sans-serif; padding: 40px 40px 100px; }
   h1 { font-weight: 300; font-size: 22px; margin-bottom: 6px; letter-spacing: 4px; }
   .sub { color: #555; font-size: 12px; margin-bottom: 50px; }
   .section-label { font-size: 13px; color: #4a9eff; letter-spacing: 2px; text-transform: uppercase; margin: 50px 0 20px; border-bottom: 1px solid #1a2744; padding-bottom: 8px; }
-  .row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; align-items: end; }
-  .card { border-radius: 8px; padding: 30px 40px; display: inline-block; }
-  .card.dark { background: #1a2744; }
-  .card.light { background: #ffffff; }
-  .meta { font-size: 10px; color: #444; font-family: monospace; margin-top: 6px; }
-  .note { color: #666; font-size: 12px; max-width: 700px; line-height: 1.5; margin: 8px 0 15px; }
+  .note { color: #888; font-size: 13px; max-width: 700px; line-height: 1.6; margin: 10px 0 20px; }
+  .row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; align-items: end; }
+  .row img { border-radius: 12px; }
 
-  /* Standalone assets for export */
-  .export-card { border: 1px dashed #333; border-radius: 12px; padding: 10px; display: inline-block; margin: 8px; }
-  .export-card .meta { text-align: center; }
-
-  .mark-card { border-radius: 12px; padding: 25px 35px; text-align: center; display: inline-block; }
-  .mark-card.dark { background: #1a2744; }
-  .mark-card.light { background: #ffffff; }
-
-  /* Particles */
-  .expressive-card { border-radius: 16px; padding: 40px; text-align: center; background: #1a2744; position: relative; overflow: hidden; display: inline-block; }
-  .particle { position: absolute; background: #fff; border-radius: 50%; }
-
-  /* Site mockup */
   .site-mock { background: #fff; border-radius: 12px; overflow: hidden; max-width: 800px; box-shadow: 0 4px 30px rgba(0,0,0,0.4); margin: 20px 0; }
   .site-nav { background: #1a365d; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
-  .site-nav-brand { color: #fff; text-decoration: none; font-family: 'Lora', serif; font-size: 20px; }
   .site-nav-links { display: flex; gap: 28px; }
-  .site-nav-links a { color: #e2e8f0; text-decoration: none; font-size: 14px; font-family: system-ui; }
+  .site-nav-links a { color: #e2e8f0; text-decoration: none; font-size: 14px; }
   .site-hero { background: #1a365d; color: #fff; padding: 60px 40px 50px; }
-  .site-hero h2 { font-family: system-ui; font-size: 40px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; line-height: 1.1; }
+  .site-hero h2 { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; line-height: 1.1; }
   .site-hero p { font-size: 18px; color: #e2e8f0; }
-  .site-body { padding: 40px; color: #1e293b; font-family: system-ui; font-size: 15px; line-height: 1.7; }
+  .site-body { padding: 40px; color: #1e293b; font-size: 15px; line-height: 1.7; }
   .site-body .cards { display: flex; gap: 16px; margin-top: 20px; }
   .site-body .scard { background: #f8fafc; border-radius: 8px; padding: 20px; flex: 1; border: 1px solid #e2e8f0; }
   .site-body .scard strong { display: block; margin-bottom: 4px; color: #1a365d; }
+  .site-footer { background: #1a365d; padding: 30px 40px; color: #e2e8f0; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
 
-  /* Footer mock */
-  .site-footer { background: #1a365d; padding: 30px 40px; color: #e2e8f0; font-size: 13px; font-family: system-ui; display: flex; justify-content: space-between; align-items: center; }
-
-  /* Share-ready standalone images */
-  .share-section { margin-top: 60px; }
-  .share-grid { display: flex; gap: 20px; flex-wrap: wrap; }
-  .share-card { border-radius: 16px; overflow: hidden; display: inline-block; }
+  .sim-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .favicon-sim { display: inline-flex; align-items: center; gap: 8px; background: #2a3a5c; padding: 6px 14px 6px 6px; border-radius: 6px; font-size: 13px; color: #aaa; }
+  .favicon-sim .fav { width: 16px; height: 16px; background: #1a365d; border-radius: 2px; display: flex; align-items: center; justify-content: center; }
+  .favicon-sim .fav span { font-family: 'Lora', serif; font-size: 12px; color: #fff; line-height: 1; }
+  .linkedin-sim { display: inline-flex; align-items: center; gap: 10px; background: #161b22; padding: 10px 18px; border-radius: 8px; }
+  .linkedin-sim .avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; }
+  .linkedin-sim .avatar img { width: 44px; height: 44px; object-fit: cover; }
+  .linkedin-sim .info { font-size: 14px; color: #ccc; }
+  .linkedin-sim .info small { color: #666; font-size: 11px; display: block; }
+  .email-sim { background: #fff; padding: 15px 20px; border-radius: 8px; display: inline-block; }
+  .email-sim div { color: #666; font-size: 11px; }
 </style>
 </head>
 <body>
 
-<h1>LORA — FINAL CANDIDATE</h1>
-<p class="sub">Wordmark, standalone mark, expressive treatment, in-situ mockup, shareable assets</p>
+<h1>BRAND CONCEPT</h1>
+<p class="sub">municipαl</p>
 
-<!-- ==================== WORDMARK ==================== -->
+<p class="note">
+  The concept: swap the Latin "a" in "municipal" with the Greek alpha (α). Most people read right past it and just see "municipal." But once you notice it, you can't unsee it. The company finds investment signals encoded in public records that were always there, just waiting to be read. The logo does the same thing.
+</p>
+<p class="note">
+  Typeface: Lora (serif). Bold weight for the word, regular weight for the α so it subtly stands apart. Serif because public records, newspapers, truth on the record. The α is lighter because the signal is there but quieter than the noise around it.
+</p>
+
 <div class="section-label">Wordmark</div>
-
 <div class="row">
-  <div class="card dark" style="padding: 40px 60px;">
-    <div style="font-family: 'Lora', serif; font-size: 72px; color: #fff; white-space: nowrap;">
-      <span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span>
-    </div>
-    <div class="meta">Primary wordmark — dark</div>
-  </div>
+  <img src="wordmark-dark.png" height="100">
 </div>
 <div class="row">
-  <div class="card light" style="padding: 40px 60px;">
-    <div style="font-family: 'Lora', serif; font-size: 72px; color: #1a365d; white-space: nowrap;">
-      <span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span>
-    </div>
-    <div class="meta" style="color: #999">Primary wordmark — light</div>
-  </div>
+  <img src="wordmark-light.png" height="100">
 </div>
 
+<div class="section-label">Wordmark + tagline</div>
 <div class="row">
-  <div class="card dark"><div style="font-family: 'Lora', serif; font-size: 48px; color: #fff; white-space: nowrap;"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></div><div class="meta">48px</div></div>
-  <div class="card dark"><div style="font-family: 'Lora', serif; font-size: 36px; color: #fff; white-space: nowrap;"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></div><div class="meta">36px</div></div>
-  <div class="card dark"><div style="font-family: 'Lora', serif; font-size: 24px; color: #fff; white-space: nowrap;"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></div><div class="meta">24px</div></div>
-  <div class="card dark"><div style="font-family: 'Lora', serif; font-size: 18px; color: #fff; white-space: nowrap;"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></div><div class="meta">18px</div></div>
+  <img src="wordmark-tagline-dark.png" height="120">
+  <img src="wordmark-tagline-light.png" height="120">
 </div>
 
-<p class="note">Also works at uniform weight for body text / informal use:</p>
-<div class="row">
-  <div class="card dark"><div style="font-family: 'Lora', serif; font-size: 48px; color: #fff; white-space: nowrap; font-weight: 400;">municipαl</div><div class="meta">48px — uniform weight</div></div>
-  <div class="card dark"><div style="font-family: 'Lora', serif; font-size: 24px; color: #fff; white-space: nowrap; font-weight: 400;">municipαl</div><div class="meta">24px — uniform weight</div></div>
-</div>
-
-<!-- ==================== STANDALONE MARK ==================== -->
 <div class="section-label">Standalone mark</div>
-
 <div class="row">
-  <div class="mark-card dark" style="padding: 30px 45px;"><span style="font-family: 'Lora', serif; font-size: 140px; color: #fff; line-height: 1;">α</span><div class="meta">140px</div></div>
-  <div class="mark-card dark" style="padding: 25px 35px;"><span style="font-family: 'Lora', serif; font-size: 80px; color: #fff; line-height: 1;">α</span><div class="meta">80px</div></div>
-  <div class="mark-card dark" style="padding: 20px 28px;"><span style="font-family: 'Lora', serif; font-size: 48px; color: #fff; line-height: 1;">α</span><div class="meta">48px</div></div>
-  <div class="mark-card dark" style="padding: 15px 20px;"><span style="font-family: 'Lora', serif; font-size: 32px; color: #fff; line-height: 1;">α</span><div class="meta">32px</div></div>
-  <div class="mark-card dark" style="padding: 10px 14px;"><span style="font-family: 'Lora', serif; font-size: 20px; color: #fff; line-height: 1;">α</span><div class="meta">20px</div></div>
-  <div class="mark-card dark" style="padding: 6px 8px;"><span style="font-family: 'Lora', serif; font-size: 14px; color: #fff; line-height: 1;">α</span><div class="meta">14px</div></div>
+  <img src="mark-dark.png" height="180">
+  <img src="mark-light.png" height="180">
 </div>
+
+<div class="section-label">App icon / social avatar</div>
 <div class="row">
-  <div class="mark-card light" style="padding: 30px 45px;"><span style="font-family: 'Lora', serif; font-size: 140px; color: #1a365d; line-height: 1;">α</span><div class="meta" style="color: #999">140px light</div></div>
-  <div class="mark-card light" style="padding: 25px 35px;"><span style="font-family: 'Lora', serif; font-size: 80px; color: #1a365d; line-height: 1;">α</span><div class="meta" style="color: #999">80px light</div></div>
-  <div class="mark-card light" style="padding: 20px 28px;"><span style="font-family: 'Lora', serif; font-size: 48px; color: #1a365d; line-height: 1;">α</span><div class="meta" style="color: #999">48px light</div></div>
+  <img src="icon-square-dark.png" width="200">
+  <img src="icon-square-light.png" width="200">
+  <img src="icon-square-dark.png" width="80">
+  <img src="icon-square-dark.png" width="44" style="border-radius: 50%;">
 </div>
 
-<!-- ==================== EXPRESSIVE ==================== -->
-<div class="section-label">Expressive treatment</div>
-
-<div class="row" id="expressive-row">
-  <div class="expressive-card" id="exp1" style="width: 300px; height: 300px;">
-    <div class="particles" id="p1"></div>
-    <span style="font-family: 'Lora', serif; font-size: 160px; color: #fff; position: relative; z-index: 2; line-height: 1; display: block; margin-top: 40px;">α</span>
-  </div>
-  <div class="expressive-card" id="exp2" style="width: 200px; height: 200px;">
-    <div class="particles" id="p2"></div>
-    <span style="font-family: 'Lora', serif; font-size: 100px; color: #fff; position: relative; z-index: 2; line-height: 1; display: block; margin-top: 25px;">α</span>
-  </div>
-  <div class="expressive-card" id="exp3" style="width: 120px; height: 120px; border-radius: 50%;">
-    <div class="particles" id="p3"></div>
-    <span style="font-family: 'Lora', serif; font-size: 56px; color: #fff; position: relative; z-index: 2; line-height: 1; display: block; margin-top: 14px;">α</span>
-  </div>
-</div>
-
-<p class="note">The Imagen-generated constellation version for hero/splash use:</p>
+<div class="section-label">Expressive treatment (hero / splash)</div>
+<p class="note">For large-format use. The α materializes from scattered data points like a constellation resolving into a letter.</p>
 <div class="row">
-  <img src="expressive-particle-dark-v3.png" width="250" style="border-radius: 12px; border: 1px solid #222;">
+  <img src="expressive-particle-dark-v3.png" width="280" style="border-radius: 16px;">
 </div>
 
-<script>
-function scatter(containerId, count) {
-  const el = document.getElementById(containerId);
-  if (!el) return;
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const angle = Math.random() * Math.PI * 2;
-    const dist = 20 + Math.random() * 45;
-    p.style.left = (50 + Math.cos(angle) * dist) + '%';
-    p.style.top = (45 + Math.sin(angle) * dist) + '%';
-    p.style.opacity = Math.max(0.08, 0.7 - (dist / 60));
-    const sz = 1 + Math.random() * 3;
-    p.style.width = sz + 'px';
-    p.style.height = sz + 'px';
-    el.appendChild(p);
-  }
-}
-scatter('p1', 100);
-scatter('p2', 60);
-scatter('p3', 30);
-</script>
-
-<!-- ==================== CONTEXT SIMS ==================== -->
-<div class="section-label">Context simulations</div>
-
-<div class="row" style="gap: 20px; align-items: center;">
-  <!-- Favicon -->
-  <div style="display: inline-flex; align-items: center; gap: 8px; background: #2a3a5c; padding: 6px 14px 6px 6px; border-radius: 6px; font-size: 13px; color: #aaa;">
-    <div style="width: 16px; height: 16px; background: #1a365d; border-radius: 2px; display: flex; align-items: center; justify-content: center;">
-      <span style="font-family: 'Lora', serif; font-size: 12px; color: #fff; line-height: 1;">α</span>
-    </div>
+<div class="section-label">In context</div>
+<div class="sim-row">
+  <div class="favicon-sim">
+    <div class="fav"><span>α</span></div>
     municipαl.com
   </div>
-
-  <!-- LinkedIn -->
-  <div style="display: inline-flex; align-items: center; gap: 10px; background: #161b22; padding: 10px 18px; border-radius: 8px;">
-    <div style="width: 44px; height: 44px; background: #1a365d; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-      <span style="font-family: 'Lora', serif; font-size: 24px; color: #fff; line-height: 1;">α</span>
-    </div>
-    <div style="font-size: 14px; color: #ccc;">Municipal Alpha<br><small style="color: #666; font-size: 11px;">Public Record Intelligence</small></div>
+  <div class="linkedin-sim">
+    <div class="avatar"><img src="icon-square-dark.png"></div>
+    <div class="info">Municipal Alpha<small>Public Record Intelligence</small></div>
   </div>
-
-  <!-- Email sig -->
-  <div style="background: #fff; padding: 15px 20px; border-radius: 8px; font-family: system-ui; font-size: 13px; color: #333; display: inline-block;">
-    <div style="font-family: 'Lora', serif; font-size: 16px; color: #1a365d; margin-bottom: 4px; white-space: nowrap;"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></div>
-    <div style="color: #666; font-size: 11px;">matt@municipalalpha.com</div>
+  <div class="email-sim">
+    <img src="wordmark-nav.png" style="height: 16px;"><br>
+    <div>matt@municipalalpha.com</div>
   </div>
 </div>
 
-<!-- ==================== SITE MOCKUP ==================== -->
 <div class="section-label">In situ — municipalalpha.com</div>
-
 <div class="site-mock">
   <div class="site-nav">
-    <span class="site-nav-brand"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></span>
+    <img src="wordmark-nav.png" style="height: 20px;">
     <div class="site-nav-links">
       <a href="#">Solutions</a>
       <a href="#">Data Stories</a>
@@ -207,37 +127,19 @@ scatter('p3', 30);
     </div>
   </div>
   <div class="site-footer">
-    <span class="site-nav-brand" style="font-size: 16px;"><span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span></span>
+    <img src="wordmark-nav.png" style="height: 16px;">
     <span>matt@municipalalpha.com</span>
   </div>
 </div>
 
-<!-- ==================== SHAREABLE ==================== -->
-<div class="section-label">Shareable assets</div>
-<p class="note">Right-click → Save Image to share with friends for feedback. Or screenshot this page.</p>
-
-<div class="share-grid">
-  <!-- Dark card with full system -->
-  <div style="background: #1a365d; border-radius: 16px; padding: 50px 60px; text-align: center; display: inline-block;">
-    <div style="font-family: 'Lora', serif; font-size: 56px; color: #fff; margin-bottom: 8px; white-space: nowrap;">
-      <span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span>
-    </div>
-    <div style="font-family: system-ui; font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 4px; text-transform: uppercase;">public record intelligence</div>
-  </div>
-
-  <!-- Light card -->
-  <div style="background: #fff; border-radius: 16px; padding: 50px 60px; text-align: center; display: inline-block;">
-    <div style="font-family: 'Lora', serif; font-size: 56px; color: #1a365d; margin-bottom: 8px; white-space: nowrap;">
-      <span style="font-weight: 700">municip</span><span style="font-weight: 400">α</span><span style="font-weight: 700">l</span>
-    </div>
-    <div style="font-family: system-ui; font-size: 12px; color: rgba(26,54,93,0.4); letter-spacing: 4px; text-transform: uppercase;">public record intelligence</div>
-  </div>
-
-  <!-- Just the mark, big -->
-  <div style="background: #1a365d; border-radius: 16px; padding: 40px 55px; text-align: center; display: inline-block;">
-    <span style="font-family: 'Lora', serif; font-size: 120px; color: #fff; line-height: 1;">α</span>
-  </div>
-</div>
+<div class="section-label">The system</div>
+<p class="note">
+  <strong>Icon / favicon:</strong> standalone α<br>
+  <strong>App icon / social:</strong> α in navy square<br>
+  <strong>Navigation:</strong> municipαl wordmark at nav size<br>
+  <strong>Hero / splash:</strong> full wordmark or expressive particle treatment<br>
+  <strong>Pitch deck cover:</strong> expressive α (constellation version)
+</p>
 
 </body>
 </html>

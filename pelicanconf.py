@@ -80,6 +80,15 @@ EXTRA_PATH_METADATA = {
     "extra/case-studies/muni-credit-early-warning.pdf": {"path": "case-studies/muni-credit-early-warning.pdf"},
     "extra/brand-review/index.html": {"path": "brand-review/index.html"},
     "extra/brand-review/expressive-particle-dark-v3.png": {"path": "brand-review/expressive-particle-dark-v3.png"},
+    "extra/brand-review/wordmark-dark.png": {"path": "brand-review/wordmark-dark.png"},
+    "extra/brand-review/wordmark-light.png": {"path": "brand-review/wordmark-light.png"},
+    "extra/brand-review/wordmark-tagline-dark.png": {"path": "brand-review/wordmark-tagline-dark.png"},
+    "extra/brand-review/wordmark-tagline-light.png": {"path": "brand-review/wordmark-tagline-light.png"},
+    "extra/brand-review/mark-dark.png": {"path": "brand-review/mark-dark.png"},
+    "extra/brand-review/mark-light.png": {"path": "brand-review/mark-light.png"},
+    "extra/brand-review/icon-square-dark.png": {"path": "brand-review/icon-square-dark.png"},
+    "extra/brand-review/icon-square-light.png": {"path": "brand-review/icon-square-light.png"},
+    "extra/brand-review/wordmark-nav.png": {"path": "brand-review/wordmark-nav.png"},
 }
 
 # Clean URLs
