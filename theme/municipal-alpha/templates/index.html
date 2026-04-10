@@ -64,22 +64,62 @@
 <!-- Case study teaser — the product demo -->
 <section style="background: #0C0C0C; padding: 64px 0; border-top: 3px solid #E8512D;">
     <div class="container" style="max-width: 800px;">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px;">Case Study / Amherst, New Hampshire / Population: 12,000</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px;">Case Study / Amherst, New Hampshire / Population: 12,000</div>
 
-        <div style="display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: center; margin-bottom: 32px;">
-            <div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">First signal</div>
-                <div style="font-family: 'Newsreader', serif; font-size: 20px; color: #F7F4F0; font-weight: 500;">July 2023</div>
-                <div style="font-size: 14px; color: #aaa; margin-top: 4px;">A citizen complains about cell coverage at a Board of Selectmen meeting.</div>
-            </div>
-            <div style="text-align: center; font-size: 24px; color: #E8512D;">&rarr;</div>
-            <div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Award</div>
-                <div style="font-family: 'Newsreader', serif; font-size: 20px; color: #F7F4F0; font-weight: 500;">January 2026</div>
-                <div style="font-size: 14px; color: #aaa; margin-top: 4px;">American Tower signs a 30-year ground lease. Vote: 5-0-0.</div>
+        <!-- Visual timeline -->
+        <div style="position: relative; margin: 0 0 40px;">
+            <!-- The timeline bar -->
+            <div style="position: relative; height: 160px;">
+                <!-- Year markers -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #444; letter-spacing: 1px;">
+                    <span>2023</span><span>2024</span><span>2025</span><span>2026</span>
+                </div>
+                <!-- Track line -->
+                <div style="position: absolute; top: 28px; left: 0; right: 0; height: 2px; background: #222;"></div>
+                <!-- Competitive window highlight -->
+                <div style="position: absolute; top: 20px; left: 21%; right: 8%; height: 18px; background: rgba(232,81,45,0.08); border-left: 1px dashed #E8512D; border-right: 1px dashed #E8512D;"></div>
+                <div style="position: absolute; top: 40px; left: 21%; right: 8%; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #E8512D; letter-spacing: 1px;">23-MONTH COMPETITIVE WINDOW</div>
+
+                <!-- Meeting dots - positioned proportionally across 32 months (Jul 2023 = 0%, Mar 2026 = 100%) -->
+                <!-- Jul 23 --> <div style="position: absolute; top: 24px; left: 0%; width: 10px; height: 10px; border-radius: 50%; background: #444;" title="Jul 2023: Citizen complaint"></div>
+                <!-- Aug 23 --> <div style="position: absolute; top: 24px; left: 3.1%; width: 10px; height: 10px; border-radius: 50%; background: #444;" title="Aug 2023: T-Mobile contact"></div>
+                <!-- Aug 23b --> <div style="position: absolute; top: 24px; left: 4.2%; width: 10px; height: 10px; border-radius: 50%; background: #555;" title="Aug 2023: T-Mobile review"></div>
+                <!-- Oct 23 --> <div style="position: absolute; top: 24px; left: 9.4%; width: 10px; height: 10px; border-radius: 50%; background: #666;" title="Oct 2023: Independent agent"></div>
+                <!-- Feb 24 --> <div style="position: absolute; top: 24px; left: 21.9%; width: 10px; height: 10px; border-radius: 50%; background: #E8512D;" title="Feb 2024: Tower company engaged"></div>
+                <!-- Apr 24 --> <div style="position: absolute; top: 24px; left: 28.1%; width: 10px; height: 10px; border-radius: 50%; background: #c44;" title="Apr 2024: Draft agreement"></div>
+                <!-- Aug 24 --> <div style="position: absolute; top: 24px; left: 40.6%; width: 10px; height: 10px; border-radius: 50%; background: #666;" title="Aug 2024: $1M cost estimate"></div>
+                <!-- Sep 24 --> <div style="position: absolute; top: 24px; left: 43.8%; width: 10px; height: 10px; border-radius: 50%; background: #666;" title="Sep 2024: Less expensive"></div>
+                <!-- Oct 24 --> <div style="position: absolute; top: 24px; left: 46.9%; width: 10px; height: 10px; border-radius: 50%; background: #c44;" title="Oct 2024: Funding request"></div>
+                <!-- Nov 24 --> <div style="position: absolute; top: 24px; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: #666;" title="Nov 2024: Two vendors"></div>
+                <!-- Jan 25 --> <div style="position: absolute; top: 24px; left: 56.3%; width: 10px; height: 10px; border-radius: 50%; background: #555;" title="Jan 2025: Design pivot"></div>
+                <!-- Oct 25 --> <div style="position: absolute; top: 24px; left: 84.4%; width: 10px; height: 10px; border-radius: 50%; background: #c44;" title="Oct 2025: Monopole selected"></div>
+                <!-- Oct 25b --> <div style="position: absolute; top: 24px; left: 85.5%; width: 10px; height: 10px; border-radius: 50%; background: #c44;" title="Oct 2025: Planning Board"></div>
+                <!-- Dec 25 --> <div style="position: absolute; top: 24px; left: 90.6%; width: 10px; height: 10px; border-radius: 50%; background: #c44;" title="Dec 2025: Third-party deal"></div>
+                <!-- Jan 26 --> <div style="position: absolute; top: 24px; left: 93.8%; width: 10px; height: 10px; border-radius: 50%; background: #E8512D;" title="Jan 2026: AMT named"></div>
+                <!-- Jan 26b --> <div style="position: absolute; top: 24px; left: 94.9%; width: 10px; height: 10px; border-radius: 50%; background: #E8512D;" title="Jan 2026: 5-0-0 vote"></div>
+                <!-- Mar 26 --> <div style="position: absolute; top: 24px; left: 100%; width: 10px; height: 10px; border-radius: 50%; background: #E8512D; margin-left: -10px;" title="Mar 2026: Award"></div>
+
+                <!-- Key callouts -->
+                <div style="position: absolute; top: 58px; left: 0; max-width: 160px;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #666; margin-bottom: 2px;">JUL 2023</div>
+                    <div style="font-size: 12px; color: #aaa; line-height: 1.4;">Citizen complains about cell coverage</div>
+                </div>
+                <div style="position: absolute; top: 58px; left: 20%; max-width: 140px;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #E8512D; margin-bottom: 2px;">FEB 2024</div>
+                    <div style="font-size: 12px; color: #aaa; line-height: 1.4;">Tower company engaged, site visits</div>
+                </div>
+                <div style="position: absolute; top: 58px; left: 54%; max-width: 130px;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #666; margin-bottom: 2px;">JAN 2025</div>
+                    <div style="font-size: 12px; color: #888; line-height: 1.4;">Design pivot: combined tower not viable</div>
+                </div>
+                <div style="position: absolute; top: 58px; right: 0; max-width: 140px; text-align: right;">
+                    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #E8512D; margin-bottom: 2px;">JAN 2026</div>
+                    <div style="font-size: 12px; color: #F7F4F0; line-height: 1.4;">American Tower signs 30-year lease. 5-0-0.</div>
+                </div>
             </div>
         </div>
 
+        <!-- Stats row -->
         <div style="display: flex; gap: 32px; margin-bottom: 28px; flex-wrap: wrap;">
             <div style="text-align: center;">
                 <div style="font-family: 'Newsreader', serif; font-size: 32px; font-weight: 600; color: #E8512D;">17</div>
@@ -90,8 +130,8 @@
                 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: 1px;">public meetings</div>
             </div>
             <div style="text-align: center;">
-                <div style="font-family: 'Newsreader', serif; font-size: 32px; font-weight: 600; color: #E8512D;">23 mo</div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: 1px;">competitive window</div>
+                <div style="font-family: 'Newsreader', serif; font-size: 32px; font-weight: 600; color: #F7F4F0;">32</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: 1px;">months, start to award</div>
             </div>
             <div style="text-align: center;">
                 <div style="font-family: 'Newsreader', serif; font-size: 32px; font-weight: 600; color: #E8512D;">0</div>
@@ -99,9 +139,9 @@
             </div>
         </div>
 
-        <p style="font-size: 15px; color: #aaa; line-height: 1.7; margin-bottom: 24px;">No FCC registration. No FAA filing. No RFP. The only record of this deal is in meeting minutes on amherstnh.gov. Every document is linked, every source is verifiable. If you weren't reading Amherst's Board of Selectmen minutes, you would not have known this deal existed.</p>
+        <p style="font-size: 15px; color: #aaa; line-height: 1.7; margin-bottom: 24px;">No FCC registration. No FAA filing. No RFP. The only record of this deal is in meeting minutes on amherstnh.gov. If you weren't reading Amherst's Board of Selectmen minutes, you would not have known this deal existed.</p>
 
-        <a href="{{ SITEURL }}/research/amherst-tower/" style="display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #E8512D; text-decoration: none; padding: 10px 24px; border: 1px solid #E8512D; border-radius: 3px; transition: all 0.2s;">Read the full signal chain &rarr;</a>
+        <a href="{{ SITEURL }}/research/amherst-tower/" style="display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #E8512D; text-decoration: none; padding: 10px 24px; border: 1px solid #E8512D; border-radius: 3px; transition: all 0.2s;">Read the full signal chain with source links &rarr;</a>
     </div>
 </section>
 
