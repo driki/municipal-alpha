@@ -53,10 +53,10 @@
     <div class="container">
         <p class="hero-kicker">Where alpha hides</p>
         <h1>The signal was in the record. <em>We found it first.</em></h1>
-        <p class="hero-sub">{{ METRICS.municipalities }} municipalities parsed daily across {{ METRICS.states }} states. Pre-earnings, pre-listing, pre-RFP intelligence from source documents.</p>
+        <p class="hero-sub">Right now, you find out about projects when the RFP drops. About vendor relationships when earnings publish. About infrastructure spending when the bond prices move. By then, everyone else knows too.</p>
         <div class="signal-callout">
-            <div class="sig-label">Signal / Vendor Payment · 3 weeks early</div>
-            <div class="sig-text">Check register shows $2.4M to Meridian Services. Three weeks before it surfaces in quarterly earnings.</div>
+            <div class="sig-label">Signal / Tower Lease · 6 months early</div>
+            <div class="sig-text">Amherst NH Board of Appeals approved cell tower at 67 Boston Post Rd. 23-month competitive window before construction. Source: meeting minutes, public record.</div>
         </div>
         <div style="margin-top: 32px;">
             <a href="{{ SITEURL }}/data-stories/#the-datasets" class="btn">See the Data</a>
@@ -70,102 +70,60 @@
         <div class="metric-grid">
             <div class="metric">
                 <span class="metric-value">{{ METRICS.municipalities }}</span>
-                <span class="metric-label">Municipalities monitored</span>
+                <span class="metric-label">municipalities parsed daily</span>
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.documents }}</span>
-                <span class="metric-label">Documents ingested</span>
+                <span class="metric-label">documents ingested</span>
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.signals }}</span>
-                <span class="metric-label">Classified signals</span>
+                <span class="metric-label">classified signals</span>
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.tower_sites }}</span>
-                <span class="metric-label">Tower sites screened</span>
+                <span class="metric-label">tower sites screened</span>
             </div>
             <div class="metric">
-                <span class="metric-value">{{ METRICS.permits }}</span>
-                <span class="metric-label">Permit records structured</span>
+                <span class="metric-value">{{ METRICS.tickers }}</span>
+                <span class="metric-label">public company tickers resolved</span>
             </div>
             <div class="metric">
                 <span class="metric-value">{{ METRICS.states }}</span>
-                <span class="metric-label">States</span>
+                <span class="metric-label">states</span>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="stories">
-    <div class="container">
-        <h2>Data Stories</h2>
-        <p>Cross-municipal patterns that are only visible when you read every town hall at once. Built from live pipeline data, not desk research.</p>
-        <div class="story-grid">
-            <a href="{{ SITEURL }}/research/pfas-contagion/" class="story-card">
-                <span class="story-stat">120+ events, 72 municipalities, 23 states</span>
-                <h3>PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater</h3>
-                <p>Remediation spending signals visible in town council agendas months before EPA enforcement.</p>
-            </a>
-            <a href="{{ SITEURL }}/research/company-footprint/" class="story-card">
-                <span class="story-stat">100+ tickers, 1,800+ municipalities</span>
-                <h3>The Company That Shows Up in 123 Towns</h3>
-                <p>Entity resolution reveals which public companies have the deepest municipal government footprint.</p>
-            </a>
-            <a href="{{ SITEURL }}/research/housing-density-wave/" class="story-card">
-                <span class="story-stat">390+ events, 130+ municipalities, 27 states</span>
-                <h3>The Housing Density Wave Is Rewriting Municipal Zoning</h3>
-                <p>ADU mandates, density increases, and STR regulation moving through regions at different speeds.</p>
-            </a>
-            <a href="{{ SITEURL }}/research/lead-pipes/" class="story-card">
-                <span class="story-stat">$50B problem, 39 municipalities, 13 states</span>
-                <h3>Lead Pipes Are a $50B Problem Hiding in Municipal Agendas</h3>
-                <p>The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending.</p>
-            </a>
-            <a href="{{ SITEURL }}/research/data-center-zoning/" class="story-card">
-                <span class="story-stat">58 signals, 30 jurisdictions, 20 states</span>
-                <h3>Data Centers Are Now a Zoning Fight in 20 States</h3>
-                <p>Moratoriums, tax breaks, and electricity caps hitting municipal agendas faster than the power grid can keep up.</p>
-            </a>
-            <a href="{{ SITEURL }}/research/pickleball-wave/" class="story-card">
-                <span class="story-stat">29 signals, 14 municipalities, 9 states</span>
-                <h3>The Pickleball Boom Is Now a Line Item in Municipal Budgets</h3>
-                <p>From federal grants to tennis court conversions to liquor license amendments, a consumer trend becoming municipal capex.</p>
-            </a>
-        </div>
-        <div class="stories-more">
-            <a href="{{ SITEURL }}/data-stories/">All data stories and town profiles &rarr;</a>
         </div>
     </div>
 </section>
 
 <section class="solutions">
     <div class="container">
-        <h2>Precursor Intelligence for Your Domain</h2>
+        <h2>Your current workflow has a timing gap. We close it.</h2>
         <div class="solution-grid">
             <a href="{{ SITEURL }}/solutions/tower-leads/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Pre-Listing Lease Intelligence</h3>
-                <p>{{ METRICS.tower_sites }} tower sites screened with parcel data, owner identification, and FCC/FAA cross-reference. You contact the landowner before the lease hits the market.</p>
+                <h3>Infrastructure Lease Intelligence</h3>
+                <p>"First contact wins the deal." When a planning board approves a tower, you know 6 months before construction bids open. {{ METRICS.tower_sites }} sites screened with parcel data and owner ID.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/alt-data/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
                 <h3>Pre-Earnings Municipal Signals</h3>
-                <p>Vendor payments and building permits resolved to {{ METRICS.tickers }} public company tickers. You see the revenue before quarterly reports.</p>
-            </a>
-            <a href="{{ SITEURL }}/solutions/credit-intelligence/" class="solution-card solution-featured">
-                <span class="solution-badge">Sample data available</span>
-                <h3>Pre-Downgrade Fiscal Intelligence</h3>
-                <p>Spending patterns, budget approvals, and fiscal stress indicators from {{ METRICS.municipalities }} municipalities. You see the stress before the rating agency does.</p>
+                <p>"Information hiding in plain sight." A check register shows the vendor payment weeks before it surfaces in quarterly earnings. {{ METRICS.tickers }} tickers resolved from source documents.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/contractor-signals/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Government Contractor Signals</h3>
-                <p>Vendor payments and building permits mapped to {{ METRICS.tickers }} public company tickers. You see the revenue before earnings.</p>
+                <h3>Project Awareness Intelligence</h3>
+                <p>"We need project awareness, not bid listings." When a committee discusses a project at the workshop stage, you know which firms are positioning and which markets are heating up.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/infrastructure-risk/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Pre-Event Risk Intelligence</h3>
-                <p>Infrastructure spending patterns, deferred maintenance signals, and contagion tracking. You see the risk before it becomes a claim.</p>
+                <h3>Pre-RFP Environmental Signals</h3>
+                <p>"My scope is pre-RFP." When a town council votes on PFAS remediation, you have 90 days to prepare accreditation before the state RFP drops. We track the municipal signal chain.</p>
+            </a>
+            <a href="{{ SITEURL }}/solutions/credit-intelligence/" class="solution-card solution-featured">
+                <span class="solution-badge">Sample data available</span>
+                <h3>Municipal Credit Signals</h3>
+                <p>Spending patterns, deferred maintenance, budget stress indicators from {{ METRICS.municipalities }} municipalities. The fiscal trajectory is in the record before the rating agency sees it.</p>
             </a>
             <div class="solution-card">
                 <h3>Insurance Rate Intelligence</h3>
@@ -177,8 +135,50 @@
             </div>
             <div class="solution-card">
                 <h3>Custom Data Products</h3>
-                <p>The knowledge graph covers every public record type. If a municipality publishes it, I can structure it for your use case.</p>
+                <p>If a municipality publishes it, I can structure it for your use case. Tell me what you're watching.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="stories">
+    <div class="container">
+        <h2>What becomes visible when you read every town hall at once</h2>
+        <p>Cross-municipal patterns from live pipeline data, not desk research. Each story is a class of signal that repeats across jurisdictions.</p>
+        <div class="story-grid">
+            <a href="{{ SITEURL }}/research/pfas-contagion/" class="story-card">
+                <span class="story-stat">120+ events · 72 municipalities · 23 states</span>
+                <h3>PFAS Is Spreading Through Municipal Agendas Faster Than Groundwater</h3>
+                <p>Remediation spending signals visible in town council agendas months before EPA enforcement.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/company-footprint/" class="story-card">
+                <span class="story-stat">100+ tickers · 1,800+ municipalities</span>
+                <h3>The Company That Shows Up in 123 Towns</h3>
+                <p>Entity resolution reveals which public companies have the deepest municipal government footprint.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/housing-density-wave/" class="story-card">
+                <span class="story-stat">390+ events · 130+ municipalities · 27 states</span>
+                <h3>The Housing Density Wave Is Rewriting Municipal Zoning</h3>
+                <p>ADU mandates, density increases, and STR regulation moving through regions at different speeds.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/lead-pipes/" class="story-card">
+                <span class="story-stat">$50B problem · 39 municipalities · 13 states</span>
+                <h3>Lead Pipes Are a $50B Problem Hiding in Municipal Agendas</h3>
+                <p>The EPA's Lead and Copper Rule is creating a predictable cascade of municipal spending.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/data-center-zoning/" class="story-card">
+                <span class="story-stat">58 signals · 30 jurisdictions · 20 states</span>
+                <h3>Data Centers Are Now a Zoning Fight in 20 States</h3>
+                <p>Moratoriums, tax breaks, and electricity caps hitting municipal agendas faster than the power grid can keep up.</p>
+            </a>
+            <a href="{{ SITEURL }}/research/pickleball-wave/" class="story-card">
+                <span class="story-stat">29 signals · 14 municipalities · 9 states</span>
+                <h3>The Pickleball Boom Is Now a Line Item in Municipal Budgets</h3>
+                <p>Consumer trend becoming municipal capex: federal grants, tennis court conversions, liquor license amendments.</p>
+            </a>
+        </div>
+        <div class="stories-more">
+            <a href="{{ SITEURL }}/data-stories/">All data stories and town profiles &rarr;</a>
         </div>
     </div>
 </section>
@@ -189,11 +189,7 @@
         <div class="how-brief-text">
             <h2>Nobody else reads Gorham, Maine</h2>
             <p>
-                The big data vendors cover New York and Chicago. Nobody is reading the 19,500 small and mid-sized municipalities
-                that issue the same building permits, check registers, and assessor records, just on worse websites,
-                behind more obscure FOIA statutes. The precursor documents that predict market events sit unread on those
-                town hall websites. The system finds them because it has spent a year learning how to navigate these systems,
-                one jurisdiction at a time. Every dead end teaches it something. The recipes accumulate.
+                The big data vendors cover New York and Chicago. One competitor literally sends human beings to the town clerk's office. Nobody is reading the 19,500 small and mid-sized municipalities that issue the same building permits, check registers, and assessor records, just on worse websites, behind more obscure FOIA statutes. The system reads them because it has spent a year learning how to navigate these systems, one jurisdiction at a time.
             </p>
             <a href="{{ SITEURL }}/how-it-works/">How it works &rarr;</a>
         </div>
@@ -208,8 +204,7 @@
             The tower does not appear in the FCC's standard registration database. There is no municipal assessor,
             no town website, no CMS platform to scrape. The system found it anyway, by combining an FCC land mobile license,
             an FAA obstruction filing, a trail database entry for "Cell Tower Access Road," USGS elevation data,
-            and a state tax roll. Five sources, none sufficient alone, each one a technique learned from a previous
-            dead end somewhere else.
+            and a state tax roll. Five sources, none sufficient alone.
         </p>
     </div>
 </section>
@@ -218,13 +213,10 @@
     <div class="container">
         <h2>99% of these documents don't show up in search</h2>
         <p>
-            Municipal CMS platforms store documents at URLs with no navigation link. A town clerk uploads a check register, it gets a URL,
-            and nothing on the site ever points to it. Google can't index what it can't find. AI agents browse the same pages Google does.
-            Roughly 99% of the documents ingested are invisible to search engines and AI assistants. They are public record,
-            sitting on public servers, at URLs that nothing links to.
+            A town clerk uploads a check register. It gets a URL. Nothing on the site ever links to it. Google can't index what it can't find. AI agents browse the same pages Google does.
         </p>
         <p>
-            The system finds them because it has connectors for each municipal CMS platform, not a general-purpose crawler.
+            Roughly 99% of the documents ingested are invisible to search engines and AI assistants. Public record, on public servers, at URLs that nothing points to. The system finds them because it has connectors for each municipal CMS platform, not a general-purpose crawler.
         </p>
         <a href="{{ SITEURL }}/how-it-works/">How it finds what search engines miss &rarr;</a>
     </div>
@@ -286,14 +278,14 @@
 
 <section class="social-proof">
     <div class="container">
-        <p class="social-proof-text">In pilot with institutional infrastructure and alternative data clients. Data evaluated by hedge funds, tower REITs, permit aggregators, and municipal bond teams.</p>
+        <p class="social-proof-text">"No one's doing anything related to this in any way, shape, or form that I am aware of." &mdash; Financial Advisor, wealth management</p>
     </div>
 </section>
 
 <section class="cta">
     <div class="container">
-        <h2>See what I can see before it hits your current sources</h2>
-        <p>I work with hedge funds, infrastructure companies, data platforms, and aggregators who need structured government data. Tell me what you're watching and I'll show you what the precursor documents say.</p>
+        <h2>Tell me what you're watching. I'll show you what the record says.</h2>
+        <p>This works best if someone on your team evaluates external data: lead gen managers, acquisitions teams, alternative data analysts, infrastructure researchers. If that's you, book 15 minutes and bring a geography or a ticker. I'll show you what I see.</p>
         <a href="https://calendar.app.google/s6wDVSaJuqCkwcmg9" class="btn">Book a 15-Minute Data Review</a>
         <a href="{{ SITEURL }}/contact/" class="btn btn-outline">Contact</a>
     </div>
