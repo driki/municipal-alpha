@@ -4,68 +4,88 @@
 <title>municipαl — Brand Concept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d1117; color: #fff; font-family: system-ui, -apple-system, sans-serif; padding: 40px 40px 100px; }
-  h1 { font-weight: 300; font-size: 22px; margin-bottom: 6px; letter-spacing: 4px; }
-  .sub { color: #555; font-size: 12px; margin-bottom: 50px; }
-  .section-label { font-size: 13px; color: #4a9eff; letter-spacing: 2px; text-transform: uppercase; margin: 50px 0 20px; border-bottom: 1px solid #1a2744; padding-bottom: 8px; }
-  .note { color: #888; font-size: 13px; max-width: 700px; line-height: 1.6; margin: 10px 0 20px; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0C0C0C; color: #F7F4F0; font-family: 'DM Sans', system-ui, sans-serif; padding: 40px 40px 100px; -webkit-font-smoothing: antialiased; }
+  h1 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; margin-bottom: 6px; letter-spacing: 2px; }
+  .sub { font-family: 'IBM Plex Mono', monospace; color: #E8512D; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 50px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E8512D; letter-spacing: 2px; text-transform: uppercase; margin: 50px 0 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; }
+  .note { color: #888; font-size: 14px; max-width: 700px; line-height: 1.7; margin: 10px 0 20px; }
+  .note strong { color: #F7F4F0; }
   .row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; align-items: end; }
-  .row img { border-radius: 12px; }
+  .row img { border-radius: 8px; }
 
-  .site-mock { background: #fff; border-radius: 12px; overflow: hidden; max-width: 800px; box-shadow: 0 4px 30px rgba(0,0,0,0.4); margin: 20px 0; }
-  .site-nav { background: #1a365d; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+  /* Signal callout */
+  .signal-callout { background: rgba(232,81,45,0.06); border-left: 3px solid #E8512D; padding: 10px 14px; margin: 12px 0; max-width: 500px; }
+  .signal-callout .sig-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: #E8512D; margin-bottom: 3px; }
+  .signal-callout .sig-text { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ccc; line-height: 1.5; }
+
+  /* Site mockup */
+  .site-mock { background: #F7F4F0; border-radius: 8px; overflow: hidden; max-width: 800px; box-shadow: 0 4px 30px rgba(0,0,0,0.4); margin: 20px 0; }
+  .site-nav { background: #0C0C0C; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1a1a1a; }
   .site-nav-links { display: flex; gap: 28px; }
-  .site-nav-links a { color: #e2e8f0; text-decoration: none; font-size: 14px; }
-  .site-hero { background: #1a365d; color: #fff; padding: 60px 40px 50px; }
-  .site-hero h2 { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; line-height: 1.1; }
-  .site-hero p { font-size: 18px; color: #e2e8f0; }
-  .site-body { padding: 40px; color: #1e293b; font-size: 15px; line-height: 1.7; }
+  .site-nav-links a { font-family: 'DM Sans', sans-serif; color: #888; text-decoration: none; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .site-hero { background: #F7F4F0; color: #0C0C0C; padding: 48px 40px 40px; }
+  .site-hero h2 { font-family: 'Newsreader', serif; font-size: 36px; font-weight: 500; margin-bottom: 16px; line-height: 1.15; max-width: 450px; }
+  .site-hero h2 em { color: #E8512D; font-style: italic; }
+  .site-hero p { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #888; max-width: 400px; line-height: 1.6; }
+  .site-body { padding: 0 40px 40px; color: #333; }
   .site-body .cards { display: flex; gap: 16px; margin-top: 20px; }
-  .site-body .scard { background: #f8fafc; border-radius: 8px; padding: 20px; flex: 1; border: 1px solid #e2e8f0; }
-  .site-body .scard strong { display: block; margin-bottom: 4px; color: #1a365d; }
-  .site-footer { background: #1a365d; padding: 30px 40px; color: #e2e8f0; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+  .site-body .scard { background: #fff; border-radius: 4px; padding: 20px; flex: 1; border: 1px solid #e8e4df; }
+  .site-body .scard strong { display: block; margin-bottom: 4px; color: #0C0C0C; font-family: 'Newsreader', serif; font-weight: 500; font-size: 14px; }
+  .site-body .scard p { font-size: 12px; color: #888; line-height: 1.5; }
+  .site-footer { background: #0C0C0C; padding: 24px 40px; color: #666; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
 
   .sim-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-  .favicon-sim { display: inline-flex; align-items: center; gap: 8px; background: #2a3a5c; padding: 6px 14px 6px 6px; border-radius: 6px; font-size: 13px; color: #aaa; }
-  .favicon-sim .fav { width: 16px; height: 16px; background: #1a365d; border-radius: 2px; display: flex; align-items: center; justify-content: center; }
-  .favicon-sim .fav span { font-family: 'Lora', serif; font-size: 12px; color: #fff; line-height: 1; }
-  .linkedin-sim { display: inline-flex; align-items: center; gap: 10px; background: #161b22; padding: 10px 18px; border-radius: 8px; }
-  .linkedin-sim .avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; }
-  .linkedin-sim .avatar img { width: 44px; height: 44px; object-fit: cover; }
-  .linkedin-sim .info { font-size: 14px; color: #ccc; }
-  .linkedin-sim .info small { color: #666; font-size: 11px; display: block; }
-  .email-sim { background: #fff; padding: 15px 20px; border-radius: 8px; display: inline-block; }
-  .email-sim div { color: #666; font-size: 11px; }
+
+  /* Download grid */
+  .dl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 20px 0; }
+  .dl-card { background: #141414; border: 1px solid #1e1e1e; border-radius: 8px; overflow: hidden; transition: border-color 0.2s; }
+  .dl-card:hover { border-color: #E8512D; }
+  .dl-preview { height: 140px; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .dl-preview.dark-bg { background: #0C0C0C; }
+  .dl-preview.paper-bg { background: #F7F4F0; }
+  .dl-preview.signal-bg { background: #E8512D; }
+  .dl-preview.edge-bg { background: #1B4332; }
+  .dl-preview.checker { background-image: repeating-conic-gradient(#1a1a1a 0% 25%, #222 0% 50%); background-size: 16px 16px; }
+  .dl-preview img { max-height: 100px; max-width: 90%; object-fit: contain; }
+  .dl-info { padding: 12px 16px; }
+  .dl-name { font-size: 13px; font-weight: 600; color: #F7F4F0; margin-bottom: 4px; }
+  .dl-meta { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #555; margin-bottom: 8px; }
+  .dl-link { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E8512D; text-decoration: none; padding: 4px 12px; border: 1px solid #E8512D; border-radius: 3px; transition: all 0.2s; }
+  .dl-link:hover { background: #E8512D; color: #F7F4F0; }
+
+  /* Specs table */
+  .specs { margin: 20px 0; }
+  .specs table { border-collapse: collapse; font-size: 13px; }
+  .specs td, .specs th { padding: 6px 16px 6px 0; text-align: left; color: #888; }
+  .specs th { color: #F7F4F0; font-weight: 600; }
+  .swatch { display: inline-block; width: 16px; height: 16px; border-radius: 3px; vertical-align: middle; margin-right: 8px; border: 1px solid rgba(255,255,255,0.06); }
 </style>
 </head>
 <body>
 
-<h1>BRAND CONCEPT</h1>
-<p class="sub">municipαl</p>
+<h1>municipαl</h1>
+<p class="sub">where alpha hides</p>
 
-<div class="section-label">What Municipal Alpha does</div>
+<div class="section-label">What this is</div>
 <p class="note">
-  Every day, 19,500 town halls in America publish documents that predict market events weeks or months before they happen. Vendor payments that precede earnings reports. Planning board votes that precede building permits. Budget approvals that precede RFPs. The documents have always been public. They were just scattered across thousands of websites in incompatible formats, and nobody was reading them all.
+  Every day, 19,500 town halls publish documents that predict market events weeks before they happen. A vendor payment hits a check register three weeks before quarterly earnings. A planning board vote signals a zoning change months before a permit is filed. A budget line reveals an infrastructure project before the RFP exists.
 </p>
 <p class="note">
-  Municipal Alpha reads them all, every day, across 2,300+ municipalities in all 50 states. A check register shows a vendor payment weeks before it shows up in quarterly earnings. A planning board vote signals a zoning change months before a building permit is filed. A budget approval reveals an infrastructure project before the RFP exists. The precursor documents were always there, encoded in public record, waiting for someone to read them.
+  The documents have always been public. They were just scattered across thousands of websites in incompatible formats, and nobody was reading them all. <strong>Municipal Alpha reads them all.</strong> 2,300+ municipalities, 50 states, updated daily.
 </p>
 <p class="note">
-  The category is <strong>precursor intelligence</strong>. You see the thing before it becomes a thing.
+  The signal was in the record. We found it first.
 </p>
 
-<div class="section-label">The logo concept</div>
+<div class="section-label">The concept</div>
 <p class="note">
-  Look at the wordmark below. It says "municipal." But the "a" is actually a Greek alpha (α). Most people read right past it and just see the word. Once you notice it, you can't unsee it.
+  Look at the wordmark. It says "municipal." But the "a" is a Greek alpha (α). Most people read right past it. Once you notice it, you can't unsee it.
 </p>
 <p class="note">
-  That's the whole company in one typographic move. The precursor signal was always there, encoded in plain sight, obvious once you know where to look. The α does double duty: it's the "a" in municipal, and it's alpha, as in the investment term for seeing something before everyone else does. You see the thing before it becomes a thing.
-</p>
-<p class="note">
-  The serif typeface is deliberate. Public records, newspapers, legal documents, the Congressional Record. Serif is the typography of things that are on the record. The α is set in the same weight as the letters around it — it doesn't announce itself. You read right past it. The signal was always there.
+  That's the whole company in one typographic move. The signal was always there, encoded in plain sight. The α does double duty: it's the "a" in municipal, and it's alpha — the investment term for edge. Where alpha hides.
 </p>
 
 <div class="section-label">Wordmark</div>
@@ -96,65 +116,266 @@
   <img src="icon-square-dark.png" width="44" style="border-radius: 50%;">
 </div>
 
+<div class="section-label">Signal callout pattern</div>
+<p class="note">The monospace + left-border accent for surfacing signals. The visual language of "we found something."</p>
+<div class="signal-callout">
+  <div class="sig-label">Signal / Tower Lease · 6 weeks early</div>
+  <div class="sig-text">Planning board approved cell tower at 42 Main St<br>Gorham ME · Board of Appeals minutes 2026-03-28</div>
+</div>
+<div class="signal-callout">
+  <div class="sig-label">Signal / Vendor Payment · 3 weeks early</div>
+  <div class="sig-text">Check register: $847K to Casella Waste Services<br>Brunswick ME · AP Warrant 2026-04-01</div>
+</div>
+<div class="signal-callout">
+  <div class="sig-label">Signal / Infrastructure · Pre-RFP</div>
+  <div class="sig-text">Capital budget: $2.1M water main replacement approved<br>Falmouth ME · Town Council minutes 2026-03-25</div>
+</div>
+
 <div class="section-label">Expressive treatment (hero / splash)</div>
-<p class="note">For large-format use. The α materializes from scattered data points like a constellation resolving into a letter.</p>
+<p class="note">For large-format use. The α materializes from scattered data points.</p>
 <div class="row">
-  <img src="expressive-particle-dark-v3.png" width="280" style="border-radius: 16px;">
+  <img src="expressive-particle-dark-v3.png" width="280" style="border-radius: 12px;">
 </div>
 
 <div class="section-label">In context</div>
 <div class="sim-row">
-  <div class="favicon-sim">
-    <div class="fav"><span>α</span></div>
+  <div style="display: inline-flex; align-items: center; gap: 8px; background: #1a1a1a; padding: 6px 14px 6px 6px; border-radius: 6px; font-size: 13px; color: #666;">
+    <div style="width: 16px; height: 16px; background: #0C0C0C; border-radius: 2px; display: flex; align-items: center; justify-content: center;">
+      <span style="font-family: 'Newsreader', serif; font-size: 12px; color: #F7F4F0; line-height: 1; font-weight: 500;">α</span>
+    </div>
     municipαl.com
   </div>
-  <div class="linkedin-sim">
-    <div class="avatar"><img src="icon-square-dark.png"></div>
-    <div class="info">Municipal Alpha<small>Precursor Intelligence</small></div>
+  <div style="display: inline-flex; align-items: center; gap: 10px; background: #141414; padding: 10px 18px; border-radius: 8px;">
+    <div style="width: 44px; height: 44px; overflow: hidden; border-radius: 50%;"><img src="icon-square-dark.png" style="width: 44px; height: 44px; object-fit: cover;"></div>
+    <div style="font-size: 14px; color: #ccc;">Municipal Alpha<br><small style="color: #555; font-size: 11px;">Where Alpha Hides</small></div>
   </div>
-  <div class="email-sim">
-    <img src="wordmark-nav.png" style="height: 16px;"><br>
-    <div>matt@municipalalpha.com</div>
+  <div style="background: #F7F4F0; padding: 15px 20px; border-radius: 8px; display: inline-block;">
+    <div style="font-family: 'Newsreader', serif; font-size: 16px; color: #0C0C0C; font-weight: 500; margin-bottom: 4px;">municipαl</div>
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #999;">matt@municipalalpha.com</div>
   </div>
 </div>
 
 <div class="section-label">In situ — municipalalpha.com</div>
 <div class="site-mock">
   <div class="site-nav">
-    <img src="wordmark-nav.png" style="height: 20px;">
+    <span style="font-family: 'Newsreader', serif; font-size: 18px; color: #F7F4F0; font-weight: 500;">municipαl</span>
     <div class="site-nav-links">
-      <a href="#">Solutions</a>
-      <a href="#">Data Stories</a>
-      <a href="#">Towns</a>
-      <a href="#">How It Works</a>
-      <a href="#">Contact</a>
+      <a href="#">Intelligence</a>
+      <a href="#">Signals</a>
+      <a href="#">Access</a>
     </div>
   </div>
   <div class="site-hero">
-    <h2>You see the thing<br>before it becomes a thing</h2>
-    <p>Precursor intelligence from 2,300+ municipalities across 50 states. Updated daily.</p>
+    <h2>The signal was in the record. <em>We found it first.</em></h2>
+    <div style="background: rgba(0,0,0,0.03); border-left: 3px solid #E8512D; padding: 10px 14px; max-width: 380px; margin-bottom: 18px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 8px; text-transform: uppercase; letter-spacing: 1.5px; color: #E8512D; margin-bottom: 3px;">Signal / 3 weeks early</div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #555; line-height: 1.4;">Vendor payment $2.4M to Meridian Services. Springfield MA check register.</div>
+    </div>
+    <p>2,300+ municipalities parsed daily. Pre-earnings, pre-listing, pre-RFP intelligence from source documents.</p>
   </div>
   <div class="site-body">
     <div class="cards">
-      <div class="scard"><strong>Pre-listing lease intelligence</strong>Contact the landowner before anyone else knows the lease exists</div>
-      <div class="scard"><strong>Pre-earnings municipal signals</strong>See the vendor payment before quarterly reports</div>
-      <div class="scard"><strong>Pre-RFP project intelligence</strong>Know about the project before the RFP is written</div>
+      <div class="scard"><strong>Pre-listing intelligence</strong><p>Planning board votes surface 6 weeks before MLS listings</p></div>
+      <div class="scard"><strong>Pre-earnings signals</strong><p>Vendor payments visible weeks before quarterly reports</p></div>
+      <div class="scard"><strong>Pre-RFP project intel</strong><p>Capital budgets reveal projects before RFPs are written</p></div>
     </div>
   </div>
   <div class="site-footer">
-    <img src="wordmark-nav.png" style="height: 16px;">
-    <span>matt@municipalalpha.com</span>
+    <span style="font-family: 'Newsreader', serif; font-size: 14px; color: #666; font-weight: 500;">municipαl</span>
+    <span style="font-family: 'IBM Plex Mono', monospace;">matt@municipalalpha.com</span>
   </div>
+</div>
+
+<!-- ==================== BRAND SPECS ==================== -->
+<div class="section-label">Brand specifications</div>
+
+<div class="specs">
+<table>
+  <tr><th>Wordmark typeface</th><td>Newsreader (Google Fonts) — Medium 500</td></tr>
+  <tr><th>Body typeface</th><td>DM Sans</td></tr>
+  <tr><th>Data / tagline typeface</th><td>IBM Plex Mono</td></tr>
+  <tr><th>Character</th><td>Greek lowercase alpha: α (U+03B1)</td></tr>
+  <tr><th>Company name</th><td>Municipal Alpha (two words, capital M capital A)</td></tr>
+  <tr><th>Wordmark</th><td style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 16px;">municipαl</td></tr>
+  <tr><th>Tagline</th><td style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px;">where alpha hides</td></tr>
+</table>
+</div>
+
+<div class="specs" style="margin-top: 24px;">
+<table>
+  <tr><th colspan="3">Colors</th></tr>
+  <tr><td><span class="swatch" style="background: #0C0C0C;"></span>#0C0C0C</td><td>Ink</td><td>Primary dark, wordmark on light</td></tr>
+  <tr><td><span class="swatch" style="background: #F7F4F0; border-color: #333;"></span>#F7F4F0</td><td>Paper</td><td>Primary light, wordmark on dark</td></tr>
+  <tr><td><span class="swatch" style="background: #E8512D;"></span>#E8512D</td><td>Signal</td><td>Accent, tagline, callouts, "we found something"</td></tr>
+  <tr><td><span class="swatch" style="background: #1B4332;"></span>#1B4332</td><td>Edge</td><td>Secondary accent, alpha/financial connotation</td></tr>
+  <tr><td><span class="swatch" style="background: #000000;"></span>#000000</td><td>Black</td><td>Print / mono use</td></tr>
+</table>
 </div>
 
 <div class="section-label">The system</div>
 <p class="note">
-  <strong>Icon / favicon:</strong> standalone α<br>
-  <strong>App icon / social:</strong> α in navy square<br>
+  <strong>Icon / favicon:</strong> standalone α in Newsreader<br>
+  <strong>App icon / social:</strong> α on ink<br>
   <strong>Navigation:</strong> municipαl wordmark at nav size<br>
-  <strong>Hero / splash:</strong> full wordmark or expressive particle treatment<br>
-  <strong>Pitch deck cover:</strong> expressive α (constellation version)
+  <strong>Hero / splash:</strong> full wordmark or expressive treatment<br>
+  <strong>Data surfaces:</strong> signal callout pattern (Plex Mono, Signal left-border)<br>
+  <strong>Pitch deck cover:</strong> expressive α
 </p>
+
+<!-- ==================== DOWNLOADS ==================== -->
+<div class="section-label">Download assets</div>
+<p class="note">
+  High-resolution PNGs at 2x. Transparent versions have no background.
+  Right-click and "Save link as" or click to download.
+</p>
+
+<h3 style="color: #ccc; font-size: 14px; margin: 30px 0 12px; font-weight: 600;">Wordmark</h3>
+<div class="dl-grid">
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/wordmark-white-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark — Paper/White</div>
+      <div class="dl-meta">PNG, transparent, 1506 x 416px</div>
+      <a href="downloads/wordmark-white-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview paper-bg"><img src="downloads/wordmark-ink-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark — Ink</div>
+      <div class="dl-meta">PNG, transparent, 1506 x 416px</div>
+      <a href="downloads/wordmark-ink-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview checker"><img src="downloads/wordmark-black-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark — Black</div>
+      <div class="dl-meta">PNG, transparent, 1506 x 416px</div>
+      <a href="downloads/wordmark-black-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+</div>
+
+<h3 style="color: #ccc; font-size: 14px; margin: 30px 0 12px; font-weight: 600;">Wordmark + Tagline</h3>
+<div class="dl-grid">
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/wordmark-tagline-white-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark + Tagline — Paper/White</div>
+      <div class="dl-meta">PNG, transparent, 1207 x 410px</div>
+      <a href="downloads/wordmark-tagline-white-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview paper-bg"><img src="downloads/wordmark-tagline-ink-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark + Tagline — Ink</div>
+      <div class="dl-meta">PNG, transparent, 1207 x 410px</div>
+      <a href="downloads/wordmark-tagline-ink-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/wordmark-tagline-on-ink.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark + Tagline — on Ink</div>
+      <div class="dl-meta">PNG, 913 x 378px</div>
+      <a href="downloads/wordmark-tagline-on-ink.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview paper-bg"><img src="downloads/wordmark-tagline-on-paper.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">Wordmark + Tagline — on Paper</div>
+      <div class="dl-meta">PNG, 913 x 378px</div>
+      <a href="downloads/wordmark-tagline-on-paper.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+</div>
+
+<h3 style="color: #ccc; font-size: 14px; margin: 30px 0 12px; font-weight: 600;">Standalone Mark</h3>
+<div class="dl-grid">
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/mark-white-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">α Mark — Paper/White</div>
+      <div class="dl-meta">PNG, transparent, 462 x 640px</div>
+      <a href="downloads/mark-white-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview paper-bg"><img src="downloads/mark-ink-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">α Mark — Ink</div>
+      <div class="dl-meta">PNG, transparent, 462 x 640px</div>
+      <a href="downloads/mark-ink-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview checker"><img src="downloads/mark-black-transparent.png"></div>
+    <div class="dl-info">
+      <div class="dl-name">α Mark — Black</div>
+      <div class="dl-meta">PNG, transparent, 462 x 640px</div>
+      <a href="downloads/mark-black-transparent.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+</div>
+
+<h3 style="color: #ccc; font-size: 14px; margin: 30px 0 12px; font-weight: 600;">App Icon</h3>
+<div class="dl-grid">
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/icon-ink-512.png" style="max-height: 120px;"></div>
+    <div class="dl-info">
+      <div class="dl-name">App Icon — Ink</div>
+      <div class="dl-meta">PNG, 1024 x 1024px</div>
+      <a href="downloads/icon-ink-512.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/icon-signal-512.png" style="max-height: 120px;"></div>
+    <div class="dl-info">
+      <div class="dl-name">App Icon — Signal</div>
+      <div class="dl-meta">PNG, 1024 x 1024px</div>
+      <a href="downloads/icon-signal-512.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/icon-edge-512.png" style="max-height: 120px;"></div>
+    <div class="dl-info">
+      <div class="dl-name">App Icon — Edge</div>
+      <div class="dl-meta">PNG, 1024 x 1024px</div>
+      <a href="downloads/icon-edge-512.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/icon-paper-512.png" style="max-height: 120px;"></div>
+    <div class="dl-info">
+      <div class="dl-name">App Icon — Paper</div>
+      <div class="dl-meta">PNG, 1024 x 1024px</div>
+      <a href="downloads/icon-paper-512.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/favicon-64.png" style="max-height: 64px; image-rendering: pixelated;"></div>
+    <div class="dl-info">
+      <div class="dl-name">Favicon</div>
+      <div class="dl-meta">PNG, 128 x 128px</div>
+      <a href="downloads/favicon-64.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+</div>
+
+<h3 style="color: #ccc; font-size: 14px; margin: 30px 0 12px; font-weight: 600;">Expressive Treatment</h3>
+<div class="dl-grid">
+  <div class="dl-card">
+    <div class="dl-preview dark-bg"><img src="downloads/expressive-particle-dark.png" style="border-radius: 6px;"></div>
+    <div class="dl-info">
+      <div class="dl-name">Expressive α — Constellation</div>
+      <div class="dl-meta">PNG, hero / splash use</div>
+      <a href="downloads/expressive-particle-dark.png" download class="dl-link">Download</a>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
