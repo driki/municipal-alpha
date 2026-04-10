@@ -3,9 +3,9 @@
 {% block title %}Municipal Alpha — Structured Data from US Public Records{% endblock %}
 
 {% block meta %}
-    <meta name="description" content="Precursor intelligence from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. See the thing before it becomes a thing.">
-    <meta property="og:title" content="Municipal Alpha — Precursor Intelligence">
-    <meta property="og:description" content="Precursor intelligence from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. Updated daily.">
+    <meta name="description" content="The signal was in the record. Municipal Alpha reads {{ METRICS.municipalities }} municipalities across {{ METRICS.states }} states daily. Where alpha hides.">
+    <meta property="og:title" content="Municipal Alpha — Where Alpha Hides">
+    <meta property="og:description" content="The signal was in the record. We found it first. {{ METRICS.municipalities }} municipalities across {{ METRICS.states }} states, parsed daily.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ SITENAME }}">
     <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
@@ -51,21 +51,17 @@
 {% block content %}
 <section class="hero">
     <div class="container">
-        <h1>You see the thing before it becomes a thing</h1>
-        <p class="hero-sub">Precursor intelligence from {{ METRICS.municipalities }} municipalities across {{ METRICS.states }} states. Updated daily.</p>
-        <div class="hero-jobs">
-            <div class="hero-job">
-                <strong>Pre-listing lease intelligence</strong> — contact the landowner before anyone else knows the lease exists
-            </div>
-            <div class="hero-job">
-                <strong>Pre-earnings municipal signals</strong> — see the vendor payment before quarterly reports
-            </div>
-            <div class="hero-job">
-                <strong>Pre-RFP project intelligence</strong> — know about the project before the RFP is written
-            </div>
+        <p class="hero-kicker">Where alpha hides</p>
+        <h1>The signal was in the record. <em>We found it first.</em></h1>
+        <p class="hero-sub">{{ METRICS.municipalities }} municipalities parsed daily across {{ METRICS.states }} states. Pre-earnings, pre-listing, pre-RFP intelligence from source documents.</p>
+        <div class="signal-callout">
+            <div class="sig-label">Signal / Vendor Payment · 3 weeks early</div>
+            <div class="sig-text">Check register shows $2.4M to Meridian Services. Three weeks before it surfaces in quarterly earnings.</div>
         </div>
-        <a href="{{ SITEURL }}/data-stories/#the-datasets" class="btn">See the Data</a>
-        <a href="https://calendar.app.google/s6wDVSaJuqCkwcmg9" class="btn btn-outline">Book a Data Review</a>
+        <div style="margin-top: 32px;">
+            <a href="{{ SITEURL }}/data-stories/#the-datasets" class="btn">See the Data</a>
+            <a href="https://calendar.app.google/s6wDVSaJuqCkwcmg9" class="btn btn-outline">Book a Data Review</a>
+        </div>
     </div>
 </section>
 
