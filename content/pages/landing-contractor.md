@@ -1,11 +1,11 @@
 Title: Government Contractor Signals
 Slug: solutions/contractor-signals
 Sortorder: 33
-Summary: Municipal vendor payments and building permits mapped to 100+ public company tickers. Primary-source revenue signals for government contractor coverage.
+Summary: Pre-earnings municipal signals. Vendor payments and building permits mapped to 118 public company tickers. Primary-source revenue signals for government contractor coverage.
 
-## Government contractor revenue from the source documents
+## You see the revenue before quarterly reports
 
-Analysts model municipal revenue top-down from budget allocations and macro spending trends. We read it bottom-up from the actual payment records, 2,100+ municipalities, every day.
+Analysts model municipal revenue top-down from budget allocations and macro spending trends. I read it bottom-up from the actual payment records, 2,300+ municipalities, every day.
 
 When a municipality pays AECOM for engineering services, that transaction appears in the check register weeks before it appears in quarterly revenue. When building permits spike in a county, the contractors winning that work show up in permit data 3-6 months before earnings.
 

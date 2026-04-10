@@ -1,13 +1,13 @@
 Title: Renewable Energy Siting Intelligence
 Slug: solutions/energy-development
 Sortorder: 35
-Summary: Zoning decisions, planning board approvals, environmental permits, and site plan reviews from 2,300+ municipalities. Early signals for greenfield site origination.
+Summary: Pre-RFP project intelligence. Zoning decisions, planning board approvals, environmental permits, and site plan reviews from 2,300+ municipalities. Early signals for greenfield site origination.
 
-## Find greenfield sites before competing developers do
+## You know about the project before the RFP is written
 
-The earliest signals in energy project development come from municipal government. A planning board that approves a solar overlay district, a zoning board that grants a variance for battery storage, a town meeting that votes on a utility-scale moratorium -- these decisions shape where projects get built, what the permitting path looks like, and whether local opposition is forming.
+The earliest signals in energy project development come from municipal government. A planning board approves a solar overlay district. A zoning board grants a variance for battery storage. A town meeting votes on a utility-scale moratorium. These decisions shape where projects get built, what the permitting path looks like, and whether local opposition is forming -- months before an RFP or a permit application exists.
 
-These signals are public record, but they're buried inside municipal document management systems at URLs with no navigation link. Nothing on the town website points to them. Search engines and AI agents can't see them. We built connectors that reach into 15+ CMS platforms directly and read documents the day they're published.
+These precursor signals are public record, but they're buried inside municipal document management systems at URLs with no navigation link. I built connectors that reach into 15+ CMS platforms directly and read documents the day they're published.
 
 ## What We Deliver
 

@@ -4,11 +4,11 @@ Sortorder: 4
 
 ![Data Layer Stack: a query enters through four data layers (Federal, County, Municipal, FOAA) and returns as an enriched Data Package]({static}/images/data-layer-stack.png)
 
-## A Knowledge Graph of US Public Records
+## Precursor Intelligence from a Knowledge Graph
 
-This is not five separate products stitched together. It is a knowledge graph -- entities, types, properties, and the relationships between them, continuously growing as new documents are ingested. Every municipality we add, every document we parse, every entity we resolve adds nodes and edges to the graph. Different data types from different jurisdictions connect into a unified picture because the graph connects them.
+The precursor documents that predict market events -- vendor payments, planning board votes, budget approvals, assessor records -- sit on 19,500 town hall websites. Reading any one is easy. Reading all of them, every day, structuring them into entities and relationships, and connecting signals across jurisdictions -- that's the system.
 
-Google built its Knowledge Graph by acquiring Metaweb, the company behind Freebase, turning the messy open web from strings into things. We are doing the same thing for US public records. 19,500 municipalities publishing in their own formats, their own portals, their own filing systems. We resolve that into a single graph of entities and relationships: which town paid which vendor, which parcel has which lease, which estate disclosed which assets.
+It is a knowledge graph: entities, types, properties, and the relationships between them, continuously growing as new documents are ingested. Every municipality added, every document parsed, every entity resolved adds nodes and edges to the graph. Different data types from different jurisdictions connect into a unified picture because the graph connects them.
 
 ## How a Parcel Connects Everything
 
@@ -38,20 +38,19 @@ Every new jurisdiction added to the pipeline activates data for every active ver
 
 ## Why 19,500 Municipalities
 
-The big data vendors cover New York and Chicago. We cover the 19,500 small and mid-sized municipalities that issue the same building permits, check registers, and assessor records, just on worse websites, behind more obscure FOIA statutes. AI agents make that possible. Our pipeline runs daily, autonomously.
+The big data vendors cover New York and Chicago. Nobody is reading the 19,500 small and mid-sized municipalities that issue the same building permits, check registers, and assessor records -- just on worse websites, behind more obscure FOIA statutes. That's where the precursor signals are least picked-over.
 
-Nobody else reads Gorham, Maine. Or Pocatello, Idaho. Or the thousands of other towns where the finance director posts a check register to a CivicPlus portal and nobody outside city hall ever looks at it. Those check registers contain the same vendor payment data that Bloomberg terminals show for federal contracts, just at the local level, where 19,500 jurisdictions spend a combined $3.9 trillion annually on payroll, infrastructure, services, and procurement.
+Nobody else reads Gorham, Maine. Or Pocatello, Idaho. Or the thousands of other towns where the finance director posts a check register to a CivicPlus portal and nobody outside city hall ever looks at it. Those check registers contain vendor payment data that precedes quarterly earnings reports, just at the local level, where 19,500 jurisdictions spend a combined $3.9 trillion annually.
 
-The coverage gap is the product. US municipalities collectively issue roughly 1.5 million building permits per year, process billions in vendor payments, publish thousands of planning board decisions, and file hundreds of thousands of public records annually. Almost none of it is structured. The few vendors that touch municipal data focus on the largest cities or aggregate at the state level, missing the transaction-level detail where the signal lives.
+The coverage gap is the product.
 
-We're not building a better way to read New York City's budget. We're building the first way to read Gorham's check register, and Pocatello's building permits, and Geneva's vendor payments, at the same time, every day, automatically.
+**Where the system is today:**
 
-**Where we are today:**
-
-- **2,100+** municipalities monitored daily, all 50 states
-- **309,000+** documents ingested and classified
+- **2,300+** municipalities monitored daily, all 50 states
+- **320,000+** documents ingested and classified
 - **43,000+** building permits structured
-- **100+** public company tickers resolved from municipal vendor names
+- **118** public company tickers resolved from municipal vendor names
+- **61,000+** classified investment signals
 - Adding new municipalities weekly, with infrastructure built to scale past 5,000
 
 **Where this goes:**
@@ -62,7 +61,7 @@ We're not building a better way to read New York City's budget. We're building t
 - **$4T** municipal bond market
 - **130,000+** FCC-registered tower structures
 
-The marginal cost of adding a municipality to the pipeline is near zero once the CMS connector exists, and six connector platforms cover the majority of US municipal websites. The graph gets denser with every town added, and denser graphs produce better intelligence.
+The marginal cost of adding a municipality is near zero once the CMS connector exists. Six connector platforms cover the majority of US municipal websites.
 
 ## The Dark Document Problem
 

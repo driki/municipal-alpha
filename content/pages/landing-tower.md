@@ -1,11 +1,11 @@
 Title: Tower & Infrastructure Leads
 Slug: solutions/tower-leads
 Sortorder: 30
-Summary: Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 4,700+ sites screened across 2,100+ municipalities.
+Summary: Pre-listing lease intelligence. Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 5,400+ sites screened across 2,300+ municipalities.
 
-## Find tower lease prospects before aggregators do
+## You contact the landowner before anyone else knows the lease exists
 
-Tower lease aggregation is a land rush. The difference between a good deal and a lost deal is who finds the landowner first. Public records tell you where the towers are, who owns the land, and what the lease looks like -- months before a lease renewal hits the market.
+Tower lease aggregation is a land rush. The difference between a good deal and a lost deal is who gets to the landowner first. A lease that hits the open market gets bid up 30-40%. The precursor signals -- assessor records, planning board votes, check register payments -- tell you where the towers are, who owns the land, and what the lease looks like, months before a renewal hits the market.
 
 ## What We Deliver
 
@@ -22,7 +22,7 @@ Tower lease aggregation is a land rush. The difference between a good deal and a
 
 ## Coverage
 
-We've screened 4,700+ tower sites across 2,100+ municipalities. Coverage is deepest in New England, Illinois, and Idaho, expanding weekly.
+5,400+ tower sites screened across 2,300+ municipalities. Coverage is deepest in New England, Illinois, and Idaho, expanding weekly.
 
 ### What a prospect looks like
 
@@ -40,7 +40,7 @@ No single public database contains all of this. The value is in the cross-refere
 
 There are 130,000+ FCC-registered tower structures in the United States. Most sit on privately owned land with ground leases that renew, transfer, or expire without anyone outside the immediate parties knowing about it. The public records that reveal lease terms, landowner identity, and property valuation exist in 19,500 municipal assessor databases, most of which have never been systematically screened.
 
-We've screened 4,700+ tower sites across 2,100+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. The pipeline adds municipalities weekly, and every new town with assessor data activates tower screening automatically.
+5,400+ tower sites screened across 2,300+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. Every new town with assessor data activates tower screening automatically.
 
 ## Why This Data Doesn't Show Up in Search
 
@@ -70,7 +70,7 @@ We publish a redacted sample of our tower prospect data so you can evaluate the 
 
 A real example from our pipeline: A New Hampshire municipality's planning board approved a cell tower height variance in meeting minutes. Cross-referencing the parcel with assessor records shows a private landowner. FCC data shows American Tower as the current tenant. The check register shows quarterly lease payments of $2,400. The lease renewal window is 8 months away.
 
-That's one prospect. We have 4,700+.
+That's one prospect. The system has 5,400+.
 
 For more on how the signal chain works, read our **[Amherst NH case study (PDF)](/case-studies/amherst-nh-procurement-chain.pdf)** -- a full walkthrough of 18 signals extracted from one municipality over 23 months.
 
@@ -78,6 +78,6 @@ For more on how the signal chain works, read our **[Amherst NH case study (PDF)]
 
 Pilot programs scoped to your target geography, with broader coverage available.
 
-**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us your target geography and we'll walk through coverage live.
+**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell me your target geography and I'll walk through coverage live.
 
-Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29) -- include your target geography and we'll send a coverage summary within one business day.
+Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29) -- include your target geography and I'll send a coverage summary within one business day.

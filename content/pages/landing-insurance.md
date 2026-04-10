@@ -1,11 +1,11 @@
 Title: Municipal Infrastructure Risk
 Slug: solutions/infrastructure-risk
 Sortorder: 34
-Summary: Infrastructure investment patterns, deferred maintenance signals, and capital project tracking from municipal spending data. Risk indicators for municipal insurance underwriting.
+Summary: Pre-event risk intelligence. Infrastructure spending patterns, deferred maintenance signals, and capital project tracking. Risk indicators visible in public records months before they become claims.
 
-## Underwrite municipal risk from spending patterns, not just claims history
+## You see the risk before it becomes a claim
 
-Claims history tells you what already went wrong. Municipal spending data tells you what's likely to go wrong next. Deferred infrastructure maintenance, stalled capital projects, and shifting spending priorities are visible in public records months or years before they become claims.
+Claims history tells you what already went wrong. Municipal spending data tells you what's about to. Deferred infrastructure maintenance, stalled capital projects, and shifting spending priorities are visible in public records months or years before they become claims. The precursor signals are already there, sitting on town hall websites. Nobody was reading them.
 
 ## What the Data Shows
 

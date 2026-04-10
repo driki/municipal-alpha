@@ -1,11 +1,11 @@
 Title: Municipal Credit Intelligence
 Slug: solutions/credit-intelligence
 Sortorder: 32
-Summary: Leading indicators of municipal fiscal health from source spending documents. Vendor payment velocity, budget-to-actual variance, and spending concentration across 2,100+ municipalities.
+Summary: Pre-downgrade fiscal intelligence. Leading indicators of municipal fiscal health from the source spending documents that rating agencies eventually read. 2,300+ municipalities.
 
-## See fiscal stress before rating agencies do
+## You see the fiscal stress before the rating agency does
 
-Rating agencies evaluate municipal credit quality from financial statements published months after the fact. The spending data we monitor is the raw material those statements are built from, available weeks or months earlier.
+Rating agencies evaluate municipal credit quality from financial statements published months after the fact. The spending data I monitor is the raw material those statements are built from, available weeks or months earlier. You see the precursor. They see the downgrade.
 
 Check registers show vendor payment velocity. Budget documents show appropriation changes. AP warrants show spending concentration. Together, they paint a picture of fiscal health in near-real-time, from the source documents themselves.
 
