@@ -3,9 +3,9 @@
 {% block title %}Municipal Alpha — Structured Data from US Public Records{% endblock %}
 
 {% block meta %}
-    <meta name="description" content="Structured, investable data from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. Municipal RFPs, capital plans, check registers, permits, and tower data updated daily.">
-    <meta property="og:title" content="Municipal Alpha — Structured Data from US Public Records">
-    <meta property="og:description" content="Structured, investable data from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. Updated daily.">
+    <meta name="description" content="Precursor intelligence from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. See the thing before it becomes a thing.">
+    <meta property="og:title" content="Municipal Alpha — Precursor Intelligence">
+    <meta property="og:description" content="Precursor intelligence from {{ METRICS.municipalities }} US municipalities across {{ METRICS.states }} states. Updated daily.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ SITENAME }}">
     <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
@@ -16,7 +16,7 @@
         "@type": "Organization",
         "name": "Municipal Alpha",
         "url": "https://municipalalpha.com",
-        "description": "A knowledge graph of US public records. Structured data from 2,100+ municipalities across 50 states, updated daily. Municipal RFPs, capital plans, check registers, vendor payments, building permits, tower infrastructure data, and legislative documents.",
+        "description": "Precursor intelligence from 2,300+ US municipalities. The documents that predict market events, read daily, before they become RFPs, rating changes, earnings surprises, or lease listings.",
         "contactPoint": {
             "@type": "ContactPoint",
             "email": "matt@municipalalpha.com",
@@ -43,7 +43,7 @@
         "@type": "WebSite",
         "name": "Municipal Alpha",
         "url": "https://municipalalpha.com",
-        "description": "Structured, investable data from US municipal public records"
+        "description": "Precursor intelligence from US municipal public records"
     }
     </script>
 {% endblock %}
@@ -51,17 +51,17 @@
 {% block content %}
 <section class="hero">
     <div class="container">
-        <h1>We read every town hall so you don't have to</h1>
-        <p class="hero-sub">Structured, investable data from {{ METRICS.municipalities }} municipalities across {{ METRICS.states }} states. Updated daily.</p>
+        <h1>You see the thing before it becomes a thing</h1>
+        <p class="hero-sub">Precursor intelligence from {{ METRICS.municipalities }} municipalities across {{ METRICS.states }} states. Updated daily.</p>
         <div class="hero-jobs">
             <div class="hero-job">
-                <strong>Find tower lease prospects</strong> before aggregators do
+                <strong>Pre-listing lease intelligence</strong> — contact the landowner before anyone else knows the lease exists
             </div>
             <div class="hero-job">
-                <strong>Track government contractor revenue</strong> from vendor payment data
+                <strong>Pre-earnings municipal signals</strong> — see the vendor payment before quarterly reports
             </div>
             <div class="hero-job">
-                <strong>Monitor municipal credit quality</strong> from the source documents ratings agencies eventually read
+                <strong>Pre-RFP project intelligence</strong> — know about the project before the RFP is written
             </div>
         </div>
         <a href="{{ SITEURL }}/data-stories/#the-datasets" class="btn">See the Data</a>
@@ -144,32 +144,32 @@
 
 <section class="solutions">
     <div class="container">
-        <h2>What You Can Do With This</h2>
+        <h2>Precursor Intelligence for Your Domain</h2>
         <div class="solution-grid">
             <a href="{{ SITEURL }}/solutions/tower-leads/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Infrastructure Lead Gen</h3>
-                <p>{{ METRICS.tower_sites }} tower sites screened with parcel data, owner identification, and FCC/FAA cross-reference. Delivered as qualified prospect lists.</p>
+                <h3>Pre-Listing Lease Intelligence</h3>
+                <p>{{ METRICS.tower_sites }} tower sites screened with parcel data, owner identification, and FCC/FAA cross-reference. You contact the landowner before the lease hits the market.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/alt-data/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Municipal Alt Data</h3>
-                <p>Vendor payments and building permits resolved to 100+ public company tickers. Check registers are the source documents that earnings eventually reflect.</p>
+                <h3>Pre-Earnings Municipal Signals</h3>
+                <p>Vendor payments and building permits resolved to {{ METRICS.tickers }} public company tickers. You see the revenue before quarterly reports.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/credit-intelligence/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Credit Quality Monitoring</h3>
-                <p>Spending patterns, budget approvals, and fiscal stress indicators structured daily from {{ METRICS.municipalities }} municipalities. Leading, not lagging.</p>
+                <h3>Pre-Downgrade Fiscal Intelligence</h3>
+                <p>Spending patterns, budget approvals, and fiscal stress indicators from {{ METRICS.municipalities }} municipalities. You see the stress before the rating agency does.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/contractor-signals/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
                 <h3>Government Contractor Signals</h3>
-                <p>Vendor payments and building permits resolved to 100+ public company tickers. Primary-source revenue signals for government contractor coverage.</p>
+                <p>Vendor payments and building permits mapped to {{ METRICS.tickers }} public company tickers. You see the revenue before earnings.</p>
             </a>
             <a href="{{ SITEURL }}/solutions/infrastructure-risk/" class="solution-card solution-featured">
                 <span class="solution-badge">Sample data available</span>
-                <h3>Infrastructure Risk</h3>
-                <p>Infrastructure spending patterns, deferred maintenance signals, and contagion tracking across {{ METRICS.municipalities }} municipalities.</p>
+                <h3>Pre-Event Risk Intelligence</h3>
+                <p>Infrastructure spending patterns, deferred maintenance signals, and contagion tracking. You see the risk before it becomes a claim.</p>
             </a>
             <div class="solution-card">
                 <h3>Insurance Rate Intelligence</h3>
@@ -181,7 +181,7 @@
             </div>
             <div class="solution-card">
                 <h3>Custom Data Products</h3>
-                <p>The knowledge graph covers every public record type. If a municipality publishes it, we can structure it for your use case.</p>
+                <p>The knowledge graph covers every public record type. If a municipality publishes it, I can structure it for your use case.</p>
             </div>
         </div>
     </div>
@@ -193,11 +193,11 @@
         <div class="how-brief-text">
             <h2>Nobody else reads Gorham, Maine</h2>
             <p>
-                The big data vendors cover New York and Chicago. We cover the 19,500 small and mid-sized municipalities
+                The big data vendors cover New York and Chicago. Nobody is reading the 19,500 small and mid-sized municipalities
                 that issue the same building permits, check registers, and assessor records, just on worse websites,
-                behind more obscure FOIA statutes. The system is good at finding things because it has spent a year
-                learning how to navigate these systems, one jurisdiction at a time. Every dead end teaches it something.
-                The recipes accumulate.
+                behind more obscure FOIA statutes. The precursor documents that predict market events sit unread on those
+                town hall websites. The system finds them because it has spent a year learning how to navigate these systems,
+                one jurisdiction at a time. Every dead end teaches it something. The recipes accumulate.
             </p>
             <a href="{{ SITEURL }}/how-it-works/">How it works &rarr;</a>
         </div>
@@ -210,7 +210,7 @@
         <p>
             A landowner in an unorganized territory in northern Maine sits on a cell tower lease worth $50,000 a year.
             The tower does not appear in the FCC's standard registration database. There is no municipal assessor,
-            no town website, no CMS platform to scrape. We found it anyway, by combining an FCC land mobile license,
+            no town website, no CMS platform to scrape. The system found it anyway, by combining an FCC land mobile license,
             an FAA obstruction filing, a trail database entry for "Cell Tower Access Road," USGS elevation data,
             and a state tax roll. Five sources, none sufficient alone, each one a technique learned from a previous
             dead end somewhere else.
@@ -224,20 +224,20 @@
         <p>
             Municipal CMS platforms store documents at URLs with no navigation link. A town clerk uploads a check register, it gets a URL,
             and nothing on the site ever points to it. Google can't index what it can't find. AI agents browse the same pages Google does.
-            In our testing, roughly 99% of the documents we ingest are invisible to search engines and AI assistants. They are public record,
+            Roughly 99% of the documents ingested are invisible to search engines and AI assistants. They are public record,
             sitting on public servers, at URLs that nothing links to.
         </p>
         <p>
-            We find them because we built connectors for each municipal CMS platform, not a general-purpose crawler.
+            The system finds them because it has connectors for each municipal CMS platform, not a general-purpose crawler.
         </p>
-        <a href="{{ SITEURL }}/how-it-works/">How we find what search engines miss &rarr;</a>
+        <a href="{{ SITEURL }}/how-it-works/">How it finds what search engines miss &rarr;</a>
     </div>
 </section>
 
 <section class="scale">
     <div class="container">
         <h2>Where This Goes</h2>
-        <p class="scale-intro">We cover {{ METRICS.municipalities }} municipalities today. The same public records exist in all 19,500.</p>
+        <p class="scale-intro">{{ METRICS.municipalities }} municipalities today. The same precursor documents exist in all 19,500.</p>
         <div class="scale-grid">
             <div class="scale-pair">
                 <div class="scale-now">
@@ -296,10 +296,10 @@
 
 <section class="cta">
     <div class="container">
-        <h2>See the data for your coverage universe</h2>
-        <p>We work with hedge funds, infrastructure companies, data platforms, and aggregators who need structured government data. Tell us what you're watching and we'll show you what we see.</p>
+        <h2>See what I can see before it hits your current sources</h2>
+        <p>I work with hedge funds, infrastructure companies, data platforms, and aggregators who need structured government data. Tell me what you're watching and I'll show you what the precursor documents say.</p>
         <a href="https://calendar.app.google/s6wDVSaJuqCkwcmg9" class="btn">Book a 15-Minute Data Review</a>
-        <a href="{{ SITEURL }}/contact/" class="btn btn-outline">Contact Us</a>
+        <a href="{{ SITEURL }}/contact/" class="btn btn-outline">Contact</a>
     </div>
 </section>
 {% endblock %}
