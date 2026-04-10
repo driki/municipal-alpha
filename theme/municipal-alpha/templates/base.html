@@ -25,7 +25,7 @@
             <a href="{{ SITEURL }}/" class="nav-brand"><img src="{{ SITEURL }}/images/wordmark-nav.png" alt="municipαl" style="height: 40px; vertical-align: middle;"></a>
             <div class="nav-links">
                 {% for p in pages %}
-                {% if p.slug in ['solutions', 'data-stories', 'towns', 'how-it-works', 'contact'] %}
+                {% if p.slug in ['solutions', 'data-stories', 'how-it-works', 'contact'] %}
                 <a href="{{ SITEURL }}/{{ p.url }}"{% if p == page %} class="active"{% endif %}>{{ p.title }}</a>
                 {% endif %}
                 {% endfor %}

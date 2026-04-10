@@ -46,6 +46,12 @@ The same precursor intelligence powers six products, each tailored to how your i
 
 ---
 
+### [Local News Intelligence](/towns/)
+
+**Weekly town government digests from public records.** What your town council, planning board, and public works department did this week, written in plain language from the actual documents. No editorializing, no predictions. 11 towns live, any municipality available on request. For local newsrooms, civic organizations, and residents who want to know what their government is doing.
+
+---
+
 ### Not sure which fits?
 
 **[Book a 15-minute call](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** and tell me what you're working on. I'll show you what I can see before it hits your current sources.
