@@ -1,6 +1,7 @@
 Title: Maine's Pause on Data Centers Is Something We Saw Coming Five Months Ago
 Slug: research/maine-data-center-moratorium
 Sortorder: 11
+Header_image: story-maine-data-center-moratorium.png
 Summary: Six town halls — out of 173 we monitor in Maine — signaled the nation's first data center moratorium before the legislature voted. Every source document is linked.
 
 <style>
