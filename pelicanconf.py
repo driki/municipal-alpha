@@ -59,7 +59,7 @@ MARKDOWN = {
 }
 
 # Static paths
-STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/llms.txt", "extra/brand-review"]
+STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/llms.txt", "extra/brand-review", "extra/favicon.ico", "extra/favicon-32.png", "extra/apple-touch-icon.png"]
 # Prevent Pelican from treating HTML in extra/ as content
 READERS = {"html": None}
 EXTRA_PATH_METADATA = {
@@ -78,6 +78,10 @@ EXTRA_PATH_METADATA = {
     "extra/case-studies/amherst-nh-procurement-chain.pdf": {"path": "case-studies/amherst-nh-procurement-chain.pdf"},
     "extra/case-studies/infrastructure-equity-signals.pdf": {"path": "case-studies/infrastructure-equity-signals.pdf"},
     "extra/case-studies/muni-credit-early-warning.pdf": {"path": "case-studies/muni-credit-early-warning.pdf"},
+    "extra/case-studies/geneva-il-vendor-payments.pdf": {"path": "case-studies/geneva-il-vendor-payments.pdf"},
+    "extra/case-studies/waste-management-entity-resolution.pdf": {"path": "case-studies/waste-management-entity-resolution.pdf"},
+    "extra/case-studies/solar-siting-moratorium-to-permit.pdf": {"path": "case-studies/solar-siting-moratorium-to-permit.pdf"},
+    "extra/case-studies/hartford-vt-pfas-chain.pdf": {"path": "case-studies/hartford-vt-pfas-chain.pdf"},
     "extra/brand-review/index.html": {"path": "brand-review/index.html"},
     "extra/brand-review/expressive-particle-dark-v3.png": {"path": "brand-review/expressive-particle-dark-v3.png"},
     "extra/brand-review/wordmark-dark.png": {"path": "brand-review/wordmark-dark.png"},
@@ -89,6 +93,9 @@ EXTRA_PATH_METADATA = {
     "extra/brand-review/icon-square-dark.png": {"path": "brand-review/icon-square-dark.png"},
     "extra/brand-review/icon-square-light.png": {"path": "brand-review/icon-square-light.png"},
     "extra/brand-review/wordmark-nav.png": {"path": "brand-review/wordmark-nav.png"},
+    "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/favicon-32.png": {"path": "favicon-32.png"},
+    "extra/apple-touch-icon.png": {"path": "apple-touch-icon.png"},
 }
 
 # Clean URLs
