@@ -81,14 +81,14 @@ Waste Management (NYSE: WM) appears in municipal documents under dozens of name 
 <div class="tl-date">February 17, 2026</div>
 <div class="tl-board">Committee Minutes</div>
 <div class="tl-text">Manchester, NH Special Committee on Solid Waste Activities discusses <strong>extending the city's contract with Waste Management for solid waste disposal services.</strong> Manchester is a city of 115,000. The extension appears in committee minutes weeks before the full board vote and months before it would appear in WM's earnings.</div>
-<div class="tl-source"><a href="https://manchesternh.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4700,plainText=false)">Source: manchesternh.gov &rarr;</a></div>
+<div class="tl-source"><a href="https://www.manchesternh.gov/Departments/City-Clerk/Agendas-Minutes">Source: manchesternh.gov &rarr;</a></div>
 </div>
 
 <div class="tl-event tl-hot">
 <div class="tl-date">February 18, 2026</div>
 <div class="tl-board">Committee Minutes</div>
 <div class="tl-text">Durham, NH Integrated Waste Management Advisory Committee minutes reveal neighboring <strong>Dover switched from Waste Management to RMI for sludge handling.</strong> Same document notes WM is developing a sludge dryer. Two signals: a competitive loss and a strategic capex response. An analyst reading only WM's filings would see the capex line item but not the competitive context.</div>
-<div class="tl-source"><a href="https://nh-durham.civicplus.com/AgendaCenter/ViewFile/Minutes/_02182026-106?html=true">Source: durham.nh.us &rarr;</a></div>
+<div class="tl-source"><a href="https://www.ci.durham.nh.us/bos_committees/integrated-waste-management-advisory-committee">Source: durham.nh.us &rarr;</a></div>
 </div>
 
 <div class="tl-event tl-warm">

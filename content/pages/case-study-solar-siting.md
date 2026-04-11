@@ -130,14 +130,14 @@ Renewable energy developers face a fragmented regulatory landscape. Solar ordina
 <div class="tl-date">2025</div>
 <div class="tl-board">General Government & Finance Subcommittee</div>
 <div class="tl-text">Subcommittee agenda includes consideration of <strong>a moratorium on solar farms.</strong></div>
-<div class="tl-source"><a href="https://enfieldct.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13532,plainText=false)">Source: enfieldct.gov &rarr;</a></div>
+<div class="tl-source"><a href="https://www.enfield-ct.gov/agendas-minutes">Source: enfield-ct.gov &rarr;</a></div>
 </div>
 
 <div class="tl-event tl-warm">
 <div class="tl-date">2025-2026</div>
 <div class="tl-board">General Government & Finance Subcommittee</div>
 <div class="tl-text">Follow-up meeting confirms moratorium discussion, <strong>signaling a potential restriction.</strong> Two signals from consecutive meetings. A developer with a proposed project in Enfield needs to know this now, not after the moratorium passes.</div>
-<div class="tl-source"><a href="https://enfieldct.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13550,plainText=false)">Source: enfieldct.gov &rarr;</a></div>
+<div class="tl-source"><a href="https://www.enfield-ct.gov/agendas-minutes">Source: enfield-ct.gov &rarr;</a></div>
 </div>
 
 <div class="tl-section">
