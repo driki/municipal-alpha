@@ -68,7 +68,7 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits ma
 <h4>Waste Management (WM): Entity Resolution Across 111 Municipalities</h4>
 <p>1,099 sightings across 28 states. Contract extensions, competitive displacement, recurring payments, and regulatory signals for a single ticker, extracted from public meeting minutes and check registers.</p>
 </div>
-<a href="/case-studies/waste-management-entity-resolution.pdf">Read the case study &rarr;</a>
+<a href="/research/wm-entity-resolution/">Read the case study &rarr;</a>
 </div>
 
 <div class="lp-metrics">

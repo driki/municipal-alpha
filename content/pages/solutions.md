@@ -22,80 +22,6 @@ Sortorder: 1
     margin-bottom: 24px;
 }
 
-.sol-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    margin-bottom: 56px;
-}
-
-.sol-card {
-    border: 1px solid #E8E4DF;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #fff;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.15s, box-shadow 0.15s;
-}
-.sol-card:hover {
-    border-color: #E8512D;
-    box-shadow: 0 2px 16px rgba(232, 81, 45, 0.1);
-}
-
-.sol-card-img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-}
-
-.sol-card-body {
-    padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.sol-card-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: #E8512D;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
-}
-
-.sol-card h3 {
-    font-family: 'Newsreader', serif;
-    font-size: 20px;
-    font-weight: 500;
-    color: #0C0C0C;
-    margin: 0 0 8px;
-    line-height: 1.3;
-}
-
-.sol-card-hook {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    flex: 1;
-}
-
-.sol-card-proof {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: #888;
-    border-top: 1px solid #E8E4DF;
-    padding-top: 12px;
-    margin-top: auto;
-}
-.sol-card-proof strong {
-    color: #0C0C0C;
-    font-weight: 600;
-}
-
 .sol-mid-cta {
     background: #0C0C0C;
     color: #F7F4F0;
@@ -182,7 +108,7 @@ Sortorder: 1
     text-decoration: underline;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 540px) {
     .sol-grid { grid-template-columns: 1fr; }
     .sol-mid-cta { padding: 28px 24px; flex-direction: column; text-align: center; }
     .sol-proof-section { padding: 28px 24px; }
@@ -196,67 +122,38 @@ Sortorder: 1
 <a href="https://calendar.app.google/s6wDVSaJuqCkwcmg9" class="cta-button">Book a 15-Minute Data Review</a>
 </div>
 
-<div class="sol-grid">
-
-<a href="/solutions/alt-data/" class="sol-card">
-<img src="/images/story-company-footprint.png" alt="Municipal Alt Data" class="sol-card-img">
-<div class="sol-card-body">
-<div class="sol-card-tag">Quant &amp; Fundamental</div>
+<div class="solution-grid">
+<a href="/solutions/alt-data/" class="solution-card solution-featured">
+<span class="solution-badge">Case study</span>
 <h3>Municipal Alt Data</h3>
-<div class="sol-card-hook">Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. You see the revenue before quarterly reports.</div>
-<div class="sol-card-proof"><strong>128</strong> tickers tracked &middot; <a href="/case-studies/geneva-il-vendor-payments.pdf" style="color: #E8512D; text-decoration: none;">Geneva IL case study &rarr;</a></div>
-</div>
+<p>Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. 128 tickers tracked. <span style="color: #E8512D;">Geneva IL case study</span></p>
 </a>
-
-<a href="/solutions/tower-leads/" class="sol-card">
-<img src="/images/story-data-center-zoning.png" alt="Tower & Infrastructure Leads" class="sol-card-img">
-<div class="sol-card-body">
-<div class="sol-card-tag">Infrastructure &amp; REITs</div>
+<a href="/solutions/tower-leads/" class="solution-card solution-featured">
+<span class="solution-badge">Case study</span>
 <h3>Tower &amp; Infrastructure Leads</h3>
-<div class="sol-card-hook">Pre-listing lease intelligence. Qualified tower prospects with parcel data and owner ID. You contact the landowner before anyone else knows the lease exists.</div>
-<div class="sol-card-proof"><strong>7,700+</strong> tower sites screened &middot; <a href="/research/amherst-tower/" style="color: #E8512D; text-decoration: none;">Amherst case study &rarr;</a></div>
-</div>
+<p>Pre-listing lease intelligence. Qualified tower prospects with parcel data and owner ID. 7,700+ sites screened. <span style="color: #E8512D;">Amherst case study &rarr;</span></p>
 </a>
-
-<a href="/solutions/credit-intelligence/" class="sol-card">
-<img src="/images/story-lead-pipes.png" alt="Municipal Credit Intelligence" class="sol-card-img">
-<div class="sol-card-body">
-<div class="sol-card-tag">Fixed Income</div>
+<a href="/solutions/credit-intelligence/" class="solution-card solution-featured">
+<span class="solution-badge">Case study</span>
 <h3>Municipal Credit Intelligence</h3>
-<div class="sol-card-hook">Pre-downgrade fiscal intelligence. Leading indicators of stress from source spending documents. You see the fiscal distress before the rating agency does.</div>
-<div class="sol-card-proof"><strong>8.7x</strong> separation ratio &middot; <a href="/research/la-marque-credit/" style="color: #E8512D; text-decoration: none;">La Marque case study &rarr;</a></div>
-</div>
+<p>Pre-downgrade fiscal intelligence. Leading indicators of stress from source spending documents. 8.7x separation ratio. <span style="color: #E8512D;">La Marque case study &rarr;</span></p>
 </a>
-
-<a href="/solutions/contractor-signals/" class="sol-card">
-<img src="/images/story-housing-wave.png" alt="Government Contractor Signals" class="sol-card-img">
-<div class="sol-card-body">
-<div class="sol-card-tag">Equity Research</div>
+<a href="/solutions/contractor-signals/" class="solution-card solution-featured">
+<span class="solution-badge">Case study</span>
 <h3>Government Contractor Signals</h3>
-<div class="sol-card-hook">Pre-earnings municipal signals. Vendor payments and permits mapped to public tickers. Bottom-up revenue signals that top-down models miss.</div>
-<div class="sol-card-proof"><strong>111</strong> municipalities &middot; <a href="/case-studies/waste-management-entity-resolution.pdf" style="color: #E8512D; text-decoration: none;">WM entity resolution case study &rarr;</a></div>
-</div>
+<p>Entity resolution across 111 municipalities. Contract pipeline, competitive wins, and geographic expansion visible in meeting minutes. <span style="color: #E8512D;">WM case study &rarr;</span></p>
 </a>
-
-<a href="/solutions/energy-development/" class="sol-card">
-<img src="/images/story-renewable-energy.png" alt="Renewable Energy Siting" class="sol-card-img">
-<div class="sol-card-body">
-<div class="sol-card-tag">Project Origination</div>
+<a href="/solutions/energy-development/" class="solution-card solution-featured">
+<span class="solution-badge">Case study</span>
 <h3>Renewable Energy Siting</h3>
-<div class="sol-card-hook">Pre-RFP project intelligence. Zoning decisions, planning approvals, and environmental permits. You know about the project before the RFP is written.</div>
-<div class="sol-card-proof"><strong>50</strong> states &middot; <a href="/case-studies/solar-siting-moratorium-to-permit.pdf" style="color: #E8512D; text-decoration: none;">Solar siting case study &rarr;</a></div>
-</div>
+<p>Pre-RFP project intelligence. Moratorium-to-permit pipeline tracked across 50 states. Zoning decisions before the RFP is written. <span style="color: #E8512D;">Solar siting case study &rarr;</span></p>
 </a>
-
-<a href="/solutions/infrastructure-risk/" class="sol-card">
-<img src="/images/story-pfas.png" alt="Municipal Infrastructure Risk" class="sol-card-img">
-<div class="sol-card-body">
-<div class="sol-card-tag">Insurance &amp; Risk</div>
+<a href="/solutions/infrastructure-risk/" class="solution-card solution-featured">
+<span class="solution-badge">Case study</span>
 <h3>Infrastructure Risk Intelligence</h3>
-<div class="sol-card-hook">Pre-event risk intelligence. PFAS contamination, lead pipe replacement, deferred maintenance, consent decree tracking. You see the risk before the claim.</div>
-<div class="sol-card-proof"><strong>459</strong> contagion topics &middot; <a href="/case-studies/hartford-vt-pfas-chain.pdf" style="color: #E8512D; text-decoration: none;">Hartford VT PFAS case study &rarr;</a></div>
-</div>
+<p>Pre-event risk intelligence. 459 contagion topics tracked. PFAS, deferred maintenance, consent decree signals. <span style="color: #E8512D;">Hartford VT PFAS case study &rarr;</span></p>
 </a>
+</div>
 
 </div>
 
