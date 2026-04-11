@@ -239,7 +239,7 @@ Sortorder: 1
 </a>
 
 <a href="/solutions/energy-development/" class="sol-card">
-<img src="/images/story-pickleball.png" alt="Renewable Energy Siting" class="sol-card-img">
+<img src="/images/story-renewable-energy.png" alt="Renewable Energy Siting" class="sol-card-img">
 <div class="sol-card-body">
 <div class="sol-card-tag">Project Origination</div>
 <h3>Renewable Energy Siting</h3>
