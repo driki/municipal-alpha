@@ -22,7 +22,10 @@
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="{{ SITEURL }}/" class="nav-brand"><img src="{{ SITEURL }}/images/wordmark-nav.png" alt="municipαl" style="height: 40px; vertical-align: middle;"></a>
+            <a href="{{ SITEURL }}/" class="nav-brand">
+                <img src="{{ SITEURL }}/images/wordmark-nav.png" alt="municipαl" style="height: 40px; vertical-align: middle;">
+                <span class="nav-tagline">Alpha, extracted.</span>
+            </a>
             <div class="nav-links">
                 {% for p in pages %}
                 {% if p.slug in ['solutions', 'data-stories', 'how-it-works', 'contact'] %}

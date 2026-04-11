@@ -55,6 +55,21 @@ body {
     font-size: 20px;
 }
 
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nav-tagline {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--signal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .nav-links a {
     color: #888;
     text-decoration: none;
