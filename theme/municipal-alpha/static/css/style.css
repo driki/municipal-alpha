@@ -830,6 +830,47 @@ a.solution-featured:hover {
     margin-bottom: 24px;
 }
 
+/* Case study teaser (homepage) */
+.cs-teaser-bookends {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.cs-teaser-bookend-date {
+    font-family: 'Newsreader', serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.cs-teaser-timeline {
+    position: relative;
+    margin: 0 0 40px;
+}
+
+.cs-teaser-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.cs-teaser-stat-value {
+    font-family: 'Newsreader', serif;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.cs-teaser-stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
     .hero h1 { font-size: 28px; }
@@ -845,4 +886,21 @@ a.solution-featured:hover {
     .town-header { flex-direction: column; gap: 16px; }
     .ad-leaderboard { max-width: 100%; height: 60px; }
     .nav-links a { margin-left: 16px; font-size: 11px; }
+
+    /* Page titles */
+    .page h1 { font-size: 26px; }
+
+    /* Case study teaser (homepage) */
+    .cs-teaser-bookends { grid-template-columns: 1fr; gap: 24px; }
+    .cs-teaser-bookends > div:last-child { text-align: left; }
+    .cs-teaser-bookend-date { font-size: 24px; }
+    .cs-teaser-timeline .cs-teaser-track { height: 100px; }
+    .cs-teaser-timeline .cs-teaser-callout { display: none; }
+    .cs-teaser-stats { gap: 20px; }
+    .cs-teaser-stat-value { font-size: 24px; }
+
+    /* Case study page inline styles */
+    .cs-window { padding: 24px 20px; }
+    .cs-stats { gap: 24px; }
+    .cs-cta { padding: 28px 20px; }
 }
