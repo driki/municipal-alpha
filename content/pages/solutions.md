@@ -204,7 +204,7 @@ Sortorder: 1
 <div class="sol-card-tag">Quant &amp; Fundamental</div>
 <h3>Municipal Alt Data</h3>
 <div class="sol-card-hook">Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. You see the revenue before quarterly reports.</div>
-<div class="sol-card-proof"><strong>128</strong> tickers tracked &middot; <strong>319K</strong> signal-ticker pairs measured</div>
+<div class="sol-card-proof"><strong>128</strong> tickers tracked &middot; <a href="/case-studies/geneva-il-vendor-payments.pdf" style="color: #E8512D; text-decoration: none;">Geneva IL case study &rarr;</a></div>
 </div>
 </a>
 
@@ -234,7 +234,7 @@ Sortorder: 1
 <div class="sol-card-tag">Equity Research</div>
 <h3>Government Contractor Signals</h3>
 <div class="sol-card-hook">Pre-earnings municipal signals. Vendor payments and permits mapped to public tickers. Bottom-up revenue signals that top-down models miss.</div>
-<div class="sol-card-proof"><strong>43K</strong> permits tracked &middot; <strong>2,500+</strong> municipalities</div>
+<div class="sol-card-proof"><strong>111</strong> municipalities &middot; <a href="/case-studies/waste-management-entity-resolution.pdf" style="color: #E8512D; text-decoration: none;">WM entity resolution case study &rarr;</a></div>
 </div>
 </a>
 
@@ -244,7 +244,7 @@ Sortorder: 1
 <div class="sol-card-tag">Project Origination</div>
 <h3>Renewable Energy Siting</h3>
 <div class="sol-card-hook">Pre-RFP project intelligence. Zoning decisions, planning approvals, and environmental permits. You know about the project before the RFP is written.</div>
-<div class="sol-card-proof"><strong>20K+</strong> HIGH-priority signals &middot; <strong>50</strong> states covered</div>
+<div class="sol-card-proof"><strong>50</strong> states &middot; <a href="/case-studies/solar-siting-moratorium-to-permit.pdf" style="color: #E8512D; text-decoration: none;">Solar siting case study &rarr;</a></div>
 </div>
 </a>
 
@@ -254,7 +254,7 @@ Sortorder: 1
 <div class="sol-card-tag">Insurance &amp; Risk</div>
 <h3>Infrastructure Risk Intelligence</h3>
 <div class="sol-card-hook">Pre-event risk intelligence. PFAS contamination, lead pipe replacement, deferred maintenance, consent decree tracking. You see the risk before the claim.</div>
-<div class="sol-card-proof"><strong>459</strong> contagion topics tracked across municipalities</div>
+<div class="sol-card-proof"><strong>459</strong> contagion topics &middot; <a href="/case-studies/hartford-vt-pfas-chain.pdf" style="color: #E8512D; text-decoration: none;">Hartford VT PFAS case study &rarr;</a></div>
 </div>
 </a>
 

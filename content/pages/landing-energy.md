@@ -63,6 +63,14 @@ Summary: Pre-RFP project intelligence. Zoning decisions, planning board approval
 <img class="lp-hero-img" src="/images/story-renewable-energy.png" alt="Renewable energy siting signal">
 </div>
 
+<div class="lp-case-study">
+<div>
+<h4>Solar Siting: From Moratorium to Permit in Caribou, ME</h4>
+<p>5 years of planning board documents trace a town from its first solar application to budgeting $130K in renewable energy revenue. The regulatory pipeline is predictable if you're reading the right documents.</p>
+</div>
+<a href="/case-studies/solar-siting-moratorium-to-permit.pdf">Read the case study &rarr;</a>
+</div>
+
 <div class="lp-metrics">
 <div class="lp-metric">
 <span class="lp-metric-value">2,500+</span>

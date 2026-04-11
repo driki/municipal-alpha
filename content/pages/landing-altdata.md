@@ -63,6 +63,14 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits re
 <img class="lp-hero-img" src="/images/story-company-footprint.png" alt="Company footprint signal">
 </div>
 
+<div class="lp-case-study">
+<div>
+<h4>Geneva, IL: One Town's Check Register, 15 Public Company Tickers</h4>
+<p>9 years of bi-weekly payment data from a single municipality. Vendor-to-ticker resolution reveals revenue timing for GWW, TYL, WM, CMCSA, and 11 others. Every citation links to a public document.</p>
+</div>
+<a href="/case-studies/geneva-il-vendor-payments.pdf">Read the case study &rarr;</a>
+</div>
+
 <div class="lp-metrics">
 <div class="lp-metric">
 <span class="lp-metric-value">128</span>

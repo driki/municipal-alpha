@@ -63,6 +63,14 @@ Summary: Pre-event risk intelligence. Infrastructure spending patterns, deferred
 <img class="lp-hero-img" src="/images/story-pfas.png" alt="PFAS and infrastructure risk signal">
 </div>
 
+<div class="lp-case-study">
+<div>
+<h4>Hartford, VT: Tracking a PFAS Response from First Sample to Expanding Scope</h4>
+<p>8 signals over 2.5 years trace Hartford's PFAS remediation chain. Each signal was a window for environmental services firms to engage. Every citation links to a verifiable public document.</p>
+</div>
+<a href="/case-studies/hartford-vt-pfas-chain.pdf">Read the case study &rarr;</a>
+</div>
+
 <div class="lp-metrics">
 <div class="lp-metric">
 <span class="lp-metric-value">459</span>

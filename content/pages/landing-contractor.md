@@ -63,6 +63,14 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits ma
 <img class="lp-hero-img" src="/images/story-housing-wave.png" alt="Housing and construction signal">
 </div>
 
+<div class="lp-case-study">
+<div>
+<h4>Waste Management (WM): Entity Resolution Across 111 Municipalities</h4>
+<p>1,099 sightings across 28 states. Contract extensions, competitive displacement, recurring payments, and regulatory signals for a single ticker, extracted from public meeting minutes and check registers.</p>
+</div>
+<a href="/case-studies/waste-management-entity-resolution.pdf">Read the case study &rarr;</a>
+</div>
+
 <div class="lp-metrics">
 <div class="lp-metric">
 <span class="lp-metric-value">128</span>
