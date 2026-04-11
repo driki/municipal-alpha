@@ -1,87 +1,139 @@
 Title: Municipal Credit Intelligence
 Slug: solutions/credit-intelligence
 Sortorder: 32
-Summary: Pre-downgrade fiscal intelligence. Leading indicators of municipal fiscal health from the source spending documents that rating agencies eventually read. 2,300+ municipalities.
+Summary: Pre-downgrade fiscal intelligence. Leading indicators of municipal fiscal health from the source spending documents that rating agencies eventually read. 2,500+ municipalities.
 
-## You see the fiscal stress before the rating agency does
+<style>
+.lp-hero { display: flex; gap: 40px; margin-bottom: 48px; align-items: flex-start; }
+.lp-hero-text { flex: 1; }
+.lp-hero-text h2 { font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; line-height: 1.3; }
+.lp-hero-text p { font-size: 16px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
+.lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
-Rating agencies evaluate municipal credit quality from financial statements published months after the fact. The spending data I monitor is the raw material those statements are built from, available weeks or months earlier. You see the precursor. They see the downgrade.
+.lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
+.lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
+.lp-case-study a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; padding: 8px 20px; border: 1px solid #E8512D; border-radius: 3px; flex-shrink: 0; transition: all 0.15s; }
+.lp-case-study a:hover { background: #E8512D; color: #F7F4F0; }
 
-Check registers show vendor payment velocity. Budget documents show appropriation changes. AP warrants show spending concentration. Together, they paint a picture of fiscal health in near-real-time, from the source documents themselves.
+.lp-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.lp-metric { text-align: center; padding: 20px; background: #F7F4F0; border-radius: 6px; }
+.lp-metric-value { display: block; font-family: 'Newsreader', serif; font-size: 28px; font-weight: 600; color: #0C0C0C; }
+.lp-metric-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
-## What the Data Shows
+.lp-section { margin-bottom: 48px; }
+.lp-section h3 { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; }
+.lp-section p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 12px; }
 
-| Indicator | What It Measures | Lead Time vs. Rating Action |
-|---|---|---|
-| Vendor payment velocity | Days from invoice to payment, trending over time | 3-6 months |
-| Spending concentration | Number of active vendors, Herfindahl index on payments | 2-4 months |
-| Budget-to-actual variance | Appropriation changes vs. actual spending | 1-3 months |
-| Capital project approvals | New infrastructure commitments and amendments | 6-12 months |
-| Deferred maintenance signals | Infrastructure spending gaps visible in AP data | 6-12 months |
+.lp-buyers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+.lp-buyer { padding: 20px; border: 1px solid #E8E4DF; border-radius: 6px; }
+.lp-buyer strong { display: block; color: #0C0C0C; margin-bottom: 4px; font-size: 14px; }
+.lp-buyer span { font-size: 13px; color: #555; line-height: 1.5; }
 
-## How It Works
+.lp-sample { background: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-sample h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #0C0C0C; }
+.lp-sample p { font-size: 13px; color: #555; margin: 0; }
+.lp-sample a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; font-weight: 500; flex-shrink: 0; }
+.lp-sample a:hover { text-decoration: underline; }
 
-We read municipal documents daily from 2,100+ municipalities. Check registers, budget documents, capital plans, and AP warrants are classified, entity-resolved, and monitored for changes in spending patterns.
+.lp-bottom-cta { text-align: center; padding: 40px 0 8px; border-top: 1px solid #E8E4DF; }
+.lp-bottom-cta h3 { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 500; color: #0C0C0C; margin-bottom: 12px; }
+.lp-bottom-cta p { font-size: 15px; color: #555; margin-bottom: 24px; }
+.lp-bottom-cta .lp-or { display: block; margin: 16px 0; font-size: 13px; color: #888; }
+.lp-bottom-cta a.lp-email { color: #E8512D; text-decoration: none; font-size: 14px; font-weight: 600; }
+.lp-bottom-cta a.lp-email:hover { text-decoration: underline; }
 
-When a municipality's vendor payment velocity drops 15%+ from its trailing average, that's a signal. When spending concentration shifts, when capital projects stall, when budget amendments redirect funds, those patterns surface in our data before they surface in rating actions.
+@media (max-width: 640px) {
+    .lp-hero { flex-direction: column; }
+    .lp-hero-img { width: 100%; }
+    .lp-metrics { grid-template-columns: repeat(2, 1fr); }
+    .lp-buyers { grid-template-columns: 1fr; }
+    .lp-case-study { flex-direction: column; text-align: center; }
+    .lp-sample { flex-direction: column; text-align: center; }
+}
+</style>
 
-## Coverage
+<div class="lp-hero">
+<div class="lp-hero-text">
+<div class="lp-tag">Fixed Income</div>
+<h2>You see the fiscal stress before the rating agency does</h2>
+<p>Rating agencies evaluate municipal credit from financial statements published months after the fact. I read the raw spending data daily, the same source material those statements are built from. You see the precursor signals. They see the downgrade.</p>
+</div>
+<img class="lp-hero-img" src="/images/story-lead-pipes.png" alt="Municipal infrastructure risk signal">
+</div>
 
-- **2,100+ municipalities** monitored daily across 50 states
-- **Same-day classification** of new documents
-- **Historical depth** varies by municipality (6 months to 3+ years of structured data)
-- **Deepest coverage** in New England, Illinois, Idaho, expanding weekly
+<div class="lp-case-study">
+<div>
+<h4>La Marque, TX: Credit Stress Detection</h4>
+<p>Governance signals detected fiscal deterioration months before rating action. 8.7x separation ratio.</p>
+</div>
+<a href="/research/la-marque-credit/">Read the case study &rarr;</a>
+</div>
 
-See our [methodology](/methodology/) for details on data freshness, known gaps, and quality metrics.
+<div class="lp-metrics">
+<div class="lp-metric">
+<span class="lp-metric-value">8.7x</span>
+<span class="lp-metric-label">Separation ratio</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">2,500+</span>
+<span class="lp-metric-label">Municipalities</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">20K+</span>
+<span class="lp-metric-label">HIGH signals</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">Daily</span>
+<span class="lp-metric-label">Classification</span>
+</div>
+</div>
 
-## The Scale of What's Unmonitored
+<div class="lp-section">
+<h3>What the model detects</h3>
+<p>The credit stress model looks for co-occurrence of five fiscal deterioration indicators: finance director departures, engagement of outside financial consultants, state oversight or intervention language, capital project deferrals, and explicit fiscal crisis terminology in meeting minutes and budget documents. Any single indicator could be routine. When multiple appear in the same municipality within a short window, that's a pattern that precedes rating actions.</p>
+</div>
 
-The US municipal bond market is $4 trillion. Rating agencies cover the largest issuers, but the long tail of small and mid-sized municipalities, the ones most likely to experience fiscal stress quietly, gets reviewed infrequently if at all. There are 19,500 municipalities issuing bonds, publishing budgets, and processing vendor payments. The spending patterns that predict fiscal deterioration are in those public records, just not structured or monitored by anyone.
+<div class="lp-buyers">
+<div class="lp-buyer">
+<strong>Muni bond portfolio managers</strong>
+<span>Continuous credit quality monitoring across holdings, from the source spending data.</span>
+</div>
+<div class="lp-buyer">
+<strong>Credit research analysts</strong>
+<span>Leading indicators of fiscal deterioration, months ahead of rating actions.</span>
+</div>
+<div class="lp-buyer">
+<strong>Municipal fund managers</strong>
+<span>Early warning signals across the full issuer universe, not just the largest names.</span>
+</div>
+<div class="lp-buyer">
+<strong>Insurance carriers</strong>
+<span>Municipal risk indicators for underwriting, built from spending patterns.</span>
+</div>
+</div>
 
-We monitor 2,100+ municipalities daily across 50 states. At national scale, this becomes continuous fiscal health surveillance across the full universe of municipal issuers, built from the same source documents that rating agencies eventually read, just months earlier.
+<div class="lp-sample">
+<div>
+<h4>Sample credit signals</h4>
+<p>50 fiscal health signals showing municipality, document type, priority, summary, and monetary amounts.</p>
+</div>
+<a href="/sample-data/credit-sample.csv">Download CSV &rarr;</a>
+</div>
 
-## Why This Data Stays Hidden
+<div class="lp-sample">
+<div>
+<h4>Municipal Credit Early Warning</h4>
+<p>One-pager with real examples of fiscal stress signals from the current pipeline.</p>
+</div>
+<a href="/case-studies/muni-credit-early-warning.pdf">Download PDF &rarr;</a>
+</div>
 
-The spending documents that reveal fiscal stress, check registers, AP warrants, budget amendments, are stored in municipal CMS platforms at URLs with no public navigation link. In our testing, roughly 99% of the documents we ingest are invisible to search engines and AI assistants. A town posts a check register to its portal and nothing on the site links to it. The document is public record, but it might as well not exist for anyone relying on web search or browsing. Rating agencies that review these documents do it manually, on a schedule. We read them daily because our connectors reach into the CMS platforms where the documents actually live, not the navigation menus where they don't.
-
-## Who This Is For
-
-- **Muni bond portfolio managers** monitoring credit quality across holdings
-- **Credit research analysts** looking for leading indicators ahead of rating actions
-- **Municipal fund managers** seeking early warning on fiscal deterioration
-- **Insurance carriers** underwriting municipal risk
-
-## The Rate Environment Story
-
-In a 4.5% rate environment, the cost of being wrong about a municipal credit position goes up. Refinancing is expensive, default risk is more consequential, and institutional investors need better intel on what they're already holding.
-
-Municipal fiscal stress shows up in AP data first -- delayed vendor payments, vendor concentration shifts, spending velocity drops. We read those signals daily.
-
-## Sample Data
-
-**[Download sample credit signals (CSV)](/sample-data/credit-sample.csv)** -- 50 fiscal health signals showing the data structure: municipality, document type, priority, summary, and monetary amounts.
-
-## Delivery & Integration
-
-- **Format:** Structured feeds (CSV, JSON, or API) or custom reports
-- **Cadence:** Daily updates, same-day classification
-- **Backfill:** Full historical data for covered municipalities
-- **Filtering:** By issuer, state, CUSIP universe, or risk indicator type
-
-## What This Looks Like in Practice
-
-A weekly alert for a New England portfolio manager:
-
-> 3 towns added water rate increase hearings this week. 2 new PFAS briefings in Michigan. Bangor ME filed year 12 of EPA consent decree compliance. Goochland County VA bond referendum materials published.
-
-Each item links to the source document. You decide what matters for your portfolio. The system provides the signal, not the opinion.
-
-For a deeper dive, read our **[Municipal Credit Early Warning one-pager (PDF)](/case-studies/muni-credit-early-warning.pdf)** -- real examples of fiscal stress signals from our current pipeline.
-
-## Get Started
-
-Pilot programs scoped to your state or issuer portfolio, with broader coverage available.
-
-**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which issuers or states you're watching and we'll show you coverage live.
-
-Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Credit%20intelligence%20inquiry%20%28via%20landing%20page%29) -- we'll send a custom coverage report within one business day.
+<div class="lp-bottom-cta">
+<h3>See credit signals for your issuer portfolio</h3>
+<p>Tell me which issuers or states you're watching and I'll show you what the spending data reveals.</p>
+<a class="cta-button" href="https://calendar.app.google/s6wDVSaJuqCkwcmg9">Book a 15-minute data review</a>
+<span class="lp-or">or</span>
+<a class="lp-email" href="mailto:matt@municipalalpha.com?subject=Credit%20intelligence%20inquiry%20%28via%20landing%20page%29">matt@municipalalpha.com</a>
+</div>

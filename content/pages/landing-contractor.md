@@ -1,88 +1,132 @@
 Title: Government Contractor Signals
 Slug: solutions/contractor-signals
 Sortorder: 33
-Summary: Pre-earnings municipal signals. Vendor payments and building permits mapped to 118 public company tickers. Primary-source revenue signals for government contractor coverage.
+Summary: Pre-earnings municipal signals. Vendor payments and building permits mapped to 128 public company tickers. Primary-source revenue signals for government contractor coverage.
 
-## You see the revenue before quarterly reports
+<style>
+.lp-hero { display: flex; gap: 40px; margin-bottom: 48px; align-items: flex-start; }
+.lp-hero-text { flex: 1; }
+.lp-hero-text h2 { font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; line-height: 1.3; }
+.lp-hero-text p { font-size: 16px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
+.lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
-Analysts model municipal revenue top-down from budget allocations and macro spending trends. I read it bottom-up from the actual payment records, 2,300+ municipalities, every day.
+.lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
+.lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
+.lp-case-study a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; padding: 8px 20px; border: 1px solid #E8512D; border-radius: 3px; flex-shrink: 0; transition: all 0.15s; }
+.lp-case-study a:hover { background: #E8512D; color: #F7F4F0; }
 
-When a municipality pays AECOM for engineering services, that transaction appears in the check register weeks before it appears in quarterly revenue. When building permits spike in a county, the contractors winning that work show up in permit data 3-6 months before earnings.
+.lp-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.lp-metric { text-align: center; padding: 20px; background: #F7F4F0; border-radius: 6px; }
+.lp-metric-value { display: block; font-family: 'Newsreader', serif; font-size: 28px; font-weight: 600; color: #0C0C0C; }
+.lp-metric-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
-## What the Data Looks Like
+.lp-section { margin-bottom: 48px; }
+.lp-section h3 { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; }
+.lp-section p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 12px; }
 
-| Field | Example |
-|---|---|
-| Municipality | Falmouth, ME |
-| Document type | check_register |
-| Vendor (raw) | AECOM TECHNICAL SERVICES |
-| Vendor (resolved) | AECOM |
-| Ticker | ACM |
-| Amount | $127,500.00 |
-| Date | 2026-02-28 |
-| Category | Engineering / Professional services |
-| Signal priority | HIGH |
+.lp-buyers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+.lp-buyer { padding: 20px; border: 1px solid #E8E4DF; border-radius: 6px; }
+.lp-buyer strong { display: block; color: #0C0C0C; margin-bottom: 4px; font-size: 14px; }
+.lp-buyer span { font-size: 13px; color: #555; line-height: 1.5; }
 
-## Two Signal Layers
+.lp-sample { background: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-sample h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #0C0C0C; }
+.lp-sample p { font-size: 13px; color: #555; margin: 0; }
+.lp-sample a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; font-weight: 500; flex-shrink: 0; }
+.lp-sample a:hover { text-decoration: underline; }
 
-**Check registers and AP data** -- Who's getting paid now. Direct vendor payments from municipal governments, entity-resolved to public tickers with payment amounts, dates, and categories. The clearest revenue signal: if a town is paying a company, that's revenue.
+.lp-bottom-cta { text-align: center; padding: 40px 0 8px; border-top: 1px solid #E8E4DF; }
+.lp-bottom-cta h3 { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 500; color: #0C0C0C; margin-bottom: 12px; }
+.lp-bottom-cta p { font-size: 15px; color: #555; margin-bottom: 24px; }
+.lp-bottom-cta .lp-or { display: block; margin: 16px 0; font-size: 13px; color: #888; }
+.lp-bottom-cta a.lp-email { color: #E8512D; text-decoration: none; font-size: 14px; font-weight: 600; }
+.lp-bottom-cta a.lp-email:hover { text-decoration: underline; }
 
-**Building permits** -- Who's about to get paid. 43,000+ structured permit records showing which contractors are winning work, where construction is accelerating, and how local activity maps to public company revenue. Permits lead earnings by 3-6 months.
+@media (max-width: 640px) {
+    .lp-hero { flex-direction: column; }
+    .lp-hero-img { width: 100%; }
+    .lp-metrics { grid-template-columns: repeat(2, 1fr); }
+    .lp-buyers { grid-template-columns: 1fr; }
+    .lp-case-study { flex-direction: column; text-align: center; }
+    .lp-sample { flex-direction: column; text-align: center; }
+}
+</style>
 
-The combination surfaces revenue acceleration and deceleration signals that top-down models miss.
+<div class="lp-hero">
+<div class="lp-hero-text">
+<div class="lp-tag">Equity Research</div>
+<h2>You see the revenue before quarterly reports</h2>
+<p>Analysts model municipal revenue top-down from budget allocations. I read it bottom-up from the actual payment records, 2,500+ municipalities, every day. When a municipality pays AECOM for engineering services, that transaction appears in the check register weeks before it appears in quarterly revenue.</p>
+</div>
+<img class="lp-hero-img" src="/images/story-housing-wave.png" alt="Housing and construction signal">
+</div>
 
-## Tickers We Track
+<div class="lp-metrics">
+<div class="lp-metric">
+<span class="lp-metric-value">128</span>
+<span class="lp-metric-label">Public tickers</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">43K+</span>
+<span class="lp-metric-label">Permits</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">2,500+</span>
+<span class="lp-metric-label">Municipalities</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">3-6 mo</span>
+<span class="lp-metric-label">Lead time</span>
+</div>
+</div>
 
-100+ public companies resolved from municipal vendor names, including:
+<div class="lp-section">
+<h3>Two signal layers</h3>
+<p><strong>Check registers and AP data.</strong> Who's getting paid now. Direct vendor payments from municipal governments, entity-resolved to public tickers with amounts, dates, and categories. If a town is paying a company, that's revenue.</p>
+<p><strong>Building permits.</strong> Who's about to get paid. 43,000+ structured permit records showing which contractors are winning work and where construction is accelerating. Permits lead earnings by 3-6 months. The combination surfaces revenue acceleration and deceleration signals that top-down models miss.</p>
+</div>
 
-- **Construction materials:** Vulcan Materials (VMC), Martin Marietta (MLM), Summit Materials (SUM)
-- **Engineering:** AECOM (ACM), Tetra Tech (TTEK), Arcadis
-- **Municipal IT:** Tyler Technologies (TYL), CentralSquare
-- **Water/utilities:** Xylem (XYL), Mueller Water (MWA), Essential Utilities (WTRG)
-- **Waste:** Waste Management (WM), Casella Waste (CWST), Clean Harbors (CLH)
-- **Industrial/MRO:** Grainger (GWW), Fastenal (FAST)
+<div class="lp-buyers">
+<div class="lp-buyer">
+<strong>Fundamental L/S equity</strong>
+<span>Primary-source revenue signals for industrials, infrastructure, and govtech coverage.</span>
+</div>
+<div class="lp-buyer">
+<strong>Quantitative funds</strong>
+<span>Non-consensus revenue signals from public payment records, structured for systematic strategies.</span>
+</div>
+<div class="lp-buyer">
+<strong>Sector specialists</strong>
+<span>Government contractor exposure tracked at the transaction level across 2,500+ municipalities.</span>
+</div>
+<div class="lp-buyer">
+<strong>Alt data buyers</strong>
+<span>A municipal vendor payment dataset with no survey bias, no credit card proxy, no web scraping.</span>
+</div>
+</div>
 
-## The Scale of What's Unstructured
+<div class="lp-sample">
+<div>
+<h4>Sample contractor signals</h4>
+<p>50 entity-resolved signals showing vendor names, tickers, document types, and context.</p>
+</div>
+<a href="/sample-data/contractor-signals-sample.csv">Download CSV &rarr;</a>
+</div>
 
-US municipalities spend $3.9 trillion annually. That spending flows through check registers and vendor payment records that exist as public documents in 19,500 jurisdictions. The big data vendors cover federal contracts (USASpending, GovWin) and large-city procurement. Nobody aggregates the local-level vendor payments where most government contractors actually do their work.
+<div class="lp-sample">
+<div>
+<h4>Infrastructure Equity Signals</h4>
+<p>One-pager with real examples from the current pipeline.</p>
+</div>
+<a href="/case-studies/infrastructure-equity-signals.pdf">Download PDF &rarr;</a>
+</div>
 
-At current coverage, we've resolved 100+ public company tickers from 2,100+ municipalities. At national scale, every company that sells to local government, from Grainger and Fastenal to AECOM and Waste Management, gets bottom-up revenue tracking from the source transaction records. Nationally, municipalities issue roughly 1.5 million building permits per year, each one a forward-looking signal on contractor revenue that earnings models don't capture.
-
-## Why Nobody Else Has This
-
-Vendor payment records and check registers live inside municipal CMS platforms at URLs that nothing links to. In our testing, roughly 99% of the documents we ingest have no public navigation path. You can't Google for a town's check register and find it, because the CMS stored it without ever surfacing it in a menu or sitemap. AI agents face the same problem. The documents are public, the URLs exist, but no web crawler or AI tool will ever discover them without understanding how each CMS platform stores data internally. That's what our connectors do.
-
-## Who This Is For
-
-- **Fundamental L/S equity analysts** covering industrials, infrastructure, or govtech
-- **Quantitative funds** looking for non-consensus revenue signals from primary sources
-- **Sector specialists** tracking government contractor exposure at the transaction level
-
-## Sample Data
-
-**[Download sample contractor signals (CSV)](/sample-data/contractor-signals-sample.csv)** -- 50 entity-resolved signals showing vendor names, tickers, document types, and context.
-
-## Delivery & Integration
-
-- **Format:** Structured feeds via CSV, JSON, or API
-- **Cadence:** Daily updates, same-day classification and entity resolution
-- **Backfill:** Full historical data for covered municipalities
-- **Filtering:** By ticker, sector, geography, or document type
-
-## What This Looks Like in Practice
-
-An equity analyst covering Waste Management (WM) could receive a weekly signal:
-
-> WM appeared in 14 municipal check registers this week across 8 states. Total payments: $287K. New market entry: Geneva IL (first payment, $12,400). Competitive displacement: Falmouth ME stopped paying WM, started paying Casella (CWST) in March.
-
-That's primary-source revenue intelligence from the payment records themselves. No surveys, no credit card panels, no web scraping proxies.
-
-For more on how this works, read our **[Infrastructure Equity Signals one-pager (PDF)](/case-studies/infrastructure-equity-signals.pdf)** -- real examples from the current pipeline.
-
-## Get Started
-
-Pilot programs scoped to your ticker coverage, with broader universes and historical backfill available.
-
-**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which tickers or sectors you cover and we'll show you what we see.
-
-Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Contractor%20signals%20inquiry%20%28via%20landing%20page%29) -- we'll send a coverage report within one business day.
+<div class="lp-bottom-cta">
+<h3>See what your tickers look like in municipal data</h3>
+<p>Tell me which tickers or sectors you cover and I'll show you what the payment records reveal.</p>
+<a class="cta-button" href="https://calendar.app.google/s6wDVSaJuqCkwcmg9">Book a 15-minute data review</a>
+<span class="lp-or">or</span>
+<a class="lp-email" href="mailto:matt@municipalalpha.com?subject=Contractor%20signals%20inquiry%20%28via%20landing%20page%29">matt@municipalalpha.com</a>
+</div>

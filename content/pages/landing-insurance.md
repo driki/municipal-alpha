@@ -1,81 +1,124 @@
 Title: Municipal Infrastructure Risk
 Slug: solutions/infrastructure-risk
 Sortorder: 34
-Summary: Pre-event risk intelligence. Infrastructure spending patterns, deferred maintenance signals, and capital project tracking. Risk indicators visible in public records months before they become claims.
+Summary: Pre-event risk intelligence. Infrastructure spending patterns, deferred maintenance signals, and contagion tracking from 2,500+ municipalities. Risk indicators visible in public records months before they become claims.
 
-## You see the risk before it becomes a claim
+<style>
+.lp-hero { display: flex; gap: 40px; margin-bottom: 48px; align-items: flex-start; }
+.lp-hero-text { flex: 1; }
+.lp-hero-text h2 { font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; line-height: 1.3; }
+.lp-hero-text p { font-size: 16px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
+.lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
-Claims history tells you what already went wrong. Municipal spending data tells you what's about to. Deferred infrastructure maintenance, stalled capital projects, and shifting spending priorities are visible in public records months or years before they become claims. The precursor signals are already there, sitting on town hall websites. Nobody was reading them.
+.lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
+.lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
+.lp-case-study a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; padding: 8px 20px; border: 1px solid #E8512D; border-radius: 3px; flex-shrink: 0; transition: all 0.15s; }
+.lp-case-study a:hover { background: #E8512D; color: #F7F4F0; }
 
-## What the Data Shows
+.lp-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.lp-metric { text-align: center; padding: 20px; background: #F7F4F0; border-radius: 6px; }
+.lp-metric-value { display: block; font-family: 'Newsreader', serif; font-size: 28px; font-weight: 600; color: #0C0C0C; }
+.lp-metric-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
-| Risk Indicator | Source Document | What It Signals |
-|---|---|---|
-| Infrastructure spending trends | Check registers, capital budgets | Deferred maintenance accumulation |
-| Capital project status | Meeting minutes, budget amendments | Stalled or cancelled projects |
-| Emergency spending spikes | AP warrants, special appropriations | Reactive vs. preventive maintenance |
-| Vendor payment delays | Check registers (velocity analysis) | Fiscal stress affecting service delivery |
-| Environmental remediation | Meeting minutes, budget line items | PFAS, lead pipes, contamination liability |
+.lp-section { margin-bottom: 48px; }
+.lp-section h3 { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; }
+.lp-section p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 12px; }
 
-## How It Works
+.lp-buyers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+.lp-buyer { padding: 20px; border: 1px solid #E8E4DF; border-radius: 6px; }
+.lp-buyer strong { display: block; color: #0C0C0C; margin-bottom: 4px; font-size: 14px; }
+.lp-buyer span { font-size: 13px; color: #555; line-height: 1.5; }
 
-We read municipal documents daily from 2,100+ municipalities. When infrastructure spending drops relative to historical norms, when capital projects stall, when emergency appropriations spike, those patterns are visible in the data.
+.lp-sample { background: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-sample h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #0C0C0C; }
+.lp-sample p { font-size: 13px; color: #555; margin: 0; }
+.lp-sample a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; font-weight: 500; flex-shrink: 0; }
+.lp-sample a:hover { text-decoration: underline; }
 
-A municipality that defers water main replacement for three consecutive budget cycles is accumulating risk. That shows up in our data as declining infrastructure vendor payments and stalled capital project approvals, long before it shows up as a burst pipe or a boil-water notice.
+.lp-bottom-cta { text-align: center; padding: 40px 0 8px; border-top: 1px solid #E8E4DF; }
+.lp-bottom-cta h3 { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 500; color: #0C0C0C; margin-bottom: 12px; }
+.lp-bottom-cta p { font-size: 15px; color: #555; margin-bottom: 24px; }
+.lp-bottom-cta .lp-or { display: block; margin: 16px 0; font-size: 13px; color: #888; }
+.lp-bottom-cta a.lp-email { color: #E8512D; text-decoration: none; font-size: 14px; font-weight: 600; }
+.lp-bottom-cta a.lp-email:hover { text-decoration: underline; }
 
-## Coverage
+@media (max-width: 640px) {
+    .lp-hero { flex-direction: column; }
+    .lp-hero-img { width: 100%; }
+    .lp-metrics { grid-template-columns: repeat(2, 1fr); }
+    .lp-buyers { grid-template-columns: 1fr; }
+    .lp-case-study { flex-direction: column; text-align: center; }
+    .lp-sample { flex-direction: column; text-align: center; }
+}
+</style>
 
-- **2,100+ municipalities** monitored daily across 50 states
-- **43,000+ building permits** with contractor and project type data
-- **Contagion tracking** for spreading policy patterns (PFAS remediation, lead pipe replacement, housing code changes)
-- **Historical depth** varies by municipality
+<div class="lp-hero">
+<div class="lp-hero-text">
+<div class="lp-tag">Insurance & Risk</div>
+<h2>You see the risk before it becomes a claim</h2>
+<p>Claims history tells you what already went wrong. Municipal spending data tells you what's about to. Deferred maintenance, stalled capital projects, and emergency spending spikes are visible in public records months before they become claims. I read these records daily across 2,500+ municipalities.</p>
+</div>
+<img class="lp-hero-img" src="/images/story-pfas.png" alt="PFAS and infrastructure risk signal">
+</div>
 
-## The Scale of What's Unassessed
+<div class="lp-metrics">
+<div class="lp-metric">
+<span class="lp-metric-value">459</span>
+<span class="lp-metric-label">Contagion topics</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">2,500+</span>
+<span class="lp-metric-label">Municipalities</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">43K+</span>
+<span class="lp-metric-label">Permits</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">Daily</span>
+<span class="lp-metric-label">Monitoring</span>
+</div>
+</div>
 
-ASCE estimates a $2.6 trillion infrastructure investment gap in the US. That gap shows up as deferred maintenance in municipal spending records long before it shows up as claims. There are 19,500 municipalities managing water systems, roads, bridges, and public buildings, all publishing spending data that reveals their maintenance posture. Almost none of this data is used in underwriting.
+<div class="lp-section">
+<h3>What the data shows</h3>
+<p>Deferred infrastructure maintenance shows up in spending records long before it shows up as a burst pipe or a boil-water notice. I track declining infrastructure vendor payments, stalled capital project approvals, and emergency appropriation spikes across municipalities.</p>
+<p>PFAS remediation mandates, lead pipe replacement programs, and housing code changes spread across jurisdictions in predictable patterns. I track 459 contagion topics as they propagate, identifying which municipalities are proactively addressing risk and which are accumulating deferred liability. When one state mandates PFAS testing, neighboring states follow. The contagion pattern tells you who's next.</p>
+</div>
 
-We monitor 2,100+ municipalities daily and track contagion patterns (PFAS remediation, lead pipe replacement, housing code changes) as they spread across jurisdictions. At national scale, this becomes a leading indicator layer for the full municipal risk universe, built from the spending records that predict infrastructure failures, not the claims data that confirms them after the fact.
+<div class="lp-buyers">
+<div class="lp-buyer">
+<strong>P&C carriers</strong>
+<span>Leading indicators of municipal infrastructure failure from the spending data that predicts claims.</span>
+</div>
+<div class="lp-buyer">
+<strong>Municipal risk pools</strong>
+<span>Member municipality health monitoring from source spending records, not self-reported surveys.</span>
+</div>
+<div class="lp-buyer">
+<strong>Reinsurers</strong>
+<span>Portfolio-level municipal infrastructure exposure assessed from deferred maintenance patterns.</span>
+</div>
+<div class="lp-buyer">
+<strong>Risk consultants</strong>
+<span>Contagion tracking and infrastructure spending trends for municipal insurance placement.</span>
+</div>
+</div>
 
-## Why This Data Is Invisible to Underwriters
+<div class="lp-sample">
+<div>
+<h4>Sample infrastructure risk signals</h4>
+<p>50 risk signals showing municipality, risk category, contagion patterns, and monetary amounts.</p>
+</div>
+<a href="/sample-data/infrastructure-risk-sample.csv">Download CSV &rarr;</a>
+</div>
 
-Capital plans, emergency appropriations, and infrastructure spending records are stored inside municipal CMS platforms at URLs with no navigation link. In our testing, roughly 99% of the documents we ingest are undiscoverable through search engines or AI tools. A town uploads a capital improvement plan to its portal and no menu, sitemap, or link points to it. An underwriter would need to know the exact URL to find it. Multiply that by 19,500 municipalities and the documents that reveal deferred maintenance and infrastructure risk are effectively dark. Our connectors reach into each CMS platform's document store directly, reading what the navigation tree never shows.
-
-## Who This Is For
-
-- **Property & casualty carriers** underwriting municipal policies
-- **Municipal risk pools** evaluating member municipality health
-- **Reinsurers** assessing portfolio-level municipal infrastructure exposure
-- **Risk consultants** advising on municipal insurance placement
-
-## Contagion Signals
-
-Some risks spread across municipalities in predictable patterns. When one state mandates PFAS testing, neighboring states follow. When a federal grant program funds lead pipe replacement, municipalities that apply early are reducing risk while those that don't are falling behind.
-
-We track these contagion patterns across jurisdictions, identifying which municipalities are proactively addressing infrastructure risks and which are accumulating deferred liability.
-
-## Sample Data
-
-**[Download sample infrastructure risk signals (CSV)](/sample-data/infrastructure-risk-sample.csv)** -- 50 infrastructure and environmental risk signals showing the data structure: municipalities, risk category, contagion patterns, and monetary amounts.
-
-## Delivery & Integration
-
-- **Format:** Structured feeds (CSV, JSON, or API) or custom reports
-- **Cadence:** Daily updates with contagion pattern alerts
-- **Backfill:** Full historical data for covered municipalities
-- **Filtering:** By state, region, risk category, or contagion pattern
-
-## What This Looks Like in Practice
-
-An underwriter evaluating a municipal portfolio in New England could receive:
-
-> 3 municipalities cut water infrastructure budgets for the 2nd consecutive year. Bangor ME is in year 12 of EPA consent decree -- compliance spending has been flat while requirements increased. 2 towns in Cumberland County started emergency water main repairs this quarter after 0 in the prior 4 quarters. PFAS testing mandates spreading: 5 new state bills introduced this session.
-
-Each item traces to source documents. The underwriter sees which municipalities are accumulating risk and which are investing proactively.
-
-## Get Started
-
-Pilot programs available for specific states or regions, scoped to your geographic footprint.
-
-**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell us which states or regions you underwrite and we'll show you coverage live.
-
-Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Infrastructure%20risk%20inquiry%20%28via%20landing%20page%29) -- we'll send a coverage summary within one business day.
+<div class="lp-bottom-cta">
+<h3>See risk signals for your geographic footprint</h3>
+<p>Tell me which states or regions you underwrite and I'll show you what the spending data reveals.</p>
+<a class="cta-button" href="https://calendar.app.google/s6wDVSaJuqCkwcmg9">Book a 15-minute data review</a>
+<span class="lp-or">or</span>
+<a class="lp-email" href="mailto:matt@municipalalpha.com?subject=Infrastructure%20risk%20inquiry%20%28via%20landing%20page%29">matt@municipalalpha.com</a>
+</div>

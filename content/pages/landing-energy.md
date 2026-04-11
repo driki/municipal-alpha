@@ -1,79 +1,115 @@
 Title: Renewable Energy Siting Intelligence
 Slug: solutions/energy-development
 Sortorder: 35
-Summary: Pre-RFP project intelligence. Zoning decisions, planning board approvals, environmental permits, and site plan reviews from 2,300+ municipalities. Early signals for greenfield site origination.
+Summary: Pre-RFP project intelligence. Zoning decisions, planning board approvals, and site plan reviews from 2,500+ municipalities. Early signals for greenfield site origination.
 
-## You know about the project before the RFP is written
+<style>
+.lp-hero { display: flex; gap: 40px; margin-bottom: 48px; align-items: flex-start; }
+.lp-hero-text { flex: 1; }
+.lp-hero-text h2 { font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; line-height: 1.3; }
+.lp-hero-text p { font-size: 16px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
+.lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
-The earliest signals in energy project development come from municipal government. A planning board approves a solar overlay district. A zoning board grants a variance for battery storage. A town meeting votes on a utility-scale moratorium. These decisions shape where projects get built, what the permitting path looks like, and whether local opposition is forming -- months before an RFP or a permit application exists.
+.lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
+.lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
+.lp-case-study a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; padding: 8px 20px; border: 1px solid #E8512D; border-radius: 3px; flex-shrink: 0; transition: all 0.15s; }
+.lp-case-study a:hover { background: #E8512D; color: #F7F4F0; }
 
-These precursor signals are public record, but they're buried inside municipal document management systems at URLs with no navigation link. I built connectors that reach into 15+ CMS platforms directly and read documents the day they're published.
+.lp-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.lp-metric { text-align: center; padding: 20px; background: #F7F4F0; border-radius: 6px; }
+.lp-metric-value { display: block; font-family: 'Newsreader', serif; font-size: 28px; font-weight: 600; color: #0C0C0C; }
+.lp-metric-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
-## What We Deliver
+.lp-section { margin-bottom: 48px; }
+.lp-section h3 { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; }
+.lp-section p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 12px; }
 
-**Structured municipal intelligence for site origination teams** -- zoning decisions, planning board actions, environmental permits, energy RFPs, and capital plans filtered to what matters for renewable energy development.
+.lp-buyers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+.lp-buyer { padding: 20px; border: 1px solid #E8E4DF; border-radius: 6px; }
+.lp-buyer strong { display: block; color: #0C0C0C; margin-bottom: 4px; font-size: 14px; }
+.lp-buyer span { font-size: 13px; color: #555; line-height: 1.5; }
 
-| Signal Type | Volume | What It Tells You |
-|---|---|---|
-| Zoning & land use decisions | 3,900+ docs | Where overlay districts, variances, and conditional use permits are being granted or denied |
-| Environmental & conservation | 2,100+ docs | Wetland reviews, stormwater permits, setback decisions, decommissioning plans |
-| Energy-specific documents | 990+ docs | Solar applications, wind siting reviews, battery storage permits, net metering filings |
-| Utility & grid infrastructure | 1,000+ docs | Substation activity, interconnection filings, microgrid proposals |
-| Capital improvement plans | 4,100+ docs | Municipal infrastructure spend priorities that signal where development is welcome |
-| Energy RFPs & solicitations | 58 docs | Municipalities actively seeking renewable energy proposals |
-| Comprehensive & climate plans | 540+ docs | Climate action plans, sustainability goals, energy plans that forecast receptivity |
+.lp-sample { background: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-sample h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #0C0C0C; }
+.lp-sample p { font-size: 13px; color: #555; margin: 0; }
+.lp-sample a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; font-weight: 500; flex-shrink: 0; }
+.lp-sample a:hover { text-decoration: underline; }
 
-## Why This Matters for Greenfield Origination
+.lp-bottom-cta { text-align: center; padding: 40px 0 8px; border-top: 1px solid #E8E4DF; }
+.lp-bottom-cta h3 { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 500; color: #0C0C0C; margin-bottom: 12px; }
+.lp-bottom-cta p { font-size: 15px; color: #555; margin-bottom: 24px; }
+.lp-bottom-cta .lp-or { display: block; margin: 16px 0; font-size: 13px; color: #888; }
+.lp-bottom-cta a.lp-email { color: #E8512D; text-decoration: none; font-size: 14px; font-weight: 600; }
+.lp-bottom-cta a.lp-email:hover { text-decoration: underline; }
 
-Siting a utility-scale project takes years. The permitting risk isn't just environmental -- it's political. Towns that adopted solar moratoriums two years ago are now lifting them. Towns that approved overlay districts last quarter are signaling receptivity. Towns with climate action plans and energy committees are warmer than towns without them.
+@media (max-width: 640px) {
+    .lp-hero { flex-direction: column; }
+    .lp-hero-img { width: 100%; }
+    .lp-metrics { grid-template-columns: repeat(2, 1fr); }
+    .lp-buyers { grid-template-columns: 1fr; }
+    .lp-case-study { flex-direction: column; text-align: center; }
+    .lp-sample { flex-direction: column; text-align: center; }
+}
+</style>
 
-This information exists in planning board minutes, zoning amendments, and town meeting warrants. It's the municipal equivalent of satellite imagery for crop forecasting -- the ground truth that tells you where conditions are favorable before anyone else sees it.
+<div class="lp-hero">
+<div class="lp-hero-text">
+<div class="lp-tag">Project Origination</div>
+<h2>You know about the project before the RFP is written</h2>
+<p>The earliest signals in energy project development come from municipal government. A planning board approves a solar overlay district. A zoning board grants a variance for battery storage. A town meeting votes on a utility-scale moratorium. I read these decisions daily across 2,500+ municipalities, months before an RFP or permit application exists.</p>
+</div>
+<img class="lp-hero-img" src="/images/story-renewable-energy.png" alt="Renewable energy siting signal">
+</div>
 
-**A real example from our pipeline:** A Maine municipality's planning board reviewed a utility-scale solar moratorium in October 2022. Two years later, a renewable energy application appeared on a different board's agenda. The sequence -- moratorium review, public comment, ordinance amendment, application -- played out over 24 months in documents we captured automatically. A developer monitoring that town would have known the permitting window was opening months before the first application was filed.
+<div class="lp-metrics">
+<div class="lp-metric">
+<span class="lp-metric-value">2,500+</span>
+<span class="lp-metric-label">Municipalities</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">3,900+</span>
+<span class="lp-metric-label">Zoning docs</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">990+</span>
+<span class="lp-metric-label">Energy-specific docs</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">50</span>
+<span class="lp-metric-label">States</span>
+</div>
+</div>
 
-## The Signal Chain
+<div class="lp-section">
+<h3>The signal chain</h3>
+<p>Municipal energy development follows a predictable document trail. First, a climate action plan signals receptivity. Then a zoning amendment creates a solar overlay district or lifts a moratorium. A planning board application appears for site plan review. Finally, a notice of decision grants approval. Each step is a separate document, published to a different board's portal, sometimes months apart. I connect them across boards, across time, across municipalities, so you see the permitting window opening before the first application is filed.</p>
+</div>
 
-We don't just count documents. We connect them:
+<div class="lp-buyers">
+<div class="lp-buyer">
+<strong>Solar, wind, and storage developers</strong>
+<span>Greenfield site scouting from the zoning and permitting signals that predict where projects get built.</span>
+</div>
+<div class="lp-buyer">
+<strong>Project originators</strong>
+<span>Early intelligence on where municipal conditions favor development, before the RFP.</span>
+</div>
+<div class="lp-buyer">
+<strong>Renewable energy consultants</strong>
+<span>Zoning changes, moratorium reviews, and overlay district activity across jurisdictions.</span>
+</div>
+<div class="lp-buyer">
+<strong>Grid infrastructure developers</strong>
+<span>Interconnection filings, substation activity, and microgrid proposals from municipal records.</span>
+</div>
+</div>
 
-1. **Climate action plan** adopted by town council -- signals municipal receptivity to renewables
-2. **Zoning amendment** creating a solar overlay district -- the regulatory path opens
-3. **Planning board application** for site plan review -- a project is in motion
-4. **Notice of decision** granting approval -- the deal closes
-
-Each step is a separate document, published to a different board's portal, sometimes months apart. No single search finds them all. The value is in the cross-reference across boards, across time, across municipalities.
-
-## Coverage
-
-We monitor **2,300+ municipalities across 50 states**, with the deepest coverage in New England, Illinois, and Idaho. Coverage expands weekly as we onboard new towns. Every municipality we add activates energy-relevant document capture automatically -- there's no manual configuration per vertical.
-
-### What we're capturing right now
-
-- Solar facility applications and moratorium reviews in Maine
-- Renewable energy siting and interconnection dockets from state PUCs
-- Historic preservation reviews for residential solar installations
-- Zoning amendments and overlay district changes
-- Planning board site plan reviews for energy projects
-
-## Who This Is For
-
-- **Utility-scale solar, wind, and storage developers** scouting greenfield sites and tracking permitting signals
-- **Project originators** who need early intelligence on where municipal conditions favor development
-- **Renewable energy consultants** monitoring zoning changes that enable or block projects
-- **Community engagement firms** (like RenUSA) tracking local political landscape for siting campaigns
-- **Environmental intelligence platforms** (like Blumen) looking for complementary municipal data
-- **Grid infrastructure developers** following interconnection and substation activity
-
-## Delivery & Integration
-
-- **Format:** Structured feeds delivered as CSV, JSON, or via API
-- **Cadence:** Daily monitoring with full historical backfill
-- **Customization:** Filter by state, region, document type, or keyword
-- **Enrichment:** Board attribution, document classification, and cross-reference linking included
-
-## Get Started
-
-Pilot programs scoped to your target geography, with multi-state coverage available.
-
-**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell me where you're developing and I'll walk through coverage live.
-
-Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Energy%20siting%20inquiry%20%28via%20solutions%20page%29) -- include your target states and I'll send a coverage summary within one business day.
+<div class="lp-bottom-cta">
+<h3>See energy siting signals in your target geography</h3>
+<p>Tell me where you're developing and I'll walk through coverage live.</p>
+<a class="cta-button" href="https://calendar.app.google/s6wDVSaJuqCkwcmg9">Book a 15-minute data review</a>
+<span class="lp-or">or</span>
+<a class="lp-email" href="mailto:matt@municipalalpha.com?subject=Energy%20siting%20inquiry%20%28via%20solutions%20page%29">matt@municipalalpha.com</a>
+</div>

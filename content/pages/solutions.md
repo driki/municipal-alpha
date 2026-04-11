@@ -214,7 +214,7 @@ Sortorder: 1
 <div class="sol-card-tag">Infrastructure &amp; REITs</div>
 <h3>Tower &amp; Infrastructure Leads</h3>
 <div class="sol-card-hook">Pre-listing lease intelligence. Qualified tower prospects with parcel data and owner ID. You contact the landowner before anyone else knows the lease exists.</div>
-<div class="sol-card-proof"><strong>7,700+</strong> tower sites screened &middot; <strong>23-month</strong> avg competitive window</div>
+<div class="sol-card-proof"><strong>7,700+</strong> tower sites screened &middot; <a href="/research/amherst-tower/" style="color: #E8512D; text-decoration: none;">Amherst case study &rarr;</a></div>
 </div>
 </a>
 
@@ -224,7 +224,7 @@ Sortorder: 1
 <div class="sol-card-tag">Fixed Income</div>
 <h3>Municipal Credit Intelligence</h3>
 <div class="sol-card-hook">Pre-downgrade fiscal intelligence. Leading indicators of stress from source spending documents. You see the fiscal distress before the rating agency does.</div>
-<div class="sol-card-proof"><strong>8.7x</strong> separation ratio &middot; distressed vs stable municipalities</div>
+<div class="sol-card-proof"><strong>8.7x</strong> separation ratio &middot; <a href="/research/la-marque-credit/" style="color: #E8512D; text-decoration: none;">La Marque case study &rarr;</a></div>
 </div>
 </a>
 

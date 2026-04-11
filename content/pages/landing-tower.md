@@ -1,83 +1,131 @@
 Title: Tower & Infrastructure Leads
 Slug: solutions/tower-leads
 Sortorder: 30
-Summary: Pre-listing lease intelligence. Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 5,400+ sites screened across 2,300+ municipalities.
+Summary: Pre-listing lease intelligence. Qualified tower lease prospects with parcel data, owner identification, and FCC/FAA cross-reference. 7,700+ sites screened across 2,500+ municipalities.
 
-## You contact the landowner before anyone else knows the lease exists
+<style>
+.lp-hero { display: flex; gap: 40px; margin-bottom: 48px; align-items: flex-start; }
+.lp-hero-text { flex: 1; }
+.lp-hero-text h2 { font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; line-height: 1.3; }
+.lp-hero-text p { font-size: 16px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
+.lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
-Tower lease aggregation is a land rush. The difference between a good deal and a lost deal is who gets to the landowner first. A lease that hits the open market gets bid up 30-40%. The precursor signals -- assessor records, planning board votes, check register payments -- tell you where the towers are, who owns the land, and what the lease looks like, months before a renewal hits the market.
+.lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
+.lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
+.lp-case-study a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; padding: 8px 20px; border: 1px solid #E8512D; border-radius: 3px; flex-shrink: 0; transition: all 0.15s; }
+.lp-case-study a:hover { background: #E8512D; color: #F7F4F0; }
 
-## What We Deliver
+.lp-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+.lp-metric { text-align: center; padding: 20px; background: #F7F4F0; border-radius: 6px; }
+.lp-metric-value { display: block; font-family: 'Newsreader', serif; font-size: 28px; font-weight: 600; color: #0C0C0C; }
+.lp-metric-label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
-**Qualified prospect lists** with parcel data, landowner identification, lease terms where available, and tower tenant information cross-referenced against FCC and FAA databases.
+.lp-section { margin-bottom: 48px; }
+.lp-section h3 { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 500; color: #0C0C0C; margin: 0 0 16px; }
+.lp-section p { font-size: 15px; color: #555; line-height: 1.7; margin-bottom: 12px; }
 
-| Data Point | Source |
-|---|---|
-| Tower location and height | FCC ASR + FAA OE/AAA |
-| Land parcel and owner | Municipal assessor records |
-| Current tenant | FCC ULS registration |
-| Lease payment history | Municipal check registers (where available) |
-| Zoning and permits | Planning board agendas + permit records |
-| Co-location potential | FCC registration count per structure |
+.lp-buyers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+.lp-buyer { padding: 20px; border: 1px solid #E8E4DF; border-radius: 6px; }
+.lp-buyer strong { display: block; color: #0C0C0C; margin-bottom: 4px; font-size: 14px; }
+.lp-buyer span { font-size: 13px; color: #555; line-height: 1.5; }
 
-## Coverage
+.lp-sample { background: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.lp-sample h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #0C0C0C; }
+.lp-sample p { font-size: 13px; color: #555; margin: 0; }
+.lp-sample a { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #E8512D; text-decoration: none; font-weight: 500; flex-shrink: 0; }
+.lp-sample a:hover { text-decoration: underline; }
 
-5,400+ tower sites screened across 2,300+ municipalities. Coverage is deepest in New England, Illinois, and Idaho, expanding weekly.
+.lp-bottom-cta { text-align: center; padding: 40px 0 8px; border-top: 1px solid #E8E4DF; }
+.lp-bottom-cta h3 { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 500; color: #0C0C0C; margin-bottom: 12px; }
+.lp-bottom-cta p { font-size: 15px; color: #555; margin-bottom: 24px; }
+.lp-bottom-cta .lp-or { display: block; margin: 16px 0; font-size: 13px; color: #888; }
+.lp-bottom-cta a.lp-email { color: #E8512D; text-decoration: none; font-size: 14px; font-weight: 600; }
+.lp-bottom-cta a.lp-email:hover { text-decoration: underline; }
 
-### What a prospect looks like
+@media (max-width: 640px) {
+    .lp-hero { flex-direction: column; }
+    .lp-hero-img { width: 100%; }
+    .lp-metrics { grid-template-columns: repeat(2, 1fr); }
+    .lp-buyers { grid-template-columns: 1fr; }
+    .lp-case-study { flex-direction: column; text-align: center; }
+    .lp-sample { flex-direction: column; text-align: center; }
+}
+</style>
 
-A single prospect in our dataset connects:
+<div class="lp-hero">
+<div class="lp-hero-text">
+<div class="lp-tag">Infrastructure & REITs</div>
+<h2>You contact the landowner before anyone else knows the lease exists</h2>
+<p>Tower lease aggregation is a land rush. A lease that hits the open market gets bid up 30-40%. I cross-reference assessor records, planning board votes, FCC registrations, and check register payments to identify tower prospects months before a renewal hits the market. You get to the landowner first.</p>
+</div>
+<img class="lp-hero-img" src="/images/story-data-center-zoning.png" alt="Data center zoning signal">
+</div>
 
-- **Assessor data** showing the landowner, property valuation, and lease notation
-- **FCC registration** showing the tower tenant (American Tower, Crown Castle, SBA, etc.)
-- **FAA filing** showing tower height, coordinates, and construction date
-- **Check register data** (where available) showing lease payment amounts and frequency
-- **Planning board records** showing any zoning variances, height amendments, or renewal hearings
+<div class="lp-case-study">
+<div>
+<h4>32 months of signal in Amherst, NH</h4>
+<p>17 signals. 15 meetings. From citizen complaint to American Tower ground lease. Every source linked.</p>
+</div>
+<a href="/research/amherst-tower/">Read the case study &rarr;</a>
+</div>
 
-No single public database contains all of this. The value is in the cross-reference.
+<div class="lp-metrics">
+<div class="lp-metric">
+<span class="lp-metric-value">7,700+</span>
+<span class="lp-metric-label">Sites screened</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">23 mo</span>
+<span class="lp-metric-label">Competitive window</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">50</span>
+<span class="lp-metric-label">States</span>
+</div>
+<div class="lp-metric">
+<span class="lp-metric-value">6</span>
+<span class="lp-metric-label">Sources cross-referenced</span>
+</div>
+</div>
 
-## The Scale of What's Out There
+<div class="lp-section">
+<h3>What a prospect looks like</h3>
+<p>A single prospect in the dataset connects assessor data (landowner, valuation, lease notation), FCC registration (tower tenant), FAA filing (height, coordinates), check register data (lease payment amounts), and planning board records (zoning variances, renewal hearings). No single public database contains all of this. The value is in the cross-reference, assembled automatically for every site I screen.</p>
+</div>
 
-There are 130,000+ FCC-registered tower structures in the United States. Most sit on privately owned land with ground leases that renew, transfer, or expire without anyone outside the immediate parties knowing about it. The public records that reveal lease terms, landowner identity, and property valuation exist in 19,500 municipal assessor databases, most of which have never been systematically screened.
+<div class="lp-buyers">
+<div class="lp-buyer">
+<strong>Tower lease aggregators</strong>
+<span>Acquisition targets identified before competitors, with landowner and lease data attached.</span>
+</div>
+<div class="lp-buyer">
+<strong>Infrastructure REITs</strong>
+<span>Ground lease portfolio intelligence from municipal source records.</span>
+</div>
+<div class="lp-buyer">
+<strong>Land brokers</strong>
+<span>Landowners with existing tower leases identified from assessor and payment data.</span>
+</div>
+<div class="lp-buyer">
+<strong>Wireless carriers</strong>
+<span>Network densification planning with site-level municipal intelligence.</span>
+</div>
+</div>
 
-5,400+ tower sites screened across 2,300+ municipalities so far. At national scale, the addressable universe is roughly 40,000+ sites where municipal records intersect with FCC/FAA data to produce qualified prospects. Every new town with assessor data activates tower screening automatically.
+<div class="lp-sample">
+<div>
+<h4>Sample tower prospects</h4>
+<p>25 redacted prospects showing location, height, tenant, owner type, data sources, and confidence score.</p>
+</div>
+<a href="/sample-data/tower-prospects-sample.csv">Download CSV &rarr;</a>
+</div>
 
-## Why This Data Doesn't Show Up in Search
-
-Assessor records and planning board attachments are stored inside municipal CMS platforms at URLs with no navigation link. A zoning variance for a tower site gets attached to a planning board agenda packet, stored in the system, and never linked from the public site. In our testing, roughly 99% of the documents we ingest are invisible to search engines and AI agents because nothing on the site points to them. FCC and FAA data is public, but the municipal records that connect a tower to a landowner, a lease payment, and a zoning decision live in these dark CMS paths. We built connectors that reach them directly.
-
-## Who This Is For
-
-- **Tower lease aggregators** looking for acquisition targets before competitors
-- **Infrastructure REITs** evaluating ground lease portfolios
-- **Land brokers** identifying landowners with existing tower leases
-- **Wireless carriers** planning network densification with site-level intelligence
-
-## Sample Data
-
-We publish a redacted sample of our tower prospect data so you can evaluate the format and depth before any conversation.
-
-**[Download sample tower prospects (CSV)](/sample-data/tower-prospects-sample.csv)** -- 25 redacted prospects showing the data structure: location, height, tenant, owner type, data sources, and confidence score.
-
-## Delivery & Integration
-
-- **Format:** Qualified lead lists delivered as CSV, JSON, or via API
-- **Cadence:** Weekly updates with full historical backfill
-- **Customization:** Filter by state, region, MSA, or tower tenant
-- **Enrichment:** Parcel data, owner identification, FCC/FAA cross-reference included
-
-## What a Deal Looks Like
-
-A real example from our pipeline: A New Hampshire municipality's planning board approved a cell tower height variance in meeting minutes. Cross-referencing the parcel with assessor records shows a private landowner. FCC data shows American Tower as the current tenant. The check register shows quarterly lease payments of $2,400. The lease renewal window is 8 months away.
-
-That's one prospect. The system has 5,400+.
-
-For more on how the signal chain works, read our **[Amherst NH case study (PDF)](/case-studies/amherst-nh-procurement-chain.pdf)** -- a full walkthrough of 18 signals extracted from one municipality over 23 months.
-
-## Get Started
-
-Pilot programs scoped to your target geography, with broader coverage available.
-
-**[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** -- tell me your target geography and I'll walk through coverage live.
-
-Or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29) -- include your target geography and I'll send a coverage summary within one business day.
+<div class="lp-bottom-cta">
+<h3>See tower prospects in your target geography</h3>
+<p>Tell me where you're looking and I'll walk through coverage live.</p>
+<a class="cta-button" href="https://calendar.app.google/s6wDVSaJuqCkwcmg9">Book a 15-minute data review</a>
+<span class="lp-or">or</span>
+<a class="lp-email" href="mailto:matt@municipalalpha.com?subject=Tower%20leads%20inquiry%20%28via%20landing%20page%29">matt@municipalalpha.com</a>
+</div>
