@@ -1,6 +1,6 @@
 /* Municipal Alpha — Editorial Intelligence Theme */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root {
     --ink: #0C0C0C;
@@ -16,23 +16,6 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* Skip link (WCAG 2.4.1) — visually hidden until keyboard focus */
-.skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 12px 20px;
-    font-weight: 700;
-    font-size: 19px;
-    text-decoration: none;
-    z-index: 1000;
-}
-.skip-link:focus {
-    left: 0;
-}
 
 body {
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -127,8 +110,7 @@ body {
 
 .hero-kicker {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 19px;
-    font-weight: 700;
+    font-size: 11px;
     color: var(--signal);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -162,8 +144,7 @@ body {
 
 .signal-callout .sig-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 19px;
-    font-weight: 700;
+    font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--signal);
@@ -314,8 +295,8 @@ body {
 .story-stat {
     display: block;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 19px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 500;
     color: var(--signal);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -345,9 +326,9 @@ body {
 
 .stories-more a {
     color: var(--signal);
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 14px;
 }
 
 .stories-more a:hover {
@@ -456,9 +437,9 @@ a.solution-featured:hover {
 
 .how-brief-text a {
     color: var(--signal);
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 19px;
+    font-size: 14px;
 }
 
 .how-brief-text a:hover {
@@ -634,8 +615,6 @@ a.solution-featured:hover {
 .cta .btn {
     background: var(--signal);
     color: var(--paper);
-    font-size: 19px;
-    font-weight: 700;
 }
 
 .cta .btn:hover {

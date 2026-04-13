@@ -101,8 +101,8 @@ Sortorder: 1
 .sol-bottom-cta a.sol-email {
     color: #E8512D;
     text-decoration: none;
-    font-size: 19px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
 }
 .sol-bottom-cta a.sol-email:hover {
     text-decoration: underline;
@@ -126,32 +126,32 @@ Sortorder: 1
 <a href="/solutions/alt-data/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Municipal Alt Data</h3>
-<p>Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. 128 tickers tracked. <span style="color: #E8512D; font-size: 19px; font-weight: 700;">Geneva IL case study</span></p>
+<p>Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. 128 tickers tracked. <span style="color: #E8512D;">Geneva IL case study</span></p>
 </a>
 <a href="/solutions/tower-leads/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Tower &amp; Infrastructure Leads</h3>
-<p>Pre-listing lease intelligence. Qualified tower prospects with parcel data and owner ID. 7,700+ sites screened. <span style="color: #E8512D; font-size: 19px; font-weight: 700;">Amherst case study &rarr;</span></p>
+<p>Pre-listing lease intelligence. Qualified tower prospects with parcel data and owner ID. 7,700+ sites screened. <span style="color: #E8512D;">Amherst case study &rarr;</span></p>
 </a>
 <a href="/solutions/credit-intelligence/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Municipal Credit Intelligence</h3>
-<p>Pre-downgrade fiscal intelligence. Leading indicators of stress from source spending documents. 8.7x separation ratio. <span style="color: #E8512D; font-size: 19px; font-weight: 700;">La Marque case study &rarr;</span></p>
+<p>Pre-downgrade fiscal intelligence. Leading indicators of stress from source spending documents. 8.7x separation ratio. <span style="color: #E8512D;">La Marque case study &rarr;</span></p>
 </a>
 <a href="/solutions/contractor-signals/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Government Contractor Signals</h3>
-<p>Entity resolution across 111 municipalities. Contract pipeline, competitive wins, and geographic expansion visible in meeting minutes. <span style="color: #E8512D; font-size: 19px; font-weight: 700;">WM case study &rarr;</span></p>
+<p>Entity resolution across 111 municipalities. Contract pipeline, competitive wins, and geographic expansion visible in meeting minutes. <span style="color: #E8512D;">WM case study &rarr;</span></p>
 </a>
 <a href="/solutions/energy-development/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Renewable Energy Siting</h3>
-<p>Pre-RFP project intelligence. Moratorium-to-permit pipeline tracked across 50 states. Zoning decisions before the RFP is written. <span style="color: #E8512D; font-size: 19px; font-weight: 700;">Solar siting case study &rarr;</span></p>
+<p>Pre-RFP project intelligence. Moratorium-to-permit pipeline tracked across 50 states. Zoning decisions before the RFP is written. <span style="color: #E8512D;">Solar siting case study &rarr;</span></p>
 </a>
 <a href="/solutions/infrastructure-risk/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Infrastructure Risk Intelligence</h3>
-<p>Pre-event risk intelligence. 459 contagion topics tracked. PFAS, deferred maintenance, consent decree signals. <span style="color: #E8512D; font-size: 19px; font-weight: 700;">Hartford VT PFAS case study &rarr;</span></p>
+<p>Pre-event risk intelligence. 459 contagion topics tracked. PFAS, deferred maintenance, consent decree signals. <span style="color: #E8512D;">Hartford VT PFAS case study &rarr;</span></p>
 </a>
 </div>
 
