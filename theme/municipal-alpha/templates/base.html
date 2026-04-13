@@ -21,6 +21,7 @@
             async src="//stats.municipalalpha.com/count.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <nav class="nav">
         <div class="nav-inner">
             <a href="{{ SITEURL }}/" class="nav-brand">
@@ -37,7 +38,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main">
         {% block content %}{% endblock %}
     </main>
 
