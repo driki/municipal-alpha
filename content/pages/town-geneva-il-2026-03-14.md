@@ -66,4 +66,4 @@ The City of Geneva issued a variety of permits this week:
 <!-- AD SLOT: footer leaderboard 728x90 -->
 <div class="ad-slot ad-leaderboard"></div>
 
-*[Municipal Alpha](/) monitors 2,100+ municipalities across 50 states. [Institutional data access](/solutions/alt-data/) | [Infrastructure leads](/solutions/tower-leads/) | [Contact](/contact/)*
+*[Municipal Alpha](/) monitors 2,600+ municipalities across 50 states. [Institutional data access](/solutions/alt-data/) | [Infrastructure leads](/solutions/tower-leads/) | [Contact](/contact/)*
