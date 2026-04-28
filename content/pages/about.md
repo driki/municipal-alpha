@@ -81,6 +81,6 @@ Previously: Chief Product Officer at Acast (podcast infrastructure, $200M revenu
 
 The pipeline runs autonomously: 2,300+ municipalities crawled daily, documents classified and entity-resolved same-day, self-healing infrastructure that detects and adapts to website changes without human intervention. One person built it. The automation operates it.
 
-Portfolio company, Roux Institute National Security Innovation Hub (Northeastern University, Portland ME).
+Embedded at the Roux Institute NSIH (National Security Innovation Hub, Northeastern University, Portland ME).
 
 **[Book a 15-minute data review](https://calendar.app.google/s6wDVSaJuqCkwcmg9)** or email [matt@municipalalpha.com](mailto:matt@municipalalpha.com).

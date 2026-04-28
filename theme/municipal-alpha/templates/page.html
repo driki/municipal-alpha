@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }} — {{ SITENAME }}{% endblock %}
+{% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
 
 {% block meta %}
     <meta name="description" content="{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">

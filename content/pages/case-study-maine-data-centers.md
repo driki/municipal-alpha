@@ -2,7 +2,7 @@ Title: Maine's Pause on Data Centers Is Something We Saw Coming Five Months Ago
 Slug: research/maine-data-center-moratorium
 Sortorder: 11
 Header_image: story-maine-data-center-moratorium.png
-Summary: Six town halls — out of 173 we monitor in Maine — signaled the nation's first data center moratorium before the legislature voted. Every source document is linked.
+Summary: Six town halls (out of 173 we monitor in Maine) signaled the nation's first data center moratorium before the legislature voted. Every source document is linked.
 
 <style>
 .cs-intro { font-size: 19px; color: #333; max-width: 640px; line-height: 1.7; margin-bottom: 40px; }
@@ -131,7 +131,7 @@ On April 6, 2026, Maine became the first state in America to pass a moratorium o
 <div class="tl-event tl-warm">
 <div class="tl-date">November 18, 2025</div>
 <span class="tl-town tl-town-gorham">Gorham</span> <span class="tl-board">Town Council</span>
-<div class="tl-text">Two weeks after Wiscasset. The first formal municipal action in a public document. One line on a council agenda, sponsored by Councilor Willis. No press coverage. The bill's sponsor, Rep. Sachs, represents Freeport &mdash; ten miles south.</div>
+<div class="tl-text">Two weeks after Wiscasset. The first formal municipal action in a public document. One line on a council agenda, sponsored by Councilor Willis. No press coverage. The bill's sponsor, Rep. Sachs, represents Freeport, ten miles south.</div>
 <div class="cs-quote">
 <p>"Action to consider amending the Land Use & Development Code to restrict large scale data centers."</p>
 <span class="cs-attribution">Gorham Town Council Agenda, Item #2025-11-08. Councilor Willis, sponsor.</span>
@@ -157,7 +157,7 @@ On April 6, 2026, Maine became the first state in America to pass a moratorium o
 <span class="tl-town tl-town-rockland">Rockland</span> <span class="tl-board">Energy &amp; Sustainability Committee</span>
 <div class="tl-text">A sustainability committee in a town of 7,000 starts drafting a data center ordinance. It becomes their primary discussion topic for the next three months, appearing on the February, March, and April agendas.</div>
 <div class="cs-quote">
-<p>"Data Center Ordinance" &mdash; primary discussion topic.</p>
+<p>"Data Center Ordinance": primary discussion topic.</p>
 <span class="cs-attribution">Rockland Energy and Sustainability Advisory Committee Agenda, February 4, 2026</span>
 </div>
 <div class="tl-source"><a href="https://www.rocklandmaine.gov/AgendaCenter/ViewFile/Agenda/_02042026-628">Source: rocklandmaine.gov &rarr;</a></div>
@@ -182,7 +182,7 @@ On April 6, 2026, Maine became the first state in America to pass a moratorium o
 <div class="tl-event tl-warm">
 <div class="tl-date">February 20, 2026</div>
 <span class="tl-town tl-town-bangor">Bangor</span> <span class="tl-board">Planning Division</span>
-<div class="tl-text">Bangor's planning staff writes a detailed memo to the Business &amp; Economic Development Committee. Seven pages covering energy strain, water consumption, zoning conflicts, noise, and economic trade-offs. Addressed to elected officials who haven't seen a data center proposal yet &mdash; but have watched what happened in Lewiston and Wiscasset.</div>
+<div class="tl-text">Bangor's planning staff writes a detailed memo to the Business &amp; Economic Development Committee. Seven pages covering energy strain, water consumption, zoning conflicts, noise, and economic trade-offs. Addressed to elected officials who haven't seen a data center proposal yet, but have watched what happened in Lewiston and Wiscasset.</div>
 <div class="cs-quote">
 <p>"This memo outlines the challenges large-scale data centers could pose to Bangor... Data centers are among the most electricity-intensive land uses."</p>
 <span class="cs-attribution">Bangor Planning Division Memo to B&amp;ED Committee, February 20, 2026</span>

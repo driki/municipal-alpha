@@ -56,7 +56,7 @@ construction-related documents from our pipeline.
 
 ## Download Sample Report
 
-**[Real Estate Development Intelligence Sample (PDF)](/sample-data/simon-redev-sample-2026-03-27.pdf)** — 17,057 development-relevant documents with category breakdown, most active municipalities, cross-reference of 55 Simon property locations against our database (18 currently monitored, 37 onboardable within 24 hours).
+**[Real Estate Development Intelligence Sample (PDF)](/sample-data/simon-redev-sample-2026-03-27.pdf):** 17,057 development-relevant documents with category breakdown, most active municipalities, cross-reference of 55 Simon property locations against our database (18 currently monitored, 37 onboardable within 24 hours).
 
 ## Who This Data Serves
 

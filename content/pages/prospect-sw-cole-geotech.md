@@ -53,7 +53,7 @@ environmental, and construction testing firms.
 
 ## Download Sample Report
 
-**[New England Infrastructure Sample (PDF)](/sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf)** — 1,045 infrastructure-relevant documents from 243 New England municipalities, broken down by category: capital improvement plans, bids & RFPs, utility & stormwater, and infrastructure committee activity.
+**[New England Infrastructure Sample (PDF)](/sample-data/sw-cole-infrastructure-sample-2026-03-27.pdf):** 1,045 infrastructure-relevant documents from 243 New England municipalities, broken down by category: capital improvement plans, bids & RFPs, utility & stormwater, and infrastructure committee activity.
 
 ## Who This Data Serves
 

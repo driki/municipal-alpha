@@ -8,7 +8,7 @@ Summary: 12,469 infrastructure-relevant documents across 2,130 municipalities. C
 The earliest signals in energy project development come from municipal
 government. A planning board that approves a solar overlay district, a
 zoning board that grants a special permit for battery storage, a town
-council that adopts a climate action plan — these decisions determine
+council that adopts a climate action plan: these decisions determine
 where projects can be sited, what the permitting path looks like, and
 whether local opposition is likely.
 

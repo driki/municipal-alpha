@@ -738,6 +738,15 @@ a.solution-featured:hover {
     color: var(--paper);
 }
 
+.footer-affiliation {
+    font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 11px;
+    color: #666;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
 /* Town page layout */
 .town-header {
     display: flex;
@@ -834,6 +843,15 @@ a.solution-featured:hover {
     letter-spacing: 0.01em;
     max-width: 640px;
     margin: 0 auto;
+}
+.social-proof-attribution {
+    font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 11px;
+    color: #666;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 8px;
 }
 
 /* Story header images — break out of container for full-bleed */
