@@ -1,0 +1,62 @@
+# Municipal Alpha robots.txt
+# Public-records data is intended to be discoverable by both traditional search engines and AI agents.
+# AI crawlers are explicitly allowlisted for the vendor and municipality profile surfaces.
+
+User-agent: *
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# OpenAI (ChatGPT, SearchGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl (feeds most LLM training corpora)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Bytedance/Doubao
+User-agent: Bytespider
+Allow: /
+
+# DuckDuckGo (incl. DuckAssist)
+User-agent: DuckAssistBot
+Allow: /
+
+Sitemap: https://municipalalpha.com/sitemap.xml

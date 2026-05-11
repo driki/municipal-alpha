@@ -38,6 +38,13 @@ Municipal Alpha monitors 2,100+ municipalities across 50 states, collecting 300,
 - Data Stories: https://municipalalpha.com/data-stories/
 - Contact: https://municipalalpha.com/contact/
 
+## Vendor & Municipality Profiles
+
+Municipal Alpha publishes public profiles for vendors and municipalities documented in our corpus. Profiles are factual aggregations of public-record activity, not opinions or rankings. Each profile cites source documents. Firms named in profiles may claim them or request corrections.
+
+- Vendor profile example (Wright-Pierce, water/wastewater/civil engineering, New England): https://municipalalpha.com/vendors/wright-pierce/
+- Municipality profile example (Falmouth, Maine): https://municipalalpha.com/profiles/falmouth-me/
+
 ## Sample Data
 
 - Tower prospects sample (CSV): https://municipalalpha.com/sample-data/tower-prospects-sample.csv
