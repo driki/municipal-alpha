@@ -57,17 +57,13 @@ The following payments appear in municipal check registers — public records of
 
 | Date | Municipality | Payment | Source |
 |---|---|---:|---|
-| 2026-02-18 | Nashua, NH | $3,261.16 across 1 check | Record of Expenditures FY26 |
-| 2026-01-21 | Nashua, NH | $1,215.58 across 2 checks | Record of Expenditures FY26 |
-| 2025-12-03 | Nashua, NH | $3,466.95 across 2 checks | Record of Expenditures FY26 |
-| 2025-11-19 | Nashua, NH | $4,799.69 across 2 checks | Record of Expenditures FY26 |
-| 2025-09-11 | Bedford, NH | $412.04 across 1 check | AP Check Warrant |
-| 2025-09-03 | Nashua, NH | $3,081.25 across 1 check | Record of Expenditures |
-| 2025-08-14 | Bedford, NH | $357.44 across 1 check | AP Check Warrant |
-| 2025-07-16 | Nashua, NH | $5,163.75 across 1 check | Record of Expenditures |
 | 2025-01-22 | Nashua, NH | $9,600.00 across 1 check | Record of Expenditures |
+| 2025-07-16 | Nashua, NH | $5,163.75 across 1 check | Record of Expenditures |
+| 2025-11-19 | Nashua, NH | $4,799.69 across 2 checks | Record of Expenditures FY26 |
+| 2025-12-03 | Nashua, NH | $3,466.95 across 2 checks | Record of Expenditures FY26 |
+| **Showing 4 of 107 documented check-register entries** | | | **[Claim to unlock →](#claim-this-profile)** |
 
-S.W. Cole Engineering appears in **107 distinct check-register entries** in our corpus. The cadence in Nashua and Bedford suggests project-based engagement (smaller, episodic payments characteristic of geotechnical site-investigation work) rather than ongoing retainer relationships.
+The cadence in Nashua and Bedford suggests project-based engagement (smaller, episodic payments characteristic of geotechnical site-investigation work) rather than ongoing retainer relationships.
 
 ## What This Profile Doesn't Show
 

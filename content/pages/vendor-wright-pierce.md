@@ -36,22 +36,7 @@ The following municipalities have published documents mentioning Wright-Pierce i
 | Lewiston | ME | 7 | 2024-06-03 — 2026-01-12 |
 | Wells | ME | 7 | 2019-08-06 — 2021-01-05 |
 | Falmouth | ME | 6 | 2025-11-10 — 2026-03-03 |
-| Cheshire | CT | 4 | 2026-02-10 — 2026-04-22 |
-| Hermon | ME | 4 | 2023-06-15 — 2026-01-01 |
-| Saco | ME | 4 | 2025-11-18 — 2025-12-16 |
-| Rangeley | ME | 2 | 2026-01-20 — 2026-02-02 |
-| Rockland | ME | 2 | 2026-02-02 — 2026-02-09 |
-| Torrington | CT | 2 | 2026-03-02 — 2026-03-16 |
-| Whitefield | NH | 2 | — |
-| Yarmouth | ME | 2 | 2024 — 2026-01-28 |
-| Biddeford | ME | 1 | 2026-03-25 |
-| Brunswick | ME | 1 | 2025-03-31 |
-| Caribou | ME | 1 | 2008-03-01 |
-| Chelmsford | MA | 1 | — |
-| Groton | CT | 2 | 2021-01-04 — 2026-03-23 |
-| Keene | NH | 1 | 2026-03-16 |
-| Pownal | ME | 1 | 2025-11-25 |
-| Sanford | ME | 1 | 2023-09-19 |
+| **Showing 6 of 22 New England municipalities** | | | **[Claim to unlock →](#claim-this-profile)** |
 
 ## Recent Project Activity (2025-2026)
 
@@ -66,18 +51,7 @@ Specific projects referenced in meeting minutes and agendas where Wright-Pierce 
 | 2026-03-23 | Groton, CT | Bid review and award recommendation for Smith Lake Intake Screen project |
 | 2026-03-16 | Keene, NH | Bypass pump line development for Martell Court Pump Station project (Conservation Commission) |
 | 2026-03-16 | Torrington, CT | Harris Drive Pump Station Upgrade Project services |
-| 2026-02-09 | Rockland, ME | Storm Water Utility presentation (City Council) |
-| 2026-02-02 | Rangeley, ME | Needs assessment update by Jamie Wallace (Board of Selectmen) |
-| 2026-01-12 | Lewiston, ME | Task Order Amendment #1 for Main St. Paving and ADA Improvements inspection services |
-| 2026-01 | Falmouth, ME | Slope stabilization project design and permit application (151 Foreside Shoreland Zone) |
-| 2025-12-15 | Lewiston, ME | Main St. Paving and ADA Improvements project, Task Order Amendment #1 |
-| 2025-12-11 | Hermon, ME | Sewer flow rate study update |
-| 2025-12-09 | Saco, ME | Nathan Edwards attended 321 Lincoln Street site walk representing City of Saco |
-| 2025-03-31 | Brunswick, ME | Androscoggin River Trail Project presentation (public forum) |
-| 2025-03-31 | Lewiston, ME | Main St. Paving Inspection and Sabattus & Main ADA Inspection task orders authorized |
-| 2025-01-27 | Lewiston, ME | Gully Brook Storm Drain Capacity Analysis task order authorized |
-| 2024-05-08 | Livermore Falls, ME | Engineering services |
-| 2023-09-19 | Sanford, ME | Engineering services |
+| **Showing 7 of 19+ documented projects since 2008** | | **[Claim to unlock →](#claim-this-profile)** |
 
 ## Sample Payment Records (Public Check Registers)
 
@@ -86,15 +60,12 @@ The following payments appear in municipal check registers — public records of
 | Date | Municipality | Payment | Source |
 |---|---|---:|---|
 | 2025-10-15 | Nashua, NH | $214,346.58 across 6 checks | Record of Expenditures FY26 |
-| 2026-01-07 | Nashua, NH | $76,786.29 across 6 checks | Record of Expenditures FY26 |
 | 2025-12-17 | Nashua, NH | $79,201.80 across 4 checks | Record of Expenditures FY26 |
+| 2026-01-07 | Nashua, NH | $76,786.29 across 6 checks | Record of Expenditures FY26 |
 | 2025-11-19 | Nashua, NH | $66,074.13 across 7 checks | Record of Expenditures FY26 |
-| 2026-02-18 | Nashua, NH | $56,563.70 across 2 checks | Record of Expenditures FY26 |
-| (selected) | Trumbull, CT | Individual checks ranging $116 — $132,114 | FY24/FY25/FY26 warrants |
-| (multiple) | Falmouth, ME | $64,657.56 across 13 checks | Town check register |
-| (multiple) | Chelmsford, MA | $29,008.85 across 7 checks | Town check register |
+| **Showing 4 of 363 documented check-register entries** | | | **[Claim to unlock →](#claim-this-profile)** |
 
-Wright-Pierce appears in **363 distinct check-register entries** across our coverage of New England municipalities. The figures above are a sample of recent high-value batches in Nashua, NH; comparable cadence is documented in Trumbull, CT across multiple fiscal years.
+Comparable cadence is documented in Trumbull, CT (individual checks ranging $116 to $132,114 across FY24, FY25, FY26 warrants), Falmouth, ME, Chelmsford, MA, and Montpelier, VT.
 
 ## Methodology
 
