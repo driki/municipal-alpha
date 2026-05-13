@@ -1,20 +1,74 @@
-Title: Sevee & Maher Engineers — Maine Municipal Activity Profile
+Title: Sevee & Maher Engineers — Maine Authority & Municipal Opportunity Profile
 Slug: vendors/sevee-maher
 Status: hidden
-Summary: Public profile compiled from municipal records. Sevee & Maher Engineers appears in 12 Maine municipalities across brownfield cleanup, planning review, water resources, and environmental engineering work, with documented activity spanning 2009-2026.
+Summary: Active PFAS environmental opportunities at Maine quasi-public authorities (MRRA, Loring) plus Sevee & Maher's documented existing footprint across 12 Maine municipalities. Compiled from public records.
 entity_name: Sevee & Maher Engineers
 entity_type: engineering_firm
 entity_hq: Cumberland Center, ME
 service_area: Maine and adjacent New England
 schema_type: Organization
 
-*Public profile compiled from publicly available municipal records: meeting minutes, agendas, planning board attachments, and engineering reports. Last updated 2026-05-12. [Request correction →](mailto:data@municipalalpha.com?subject=Sevee%20%26%20Maher%20profile%20correction)*
+*Public profile compiled from publicly available municipal and quasi-public authority records. Last updated 2026-05-12. [Request correction →](mailto:data@municipalalpha.com?subject=Sevee%20%26%20Maher%20profile%20correction)*
 
-## Sevee & Maher Engineers in Maine
+## What We Found for Sevee & Maher (May 2026)
 
-Sevee & Maher Engineers is a Cumberland Center, Maine-headquartered engineering firm specializing in brownfield cleanup, environmental remediation, water resources, planning review, and civil engineering for municipal clients across Maine. Based on public municipal records across our coverage of 2,100+ US municipalities, the firm appears in **12 distinct Maine municipalities**, with documented activity spanning 2009 through April 2026.
+The Midcoast Regional Redevelopment Authority (MRRA) in Brunswick, Maine just published a $60,000 PFAS-focused environmental Liaison RFP with a Thursday, May 21 deadline — the kind of authority-class opportunity that doesn't appear in SAM.gov or state procurement portals because Maine's quasi-public authorities run procurement through their own websites. Sevee & Maher's existing Maine practice positions the firm well for this opportunity and a broader stream of similar work at peer authorities. Below is the active opportunity, the data behind it, and the documented footprint that confirms our intelligence quality.
 
-The deepest current engagement is in Millinocket, ME, where Sevee & Maher shows up regularly in Town Manager's Reports and supporting agenda materials. Recent confirmed work includes the Wiscasset North Point Brownfields cleanup application (April 2026 Planning Board) and ongoing planning-review engagements in Falmouth.
+## Active Authority-Class Opportunity
+
+| Authority | Opportunity | Deadline | Scope | Budget |
+|---|---|---|---|---|
+| Midcoast Regional Redevelopment Authority (MRRA), Brunswick, ME | RFP — Qualified Environmental Professional (QEP) | Thursday, May 21, 2026 by 2:00pm | Environmental Liaison role for Brunswick Landing redevelopment. Explicit focus on PFAS/PFOS criteria and emerging contaminants, regulatory interpretation, US Navy + Maine DEP coordination, remediation planning review | $60,000 / 12-month engagement, annual renewal |
+
+Submission to Ashley Rand, Deputy Director, MRRA, 15 Terminal Road, Suite 203, Brunswick, ME 04011. Three hard copies, five-page maximum proposal. E-mail questions to Ashley Rand directly.
+
+## Why This Opportunity Class Matters
+
+There are approximately **70 Base Realignment and Closure (BRAC) redevelopment authorities nationally** — each one a multi-hundred-acre former military installation with inherited environmental remediation programs, ongoing PFAS contamination histories from legacy AFFF firefighting foam use, and recurring procurement of qualified environmental professionals. Most operate as state-chartered public municipal corporations and publish RFPs, board minutes, financial audits, and environmental monitoring data on their own websites — outside SAM.gov, outside state procurement portals, outside conventional bid-aggregation tools.
+
+Maine alone has two BRAC authorities directly relevant to Sevee & Maher's existing geography:
+
+- **Midcoast Regional Redevelopment Authority (MRRA)** — Brunswick, former Naval Air Station Brunswick, ~3,200 acres, active PFAS testing program (Method 1633A, October 2025 sampling at 9 locations on the property)
+- **Loring Commerce Centre / Loring Development Authority** — Limestone, former Loring AFB, ongoing redevelopment with parallel environmental procurement cadence
+
+Plus the broader Northeast peer set: Pease Development Authority (Portsmouth NH), Devens / MassDevelopment (former Fort Devens MA), and Quonset Development Corporation (former Quonset Point Naval Air Station RI).
+
+## Recent Quasi-Public Authority Environmental Data
+
+MRRA published Brunswick Landing PFAS Testing Results from October 2025 sampling, conducted to EPA Method 1633A standard across 9 sample locations on the property — four oil-water separators (OWS-4 through OWS-6 East/West) and five sewer lift stations (SLS-1 through SLS-5). Headline results from one sample point (SLS-1, 2 Pegasus St):
+
+| Compound | Result (ng/L) |
+|---|---|
+| 6:2 FTS | 969 |
+| PFOS | 445 |
+| PFHxA | 176 |
+| 8:2 FTS | 112 |
+| PFOA | 32.3 |
+
+The 6:2 FTS / 8:2 FTS / PFOS pattern is consistent with classic AFFF firefighting-foam contamination from the legacy Naval Air Station. Compounds detected at 8 of 9 sample locations on the property. Lab reports are structured PDFs published directly on the MRRA website.
+
+This is one quasi-public authority publishing one round of monitoring data. The full BRAC class produces comparable data continuously.
+
+## Coverage Extension Status — Maine Quasi-Public Authorities
+
+| Authority | Type | Indexing status |
+|---|---|---|
+| Midcoast Regional Redevelopment Authority (MRRA) | BRAC redev (former NAS Brunswick) | One-off pull complete; full pipeline integration in progress |
+| Loring Commerce Centre / Loring Development Authority | BRAC redev (former Loring AFB) | Surface confirmed; full integration in progress |
+| Maine Port Authority | Statewide port operations | In coverage roadmap |
+| Maine Municipal Bond Bank | State bond conduit | In coverage roadmap |
+
+We're extending coverage of this entity class across Maine and the broader Northeast. Firms with active practice in environmental remediation, planning, and brownfield cleanup at Maine quasi-public authorities can request the expanded data feed before public publication.
+
+---
+
+## Why You Can Trust This Profile
+
+The opportunity intelligence above is drawn from the same daily-monitored corpus of public municipal records that already documents Sevee & Maher's active Maine practice. The footprint below is the data-quality sanity check on what's above.
+
+## Sevee & Maher in Maine Municipalities
+
+Sevee & Maher Engineers appears in **12 distinct Maine municipalities** with documented activity from 2009 through April 2026, with the deepest current engagement in Millinocket and active planning-review and brownfield-cleanup work across the midcoast and southern Maine.
 
 | Metric | Value |
 |---|---|
@@ -22,10 +76,6 @@ The deepest current engagement is in Millinocket, ME, where Sevee & Maher shows 
 | Total document mentions in our corpus | 53 |
 | Date range of documented activity | 2009-11-17 — 2026-04-27 |
 | Primary practice areas (from document context) | Brownfield cleanup, environmental remediation, planning review, water resources, civil engineering |
-
-## Where Sevee & Maher Works
-
-The following Maine municipalities have published documents mentioning Sevee & Maher Engineers in our coverage period. Document mentions reflect the number of distinct meeting minutes, agendas, planning attachments, and reports in which the firm is referenced.
 
 | Municipality | Document mentions | Activity range |
 |---|---:|---|
@@ -40,75 +90,50 @@ The following Maine municipalities have published documents mentioning Sevee & M
 
 ## Recent Project Activity (2025-2026)
 
-Specific projects referenced in meeting minutes and supporting documents where Sevee & Maher Engineers is identified as the engineering consultant or applicant. Sourced from publicly published municipal records.
+Specific projects referenced in meeting minutes and supporting documents where Sevee & Maher Engineers is identified as the engineering consultant or applicant.
 
 | Date | Municipality | Project / Context |
 |---|---|---|
 | 2026-04-27 | Wiscasset, ME | North Point Cleanup Site Plan Review — Brownfields cleanup and shoreline stabilization, North Point Fill Area, North Point Road (Planning Board packet) |
 | 2026-04-13 | Wiscasset, ME | Same project, Planning Board minutes |
 | 2026-04-07 | Falmouth, ME | FCC Application + Planner Review attachment (Planning Board) |
-| 2026-02-17 | Cumberland, ME | ReVision Energy Landfill Solar Site Plan Review application (Town of Cumberland) |
+| 2026-02-17 | Cumberland, ME | ReVision Energy Landfill Solar Site Plan Review application |
 | 2026-02-12 | Lewiston, ME | Staff Review Committee Meeting (engineering review) |
 | 2026-02-03 | Falmouth, ME | Verdad Self-Storage Plan Set + Planner Review (Planning Board) |
 | 2026-01-22 | Wilton, ME | Selectboard Minutes (engineering reference) |
 | 2026-01-21 | Millinocket, ME | Town Manager's Report — engineering discussion items |
 | **Showing 8 of 25+ documented project references since 2024** | | **[Claim to unlock →](#claim-this-profile)** |
 
-## Adjacent Opportunity Stream — Maine Quasi-Public Authorities
-
-Sevee & Maher's documented Maine practice positions the firm well for the parallel opportunity stream at Maine's quasi-public authority class — public municipal corporations that operate redevelopment, port, and special-district functions outside the typical town governance model. These entities issue their own RFPs, publish their own environmental data, and operate at scopes that complement (rather than overlap) typical town-level work.
-
-**Active opportunity highlight (May 2026):**
-
-| Authority | Opportunity | Deadline | Scope |
-|---|---|---|---|
-| Midcoast Regional Redevelopment Authority (MRRA) | RFP — Qualified Environmental Professional (QEP) | Thursday, May 21, 2026 by 2:00pm | Environmental Liaison role for Brunswick Landing redevelopment. Explicit focus on PFAS/PFOS criteria and emerging contaminants. 12-month engagement at $60,000. Email submission to Ashley Rand, Deputy Director. |
-
-**Recent quasi-public authority data (December 2025):**
-
-MRRA published Brunswick Landing PFAS Testing Results from October 2025 sampling — Method 1633A across 9 sample locations on the property (sewer lift stations and oil-water separators). Pattern is consistent with classic AFFF firefighting-foam contamination from the legacy Naval Air Station, with elevated 6:2 FTS, 8:2 FTS, and PFOS concentrations. The data is structured, lab-reported, and self-published, but absent from EPA drinking-water databases (this is wastewater) and absent from news coverage.
-
-**Coverage extension status — Maine quasi-public authorities:**
-
-| Authority | Type | Indexing status |
-|---|---|---|
-| Midcoast Regional Redevelopment Authority (MRRA) | BRAC redev (former NAS Brunswick) | One-off pull complete; full pipeline integration in progress |
-| Loring Commerce Centre / Loring Development Authority | BRAC redev (former Loring AFB) | Surface confirmed; full integration in progress |
-| Maine Port Authority | Statewide port operations | Pending |
-| Maine Municipal Bond Bank | State bond conduit | Pending |
-
-We're extending coverage of this entity class. Firms with active practice in environmental remediation, planning, and brownfield cleanup at Maine quasi-public authorities can request the expanded data feed before public publication.
-
 ## Methodology
 
-This profile is compiled automatically from public municipal records. Municipal Alpha monitors 2,100+ US municipalities daily across 15+ government content management platforms. Engineering firm names are extracted from meeting minutes, agendas, planning attachments, RFPs, and engineering reports, then aggregated by entity.
+Municipal Alpha monitors 2,100+ US municipalities daily across 15+ government content management platforms, with extending coverage of quasi-public authorities (BRAC redevelopment authorities, port authorities, special districts). Engineering firm names are extracted from meeting minutes, agendas, planning attachments, RFPs, and engineering reports, then aggregated by entity. Authority-class records are extracted from board minutes, agendas, RFPs, financial audits, and environmental monitoring reports.
 
-**What this profile is:** A factual aggregation of where Sevee & Maher Engineers has been documented as an engineering consultant or applicant in public municipal records. Every cited document is publicly available from the source municipality.
+**What this profile is:** A factual aggregation of currently active opportunities at Northeast quasi-public authorities relevant to Sevee & Maher's practice areas, plus the firm's documented activity in Maine municipalities. Every cited document is publicly available from the source municipality or authority.
 
-**What this profile is not:** A performance evaluation, a win-rate calculation, or an opinion on Sevee & Maher's services. All claims are factual citations from public records.
+**What this profile is not:** A performance evaluation, a win-rate calculation, or an opinion on Sevee & Maher's services.
 
-**Source data:** Specific source documents for any claim above are available on request. Each row in the activity table corresponds to a specific document published by the named municipality on or near the listed date.
+**Source data:** Specific source documents for any claim above are available on request. Each opportunity, dataset, and project reference corresponds to a specific document published by the named entity.
 
-Documents in this profile range from 2009 to April 2026. The corpus is updated continuously as new municipal records are published. Read more about [how Municipal Alpha works](/how-it-works/) and our [methodology](/methodology/).
+Read more about [how Municipal Alpha works](/how-it-works/) and our [methodology](/methodology/).
 
 ## Claim This Profile
 
 Are you Sevee & Maher Engineers? You can claim this profile to:
 
+- Receive notifications when new authority-class RFPs and environmental data matching your firm's practice areas are published across Maine and the broader Northeast
 - Receive notifications when new municipal activity matching your firm is published
-- Suggest corrections or clarifications to any data point above
-- See expanded data not shown on the public page (additional municipalities, deeper project context, planning-board reference cadence)
-- Get access to **upcoming Maine opportunities** in your service area not yet reflected here, including authority-class RFPs and capital plan line items at MRRA, Loring, and adjacent Maine quasi-public entities
+- See expanded data not shown on the public page (additional municipalities, deeper project context, full RFP-history archive at MRRA / Loring / peer authorities)
+- Get access to **upcoming Maine and Northeast opportunities** in your service area, including authority-class RFPs and capital plan line items
 
-[**Claim this profile →**](mailto:vendors@municipalalpha.com?subject=Claim%20Sevee%20%26%20Maher%20profile&body=I%20represent%20Sevee%20%26%20Maher%20Engineers.%20Please%20share%20the%20expanded%20profile%20and%20discuss%20how%20to%20receive%20alerts%20for%20upcoming%20Maine%20opportunities.)
+[**Claim this profile →**](mailto:vendors@municipalalpha.com?subject=Claim%20Sevee%20%26%20Maher%20profile&body=I%20represent%20Sevee%20%26%20Maher%20Engineers.%20Please%20share%20the%20expanded%20profile%20and%20discuss%20how%20to%20receive%20alerts%20for%20Maine%20and%20Northeast%20opportunities.)
 
 [**Request correction →**](mailto:data@municipalalpha.com?subject=Sevee%20%26%20Maher%20profile%20correction)
 
-Corrections are processed within one business day. Disputed pages can be removed on the same day at the named firm's request, since we publish municipal records, not opinions.
+Corrections are processed within one business day. Disputed pages can be removed on the same day at the named firm's request.
 
 ## About Municipal Alpha
 
-Municipal Alpha builds a structured knowledge graph of US public municipal records — meeting minutes, agendas, check registers, RFPs, capital plans, and assessor data — across 2,100+ municipalities in 50 states, with extending coverage of quasi-public authorities (BRAC redevelopment authorities, port authorities, special districts). We provide alt-data products to financial firms, infrastructure analysts, and engineering consultancies. [Learn more →](/about/)
+Municipal Alpha builds a structured knowledge graph of US public municipal records and quasi-public authority data — meeting minutes, agendas, check registers, RFPs, capital plans, environmental monitoring data, and assessor records — across 2,100+ municipalities and a growing set of quasi-public authorities. We provide alt-data products to financial firms, infrastructure analysts, and engineering and environmental consultancies. [Learn more →](/about/)
 
 <script type="application/ld+json">
 {
@@ -139,8 +164,8 @@ Municipal Alpha builds a structured knowledge graph of US public municipal recor
   ],
   "subjectOf": {
     "@type": "Dataset",
-    "name": "Sevee & Maher Engineers Maine Municipal Activity Profile",
-    "description": "Aggregated public-record activity across 12 Maine municipalities, 2009-2026, plus adjacent Maine quasi-public authority opportunity stream",
+    "name": "Sevee & Maher Engineers Maine Opportunity & Activity Profile",
+    "description": "Active Maine quasi-public authority environmental opportunities plus aggregated public-record activity across 12 Maine municipalities, 2009-2026",
     "creator": {
       "@type": "Organization",
       "name": "Municipal Alpha",
