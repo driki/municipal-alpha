@@ -58,7 +58,7 @@ Eliot's Conservation Commission [February 2026 agenda](https://www.eliotme.gov/A
 ![Bald eagle illustration placeholder, second instance](https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/31_White-headed_Eagle.jpg/1280px-31_White-headed_Eagle.jpg)
 *John James Audubon, "White-Headed Eagle" Plate 31 from* Birds of America *(1827-1838). Public Domain, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:31_White-headed_Eagle.jpg).*
 
-[Wolfeboro's Conservation Commission](https://nh-wolfeboro.civicplus.com/AgendaCenter/ViewFile/Minutes/_04032026-279?html=true), reviewing a residential dredge-and-fill application for a dock on Lake Wentworth, noted that the site had "known bald eagles in the area." The state had already cleared the project ecologically, and the Commission could have left it there, but they attached a request anyway. If the new dock includes any lighting, it should comply with Wolfeboro's Dark Sky Ordinance, the residential-lighting provision designed to keep ambient light low at night. The Commission did not elaborate on the eagles' aesthetic preferences. The request stood.
+Wolfeboro's Conservation Commission, reviewing a residential dredge-and-fill application for a dock on Lake Wentworth, noted that the site had "known bald eagles in the area." The state had already cleared the project ecologically, and the Commission could have left it there, but they attached a request anyway. If the new dock includes any lighting, it should comply with Wolfeboro's Dark Sky Ordinance, the residential-lighting provision designed to keep ambient light low at night. The Commission did not elaborate on the eagles' aesthetic preferences. The request stood.
 
 ## Groton, Connecticut: Honkers
 
