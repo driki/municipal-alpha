@@ -8,12 +8,22 @@
     <meta property="og:description" content="{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="{{ SITENAME }}">
+    <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}">
     {% if page.header_image %}
     <meta property="og:image" content="{{ SITEURL }}/images/{{ page.header_image }}">
+    <meta property="og:image:alt" content="{{ page.title|e }}">
     {% else %}
     <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
+    <meta property="og:image:alt" content="{{ SITENAME }}">
     {% endif %}
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title|e }}">
+    <meta name="twitter:description" content="{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
+    {% if page.header_image %}
+    <meta name="twitter:image" content="{{ SITEURL }}/images/{{ page.header_image }}">
+    {% else %}
+    <meta name="twitter:image" content="{{ SITEURL }}/images/default-og.png">
+    {% endif %}
     {% if page.slug.startswith('solutions/') %}
     <script type="application/ld+json">
     {
