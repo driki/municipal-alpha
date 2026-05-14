@@ -1,8 +1,8 @@
-Title: Maine's Pause on Data Centers Is Something We Saw Coming Five Months Ago
+Title: Maine's Data Center Fight Was Visible in Town Halls Five Months Before the State Vote
 Slug: research/maine-data-center-moratorium
 Sortorder: 11
 Header_image: story-maine-data-center-moratorium.png
-Summary: Six town halls (out of 173 we monitor in Maine) signaled the nation's first data center moratorium before the legislature voted. Every source document is linked.
+Summary: Six town halls (out of 173 we monitor in Maine) were already discussing data center restrictions five months before LD 307 reached the Maine House. The House passed it, the Governor vetoed it, the override failed, and a different shape of restriction landed on the same day. Every source document is linked.
 
 <style>
 .cs-intro { font-size: 19px; color: #333; max-width: 640px; line-height: 1.7; margin-bottom: 40px; }
@@ -64,7 +64,7 @@ Summary: Six town halls (out of 173 we monitor in Maine) signaled the nation's f
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <p class="cs-intro">
-On April 6, 2026, Maine became the first state in America to pass a moratorium on large-scale data centers. LD 307 passed the House 82-62. CNBC called it landmark. <strong>The signal was already in the record. Starting five months earlier, six Maine town halls began discussing the same thing, independently, without coordinating.</strong>
+On April 6, 2026, Maine's House passed LD 307, what would have become the country's first state-level moratorium on large-scale data centers, on an 82-62 vote. Eighteen days later Governor Janet Mills vetoed it. On April 29 the House attempted to override and failed 72-65. The moratorium died, but on the same day Mills signed LD 713, which prohibits data centers from claiming tax incentives under Maine's business development programs, and issued an executive order establishing the Maine Data Center Advisory Council. Maine ended up with a different shape of restriction. <strong>What's worth showing is that the signal of what was coming sat in the record long before any of those state-level votes. Starting five months earlier, six Maine town halls began discussing the same thing, independently, without coordinating.</strong>
 </p>
 
 <div class="cs-stats">
@@ -224,7 +224,28 @@ On April 6, 2026, Maine became the first state in America to pass a moratorium o
 <div class="tl-event tl-hot">
 <div class="tl-date">April 6, 2026</div>
 <span class="tl-town tl-town-state">Maine State House</span>
-<div class="tl-text"><strong>LD 307 passes the House, 82-62.</strong> A moratorium on new data centers requiring more than 20 megawatts, until November 2027. The first statewide ban of its kind in America. The Senate follows days later. The bill that started as a study in January 2025 became a moratorium in February 2026, after the towns made the case for it.</div>
+<div class="tl-text"><strong>LD 307 passes the House, 82-62.</strong> A moratorium on new data centers requiring more than 20 megawatts, intended to run through November 2027. The bill that started as a study in January 2025 became a moratorium in February 2026, after the towns made the case for it.</div>
+</div>
+
+<div class="tl-event tl-hot">
+<div class="tl-date">April 24, 2026</div>
+<span class="tl-town tl-town-state">Governor</span> <span class="tl-board">Executive veto</span>
+<div class="tl-text"><strong>Governor Mills vetoes LD 307.</strong> Mills supports a temporary moratorium in principle but objects to the bill's scope. She would have signed it with an exemption for a data center project already underway at the former Androscoggin Mill in Jay. The Town of Jay, Franklin County Commissioners, and the regional Chamber of Commerce had each written supporting the exemption.</div>
+<div class="tl-source"><a href="https://www.maine.gov/governor/mills/news/governor-mills-announces-decision-ld-307-2026-04-24">Source: Office of Governor Mills &rarr;</a></div>
+</div>
+
+<div class="tl-event tl-hot">
+<div class="tl-date">April 29, 2026</div>
+<span class="tl-town tl-town-state">Maine State House</span> <span class="tl-board">Override vote</span>
+<div class="tl-text"><strong>Override fails 72-65.</strong> Ten votes flipped from the original 82-62 passage; the supermajority is out of reach. The veto stands. Three weeks of political pressure between the initial vote and the override attempt narrowed support enough to deny the two-thirds threshold.</div>
+<div class="tl-source"><a href="https://mainemorningstar.com/2026/04/29/despite-initial-support-legislature-fails-to-override-mills-veto-of-landmark-data-center-ban/">Source: Maine Morning Star &rarr;</a></div>
+</div>
+
+<div class="tl-event tl-warm">
+<div class="tl-date">April 29, 2026</div>
+<span class="tl-town tl-town-state">Governor</span> <span class="tl-board">Same-day parallel action</span>
+<div class="tl-text">On the same day as the failed override, Mills signs <strong>LD 713</strong>, which prohibits data centers from claiming tax incentives under Maine's business development programs, and issues an <strong>executive order</strong> establishing the Maine Data Center Advisory Council. The moratorium shape died; a tax-incentive-denial shape plus an executive governance framework landed in its place. Maine ended up with substantive data center restrictions, just not the moratorium structure the bill envisioned.</div>
+<div class="tl-source"><a href="https://www.maine.gov/governor/mills/news/governor-mills-signs-executive-order-establish-maine-data-center-advisory-council-2026-04-29">Source: Office of Governor Mills &rarr;</a></div>
 </div>
 
 </div>
@@ -239,14 +260,16 @@ The bill's sponsor, Rep. Melanie Sachs, represents Freeport, ten miles from Gorh
 
 ## Not Just Maine
 
-In the same five-month window, municipal documents in Georgia, Idaho, Iowa, Nevada, Massachusetts, Arkansas, Colorado, and Virginia showed towns having the same conversation. Fourteen municipalities across eight states. Maine was first to the statehouse. The question isn't whether other states follow. It's when, and which town halls are already telling us.
+In the same five-month window, municipal documents in Georgia, Idaho, Iowa, Nevada, Massachusetts, Arkansas, Colorado, and Virginia showed towns having the same conversation. Fourteen municipalities across eight states. Maine was first to put a state-level moratorium to a chamber vote, and the political reality changed the outcome in three weeks. The question for other states isn't whether the pattern follows. It's which town halls are signaling, and what shape the response will take when it reaches the legislature.
+
+For a broader cut across the corpus, see <a href="/research/data-center-zoning">Data Centers Are Contested in 24 States, and the Friction Curve Is Steepening</a>.
 
 <div class="cs-cta">
-<h3>This is one pattern. We track 48 right now.</h3>
-<p>Municipal regulatory contagion follows the same shape every time: one town acts, others study, a state formalizes it. The documents are public. The pattern is visible. You just have to be reading all of them at once.</p>
-<a href="https://calendar.app.google/s6wDVSaJuqCkwcmg9" class="cta-button">Book a 15-Minute Data Review</a>
+<h3>We found this one early. We can do the same on signals that matter for your portfolio or coverage area.</h3>
+<p>The corpus surfaces municipal regulatory patterns months before they reach state legislatures or national reporting. If there's a vertical, region, or policy theme you'd want this kind of early read on, we can produce a targeted analysis from the underlying records.</p>
+<a href="mailto:matt@municipalalpha.com?subject=Municipal%20signal%20analysis%20inquiry" class="cta-button">Get in touch</a>
 </div>
 
 <div class="cs-note">
-<strong>Methodology note:</strong> This signal chain was assembled from public municipal documents published on the official websites of Gorham, Rockland, Bangor, Lewiston, Sidney, and Winthrop, Maine. Every link goes to the original source document. No proprietary data sources were used. Legislative details from Maine Morning Star, CNBC, and Bangor Daily News reporting. Municipal Alpha monitors 173 Maine municipalities and 2,300+ nationally, scanning town halls nightly for new documents.
+<strong>Methodology note:</strong> This signal chain was assembled from public municipal documents published on the official websites of Gorham, Rockland, Bangor, Lewiston, Sidney, and Winthrop, Maine. Every municipal link goes to the original source document. No proprietary data sources were used for the municipal layer. The state-legislative outcomes (veto, override-vote failure, LD 713 signing, executive order) were verified against the Office of the Governor of Maine's published statements, Maine Morning Star, Maine Public Radio, Press Herald, and TechCrunch reporting; those were not captured in our automated pipeline at the time of the events. We are building a bill-watchlist mechanism to follow bills meeting a vertical-relevance threshold to terminal status. Municipal Alpha monitors 173 Maine municipalities and 2,300+ nationally, scanning town halls nightly for new documents.
 </div>
