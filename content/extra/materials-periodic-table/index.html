@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>Materials Periodic Table — Municipal Alpha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0C0C0C;
+            --paper: #F7F4F0;
+            --signal: #E8512D;
+            --edge: #1B4332;
+            --slate: #555;
+            --gray-100: #F3F1ED;
+            --gray-200: #E8E4DF;
+            --gray-300: #D8D3CC;
+            --gray-600: #888;
+            --white: #ffffff;
+
+            /* Family group accent colors — derived from MA palette */
+            --family-G: #1B4332;  /* edge green — Governance */
+            --family-F: #8B3A1F;  /* deep terra — Financial */
+            --family-O: #4A4063;  /* slate-violet — Operational */
+            --family-P: #5C5A47;  /* olive-stone — Property */
+            --family-I: #2C5566;  /* teal-stone — Intergovernmental */
+            --family-N: #3E5C2E;  /* forest — Environmental */
+            --family-L: #6B4226;  /* leather — Legal */
+
+            --max-width: 1100px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #333;
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            background: var(--paper);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Nav (mirrors MA) */
+        .nav {
+            background: var(--ink);
+            padding: 16px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            color: var(--paper);
+            text-decoration: none;
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            line-height: 1;
+        }
+        .nav-tagline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-stamp {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--paper);
+            padding: 72px 0 48px;
+        }
+        .hero-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+        .hero h1 {
+            font-family: 'Newsreader', serif;
+            font-size: 48px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 16px;
+            max-width: 780px;
+        }
+        .hero h1 em {
+            color: var(--signal);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--slate);
+            max-width: 720px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .hero-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Legend */
+        .legend {
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 28px 0;
+        }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .legend-block h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+        .legend-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--slate);
+        }
+        .status-pill {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 2px;
+            min-width: 32px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .status-E { background: var(--signal); color: var(--paper); }
+        .status-C { background: var(--ink); color: var(--paper); }
+        .status-H { background: var(--white); color: var(--ink); border: 1px solid var(--ink); }
+        .status-S { background: var(--gray-200); color: var(--slate); }
+        .status-T { background: transparent; color: var(--gray-600); border: 1px dashed var(--gray-600); }
+
+        .family-swatch {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+        }
+
+        /* Periodic table */
+        .table-section {
+            padding: 64px 0;
+            background: var(--paper);
+        }
+        .table-section h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+        .table-section .section-sub {
+            color: var(--slate);
+            font-size: 15px;
+            margin-bottom: 40px;
+            max-width: 720px;
+        }
+
+        .family-row {
+            margin-bottom: 28px;
+        }
+        .family-label {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .family-letter {
+            font-family: 'Newsreader', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1;
+        }
+        .family-name {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--slate);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .family-row .family-letter { color: var(--family-color); }
+        .family-row[data-family="G"] { --family-color: var(--family-G); }
+        .family-row[data-family="F"] { --family-color: var(--family-F); }
+        .family-row[data-family="O"] { --family-color: var(--family-O); }
+        .family-row[data-family="P"] { --family-color: var(--family-P); }
+        .family-row[data-family="I"] { --family-color: var(--family-I); }
+        .family-row[data-family="N"] { --family-color: var(--family-N); }
+        .family-row[data-family="L"] { --family-color: var(--family-L); }
+
+        .element-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+            gap: 8px;
+        }
+
+        .element {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 3px;
+            padding: 10px 8px 8px;
+            position: relative;
+            transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+            cursor: default;
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 3px solid var(--family-color, var(--gray-300));
+        }
+        .element:hover {
+            border-color: var(--signal);
+            box-shadow: 0 4px 14px rgba(232, 81, 45, 0.10);
+            transform: translateY(-1px);
+        }
+
+        .element-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+        }
+        .element-num {
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        .element-status {
+            font-weight: 600;
+            padding: 2px 5px;
+            border-radius: 2px;
+            font-size: 9px;
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        .element-symbol {
+            font-family: 'Newsreader', serif;
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--ink);
+            text-align: center;
+            line-height: 1;
+            margin: 4px 0 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .element-name {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            color: var(--slate);
+            text-align: center;
+            line-height: 1.25;
+            font-weight: 400;
+            min-height: 28px;
+        }
+
+        .element-volume {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: var(--gray-600);
+            text-align: center;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Highlighted hidden discoveries (cards stand out) */
+        .element[data-status="H"] {
+            background: rgba(232, 81, 45, 0.04);
+        }
+        .element[data-status="H"] .element-symbol {
+            color: var(--signal);
+        }
+
+        /* Theoretical — dashed muted */
+        .element[data-status="T"] {
+            background: transparent;
+            border-style: dashed;
+            border-color: var(--gray-300);
+        }
+        .element[data-status="T"] .element-symbol,
+        .element[data-status="T"] .element-name {
+            color: var(--gray-600);
+        }
+
+        /* Discoveries callout */
+        .discoveries {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 64px 0;
+        }
+        .discoveries h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--paper);
+        }
+        .discoveries .section-sub {
+            color: #aaa;
+            margin-bottom: 32px;
+            max-width: 720px;
+        }
+        .discoveries-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .discoveries-table th {
+            background: transparent;
+            color: var(--signal);
+            padding: 10px 12px;
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid #333;
+        }
+        .discoveries-table td {
+            padding: 12px;
+            color: var(--paper);
+            font-size: 14px;
+            border-bottom: 1px solid #1f1f1f;
+        }
+        .discoveries-table .num-cell {
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: right;
+            color: var(--signal);
+            font-weight: 500;
+        }
+        .discoveries-table .sym-cell {
+            font-family: 'Newsreader', serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--paper);
+            text-align: center;
+            width: 44px;
+        }
+
+        /* Concepts section */
+        .concepts {
+            padding: 64px 0;
+            background: var(--white);
+        }
+        .concepts h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 32px;
+        }
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .concept-card {
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            border-radius: 4px;
+            background: var(--paper);
+        }
+        .concept-card h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+        .concept-card .concept-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .concept-card p {
+            font-size: 14px;
+            color: var(--slate);
+            line-height: 1.6;
+        }
+        .concept-card code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            background: var(--white);
+            padding: 1px 5px;
+            border-radius: 2px;
+            border: 1px solid var(--gray-200);
+            color: var(--ink);
+        }
+
+        /* Theoretical section */
+        .theoretical {
+            padding: 64px 0;
+            background: var(--gray-100);
+        }
+        .theoretical h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+        .theoretical .section-sub {
+            color: var(--slate);
+            margin-bottom: 32px;
+            max-width: 720px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--ink);
+            color: #888;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer p { margin-bottom: 4px; }
+        .footer a { color: #888; text-decoration: none; }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 34px; }
+            .legend-grid { grid-template-columns: 1fr; }
+            .concept-grid { grid-template-columns: 1fr; }
+            .element-grid { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">
+            municipαl
+            <span class="nav-tagline">Alpha, extracted.</span>
+        </a>
+        <span class="nav-stamp">Internal · Periodic Table</span>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-kicker">Internal map · Strategic vocabulary</div>
+        <h1>The materials <em>periodic table</em>.</h1>
+        <p class="hero-sub">Every municipal artifact this system can or could ingest, organized by family and abundance. Some elements we extract and trade. Some we know exist but haven't isolated. Some are theoretical — we infer their existence from how municipalities operate but haven't crawled them.</p>
+        <p class="hero-meta">Built from corpus snapshot 2026-05-15 · 536,108 documents · 32 doc_types · 7 family groups</p>
+    </div>
+</section>
+
+<section class="legend">
+    <div class="container">
+        <div class="legend-grid">
+            <div class="legend-block">
+                <h3>Status</h3>
+                <div class="legend-row"><span class="status-pill status-E">E</span> Extracted — deterministic parser, structured output</div>
+                <div class="legend-row"><span class="status-pill status-C">C</span> Classified — first-class doc_type bucket, LLM-routed</div>
+                <div class="legend-row"><span class="status-pill status-H">H</span> Hidden — confirmed in corpus, currently misfiled</div>
+                <div class="legend-row"><span class="status-pill status-S">S</span> Suspected — believed present, unconfirmed</div>
+                <div class="legend-row"><span class="status-pill status-T">T</span> Theoretical — known to exist, not in corpus</div>
+            </div>
+            <div class="legend-block">
+                <h3>Family Groups</h3>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-G);"></span> <strong>G</strong> · Governance</div>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-F);"></span> <strong>F</strong> · Financial</div>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-O);"></span> <strong>O</strong> · Operational</div>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-P);"></span> <strong>P</strong> · Property</div>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-I);"></span> <strong>I</strong> · Intergovernmental</div>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-N);"></span> <strong>N</strong> · Environmental / Regulatory</div>
+                <div class="legend-row"><span class="family-swatch" style="background:var(--family-L);"></span> <strong>L</strong> · Legal</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="table-section">
+    <div class="container">
+        <h2>The Table</h2>
+        <p class="section-sub">Each row is a family. Within each row, elements are ordered roughly by abundance. Color stripe = family. Background tint signals status: orange-tinted cards are <strong>Hidden</strong> classes confirmed in the corpus but not yet bucketed; dashed cards are <strong>Theoretical</strong>.</p>
+
+        <!-- Group G — Governance -->
+        <div class="family-row" data-family="G">
+            <div class="family-label">
+                <span class="family-letter">G</span>
+                <span class="family-name">Governance</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">1</span><span class="element-status status-C">C</span></div><div class="element-symbol">Mn</div><div class="element-name">Minutes</div><div class="element-volume">104,031</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">2</span><span class="element-status status-C">C</span></div><div class="element-symbol">Ag</div><div class="element-name">Agenda</div><div class="element-volume">107,605</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">4</span><span class="element-status status-C">C</span></div><div class="element-symbol">Ld</div><div class="element-name">Legislative doc</div><div class="element-volume">29,553</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">7</span><span class="element-status status-C">C</span></div><div class="element-symbol">Or</div><div class="element-name">Ordinance</div><div class="element-volume">16,563</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">9</span><span class="element-status status-C">C</span></div><div class="element-symbol">No</div><div class="element-name">Notice</div><div class="element-volume">12,110</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Tm</div><div class="element-name">Town meeting warrant</div><div class="element-volume">997</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">El</div><div class="element-name">Election results</div><div class="element-volume">706</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Rc</div><div class="element-name">Roll call</div><div class="element-volume">low</div></div>
+            </div>
+        </div>
+
+        <!-- Group F — Financial -->
+        <div class="family-row" data-family="F">
+            <div class="family-label">
+                <span class="family-letter">F</span>
+                <span class="family-name">Financial</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="E"><div class="element-header"><span class="element-num">—</span><span class="element-status status-E">E</span></div><div class="element-symbol">Pa</div><div class="element-name">Parcel</div><div class="element-volume">47,679+</div></div>
+                <div class="element" data-status="E"><div class="element-header"><span class="element-num">8</span><span class="element-status status-E">E</span></div><div class="element-symbol">Cr</div><div class="element-name">Check register</div><div class="element-volume">13,421</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Bo</div><div class="element-name">Bond Official Statement</div><div class="element-volume">4,502</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Au</div><div class="element-name">Audit report</div><div class="element-volume">1,668</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">13</span><span class="element-status status-C">C</span></div><div class="element-symbol">Bg</div><div class="element-name">Budget</div><div class="element-volume">1,308</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Tr</div><div class="element-name">Tax rate / recap</div><div class="element-volume">531</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">In</div><div class="element-name">Investment / treasury</div><div class="element-volume">389</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ca</div><div class="element-name">CAFR / ACFR</div><div class="element-volume">342</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">17</span><span class="element-status status-C">C</span></div><div class="element-symbol">Tl</div><div class="element-name">Tax lien</div><div class="element-volume">249</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Pn</div><div class="element-name">Pension / OPEB</div><div class="element-volume">215</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">18</span><span class="element-status status-C">C</span></div><div class="element-symbol">Mg</div><div class="element-name">Management letter</div><div class="element-volume">180</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">19</span><span class="element-status status-C">C</span></div><div class="element-symbol">Bt</div><div class="element-name">Budget transmittal</div><div class="element-volume">113</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Tx</div><div class="element-name">Tax abatement</div><div class="element-volume">low</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ds</div><div class="element-name">Debt service</div><div class="element-volume">30</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Fc</div><div class="element-name">Free cash cert</div><div class="element-volume">12</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Iv</div><div class="element-name">Investment policy</div><div class="element-volume">—</div></div>
+            </div>
+        </div>
+
+        <!-- Group O — Operational -->
+        <div class="family-row" data-family="O">
+            <div class="family-label">
+                <span class="family-letter">O</span>
+                <span class="family-name">Operational</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">3</span><span class="element-status status-C">C</span></div><div class="element-symbol">Re</div><div class="element-name">Report (general)</div><div class="element-volume">48,055</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">5</span><span class="element-status status-C">C</span></div><div class="element-symbol">At</div><div class="element-name">Attachment</div><div class="element-volume">17,191</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">12</span><span class="element-status status-C">C</span></div><div class="element-symbol">Sa</div><div class="element-name">Surplus auction</div><div class="element-volume">1,332</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">14</span><span class="element-status status-C">C</span></div><div class="element-symbol">Rf</div><div class="element-name">RFP</div><div class="element-volume">1,283</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">15</span><span class="element-status status-C">C</span></div><div class="element-symbol">Pm</div><div class="element-name">Permit</div><div class="element-volume">1,193</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Pb</div><div class="element-name">Police blotter</div><div class="element-volume">low</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Nw</div><div class="element-name">Newsletter</div><div class="element-volume">low</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Cs</div><div class="element-name">Custom source</div><div class="element-volume">30</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Em</div><div class="element-name">EMS run sheet</div><div class="element-volume">—</div></div>
+            </div>
+        </div>
+
+        <!-- Group P — Property -->
+        <div class="family-row" data-family="P">
+            <div class="family-label">
+                <span class="family-letter">P</span>
+                <span class="family-name">Property</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="E"><div class="element-header"><span class="element-num">6</span><span class="element-status status-E">E</span></div><div class="element-symbol">Tw</div><div class="element-name">Tower location</div><div class="element-volume">15,075</div></div>
+                <div class="element" data-status="E"><div class="element-header"><span class="element-num">10</span><span class="element-status status-E">E</span></div><div class="element-symbol">Fa</div><div class="element-name">FAA filing</div><div class="element-volume">6,276</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ci</div><div class="element-name">Capital Improv. Plan</div><div class="element-volume">567</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Sb</div><div class="element-name">Subdivision / plat</div><div class="element-volume">450</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Va</div><div class="element-name">Variance / spec permit</div><div class="element-volume">237</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Mp</div><div class="element-name">Master / comp plan</div><div class="element-volume">151</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">De</div><div class="element-name">Deed / easement</div><div class="element-volume">117</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Hd</div><div class="element-name">Historic designation</div><div class="element-volume">—</div></div>
+            </div>
+        </div>
+
+        <!-- Group I — Intergovernmental -->
+        <div class="family-row" data-family="I">
+            <div class="family-label">
+                <span class="family-letter">I</span>
+                <span class="family-name">Intergovernmental</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">11</span><span class="element-status status-C">C</span></div><div class="element-symbol">Fs</div><div class="element-name">Federal solicitation</div><div class="element-volume">3,025</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">16</span><span class="element-status status-C">C</span></div><div class="element-symbol">Fg</div><div class="element-name">Federal grant</div><div class="element-volume">501</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Cd</div><div class="element-name">CDBG / HOME / HUD</div><div class="element-volume">382</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Pd</div><div class="element-name">PUC docket</div><div class="element-volume">18</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ga</div><div class="element-name">Grant award</div><div class="element-volume">15</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ig</div><div class="element-name">Interlocal / IGA</div><div class="element-volume">11</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Sc</div><div class="element-name">State school aid run</div><div class="element-volume">—</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Co</div><div class="element-name">County doc</div><div class="element-volume">—</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Sd</div><div class="element-name">Special district</div><div class="element-volume">—</div></div>
+            </div>
+        </div>
+
+        <!-- Group N — Environmental -->
+        <div class="family-row" data-family="N">
+            <div class="family-label">
+                <span class="family-letter">N</span>
+                <span class="family-name">Environmental / Regulatory</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ms</div><div class="element-name">MS4 / stormwater</div><div class="element-volume">94</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Cl</div><div class="element-name">Climate / sustainability</div><div class="element-volume">49</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Pf</div><div class="element-name">PFAS / contamination</div><div class="element-volume">43</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Ep</div><div class="element-name">Environmental permit</div><div class="element-volume">11</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">Vc</div><div class="element-name">Voluntary cleanup</div><div class="element-volume">3</div></div>
+            </div>
+        </div>
+
+        <!-- Group L — Legal -->
+        <div class="family-row" data-family="L">
+            <div class="family-label">
+                <span class="family-letter">L</span>
+                <span class="family-name">Legal</span>
+            </div>
+            <div class="element-grid">
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">St</div><div class="element-name">Settlement / litigation</div><div class="element-volume">151</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Cb</div><div class="element-name">Collective bargaining</div><div class="element-volume">133</div></div>
+                <div class="element" data-status="H"><div class="element-header"><span class="element-num">—</span><span class="element-status status-H">H</span></div><div class="element-symbol">Ti</div><div class="element-name">TIF / DIF / PILOT</div><div class="element-volume">102</div></div>
+                <div class="element" data-status="C"><div class="element-header"><span class="element-num">—</span><span class="element-status status-C">C</span></div><div class="element-symbol">La</div><div class="element-name">Legal agreement (bucket)</div><div class="element-volume">empty</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Vd</div><div class="element-name">Vendor contract</div><div class="element-volume">—</div></div>
+                <div class="element" data-status="T"><div class="element-header"><span class="element-num">—</span><span class="element-status status-T">T</span></div><div class="element-symbol">Id</div><div class="element-name">IDA bond</div><div class="element-volume">—</div></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="discoveries">
+    <div class="container">
+        <h2>Discoveries — 2026-05-15 scan</h2>
+        <p class="section-sub">Targeted title-pattern scan of the 153,450-row <code style="color:var(--signal);background:transparent;border:none;font-family:'IBM Plex Mono',monospace;">document</code> catch-all surfaced 20 distinct hidden classes — roughly 10,500 rows that should route elsewhere. Promotion mechanism is <code style="color:var(--signal);background:transparent;border:none;font-family:'IBM Plex Mono',monospace;">_title_doc_type_override()</code> in the classifier; each promotion is a 4-line tuple addition. Already validated 5× for prior promotions.</p>
+        <table class="discoveries-table">
+            <thead>
+                <tr><th>Sym</th><th>Class</th><th>Family</th><th class="num-cell">Hidden volume</th><th>Buyer relevance</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="sym-cell">Bo</td><td>Bond Official Statement</td><td>F</td><td class="num-cell">4,502</td><td>Bond credit (BlackRock)</td></tr>
+                <tr><td class="sym-cell">Au</td><td>Audit report (full)</td><td>F</td><td class="num-cell">1,668</td><td>Bond credit, fiscal health</td></tr>
+                <tr><td class="sym-cell">Tm</td><td>Town meeting warrant (NE)</td><td>G</td><td class="num-cell">997</td><td>NE governance signal</td></tr>
+                <tr><td class="sym-cell">El</td><td>Election results</td><td>G</td><td class="num-cell">706</td><td>Political-direction</td></tr>
+                <tr><td class="sym-cell">Ci</td><td>Capital Improvement Plan</td><td>P</td><td class="num-cell">567</td><td>Mike MacDonald-flagged</td></tr>
+                <tr><td class="sym-cell">Tr</td><td>Tax rate / recap (MA)</td><td>F</td><td class="num-cell">531</td><td>MA fiscal credit</td></tr>
+                <tr><td class="sym-cell">Sb</td><td>Subdivision / plat</td><td>P</td><td class="num-cell">450</td><td>Redev (Simon, Connell)</td></tr>
+                <tr><td class="sym-cell">In</td><td>Investment / treasury</td><td>F</td><td class="num-cell">389</td><td>Bond portfolio composition</td></tr>
+                <tr><td class="sym-cell">Cd</td><td>CDBG / HOME / HUD</td><td>I</td><td class="num-cell">382</td><td>Federal compliance</td></tr>
+                <tr><td class="sym-cell">Ca</td><td>CAFR / ACFR</td><td>F</td><td class="num-cell">342</td><td>Bond credit</td></tr>
+                <tr><td class="sym-cell">Va</td><td>Variance / special permit</td><td>P</td><td class="num-cell">237</td><td>Redev pipeline</td></tr>
+                <tr><td class="sym-cell">Pn</td><td>Pension / OPEB</td><td>F</td><td class="num-cell">215</td><td>Credit canary</td></tr>
+                <tr><td class="sym-cell">Mp</td><td>Master / comp plan</td><td>P</td><td class="num-cell">151</td><td>Redev direction</td></tr>
+                <tr><td class="sym-cell">St</td><td>Settlement / litigation</td><td>L</td><td class="num-cell">151</td><td>Risk signal</td></tr>
+                <tr><td class="sym-cell">Cb</td><td>Collective bargaining</td><td>L</td><td class="num-cell">133</td><td>Future-payroll commit</td></tr>
+                <tr><td class="sym-cell">De</td><td>Deed / easement</td><td>P</td><td class="num-cell">117</td><td>Property transfer</td></tr>
+                <tr><td class="sym-cell">Ti</td><td>TIF / DIF / PILOT</td><td>L</td><td class="num-cell">102</td><td>Econ-dev (Simon, Connell)</td></tr>
+                <tr><td class="sym-cell">Ms</td><td>MS4 / stormwater</td><td>N</td><td class="num-cell">94</td><td>Capital trigger</td></tr>
+                <tr><td class="sym-cell">Cl</td><td>Climate / sustainability</td><td>N</td><td class="num-cell">49</td><td>Emerging compliance</td></tr>
+                <tr><td class="sym-cell">Pf</td><td>PFAS / contamination</td><td>N</td><td class="num-cell">43</td><td>Katie Richards prospect</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="concepts">
+    <div class="container">
+        <h2>Compounds, isotopes, dark matter</h2>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <div class="concept-kicker">Compounds</div>
+                <h3>Signal chains across elements</h3>
+                <p>Multiple elements bonding into a derived signal. <strong>Ld + Mn + Cr</strong> = legislative-doc-flagged spend, discussed in minutes, check appears = the "found it first, not all" closure pattern. <strong>Sb + Mp + Ci</strong> = subdivision plat under master plan referenced by capital plan = development trajectory. <strong>Au + Pn + Ds</strong> = audit + pension + debt service = credit-health composite. <strong>Bo + Ca + Mg</strong> = bond OS + CAFR + management letter = bondholder triangulation.</p>
+            </div>
+            <div class="concept-card">
+                <div class="concept-kicker">Isotopes</div>
+                <h3>Same element, different vendor format</h3>
+                <p><strong>Cr-Trumbull</strong>, <strong>Cr-Nashua</strong>, <strong>Cr-Bedford</strong>, <strong>Cr-Montpelier</strong> — same atomic class (check register), four different layouts. Vendor-fingerprinting (filed today as open-item) is the move that treats these as isotopes of one element rather than four separate elements. <strong>Pa-Vision-CAIDump</strong>, <strong>Pa-MUNIS-Augusta</strong>, <strong>Pa-MUNIS-Cumberland</strong> — same on the parcel side. Slice 2d work is parcel-side isotope unification.</p>
+            </div>
+            <div class="concept-card">
+                <div class="concept-kicker">Allotropes</div>
+                <h3>Same material, different presentation</h3>
+                <p>A budget can appear as <strong>Bg</strong> (the budget itself), <strong>Bt</strong> (the transmittal letter), or part of <strong>Ag</strong> (in a board packet). The underlying material is the same; the surface form determines which extractor lights up. Useful when triaging "where does this signal live?" — the answer is often "across three elements that look unrelated until you see the bond."</p>
+            </div>
+            <div class="concept-card">
+                <div class="concept-kicker">Dark matter</div>
+                <h3>The 153K <code>document</code> bucket</h3>
+                <p>The catch-all is <strong>28.6% of the entire corpus</strong>. Functions like the gas cloud in pre-condensation cosmology — real material, not yet bound into elements. Today's hidden-class scan condensed ~10,500 rows (6.8% of the bucket) into nameable elements. The remaining ~143,000 rows are date-prefix titles whose class lives in body text, genuine miscellany, town-specific oddballs, and pre-classifier history. Recovery is its own workstream.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="theoretical">
+    <div class="container">
+        <h2>Theoretical elements</h2>
+        <p class="section-sub">Materials municipalities produce, but our crawler hasn't reached. Either off-site (state DOR, registry of deeds, county) or FOIA-only.</p>
+        <table class="discoveries-table" style="background:transparent;">
+            <thead>
+                <tr><th style="color:var(--ink);border-color:var(--gray-300);">Sym</th><th style="color:var(--ink);border-color:var(--gray-300);">Class</th><th style="color:var(--ink);border-color:var(--gray-300);">Where it lives</th><th style="color:var(--ink);border-color:var(--gray-300);">Relevance</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Iv</td><td style="color:var(--slate);border-color:var(--gray-200);">Investment policy statement</td><td style="color:var(--slate);border-color:var(--gray-200);">Treasurer pages, board packets</td><td style="color:var(--slate);border-color:var(--gray-200);">Bond portfolio rules</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Em</td><td style="color:var(--slate);border-color:var(--gray-200);">EMS run sheet</td><td style="color:var(--slate);border-color:var(--gray-200);">Public safety pages, monthly</td><td style="color:var(--slate);border-color:var(--gray-200);">Demographic + ops</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Sd</td><td style="color:var(--slate);border-color:var(--gray-200);">Special district doc</td><td style="color:var(--slate);border-color:var(--gray-200);">Water/sewer/fire district sites</td><td style="color:var(--slate);border-color:var(--gray-200);">Infrastructure capex</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Co</td><td style="color:var(--slate);border-color:var(--gray-200);">County doc</td><td style="color:var(--slate);border-color:var(--gray-200);">Sheriff, registry, commission</td><td style="color:var(--slate);border-color:var(--gray-200);">Deed transfer signals</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Vd</td><td style="color:var(--slate);border-color:var(--gray-200);">Vendor contract (signed)</td><td style="color:var(--slate);border-color:var(--gray-200);">FOIA-only</td><td style="color:var(--slate);border-color:var(--gray-200);">Who actually got the work</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Id</td><td style="color:var(--slate);border-color:var(--gray-200);">IDA bond</td><td style="color:var(--slate);border-color:var(--gray-200);">IDA pages, separate from muni</td><td style="color:var(--slate);border-color:var(--gray-200);">Private-activity bonds</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Sc</td><td style="color:var(--slate);border-color:var(--gray-200);">State school aid run</td><td style="color:var(--slate);border-color:var(--gray-200);">State DOE site</td><td style="color:var(--slate);border-color:var(--gray-200);">Per-pupil aid revenue</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Hd</td><td style="color:var(--slate);border-color:var(--gray-200);">Historic designation</td><td style="color:var(--slate);border-color:var(--gray-200);">Town clerk, often unlinked</td><td style="color:var(--slate);border-color:var(--gray-200);">Redev blocker</td></tr>
+                <tr><td class="sym-cell" style="color:var(--ink);border-color:var(--gray-200);">Is</td><td style="color:var(--slate);border-color:var(--gray-200);">Insurance schedule</td><td style="color:var(--slate);border-color:var(--gray-200);">Annual, town clerk</td><td style="color:var(--slate);border-color:var(--gray-200);">Uninsured-loss exposure</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Internal preview · Materials Periodic Table v1 · Generated 2026-05-15 · S12/claude</p>
+        <p>Source: <code>docs/materials-periodic-table.md</code> · Refresh via VPS <code>seen_documents.db</code> query</p>
+    </div>
+</footer>
+
+</body>
+</html>
