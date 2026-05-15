@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>Hipcamp in the municipal record — Municipal Alpha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0C0C0C;
+            --paper: #F7F4F0;
+            --signal: #E8512D;
+            --edge: #1B4332;
+            --slate: #555;
+            --gray-100: #F3F1ED;
+            --gray-200: #E8E4DF;
+            --gray-300: #D8D3CC;
+            --gray-600: #888;
+            --white: #ffffff;
+            --max-width: 880px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #333;
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            background: var(--paper);
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        .nav { background: var(--ink); padding: 16px 0; border-bottom: 1px solid #1a1a1a; }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            color: var(--paper);
+            text-decoration: none;
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            line-height: 1;
+        }
+        .nav-tagline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-stamp {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero { background: var(--paper); padding: 72px 0 32px; }
+        .hero-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+        .hero h1 {
+            font-family: 'Newsreader', serif;
+            font-size: 44px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+        .hero h1 em { color: var(--signal); font-style: italic; }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--slate);
+            max-width: 680px;
+            line-height: 1.55;
+            margin-bottom: 24px;
+        }
+        .hero-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        section.block { padding: 48px 0; border-top: 1px solid var(--gray-200); }
+        section.block.dark { background: var(--ink); color: var(--paper); border-top: none; }
+        section.block.dark h2 { color: var(--paper); }
+        section.block.dark .kicker { color: var(--signal); }
+        section.block.dark p, section.block.dark li { color: #d8d3cc; }
+        section.block.dark code { color: var(--signal); background: transparent; border: none; padding: 0; }
+
+        .kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 30px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 12px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        h2 + .lede {
+            font-size: 17px;
+            color: var(--slate);
+            margin-bottom: 28px;
+            max-width: 680px;
+        }
+        p { margin-bottom: 14px; }
+        p + p { margin-top: 0; }
+
+        .pullquote {
+            background: var(--white);
+            border-left: 3px solid var(--signal);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .pullquote .quote-body {
+            font-family: 'Newsreader', serif;
+            font-size: 19px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .pullquote .quote-attr {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            letter-spacing: 0.5px;
+        }
+
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 8px;
+            font-size: 15px;
+        }
+        table.data th {
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        table.data td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--slate);
+        }
+        table.data td.num {
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: right;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        table.data tr:hover td { background: rgba(232, 81, 45, 0.04); }
+        table.data.dark th { color: var(--signal); border-color: #333; }
+        table.data.dark td { color: var(--paper); border-color: #1f1f1f; }
+        table.data.dark td.num { color: var(--signal); }
+
+        .quote-block {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 3px;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+        }
+        .quote-block .quote-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .quote-block .quote-text {
+            font-family: 'Newsreader', serif;
+            font-size: 17px;
+            color: var(--ink);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .quote-block .quote-frame {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .footer {
+            background: var(--ink);
+            color: #888;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer p { margin-bottom: 4px; color: #aaa; }
+        .footer a { color: var(--signal); text-decoration: none; }
+        .footer .small {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+        }
+
+        ul.tight { margin: 12px 0 14px 22px; }
+        ul.tight li { margin-bottom: 6px; }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 32px; }
+            h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="https://municipalalpha.com/" class="nav-brand">
+            municipαl
+            <span class="nav-tagline">Alpha, extracted.</span>
+        </a>
+        <span class="nav-stamp">Internal report · Hipcamp</span>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-kicker">Prepared for Max Joles · Hipcamp</div>
+        <h1>Hipcamp in the <em>municipal record</em>.</h1>
+        <p class="hero-sub">One direct mention across a corpus of 536,000+ municipal documents. Around that single mention, thousands of adjacent conversations about campgrounds, RV parks, short-term rentals, and transient occupancy taxes, most of them not visible to existing brand-monitoring tools.</p>
+        <p class="hero-meta">Generated 2026-05-15 · Source: <code style="color:var(--gray-600);background:transparent;border:none;font-family:'IBM Plex Mono',monospace;">seen_documents.db</code> on VPS</p>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 1 · The direct mention</div>
+        <h2>One file, in a county budget.</h2>
+        <p class="lede">Hipcamp surfaces in the corpus exactly once, and the file it lands in is a county budget where Hipcamp is listed as a tax-base discovery target, rather than a planning board fight or a conditional-use hearing.</p>
+
+        <div class="pullquote">
+            <div class="quote-body">"Increased collections of transient occupancy tax by continuing to identify those hard to locate rentals such as HipCamp and additional (second) dwelling units."</div>
+            <div class="quote-attr">Nevada County, CA · 2022-2023 Adopted Budget · Page section on revenue strategy</div>
+        </div>
+
+        <p>The vocabulary tells you what kind of conversation it is. "Hard to locate," "additional collections," "Host compliance software," this is a finance department looking at Hipcamp the way it looks at Airbnb, as a platform whose listings sit outside the existing TOT enforcement net. The county is not debating whether to allow Hipcamp, it is figuring out how to bill it.</p>
+
+        <p>One mention in 536,000 documents is thin. It is also, by itself, the upper bound of what any brand-mention scraper would find. The signal worth tracking is what surrounds it.</p>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 2 · The adjacent corpus</div>
+        <h2>What sits around the one mention.</h2>
+        <p class="lede">Term-by-term file counts across the corpus. Each row is the number of distinct municipal documents that mention the term at least once. Hipcamp the brand is invisible. The economy around it is not.</p>
+
+        <table class="data">
+            <thead>
+                <tr><th>Term</th><th style="text-align:right;">Files</th><th>Shape of the conversation</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>short-term rental</td><td class="num">~1,228</td><td>STR ordinances, registration programs, the Airbnb-versus-municipality fight</td></tr>
+                <tr><td>campground</td><td class="num">838</td><td>Use definitions, conditional-use hearings, ordinance carve-outs</td></tr>
+                <tr><td>rv park</td><td class="num">340</td><td>Site-plan reviews, expansion applications, code amendments</td></tr>
+                <tr><td>campground + permitting/zoning context</td><td class="num">327</td><td>The subset where campground discussion lands in a planning or zoning proceeding</td></tr>
+                <tr><td>transient occupancy</td><td class="num">268</td><td>TOT rate hearings, enforcement, platform-economy debate</td></tr>
+                <tr><td>airbnb</td><td class="num">232</td><td>Named in regulatory discussions; usually as the regulatory archetype</td></tr>
+                <tr><td>tiny home</td><td class="num">223</td><td>Zoning carve-outs; often discussed alongside campgrounds</td></tr>
+                <tr><td>yurt</td><td class="num">98</td><td>Definition battles, accessory-use rulings</td></tr>
+                <tr><td>vrbo</td><td class="num">87</td><td>Same regulatory context as Airbnb, fewer named instances</td></tr>
+                <tr><td>glamping</td><td class="num">6</td><td>Small, but real. Emerging vocabulary in higher-end zoning debates</td></tr>
+                <tr><td><strong>hipcamp</strong></td><td class="num"><strong>1</strong></td><td>One file. The Nevada County budget above.</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:13px; color: var(--gray-600); margin-top: 12px;">File counts are unique documents containing the term, case-insensitive. Both "short-term rental" and "short term rental" spellings counted. Some overlap between adjacent terms (a single document can mention multiple).</p>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 3 · What the conversations look like</div>
+        <h2>Lines from the 327 active permitting discussions.</h2>
+        <p class="lede">Sample of campground discussions that landed in a permit, zoning, or site-plan proceeding. Geographically distributed, drawn from board minutes, agendas, and ordinance revisions.</p>
+
+        <div class="quote-block">
+            <div class="quote-meta">Acton, ME · Board of Selectmen · 2026-01-14</div>
+            <div class="quote-text">"The Town Administrator read aloud the freedom of information request regarding a dog bite at Apple Valley Campground. It is a civil matter at this point."</div>
+            <div class="quote-frame">Campground-operator liability surfacing at the Select Board level after a FOIA request.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Acton, ME · Planning Board · 2024-05-16</div>
+            <div class="quote-text">"CEO Jason Sevigny asked Ms. Ramsell how this project was going to be proposed because campgrounds and cluster sub-divisions are not allowed within the Commercial A district. Kendra explained that they are looking to submit the proposed tiny homes as a..."</div>
+            <div class="quote-frame">Exclusion zoning being navigated by reclassifying the use. The classic local-approvals workaround.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Freeborn County, MN · Board of County Commissioners · 2026-01-06</div>
+            <div class="quote-text">"...establishment of a miniature golf facility at the Albert Lea KOA Campground."</div>
+            <div class="quote-frame">Campground-resident amenity expansion clearing county-commission approval. The kind of activity that informs both regulatory posture and competitive intelligence.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Wilmington, VT · Town Board · 2026-04-29</div>
+            <div class="quote-text">"Article XVI – Definitions: CAMPGROUNDS"</div>
+            <div class="quote-frame">Local Law revisions adding or modifying the definition of "campground" in town zoning, recurring across April and May 2026 agendas. The pre-fight moment, before any specific operator applies.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Gunnison County, CO · BOCC + Environmental Health Board · Feb 2026</div>
+            <div class="quote-text">"...campgrounds: trash, human waste and other signs of heavy use were found. Trailheads and parking..."</div>
+            <div class="quote-frame">Operational complaints about heavy-use campgrounds feeding into county environmental-health board agendas. The pushback context Hipcamp's hosts run into.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Alton, NH · Planning Board · 2026-01-20</div>
+            <div class="quote-text">"...there was a campground there years ago before the owner purchased. Chair O'Neil asked if the owner was..."</div>
+            <div class="quote-frame">Property history as a permit-review factor. Prior nonconforming use is exactly the lever a Hipcamp landowner might invoke; the board's posture toward it is the signal.</div>
+        </div>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 4 · Coverage</div>
+        <h2>Geography of the 327 active campground discussions.</h2>
+        <p class="lede">State distribution of the campground + permitting subset. The shape reflects the corpus's current coverage skew (Northeast-heavy), not the national footprint of campground regulation.</p>
+
+        <table class="data">
+            <thead>
+                <tr><th>State</th><th style="text-align:right;">Files</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Maine</td><td class="num">91</td></tr>
+                <tr><td>New Hampshire</td><td class="num">35</td></tr>
+                <tr><td>Massachusetts</td><td class="num">18</td></tr>
+                <tr><td>Vermont</td><td class="num">9</td></tr>
+                <tr><td>Delaware</td><td class="num">7</td></tr>
+                <tr><td>California</td><td class="num">7</td></tr>
+                <tr><td>North Carolina</td><td class="num">6</td></tr>
+                <tr><td>Minnesota</td><td class="num">6</td></tr>
+                <tr><td>Connecticut</td><td class="num">6</td></tr>
+                <tr><td>Colorado</td><td class="num">6</td></tr>
+                <tr><td>Wisconsin / Tennessee / Oregon / New York</td><td class="num">4 each</td></tr>
+                <tr><td>Tail (12+ additional states)</td><td class="num">~120</td></tr>
+                <tr><td><strong>Total</strong></td><td class="num"><strong>327</strong></td></tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 18px;">The Northeast concentration is a coverage artifact, not a representation of where campground policy debate is happening. The pattern is consistent across every term I tested: states with deep municipal coverage in the corpus return rich signal, states with sparse coverage return sparse signal. Expand the geography and the volume goes up linearly. The conversation is already happening; the question is who is listening.</p>
+    </div>
+</section>
+
+<section class="block dark">
+    <div class="container">
+        <div class="kicker">Section 5 · Where this fits</div>
+        <h2 style="color: var(--paper);">A note on the tools already in your stack.</h2>
+        <p class="lede" style="color: #d8d3cc;">Most brand-monitoring platforms (Meltwater, Cision, Sprinklr, and adjacent tools like Brandwatch, Mention, Talkwalker) index press releases, news, and social. Municipal meeting minutes, agendas, ordinances, and budget documents tend to sit outside what they currently cover.</p>
+
+        <p>That is the gap this report sits in. The direct mention is thin, but the camping economy around Hipcamp is a real and growing conversation in town halls, and most of it isn't reaching the same tools already tracking Hipcamp's brand mentions everywhere else.</p>
+
+        <p>I built the municipal-meeting layer, currently 536,000+ documents across 24 states with new docs landing every night. My preference is to feed this signal into the tools Hipcamp already uses for brand monitoring, rather than build a competing alerting product. If putting me in touch with whoever runs that workflow would be useful, happy to take the intro. If a direct conversation makes more sense first, that works too.</p>
+
+        <p>Either way, this report is yours. Forward it however is useful.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Matt MacDonald · <a href="mailto:matt@municipalalpha.com">matt@municipalalpha.com</a></p>
+        <p>Municipal Alpha · <a href="https://municipalalpha.com/">municipalalpha.com</a></p>
+        <p class="small">Internal report · Hipcamp · Generated 2026-05-15</p>
+    </div>
+</footer>
+
+</body>
+</html>
