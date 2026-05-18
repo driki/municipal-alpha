@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Municipal Alpha | Which US municipalities paid vendors on federal watch lists in the last 12 months?</title>
+<link rel="stylesheet" href="ma-brand.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="wordmark">Municipal Alpha</span>
+                <span class="nav-tagline">Alpha, extracted.</span>
+            </a>
+            <span class="nav-event-label">Startup Maine, 2026-05-18</span>
+        </div>
+    </nav>
+
+    <section class="q-hero">
+        <div class="container">
+            <div class="q-kicker">Question 2 of 4</div>
+            <h1 class="q-text">Which US municipalities paid vendors on federal watch lists in the last 12 months?</h1>
+            <p class="q-sub">Foreign-aligned vendors banned at the federal level continue showing up in municipal check registers. National-security visibility stops at the federal layer; the spend doesn&#x27;t.</p>
+        </div>
+    </section>
+
+    <section class="section-how-to-ask">
+        <div class="container">
+            <div class="how-to-ask">
+                <div class="label">How to ask it</div>
+                <div class="prompt">List US municipalities that paid [DJI, Huawei, ZTE, DJI-affiliated brands, OFAC-listed entities] in the last 12 months. Include amount, date, vendor name as appeared, and resolved entity.</div>
+                <p class="context">This question is asked by national-security analysts, defense industrial base researchers, and policy stakeholders tracking foreign-aligned exposure below the CFIUS visibility line. Federal procurement is well-instrumented; sub-federal procurement isn&#x27;t, and the same vendors that federal agencies are banned from buying are still showing up in town and county check registers.</p>
+    <p class="context">The corpus screens every municipal vendor payment against a 51-entity list combining FCC banned-equipment registrants, DoD 1260H foreign-aligned military companies, and OFAC sanctions. Across 60,642 documents in the recent scan window, 41 procurement_acquisition hits surfaced across 10 states. The San Miguel County example below is one of them, and it occurred 15 months after the vendor was added to the federal banned list, making the gap between federal policy and local execution visible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-answer">
+        <div class="container">
+            <div class="answer-label">Answer view, data from the corpus</div>
+            <div class="answer-body">
+                    <p><strong>San Miguel County, Colorado, January 2024 vendor payment register.</strong> A single line in a county check register: $33,253.70 paid to Advexure LLC for two DJI drones. The payment occurred fifteen months after DJI was formally added to the Department of Defense's 1260H list of Chinese military companies (October 2022). The federal ban on DJI procurement is well-known; the local-government spend on the same vendor continues anyway, recorded in plain text in publicly-published municipal vendor payment registers.</p>
+
+    <p>This is one of <strong>41 procurement_acquisition hits</strong> the corpus surfaced from a recent scan of 60,642 municipal documents across 10 states, screened against a 51-entity list combining FCC banned-equipment registrants, DoD 1260H foreign-aligned military companies, and OFAC sanctions.</p>
+
+    <table class="dtable">
+      <tr><th>Source</th><th>Date</th><th>Vendor (as appeared)</th><th>Resolved entity</th><th>Amount</th></tr>
+      <tr><td>San Miguel County, CO, check register</td><td class="num">Jan 2024</td><td>Advexure LLC</td><td class="accent">DJI (via Advexure reseller)</td><td class="num">$33,253.70</td></tr>
+      <tr><td colspan="5" style="padding-top: 10px; font-size: 11px; color: #888; font-style: italic;">40 additional hits across 10 states omitted from this view, full cut available to buyers with appropriate use cases.</td></tr>
+    </table>
+
+    <p style="font-size: 12px; color: #555; line-height: 1.5; margin-top: 8px;"><strong>Federal context.</strong> DJI was added to the DoD 1260H list of Chinese military companies on October 5, 2022. That listing made DJI ineligible for direct federal procurement and triggered a phased ban under Section 1822 of the FY2024 NDAA. The San Miguel payment occurred January 2024, fifteen months after the listing, three months after the FY2024 NDAA was signed.</p>
+
+    <div class="insight"><strong>What this shows.</strong> The gap between federal policy and sub-federal execution is visible in municipal records, in real time, at the line-item level. CFIUS reviews don't reach the layer where a county sheriff buys drones. The pipeline that surfaces this isn't doing anything exotic, it's reading vendor payment registers that towns and counties publish every month, joining the vendor names to a maintained watch-list, and surfacing the matches. The same shape applies to any banned vendor, any sanctioned entity, any classification list a buyer wants to monitor.</div>
+
+    <div class="source">Source: San Miguel County, CO public vendor payment register, January 2024. Federal-listing reference: <a href="https://media.defense.gov/2022/Oct/05/2003091659/-1/-1/1/1260H-LIST.PDF">DoD 1260H list, 2022-10-05</a>.</div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="nav-back"><a href="index.html">All questions</a></p>
+            <p><a href="https://municipalalpha.com">municipalalpha.com</a> &middot; matt@municipalalpha.com</p>
+            <p>&copy; 2026 Municipal Alpha LLC</p>
+            <p class="footer-affiliation">NSIH &middot; Roux Institute, Northeastern University</p>
+            <p class="footer-capeff">Built and run solo for about $391 a month, no team yet, no outside capital, covering 3,104 municipalities across all 50 states.</p>
+        </div>
+    </footer>
+</body>
+</html>

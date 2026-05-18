@@ -36,3 +36,10 @@ copy-static-html:
 			echo "Copied $$d/index.html" ; \
 		fi ; \
 	done
+	@for d in qa-startup-maine-2026-05-18; do \
+		if [ -d $(INPUTDIR)/extra/$$d ]; then \
+			mkdir -p $(OUTPUTDIR)/$$d ; \
+			cp -R $(INPUTDIR)/extra/$$d/. $(OUTPUTDIR)/$$d/ ; \
+			echo "Copied $$d/ (recursive)" ; \
+		fi ; \
+	done

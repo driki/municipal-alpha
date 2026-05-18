@@ -1,0 +1,31 @@
+    <p><strong>Belfast, Maine, 17 years of parcel-keyed records across 4,215 parcels.</strong> The City of Belfast publishes a Real Estate Tax Commitment Book annually on its public ArchiveCenter endpoint. The corpus has ingested 17 of those books (2007 to 2025, with 2013 and 2017 not in the ingestion set; 2014 partial). The result is a longitudinal time series keyed on (parcel_id, municipality, state, commitment_year): roughly 59,000 parcel-year records.</p>
+
+    <p>The town-level context for reading the parcel records: town-wide assessed value moved <strong>$864.4M in 2023 to $1,361.8M in 2024</strong>, a 58% jump in one year. Parcel count moved 3,746 to 3,794 (about 1% organic addition), so the value change is town-wide reassessment, not net new construction. Every parcel-level movement below should be read against that backdrop.</p>
+
+    <p><strong>Ownership-transition distribution across all 4,215 parcels:</strong></p>
+
+    <table class="dtable">
+      <tr><th>Distinct owner names</th><th>Parcels</th><th>Share</th></tr>
+      <tr><td class="num">1 owner (stable across all 17 years)</td><td class="num">1,138</td><td class="num">27.0%</td></tr>
+      <tr><td class="num">2 owners</td><td class="num">1,217</td><td class="num">28.9%</td></tr>
+      <tr><td class="num">3 owners</td><td class="num">1,060</td><td class="num">25.1%</td></tr>
+      <tr><td class="num">4 owners</td><td class="num">504</td><td class="num">12.0%</td></tr>
+      <tr><td class="num">5 or more owners</td><td class="num">296</td><td class="num">7.0%</td></tr>
+    </table>
+
+    <p><strong>One worked example from the high-churn tail, parcel 002-069-ON, a tower parcel in Belfast:</strong></p>
+
+    <table class="dtable">
+      <tr><th>Year</th><th>Owner of record</th><th>Assessed</th><th>Event</th></tr>
+      <tr class="highlight"><td class="num">2007</td><td>National Grid Communications</td><td class="num">$139k</td><td>First owner on file</td></tr>
+      <tr class="highlight"><td class="num">2008</td><td>Light Tower Wireless, LLC</td><td class="num">$139k</td><td>Owner change at fixed value</td></tr>
+      <tr class="highlight"><td class="num">2009</td><td>SBA Towers II, LLC</td><td class="num">$139k</td><td>Owner change at fixed value</td></tr>
+      <tr><td class="num">2010 to 2023</td><td>SBA Towers II, LLC</td><td class="num">$139k</td><td>Stable across 11 commitment books</td></tr>
+      <tr><td class="num">2024 to 2025</td><td>SBA Towers II, LLC</td><td class="num">$138k</td><td>Minor reassessment, stable through current</td></tr>
+    </table>
+
+    <div class="insight"><strong>What this shows.</strong> Two owner-of-record transitions within three years (2007-2009), both at fixed assessed value, then a 14-year stable hold by SBA Towers II, LLC. The pattern is recognizable to anyone in the tower-aggregator space: a tower parcel typically passes through one or two early-stage operators before consolidating to a long-term tower-REIT holding. Whether the 2008-2009 transitions reflect arm's-length sales, entity-name reorganizations at the same beneficial owner, or operator turnover is industry-context the reader brings; the corpus carries the records as they appear in the source.</div>
+
+    <p style="font-size: 12px; color: #555; line-height: 1.5;">The same shape applies to every town in the longitudinal commitment-book ingestion. Belfast is the worked example because 17 years of records produce enough density to show three answer classes: ownership-transition distribution (above), reassessment movers in a town-wide reassessment year, and the stability baseline. Full Belfast walkthrough with reassessment movers and stability cohorts is available on request.</p>
+
+    <div class="source">Source: City of Belfast, ME Real Estate Tax Commitment Books, 2007-2025. Original PDFs on cityofbelfast.org ArchiveCenter. <a href="https://www.cityofbelfast.org/ArchiveCenter">cityofbelfast.org/ArchiveCenter</a>.</div>
