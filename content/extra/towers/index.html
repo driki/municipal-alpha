@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>Tower siting in the municipal record | Municipal Alpha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0C0C0C;
+            --paper: #F7F4F0;
+            --signal: #E8512D;
+            --edge: #1B4332;
+            --slate: #555;
+            --gray-100: #F3F1ED;
+            --gray-200: #E8E4DF;
+            --gray-300: #D8D3CC;
+            --gray-600: #888;
+            --white: #ffffff;
+            --max-width: 880px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #333;
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            background: var(--paper);
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        .nav { background: var(--ink); padding: 16px 0; border-bottom: 1px solid #1a1a1a; }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            color: var(--paper);
+            text-decoration: none;
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            line-height: 1;
+        }
+        .nav-tagline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-stamp {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero { background: var(--paper); padding: 72px 0 32px; }
+        .hero-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+        .hero h1 {
+            font-family: 'Newsreader', serif;
+            font-size: 44px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+        .hero h1 em { color: var(--signal); font-style: italic; }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--slate);
+            max-width: 680px;
+            line-height: 1.55;
+            margin-bottom: 24px;
+        }
+        .hero-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        section.block { padding: 48px 0; border-top: 1px solid var(--gray-200); }
+        section.block.dark { background: var(--ink); color: var(--paper); border-top: none; }
+        section.block.dark h2 { color: var(--paper); }
+        section.block.dark .kicker { color: var(--signal); }
+        section.block.dark p, section.block.dark li { color: #d8d3cc; }
+        section.block.dark code { color: var(--signal); background: transparent; border: none; padding: 0; }
+
+        .kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 30px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 12px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        h2 + .lede {
+            font-size: 17px;
+            color: var(--slate);
+            margin-bottom: 28px;
+            max-width: 680px;
+        }
+        h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--ink);
+            margin: 28px 0 10px;
+            line-height: 1.25;
+        }
+        p { margin-bottom: 14px; }
+        p + p { margin-top: 0; }
+
+        .pullquote {
+            background: var(--white);
+            border-left: 3px solid var(--signal);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .pullquote .quote-body {
+            font-family: 'Newsreader', serif;
+            font-size: 19px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .pullquote .quote-attr {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            letter-spacing: 0.5px;
+        }
+
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 8px;
+            font-size: 15px;
+        }
+        table.data th {
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        table.data td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--slate);
+        }
+        table.data td.num {
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: right;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        table.data tr:hover td { background: rgba(232, 81, 45, 0.04); }
+        table.data.dark th { color: var(--signal); border-color: #333; }
+        table.data.dark td { color: var(--paper); border-color: #1f1f1f; }
+        table.data.dark td.num { color: var(--signal); }
+
+        .quote-block {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 3px;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+        }
+        .quote-block .quote-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .quote-block .quote-text {
+            font-family: 'Newsreader', serif;
+            font-size: 17px;
+            color: var(--ink);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .quote-block .quote-frame {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .footer {
+            background: var(--ink);
+            color: #888;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer p { margin-bottom: 4px; color: #aaa; }
+        .footer a { color: var(--signal); text-decoration: none; }
+        .footer .small {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+        }
+
+        ul.tight { margin: 12px 0 14px 22px; }
+        ul.tight li { margin-bottom: 6px; }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 32px; }
+            h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="https://municipalalpha.com/" class="nav-brand">
+            municipαl
+            <span class="nav-tagline">Alpha, extracted.</span>
+        </a>
+        <span class="nav-stamp">Internal report · Tower siting</span>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-kicker">Pre-RFP signal in the municipal record</div>
+        <h1>Tower siting in the <em>municipal record</em>.</h1>
+        <p class="hero-sub">Tower siting decisions show up in town records years before they show up in FAA or FCC databases. By the time a permit is on file, the deliberation is over, the spec is written, and the lease counterparty is locked in. The earlier signal lives in select-board packets, planning-board agendas, zoning-bylaw revisions, and outside-counsel memos, and it is currently scattered across the same kind of municipal records that other intelligence stacks treat as out-of-scope.</p>
+        <p class="hero-sub">Today's corpus carries 495 substantive tower-siting documents across 138 municipalities in 31 US states, with the earliest mention landing in 2007 and the most recent in May 2026. This report walks two depth examples, then names the cross-state shape.</p>
+        <p class="hero-meta">Generated 2026-05-19 · Source: <code style="color:var(--gray-600);background:transparent;border:none;font-family:'IBM Plex Mono',monospace;">seen_documents.db</code> on VPS</p>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 1 · What's in the corpus</div>
+        <h2>The pre-RFP layer that does not appear in FAA or FCC feeds.</h2>
+        <p class="lede">FAA and FCC databases capture tower siting after the fact: filings made when construction is committed, location agreed, lease executed. The signals that lead to those filings sit upstream, in municipal deliberation. Naming them is the precondition for the rest of the report.</p>
+
+        <table class="data">
+            <thead>
+                <tr><th>Where it surfaces</th><th>What it looks like</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Select board / town council packets</td><td>3rd-reading votes on small-cell applications, grant-of-location decisions, outside-counsel memos on policy revisions, lease authorizations on town-owned land.</td></tr>
+                <tr><td>Planning board decisions</td><td>Special-permit grants for personal wireless service facilities, hearing continuations, decisions naming the applicant entity and the site parcel.</td></tr>
+                <tr><td>Zoning bylaw amendments</td><td>Wireless ordinance revisions, overlay-district adjustments, height-and-setback rule changes that precede the next application cycle.</td></tr>
+                <tr><td>Capital plans / budgets</td><td>Lease revenue from monopoles on municipal property, escrow accounts for recertification, multi-year rent obligations for antenna-on-water-tower agreements.</td></tr>
+                <tr><td>Permit logs</td><td>Building permits for monopole modifications, antenna swaps, equipment cabinet replacements. Specific count of antennas, vendor names, RRH counts.</td></tr>
+                <tr><td>Outside-counsel memoranda</td><td>Specialist counsel engaged to review applications, revise policies, advise on Telecommunications Act constraints. Often the most concrete description of an upcoming policy posture.</td></tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 18px;">Two depth examples follow. Both are Massachusetts towns matched on planning-stack and population profile. The first traces a multi-year policy arc across one board. The second traces a single application cycle across one quarter.</p>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 2 · Andover MA · the policy chain</div>
+        <h2>Six years of small-cell wireless deliberation, traceable through one board.</h2>
+        <p class="lede">Andover's Select Board has been working on small-cell wireless policy since 2019. The shape of that work is visible in seven board packets across 2023 to 2025, with the upstream trigger landing in 2022 and the base policy reaching back to April 2019. None of this surfaced in press; all of it surfaced in meeting packets.</p>
+
+        <h3>2019, April 11 · base policy effective</h3>
+        <p>The Town of Andover Select Board adopted the policy titled "Applications for Small Cell Wireless Installations," effective as of April 11, 2019. This is the 2019 Policy referenced in subsequent counsel memos.</p>
+
+        <h3>Fall 2022 · Verizon Wireless grant of location proceedings</h3>
+        <p>Verizon Wireless filed grant-of-location proceedings with the town. This is the procedural step under Massachusetts G.L. c.166 §§21–22 that authorizes carrier work in the public right-of-way. The Verizon filing is what triggered the next two years of board work.</p>
+
+        <h3>2022, October 17 · first Select Board hearing</h3>
+        <p>The Board took up the Cellco Partnership d/b/a Verizon Wireless application for the first time. Board questions led the town to engage outside counsel from two firms.</p>
+
+        <h3>2023, January 9 · third reading</h3>
+        <div class="quote-block">
+            <div class="quote-meta">Andover, MA · Select Board Meeting · 2023-01-09</div>
+            <div class="quote-text">"V. Public Hearings A. Small Cell Wireless Installation (3rd Reading) Board to review and vote on an application by Cellco Partnership d/b/a Verizon Wireless for the installation of five (5) 4G small cell wireless facilities including one (1) canister style antenna, two (2) remote radio heads, and associated wires, cable, fiber demarcs, A/C converters, diplexers and electric meters attached to existing utility poles located within the public right of way at the following addresses: 39 Stinson Road, 36 Vine Street, 164 Andover Street, 2 Hansom Road, 59 Dascomb Road."</div>
+            <div class="quote-frame">A third-reading vote on a five-node 4G installation. The legal entity filing is "Cellco Partnership d/b/a Verizon Wireless." Most brand-monitoring stacks index "Verizon"; the filings name Cellco. The five specific addresses are listed in the public packet.</div>
+        </div>
+        <div class="quote-block">
+            <div class="quote-meta">Andover, MA · Select Board Meeting · 2023-01-09 (continued)</div>
+            <div class="quote-text">"In response to the Boards' request, Tom Urbelis has obtained outside counsel from two different firms to provide advice and to help answer questions from the October 17, 2022 meeting. 1. Atty. Alan Mandl, Former Asst. Attorney General and Chief of the Utilities Division in the Attorney General's Office and from the Law firm of Ferriter, Scobbo and Redophele. 2. Atty. Thomas Gorman who is a law partner with the Law Firm of Sharon and Lodgen."</div>
+            <div class="quote-frame">Specialist outside counsel engaged from two firms after the October 17, 2022 meeting. The named attorneys recur in later packets, which is how a corpus reader connects the 2022 trigger to the 2025 policy revision.</div>
+        </div>
+
+        <h3>2025, January 14 · revised policy draft</h3>
+        <div class="quote-block">
+            <div class="quote-meta">Andover, MA · Select Board Meeting · 2025-01-14</div>
+            <div class="quote-text">"From: Alan D. Mandl, Ferriter, Scobbo &amp; Rodophele, P.C. Date: January 10, 2025. Re: Applications for Small Cell Wireless Installations- Revised Policy Draft. The Town of Andover Select Board adopted the Town of Andover Policy, 'Applications for Small Cell Wireless Installations,' effective as of April 11, 2019 (the '2019 Policy'). Subsequent to Verizon Wireless grant of location proceedings in the Fall of 2022, the Town authorized and directed counsel to review and revise the 2019 Policy."</div>
+            <div class="quote-frame">A formal counsel memo, two and a quarter years after the trigger event, naming the trigger event by date and provider. This is the kind of document that maps a multi-year policy arc back to a single carrier filing.</div>
+        </div>
+        <div class="quote-block">
+            <div class="quote-meta">Andover, MA · Select Board Meeting · 2025-01-27</div>
+            <div class="quote-text">"…effective as of April 11, 2019 (the '2019 Policy'). Subsequent to Verizon Wireless grant of location proceedings in the Fall of 2022, the Town authorized and directed counsel to review and revise the 2019 Policy."</div>
+            <div class="quote-frame">Same memo, second appearance two weeks later. Recurrence in board packets is itself a signal: the policy revision is not done, the negotiation is still live.</div>
+        </div>
+
+        <h3>Pattern</h3>
+        <p>One carrier filing in 2022 produced a counsel engagement in 2022, a third-reading vote in 2023, and an ongoing policy revision through 2025. Six years of traceable signal, all in Select Board packets, all preceding any new permit or RFP. Any portfolio holding tower assets or land near small-cell-eligible right-of-way in Andover had two years of lead time before the policy posture changed.</p>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 3 · Acton MA · the permit chain</div>
+        <h2>Five months from filing to grant, two different tower entities, one quarter.</h2>
+        <p class="lede">Acton's Planning Board issued two Personal Wireless Service Facility Special Permits in five months, to two different out-of-state tower-development entities, on two different parcel types. The corpus carries the full filing-through-decision arc for both.</p>
+
+        <h3>PBSP-25-3 · 125 Nagog Park · application to decision in 76 days</h3>
+        <div class="quote-block">
+            <div class="quote-meta">Acton, MA · Planning Board Decision · 2025-09-16</div>
+            <div class="quote-text">"DECISION PBSP-25-3 125 Nagog Park. Use Special Permit - Personal Wireless Service Facility. September 16, 2025. GRANTED with Conditions. Decision of the Acton Planning Board on the application of ARX Wireless Infrastructure, LLC located at 110 Washington Avenue, Fourth Floor, North Haven, CT, 06473 on property in Acton, Massachusetts, owned by MGCC Realty LLC, with the address of 125 Nagog Park, Acton Massachusetts 01720."</div>
+            <div class="quote-frame">Applicant: ARX Wireless Infrastructure, LLC (North Haven, CT). Property owner: MGCC Realty LLC, a private commercial entity. Application received July 2, 2025; decision rendered September 16, 2025. 76 days from filing to grant.</div>
+        </div>
+
+        <h3>PBSP-25-7 · 9 Charter Road · application to decision in 95 days</h3>
+        <div class="quote-block">
+            <div class="quote-meta">Acton, MA · Planning Board Decision · 2026-02-17 (decided 2026-02-13)</div>
+            <div class="quote-text">"DECISION PBSP-25-7 9 Charter Road (known as 15 or 16 Charter Road). Use Special Permit - Personal Wireless Service Facility. February 13, 2026. GRANTED with Conditions. Decision of the Acton Planning Board on the application of TowerCo VI, LLC located at 5000 Valleystone Drive, Suite 200, Cary, NC 27519 on property in Acton, Massachusetts, owned by Acton-Boxborough Regional School District, with the address of 15 Charter Road."</div>
+            <div class="quote-frame">Applicant: TowerCo VI, LLC (Cary, NC). Property owner: Acton-Boxborough Regional School District. A school-district parcel is an unusual lease counterparty; the decision file names it directly. Application received November 10, 2025; decision rendered February 13, 2026. 95 days from filing to grant.</div>
+        </div>
+
+        <h3>Pattern</h3>
+        <p>One mid-density Massachusetts town processed two tower applications in the same quarter from two different developers (one CT, one NC), on two different property types (commercial LLC, regional school district). The applicant identity, the parcel owner, the application date, and the decision date are all in the public record for both. Any aggregator or REIT tracking competitive ground-lease acquisition in MA has both filings and both decisions sitting in plain text, available the day they are posted.</p>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 4 · Cross-state breadth</div>
+        <h2>31 US states with substantive tower-siting signal in the corpus.</h2>
+        <p class="lede">Today's extracted corpus carries 495 substantive tower-siting documents across 138 municipalities in 31 US states. The corpus skews Northeast because that is where pipeline coverage matured first; the rest of the country fills in as states are onboarded. Honest framing on the time axis follows.</p>
+
+        <table class="data">
+            <thead>
+                <tr><th>State</th><th style="text-align:right;">Munis with signal</th><th style="text-align:right;">Tower-class docs</th><th>Range</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Maine</td><td class="num">30</td><td class="num">133</td><td>2011–2026</td></tr>
+                <tr><td>New Hampshire</td><td class="num">20</td><td class="num">60</td><td>2010–2026</td></tr>
+                <tr><td>California</td><td class="num">10</td><td class="num">46</td><td>2009–2026</td></tr>
+                <tr><td>Illinois</td><td class="num">13</td><td class="num">41</td><td>2010–2026</td></tr>
+                <tr><td>Massachusetts</td><td class="num">14</td><td class="num">33</td><td>2007–2026</td></tr>
+                <tr><td>New York</td><td class="num">7</td><td class="num">33</td><td>2023–2026</td></tr>
+                <tr><td>North Carolina</td><td class="num">4</td><td class="num">25</td><td>2026</td></tr>
+                <tr><td>Arizona</td><td class="num">2</td><td class="num">17</td><td>2012–2026</td></tr>
+                <tr><td>Colorado / Iowa / Kentucky</td><td class="num">~3 each</td><td class="num">15 each</td><td>2016–2026</td></tr>
+                <tr><td>Texas</td><td class="num">2</td><td class="num">14</td><td>2023–2025</td></tr>
+                <tr><td>Connecticut / Vermont / Minnesota / others (19 more states)</td><td class="num">1–6 each</td><td class="num">3–9 each</td><td>varies</td></tr>
+                <tr><td><strong>Total</strong></td><td class="num"><strong>138</strong></td><td class="num"><strong>495</strong></td><td><strong>2007–2026</strong></td></tr>
+            </tbody>
+        </table>
+
+        <h3>Honest framing on time depth</h3>
+        <p>The earliest substantive tower-siting mention in the cleaned set is 2007; the most recent is May 2026. The density is heavily weighted to 2023 onward, when pipeline coverage matured. 2025 alone carries 147 substantive documents across 52 municipalities; 2026 year-to-date carries 135 across 53 municipalities. Pre-2023, the corpus is sparse (1 to 12 documents per year) because coverage was thinner, not because municipalities stopped publishing.</p>
+
+        <p>Capability and instantiation are separate axes. The engine processes Granicus, Legistar, CivicEngage, CivicWeb, and BoardDocs at any scale; archive depth is typically available back to 2010-2015 for towns with mature digital archives, with select towns reaching back to the 1990s. The bottleneck is not what is available, it is how many municipalities have been onboarded and extracted to date. The 31-state footprint today is what the current operating budget supports. The footprint expands as the budget expands.</p>
+
+        <h3>Top concentrated municipalities by tower-class document count</h3>
+        <table class="data">
+            <thead>
+                <tr><th>Municipality</th><th style="text-align:right;">Tower-class docs</th><th>Range</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Pittston, ME</td><td class="num">36</td><td>2025–2026</td><td>Active small-town deliberation, dense in current window</td></tr>
+                <tr><td>Webster, NY</td><td class="num">19</td><td>2025–2026</td><td>Recent permitting cycle</td></tr>
+                <tr><td>Clayton County, IA</td><td class="num">15</td><td>2024–2026</td><td>County-level, rural midwest</td></tr>
+                <tr><td>Pinetop Lakeside, AZ</td><td class="num">13</td><td>2012–2026</td><td>14-year traceable signal arc</td></tr>
+                <tr><td>Park County, CO</td><td class="num">11</td><td>2016–2023</td><td>7-year signal in a mountain county</td></tr>
+                <tr><td>Union, ME</td><td class="num">11</td><td>2024–2025</td><td>Small-town carrier deliberation</td></tr>
+                <tr><td>La Mesa, CA</td><td class="num">11</td><td>2009</td><td>Older policy debate</td></tr>
+                <tr><td>Highland Park, TX</td><td class="num">13</td><td>2025</td><td>Recent dense municipal review</td></tr>
+                <tr><td>Belfast, ME / Falmouth, ME</td><td class="num">9 each</td><td>2023–2026</td><td>Recent siting cycles</td></tr>
+                <tr><td>Andover, MA · Acton, MA</td><td class="num">7 · 3</td><td>2023–2026</td><td>Section 2 and Section 3</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 5 · Buyer-shape note</div>
+        <h2>The same corpus serves two different shapes of question.</h2>
+        <p class="lede">Tower-siting signal in municipal records is read differently by different kinds of buyer. Naming the shape avoids sending the wrong cut to the wrong reader.</p>
+
+        <h3>Operator / aggregator reading (depth shape)</h3>
+        <p>An aggregator or tower REIT evaluating ground-lease acquisition cares about specific parcels, specific landowners, specific competing carrier filings within the same ZIP code. The Acton PBSP-25-3 file names the applicant entity (ARX Wireless), the parcel owner (MGCC Realty LLC), the address (125 Nagog Park), the application date, the decision date, and the conditions. That is the kind of depth that supports a lease underwriting decision.</p>
+        <p>This reading also surfaces deal-relevant counterparty diversity: the Acton PBSP-25-7 grant is on Acton-Boxborough Regional School District land, which is an unusual lease counterparty most aggregators would not see in standard databases until much later. The corpus surfaces it the day the decision is posted.</p>
+
+        <h3>Systematic / quant reading (breadth shape)</h3>
+        <p>A systematic investor evaluating tower-siting as a regional or thematic signal cares about cross-state cadence, year-over-year volume, and the geography of friction. The 31-state breadth, the year distribution, and the entity-type distribution above are starting cuts. With a longer history backfill and onboarding into the ~20 US states currently underrepresented, the same corpus supports panel-level analysis: number of small-cell ordinance revisions per quarter by state, number of out-of-state tower-developer applicants per region, school-district vs commercial-LLC vs private-individual lease-counterparty mix over time.</p>
+
+        <h3>Brand intelligence reading</h3>
+        <p>A corporate communications or brand intelligence team at a tower entity (Verizon Wireless, AT&amp;T Mobility, Cellco Partnership, American Tower, Crown Castle, SBA, TowerCo, ARX Wireless) cares about where their own name appears in municipal proceedings before the conversation reaches news. The Verizon report at <a href="https://municipalalpha.com/verizon/" style="color:var(--signal);text-decoration:underline;">municipalalpha.com/verizon</a> walks the same shape for one entity. The same method applies one-for-one to AT&amp;T, T-Mobile, Crown Castle, American Tower, SBA, and the smaller tower-development LLCs visible in Acton.</p>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 6 · What an investment unlocks</div>
+        <h2>What today's footprint covers, what a paid pilot or LOI expands.</h2>
+        <p class="lede">Today's operating cost is roughly $400/month. That budget supports 3,104 municipalities across all 50 US states, 546,000+ documents in the corpus, and 75,000+ new documents landing in the trailing 30 days. The tower-siting signal above is what that footprint produces today. Coverage scales with infrastructure spend, not with engineering time.</p>
+
+        <p>A paid pilot or LOI from a tower-class buyer unlocks two specific expansions:</p>
+        <ul class="tight">
+            <li><strong>Backfill the time axis.</strong> The 2023-onward density above is recent; for buyers needing 7+ year history, the engine processes archives that already exist back to 2010-2015 for most onboarded towns. The backfill is a budget question, not a feasibility question.</li>
+            <li><strong>Onboard the ~20 underrepresented states.</strong> Today's 31-state footprint has structural gaps in parts of the Mountain West, the Plains, and the Deep South. Each new state added is a per-month infrastructure line; the per-town extraction marginal cost is small once a state's CMS vendors are onboarded.</li>
+        </ul>
+
+        <p>Pacing the spend to the risk is the discipline. Speculative coverage ahead of paying customers is exactly the failure mode that breaks capital-efficient pipelines. A buyer with a specific footprint requirement, a specific timeline, and a paid pilot or LOI converts speculative spend into anchored spend. That is the conversation worth having.</p>
+    </div>
+</section>
+
+<section class="block dark">
+    <div class="container">
+        <div class="kicker">Section 7 · Where this fits</div>
+        <h2 style="color: var(--paper);">A note on the tools already in your stack.</h2>
+        <p class="lede" style="color: #d8d3cc;">FAA antenna structure registrations and FCC license filings are downstream layers: by the time an entry is filed, the lease is executed and the site selected. Wireless Estimator, BeAccurate, and adjacent FCC-derived feeds work this layer. The competitive intelligence question they cannot answer is when and where the next application is forming, who is filing, and what the local policy posture is.</p>
+
+        <p>That is the gap this report sits in. The municipal-meeting layer carries 536,000+ documents across 31 states with new docs landing every night. The corpus already includes named tower-class entities (Cellco Partnership, Verizon Wireless, AT&amp;T Mobility, ARX Wireless Infrastructure, TowerCo VI LLC, American Tower, Crown Castle, SBA Communications) in formal filings, with applicant, parcel, owner, hearing date, and decision in the public record.</p>
+
+        <p>The product shape for an aggregator or tower REIT is operational: a weekly cadence of pre-RFP signal scoped to a stated footprint, formatted for the workflow already in place. The product shape for a systematic investor is panel-level: a cleanly structured time series of tower-siting events by region, with applicant and counterparty classification, suitable for backtest.</p>
+
+        <p>Either shape, the corpus is built. The conversation is about pacing the next expansion to a specific buyer's footprint, on terms that work for both sides.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Matt MacDonald · <a href="mailto:matt@municipalalpha.com">matt@municipalalpha.com</a></p>
+        <p>Municipal Alpha · <a href="https://municipalalpha.com/">municipalalpha.com</a></p>
+        <p class="small">Internal report · Tower siting · Generated 2026-05-19</p>
+    </div>
+</footer>
+
+</body>
+</html>
