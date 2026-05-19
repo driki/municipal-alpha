@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>Verizon in the municipal record | Municipal Alpha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0C0C0C;
+            --paper: #F7F4F0;
+            --signal: #E8512D;
+            --edge: #1B4332;
+            --slate: #555;
+            --gray-100: #F3F1ED;
+            --gray-200: #E8E4DF;
+            --gray-300: #D8D3CC;
+            --gray-600: #888;
+            --white: #ffffff;
+            --max-width: 880px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #333;
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            background: var(--paper);
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        .nav { background: var(--ink); padding: 16px 0; border-bottom: 1px solid #1a1a1a; }
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            color: var(--paper);
+            text-decoration: none;
+            font-family: 'Newsreader', serif;
+            font-weight: 500;
+            font-size: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            line-height: 1;
+        }
+        .nav-tagline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-stamp {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero { background: var(--paper); padding: 72px 0 32px; }
+        .hero-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+        .hero h1 {
+            font-family: 'Newsreader', serif;
+            font-size: 44px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+        .hero h1 em { color: var(--signal); font-style: italic; }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--slate);
+            max-width: 680px;
+            line-height: 1.55;
+            margin-bottom: 24px;
+        }
+        .hero-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        section.block { padding: 48px 0; border-top: 1px solid var(--gray-200); }
+        section.block.dark { background: var(--ink); color: var(--paper); border-top: none; }
+        section.block.dark h2 { color: var(--paper); }
+        section.block.dark .kicker { color: var(--signal); }
+        section.block.dark p, section.block.dark li { color: #d8d3cc; }
+        section.block.dark code { color: var(--signal); background: transparent; border: none; padding: 0; }
+
+        .kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 30px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 12px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        h2 + .lede {
+            font-size: 17px;
+            color: var(--slate);
+            margin-bottom: 28px;
+            max-width: 680px;
+        }
+        h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--ink);
+            margin: 28px 0 10px;
+            line-height: 1.25;
+        }
+        p { margin-bottom: 14px; }
+        p + p { margin-top: 0; }
+
+        .pullquote {
+            background: var(--white);
+            border-left: 3px solid var(--signal);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        .pullquote .quote-body {
+            font-family: 'Newsreader', serif;
+            font-size: 19px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .pullquote .quote-attr {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--gray-600);
+            letter-spacing: 0.5px;
+        }
+
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 8px;
+            font-size: 15px;
+        }
+        table.data th {
+            text-align: left;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        table.data td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--slate);
+        }
+        table.data td.num {
+            font-family: 'IBM Plex Mono', monospace;
+            text-align: right;
+            color: var(--ink);
+            font-weight: 500;
+        }
+        table.data tr:hover td { background: rgba(232, 81, 45, 0.04); }
+        table.data.dark th { color: var(--signal); border-color: #333; }
+        table.data.dark td { color: var(--paper); border-color: #1f1f1f; }
+        table.data.dark td.num { color: var(--signal); }
+
+        .quote-block {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 3px;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+        }
+        .quote-block .quote-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--signal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .quote-block .quote-text {
+            font-family: 'Newsreader', serif;
+            font-size: 17px;
+            color: var(--ink);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .quote-block .quote-frame {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .footer {
+            background: var(--ink);
+            color: #888;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer p { margin-bottom: 4px; color: #aaa; }
+        .footer a { color: var(--signal); text-decoration: none; }
+        .footer .small {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+        }
+
+        ul.tight { margin: 12px 0 14px 22px; }
+        ul.tight li { margin-bottom: 6px; }
+
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 32px; }
+            h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="https://municipalalpha.com/" class="nav-brand">
+            municipαl
+            <span class="nav-tagline">Alpha, extracted.</span>
+        </a>
+        <span class="nav-stamp">Internal report · Verizon</span>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-kicker">Prepared for the brand intelligence team · Verizon</div>
+        <h1>Verizon in the <em>municipal record</em>.</h1>
+        <p class="hero-sub">6,317 documents across 352 municipalities mention Verizon, spanning about twenty years of meeting dates. Most of the volume is vendor-payment lines and cable channel listings, the kind of background hum that any string-match scraper would also surface. Underneath that hum, about 1,400 substantive mentions across 156 municipalities in 30 states, the kind of conversations that do not show up in a press feed.</p>
+        <p class="hero-meta">Generated 2026-05-19 · Source: <code style="color:var(--gray-600);background:transparent;border:none;font-family:'IBM Plex Mono',monospace;">seen_documents.db</code> on VPS</p>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 1 · Signal and noise</div>
+        <h2>What's in the 6,317 files.</h2>
+        <p class="lede">A blunt accounting first. The raw match count is large, and most of it is uninteresting. Knowing the breakdown is the precondition for the rest of the report.</p>
+
+        <table class="data">
+            <thead>
+                <tr><th>Document type</th><th style="text-align:right;">Files</th><th>What's in them</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>check_register</td><td class="num">4,278</td><td>Vendor-payment lines, "VERIZON WIRELESS $124.50". Noise for this purpose.</td></tr>
+                <tr><td>document (mixed)</td><td class="num">544</td><td>Annual budgets, expenditure reports, tax bills. Mostly vendor-line noise, occasional land-lease revenue items.</td></tr>
+                <tr><td><strong>agenda</strong></td><td class="num"><strong>461</strong></td><td>Select-board, planning-board, town-council agendas with Verizon as a discussion item.</td></tr>
+                <tr><td><strong>report</strong></td><td class="num"><strong>419</strong></td><td>Staff reports, budget commentaries, lease summaries. Mixed signal.</td></tr>
+                <tr><td><strong>minutes</strong></td><td class="num"><strong>128</strong></td><td>Recorded discussion: tower siting hearings, franchise renewals, easements.</td></tr>
+                <tr><td><strong>packet / agenda_packet</strong></td><td class="num"><strong>78</strong></td><td>Full meeting packets with motions, attachments, draft resolutions.</td></tr>
+                <tr><td>permit</td><td class="num">15</td><td>Building permits for monopole modifications, small-cell electrical installs.</td></tr>
+                <tr><td>town_meeting_warrant</td><td class="num">26</td><td>Annual town-meeting articles citing Verizon contracts, leases, or revenue.</td></tr>
+                <tr><td>audit_report / cafr</td><td class="num">36</td><td>Year-end audits naming Verizon leases as multi-year obligations or revenue.</td></tr>
+                <tr><td>budget_transmittal / budget / master_plan / capital_improvement_plan / ordinance / notice / bond_official_statement</td><td class="num">~70</td><td>Tail. Specific named items, often the most concrete.</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:13px; color: var(--gray-600); margin-top: 12px;">Noise filter removed vendor-payment voucher lines, cable channel listings ("Verizon Channel 45"), personal email signatures ("@verizon.net"), and securitized auto-loan trusts ("Verizon Master Trust") sitting in town investment portfolios. After filtering: about 784 substantive files across 156 municipalities in 30 states.</p>
+
+        <p style="margin-top: 18px;">The substantive material clusters into a handful of recurring conversation shapes. Five of them follow.</p>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 2 · Cell towers, monopoles, and water-tower antennas</div>
+        <h2>Where Verizon's physical footprint touches town-owned property.</h2>
+        <p class="lede">159 files involve cell-tower siting, monopole modifications, or antenna-on-municipal-infrastructure lease conversations. A subset shows the dollar amounts: towns recording Verizon ground rent as a multi-year revenue line, escrow accounts established to fund eventual recertification, city councils authorizing negotiation of new lease terms.</p>
+
+        <div class="quote-block">
+            <div class="quote-meta">Keene, NH · City Council · 2025-11-06</div>
+            <div class="quote-text">"City staff had been working with various stakeholders to finalize a lease agreement for construction of a Verizon cell tower on City-owned property along Arch Street. The City Council authorized the negotiation and execution of this..."</div>
+            <div class="quote-frame">A new lease, in flight, on city-owned land. The kind of council vote that closes a multi-year revenue agreement with no press release attached.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Carpentersville, IL · 2024 Budget · annual recurring</div>
+            <div class="quote-text">"100-031 44848 LAND LEASE - VERIZON 38,802 $ 35,000 $ 36,897 $ 38,005 $"</div>
+            <div class="quote-frame">A four-year history of Verizon ground-lease revenue on one line of one municipal budget. The same line, with different dollar amounts, recurs across multiple towns. None of these are press events.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Auburn, ME · Permit Report · 2026-01</div>
+            <div class="quote-text">"Verizon Wireless proposes a modification to the existing monopole. Verizon will remove (12) antennas and (6) RRHs..."</div>
+            <div class="quote-frame">An operational equipment-swap permit at a specific monopole. Equipment count, vendor, location. The kind of detail that surfaces in a permit log but never in a press release.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Columbia, KY · Planning Board · February 2024</div>
+            <div class="quote-text">"the escrow account monies, established in 2015 and to be used only for the recertification by the Planning Board of the Verizon cell tower on Route 28, have been transferred by Town of Columbia to an interest bearing account..."</div>
+            <div class="quote-frame">A nine-year-old escrow account for a single Verizon tower, surfacing in routine financial housekeeping. The town remembers; the wider record forgets.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Hanover, PA · Monthly Budget Actual Report · 2023-11</div>
+            <div class="quote-text">"...CELL TOWER RENTS - RAILROAD ST (VERIZON) CELL TOWER RENTS - TERRACE AVE (SHENTEL/T-MOBILE) CELL TOWER RENTS - FILTER PLANT (TOWER CO) CELL TOWER RENTS - OXFORD..."</div>
+            <div class="quote-frame">A side-by-side ledger of who pays the town what, per site. Verizon next to T-Mobile next to a tower aggregator. This is competitive-intelligence-grade detail buried in a routine monthly report.</div>
+        </div>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 3 · Pole petitions and joint utility filings</div>
+        <h2>The slow, paper-trail layer of right-of-way.</h2>
+        <p class="lede">83 files involve pole petitions, joint National Grid + Verizon filings, or grants of location. The shape is a legal-procedural one (especially dense in Massachusetts, Rhode Island, and Connecticut), and most installations move through it before any physical work begins.</p>
+
+        <div class="quote-block">
+            <div class="quote-meta">Andover, MA · Select Board Packet · 2024-07-17</div>
+            <div class="quote-text">"National Grid and Verizon – River Road Board to review and consider voting to approve an application by National Grid to install one JO pole on..."</div>
+            <div class="quote-frame">A joint-ownership pole, filed jointly by the electric utility and Verizon, on a named road, with a specific board vote. Recurring shape, hundreds of times a year across the region.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">South Kingstown, RI · Town Council · 2026-04-13</div>
+            <div class="quote-text">"to approve and sign a Municipal Pole Petition submitted by The Narragansett Electric Company and Verizon New England Inc., for the installation of permanent electrical distribution infrastructure, including the installation..."</div>
+            <div class="quote-frame">"Verizon New England Inc." appears in formal filings as a named co-petitioner. Knowing which corporate entity is on the paper, in which jurisdiction, is the precondition for any portfolio-level monitoring.</div>
+        </div>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 4 · Small cells and the right-of-way frontier</div>
+        <h2>The conversation that moves slower than the press cycle suggests.</h2>
+        <p class="lede">Small-cell wireless installations show up in the corpus as ordinance amendments, third-reading votes, electrical permits for utility-pole power service, and disputes over fiber backhaul. The volume is lower than cell tower siting (9 substantive files in this filter, more under adjacent terms), but the friction per item is high.</p>
+
+        <div class="quote-block">
+            <div class="quote-meta">Andover, MA · Select Board Packet · 2023-01-09</div>
+            <div class="quote-text">"Small Cell Wireless Installation (3rd Reading) Board to review and vote on an application by Cellco Partnership d/b/a Verizon Wireless for the installation of five (5) 4G small cell wireless facilities including one (1) canister style antenna..."</div>
+            <div class="quote-frame">A third-reading vote on a five-node 4G installation. "Cellco Partnership d/b/a Verizon Wireless" is the legal entity that actually files. Most brand-monitoring stacks index "Verizon"; the filings name Cellco.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Clarendon Hills, IL · Weekly Staff Report · 2024-06-07</div>
+            <div class="quote-text">"Right of Way applications submitted by Crown Castle to install a fiber network to support Verizon's small cell project were reviewed with the Village's permit consultant. Public Works has concerns related to utility..."</div>
+            <div class="quote-frame">The friction surfaces at the public-works level, not the council level: a backhaul fiber buildout supporting Verizon nodes, run through a third party (Crown Castle), where village staff have utility concerns. None of this travels with the Verizon brand name in news monitoring.</div>
+        </div>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 5 · Cable franchise renewals and FiOS license status</div>
+        <h2>The 20-year contracts that quietly come up for renewal.</h2>
+        <p class="lede">132 files involve cable franchises, license renewals, FiOS service-area discussions, or PEG-channel infrastructure. These contracts sit in 10- to 20-year windows; when they come due, the conversation lives in town-council minutes and public hearings months before it ever reaches a press release.</p>
+
+        <div class="quote-block">
+            <div class="quote-meta">Brookhaven, NY · Town Board · 2026-04-16</div>
+            <div class="quote-text">"Public Hearing in Connection with the Cable Franchise Agreement Between the Town of Brookhaven and Verizon New York Incorporated..."</div>
+            <div class="quote-frame">A formally noticed public hearing on a Verizon cable franchise agreement. The hearing notice itself is the upstream signal that a renewal (or termination) conversation is live.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Chevy Chase Village, MD · FY2027 Budget Work Session · 2026-02-24</div>
+            <div class="quote-text">"There are three franchise agreements between the county/municipalities each with Comcast, Verizon, and Starpower (formerly RCN). The Comcast and Verizon agreements have expired, but the parties continue to operate p..."</div>
+            <div class="quote-frame">An expired but still-operating franchise, surfacing in a budget work session. The kind of regulatory-status detail that defines negotiating position before either side announces anything.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Douglas, AZ · Master Plan Survey · October 2024</div>
+            <div class="quote-text">"Bring in Verizon FIOS, only having Spectrum as a choice is horrible. There is no incentive for them to perform better with no competition..."</div>
+            <div class="quote-frame">A resident comment in a municipal master plan survey, naming Verizon by product. Latent demand expressed as official input, in a place where the FiOS footprint does not currently reach.</div>
+        </div>
+    </div>
+</section>
+
+<section class="block" style="background: var(--gray-100);">
+    <div class="container">
+        <div class="kicker">Section 6 · Public safety contracts and FirstNet transitions</div>
+        <h2>The slow churn between Verizon Wireless and AT&T FirstNet.</h2>
+        <p class="lede">44 files involve police departments, fire departments, emergency services, or FirstNet transitions. A subset captures the active competitive churn: towns shifting from Verizon cellular to AT&T FirstNet, or hosting Verizon equipment at a police building under a multi-decade lease.</p>
+
+        <div class="quote-block">
+            <div class="quote-meta">Biddeford, ME · Capital Projects / Operations Committee · 2026-02-11</div>
+            <div class="quote-text">"Since 2004, Verizon Wireless has leased space at the Biddeford police station building at 39 Alfred Street for the installation and maintenance of communications towers and equipment. Verizon is now proposing the right to have an exclusive easement..."</div>
+            <div class="quote-frame">A 22-year lease at a police station, with Verizon now seeking an exclusive easement. The escalation from leaseholder to easement-holder is the kind of contractual evolution that affects future negotiating posture.</div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-meta">Clarendon Hills, IL · Weekly Staff Report · 2026-03-27</div>
+            <div class="quote-text">"Staff are working on the final stages prior to transitioning from Verizon cellular service to AT&T FirstNet..."</div>
+            <div class="quote-frame">Verizon losing a public-safety service line to AT&T FirstNet, captured in a weekly staff report. The competitive churn at the small-city public-safety level happens on this kind of cadence, in this kind of document.</div>
+        </div>
+    </div>
+</section>
+
+<section class="block">
+    <div class="container">
+        <div class="kicker">Section 7 · Geographic distribution</div>
+        <h2>Where the 156 substantive municipalities live.</h2>
+        <p class="lede">After filtering vendor-payment noise, the substantive Verizon footprint in the corpus spans 30 states, weighted toward the Northeast because that is where our municipal coverage is currently densest. Coverage scales with corpus depth; the Verizon footprint expands in lockstep as we add states.</p>
+
+        <table class="data">
+            <thead>
+                <tr><th>State</th><th style="text-align:right;">Substantive files</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Massachusetts</td><td class="num">215</td></tr>
+                <tr><td>Maryland</td><td class="num">109</td></tr>
+                <tr><td>Maine</td><td class="num">91</td></tr>
+                <tr><td>Illinois</td><td class="num">49</td></tr>
+                <tr><td>California</td><td class="num">44</td></tr>
+                <tr><td>Connecticut</td><td class="num">43</td></tr>
+                <tr><td>Texas</td><td class="num">40</td></tr>
+                <tr><td>Pennsylvania</td><td class="num">37</td></tr>
+                <tr><td>New Hampshire</td><td class="num">33</td></tr>
+                <tr><td>Virginia</td><td class="num">16</td></tr>
+                <tr><td>Nevada / New York / Kentucky / Rhode Island / Alabama / New Jersey / Vermont</td><td class="num">8–12 each</td></tr>
+                <tr><td>Idaho / South Carolina / Colorado / Georgia / Michigan / North Carolina / Minnesota / Arizona / Kansas / Hawaii / Iowa / Delaware / New Mexico</td><td class="num">1–7 each</td></tr>
+                <tr><td><strong>Total</strong></td><td class="num"><strong>~784 files across 156 municipalities in 30 states</strong></td></tr>
+            </tbody>
+        </table>
+        <p style="margin-top: 18px;">The 20-year time depth is the other axis worth naming. The earliest substantive mention in the cleaned set lands in 2007; the most recent in 2026; the densest years are 2023 through 2026, when our pipeline coverage matured. The 22-year police-station lease referenced above (Biddeford, ME) is itself a 2004 origin date surfacing in a 2026 document, which is the shape of municipal records generally: long agreements, surfaced years later in routine financial review.</p>
+    </div>
+</section>
+
+<section class="block dark">
+    <div class="container">
+        <div class="kicker">Section 8 · Where this fits</div>
+        <h2 style="color: var(--paper);">A note on the tools already in your stack.</h2>
+        <p class="lede" style="color: #d8d3cc;">Brand-monitoring platforms (Meltwater, Cision, Sprinklr, and adjacent tools like Brandwatch, Mention, Talkwalker) index press releases, news, broadcast, and social. Municipal meeting minutes, agendas, ordinances, permit logs, and budget documents tend to sit outside what they currently cover.</p>
+
+        <p>That is the gap this report sits in. Verizon's press footprint is well-covered. Verizon's municipal footprint, the lease-renewal calendar, the franchise expirations, the small-cell ordinance debates, the pole-petition cadence, the public-safety competitive churn, is currently scattered across thousands of meeting agendas and budget line items, and not reaching the same tools already tracking your brand mentions everywhere else.</p>
+
+        <p>I built the municipal-meeting layer, currently 536,000+ documents across 30 states with new docs landing every night. The corpus already includes named Verizon entities (Verizon Wireless, Verizon New England, Verizon New York, Cellco Partnership) in formal filings, with location, date, and full hearing context attached.</p>
+
+        <p>My preference is to feed this signal into the tools Verizon already uses for brand intelligence and corporate communications, rather than build a competing alerting product. If putting me in touch with whoever owns that workflow would be useful, happy to take the intro. If a direct conversation makes more sense first, that works too.</p>
+
+        <p>Either way, this report is yours. Forward it however is useful.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>Matt MacDonald · <a href="mailto:matt@municipalalpha.com">matt@municipalalpha.com</a></p>
+        <p>Municipal Alpha · <a href="https://municipalalpha.com/">municipalalpha.com</a></p>
+        <p class="small">Internal report · Verizon · Generated 2026-05-19</p>
+    </div>
+</footer>
+
+</body>
+</html>
