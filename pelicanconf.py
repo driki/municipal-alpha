@@ -59,7 +59,7 @@ MARKDOWN = {
 }
 
 # Static paths
-STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/llms.txt", "extra/robots.txt", "extra/brand-review", "extra/materials-periodic-table", "extra/hipcamp", "extra/favicon.ico", "extra/favicon-32.png", "extra/apple-touch-icon.png"]
+STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/decks", "extra/llms.txt", "extra/robots.txt", "extra/brand-review", "extra/materials-periodic-table", "extra/hipcamp", "extra/favicon.ico", "extra/favicon-32.png", "extra/apple-touch-icon.png"]
 # Prevent Pelican from treating HTML in extra/ as content
 READERS = {"html": None}
 EXTRA_PATH_METADATA = {
@@ -83,6 +83,7 @@ EXTRA_PATH_METADATA = {
     "extra/case-studies/waste-management-entity-resolution.pdf": {"path": "case-studies/waste-management-entity-resolution.pdf"},
     "extra/case-studies/solar-siting-moratorium-to-permit.pdf": {"path": "case-studies/solar-siting-moratorium-to-permit.pdf"},
     "extra/case-studies/hartford-vt-pfas-chain.pdf": {"path": "case-studies/hartford-vt-pfas-chain.pdf"},
+    "extra/decks/municipal-alpha-overview-deck-v4.pdf": {"path": "decks/municipal-alpha-overview-deck-v4.pdf"},
     "extra/brand-review/index.html": {"path": "brand-review/index.html"},
     "extra/materials-periodic-table/index.html": {"path": "materials-periodic-table/index.html"},
     "extra/hipcamp/index.html": {"path": "hipcamp/index.html"},
