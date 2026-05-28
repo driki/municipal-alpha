@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for Our Katahdin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 44px 36px 80px 36px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+  }
+
+  .hero { margin-bottom: 40px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  .two-rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .rel-card {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .rel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 6px;
+  }
+  .rel-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .rel-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; }
+  .chain-steps li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--ink-12);
+  }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0 0;
+    display: grid;
+    gap: 12px;
+  }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .question {
+    margin: 14px 0;
+    padding: 16px 20px;
+    background: var(--paper);
+    border-left: 3px solid var(--ink-12);
+  }
+  .question .q-text {
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question · ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path {
+    margin: 14px 0;
+    padding: 18px 22px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .path-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .path-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  @media print {
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-meta">
+      Discussion guide<br>
+      Thu 2026-05-28
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for Our Katahdin</h1>
+    <p class="lede">
+      A guide to the conversation. What Municipal Alpha reads, what an economic-development organization gets from it, a worked example of the kind of chain it surfaces, live signal from the Katahdin region and the rest of Maine this week, and a handful of questions where your read would actually change what gets built next.
+    </p>
+  </div>
+
+  <!-- ───────── 1. WHO THIS IS FOR ───────── -->
+  <div class="section">
+    <h2>Two ways Our Katahdin and Municipal Alpha could fit together</h2>
+    <p class="section-sub">
+      MA sits in two distinct relationships with an organization like Our Katahdin. Worth naming both, because each implies a different shape of conversation and a different reason to keep talking.
+    </p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">Path A</div>
+        <div class="rel-title">Feedback partner</div>
+        <div class="rel-body">
+          Our Katahdin sees how a national signal product reads from a regional-ED seat and tells me what's missing. Mike's bond-credit lens, Steve's site-and-tenant lens, Sean's institutional-funder lens, Tony's platform lens. That feedback shapes what MA builds for every regional-ED group that comes after.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">Path B</div>
+        <div class="rel-title">Region-specific feed</div>
+        <div class="rel-body">
+          If a Katahdin-region signal feed would change how One North attracts tenants or how the board reads the surrounding municipal landscape, I can cut one. FAA tower activity, planning-board chatter in Bangor / Lincoln / Houlton / Skowhegan, state energy and industrial-attraction filings tagged by town. Sample first; price conversation only if it earns it.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 2. THE SIGNAL ───────── -->
+  <div class="section">
+    <h2>What the signal looks like</h2>
+    <p>
+      Every municipality in the country produces a stream of agenda packets, planning board minutes, RFPs, TIF agreements, comp-plan amendments, capital improvement plans, bond official statements, and warrant articles. Most of them never get read by anyone outside the meeting room. The redevelopment decisions, the tower leases, the industrial-attraction conversations, the credit signals that will move a town's fiscal health two years from now, almost all start in those documents, months or years before they reach the conventional news cycle or the FCC / EPA / SEC filing systems.
+    </p>
+    <p>
+      Municipal Alpha reads those meetings the night the agenda drops, across more than eighteen hundred municipalities in multiple states, classifies the documents, and follows the chain forward. A 30-year ground lease shows up first in a single citizen comment, then a Board of Selectmen item six months later, then a Planning Board public hearing, then a unanimous vote authorizing the deal. The system reads all of that, links it together, and surfaces the chain itself as the signal.
+    </p>
+    <p>
+      What an ED organization receives is the document with the citation, the timeline that connects it to the prior and next steps, and a read on how far along the institutional process is, whether to act today or watch for the next stage.
+    </p>
+  </div>
+
+  <!-- ───────── 3. A WORKED EXAMPLE ───────── -->
+  <div class="section">
+    <h2>A worked example: Amherst, NH</h2>
+    <p class="section-sub">
+      One town. Thirty-two months. Seventeen documents across fifteen public meetings, from a single citizen comment to a unanimous vote authorizing a thirty-year ground lease with American Tower. Five highlights from the chain, each linked to the original municipal record. Picked because the same shape generalizes to anything an ED organization cares about: data-center attraction, mill-site redevelopment, regional-airport siting, TIF expansion.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Jul 24, 2023 · Board of Selectmen</div>
+          <div class="step-text">A resident, George Coddington, raises cell coverage as a public-safety issue. The chair's response: the town "does not have the ability to install a tower." That sentence is the entire institutional position on the day.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-5" target="_blank">View minutes →</a>
+        </li>
+        <li>
+          <div class="step-meta">Feb 12, 2024 · Board of Selectmen</div>
+          <div class="step-text">Six months later. A tower company has approached the town with a no-cost build at the emergency services complex. The fire chief has reviewed three siting candidates.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-22" target="_blank">View minutes →</a>
+        </li>
+        <li>
+          <div class="step-meta">Jan 13, 2025 · Board of Selectmen</div>
+          <div class="step-text">The design pivots. The combined cell-and-comms tower is "not viable." A standalone tower is now the path. Two-Way Communications wins the comms component as a separate award.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-48" target="_blank">View minutes →</a>
+        </li>
+        <li>
+          <div class="step-meta">Oct 15, 2025 · Planning Board</div>
+          <div class="step-text">A 175-foot monopole at the rear of the police property goes to public hearing. Third-party builds at no cost. Lease revenue accrues to the town.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/planning-board/minutes/planning-board-minutes-65" target="_blank">View minutes →</a>
+        </li>
+        <li>
+          <div class="step-meta">Jan 20, 2026 · Board of Selectmen</div>
+          <div class="step-text">Article 41. American Tower Company. Thirty-year ground lease, 180-foot monopole, Tax Map 6 Lot 94, no town funds. Vote: 5–0–0.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/bos-minutes-approved-2" target="_blank">View minutes →</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        No FCC registration. No FAA filing. The only public record of this thirty-year infrastructure deal lives in municipal meeting minutes. The system read it, and the chain itself becomes the storyboard. The same shape works for the mill-site disposition, the data-center load application, the TIF expansion, the bond-credit signal.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 4. LIVE SIGNAL, KATAHDIN AND MAINE ───────── -->
+  <div class="section">
+    <h2>Live signal this week, in your backyard and across Maine</h2>
+    <p class="section-sub">
+      Pulled from the corpus on the morning of this conversation. The point is depth, not "we cover Maine," but the specific kinds of records an ED organization would have on the Monday-morning desk if the feed were running for the Katahdin region, and what a statewide ED footprint would receive at the same time.
+    </p>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Millinocket sealed-bid invitation, 143 Medway</div>
+        <div class="sig-body">Town RFP for a property on Medway Road posted May 14. Exactly the kind of municipal disposition signal Steve would want surfaced the day it lands, alongside whatever buyer interest is showing up in adjacent towns' planning records.</div>
+        <div class="sig-where">Millinocket ME · Town RFP · May 14, 2026</div>
+        <a class="source-link" href="https://millinocket.org/wp-content/uploads/2026/05/SEALED-BID-INVITATION-143-Medway.pdf" target="_blank">View RFP →</a>
+      </li>
+      <li>
+        <div class="sig-title">Medway 330-foot tower filing, Harmoni Towers Gateway</div>
+        <div class="sig-body">A new 330-ft AGL tower filing in the Katahdin region surfaced April 20 via the federal FAA OE/AAA database, cross-linked to municipal records. The kind of regional-infrastructure signal the OK board and One North would otherwise see in trade press six months later, if at all.</div>
+        <div class="sig-where">Medway ME · FAA OE/AAA · April 20, 2026</div>
+        <a class="source-link" href="https://oeaaa.faa.gov/oeaaa/external/searchAction.jsp?action=displayOECase&oeCaseID=2026-ANE-1008-OE" target="_blank">View filing →</a>
+      </li>
+      <li>
+        <div class="sig-title">Millinocket FY27 budget cycle, in flight</div>
+        <div class="sig-body">Full FY27 budget cycle in progress: budget-workshop schedule posted in late March, public hearing May 21, general fund revenue and expense detail published mid-April alongside the wastewater fund breakdown. A regional-ED organization with bond-credit interest would see the whole sequence live.</div>
+        <div class="sig-where">Millinocket ME · Town Council · March–May 2026</div>
+        <a class="source-link" href="https://millinocket.org/wp-content/uploads/2026/04/4-16-2026-SpclMeeting1stPH-FY27MunicWW.pdf" target="_blank">View FY27 first-public-hearing materials →</a>
+      </li>
+      <li>
+        <div class="sig-title">Waterville FY27 draft budget</div>
+        <div class="sig-body">The City of Waterville's FY27 draft budget posted to the municipal archive this week. The fiscal planning document a regional-ED group covering Waterville / Winslow / Fairfield / Oakland would need to see the day it lands, with the underlying CIP and capital-plan attachments structured for read.</div>
+        <div class="sig-where">Waterville ME · Annual Budgets · FY27</div>
+        <a class="source-link" href="https://www.waterville-me.gov/ArchiveCenter/ViewFile/Item/100" target="_blank">View FY27 draft budget →</a>
+      </li>
+      <li>
+        <div class="sig-title">Falmouth Board of Zoning Appeals, Foreside Road application</div>
+        <div class="sig-body">A 168 Foreside Road application reached the Board of Zoning Appeals on May 26, with the deed and supporting documents extracted alongside public comment from adjacent owners. Coastal-Maine redevelopment signal at the parcel level, the same shape that, applied at Katahdin scale, would surface the next mill-site or downtown-revitalization play before it hit RFP.</div>
+        <div class="sig-where">Falmouth ME · BZA · May 26, 2026</div>
+        <a class="source-link" href="https://play.champds.com/falmouthme/agendapdf/3372" target="_blank">View BZA agenda →</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ───────── 5. WHERE MA FITS ───────── -->
+  <div class="section">
+    <h2>Where Municipal Alpha fits in the regional-ED landscape</h2>
+    <p class="section-sub">
+      Three things tend to come up when an economic-development seat encounters this product. Worth naming them rather than letting them sit unsaid.
+    </p>
+
+    <p>
+      <strong>On comparison to vertical platforms.</strong> ClerkMinutes generates AI minutes. Granicus runs the municipal CMS that hosts the documents. GovSpend tracks government RFPs for vendors. None of them read the precursor chain for an economic-development seat, the upstream early-signal pattern that says a deal is being shaped six to twenty-four months before it crystallizes. The shape is novel for this lens.
+    </p>
+
+    <p>
+      <strong>On bond-credit signal.</strong> Bond markets price municipal credit on stale data: CAFRs land six to nine months late, MSRB voluntary filings are spotty, regional analyst notes lag by quarters. The underlying budget cycle, the capital improvement plan, the fund-balance trend, the infrastructure-distress signals, all of them live in the documents this system reads in real time. Mike's seat is exactly the buyer interface where that gap is felt; this is the conversation I want to have with him.
+    </p>
+
+    <p>
+      <strong>On the size of the operation.</strong> Honest framing: this is a one-person company built on a few hundred dollars a month of infrastructure cost, with the substrate already running at production scale. The capital-efficiency story is part of the read on whether the product can keep building in a way that earns institutional trust. That conversation is more on-topic with Sean and Mike than it is with most prospects.
+    </p>
+  </div>
+
+  <!-- ───────── 6. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions where your read would shape the path forward</h2>
+    <p class="section-sub">
+      Genuine discussion topics, not a checklist. Your answers route which shape of feedback partnership makes sense and what to build next for regional-ED organizations.
+    </p>
+
+    <div class="question">
+      <div class="q-text">
+        For an organization like Our Katahdin, what's the document or event that, if you saw it three months earlier, would actually change a decision? Not "nice to know." Change the call.
+      </div>
+      <div class="why">
+        Defines what the product would have to deliver to be load-bearing for an ED seat. If the answer is the budget cycle in a specific adjacent town, the product looks one way. If it's the FAA-tower-or-data-center signal across the region, it looks another. The answer reshapes the product for this audience.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        When a national developer is shopping a region, whether tower, data center, solar, industrial tenant, or mill-site reuse, do you find out while they're shopping, or after they've picked a site? What would change if you saw the planning-board chatter in adjacent towns six months early?
+      </div>
+      <div class="why">
+        Tests whether the precursor-chain framing actually maps onto how One North and the OK board run their work today, or whether the read is "we'd want this but we'd never operationalize it." That distinction shapes whether MA cuts a sample for the Katahdin region or focuses elsewhere.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        Bond markets price municipal credit on data that lands six to nine months late. If you saw the underlying budget cycle, capital plans, and infrastructure-distress signals in real time, would that change how you'd evaluate a Maine GO issuance? A regional water or sewer revenue bond? A green bond?
+      </div>
+      <div class="why">
+        Direct question for Mike's seat. The bond-credit signal vector is the most likely point of substantive product critique on this call, and the answer tells me whether to build deeper on the credit-quality angle or treat it as a niche use case.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        For a regional-ED organization with a broader footprint than Our Katahdin, say, a council covering ten or twenty towns, what would the home screen of a Monday-morning dashboard show? What would they read first?
+      </div>
+      <div class="why">
+        Tests the regional-ED product shape at a different scale. The answer informs how MA would package the same substrate for a county or multi-county footprint, which is a larger and qualitatively different consumer than a single mill-town redevelopment seat. The shape of the read at that scale is what I'm trying to understand from this conversation.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        From a platform seat: what's the lowest-friction shape for a regional-ED organization to actually consume this? Internal dashboard, email digest, API into whatever CRM they use, embed on the public site? Where do orgs like OK typically struggle to ingest external data, and what dies on the vine because the integration cost is too high?
+      </div>
+      <div class="why">
+        Tony's question. The right answer matters more than the product matters for adoption, since a brilliant signal that lives in the wrong surface is invisible. Tells me whether to build toward a delivered-as-feed product or a hosted-dashboard product for this audience.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        Beyond Our Katahdin, what other organizations in the Maine economic-development orbit would you say are the right next conversations for this? And what's the right shape for those, institutional intro, panel, board meeting, casual coffee?
+      </div>
+      <div class="why">
+        The Maine ED orbit is denser than the outside reads, with CMGC, MaineHousing, Coastal Enterprises, FAME, MTI, and the regional councils. Your read on which seat would have the most substantive reaction to this product, and how to land that conversation, is worth more than any cold-outreach plan I could build alone.
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 7. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">
+      A few concrete shapes the next step could take, depending on which direction this conversation pulls.
+    </p>
+
+    <div class="path">
+      <div class="path-title">A Katahdin-region signal sample for One North</div>
+      <div class="path-body">
+        Steve names the geography (Millinocket plus the towns the One North tenant-attraction strategy actually touches), and I cut a week or a month of signal across tower activity, planning-board chatter, state-level industrial-attraction filings, RFPs in adjacent towns. No build cost on your side. One-week loop.
+      </div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">A bond-credit read for a Maine issuance</div>
+      <div class="path-body">
+        Mike names a Maine bond issuance, recent or upcoming, GO or revenue or green, and I cut the underlying municipal-document chain MA reads for the issuer. The question is whether that chain would have changed your read of the credit. Not a sales call, a feedback loop.
+      </div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">A pointer into the broader Maine ED orbit</div>
+      <div class="path-body">
+        The Maine economic-development network is small, and your collective read on who would have the most substantive reaction to this product is worth more than any cold-outreach plan I could build. A warm bridge to one or two of those seats would be the highest-leverage outcome of this call.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha · prepared for Our Katahdin</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+</body>
+</html>

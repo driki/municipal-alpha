@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for DESRI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 44px 36px 80px 36px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+  }
+
+  .hero { margin-bottom: 40px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; }
+  .chain-steps li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--ink-12);
+  }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0 0;
+    display: grid;
+    gap: 12px;
+  }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .layer-stack {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+    display: grid;
+    gap: 10px;
+  }
+  .layer-stack li {
+    padding: 14px 18px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .layer-stack .layer-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--signal);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .layer-stack .layer-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-80);
+  }
+
+  .question {
+    margin: 14px 0;
+    padding: 16px 20px;
+    background: var(--paper);
+    border-left: 3px solid var(--ink-12);
+  }
+  .question .q-text {
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question · ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path {
+    margin: 14px 0;
+    padding: 18px 22px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .path-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .path-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .pull {
+    margin: 18px 0;
+    padding: 18px 22px;
+    background: var(--paper);
+    border-left: 3px solid var(--edge);
+  }
+  .pull-attr {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--edge);
+    margin-bottom: 6px;
+  }
+  .pull-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  @media print {
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .path, .question, .chain, .pull, .layer-stack li { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-meta">
+      Discussion guide<br>
+      Aaron Svedlow · DESRI
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for DESRI</h1>
+    <p class="lede">
+      A guide to the conversation. Built around the question Matt Kearns posed in April: where does an NE renewable developer's seat actually plug into a precursor signal product, and how far upstream of the utility load application can the chain be read. What follows is the substrate, the chain, the live signal across New England right now, and the questions where your read would shape what gets built next.
+    </p>
+  </div>
+
+  <!-- ───────── 1. STARTING POINT ───────── -->
+  <div class="section">
+    <h2>The starting point from the prior thread</h2>
+    <p>
+      The April exchange with Matt narrowed where this product would actually be useful to your seat. Matt's answer was direct: the moment of truth is the utility load application, and a list of where those have been signed is the deliverable that would change a siting and origination strategy.
+    </p>
+    <div class="pull">
+      <div class="pull-attr">Matthew Kearns · 2026-04-15</div>
+      <div class="pull-text">
+        "I'd like to know where a datacenter has signed a utility load application (application to be served power). If I had a list of those then I could figure out how to deliver power."
+      </div>
+    </div>
+    <p>
+      That answer crystallized the framing for this conversation. The utility load application is the decision window. The precursor chain that leads to it lives in the municipal record (EDA agendas, zoning overlays, planning-board site reviews, comp-plan amendments, town-meeting warrant articles, capital improvement plans) and surfaces six to twelve months earlier. Then it lands in the state PUC docket, the ISO queue, and the FAA OE/AAA filings. The system reads all of those layers and assembles the chain.
+    </p>
+  </div>
+
+  <!-- ───────── 2. THE STACK ───────── -->
+  <div class="section">
+    <h2>The signal stack, layer by layer</h2>
+    <p class="section-sub">
+      Each layer is a different upstream-or-downstream cut on the same project arc. The system reads them all and links across.
+    </p>
+
+    <ul class="layer-stack">
+      <li>
+        <div class="layer-name">Layer 1 · Municipal</div>
+        <div class="layer-body">
+          Planning board agendas + minutes, EDA + economic-development committee discussions, comp-plan amendments and overlay-district drafts, town-meeting warrant articles, sealed-bid RFPs, capital improvement plans, abutter-notice mailings. The earliest signal that a town is being shopped, friendly toward, hostile to, or wobbly about a utility-scale project. Six to twenty-four months upstream of the load application.
+        </div>
+      </li>
+      <li>
+        <div class="layer-name">Layer 2 · State legislative</div>
+        <div class="layer-body">
+          Active bills shaping where utility-scale solar, BESS, and data centers can go, indexed by state and by topic. Solar and storage moratoria, interconnection-process reforms, data-center load classification proposals, siting-and-permitting legislation. Shapes the rules-of-play envelope before a project is sited.
+        </div>
+      </li>
+      <li>
+        <div class="layer-name">Layer 3 · State PUC</div>
+        <div class="layer-body">
+          Renewable-energy siting and interconnection dockets, utility rate cases that contain capital improvement plans, infrastructure investment plans and approvals. Indexed by docket, by municipality, by utility. Maine PUC, NH PUC, Massachusetts DPU, Connecticut PURA, Rhode Island PUC, Vermont PUC, NYSDPS. The layer immediately upstream of, and overlapping with, the utility load application.
+        </div>
+      </li>
+      <li>
+        <div class="layer-name">Layer 4 · FAA OE/AAA</div>
+        <div class="layer-body">
+          Federal Obstruction Evaluation filings for structures above a height threshold. Solar disconnect and recloser poles, BESS substations, and the towers that accompany utility-scale solar interconnects all surface here. Downstream of permitting and upstream of construction. The right-now read on which competitor projects have advanced past the permitting layer and are about to build.
+        </div>
+      </li>
+      <li>
+        <div class="layer-name">Layer 5 · Federal procurement</div>
+        <div class="layer-body">
+          SAM.gov solicitations indexed by agency and by topic. Substation O&M contracts, federal data-center construction at DOE / VA / DoD facilities, BLM solar site readiness, transmission-corridor work. Useful as a cross-reference for federal-customer load growth that pulls private utility-scale capacity behind it.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ───────── 3. LIVE SIGNAL IN NE ───────── -->
+  <div class="section">
+    <h2>Live signal in New England this week</h2>
+    <p class="section-sub">
+      Pulled from the corpus the morning of this conversation. The point is the cross-layer composition, not any single artifact. Each item below shows the layer it surfaced from and the town or jurisdiction it indexes against.
+    </p>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Cumberland ME, Revision Energy landfill solar site plan</div>
+        <div class="sig-body">A utility-scale landfill solar site plan review reached Cumberland's Planning Board with the January 23, 2026 application materials extracted. The Maine-metro upstream signal for a new utility-scale interconnect. Layer 1 (municipal).</div>
+        <div class="sig-where">Cumberland ME · Planning Board · January 2026 application</div>
+        <a class="source-link" href="https://www.townofcumberlandmaine.gov/DocumentCenter/View/2052/Town-of-Cumberland_Revision-Energy_Landfill-Solar-Site-Plan-Review-App-01232026" target="_blank">View site plan application →</a>
+      </li>
+      <li>
+        <div class="sig-title">Maine PUC Docket 2026-00063, Falmouth renewable-energy siting and interconnection</div>
+        <div class="sig-body">A renewable-energy siting and interconnection docket indexed against Falmouth, Maine, opened on the PUC's CMP-utility side March 23. Layer 3 (state PUC). The system surfaces every PUC siting and interconnection docket and indexes by municipality.</div>
+        <div class="sig-where">Falmouth ME · Maine PUC · March 23, 2026</div>
+        <a class="source-link" href="https://mpuc-cms.maine.gov/CQM.Public.WebUI/Common/CaseMaster.aspx?CaseNumber=2026-00063" target="_blank">View docket →</a>
+      </li>
+      <li>
+        <div class="sig-title">Litchfield ME, proposed Solar Energy Facility Moratorium ordinance</div>
+        <div class="sig-body">A draft moratorium ordinance under review in Litchfield. The "where you can NOT go" signal surfaces in the warrant and the draft ordinance before it passes. A developer who reads it 90 to 180 days early can reassign capacity instead of stranding it. Layer 1 + Layer 2.</div>
+        <div class="sig-where">Litchfield ME · proposed ordinance</div>
+        <a class="source-link" href="https://www.litchfieldmaine.org/wp-content/uploads/version-2-24.07.29-Proposed-Solar-Moratorium-Ordinance-1.pdf" target="_blank">View proposed ordinance →</a>
+      </li>
+      <li>
+        <div class="sig-title">Corinna ME, Nexamp solar interconnect pole filings</div>
+        <div class="sig-body">Four FAA OE/AAA filings on a single day, April 24, indexed against Corinna, Maine, all part of a single Nexamp project: customer disconnect pole, riser/recloser pole, utility disconnect pole, and accessory poles. Layer 4 read on which competitor projects have advanced past the permitting layer in your ISO and are about to build.</div>
+        <div class="sig-where">Corinna ME · FAA OE/AAA · April 24, 2026</div>
+        <a class="source-link" href="https://oeaaa.faa.gov/oeaaa/external/searchAction.jsp?action=displayOECase&oeCaseID=2026-ANE-1295-OE" target="_blank">View filing →</a>
+      </li>
+      <li>
+        <div class="sig-title">NH SB439, municipal data center zoning</div>
+        <div class="sig-body">Active New Hampshire legislation on municipal data center zoning. Defines the substrate a data-center load-application competition will run on if it passes. Layer 2.</div>
+        <div class="sig-where">State of NH · 2026 Regular Session</div>
+        <a class="source-link" href="https://legiscan.com/NH/bill/SB439/2026" target="_blank">View bill →</a>
+      </li>
+      <li>
+        <div class="sig-title">NH HB1265, prohibiting data center construction</div>
+        <div class="sig-body">Parallel New Hampshire bill prohibiting construction of new data centers and establishing a committee to study the environmental impact. Worth knowing whether a New Hampshire site is at risk before you commit dollars. Layer 2.</div>
+        <div class="sig-where">State of NH · 2026 Regular Session</div>
+        <a class="source-link" href="https://legiscan.com/NH/bill/HB1265/2026" target="_blank">View bill →</a>
+      </li>
+      <li>
+        <div class="sig-title">RI H7878, storage interconnection compensation</div>
+        <div class="sig-body">Rhode Island bill requiring the EDC and the commission to promulgate tariffs for energy-storage-system interconnection and provide compensation for at least 100 MW of storage sited in-state. Layer 2 read on storage economics in Rhode Island.</div>
+        <div class="sig-where">State of RI · 2026 Regular Session</div>
+        <a class="source-link" href="https://legiscan.com/RI/bill/H7878/2026" target="_blank">View bill →</a>
+      </li>
+      <li>
+        <div class="sig-title">NY S6570 and A8758, the ASAP Act</div>
+        <div class="sig-body">Companion New York bills enacting the Accelerate Solar for Affordable Power Act, with a new target for distributed solar capacity and PSC reforms to the utility interconnection process. Layer 2 on New York interconnection economics.</div>
+        <div class="sig-where">State of NY · 2025-2026 General Assembly</div>
+        <a class="source-link" href="https://legiscan.com/NY/bill/S06570/2025" target="_blank">View bill →</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ───────── 4. A WORKED CHAIN ───────── -->
+  <div class="section">
+    <h2>A worked chain, applied to your shape of project</h2>
+    <p class="section-sub">
+      The canonical demo chain in the corpus today is a thirty-two-month tower-lease arc in Amherst, NH, traceable from one citizen comment to a unanimous five-zero ground-lease vote. Same shape generalizes directly to a utility-scale solar or BESS siting arc: comp-plan amendment, EDA discussion, abutter outreach, PILOT term sheet, planning-board site plan, town-meeting warrant, final vote, then PUC docket and load application. The chain itself becomes the read.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Stage 1 · Citizen or developer-introduced item</div>
+          <div class="step-text">A line in a Board of Selectmen minutes file. Could be a resident raising the issue, or a developer's preliminary letter referenced in the agenda. Six to thirty months before the vote.</div>
+        </li>
+        <li>
+          <div class="step-meta">Stage 2 · Town-side institutional position</div>
+          <div class="step-text">Town counsel review, fire chief or DPW input, PILOT discussion, abutter notice. The substrate where towns reveal their posture toward the project type before any formal application.</div>
+        </li>
+        <li>
+          <div class="step-meta">Stage 3 · Site plan review and Planning Board hearing</div>
+          <div class="step-text">The first formal public read on the specific project at the specific site. Layer 1 surfaces both the agenda packet and the abutter responses.</div>
+        </li>
+        <li>
+          <div class="step-meta">Stage 4 · Town-meeting warrant article and vote</div>
+          <div class="step-text">In Maine, NH, and most of New England, the final authorization to lease or rezone goes through the warrant. The warrant article text, the explanatory note, and the final vote tally are all extracted.</div>
+        </li>
+        <li>
+          <div class="step-meta">Stage 5 · PUC docket and load application</div>
+          <div class="step-text">Layer 3 picks up where Layer 1 finishes. The PUC siting and interconnection docket lands, the utility load application is signed, the FAA filings for substations and interconnect poles follow. Layer 4 surfaces the construction-ready signal.</div>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        The chain reads forward across years, indexed by town, by project type, by competitor. Aaron's seat plugs in at Stage 5 today. The question for this conversation is how far back into Stages 1 through 4 it would be useful to see, and at what depth.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 5. POSITIONING ───────── -->
+  <div class="section">
+    <h2>Where Municipal Alpha fits in the renewable-dev landscape</h2>
+    <p class="section-sub">
+      Three things tend to come up when a developer encounters this product. Worth naming them rather than letting them sit unsaid.
+    </p>
+
+    <p>
+      <strong>On Blumen and RenUSA and similar plays.</strong> Blumen is the environmental-and-regulatory layer at the moment of permitting. RenUSA is the community-engagement layer once a site has been picked. Municipal Alpha is the municipal-government layer in between, and it is the precursor read, the chain that precedes formal environmental review and community engagement by six to twenty-four months. Adjacent, not overlapping.
+    </p>
+
+    <p>
+      <strong>On in-house permitting teams.</strong> A DESRI-class developer already has people who can read these documents once they find them. The work the system does is not reading-the-document; it is surfacing-the-right-document at the right time across eighteen hundred municipalities simultaneously, with the precursor chain pre-assembled. The substrate is the moat, not the reading.
+    </p>
+
+    <p>
+      <strong>On the LLM commoditization concern.</strong> Fair concern. The defensible piece is not the LLM. It is the eighteen-hundred-municipality corpus, the navigator infrastructure that scrapes every CMS variant in production, the classification pipeline tuned across a year of buyer feedback, the precursor-chain logic that connects documents across years, and the FOAA back-channel for documents that are not posted online. A general-purpose LLM does not have the corpus and cannot get it cheaply.
+    </p>
+  </div>
+
+  <!-- ───────── 6. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions where your read would shape the path forward</h2>
+    <p class="section-sub">
+      Genuine discussion topics, not a checklist. Your answers route which shape of precursor product makes sense for DESRI and at what scope.
+    </p>
+
+    <div class="question">
+      <div class="q-text">
+        You named the utility load application as the action point. If the system built the full chain through there, what's the next downstream step you'd want surfaced, if any? And how far back upstream of the municipal layer would you want it to track?
+      </div>
+      <div class="why">
+        Sharpens the decision window. The municipal layer is upstream, the PUC and ISO are the trigger, downstream is interconnection-study completion, queue advancement, ISA execution. Your seat reaches deepest into the upstream layer; the question is how far downstream it should run, and whether there's a pre-municipal early-signal layer (state agency strategic plans, regional planning commission scopes) worth reaching for too.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        For DESRI, North Light, and Broadleaf in New England, what's the right coverage footprint, ISO-NE all six states plus NY plus MA overflow, or a tighter slice? And which record types matter most: municipal planning boards, state PUC, state legislative, FAA, county-level, or all of them with priority weights?
+      </div>
+      <div class="why">
+        Tells me how much of the existing substrate is already useful to DESRI versus how much needs to be lit up. The substrate runs nationally but the priority order matters when only a portion of it will get attention in a first pilot quarter.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        Per municipality, what depth: the agenda-packet snapshot of the moment, the multi-year chain that explains how this town arrived at its current zoning posture, or the full institutional history that signals whether the town is friendly, hostile, or wobbly toward utility-scale renewables?
+      </div>
+      <div class="why">
+        Daily siting work and longer-arc origination work pull on different surfaces of the same corpus. The snapshot serves the origination triage. The multi-year posture read serves the strategic site-selection call (the kind of read an ex-Falmouth-councilor would write on the town's own posture from inside). Knowing which one matters most to your seat shapes how the product is presented.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        What cadence works for a developer seat: same-day alerts when a watched town files a new planning agenda or PUC notice, a weekly digest, a quarterly portfolio audit, or some combination?
+      </div>
+      <div class="why">
+        Cadence is the difference between a tool a permitting lead opens daily and a quarterly strategy aid for the origination team. This question may route one level down from your seat to whoever in NE dev runs the daily intake; if so, happy to take that conversation directly.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        Is the precursor-chain product more useful to DESRI as a competitive-intelligence layer (which competitor projects are advancing where) or as a workflow input to your siting team's existing pipeline (which towns to engage now)? Different products at different price points.
+      </div>
+      <div class="why">
+        These are two different products with the same substrate. Knowing which framing fits the way DESRI buys and consumes intelligence reshapes the sample, the cadence, the pricing model, and which seat in DESRI's org the next conversation is with.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        If DESRI decided this was worth a paid pilot, what's the decision process: yours direct, joint with Matt and the CEO, requires data and IT vetting, requires legal? And what would qualify the pilot as a success: a specific siting decision changed, an ISO queue position improved, time-to-permit shortened?
+      </div>
+      <div class="why">
+        The single answer that reshapes everything else after this call. Without it, scope and pricing are guesses. With it, the next conversation is the right conversation.
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">
+        Beyond DESRI, who else in the renewable, storage, and data-center development orbit do you think this lands hardest with? Not asking for intros, asking for your read on which seats reach for this kind of precursor visibility and which ones don't.
+      </div>
+      <div class="why">
+        Your read on which seats reach for this is worth more than any cold-outreach plan I could build alone. Even the answer "nobody else, just us" is useful, because it sharpens the question of whether DESRI itself is the right anchor customer or a one-off.
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 7. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">
+      A few concrete shapes the next step could take, depending on which direction this conversation pulls.
+    </p>
+
+    <div class="path">
+      <div class="path-title">A precursor-chain sample for a specific NE geography</div>
+      <div class="path-body">
+        You name the ISO-NE state or states and the record-type weights that matter most. I cut a one-week feed: municipal precursor signals, state PUC docket entries, relevant FAA filings, active legislative items, indexed by town and by ISO queue position where I have it. No build cost on your side. The sample becomes the basis for the next conversation about scope, cadence, and pricing.
+      </div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">A workflow conversation with whoever consumes the feed</div>
+      <div class="path-body">
+        A short follow-up with whoever in DESRI siting actually opens an intelligence feed on a Monday morning. You're the right seat for the strategic call. They're the right seat to validate the workflow fit.
+      </div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">A read on the decision process</div>
+      <div class="path-body">
+        If something like this were worth a paid pilot at DESRI, the way that decision actually moves matters more than the product detail. Your read on what would qualify, who signs off, and what scope clears at which gate shapes everything that follows.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha · prepared for DESRI</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+</body>
+</html>
