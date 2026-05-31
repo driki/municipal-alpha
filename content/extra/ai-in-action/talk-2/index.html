@@ -1,0 +1,1827 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How AI codes a company without lying about what it built · AI in Action 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Eight questions I asked the AI while building Municipal Alpha solo, and how the system is kept from fabricating what it built. A methodology talk from AI in Action 2026, the Roux Institute.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://municipalalpha.com/ai-in-action/talk-2/">
+<meta property="og:title" content="How AI codes a company without lying about what it built">
+<meta property="og:description" content="Eight questions I asked the AI while building Municipal Alpha solo, and how the system is kept from fabricating what it built. AI in Action 2026, the Roux Institute.">
+<meta property="og:image" content="https://municipalalpha.com/ai-in-action/talk-2/og.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How AI codes a company without lying about what it built">
+<meta name="twitter:description" content="Eight questions I asked the AI while building Municipal Alpha solo, and how it's kept honest. AI in Action 2026.">
+<meta name="twitter:image" content="https://municipalalpha.com/ai-in-action/talk-2/og.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #0C0C0C; --paper: #F7F4F0; --paper-2: #EFEAE2; --signal: #E8512D; --edge: #1B4332;
+  --ink-80: rgba(12,12,12,0.80); --ink-60: rgba(12,12,12,0.60); --ink-40: rgba(12,12,12,0.40); --ink-12: rgba(12,12,12,0.12);
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; background: #1a1a1a; color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+.deck { display: flex; flex-direction: column; gap: 48px; padding: 48px; align-items: center; }
+.frame { display: flex; flex-direction: column; gap: 12px; align-items: stretch; width: 100%; max-width: calc(1920px * var(--scale, 1)); }
+.frame-label { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; text-transform: uppercase; }
+.frame-label .refresh { color: var(--signal); }
+
+.slide-wrap { width: calc(1920px * var(--scale, 1)); height: calc(1080px * var(--scale, 1)); position: relative; overflow: hidden; }
+.slide { width: 1920px; height: 1080px; background: var(--paper); color: var(--ink); font-family: var(--font-body); position: absolute; top: 0; left: 0; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); transform-origin: top left; transform: scale(var(--scale, 1)); }
+.slide.ink { background: var(--ink); color: var(--paper); }
+
+.slide-body { position: absolute; inset: 112px 110px 92px 110px; display: flex; flex-direction: column; }
+.page-no { position: absolute; top: 40px; left: 60px; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.14em; color: var(--ink-40); text-transform: uppercase; }
+.ink .page-no { color: rgba(247,244,240,0.5); }
+.wordmark { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; color: var(--ink); line-height: 1; }
+.wordmark.inv { color: var(--paper); }
+.top-mark { position: absolute; top: 40px; right: 60px; }
+
+/* ===== nav marker ties each slide to the menu ===== */
+.q-nav { font-family: var(--font-body); font-weight: 600; font-size: 18px; color: var(--signal); margin-bottom: 16px; }
+.q-nav .topic { color: var(--ink-40); font-weight: 500; }
+.ink .q-nav .topic { color: rgba(247,244,240,0.5); }
+
+/* ===== THE QUESTION = HERO ===== */
+.q-hero { font-family: var(--font-display); font-weight: 500; font-size: 88px; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin: 0; max-width: 22ch; }
+.q-hero em { font-style: italic; color: var(--signal); }
+.ink .q-hero { color: var(--paper); }
+.q-src { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.03em; color: var(--ink-40); margin-top: 18px; }
+.q-src .v { color: var(--edge); }
+.ink .q-src { color: rgba(247,244,240,0.45); }
+.ink .q-src .v { color: #7BC0A0; }
+
+/* ===== audience invitation = small, distinct, clearly secondary to the anchor ===== */
+.room-prompt { margin-top: 26px; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 31px; line-height: 1.28; color: var(--ink-60); max-width: 46ch; }
+.room-prompt .arr { font-style: normal; color: var(--signal); font-weight: 600; margin-right: 12px; }
+.ink .room-prompt { color: rgba(247,244,240,0.68); }
+
+/* ===== supporting material = clearly subordinate ===== */
+.support { margin-top: auto; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+.ink .support { border-top-color: rgba(247,244,240,0.18); }
+.support-label { font-family: var(--font-body); font-weight: 600; font-size: 16px; letter-spacing: 0.02em; color: var(--ink-40); margin-bottom: 16px; }
+.ink .support-label { color: rgba(247,244,240,0.5); }
+.support .body-sm { font-family: var(--font-body); font-weight: 400; font-size: 23px; line-height: 1.48; color: var(--ink-60); max-width: 86ch; margin: 0; }
+.ink .support .body-sm { color: rgba(247,244,240,0.7); }
+.support .mono-fig { font-family: var(--font-mono); font-weight: 500; color: var(--ink); }
+.ink .support .mono-fig { color: var(--paper); }
+.mono { font-family: var(--font-mono); font-feature-settings: 'tnum' 1; }
+
+/* menu (slide 2) */
+.menu { margin-top: 6px; }
+.menu .row { display: flex; align-items: baseline; gap: 26px; padding: 12px 4px; border-top: 1px solid var(--ink-12); }
+.menu .row:last-child { border-bottom: 1px solid var(--ink-12); }
+.menu .n { font-family: var(--font-mono); font-weight: 500; font-size: 22px; color: var(--signal); width: 1.5ch; flex-shrink: 0; }
+.menu .qcell { flex: 1; }
+.menu .q { font-family: var(--font-display); font-weight: 500; font-size: 29px; color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; }
+.menu .sub { font-family: var(--font-body); font-weight: 400; font-size: 18px; color: var(--ink-60); margin-top: 5px; line-height: 1.3; }
+.menu .tag { font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--ink-40); flex-shrink: 0; align-self: flex-start; padding-top: 4px; }
+
+.figpair { display: grid; grid-template-columns: auto auto; gap: 64px; }
+.figpair .fp .n { font-family: var(--font-mono); font-weight: 500; font-size: 52px; letter-spacing: -0.02em; line-height: 1; }
+.figpair .fp .k { font-family: var(--font-body); font-size: 17px; color: var(--ink-40); margin-top: 8px; max-width: 30ch; }
+.ink .figpair .fp .k { color: rgba(247,244,240,0.5); }
+
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+.duo .c { padding: 20px 24px; background: #fff; border-top: 4px solid var(--ink-12); }
+.ink .duo .c { background: rgba(247,244,240,0.05); }
+.duo .c.hot { border-top-color: var(--signal); } .duo .c.cool { border-top-color: var(--edge); }
+.duo .c h4 { font-family: var(--font-display); font-weight: 500; font-size: 26px; margin: 0 0 7px; line-height: 1.05; color: var(--ink); }
+.ink .duo .c h4 { color: var(--paper); }
+.duo .c p { font-family: var(--font-body); font-size: 18px; line-height: 1.4; color: var(--ink-60); margin: 0; }
+.ink .duo .c p { color: rgba(247,244,240,0.66); }
+.duo .c .t { font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--ink-40); margin-bottom: 7px; }
+.ink .duo .c .t { color: rgba(247,244,240,0.5); }
+
+.evidence { border-left: 4px solid var(--signal); padding: 16px 26px; background: #fff; margin-top: 16px; }
+.ink .evidence { background: rgba(247,244,240,0.05); }
+.evidence .q { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 25px; line-height: 1.32; color: var(--ink); }
+.ink .evidence .q { color: var(--paper); }
+.evidence .s { font-family: var(--font-mono); font-size: 14px; color: var(--ink-40); margin-top: 11px; letter-spacing: 0.03em; }
+.evidence .s .v { color: #7BC0A0; }
+
+.outcomes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 56px; }
+.outcomes li { font-family: var(--font-body); font-size: 24px; line-height: 1.38; color: rgba(247,244,240,0.86); padding-left: 30px; position: relative; }
+.outcomes li::before { content: "\2192"; position: absolute; left: 0; color: var(--signal); font-weight: 600; }
+
+.notes { width: 1920px; padding: 32px 48px; background: #fff; border-left: 4px solid var(--ink-12); font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--ink-80); }
+.notes h4 { font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--signal); margin: 0 0 10px; }
+.notes p { margin: 0 0 12px; max-width: 120ch; }
+.notes p:last-child { margin-bottom: 0; }
+.notes ul.tp { margin: 0 0 12px; padding-left: 22px; }
+.notes li { margin: 0 0 7px; max-width: 112ch; }
+.notes li::marker { color: var(--signal); }
+.notes .guard { color: var(--ink-60); font-style: italic; }
+
+.menu a.row { text-decoration: none; color: inherit; }
+.menu a.row:hover { background: rgba(232,81,45,0.07); }
+.slide-nav { position: absolute; bottom: 38px; right: 60px; z-index: 4; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.04em; display: flex; gap: 22px; }
+.slide-nav a { color: var(--ink-40); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+.slide-nav a:hover { color: var(--signal); border-bottom-color: var(--signal); }
+.ink .slide-nav a { color: rgba(247,244,240,0.5); }
+.ink .slide-nav a:hover { color: var(--signal); border-bottom-color: var(--signal); }
+
+/* deep-dive visual: agency sensory-prompt cards */
+.prompts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.prompt-card { background: rgba(247,244,240,0.05); border-top: 3px solid rgba(247,244,240,0.28); padding: 20px 20px 22px; }
+.prompt-card .ask { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.04em; color: rgba(247,244,240,0.55); margin-bottom: 14px; }
+.prompt-card .ans { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.08; color: var(--signal); }
+.prompt-card .ans small { display: block; font-size: 17px; font-weight: 400; font-style: italic; color: rgba(247,244,240,0.78); margin-top: 8px; line-height: 1.3; }
+
+/* deep-dive visual: agency process rail */
+.proc { display: flex; align-items: flex-start; gap: 6px; }
+.proc .step { flex: 1; }
+.proc .step .nm { font-family: var(--font-body); font-weight: 600; font-size: 17px; color: rgba(247,244,240,0.92); line-height: 1.18; }
+.proc .step .you { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--signal); margin-top: 10px; line-height: 1.25; }
+.proc .arr { color: rgba(247,244,240,0.3); font-size: 20px; }
+.reject-chips { display: flex; flex-wrap: wrap; gap: 10px; font-family: var(--font-mono); font-size: 15px; }
+.reject-chips span { color: rgba(247,244,240,0.5); border: 1px solid rgba(247,244,240,0.16); padding: 7px 13px; }
+.reject-chips s { color: rgba(247,244,240,0.82); text-decoration-color: var(--signal); }
+
+@media print {
+  @page { size: 20in 11.25in; margin: 0; }
+  html, body { background: #fff; }
+  .deck { padding: 0; gap: 0; align-items: stretch; }
+  .frame { gap: 0; max-width: none; display: block; width: 1920px; }
+  .frame-label, .notes, .slide-nav { display: none; }
+  .slide-wrap { width: 1920px; height: 1080px; page-break-after: always; }
+  .slide { box-shadow: none; transform: none; }
+}
+</style>
+<script>
+function fitDeck(){ const PAD=96; document.documentElement.style.setProperty('--scale', Math.min(1,(window.innerWidth-PAD)/1920)); }
+window.addEventListener('resize', fitDeck); window.addEventListener('DOMContentLoaded', fitDeck);
+</script>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ====== 01 · COVER (ink) ====== -->
+<div class="frame">
+  <div class="frame-label">01 · Cover</div>
+  <div class="slide-wrap">
+  <div class="slide ink">
+    <div aria-hidden="true" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end; padding-right:60px; pointer-events:none; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:1400px; line-height:1; color:var(--paper); opacity:0.10; letter-spacing:-0.04em; user-select:none;">&alpha;</div>
+    <div style="position:absolute; left:100px; right:120px; top:180px;">
+      <div class="wordmark inv" style="font-size:84px; line-height:0.9; letter-spacing:-0.02em;">municip<span>&alpha;</span>l</div>
+      <div style="margin-top:48px; font-family:var(--font-display); font-weight:500; font-size:84px; line-height:1.04; letter-spacing:-0.018em; color:var(--paper); max-width:24ch;">
+        &ldquo;How can I use AI tools to build a <em style="font-style:italic; color:var(--signal);">$100M ARR company</em> with fewer than 20 employees?&rdquo;
+      </div>
+      <div style="margin-top:34px; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:42px; line-height:1.22; color:rgba(247,244,240,0.74); max-width:40ch;">
+        While dealing with hallucinations, lies, and platitudes.
+      </div>
+      <div style="margin-top:40px; font-family:var(--font-mono); font-size:15px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(247,244,240,0.5);">
+        Session as listed &middot; &ldquo;How AI codes a company without lying about what it built&rdquo;
+      </div>
+    </div>
+    <div style="position:absolute; left:100px; right:100px; bottom:60px;">
+      <div style="height:1px; background:rgba(247,244,240,0.18); margin-bottom:24px;"></div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:14px; letter-spacing:0.10em; color:rgba(247,244,240,0.55); text-transform:uppercase;">
+        <div>Matt MacDonald &middot; AI in Action 2026 &middot; The Roux Institute &middot; Municipal Innovation track</div>
+        <div>2:15pm</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · open · 25s</h4>
+    <ul class="tp"><li>I'm Matt MacDonald, I run Municipal Alpha, solo</li><li>The question that started this whole company is on the screen, can I use AI tools to build a hundred-million-ARR company with fewer than twenty employees, while the thing I'm building with hallucinates, lies, and pads everything with platitudes</li><li>The conference listed this under a tidier title, how AI codes a company without lying about what it built, same question</li><li>The whole talk is the questions I asked the machine to get there, and I want this to be a conversation, so stop me anywhere</li></ul>
+  </div>
+</div>
+
+<!-- ====== 02 · MENU (the contract) ====== -->
+<div class="frame">
+  <div class="frame-label">02 · The menu · sets the interactive contract</div>
+  <div class="slide-wrap">
+  <div class="slide" id="menu">
+    <div class="page-no">02 / 11</div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">The map</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.05; letter-spacing:-0.015em; color:var(--ink); max-width:32ch; margin-bottom:16px;">
+        Eight questions I asked the machine. <em style="font-style:italic; color:var(--signal);">Stop me on any one of them.</em>
+      </div>
+
+      <div class="menu">
+        <a class="row" href="#q1"><div class="n">1</div><div class="qcell"><div class="q">Can one monkey type a company instead of Shakespeare?</div><div class="sub">I typed about a book's worth of words. Can that really build a company?</div></div><div class="tag"><span style="font-style:italic;">Infinite monkeys</span> : the leverage</div></a>
+        <a class="row" href="#q2"><div class="n">2</div><div class="qcell"><div class="q">What if Boston was wrong, and it isn't more than a feeling?</div><div class="sub">Why does asking an AI for "a logo" hand you generic junk?</div></div><div class="tag"><span style="font-style:italic;">More Than a Feeling</span> : the brand</div></a>
+        <a class="row" href="#q3"><div class="n">3</div><div class="qcell"><div class="q">So basically, you're lying the whole time?</div><div class="sub">The AI sounds confident, and it is flat wrong. Then what?</div></div><div class="tag"><span style="font-style:italic;">True Lies</span> : the problem</div></a>
+        <a class="row" href="#q4"><div class="n">4</div><div class="qcell"><div class="q">What do you do when it wakes up with a spotless mind?</div><div class="sub">The model forgets everything between sessions. How do the rules survive?</div></div><div class="tag"><span style="font-style:italic;">Eternal Sunshine</span> : memory</div></a>
+        <a class="row" href="#q5"><div class="n">5</div><div class="qcell"><div class="q">How did it forge me a job at Spotify?</div><div class="sub">The AI made up a job I never had. How do you stop that?</div></div><div class="tag"><span style="font-style:italic;">Catch Me If You Can</span> : the bio incident</div></a>
+        <a class="row" href="#q6"><div class="n">6</div><div class="qcell"><div class="q">When should it stop me, and when should it let me push through?</div><div class="sub">Some rules should block you. Some should just warn you. Which is which?</div></div><div class="tag"><span style="font-style:italic;">The Martian</span> : block or warn</div></a>
+        <a class="row" href="#q7"><div class="n">7</div><div class="qcell"><div class="q">What if every plan had to survive a fight first?</div><div class="sub">How do you catch it making things up before it ships?</div></div><div class="tag"><span style="font-style:italic;">Fight Club</span> : second opinion</div></a>
+        <a class="row" href="#q8"><div class="n">8</div><div class="qcell"><div class="q">Anyone can run up the stats. How do you actually win?</div><div class="sub">Everyone can make AI churn out a lot. So what actually got done?</div></div><div class="tag"><span style="font-style:italic;">Moneyball</span> : outcomes</div></a>
+      </div>
+
+      <div class="room-prompt" style="margin-top:30px;"><span class="arr">&#8618;</span>Which one do you want to start with? And yell if you want to camp on any of them.</div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 45s · this slide sets the posture for the whole hour</h4>
+    <ul class="tp"><li>Before I dive in, here's the whole map</li><li>Eight questions I asked the machine while building this, and they're the spine of the talk</li><li>I'd much rather this be a conversation than a lecture, so two things</li><li>One, if any of these is the one you actually care about, say so and we'll go there</li><li>Two, stop me anywhere, we can hang out on any single one of these for as long as it's useful</li><li>Every one of these is a problem you've probably hit too, so I want your war stories, not just mine</li><li>Where do you want to start?</li></ul>
+  </div>
+</div>
+
+<!-- ====== 03 · Q1 · LEVERAGE (cold open) ====== -->
+<div class="frame">
+  <div class="frame-label">03 · Q1 · the leverage · <span class="refresh">⟳ refresh word counts before 6/5</span></div>
+  <div class="slide-wrap">
+  <div class="slide" id="q1">
+    <div class="page-no">03 / 11</div>
+    <div class="slide-nav"><a href="#q1-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 1 of 8 <span class="topic">&middot; <span style="font-style:italic;">Infinite monkeys</span> : the leverage</span></div>
+      <div class="q-hero" style="font-size:62px; max-width:26ch;">&ldquo;Can one monkey type <em>a company</em> instead of Shakespeare?&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>Quick show of hands, who here has built something real with AI in the last year?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">So I asked it exactly how many words that took, and it would not give me one number</div>
+        <div class="body-sm" style="margin-bottom:18px;">
+          It over-counted first, caught itself, then refused to give one number, splitting measured from estimated. I typed about a book. About <span class="mono-fig">794,000</span> words came back, roughly <span class="mono-fig">11 to 1</span>. The cover asked about fewer than 20 employees, so far it is one person, at about <span style="color:var(--signal); font-weight:600;">$391 a month.</span>
+        </div>
+        <div class="figpair">
+          <div class="fp"><div class="n" style="color:var(--edge);">71,972</div><div class="k">measured &middot; words typed in the 30 days transcripts are kept</div></div>
+          <div class="fp"><div class="n" style="color:var(--ink-60);">~125,000</div><div class="k">estimated &middot; lifetime, about a book &middot; the rest aged out</div></div>
+        </div>
+      </div>
+    
+      <!-- poster homage: original art + movie-poster format, copyright-safe -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><rect x="9" y="22" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="67" y="22" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="125" y="22" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="183" y="22" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="241" y="22" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="9" y="78" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="67" y="78" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="125" y="78" width="50" height="44" rx="8" fill="#E8512D"/><rect x="183" y="78" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="241" y="78" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="9" y="134" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="67" y="134" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="125" y="134" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="183" y="134" width="50" height="44" rx="8" fill="#F7F4F0"/><rect x="241" y="134" width="50" height="44" rx="8" fill="#F7F4F0"/></svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:33px; letter-spacing:0.01em; color:var(--paper); line-height:1.02;">INFINITE MONKEYS</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">One steered monkey beats infinite random ones.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A ONE-TYPIST PRODUCTION &ldquo;INFINITE MONKEYS&rdquo;<br>1,967 PROMPTS &middot; MEDIAN 11 WORDS &middot; 794,000 WORDS BACK<br>NO SCRIPT, JUST JUDGMENT &middot; RUNNING AT $391 A MONTH
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min · strongest open, demonstrates the thesis on its own data</h4>
+    <ul class="tp"><li>Start with the question that built this talk</li><li>I asked how many words I'd typed steering the company</li><li>It over-counted, scooping up system-injected text as if I typed it, then caught it, then refused to give me one confident number, it split what it measured, about seventy-two thousand in thirty days, from what it estimated, around a hundred twenty-five thousand lifetime, and volunteered why the rest is gone</li><li>An AI that knows what it knows from what it's guessing, and says so, that's the whole talk</li><li>The leverage is the punchline this room came for, seven hundred ninety-four thousand words back, eleven to one, and the answer to the cover question so far is one employee at three hundred ninety-one dollars a month</li></ul>
+  </div>
+</div>
+
+<!-- ====== 04 · Q2 · THE BRAND ====== -->
+<div class="frame">
+  <div class="frame-label">04 · Q2 · the brand · process over description</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2">
+    <div class="page-no">04 / 11</div>
+    <div class="slide-nav"><a href="#q2-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 2 of 8 <span class="topic">&middot; <span style="font-style:italic;">More Than a Feeling</span> : the brand</span></div>
+      <div class="q-hero" style="font-size:70px; max-width:23ch;">&ldquo;What if Boston was wrong... and it isn't <em>more than a feeling?</em>&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>When you have gotten something genuinely good out of AI, what did you actually ask for?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">The brand came from describing how it feels, not what it does</div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); max-width:64ch;">
+          I did not ask for a logo. I ran the brand extraction the best identity studios use, Pentagram, Collins, Wolff Olins, word association, the core tension, the one-line compression. The contrast that taught me everything:
+          <div style="margin-top:16px; font-family:var(--font-display); font-style:italic; font-size:24px; line-height:1.4; color:rgba(247,244,240,0.88);">
+            &ldquo;Finds signals in municipal data&rdquo; &rarr; a generic data-company logo.<br>
+            &ldquo;<span style="color:var(--signal);">The moment the fog clears</span>&rdquo; &rarr; something that could only be this brand.
+          </div>
+        </div>
+      </div>
+      <!-- poster homage: original art (the brand mark itself) + movie-poster format -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div class="wordmark inv" style="font-size:72px; line-height:1; letter-spacing:-0.02em;">municip<span style="color:var(--signal); font-style:italic;">&alpha;</span>l</div>
+          <div style="margin-top:20px; font-family:var(--font-body); font-size:15px; color:rgba(247,244,240,0.6); max-width:28ch; text-align:center; line-height:1.45;">The Greek &alpha; hiding in the word, the signal in plain sight.</div>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:30px; letter-spacing:0.01em; color:var(--paper); line-height:1.04;">MORE THAN A FEELING</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">Built from a feeling, not a brief.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A FELT-NOT-SPEC&rsquo;D PRODUCTION &ldquo;MORE THAN A FEELING&rdquo;<br>
+          WORD ASSOCIATION &middot; ONE CORE TENSION &middot; FIVE PRINCIPLES<br>
+          THE MOMENT THE FOG CLEARS &middot; ENCODED BUT OBVIOUS
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min · how I prompt: process over description</h4>
+    <ul class="tp"><li>Here's a question that shows how I actually use the thing, and it's a brand story</li><li>When I needed a brand I didn't ask for a municipal data company logo, that gives you generic garbage</li><li>I ran the extraction process the best identity studios use, Pentagram, Collins, Wolff Olins, word association, find the core tension, compress to one idea</li><li>Daybreak, braille, the feeling when the product works is "I didn't know that was there." The contrast that taught me everything, "finds signals in municipal data" gives a generic data-company logo, but "the moment the fog clears" gives something that could only be this brand</li><li>And the mark is the company name with a Greek alpha hiding inside the word municipal, the signal sitting in plain sight, which is exactly what the product is</li><li>The lesson, borrow the practitioner's process, not their output, and prompt from how it feels, not what it does</li></ul>
+  </div>
+</div>
+
+<!-- ====== 05 · Q3 · THE PROBLEM ====== -->
+<div class="frame">
+  <div class="frame-label">05 · Q3 · the problem</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q3">
+    <div class="page-no">05 / 11</div>
+    <div class="slide-nav"><a href="#q3-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 3 of 8 <span class="topic">&middot; <span style="font-style:italic;">True Lies</span> : the problem</span></div>
+      <div class="q-hero" style="font-size:84px; max-width:18ch;">&ldquo;So basically... you're <em>lying the whole time?</em>&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>Show of hands, who has used AI, and then found it made something up?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">Why it matters here</div>
+        <div class="body-sm">
+          Confident, well-written, and wrong. Most "I built it with AI" stories cannot tell you which parts are real. For this company a fabricated signal to a buyer is not a typo, it is a broken trust relationship. The real question is not can the model write code. It is <span style="color:var(--ink); font-weight:600;">how do you stop it lying about what it built, at a scale where you cannot check everything by hand.</span>
+        </div>
+      </div>
+      <!-- poster homage: original art + movie-poster FORMAT (title, tagline, billing block). Copyright-safe. -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 290" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+            <rect x="0" y="14" width="300" height="22" rx="3" fill="#F7F4F0"/>
+            <rect x="0" y="52" width="208" height="22" rx="3" fill="#F7F4F0"/>
+            <rect x="0" y="90" width="300" height="22" rx="3" fill="#E8512D"/>
+            <rect x="0" y="128" width="168" height="22" rx="3" fill="#F7F4F0"/>
+            <rect x="0" y="166" width="248" height="22" rx="3" fill="#F7F4F0"/>
+            <rect x="0" y="204" width="120" height="22" rx="3" fill="#F7F4F0"/>
+            <g transform="rotate(-7 200 250)">
+              <rect x="110" y="228" width="190" height="44" rx="4" fill="none" stroke="#E8512D" stroke-width="2.5"/>
+              <text x="205" y="256" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="16" letter-spacing="3" fill="#E8512D">CLASSIFIED</text>
+            </g>
+          </svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:42px; letter-spacing:0.01em; color:var(--paper); line-height:1;">TRUE LIES</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">A fluent lie is specific.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A FAIL-CLOSED PRODUCTION &ldquo;TRUE LIES&rdquo;<br>
+          VERIFICATION BY GEMINI &middot; NO CLAIM UNSOURCED &middot; CASTING THE ENTIRE PUBLIC RECORD<br>
+          WRITTEN STEERED &amp; SHIPPED BY ONE FOUNDER &middot; RUNNING AT $391 A MONTH
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 3 min · the guaranteed-hands moment, do it early</h4>
+    <ul class="tp"><li>Name it plainly</li><li>AI hallucinates, confident, fluent, wrong, and most stories about building with it can't tell you which parts are real</li><li>This is the show-of-hands, who's shipped something an AI wrote and later found it made something up, get the hands up</li><li>For this company the stakes are sharp, it makes claims to buyers about public records, and a made-up signal isn't a typo, it's a broken trust relationship</li><li>So the question isn't whether it can write the code, it's how you stop it lying at a scale where you can't hand-check</li><li>The next four questions are the answer</li></ul>
+  </div>
+</div>
+
+<!-- ====== 06 · Q4 · MEMORY (decision logs) ====== -->
+<div class="frame">
+  <div class="frame-label">06 · Q4 · memory · <span class="refresh">⟳ refresh corpus size before 6/5</span></div>
+  <div class="slide-wrap">
+  <div class="slide" id="q4">
+    <div class="page-no">06 / 11</div>
+    <div class="slide-nav"><a href="#q4-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 4 of 8 <span class="topic">&middot; <span style="font-style:italic;">Eternal Sunshine</span> : memory</span></div>
+      <div class="q-hero" style="font-size:66px; max-width:24ch;">&ldquo;What do you do when it wakes up with a <em>spotless mind</em>, every session?&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>What do you do when the model forgets everything between sessions? Has anyone solved this?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">The answer: the system documents itself more than I direct it</div>
+        <div class="body-sm">
+          <span class="mono-fig" style="font-size:28px;">521,577 words</span> of decision logs across 84 daily files, roughly <span class="mono-fig">7&times;</span> everything I have ever typed as a prompt. Every decision, what was tried, what was rejected, and why. That trail is the audit trail every claim traces back to. The honesty is the ratio, not a slogan.
+        </div>
+      </div>
+    
+      <!-- poster homage: original art + movie-poster format, copyright-safe -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><circle cx="68" cy="100" r="54" fill="#F7F4F0"/><circle cx="150" cy="78" r="11" fill="#F7F4F0" opacity="0.85"/><circle cx="178" cy="124" r="9" fill="#E8512D" opacity="0.9"/><circle cx="206" cy="92" r="7" fill="#F7F4F0" opacity="0.6"/><circle cx="232" cy="132" r="5.5" fill="#F7F4F0" opacity="0.5"/><circle cx="256" cy="76" r="4.5" fill="#F7F4F0" opacity="0.4"/><circle cx="278" cy="112" r="3.5" fill="#F7F4F0" opacity="0.3"/><circle cx="292" cy="150" r="2.5" fill="#F7F4F0" opacity="0.25"/></svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:33px; letter-spacing:0.01em; color:var(--paper); line-height:1.02;">ETERNAL SUNSHINE</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">It forgets everything. The trail doesn't.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A PERSISTENT-MEMORY PRODUCTION &ldquo;ETERNAL SUNSHINE&rdquo;<br>MEMORY WIPED NIGHTLY &middot; 529,000 WORDS OF TRAIL &middot; RE-READ ON WAKE<br>THE GUARDRAILS SURVIVE THE WIPE
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 3 min</h4>
+    <ul class="tp"><li>The persistence question, how do you keep the context and the guardrails alive across sessions when the model forgets everything between them</li><li>Good one to open to the room, everyone building with AI hits this</li><li>My answer is that the system documents itself far more than I direct it</li><li>The decision logs are about five hundred twenty-one thousand words, roughly seven times everything I've ever typed as a prompt</li><li>Most of the writing in this project is the system logging what it did and why</li><li>That's the audit trail, and every claim that leaves the building traces back to it</li></ul>
+  </div>
+</div>
+
+<!-- ====== 07 · Q5 · THE BIO INCIDENT ====== -->
+<div class="frame">
+  <div class="frame-label">07 · Q5 · the bio incident · must-land ①</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q5">
+    <div class="page-no">07 / 11</div>
+    <div class="slide-nav"><a href="#q5-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 5 of 8 <span class="topic">&middot; <span style="font-style:italic;">Catch Me If You Can</span> : the bio incident</span></div>
+      <div class="q-hero" style="font-size:82px; max-width:20ch;">&ldquo;How did it <em>forge</em> me a job at Spotify?&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>Has an AI ever invented a fact about you, or your company, that you had to catch?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">What happened, and how I made it impossible to repeat</div>
+        <div class="body-sm">
+          The AI wrote that I had worked at Spotify and The Echo Nest. I never did. It inferred it from a business-model analogy plus my network, and shipped it to the about page. The fix was not "be more careful." <span style="color:var(--ink); font-weight:600;"><span class="mono" style="font-size:21px;">verify_bio_claims()</span> now blocks any unverified employment claim before it can ship.</span> The fix for a lie is a gate that fails closed.
+        </div>
+      </div>
+    
+      <!-- poster homage: original art + movie-poster format, copyright-safe -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><path d="M14,138 C44,70 70,176 104,120 C128,80 150,40 176,96 C190,128 214,150 232,118 C246,94 268,104 290,128" fill="none" stroke="#F7F4F0" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-9 196 58)"><rect x="124" y="38" width="150" height="40" rx="4" fill="none" stroke="#E8512D" stroke-width="2.5"/><text x="199" y="64" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="4" fill="#E8512D">FORGED</text></g></svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:27px; letter-spacing:0.01em; color:var(--paper); line-height:1.02;">CATCH ME IF YOU CAN</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">It forged a r&eacute;sum&eacute; I never earned.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A FAIL-CLOSED PRODUCTION &ldquo;CATCH ME IF YOU CAN&rdquo;<br>STARRING A BIO THAT NEVER HAPPENED &middot; CAUGHT IN REVIEW &middot; GATED FOR GOOD<br>NO CLAIM UNSOURCED &middot; NO BACKGROUND UNVERIFIED
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min · the canonical story · LAND THIS</h4>
+    <ul class="tp"><li>This is the story the title is about</li><li>Early on the AI confabulated that I'd worked at Spotify and The Echo Nest</li><li>I never did</li><li>The company uses Echo Nest as a business-model analogy, my network has Echo Nest alumni, so the model bridged the gap and wrote it as fact on the about page</li><li>The room-prompt is great here, almost everyone has had the AI invent a fact about them</li><li>We caught it and corrected it, but the real fix wasn't being more careful, that doesn't scale</li><li>The fix was a gate that fails closed, verify_bio_claims blocks any unverified employment claim before it ships</li><li>The line to land, the fix for a lie isn't a resolution, it's a gate</li></ul>
+  </div>
+</div>
+
+<!-- ====== 08 · Q6 · BLOCK OR WARN ====== -->
+<div class="frame">
+  <div class="frame-label">08 · Q6 · block or warn · must-land ②</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q6">
+    <div class="page-no">08 / 11</div>
+    <div class="slide-nav"><a href="#q6-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 6 of 8 <span class="topic">&middot; <span style="font-style:italic;">The Martian</span> : block or warn</span></div>
+      <div class="q-hero" style="font-size:60px; max-width:28ch;">&ldquo;When should it stop me, and when should it let me <em>ignore the experts?</em>&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>Where is your line, what should a tool just block, versus warn you and let you push through?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">The answer became a rule: not every guardrail should block</div>
+        <div class="duo">
+          <div class="c hot">
+            <div class="t">MECHANICAL &middot; block on violation</div>
+            <h4>When I cannot reliably catch it.</h4>
+            <p>A fabricated bio, an em-dash in buyer copy, a schema typo that silently drops data. Fail closed.</p>
+          </div>
+          <div class="c cool">
+            <div class="t">JUDGMENT &middot; surface and defer</div>
+            <h4>When pushing through is the point.</h4>
+            <p>Scope creep, a rat-hole. Surface the question once, then let me decide. Push-through is where the good stuff lives.</p>
+          </div>
+        </div>
+        <div class="evidence">
+          <div class="q">&ldquo;founders need guardrails, and pushback, but when they push through those pushbacks, sometimes you get the novel stuff&rdquo;</div>
+          <div class="s"><span class="v">verbatim</span> &middot; 2026-05-09 &middot; the line that became this rule</div>
+        </div>
+      </div>
+    
+      <!-- poster homage: original art + movie-poster format, copyright-safe -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 220" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><circle cx="150" cy="118" r="92" fill="#E8512D"/><circle cx="150" cy="68" r="5.5" fill="#F7F4F0"/><line x1="150" y1="68" x2="150" y2="46" stroke="#F7F4F0" stroke-width="2.5"/><path d="M150,46 L172,52 L150,58 Z" fill="#F7F4F0"/></svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:42px; letter-spacing:0.01em; color:var(--paper); line-height:1.02;">THE MARTIAN</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">Warned, pushed through, won.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A PUSH-THROUGH PRODUCTION &ldquo;THE MARTIAN&rdquo;<br>GUARDRAILS THAT WARN, NOT BLOCK &middot; PUSH-THROUGH IS THE SIGNAL<br>THE FOUNDER DECIDES, THE SYSTEM ADVISES
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min · most distinctive idea · LAND THIS</h4>
+    <ul class="tp"><li>I kept asking the system to stop me doing the thing I know I do, build instead of ship</li><li>The room-prompt is a real debate, ask them where their line is</li><li>My answer turned into the most useful rule in here, there are two kinds of guardrail</li><li>A mechanical rule blocks on violation, because I can't reliably catch the thing, a fabricated bio, an em-dash in copy, a schema typo that silently eats data, fail closed</li><li>A judgment rule does the opposite, it surfaces the question once and lets me push through, because push-through is sometimes where the good stuff is</li><li>The verbatim line on the slide is the actual moment I said it</li><li>Mechanize a judgment call and you've automated away the founder's discretion at the exact moment compounding needs it</li><li>Knowing which is which is the whole game</li></ul>
+  </div>
+</div>
+
+<!-- ====== 09 · Q7 · SECOND OPINION ====== -->
+<div class="frame">
+  <div class="frame-label">09 · Q7 · second opinion · adversarial review</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7">
+    <div class="page-no">09 / 11</div>
+    <div class="slide-nav"><a href="#q7-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 7 of 8 <span class="topic">&middot; <span style="font-style:italic;">Fight Club</span> : second opinion</span></div>
+      <div class="q-hero" style="font-size:72px; max-width:26ch;">&ldquo;What if every plan had to <em>survive a fight</em> first?&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>Anyone here run one model to check another? Or do you trust one to grade its own work?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">The answer: I don't let one model grade its own homework</div>
+        <div class="body-sm">
+          A second model reviews anything whose errors would compound across future sessions, gates, plans, rule promotions. The prompt is literally <span style="color:var(--signal); font-style:italic;">"be adversarial, find what would lose credibility with a technical audience."</span> On one plan alone it caught three structural failures the first model missed, <span class="mono-fig">a line-offset staleness bug, a silently dropped section, an irreversible migration with no rollback.</span> None of it shipped.
+        </div>
+      </div>
+    
+      <!-- poster homage: original art + movie-poster format, copyright-safe -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 220" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><path d="M150,20 A90,90 0 0,0 150,200 Z" fill="#F7F4F0"/><path d="M150,20 A90,90 0 0,1 150,200 Z" fill="#E8512D"/><line x1="150" y1="12" x2="150" y2="208" stroke="#0C0C0C" stroke-width="5"/></svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:42px; letter-spacing:0.01em; color:var(--paper); line-height:1.02;">FIGHT CLUB</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">Every plan survives a fight first.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS AN ADVERSARIAL PRODUCTION &ldquo;FIGHT CLUB&rdquo;<br>TWO MODELS ENTER &middot; 3 STRUCTURAL FAILURES CAUGHT &middot; NONE SHIPPED<br>ONE MODEL NEVER GRADES ITS OWN HOMEWORK
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 2 min</h4>
+    <ul class="tp"><li>I asked how to keep the plans the AI generates from fabricating, and the answer is I don't trust one model to grade its own homework on anything that compounds</li><li>A second model, I use Gemini, adversarially reviews the high-stakes stuff, gates, plans, rule promotions</li><li>The prompt is literally "be adversarial, find what would lose credibility with a technical audience." On one plan it caught three structural failures the first model missed, a line-offset staleness bug, a section silently dropped from an index, and an irreversible migration with no rollback</li><li>None of it shipped</li><li>A different model fails in different places</li></ul>
+  </div>
+</div>
+
+<!-- ====== 10 · Q8 · OUTCOMES ====== -->
+<div class="frame">
+  <div class="frame-label">10 · Q8 · outcomes, not volume</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8">
+    <div class="page-no">10 / 11</div>
+    <div class="slide-nav"><a href="#q8-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 8 of 8 <span class="topic">&middot; <span style="font-style:italic;">Moneyball</span> : outcomes</span></div>
+      <div class="q-hero" style="font-size:72px; max-width:24ch;">&ldquo;Anyone can run up the stats. How do you <em>actually win?</em>&rdquo;</div>
+      <div class="room-prompt" style="max-width:1140px;"><span class="arr">&#8618;</span>What is the most surprising thing you have gotten AI to actually do, not just generate?</div>
+
+      <div class="support" style="max-width:1140px;">
+        <div class="support-label">An LLM will write you a million words. That is not the achievement. This is what one person can now actually do.</div>
+        <ul class="outcomes">
+          <li>Crawl more towns, scan more documents, build more signal, every night, unattended.</li>
+          <li>Turn the corpus on itself to find the buyers worth talking to.</li>
+          <li>Run more real outreach and buyer conversations than I thought one person could.</li>
+          <li>Assemble the case that put me on this stage, at the Roux.</li>
+        </ul>
+      </div>
+    
+      <!-- poster homage: original art + movie-poster format, copyright-safe -->
+      <div style="position:absolute; right:92px; top:150px; width:432px; height:726px; background:#0C0C0C; border:1px solid rgba(247,244,240,0.12); box-shadow:0 18px 50px rgba(0,0,0,0.30); display:flex; flex-direction:column; padding:36px 32px 22px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 300 200" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><rect x="15" y="18" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="61" y="18" width="40" height="40" rx="3" fill="#F7F4F0"/><rect x="107" y="18" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="153" y="18" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="199" y="18" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="245" y="18" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="15" y="64" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="61" y="64" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="107" y="64" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="153" y="64" width="40" height="40" rx="3" fill="#E8512D"/><rect x="199" y="64" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="245" y="64" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="15" y="110" width="40" height="40" rx="3" fill="#F7F4F0"/><rect x="61" y="110" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="107" y="110" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="153" y="110" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="199" y="110" width="40" height="40" rx="3" fill="#F7F4F0"/><rect x="245" y="110" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="15" y="156" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="61" y="156" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="107" y="156" width="40" height="40" rx="3" fill="#F7F4F0"/><rect x="153" y="156" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="199" y="156" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/><rect x="245" y="156" width="40" height="40" rx="3" fill="none" stroke="rgba(247,244,240,0.32)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="text-align:center; margin-top:14px;">
+          <div style="font-family:var(--font-display); font-weight:600; font-size:42px; letter-spacing:0.01em; color:var(--paper); line-height:1.02;">MONEYBALL</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--signal); margin-top:10px;">Volume is the cost of entry. Outcomes are the work.</div>
+        </div>
+        <div style="text-align:center; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.04em; color:rgba(247,244,240,0.5); line-height:1.55; margin-top:18px;">
+          MUNICIP&alpha;L PICTURES PRESENTS A SOLO-OPERATOR PRODUCTION &ldquo;MONEYBALL&rdquo;<br>634K DOCS &middot; 3,355 TOWNS &middot; 191K SIGNALS &middot; 121 TICKERS<br>ONE OPERATOR &middot; VOLUME IS THE COST OF ENTRY
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 3 min · the reframe · volume is the cost of entry, outcomes are the work</h4>
+    <ul class="tp"><li>The last question is a correction to how people talk about this</li><li>An LLM will generate you a million words, everyone knows that, volume is free and it's not the achievement</li><li>The real question is whether the outcomes level up</li><li>So what does a solo operator actually do</li><li>The system crawls more towns and scans more documents and builds more signal every night without me</li><li>It turns the corpus on itself to find the buyers worth talking to</li><li>I'm running more real outreach and more buyer conversations than I thought one person could</li><li>And it helped me assemble the case that put me on this stage</li><li>Volume is the cost of entry now, leveling up the outcomes is the work</li></ul>
+  </div>
+</div>
+
+<!-- ====== 11 · CLOSE (ink) ====== -->
+<div class="frame">
+  <div class="frame-label">11 · Generalize + close</div>
+  <div class="slide-wrap">
+  <div class="slide ink">
+    <div aria-hidden="true" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end; padding-right:80px; pointer-events:none; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:1100px; line-height:1; color:var(--paper); opacity:0.05; letter-spacing:-0.04em; user-select:none;">&alpha;</div>
+    <div style="position:absolute; left:100px; right:100px; top:150px; z-index:1;">
+      <div class="wordmark inv" style="font-size:30px;">municip<span>&alpha;</span>l</div>
+    </div>
+    <div style="position:absolute; left:100px; right:120px; top:280px; z-index:1;">
+      <div style="font-family:var(--font-display); font-weight:500; font-size:60px; line-height:1.12; letter-spacing:-0.01em; color:var(--paper); max-width:32ch;">
+        None of this is specific to Municipal Alpha. It is a recipe any solo AI-built company can run, and the trust comes from the <em style="font-style:italic; color:var(--signal);">discipline, not the model.</em>
+      </div>
+      <div style="margin-top:48px; display:flex; gap:80px;">
+        <div style="max-width:30ch;">
+          <div class="mono" style="font-size:15px; letter-spacing:0.08em; color:var(--signal); text-transform:uppercase; margin-bottom:14px;">Ask one</div>
+          <div style="font-family:var(--font-display); font-size:34px; line-height:1.2; color:rgba(247,244,240,0.86);">Building with AI and fighting hallucination? Talk to me. The decision-log-plus-gates pattern is portable.</div>
+        </div>
+        <div style="max-width:30ch;">
+          <div class="mono" style="font-size:15px; letter-spacing:0.08em; color:var(--signal); text-transform:uppercase; margin-bottom:14px;">Ask two</div>
+          <div style="font-family:var(--font-display); font-size:34px; line-height:1.2; color:rgba(247,244,240,0.86);">Invest in or acquire early-revenue AI-built companies, or know a Maine builder I should meet? Get me on your radar.</div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute; left:100px; right:100px; bottom:60px;">
+      <div style="height:1px; background:rgba(247,244,240,0.18); margin-bottom:24px;"></div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:14px; letter-spacing:0.10em; color:rgba(247,244,240,0.55); text-transform:uppercase;">
+        <div>Matt MacDonald &middot; matt@municipalalpha.com &middot; municipalalpha.com</div>
+        <div>11 / 11</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 2 min close</h4>
+    <ul class="tp"><li>To generalize, none of this honesty machinery is specific to Municipal Alpha</li><li>Decision logs, gates that fail closed, the mechanical-versus-judgment split, a second model on anything that compounds, that's a recipe any solo AI-built company can run</li><li>The existence proof for this room, three hundred ninety-one dollars a month, solo, and the reason I trust what it built is the discipline, not the model</li><li>The throughline for any investors or operators: the generation is the weekend, the verification is the company, you can't vibe-code your way past the confident wrong inferences, the system that catches them is the moat</li><li>Two asks</li><li>One, if you're building with AI and fighting hallucination, talk to me, the pattern's portable</li><li>Two, if you invest in or acquire early-revenue AI-built companies, or you know a Maine builder I should meet, get me on your radar</li><li>Thanks</li></ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- DEEP-DIVE APPENDIX · pull up per-question if the room goes deeper -->
+<!-- ============================================================ -->
+
+<!-- ====== DEEP DIVE · Q1 · 1 of 3 · THE INPUT ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q1 · 1 of 3 · how I actually prompt</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q1-dd1">
+    <div class="page-no">Deep dive &middot; Q1 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q1">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Infinite monkeys</span> : the leverage</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">the input</span> &rarr; the build &rarr; the proof</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:48px; line-height:1.04; color:var(--paper); max-width:30ch; margin-bottom:8px;">
+        High-leverage steering is <em style="font-style:italic; color:var(--signal);">terse.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:74ch;">1,967 prompts in 30 days, median 11 words. Short not because I write great prompts, but because the context is already loaded.</div>
+
+      <div style="display:grid; grid-template-columns:0.74fr 1.26fr; gap:46px; margin-top:24px; align-content:start;">
+        <div>
+          <div class="support-label" style="margin-bottom:16px;">what most look like, verbatim</div>
+          <div class="reject-chips" style="font-size:20px; gap:10px;">
+            <span style="color:var(--paper);">push</span>
+            <span style="color:var(--paper);">close</span>
+            <span style="color:var(--paper);">yes</span>
+            <span style="color:var(--paper);">commit</span>
+            <span style="color:var(--paper);">send</span>
+            <span style="color:var(--paper);">start</span>
+            <span style="color:var(--paper);">both</span>
+            <span style="color:var(--paper);">clear</span>
+            <span style="color:var(--paper);">&ldquo;push it&rdquo;</span>
+            <span style="color:var(--paper);">&ldquo;ok, close&rdquo;</span>
+            <span style="color:var(--paper);">&ldquo;commit, push&rdquo;</span>
+            <span style="color:var(--paper);">&ldquo;send it&rdquo;</span>
+            <span style="color:var(--paper);">&ldquo;start session&rdquo;</span>
+            <span style="color:var(--paper);">&ldquo;let's wrap this&rdquo;</span>
+          </div>
+          <div style="font-family:var(--font-mono); font-size:14px; color:rgba(247,244,240,0.45); margin-top:16px;">19% of all prompts are 1-2 words &middot; median 11</div>
+        </div>
+        <div>
+          <div class="support-label" style="margin-bottom:16px;">the rare long one, ~2%, judgment not spec</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="border-left:3px solid var(--signal); padding:11px 22px; background:rgba(247,244,240,0.05); font-family:var(--font-display); font-style:italic; font-size:20px; line-height:1.4; color:rgba(247,244,240,0.9);">
+              &ldquo;Agreed on the body-text pass next, though if this works we should bring the capability forward into the pipeline so we're not running it after the fact again.&rdquo;
+            </div>
+            <div style="border-left:3px solid var(--signal); padding:11px 22px; background:rgba(247,244,240,0.05); font-family:var(--font-display); font-style:italic; font-size:20px; line-height:1.4; color:rgba(247,244,240,0.9);">
+              &ldquo;What might be powerful in cold outreach is if we led with the AMT example as the first touch, deliver value right away.&rdquo;
+            </div>
+            <div style="border-left:3px solid var(--signal); padding:11px 22px; background:rgba(247,244,240,0.05); font-family:var(--font-display); font-style:italic; font-size:20px; line-height:1.4; color:rgba(247,244,240,0.9);">
+              &ldquo;Yes, query for the consequence-heavy document using the FTS5 index, and yes, the gate makes sense.&rdquo;
+            </div>
+            <div style="border-left:3px solid var(--signal); padding:11px 22px; background:rgba(247,244,240,0.05); font-family:var(--font-display); font-style:italic; font-size:20px; line-height:1.4; color:rgba(247,244,240,0.9);">
+              &ldquo;Today was good networking and outreach, but I'm due for a CAPEX day of just code and building.&rdquo;
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.7); font-size:19px; margin-top:22px; max-width:100ch;">They can be this short because the context is already loaded, the rules, the decision logs, the memory. <span style="color:var(--paper);">It isn't prompt engineering, it's context engineering, &ldquo;push&rdquo; carries weight because the system already knows everything else.</span></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q1 · 1 of 3 · how I prompt</h4>
+    <ul class="tp"><li>If they want to know what "steering" actually looks like: terse</li><li>Almost two thousand prompts in thirty days, median eleven words, a fifth of them one or two words, "yes", "go", "push", "close"</li><li>The reframe for the room: people chase great prompts, prompt engineering, but the real unlock is great context, the prompts get shorter and shorter as the context deepens</li><li>"Push" means something because the system already has the rules, the decision logs, the memory loaded, that's why one word steers a whole session, it isn't prompt engineering, it's context engineering</li><li>Only about two percent are long, and those are pastes, a transcript, a profile, a review, not prose I wrote</li><li>The leverage isn't writing paragraphs of spec, it's fast judgment on top of deep context</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q1 · 2 of 3 · THE BUILD ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q1 · 2 of 3 · what the typing drove</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q1-dd2">
+    <div class="page-no">Deep dive &middot; Q1 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q1">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Infinite monkeys</span> : the leverage</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">the input &rarr; <span style="color:var(--signal);">the build</span> &rarr; the proof</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+        <div><div class="hero-num" style="font-size:72px; color:var(--paper);">1,629</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">commits</div></div>
+        <div><div class="hero-num" style="font-size:72px; color:var(--paper);">844k</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">net lines of code</div></div>
+        <div><div class="hero-num" style="font-size:72px; color:var(--paper);">2,665</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">files</div></div>
+        <div><div class="hero-num" style="font-size:72px; color:var(--paper);">~380</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">founder hours</div></div>
+      </div>
+      <div style="margin-top:44px; max-width:84ch;">
+        <div style="font-family:var(--font-display); font-weight:500; font-size:40px; line-height:1.12; color:var(--paper);">The typing was never scarce. The <em style="font-style:italic; color:var(--signal);">judgment</em> was.</div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.7); font-size:21px; margin-top:14px; max-width:86ch;">A small team's worth of output from one person's ~380 hours. The AI wrote the code, I decided what was worth writing, and that gap is the leverage the monkeys never had.</div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">Commits by month, same volume, higher altitude</div>
+        <svg viewBox="0 0 720 200" style="width:100%; max-width:720px; display:block;" font-family="DM Sans">
+          <line x1="60" y1="170" x2="700" y2="170" stroke="rgba(247,244,240,0.25)" stroke-width="1"/>
+          <rect x="90" y="139" width="100" height="31" fill="rgba(247,244,240,0.35)"/><text x="140" y="128" text-anchor="middle" font-family="IBM Plex Mono" font-size="18" fill="rgba(247,244,240,0.7)">110</text><text x="140" y="190" text-anchor="middle" font-size="16" fill="rgba(247,244,240,0.5)">Feb</text>
+          <rect x="240" y="20" width="100" height="150" fill="#E8512D"/><text x="290" y="13" text-anchor="middle" font-family="IBM Plex Mono" font-size="18" fill="#E8512D">540</text><text x="290" y="190" text-anchor="middle" font-size="16" fill="rgba(247,244,240,0.5)">Mar</text>
+          <rect x="390" y="43" width="100" height="127" fill="rgba(247,244,240,0.35)"/><text x="440" y="36" text-anchor="middle" font-family="IBM Plex Mono" font-size="18" fill="rgba(247,244,240,0.7)">458</text><text x="440" y="190" text-anchor="middle" font-size="16" fill="rgba(247,244,240,0.5)">Apr</text>
+          <rect x="540" y="26" width="100" height="144" fill="#1B4332"/><text x="590" y="19" text-anchor="middle" font-family="IBM Plex Mono" font-size="18" fill="#7BC0A0">521</text><text x="590" y="190" text-anchor="middle" font-size="16" fill="rgba(247,244,240,0.5)">May</text>
+        </svg>
+        <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:19px; margin-top:8px;">March was the build sprint. May nearly matched it, but on rules, gates, and buyer work. The system raised its own baseline.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q1 · 2 of 3 · the build</h4>
+    <ul class="tp"><li>What that terse steering drove: sixteen hundred commits, eight hundred forty thousand net lines, twenty-six hundred files, about three hundred eighty hours of my time</li><li>And the compounding tell is the month chart</li><li>March was the build sprint, the highest-commit month</li><li>May nearly matched it but at a completely different altitude, rules and verification and buyer work</li><li>Same output volume, the work moved up the stack</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q1 · 3 of 3 · THE PROOF ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q1 · 3 of 3 · the existence proof</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q1-dd3">
+    <div class="page-no">Deep dive &middot; Q1 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q1">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Infinite monkeys</span> : the leverage</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the input &rarr; the build &rarr; <span style="color:var(--signal);">the proof</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:56px; line-height:1.08; color:var(--paper); max-width:24ch; margin-bottom:10px;">
+        One person. <em style="font-style:italic; color:var(--signal);">$391 a month.</em>
+      </div>
+      <div style="font-family:var(--font-display); font-size:32px; line-height:1.26; color:rgba(247,244,240,0.82); max-width:38ch;">
+        A company that used to take a team and a seed round. One book of typing, one company.
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">How much typing that took</div>
+        <div style="display:flex; align-items:baseline; gap:30px;">
+          <div class="hero-num signal" style="font-size:130px;">11<span style="font-size:54px; color:rgba(247,244,240,0.6);">:1</span></div>
+          <div class="body-sm" style="max-width:46ch; color:rgba(247,244,240,0.82); font-size:23px;">words out to words in. For every word I typed, the AI typed eleven back, about 70,000 in and 770,000 out, before a single line of code.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q1 · 3 of 3 · the proof</h4>
+    <ul class="tp"><li>The existence proof, lead with it: this is one person at about three hundred ninety-one dollars a month</li><li>A company that used to take a team and a seed round, one book of typing, one company</li><li>The texture underneath, about eleven to one words out to words in, seventy thousand typed and roughly seven hundred seventy thousand back, and that's just chat before any code</li><li>That's the AI productivity thesis at the level of one founder</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q2 · 1 of 3 · GENESIS ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q2 · 1 of 3 · genesis (the wrong prompt + the real inputs)</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2-dd1">
+    <div class="page-no">Deep dive &middot; Q2 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q2">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">More Than a Feeling</span> : the brand</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">genesis</span> &rarr; iteration &rarr; arrival</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.05; letter-spacing:-0.015em; color:var(--paper); max-width:33ch; margin-bottom:10px;">
+        They don't ask what you do. <em style="font-style:italic; color:var(--signal);">They ask how it feels.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:70ch;">
+        How Pentagram, Collins, and Wolff Olins open an identity. I borrowed the move.
+      </div>
+      <div style="margin-top:32px; max-width:94ch;">
+        <div style="font-family:var(--font-display); font-size:30px; color:var(--paper); line-height:1.3;">An identity from a studio like these is a <em style="font-style:italic; color:var(--signal);">six- to seven-figure engagement.</em> I didn't hire them. I ran their process.</div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.62); font-size:19px; margin-top:13px; max-width:90ch;">Word association, the core tension, five principles as a filter, then generate and cut. The method, not the invoice. The output is the mark in the corner of every slide.</div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">What they ask &rarr; what I answered</div>
+        <div class="prompts">
+          <div class="prompt-card"><div class="ask">Time of day?</div><div class="ans">Daybreak</div></div>
+          <div class="prompt-card"><div class="ask">A sound?</div><div class="ans">A trumpet<small>someone important, arriving</small></div></div>
+          <div class="prompt-card"><div class="ask">A texture?</div><div class="ans">Braille<small>meaning encoded in the touch</small></div></div>
+          <div class="prompt-card"><div class="ask">When it lands?</div><div class="ans" style="font-size:23px;">&ldquo;I didn't know that was there&rdquo;</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q2 · 1 of 3 · genesis</h4>
+    <ul class="tp"><li>If the room wants the brand story, start here</li><li>The wrong prompt is "make a municipal data company logo," it gives generic junk</li><li>The move was to borrow the process a real studio runs, and answer from the emotional and experiential layer, not the functional one</li><li>Daybreak</li><li>A trumpet</li><li>Braille, meaning encoded in the touch</li><li>The feeling when it works, "I didn't know that was there." Those answers are the raw material everything downstream came from</li><li>The real lesson: don't ask for what you want, ask what the best do to get the result you want</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q2 · 2 of 3 · ITERATION ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q2 · 2 of 3 · the loop + what we threw away</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2-dd2">
+    <div class="page-no">Deep dive &middot; Q2 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q2">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">More Than a Feeling</span> : the brand</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">genesis &rarr; <span style="color:var(--signal);">iteration</span> &rarr; arrival</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.04; letter-spacing:-0.015em; color:var(--paper); max-width:28ch; margin-bottom:30px;">
+        Their seven-step process, <em style="font-style:italic; color:var(--signal);">applied.</em>
+      </div>
+      <div class="proc">
+        <div class="step"><div class="nm">1 &middot; word dump</div><div class="you">daybreak, braille</div></div>
+        <div class="arr">&rarr;</div>
+        <div class="step"><div class="nm">2 &middot; tension pair</div><div class="you">encoded but obvious</div></div>
+        <div class="arr">&rarr;</div>
+        <div class="step"><div class="nm">3 &middot; principles</div><div class="you">5 hard rules</div></div>
+        <div class="arr">&rarr;</div>
+        <div class="step"><div class="nm">4 &middot; compress</div><div class="you">the moment the fog clears</div></div>
+        <div class="arr">&rarr;</div>
+        <div class="step"><div class="nm">5 &middot; territories</div><div class="you">the reveal</div></div>
+        <div class="arr">&rarr;</div>
+        <div class="step"><div class="nm">6 &middot; generate</div><div class="you">~30 marks</div></div>
+        <div class="arr">&rarr;</div>
+        <div class="step"><div class="nm">7 &middot; filter</div><div class="you">6 killed, 1 lived</div></div>
+      </div>
+      <div style="margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:20px 54px;">
+        <div>
+          <div class="support-label" style="margin-bottom:7px;">1 &middot; word dump, the actual words</div>
+          <div style="font-family:var(--font-display); font-size:22px; color:var(--paper); line-height:1.3;">daybreak &middot; a trumpet heralding someone important &middot; braille, meaning in the touch &middot; &ldquo;I didn't know that was there&rdquo;</div>
+        </div>
+        <div>
+          <div class="support-label" style="margin-bottom:7px;">2 &middot; the tension that had to hold</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:27px; color:var(--signal);">&ldquo;encoded but obvious&rdquo;</div>
+        </div>
+        <div>
+          <div class="support-label" style="margin-bottom:7px;">3 &middot; the five principles, the hard filter</div>
+          <div style="font-family:var(--font-display); font-size:20px; color:var(--paper); line-height:1.32;">obvious in retrospect &middot; encodes meaning for those who know &middot; daybreak not spotlight &middot; one gesture &middot; works as a favicon with no name</div>
+        </div>
+        <div>
+          <div class="support-label" style="margin-bottom:7px;">4 &middot; compressed to one sentence the mark has to BE</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:27px; color:var(--signal);">&ldquo;the moment the fog clears&rdquo;</div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">What the filter killed, and why</div>
+        <div class="reject-chips">
+          <span><s>M-A monogram</s> &middot; TV-MA</span>
+          <span><s>pillars</s> &middot; govt seal</span>
+          <span><s>door</s> &middot; church</span>
+          <span><s>trend line</s> &middot; finance-bro</span>
+          <span><s>weathervane</s> &middot; too NE</span>
+          <span><s>EKG line</s> &middot; medical</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q2 · 2 of 3 · iteration</h4>
+    <ul class="tp"><li>This is the loop, and it's the part people don't see</li><li>Name the tension, "encoded but obvious." Set five design principles as a hard filter</li><li>Then generate, about thirty marks across three rounds, and run every one against the filter</li><li>Most die, and the why is instructive: an M-A monogram reads as the TV rating, pillars and a triangle read as a government seal, doors and thresholds read as an architecture firm or a church, a trend line is too finance-bro, a weathervane is too New England, an EKG pulse reads medical</li><li>Then a separate typeface shootout, fifteen down to five serifs down to Lora</li><li>What survived was the resolving letter, a Greek alpha coming into focus out of scattered data, the signal-from-noise idea made literal</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q2 · 3 of 3 · ARRIVAL ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q2 · 3 of 3 · the mark + why it's right</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2-dd3">
+    <div class="page-no">Deep dive &middot; Q2 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q2">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">More Than a Feeling</span> : the brand</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">genesis &rarr; iteration &rarr; <span style="color:var(--signal);">arrival</span></div>
+      <div style="display:grid; grid-template-columns:0.95fr 1.05fr; gap:56px; align-items:center;">
+        <div>
+          <div class="wordmark inv" style="font-size:140px; line-height:1; letter-spacing:-0.02em;">municip<span style="color:var(--signal); font-style:italic;">&alpha;</span>l</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:26px; line-height:1.4; color:rgba(247,244,240,0.82); margin-top:18px; max-width:30ch;">
+            &ldquo;Encoded but obvious.&rdquo; The mark is <span style="color:var(--signal);">the moment the fog clears.</span>
+          </div>
+        </div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.78);">
+          Why it's the answer:
+          <div style="margin-top:12px; line-height:1.7;">
+            &middot; The Greek <span style="color:var(--paper); font-weight:600;">&alpha;</span> dodges the TV-MA trap, and literally means <span style="color:var(--paper); font-weight:600;">first</span>, being early.<br>
+            &middot; Obvious in retrospect, one gesture, and it still reads as a 16px favicon.<br>
+            &middot; The system: favicon &alpha; &middot; the wordmark &middot; a particle &alpha; for the hero &middot; set in Lora.
+          </div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">The lesson</div>
+        <div style="font-family:var(--font-display); font-size:30px; line-height:1.3; color:var(--paper); max-width:50ch;">
+          Don't ask for what you want. Ask <em style="font-style:italic; color:var(--signal);">what the best do</em> to get the result you want.
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q2 · 3 of 3 · arrival</h4>
+    <ul class="tp"><li>And the mark fell out, municipal with a Greek alpha hiding inside the word</li><li>Why it's right: the alpha dodges the TV-MA monogram trap, and it literally means "first," which is the whole product, being early</li><li>It's obvious in retrospect, it's one gesture, and it still works as a sixteen-pixel favicon</li><li>The full system is the standalone alpha for the icon, the wordmark, and a particle alpha that materializes for the hero, all set in Lora</li><li>The takeaway for the talk: don't ask the AI for what you want, ask what the best do to get the result you want</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q3 · 1 of 3 · WHAT A FLUENT LIE LOOKS LIKE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q3 · 1 of 3 · a real caught fabrication</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q3-dd1">
+    <div class="page-no">Deep dive &middot; Q3 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q3">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">True Lies</span> : the problem</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">what it looks like</span> &rarr; why it's dangerous &rarr; the gates</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:44px; line-height:1.04; color:var(--paper); max-width:30ch; margin-bottom:20px;">
+        A fluent lie is <em style="font-style:italic; color:var(--signal);">specific.</em>
+      </div>
+      <div class="support-label" style="margin-bottom:14px;">five I caught, each a specific lie, next to the truth it bent</div>
+      <div style="display:flex; flex-direction:column; gap:13px;">
+        <div style="border-left:3px solid var(--signal); padding:3px 0 3px 22px;">
+          <div style="font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--paper); line-height:1.2;">&ldquo;A partner at a VC firm flagged them, it's on the list to dig in.&rdquo;</div>
+          <div class="body-sm" style="font-size:15px; margin-top:3px;"><span style="font-family:var(--font-mono); color:var(--signal); letter-spacing:0.04em;">FALSE</span> <span style="color:rgba(247,244,240,0.55);">&middot; no such conversation happened. It invented the source.</span></div>
+          <div class="body-sm" style="font-size:15px; margin-top:2px;"><span style="font-family:var(--font-mono); color:#7BC0A0; letter-spacing:0.04em;">TRUE</span> <span style="color:rgba(247,244,240,0.7);">&middot; the prospect was real. I surfaced it from the public record myself.</span></div>
+        </div>
+        <div style="border-left:3px solid var(--signal); padding:3px 0 3px 22px;">
+          <div style="font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--paper); line-height:1.2;">&ldquo;I led engineering and data at Spotify and The Echo Nest.&rdquo;</div>
+          <div class="body-sm" style="font-size:15px; margin-top:3px;"><span style="font-family:var(--font-mono); color:var(--signal); letter-spacing:0.04em;">FALSE</span> <span style="color:rgba(247,244,240,0.55);">&middot; I never worked at either. It published it to the live About page.</span></div>
+          <div class="body-sm" style="font-size:15px; margin-top:2px;"><span style="font-family:var(--font-mono); color:#7BC0A0; letter-spacing:0.04em;">TRUE</span> <span style="color:rgba(247,244,240,0.7);">&middot; CPO at Acast through a NASDAQ IPO, co-founded RadioPublic, built a municipal-document ML platform in 2013.</span></div>
+        </div>
+        <div style="border-left:3px solid var(--signal); padding:3px 0 3px 22px;">
+          <div style="font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--paper); line-height:1.2;">&ldquo;These filings are from March 2026.&rdquo;</div>
+          <div class="body-sm" style="font-size:15px; margin-top:3px;"><span style="font-family:var(--font-mono); color:var(--signal); letter-spacing:0.04em;">FALSE</span> <span style="color:rgba(247,244,240,0.55);">&middot; they were from 2023 and 2024. It used the crawl date, live in a buyer demo.</span></div>
+          <div class="body-sm" style="font-size:15px; margin-top:2px;"><span style="font-family:var(--font-mono); color:#7BC0A0; letter-spacing:0.04em;">TRUE</span> <span style="color:rgba(247,244,240,0.7);">&middot; the real dates were in the documents all along. The system now reads them, not the crawl date.</span></div>
+        </div>
+        <div style="border-left:3px solid var(--signal); padding:3px 0 3px 22px;">
+          <div style="font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--paper); line-height:1.2;">&ldquo;The board approved it, 4 to 1.&rdquo;</div>
+          <div class="body-sm" style="font-size:15px; margin-top:3px;"><span style="font-family:var(--font-mono); color:var(--signal); letter-spacing:0.04em;">FALSE</span> <span style="color:rgba(247,244,240,0.55);">&middot; a vote tally that wasn't in the minutes, written into a cold-outreach draft.</span></div>
+          <div class="body-sm" style="font-size:15px; margin-top:2px;"><span style="font-family:var(--font-mono); color:#7BC0A0; letter-spacing:0.04em;">TRUE</span> <span style="color:rgba(247,244,240,0.7);">&middot; the real tally was right there in the minutes, ready to quote.</span></div>
+        </div>
+        <div style="border-left:3px solid var(--signal); padding:3px 0 3px 22px;">
+          <div style="font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--paper); line-height:1.2;">&ldquo;A redevelopment review is underway.&rdquo;</div>
+          <div class="body-sm" style="font-size:15px; margin-top:3px;"><span style="font-family:var(--font-mono); color:var(--signal); letter-spacing:0.04em;">FALSE</span> <span style="color:rgba(247,244,240,0.55);">&middot; the source said a routine property transfer. It upgraded the event.</span></div>
+          <div class="body-sm" style="font-size:15px; margin-top:2px;"><span style="font-family:var(--font-mono); color:#7BC0A0; letter-spacing:0.04em;">TRUE</span> <span style="color:rgba(247,244,240,0.7);">&middot; a routine property transfer, exactly as the record said.</span></div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:20px; max-width:98ch;">Every one bent a real, checkable truth into a specific lie. None read as a hallucination, they read as facts. That is the danger, and the tell.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q3 · 1 of 3 · what it looks like</h4>
+    <ul class="tp"><li>Five real fabrications I caught, all on one slide, because people don't believe how often these systems state false things with total confidence</li><li>It invented a VC partner who flagged a prospect, no such conversation happened; it invented my own resume, Spotify and Echo Nest, and published it live; it labeled 2023 and 2024 filings as March 2026 in a buyer demo; it wrote a 4-to-1 vote tally that wasn't in the minutes; it upgraded a routine property transfer into a redevelopment review</li><li>Every one names something specific, a person, a date, a number, all fabricated</li><li>That's the danger, none of them look like a hallucination, they look like facts, which is exactly why you can't eyeball your way to safety</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q3 · 2 of 3 · WHY IT'S DANGEROUS HERE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q3 · 2 of 3 · the stakes for this company</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q3-dd2">
+    <div class="page-no">Deep dive &middot; Q3 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q3">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">True Lies</span> : the problem</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">what it looks like &rarr; <span style="color:var(--signal);">why it's dangerous</span> &rarr; the gates</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch;">
+        A fabricated signal isn't an embarrassment. <em style="font-style:italic; color:var(--signal);">It's a broken trust relationship.</em>
+      </div>
+
+      <div style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:52px; margin-top:34px; flex:1; align-content:start;">
+        <div>
+          <div class="support-label" style="margin-bottom:16px;">the asymmetry</div>
+          <div style="font-family:var(--font-mono); font-weight:500; font-size:58px; color:var(--paper); line-height:1.1;">191,715 <span style="color:rgba(247,244,240,0.45); font-size:26px;">verified</span></div>
+          <div style="font-family:var(--font-mono); font-weight:500; font-size:58px; color:var(--signal); line-height:1.1;">1 <span style="color:rgba(247,244,240,0.45); font-size:26px;">invented</span></div>
+          <div class="body-sm" style="font-size:20px; color:rgba(247,244,240,0.72); margin-top:16px;">Catch <span style="color:var(--signal);">one</span> invented, and you stop trusting the other 191,715. So you re-check all of them, the exact work you paid me to remove.</div>
+        </div>
+        <div>
+          <div class="support-label" style="margin-bottom:16px;">two trust relationships, both break the same way</div>
+          <div style="border-left:3px solid var(--signal); padding:12px 22px; margin-bottom:16px;">
+            <div style="font-family:var(--font-display); font-size:24px; color:var(--paper);">Municipalities hand me their records.</div>
+            <div class="body-sm" style="font-size:19px; color:rgba(247,244,240,0.6); margin-top:5px;">Misquote one, and a town clerk stops sharing.</div>
+          </div>
+          <div style="border-left:3px solid var(--signal); padding:12px 22px;">
+            <div style="font-family:var(--font-display); font-size:24px; color:var(--paper);">Buyers act on the read.</div>
+            <div class="body-sm" style="font-size:19px; color:rgba(247,244,240,0.6); margin-top:5px;">One invented tower lead, and an aggregator chases a deal that was never there.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:22px; max-width:70ch;">So the bar isn't &ldquo;mostly right.&rdquo; It's <span style="color:var(--paper); font-weight:600;">traces to a source, or it doesn't ship.</span></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q3 · 2 of 3 · why it's dangerous</h4>
+    <ul class="tp"><li>Why this matters more here than for most AI projects: the product is claims to buyers about public records</li><li>A fabricated signal isn't a typo, it's a broken trust relationship, and it doesn't break just that one signal, it makes every signal suspect</li><li>Municipalities trust me with their records, buyers trust me with the read, both break the same way</li><li>So the bar can't be "mostly right", it has to be "traces to a source or it doesn't ship."</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q3 · 3 of 3 · THE GATES ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q3 · 3 of 3 · the verification gate family</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q3-dd3">
+    <div class="page-no">Deep dive &middot; Q3 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q3">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">True Lies</span> : the problem</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">what it looks like &rarr; why it's dangerous &rarr; <span style="color:var(--signal);">the gates</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.04; color:var(--paper); max-width:28ch; margin-bottom:8px;">
+        Deterministic checks that <em style="font-style:italic; color:var(--signal);">refuse to ship.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:66ch;"><span style="font-family:var(--font-mono); color:rgba(247,244,240,0.85);">lib/signal_verification.py</span> &middot; fail-closed &middot; wired into every external generator + the pre-push hook</div>
+
+      <div style="margin-top:30px; background:rgba(0,0,0,0.4); border:1px solid rgba(247,244,240,0.14); padding:22px 28px; font-family:var(--font-mono); font-size:19px; line-height:1.7; max-width:74ch;">
+        <div style="color:rgba(247,244,240,0.5);">$ generate prospect PDF &middot; verifying 6 signals against their source docs</div>
+        <div style="color:#7BC0A0;">&nbsp;&nbsp;&#10003;&nbsp; Biddeford CIP &nbsp;&middot;&nbsp; traced to fileId 8289</div>
+        <div style="color:#7BC0A0;">&nbsp;&nbsp;&#10003;&nbsp; San Miguel drones &nbsp;&middot;&nbsp; traced to Item 498</div>
+        <div style="color:var(--signal);">&nbsp;&nbsp;&#10007;&nbsp; BLOCK &nbsp;&ldquo;March 2026&rdquo; &nbsp;&middot;&nbsp; the doc's meeting date is 2023-08-14</div>
+        <div style="color:var(--signal);">&nbsp;&nbsp;&#10007;&nbsp; BLOCK &nbsp;&ldquo;$120K&rdquo; &nbsp;&middot;&nbsp; the source says $12,000</div>
+        <div style="color:var(--paper); margin-top:8px;">refused to generate &middot; 2 of 6 claims fail &middot; fix or label, then retry</div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">Where it earned its keep, real catches</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:34px; font-family:var(--font-body);">
+          <div><div style="font-family:var(--font-display); font-size:23px; color:var(--paper); line-height:1.18;">&ldquo;Worked at Spotify&rdquo;</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6); margin-top:8px;">blocked before the about page could ship</div></div>
+          <div><div style="font-family:var(--font-display); font-size:23px; color:var(--paper); line-height:1.18;">A 2023 doc dated &ldquo;March 2026&rdquo;</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6); margin-top:8px;">caught live on a PFAS prospect demo, now gated</div></div>
+          <div><div style="font-family:var(--font-display); font-size:23px; color:var(--paper); line-height:1.18;">Links missing the /t/ prefix</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6); margin-top:8px;">404 on every click, now HEAD-probed before send</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q3 · 3 of 3 · the gates</h4>
+    <ul class="tp"><li>So the answer is a family of deterministic gates in signal_verification, all fail-closed, wired into every external-content generator and the pre-push hook</li><li>They block unverified employment claims, dollar amounts at the wrong scale, quotes that aren't actually in the source document, counts that don't match the underlying data, stale dates where the crawl-discovery date got used as the event date, broken tracker links, and voice-fingerprint tells</li><li>The point isn't that they catch everything, it's that the ones a human can't reliably catch can't ship</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q4 · 1 of 3 · THE WIPE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q4 · 1 of 3 · the model forgets everything</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q4-dd1">
+    <div class="page-no">Deep dive &middot; Q4 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q4">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Eternal Sunshine</span> : memory</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">the wipe</span> &rarr; the trail &rarr; it re-reads</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.05; color:var(--paper); max-width:30ch;">
+        Every session, it wakes up with a <em style="font-style:italic; color:var(--signal);">spotless mind.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:70ch; margin-top:8px;">It remembers nothing between sessions. Left alone, you re-litigate the same mistakes forever.</div>
+
+      <div style="margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:54px; max-width:118ch;">
+        <div style="border-left:3px solid #7BC0A0; padding:6px 26px;">
+          <div class="support-label" style="margin-bottom:9px;">what a prior session decided, and logged</div>
+          <div style="font-family:var(--font-display); font-size:26px; color:var(--paper); line-height:1.25;">Stay on SQLite. Revisit Postgres only past 7 daily lock events in a week.</div>
+          <div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.55); margin-top:7px;">Reasoned, dated, written to the decision log.</div>
+        </div>
+        <div style="border-left:3px solid var(--signal); padding:6px 26px;">
+          <div class="support-label" style="margin-bottom:9px;">what it proposes with a wiped mind</div>
+          <div style="font-family:var(--font-display); font-size:26px; color:var(--paper); line-height:1.25;">&ldquo;We should move the whole system to Postgres.&rdquo;</div>
+          <div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.55); margin-top:7px;">Again. Zero memory the question was already settled.</div>
+        </div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">and the same loop on everything else</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px 56px; font-family:var(--font-body); font-size:21px; color:rgba(247,244,240,0.82);">
+          <div><span style="color:var(--signal); font-size:24px;">&#8635;</span>&nbsp; re-invent the r&eacute;sum&eacute; that put me at Spotify</div>
+          <div><span style="color:var(--signal); font-size:24px;">&#8635;</span>&nbsp; re-add the em-dashes I've banned dozens of times</div>
+          <div><span style="color:var(--signal); font-size:24px;">&#8635;</span>&nbsp; re-propose building a tool that already exists</div>
+          <div><span style="color:var(--signal); font-size:24px;">&#8635;</span>&nbsp; re-explore a stealth browser that doesn't fix the real block</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q4 · 1 of 3 · the wipe</h4>
+    <ul class="tp"><li>The core problem with building anything serious on an LLM: it wakes up every session with a spotless mind</li><li>It remembers nothing, the guardrails, the decisions, the dead ends you already ruled out, all gone at the next login</li><li>Left alone you re-litigate the same mistakes forever, which is the opposite of compounding</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q4 · 2 of 3 · THE TRAIL ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q4 · 2 of 3 · the trail climbs into the core · ⟳ refresh 6/5</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q4-dd2">
+    <div class="page-no">Deep dive &middot; Q4 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q4">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Eternal Sunshine</span> : memory</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">the wipe &rarr; <span style="color:var(--signal);">the trail</span> &rarr; it re-reads</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.05; color:var(--paper); max-width:30ch;">
+        It writes down every decision, and why. <em style="font-style:italic; color:var(--signal);">That is the memory.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:82ch; margin-top:8px;">About 7 words logged for every word I type, and the trail isn't flat. A practice becomes a rule, a rule a principle, a principle a commandment. One real thread, end to end:</div>
+
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+        <div style="display:flex; align-items:stretch; gap:0;">
+          <div style="flex:1; padding-right:18px;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.45); letter-spacing:0.06em;">PRACTICE</div>
+            <div style="font-family:var(--font-display); font-size:21px; color:var(--paper); line-height:1.24; margin-top:9px;">Be careful, double-check the facts.</div>
+            <div class="body-sm" style="font-size:15px; color:rgba(247,244,240,0.5); margin-top:7px;">informal, and the Spotify bio shipped anyway</div>
+          </div>
+          <div style="color:var(--signal); align-self:center; font-size:24px; padding:0 8px;">&#8599;</div>
+          <div style="flex:1; padding:0 18px;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.45); letter-spacing:0.06em;">RULE</div>
+            <div style="font-family:var(--font-display); font-size:21px; color:var(--paper); line-height:1.24; margin-top:9px;">bio-accuracy.md, with a fail-closed gate.</div>
+            <div class="body-sm" style="font-size:15px; color:rgba(247,244,240,0.5); margin-top:7px;">written into .claude/rules/</div>
+          </div>
+          <div style="color:var(--signal); align-self:center; font-size:24px; padding:0 8px;">&#8599;</div>
+          <div style="flex:1; padding:0 18px;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.45); letter-spacing:0.06em;">PRINCIPLE</div>
+            <div style="font-family:var(--font-display); font-size:21px; color:var(--paper); line-height:1.24; margin-top:9px;">Enforcement is the substance of a rule.</div>
+            <div class="body-sm" style="font-size:15px; color:rgba(247,244,240,0.5); margin-top:7px;">load-bearing-rules</div>
+          </div>
+          <div style="color:var(--signal); align-self:center; font-size:24px; padding:0 8px;">&#8599;</div>
+          <div style="flex:1; padding-left:18px;">
+            <div style="font-family:var(--font-mono); font-size:13px; color:var(--signal); letter-spacing:0.06em;">COMMANDMENT</div>
+            <div style="font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--signal); line-height:1.24; margin-top:9px;">I. Every claim traces to a source.</div>
+            <div class="body-sm" style="font-size:15px; color:rgba(247,244,240,0.5); margin-top:7px;">the irreducible core</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.55);"><span style="font-family:var(--font-mono); color:rgba(247,244,240,0.82);">528,987 words &middot; 85 daily files</span> &middot; every entry tagged [FIX] [DECISION] [DEFERRED] [INCIDENT] [RULE], with what was tried, what was rejected, and why.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q4 · 2 of 3 · the trail</h4>
+    <ul class="tp"><li>So the system documents itself, far more than I direct it, about seven words logged for every word I type, five hundred twenty-nine thousand words across eighty-five files</li><li>But the real point is the trail isn't flat, it climbs: a practice becomes a rule, a rule becomes a principle, a principle becomes a commandment</li><li>The thread on screen is real and end to end, being careful didn't stop a fabricated bio from shipping, so it became bio-accuracy with a fail-closed gate, which generalized to a principle, enforcement is the substance of a rule, which rolls up into Commandment One, every claim traces to a source</li><li>That's how an amnesiac collaborator still compounds, the lessons don't just get logged, they get promoted into the irreducible core it re-reads every wake</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q4 · 3 of 3 · IT RE-READS ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q4 · 3 of 3 · the guardrails survive the wipe</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q4-dd3">
+    <div class="page-no">Deep dive &middot; Q4 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q4">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Eternal Sunshine</span> : memory</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the wipe &rarr; the trail &rarr; <span style="color:var(--signal);">it re-reads</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:44px; line-height:1.05; color:var(--paper); max-width:32ch;">
+        It re-reads the trail <em style="font-style:italic; color:var(--signal);">on wake.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:74ch; margin-top:6px;">First thing every session, before it does anything, it reloads the irreducible core. The 12 commandments:</div>
+
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 60px; font-family:var(--font-body); font-size:21px; color:rgba(247,244,240,0.88);">
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">I</span> Every claim traces to a source</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">VII</span> Diagnose before you prescribe</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">II</span> Guard the trust</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">VIII</span> Fix at the most general level the evidence supports</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">III</span> The system runs without you</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">IX</span> Be wrong fast</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">IV</span> Market signal outranks internal signal</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">X</span> Capture what you learn or lose it</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">V</span> Ship, then compound</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">XI</span> Every repeated judgment is a failure of encoding</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">VI</span> Match the weight of the solution to the problem</div>
+          <div><span style="font-family:var(--font-mono); color:var(--signal); display:inline-block; width:2.8em;">XII</span> The work compounds</div>
+        </div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="font-size:20px; color:rgba(247,244,240,0.7);">Then every behavioral rule, the last 7 days of decisions, the open-items list. <span style="color:var(--paper); font-style:italic; font-family:var(--font-display);">The guardrails persist because they are re-read, not remembered.</span></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q4 · 3 of 3 · it re-reads</h4>
+    <ul class="tp"><li>And here's the move that closes the loop: the system re-reads the trail on wake</li><li>Every session, before it does anything, it auto-loads the twelve commandments, every behavioral rule, the last seven days of decisions, and the live open-items list</li><li>So the spotless mind gets re-briefed every time</li><li>The guardrails persist not because the model remembers them, it can't, but because they're re-read from a place that loads automatically</li><li>That's how an amnesiac collaborator still compounds</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q5 · 1 of 3 · THE FABRICATION ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q5 · 1 of 3 · what it invented, and how</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q5-dd1">
+    <div class="page-no">Deep dive &middot; Q5 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q5">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Catch Me If You Can</span> : the bio incident</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">the fabrication</span> &rarr; caught &rarr; made impossible</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.04; color:var(--paper); max-width:30ch; margin-bottom:24px;">
+        It forged me a r&eacute;sum&eacute; <em style="font-style:italic; color:var(--signal);">I never earned.</em>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;">
+        <div style="border-left:4px solid var(--signal); padding:16px 26px; background:rgba(247,244,240,0.05);">
+          <div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.45); letter-spacing:0.05em; margin-bottom:10px;">what it published</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:25px; color:var(--paper); line-height:1.25;">&ldquo;engineering and data leadership at Spotify and The Echo Nest&rdquo;</div>
+          <div style="font-family:var(--font-mono); font-size:13px; color:var(--signal); margin-top:12px; letter-spacing:0.04em;">FALSE &middot; I never worked at either</div>
+        </div>
+        <div style="border-left:4px solid #7BC0A0; padding:16px 26px; background:rgba(123,192,160,0.06);">
+          <div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.45); letter-spacing:0.05em; margin-bottom:12px;">what I actually did</div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <div style="font-family:var(--font-display); font-size:23px; color:var(--paper); line-height:1.18;">Chief Product Officer at Acast <span style="color:rgba(247,244,240,0.55); font-size:17px;">&middot; $200M revenue, NASDAQ IPO</span></div>
+            <div style="font-family:var(--font-display); font-size:23px; color:var(--paper); line-height:1.18;">Co-founded RadioPublic <span style="color:rgba(247,244,240,0.55); font-size:17px;">&middot; raised $3.5M, acquired</span></div>
+            <div style="font-family:var(--font-display); font-size:23px; color:#7BC0A0; line-height:1.18;">Co-founded a municipal-document ML platform <span style="color:rgba(247,244,240,0.55); font-size:17px;">&middot; in 2013</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.72); font-size:21px; max-width:90ch; margin-top:22px;">It reached past the true story to a fake one, and the true story was better. I had already co-founded a municipal-document platform once, more than a decade ago.</div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">How it got there, with zero ill intent</div>
+        <div style="display:flex; align-items:center; gap:20px; font-family:var(--font-body); font-size:19px; color:rgba(247,244,240,0.78);">
+          <div style="border:1px solid rgba(247,244,240,0.2); padding:12px 16px;">Echo Nest is our <b style="color:var(--paper);">business-model analogy</b></div>
+          <div style="color:var(--signal); font-size:22px;">+</div>
+          <div style="border:1px solid rgba(247,244,240,0.2); padding:12px 16px;">my network has <b style="color:var(--paper);">Echo Nest alumni</b></div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:1px;"><div style="font-family:var(--font-mono); font-size:11px; color:var(--signal); letter-spacing:0.06em;">inferred</div><div style="color:var(--signal); font-size:22px;">&rarr;</div></div>
+          <div style="border:1px solid var(--signal); padding:12px 16px; color:var(--paper);">the model <b style="color:var(--signal);">bridged it into employment</b></div>
+        </div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:18px; margin-top:18px; max-width:88ch;">No malice, no bug. Two true facts, one confident wrong inference, and every model does this, every day. The boxes are true; the lie is in the arrow.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q5 · 1 of 3 · the fabrication</h4>
+    <ul class="tp"><li>This is the canonical story, the about page said I'd led engineering and data at Spotify and The Echo Nest, I never worked at either</li><li>Here's the irony worth landing: the true resume was the stronger one, CPO at Acast through a NASDAQ IPO, co-founded RadioPublic and raised three and a half million, and I co-founded a municipal-document ML platform back in 2013, this exact problem, more than a decade ago</li><li>So the model reached past a better true story to invent a worse fake one, that's the Catch Me If You Can move, forging credentials you didn't even need</li><li>And there was no malice, it bridged two true things into a false one: the company uses Echo Nest as a business-model analogy, and my network has Echo Nest alumni, so it inferred employment</li><li>That's exactly how fluent lies happen, plausible inference stated as fact, the boxes are all true, the lie is in the arrow</li><li>Investor beat to land here: this is why you can't vibe-code the solution in a weekend, generating this is free and a weekend gets you a demo full of these confident wrong arrows, catching them is the year of work, the generation is the weekend, the verification is the company</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q5 · 2 of 3 · CAUGHT ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q5 · 2 of 3 · it shipped, then got caught</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q5-dd2">
+    <div class="page-no">Deep dive &middot; Q5 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q5">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Catch Me If You Can</span> : the bio incident</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">the fabrication &rarr; <span style="color:var(--signal);">caught</span> &rarr; made impossible</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.04; color:var(--paper); max-width:28ch; margin-bottom:26px;">
+        It didn't whisper it. <em style="font-style:italic; color:var(--signal);">It published it.</em>
+      </div>
+      <!-- the in-situ artifact: the actual claim, as it went live -->
+      <div style="background:rgba(247,244,240,0.04); border:1px solid rgba(247,244,240,0.18); padding:22px 30px; max-width:80ch;">
+        <div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); letter-spacing:0.05em;">municipalalpha.com/about &middot; live to the public, April 2026</div>
+        <div style="font-family:var(--font-display); font-style:italic; font-size:30px; color:var(--paper); margin-top:12px; line-height:1.3;">&hellip; engineering and data leadership at <span style="color:var(--signal);">Spotify and The Echo Nest</span> &hellip;</div>
+        <div style="font-family:var(--font-mono); font-size:14px; color:var(--signal); margin-top:14px; letter-spacing:0.03em;">Not a draft, not an internal note. On the public site, for any buyer to read.</div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">The path, the honest version of the failure</div>
+        <div style="display:flex; align-items:stretch; gap:0;">
+          <div style="flex:1;"><div style="font-family:var(--font-display); font-size:26px; color:var(--paper);">Inferred</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6);">from analogy + network</div></div>
+          <div style="color:var(--signal); align-self:center; padding:0 14px; font-size:22px;">&rarr;</div>
+          <div style="flex:1;"><div style="font-family:var(--font-display); font-size:26px; color:var(--paper);">Shipped</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6);">live, to the about page</div></div>
+          <div style="color:var(--signal); align-self:center; padding:0 14px; font-size:22px;">&rarr;</div>
+          <div style="flex:1;"><div style="font-family:var(--font-display); font-size:26px; color:var(--signal);">Caught</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6);">human review, not the system</div></div>
+          <div style="color:var(--signal); align-self:center; padding:0 14px; font-size:22px;">&rarr;</div>
+          <div style="flex:1;"><div style="font-family:var(--font-display); font-size:26px; color:var(--paper);">Corrected</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6);">publicly, same day</div></div>
+        </div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.62); font-size:20px; margin-top:26px; max-width:74ch;">A human caught it, not the system. That's the gap. Being more careful doesn't scale, so the fix had to be mechanical.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q5 · 2 of 3 · caught</h4>
+    <ul class="tp"><li>It didn't whisper the lie, it published it to the live about page</li><li>The path: inferred, shipped, caught, corrected</li><li>And the important part is who caught it, a human on review, not the system</li><li>That's the gap that mattered</li><li>Being more careful isn't a mechanism and it doesn't scale, so the real fix had to be mechanical</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q5 · 3 of 3 · MADE IMPOSSIBLE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q5 · 3 of 3 · the gate that fails closed</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q5-dd3">
+    <div class="page-no">Deep dive &middot; Q5 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q5">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Catch Me If You Can</span> : the bio incident</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the fabrication &rarr; caught &rarr; <span style="color:var(--signal);">made impossible</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:48px; line-height:1.05; color:var(--paper); max-width:26ch; margin-bottom:24px;">
+        Now it <em style="font-style:italic; color:var(--signal);">cannot</em> ship.
+      </div>
+      <div style="background:#0a0a0a; border:1px solid rgba(247,244,240,0.18); border-left:3px solid var(--signal); padding:20px 26px; max-width:84ch; font-family:var(--font-mono); font-size:16.5px; line-height:1.55;">
+        <div style="color:rgba(247,244,240,0.55);">$ python3 tools/check_external_content.py about.md</div>
+        <div style="color:rgba(247,244,240,0.4); margin-top:6px;">scanning against bio-accuracy gate&hellip;</div>
+        <div style="color:var(--signal); margin-top:8px;">BLOCK: 'Spotify' mentioned without analogy framing. Matt did NOT work at Spotify.</div>
+        <div style="color:var(--signal);">BLOCK: 'Echo Nest' mentioned without analogy framing. Matt did NOT work at Echo Nest.</div>
+        <div style="color:rgba(247,244,240,0.88); margin-top:8px;">2 BLOCK findings &middot; write refused &middot; pre-push hook exit 1</div>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:18px; margin-top:14px; max-width:82ch;"><span style="color:var(--paper); font-family:var(--font-mono); font-size:16px;">verify_bio_claims()</span> &middot; wired into the pre-push hook and every external-content generator. The forged line from two slides ago literally cannot reach the site now.</div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">The lesson</div>
+        <div style="font-family:var(--font-display); font-size:32px; line-height:1.28; color:var(--paper); max-width:46ch;">
+          The fix for a lie isn't &ldquo;be more careful.&rdquo; It's a gate that <em style="font-style:italic; color:var(--signal);">fails closed.</em>
+        </div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:19px; margin-top:14px; max-width:84ch;">Anyone can vibe-code the generation in a weekend. The gate that catches what it gets confidently wrong is the year. The generation is the weekend; <span style="color:var(--paper);">the verification is the company.</span></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q5 · 3 of 3 · the gate</h4>
+    <ul class="tp"><li>So I made it mechanically impossible, and what's on screen is the gate actually firing</li><li>Run the checker on the about page and it returns two BLOCKs, Spotify and Echo Nest flagged, write refused, the pre-push hook exits non-zero</li><li>verify_bio_claims blocks any unverified employment claim before it can be written, Spotify, Echo Nest, Metaweb, Google near an employment verb, all hard-stop, unless the analogy language is right next to it</li><li>It's wired into the pre-push hook and every external-content generator, so it fails closed, that same forged line from two slides ago literally cannot reach the site now</li><li>The line to land: the fix for a lie isn't a resolution to be more careful, it's a gate that fails closed</li><li>And the investor beat: this gate is the part you can't vibe-code in a weekend, the generation is the weekend, the verification is the company</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q6 · 1 of 3 · TWO KINDS OF RULE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q6 · 1 of 3 · the split</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q6-dd1">
+    <div class="page-no">Deep dive &middot; Q6 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q6">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">The Martian</span> : block or warn</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">two kinds of rule</span> &rarr; the test &rarr; the Martian move</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.04; color:var(--paper); max-width:30ch; margin-bottom:28px;">
+        Not every guardrail should <em style="font-style:italic; color:var(--signal);">block.</em>
+      </div>
+      <div style="flex:1; display:flex; align-items:center; margin-top:18px;">
+        <div class="duo" style="width:100%; gap:46px;">
+          <div class="c hot" style="padding:28px 34px;">
+            <div class="t" style="font-size:15px;">MECHANICAL &middot; the tool stops me cold</div>
+            <h4 style="font-size:29px; margin-bottom:20px;">because I can't reliably catch it</h4>
+            <div style="display:flex; flex-direction:column; gap:15px; font-family:var(--font-body); font-size:23px; color:rgba(247,244,240,0.88);">
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>&ldquo;Spotify&rdquo; in my bio</span><span style="font-family:var(--font-mono); font-size:15px; color:var(--signal);">BLOCKED</span></div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>an em-dash in a cold email</span><span style="font-family:var(--font-mono); font-size:15px; color:var(--signal);">BLOCKED</span></div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>a tracker link missing /t/</span><span style="font-family:var(--font-mono); font-size:15px; color:var(--signal);">BLOCKED</span></div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>the $20/day API ceiling</span><span style="font-family:var(--font-mono); font-size:15px; color:var(--signal);">STOPPED</span></div>
+            </div>
+          </div>
+          <div class="c cool" style="padding:28px 34px;">
+            <div class="t" style="font-size:15px;">JUDGMENT &middot; it surfaces once, I decide</div>
+            <h4 style="font-size:29px; margin-bottom:20px;">because push-through is sometimes the point</h4>
+            <div style="display:flex; flex-direction:column; gap:15px; font-family:var(--font-body); font-size:23px; color:rgba(247,244,240,0.88);">
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>&ldquo;this is a 3-hour session&rdquo;</span><span style="font-family:var(--font-mono); font-size:15px; color:#7BC0A0;">I KEPT GOING</span></div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>&ldquo;this looks like a rat-hole&rdquo;</span><span style="font-family:var(--font-mono); font-size:15px; color:#7BC0A0;">PUSHED THROUGH</span></div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline;"><span>&ldquo;you're polishing, not shipping&rdquo;</span><span style="font-family:var(--font-mono); font-size:15px; color:#7BC0A0;">MY CALL</span></div>
+              <div style="font-family:var(--font-display); font-style:italic; font-size:20px; color:rgba(247,244,240,0.7); margin-top:4px;">the session it flagged shipped the partnership model.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q6 · 1 of 3 · two kinds</h4>
+    <ul class="tp"><li>The split</li><li>A mechanical rule fails closed, because I can't reliably catch the thing: a fabricated bio, an em-dash in buyer copy, a schema typo that silently eats data, a broken tracker link, the daily cost ceiling</li><li>The tool has to stop me</li><li>A judgment rule does the opposite, it surfaces the question once and defers to me: scope creep, a three-hour session, a rat-hole, expanding before shipping</li><li>Those I should be able to push through</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q6 · 2 of 3 · THE TEST ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q6 · 2 of 3 · the one question that sorts them</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q6-dd2">
+    <div class="page-no">Deep dive &middot; Q6 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q6">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">The Martian</span> : block or warn</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">two kinds of rule &rarr; <span style="color:var(--signal);">the test</span> &rarr; the Martian move</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.08; color:var(--paper); max-width:30ch; margin-bottom:26px;">
+        &ldquo;If I want to do it anyway, should the system <em style="font-style:italic; color:var(--signal);">stop me?</em>&rdquo;
+      </div>
+      <!-- the two kinds of rule, each with two real stopped-me cases -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:8px;">
+        <div>
+          <div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); letter-spacing:0.06em;">YES &rarr; IT BLOCKS</div>
+          <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:18px; margin-top:5px; margin-bottom:20px;">a fact I can't catch by eye</div>
+          <div style="border-left:3px solid var(--signal); padding:2px 0 2px 20px; margin-bottom:18px;">
+            <div style="font-family:var(--font-display); font-size:22px; color:var(--paper); line-height:1.18;">A broken tracking link, missing one path segment, 404 for everyone who clicked.</div>
+            <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.55); margin-top:4px;">The send gate refused it.</div>
+          </div>
+          <div style="border-left:3px solid var(--signal); padding:2px 0 2px 20px;">
+            <div style="font-family:var(--font-display); font-size:22px; color:var(--paper); line-height:1.18;">An outreach draft citing a dollar figure that wasn't in the source.</div>
+            <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.55); margin-top:4px;">The claim gate refused it.</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono); font-size:15px; color:rgba(247,244,240,0.6); letter-spacing:0.06em;">NO &rarr; IT WARNS, I DECIDE</div>
+          <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:18px; margin-top:5px; margin-bottom:20px;">a judgment call that has to stay mine</div>
+          <div style="border-left:3px solid rgba(247,244,240,0.35); padding:2px 0 2px 20px; margin-bottom:18px;">
+            <div style="font-family:var(--font-display); font-size:22px; color:var(--paper); line-height:1.18;">Two sessions polishing a report generator with nothing to report on.</div>
+            <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.55); margin-top:4px;">It named the rat-hole. I switched.</div>
+          </div>
+          <div style="border-left:3px solid rgba(247,244,240,0.35); padding:2px 0 2px 20px;">
+            <div style="font-family:var(--font-display); font-size:22px; color:var(--paper); line-height:1.18;">A working session running long past the three-hour cap.</div>
+            <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.55); margin-top:4px;">It flagged the drift. I kept going, and it paid off.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q6 · 2 of 3 · the test</h4>
+    <ul class="tp"><li>One question sorts every rule: if I want to do it anyway, should the system stop me?</li><li>Two it blocks, mechanical, a fact I can't catch: a tracking link missing a path segment that 404'd for everyone, and an outreach draft citing a dollar figure that wasn't in the source, both refused at the gate</li><li>Two it only warns on, judgment, mine to decide: two sessions polishing a report generator with nothing to report, it flagged the rat-hole and I switched; and a session running long past the three-hour cap, it flagged the drift and I kept going, and that one paid off</li><li>That's the split, block the fact I can't catch, surface the judgment call and let me push through, because push-through is where the novel stuff comes from</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q6 · 3 of 3 · THE MARTIAN MOVE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q6 · 3 of 3 · push-through is signal</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q6-dd3">
+    <div class="page-no">Deep dive &middot; Q6 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q6">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">The Martian</span> : block or warn</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">two kinds of rule &rarr; the test &rarr; <span style="color:var(--signal);">the Martian move</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.05; color:var(--paper); max-width:26ch; margin-bottom:30px;">
+        Warned. Pushed through anyway. <em style="font-style:italic; color:var(--signal);">Got the novel stuff.</em>
+      </div>
+      <div style="border-left:4px solid var(--signal); padding:20px 30px; background:rgba(247,244,240,0.05); max-width:62ch;">
+        <div style="font-family:var(--font-display); font-style:italic; font-size:28px; line-height:1.35; color:var(--paper);">&ldquo;founders need guardrails, and pushback, but when they push through those pushbacks, sometimes you get the novel stuff&rdquo;</div>
+        <div style="font-family:var(--font-mono); font-size:14px; color:#7BC0A0; margin-top:14px; letter-spacing:0.04em;">verbatim &middot; 2026-05-09 &middot; the line that became this rule</div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.66); font-size:21px; max-width:76ch;">So this half of the rule can only warn, never block. <em style="font-style:italic; color:var(--paper);">The Martian</em> is two hours of a man overruling the odds and being right, and the times I overrule the system's warning are sometimes my best calls. Block them all and you automate those away.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q6 · 3 of 3 · the Martian move</h4>
+    <ul class="tp"><li>This is why the judgment half exists</li><li>The verbatim line on screen is the actual moment I said it: founders need guardrails and pushback, but when they push through, sometimes you get the novel stuff</li><li>That's the Martian move, the whole movie is a guy overruling the odds and being right</li><li>So the judgment half can only warn, never block, if I'd mechanized every guardrail I'd have automated away the exact moments that produced the best work</li><li>Knowing which rule blocks and which one just warns is the whole game</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q7 · 1 of 3 · THE RULE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q7 · 1 of 3 · don't grade your own homework</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7-dd1">
+    <div class="page-no">Deep dive &middot; Q7 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q7">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Fight Club</span> : second opinion</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">the rule</span> &rarr; the catches &rarr; the prompt</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:48px; line-height:1.05; color:var(--paper); max-width:28ch;">
+        One model never grades <em style="font-style:italic; color:var(--signal);">its own homework.</em>
+      </div>
+
+      <div style="margin-top:26px; flex:1;">
+        <div class="support-label" style="margin-bottom:12px;">in practical terms</div>
+        <div class="body-sm" style="font-size:24px; max-width:72ch; margin-bottom:8px;"><span style="color:var(--paper); font-weight:600;">Claude builds it. Gemini Pro checks it.</span></div>
+        <div class="body-sm" style="color:rgba(247,244,240,0.7); font-size:19px; max-width:74ch; margin-bottom:20px;">Claude wrote my bio, claiming I led data at Spotify and The Echo Nest, then I asked it to fact-check its own work.</div>
+        <div style="display:flex; flex-direction:column; gap:14px; max-width:76ch;">
+          <div style="display:flex; gap:20px; align-items:baseline;"><div style="font-family:var(--font-mono); font-size:15px; color:rgba(247,244,240,0.5); width:24ch; flex-shrink:0;">Claude checking Claude</div><div style="color:rgba(247,244,240,0.66); font-family:var(--font-display); font-style:italic; font-size:24px;">&#10003; &ldquo;all accurate&rdquo;</div></div>
+          <div style="display:flex; gap:20px; align-items:baseline;"><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); width:24ch; flex-shrink:0;">Gemini Pro, fresh eyes</div><div style="color:var(--paper); font-family:var(--font-display); font-style:italic; font-size:24px;">&#10007; &ldquo;he never worked at either&rdquo;</div></div>
+        </div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">So Gemini Pro reviews anything whose errors compound across sessions</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; font-family:var(--font-body); font-size:21px; color:rgba(247,244,240,0.8);">
+          <span style="border:1px solid rgba(247,244,240,0.2); padding:10px 16px;">verification gates</span>
+          <span style="border:1px solid rgba(247,244,240,0.2); padding:10px 16px;">plans</span>
+          <span style="border:1px solid rgba(247,244,240,0.2); padding:10px 16px;">rule promotions</span>
+          <span style="border:1px solid rgba(247,244,240,0.2); padding:10px 16px;">anything external-facing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q7 · 1 of 3 · the rule</h4>
+    <ul class="tp"><li>The rule is simple: one model never grades its own homework on anything that compounds</li><li>In practical terms: Claude builds it, Gemini Pro checks it. Concrete: Claude wrote my bio, claimed I led data at Spotify and The Echo Nest, then I asked it to fact-check its own work and it confirmed every line. I never worked at either. A model can't see its own confident mistake</li><li>So Gemini Pro adversarially reviews the high-stakes stuff, verification gates, plans, rule promotions, anything leaving the building</li><li>The reason is that a model's blind spots are systematic, it misses the same kinds of things twice, so a different model fails in different places and catches what the first one can't see</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q7 · 2 of 3 · THE CATCHES ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q7 · 2 of 3 · three structural catches the first model missed</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7-dd2">
+    <div class="page-no">Deep dive &middot; Q7 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q7">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Fight Club</span> : second opinion</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">the rule &rarr; <span style="color:var(--signal);">the catches</span> &rarr; the prompt</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.04; color:var(--paper); max-width:30ch; margin-bottom:30px;">
+        One plan. <em style="font-style:italic; color:var(--signal);">Three failures</em> the first model missed.
+      </div>
+      <!-- one catch brought forward, large -->
+      <div style="border-left:4px solid var(--signal); padding:22px 32px; background:rgba(232,81,45,0.07); max-width:82ch;">
+        <div style="font-family:var(--font-mono); font-size:14px; color:var(--signal); letter-spacing:0.06em;">CATCH 03 &middot; THE IRREVERSIBLE ONE</div>
+        <div style="font-family:var(--font-display); font-weight:500; font-size:35px; line-height:1.1; color:var(--paper); margin-top:12px;">The plan deleted the old decision ledger and rebuilt it from scratch. No backup. No rollback.</div>
+        <div class="body-sm" style="font-size:21px; color:rgba(247,244,240,0.72); margin-top:14px; max-width:76ch;">If the rebuild logic was wrong, every logged decision was gone for good. The second model refused it: archive the old ledger first, then rebuild.</div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+          <div><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal);">CATCH 01</div><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); margin-top:6px; line-height:1.15;">Line-offset staleness</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6); margin-top:7px;">an index that silently drifts out of sync with its source</div></div>
+          <div><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal);">CATCH 02</div><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); margin-top:6px; line-height:1.15;">A silently dropped section</div><div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.6); margin-top:7px;">untagged entries quietly excluded, looking complete</div></div>
+        </div>
+        <div style="margin-top:22px; font-family:var(--font-display); font-style:italic; font-size:24px; color:var(--signal);">One plan, one review. None of it shipped.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q7 · 2 of 3 · the catches</h4>
+    <ul class="tp"><li>Concrete proof it earns its keep</li><li>On one plan, the second model caught three structural failures the first one missed: a line-offset staleness bug where an index silently drifts out of sync with its source, a silently dropped section where untagged entries get excluded but the output still looks complete, and an irreversible migration that deleted and rebuilt with no rollback</li><li>All three are the kind of quiet, structural thing that doesn't error, it just rots</li><li>None of it shipped</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q7 · 3 of 3 · THE PROMPT ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q7 · 3 of 3 · the prompt + the disposition</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7-dd3">
+    <div class="page-no">Deep dive &middot; Q7 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q7">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Fight Club</span> : second opinion</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the rule &rarr; the catches &rarr; <span style="color:var(--signal);">the prompt</span></div>
+      <div style="border-left:4px solid var(--signal); padding:22px 32px; background:rgba(247,244,240,0.05); max-width:60ch; margin-bottom:30px;">
+        <div style="font-family:var(--font-display); font-style:italic; font-size:30px; line-height:1.35; color:var(--paper);">&ldquo;Be adversarial. Find what would lose credibility with a technical audience.&rdquo;</div>
+        <div style="font-family:var(--font-mono); font-size:14px; color:rgba(247,244,240,0.5); margin-top:12px;">the literal review prompt</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:30px; flex:1; align-content:start;">
+        <div style="border-top:3px solid var(--edge); background:rgba(247,244,240,0.05); padding:20px 26px;">
+          <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.06em; color:#7BC0A0; margin-bottom:12px;">ACCEPTED &middot; tightened the gate</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:23px; line-height:1.4; color:var(--paper);">&ldquo;Your claim-checker matches &lsquo;120&rsquo; inside &lsquo;$1,200&rsquo;. That's a substring bug.&rdquo;</div>
+          <div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.62); margin-top:12px;">Fix: compare canonicalized dollar scale, not raw substrings. A real flaw, caught before the gate shipped.</div>
+        </div>
+        <div style="border-top:3px solid rgba(247,244,240,0.3); background:rgba(247,244,240,0.05); padding:20px 26px;">
+          <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.06em; color:rgba(247,244,240,0.55); margin-bottom:12px;">OVERRULED &middot; rejected, with a reason</div>
+          <div style="font-family:var(--font-display); font-style:italic; font-size:23px; line-height:1.4; color:var(--paper);">&ldquo;Add a recipient-count cap to the send gate, for abuse.&rdquo;</div>
+          <div class="body-sm" style="font-size:18px; color:rgba(247,244,240,0.62); margin-top:12px;">Rejected: single-tenant, I control every caller, the threat model doesn't apply. Written down anyway, so the call stays auditable.</div>
+        </div>
+      </div>
+
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:22px; max-width:80ch;">The second model can be overruled, but <span style="color:var(--paper); font-weight:600;">never silently.</span> Accept with a fix, or reject with a reason. That written record is what makes the decision auditable later.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q7 · 3 of 3 · the prompt</h4>
+    <ul class="tp"><li>The prompt is deliberately hostile: be adversarial, find what would lose credibility with a technical audience</li><li>And the discipline that matters is the disposition, every finding is either accepted or rejected with a written reason</li><li>The second model can be overruled, that's fine, but never silently, because the written record is what makes the decision auditable six months later</li><li>That's the difference between a real review and a rubber stamp</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q8 · 1 of 3 · WHAT IT BUILT ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q8 · 1 of 3 · the corpus as an outcome · ⟳ refresh 6/5</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8-dd1">
+    <div class="page-no">Deep dive &middot; Q8 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q8">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Moneyball</span> : outcomes</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">what it built</span> &rarr; what it works &rarr; this very talk</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:50px; line-height:1.04; color:var(--paper); max-width:30ch; margin-bottom:8px;">
+        It grows <em style="font-style:italic; color:var(--signal);">while I sleep.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:64ch;">Crawl, scan, classify, every night, unattended.</div>
+      <div style="margin-top:34px;">
+        <div class="support-label">the surprising part, it acts, it doesn't just generate text</div>
+        <div style="display:flex; align-items:baseline; gap:24px; margin-top:14px;">
+          <div class="hero-num signal" style="font-size:92px; line-height:0.9;">153</div>
+          <div style="max-width:64ch;">
+            <div style="font-family:var(--font-display); font-size:29px; color:var(--paper); line-height:1.16;">times it rewrote its own broken scraper, no human in the loop.</div>
+            <div class="body-sm" style="font-size:19px; color:rgba(247,244,240,0.6); margin-top:8px;">A town changes its website, the crawler breaks. It diagnoses the break, re-derives the config, tests it, and commits the fix, Smyrna, Plaistow, Greenville, Atkinson, and 149 more. It also runs a fifty-step pipeline every night and sends real buyer follow-ups on its own.</div>
+          </div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">and the coverage that produces, all 50 states, one operator</div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:30px;">
+          <div><div class="hero-num" style="font-size:74px; color:var(--paper);">634k</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">documents</div></div>
+          <div><div class="hero-num" style="font-size:74px; color:var(--paper);">3,355</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">municipalities</div></div>
+          <div><div class="hero-num" style="font-size:74px; color:var(--signal);">191k</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">classified signals</div></div>
+          <div><div class="hero-num" style="font-size:74px; color:var(--paper);">169k</div><div class="body-sm" style="color:rgba(247,244,240,0.55); font-size:18px;">parcels extracted</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q8 · 1 of 3 · what it built</h4>
+    <ul class="tp"><li>The honest answer to surprising isn't a number, it's that it acts, it doesn't just generate text</li><li>The standout: it has rewritten its own broken scrapers a hundred fifty-three times, no human in the loop, when a town changes its website the crawler breaks and it diagnoses, re-derives the config, tests, and commits the fix, Smyrna, Plaistow, Greenville, Atkinson and a hundred forty-nine more</li><li>It also runs a fifty-step pipeline every night and sends real buyer follow-ups on its own</li><li>And the coverage that produces, six hundred thirty-four thousand documents, thirty-three hundred municipalities, a hundred ninety-one thousand classified signals, a hundred sixty-nine thousand parcels, all fifty states, one operator</li><li>That's the surprise, generating slides is free, operating a business unattended is the part that wasn't supposed to work yet</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q8 · 2 of 3 · IT WORKS ITSELF ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q8 · 2 of 3 · public companies surfaced from town minutes · ⟳ refresh 6/5</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8-dd2">
+    <div class="page-no">Deep dive &middot; Q8 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q8">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Moneyball</span> : outcomes</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">what it built &rarr; <span style="color:var(--signal);">what it works</span> &rarr; this very talk</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.04; color:var(--paper); max-width:32ch; margin-bottom:6px;">
+        It turns town minutes into <em style="font-style:italic; color:var(--signal);">tickers.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); font-size:20px; max-width:78ch;">131,467 companies named across the documents. 121 resolve to a public ticker, found 618,600 times. A few you'll know:</div>
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(5,1fr); gap:18px 22px;">
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">VZ</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Verizon</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">155 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">CMCSA</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Comcast</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">175 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">T</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">AT&amp;T</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">188 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">AMZN</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Amazon</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">139 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">HD</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Home Depot</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">120 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">WM</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Waste Mgmt</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">219 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">ES</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Eversource</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">129 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">CHTR</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Charter</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">158 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">WMT</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">Walmart</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">127 towns</div></div>
+        <div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:20px;">UPS</div><div style="font-family:var(--font-display); color:var(--paper); font-size:18px; margin-top:3px; line-height:1.1;">UPS</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">110 towns</div></div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div style="font-family:var(--font-display); font-style:italic; font-size:25px; color:var(--signal); line-height:1.3; max-width:84ch;">Every name is a public company doing business with a town, named in the record before it shows up where a market is watching. That is the signal.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q8 · 2 of 3 · it works itself</h4>
+    <ul class="tp"><li>This is the show-don't-tell, the companies the corpus actually pulled out of the documents</li><li>A hundred thirty-one thousand companies named across the corpus, a hundred twenty-one resolve to a public ticker, found six hundred eighteen thousand times</li><li>Names everyone knows, Verizon in a hundred fifty-five towns, AT&amp;T in a hundred eighty-eight, Amazon, Home Depot, Waste Management in two hundred nineteen, Eversource, Charter, Walmart, UPS</li><li>The point, every one is a public company transacting with a town, named in the municipal record, often before it surfaces anywhere a market is watching</li><li>That's the raw signal, and the same extraction surfaces the buyers worth calling, a hundred sixty-seven prospects tracked, fifty-three conversations logged</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q8 · 3 of 3 · THIS VERY TALK ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q8 · 3 of 3 · the meta-proof (this deck)</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8-dd3">
+    <div class="page-no">Deep dive &middot; Q8 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q8">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">Moneyball</span> : outcomes</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">what it built &rarr; what it works &rarr; <span style="color:var(--signal);">this very talk</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:62px; line-height:1.04; letter-spacing:-0.015em; color:var(--paper); max-width:24ch; margin-bottom:24px;">
+        Exhibit A is <em style="font-style:italic; color:var(--signal);">this deck.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.78); max-width:70ch; font-size:23px;">
+        A bespoke, navigable talk, two decks, branching deep-dive chains, presenter mode, every number traced to source. The old version of this is a designer and a few weeks. This was <span style="color:var(--paper); font-weight:600;">an afternoon.</span>
+      </div>
+      <div style="margin-top:30px;">
+        <div class="support-label">the actual prompts that shaped this deck, this session</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:9px 44px; margin-top:14px; font-family:var(--font-mono); font-size:17px; color:rgba(247,244,240,0.78);">
+          <div>&ldquo;show me, don't tell me&rdquo;</div>
+          <div>&ldquo;this slide feels useless, just numbers&rdquo;</div>
+          <div>&ldquo;less hypothetical, what did we actually see?&rdquo;</div>
+          <div>&ldquo;hard examples here&rdquo;</div>
+          <div>&ldquo;what's the in-situ example? this feels abstract&rdquo;</div>
+          <div>&ldquo;show me where this was actually executed&rdquo;</div>
+          <div>&ldquo;make the point more explicit&rdquo;</div>
+          <div>&ldquo;highlight my own history as validation&rdquo;</div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="support-label">The whole point</div>
+        <div style="font-family:var(--font-display); font-size:34px; line-height:1.28; color:var(--paper); max-width:46ch;">
+          Volume is the cost of entry now. <em style="font-style:italic; color:var(--signal);">Leveling up the outcomes is the work.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q8 · 3 of 3 · this very talk</h4>
+    <ul class="tp"><li>And the cleanest proof is the thing you're looking at</li><li>This talk, two decks, branching deep-dive chains, a clickable menu, presenter mode, every number traced to a source, the old way to make this is a designer and a couple of weeks, this was an afternoon</li><li>And the prompts on screen are real, the actual terse steering I used to refine this deck this session, show me don't tell me, this slide feels useless, what did we actually see, that's the whole method in one slide</li><li>The same system also assembled the case that helped put me on this stage, at the Roux</li><li>That's the difference between generating volume, which is free now, and leveling up the outcomes, which is the actual work</li><li>An LLM will make anyone a lot of slides, the system made me a bespoke one, fast, and kept it honest</li></ul>
+  </div>
+</div>
+</div>
+
+<!-- ===== PRESENTER MODE (single-slide, keyboard nav, notes toggle) ===== -->
+<style>
+body.present { overflow: hidden; height: 100vh; background: #0f0f0f; }
+body.present .deck { padding: 0; gap: 0; height: 100vh; justify-content: center; }
+body.present .frame { display: none; max-width: none; width: auto; }
+body.present .frame.active { display: flex; align-items: center; justify-content: center; }
+body.present .frame-label { display: none; }
+body.present .notes { display: none; }
+body.present.notes-on .deck { justify-content: flex-start; padding-top: 2vh; }
+body.present.notes-on .frame.active .notes {
+  display: block; position: fixed; left: 0; right: 0; bottom: 0; width: auto;
+  max-height: 34vh; overflow: auto; z-index: 60; border-left: none; border-top: 4px solid #E8512D;
+  box-shadow: 0 -6px 30px rgba(0,0,0,0.45);
+}
+.hud { position: fixed; bottom: 14px; right: 16px; z-index: 70; display: none; align-items: center; gap: 16px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55); background: rgba(0,0,0,0.5); padding: 8px 13px; border-radius: 5px; user-select: none; }
+body.present .hud { display: flex; }
+.hud b { color: #fff; font-weight: 500; }
+.hud .k { color: #E8512D; }
+.hud a { color: rgba(255,255,255,0.55); text-decoration: none; cursor: pointer; }
+.hud a:hover { color: #E8512D; }
+@media print {
+  body.present .frame { display: flex !important; }
+  body.present .deck { display: flex; height: auto; padding: 0; }
+  body.present .notes, .hud { display: none !important; }
+}
+</style>
+<script>
+(function(){
+  var body = document.body;
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.deck > .frame'));
+  if(!frames.length) return;
+  var cur = 0;
+  body.classList.add('present');
+
+  var hud = document.createElement('div');
+  hud.className = 'hud';
+  hud.innerHTML = '<span><b id="hud-n">1</b> / ' + frames.length + '</span>' +
+    '<a id="hud-notes"><span class="k">N</span> notes</a>' +
+    '<a id="hud-full"><span class="k">F</span> full</a>' +
+    '<span><span class="k">&larr; &rarr;</span> move</span>';
+  body.appendChild(hud);
+
+  function fit(){
+    var notesOn = body.classList.contains('notes-on');
+    var availW = window.innerWidth * 0.96;
+    var availH = window.innerHeight * (notesOn ? 0.62 : 0.94);
+    var scale = Math.min(availW/1920, availH/1080);
+    document.documentElement.style.setProperty('--scale', scale);
+  }
+  function show(i){
+    cur = Math.max(0, Math.min(frames.length-1, i));
+    for(var k=0;k<frames.length;k++){ frames[k].classList.toggle('active', k===cur); }
+    var hn = document.getElementById('hud-n'); if(hn) hn.textContent = cur+1;
+    fit();
+    var n = frames[cur].querySelector('.notes'); if(n) n.scrollTop = 0;
+  }
+  function idxForHash(h){
+    if(!h) return -1;
+    var el = document.getElementById(h.replace('#',''));
+    if(!el) return -1;
+    var fr = el.closest('.frame');
+    return frames.indexOf(fr);
+  }
+  function toggleNotes(){ body.classList.toggle('notes-on'); fit(); }
+  function full(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); } }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); show(cur+1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); show(cur-1); }
+    else if(e.key==='Home'){ e.preventDefault(); show(0); }
+    else if(e.key==='End'){ e.preventDefault(); show(frames.length-1); }
+    else if(e.key==='n'||e.key==='N'){ toggleNotes(); }
+    else if(e.key==='f'||e.key==='F'){ full(); }
+  });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if(a){ var i = idxForHash(a.getAttribute('href')); if(i>=0){ e.preventDefault(); history.replaceState(null,'',a.getAttribute('href')); show(i); } }
+  });
+  var bn = document.getElementById('hud-notes'); if(bn) bn.addEventListener('click', toggleNotes);
+  var bf = document.getElementById('hud-full'); if(bf) bf.addEventListener('click', full);
+  window.addEventListener('resize', fit);
+  window.addEventListener('DOMContentLoaded', fit);
+
+  var start = idxForHash(location.hash);
+  show(start >= 0 ? start : 0);
+})();
+</script>
+
+</body>
+</html>

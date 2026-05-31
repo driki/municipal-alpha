@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Municipal Alpha · extracting buyer-grade signal from public records · AI in Action 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A case study in how I use AI, machine learning, and deterministic systems to extract buyer-grade signal from public records, solo, on about $391 a month. AI in Action 2026, the Roux Institute.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://municipalalpha.com/ai-in-action/talk-1/">
+<meta property="og:title" content="Municipal Alpha: buyer-grade signal from public records">
+<meta property="og:description" content="A case study in how I use AI, machine learning, and deterministic systems to extract buyer-grade signal from public records, solo, on about $391 a month. AI in Action 2026, the Roux Institute.">
+<meta property="og:image" content="https://municipalalpha.com/ai-in-action/talk-1/og.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Municipal Alpha: buyer-grade signal from public records">
+<meta name="twitter:description" content="Extracting buyer-grade signal from public records, solo, on about $391 a month. AI in Action 2026.">
+<meta name="twitter:image" content="https://municipalalpha.com/ai-in-action/talk-1/og.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #0C0C0C; --paper: #F7F4F0; --paper-2: #EFEAE2; --signal: #E8512D; --edge: #1B4332;
+  --ink-80: rgba(12,12,12,0.80); --ink-60: rgba(12,12,12,0.60); --ink-40: rgba(12,12,12,0.40); --ink-12: rgba(12,12,12,0.12);
+  --fam-g: #4E6E81; --fam-f: #1B4332; --fam-o: #BFA178; --fam-p: #E8512D; --fam-i: #7B9E89; --fam-n: #5B8A8A; --fam-l: #8A6E5B;
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; background: #1a1a1a; color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+.deck { display: flex; flex-direction: column; gap: 48px; padding: 48px; align-items: center; }
+.frame { display: flex; flex-direction: column; gap: 12px; align-items: stretch; width: 100%; max-width: calc(1920px * var(--scale, 1)); }
+.frame-label { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; text-transform: uppercase; }
+.frame-label .refresh { color: var(--signal); }
+
+.slide-wrap { width: calc(1920px * var(--scale, 1)); height: calc(1080px * var(--scale, 1)); position: relative; overflow: hidden; }
+.slide { width: 1920px; height: 1080px; background: var(--paper); color: var(--ink); font-family: var(--font-body); position: absolute; top: 0; left: 0; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.3); transform-origin: top left; transform: scale(var(--scale, 1)); }
+.slide.ink { background: var(--ink); color: var(--paper); }
+
+.slide-body { position: absolute; inset: 112px 110px 92px 110px; display: flex; flex-direction: column; }
+.page-no { position: absolute; top: 40px; left: 60px; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.14em; color: var(--ink-40); text-transform: uppercase; }
+.ink .page-no { color: rgba(247,244,240,0.5); }
+.wordmark { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; color: var(--ink); line-height: 1; }
+.wordmark.inv { color: var(--paper); }
+.top-mark { position: absolute; top: 40px; right: 60px; }
+
+.q-nav { font-family: var(--font-body); font-weight: 600; font-size: 18px; color: var(--signal); margin-bottom: 16px; }
+.q-nav .topic { color: var(--ink-40); font-weight: 500; }
+.ink .q-nav .topic { color: rgba(247,244,240,0.5); }
+
+.q-hero { font-family: var(--font-display); font-weight: 500; font-size: 88px; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin: 0; max-width: 22ch; }
+.q-hero em { font-style: italic; color: var(--signal); }
+.ink .q-hero { color: var(--paper); }
+
+.room-prompt { margin-top: 26px; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 31px; line-height: 1.28; color: var(--ink-60); max-width: 48ch; }
+.room-prompt .arr { font-style: normal; color: var(--signal); font-weight: 600; margin-right: 12px; }
+.ink .room-prompt { color: rgba(247,244,240,0.68); }
+
+.support { margin-top: auto; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+.ink .support { border-top-color: rgba(247,244,240,0.18); }
+.support-label { font-family: var(--font-body); font-weight: 600; font-size: 16px; letter-spacing: 0.02em; color: var(--ink-40); margin-bottom: 16px; }
+.ink .support-label { color: rgba(247,244,240,0.5); }
+.support .body-sm { font-family: var(--font-body); font-weight: 400; font-size: 23px; line-height: 1.48; color: var(--ink-60); max-width: 86ch; margin: 0; }
+.ink .support .body-sm { color: rgba(247,244,240,0.7); }
+.support .mono-fig { font-family: var(--font-mono); font-weight: 500; color: var(--ink); }
+.ink .support .mono-fig { color: var(--paper); }
+.mono { font-family: var(--font-mono); font-feature-settings: 'tnum' 1; }
+.hero-num { font-family: var(--font-mono); font-weight: 500; letter-spacing: -0.03em; line-height: 0.9; color: var(--ink); }
+.hero-num.signal { color: var(--signal); }
+
+.signal-callout { border-left: 4px solid var(--signal); padding: 24px 32px; background: #fff; color: var(--ink); }
+.signal-callout .meta { color: var(--signal); font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+.signal-callout .detail { font-size: 26px; line-height: 1.4; font-family: var(--font-display); }
+.signal-callout .source { color: var(--ink-60); font-family: var(--font-mono); font-size: 15px; margin-top: 14px; letter-spacing: 0.03em; }
+
+/* menu (slide 2) */
+.menu { margin-top: 6px; }
+.menu .row { display: flex; align-items: baseline; gap: 26px; padding: 12px 4px; border-top: 1px solid var(--ink-12); }
+.menu .row:last-child { border-bottom: 1px solid var(--ink-12); }
+.menu .n { font-family: var(--font-mono); font-weight: 500; font-size: 22px; color: var(--signal); width: 1.5ch; flex-shrink: 0; }
+.menu .qcell { flex: 1; }
+.menu .q { font-family: var(--font-display); font-weight: 500; font-size: 29px; color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; }
+.menu .sub { font-family: var(--font-body); font-weight: 400; font-size: 18px; color: var(--ink-60); margin-top: 5px; line-height: 1.3; }
+.menu .tag { font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--ink-40); flex-shrink: 0; align-self: flex-start; padding-top: 4px; }
+
+/* Periodic-table tiles */
+.pt-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.el { position: relative; background: #fff; border-top: 5px solid var(--ink-40); padding: 11px 14px 12px; min-height: 104px; display: flex; flex-direction: column; }
+.el .sym { font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1; letter-spacing: -0.01em; }
+.el .nm { font-family: var(--font-body); font-size: 14px; line-height: 1.1; color: var(--ink-60); margin-top: 5px; flex: 1; }
+.el .vol { font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--ink); margin-top: 4px; }
+.el .st { position: absolute; top: 10px; right: 12px; font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink-40); }
+.el.g { border-top-color: var(--fam-g); } .el.f { border-top-color: var(--fam-f); } .el.o { border-top-color: var(--fam-o); }
+.el.p { border-top-color: var(--fam-p); } .el.i { border-top-color: var(--fam-i); } .el.n { border-top-color: var(--fam-n); } .el.l { border-top-color: var(--fam-l); }
+.el.theo { background: var(--paper-2); } .el.theo .sym { color: var(--ink-60); }
+.pt-legend { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 16px; font-family: var(--font-body); font-size: 15px; color: var(--ink-60); }
+.pt-legend .k { display: inline-flex; align-items: center; gap: 8px; }
+.pt-legend .sw { width: 13px; height: 13px; border-radius: 2px; }
+
+.framings { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 44px 52px; }
+.framing-num { font-family: var(--font-body); font-weight: 600; font-size: 18px; color: var(--signal); margin-bottom: 12px; }
+.framing-title { font-family: var(--font-display); font-weight: 500; font-size: 36px; line-height: 1.08; margin: 0 0 14px; letter-spacing: -0.005em; }
+.framing-body { font-family: var(--font-body); font-size: 21px; line-height: 1.48; color: var(--ink-60); margin: 0; }
+.ink .framing-title { color: var(--paper); } .ink .framing-body { color: rgba(247,244,240,0.7); }
+
+.notes { width: 1920px; padding: 32px 48px; background: #fff; border-left: 4px solid var(--ink-12); font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--ink-80); }
+.notes h4 { font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--signal); margin: 0 0 10px; }
+.notes p { margin: 0 0 12px; max-width: 120ch; }
+.notes p:last-child { margin-bottom: 0; }
+.notes ul.tp { margin: 0 0 12px; padding-left: 22px; }
+.notes li { margin: 0 0 7px; max-width: 112ch; }
+.notes li::marker { color: var(--signal); }
+.notes .guard { color: var(--ink-60); font-style: italic; }
+.menu a.row { text-decoration: none; color: inherit; }
+.menu a.row:hover { background: rgba(232,81,45,0.07); }
+.slide-nav { position: absolute; bottom: 38px; right: 60px; z-index: 4; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.04em; display: flex; gap: 22px; }
+.slide-nav a { color: var(--ink-40); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+.slide-nav a:hover { color: var(--signal); border-bottom-color: var(--signal); }
+.ink .slide-nav a { color: rgba(247,244,240,0.5); }
+.ink .slide-nav a:hover { color: var(--signal); border-bottom-color: var(--signal); }
+
+@media print {
+  @page { size: 20in 11.25in; margin: 0; }
+  html, body { background: #fff; }
+  .deck { padding: 0; gap: 0; align-items: stretch; }
+  .frame { gap: 0; max-width: none; display: block; width: 1920px; }
+  .frame-label, .notes, .slide-nav { display: none; }
+  .slide-wrap { width: 1920px; height: 1080px; page-break-after: always; }
+  .slide { box-shadow: none; transform: none; }
+}
+</style>
+<script>
+function fitDeck(){ const PAD=96; document.documentElement.style.setProperty('--scale', Math.min(1,(window.innerWidth-PAD)/1920)); }
+window.addEventListener('resize', fitDeck); window.addEventListener('DOMContentLoaded', fitDeck);
+</script>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ====== 01 · COVER (ink) ====== -->
+<div class="frame">
+  <div class="frame-label">01 · Cover</div>
+  <div class="slide-wrap">
+  <div class="slide ink">
+    <div aria-hidden="true" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end; padding-right:60px; pointer-events:none; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:1400px; line-height:1; color:var(--paper); opacity:0.10; letter-spacing:-0.04em; user-select:none;">&alpha;</div>
+    <div style="position:absolute; left:100px; right:120px; top:170px;">
+      <div class="wordmark inv" style="font-size:84px; line-height:0.9; letter-spacing:-0.02em;">municip<span>&alpha;</span>l</div>
+      <div style="margin-top:48px; font-family:var(--font-display); font-weight:500; font-size:80px; line-height:1.05; letter-spacing:-0.018em; color:var(--paper); max-width:24ch;">
+        &ldquo;What is happening inside 30,000 local governments that <em style="font-style:italic; color:var(--signal);">nobody is reading?</em>&rdquo;
+      </div>
+      <div style="margin-top:34px; font-family:var(--font-display); font-style:italic; font-weight:400; font-size:38px; line-height:1.24; color:rgba(247,244,240,0.74); max-width:50ch;">
+        A case study in how I use AI, machine learning, and deterministic, repeatable systems to extract buyer-grade signal from public records.
+      </div>
+    </div>
+    <div style="position:absolute; left:100px; right:100px; bottom:60px;">
+      <div style="height:1px; background:rgba(247,244,240,0.18); margin-bottom:24px;"></div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:14px; letter-spacing:0.10em; color:rgba(247,244,240,0.55); text-transform:uppercase;">
+        <div>Matt MacDonald &middot; AI in Action 2026 &middot; The Roux Institute &middot; Municipal Innovation track</div>
+        <div>1:00pm</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · open · 15s</h4>
+    <ul class="tp"><li>I'm Matt MacDonald, I run Municipal Alpha, solo</li><li>This is the case study, what the system is and what it produces</li><li>I'll show you the questions buyers actually bring me, and how the corpus answers them, and I want you to tell me which ones are yours</li><li>The 2:15 session is the other half, how it's built without the AI lying about what it built</li></ul>
+    <p class="guard">Format: this deck frames the talk, the live demo is the browser gallery (startup-maine index.html + q-*.html). Have it open in another tab. Backup screenshots on phone.</p>
+  </div>
+</div>
+
+<!-- ====== 02 · MENU (the contract) ====== -->
+<div class="frame">
+  <div class="frame-label">02 · The menu · sets the interactive contract</div>
+  <div class="slide-wrap">
+  <div class="slide" id="menu">
+    <div class="page-no">02 / 12</div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">The map</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.05; letter-spacing:-0.015em; color:var(--ink); max-width:34ch; margin-bottom:16px;">
+        These are the questions buyers actually bring me. <em style="font-style:italic; color:var(--signal);">Which one is yours?</em>
+      </div>
+
+      <div class="menu">
+        <a class="row" href="#q1-dd1"><div class="n">1</div><div class="qcell"><div class="q">What does it cost to read every town hall?</div><div class="sub">Can one person really cover all 50 states on a hobby budget?</div></div><div class="tag">the cost</div></a>
+        <a class="row" href="#q2-dd1"><div class="n">2</div><div class="qcell"><div class="q">Who is reading the layer under the federal one?</div><div class="sub">Washington is watched. Who is watching your town?</div></div><div class="tag">the thesis</div></a>
+        <a class="row" href="#q3-dd1"><div class="n">3</div><div class="qcell"><div class="q">What kinds of records are even in there?</div><div class="sub">Minutes, budgets, permits, payments... what can you actually pull?</div></div><div class="tag">the substrate</div></a>
+        <a class="row" href="#q4-dd1"><div class="n">4</div><div class="qcell"><div class="q">How early can I see a tower deal coming?</div><div class="sub">Can I spot a lease in the works before it is signed?</div></div><div class="tag">towers</div></a>
+        <a class="row" href="#q5-dd1"><div class="n">5</div><div class="qcell"><div class="q">Can I see the opportunity before the RFP?</div><div class="sub">Can I find the project before it goes out to bid?</div></div><div class="tag">before the RFP</div></a>
+        <a class="row" href="#q6-dd1"><div class="n">6</div><div class="qcell"><div class="q">How does a policy spread before it hits the state?</div><div class="sub">Where do statewide rules actually start?</div></div><div class="tag">policy</div></a>
+        <a class="row" href="#q7-dd1"><div class="n">7</div><div class="qcell"><div class="q">What makes a signal worth paying for?</div><div class="sub">When is a public record actually worth money?</div></div><div class="tag">buyer-grade</div></a>
+        <a class="row" href="#q8-dd1"><div class="n">8</div><div class="qcell"><div class="q">So what do you want to ask it?</div><div class="sub">Bring me a town, a company, or a topic, and we run it live.</div></div><div class="tag">your turn</div></a>
+      </div>
+
+      <div class="room-prompt" style="margin-top:28px;"><span class="arr">&#8618;</span>Which of these is yours? Say so and we will go straight there.</div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 45s · this slide sets the posture for the whole hour</h4>
+    <ul class="tp"><li>Before I dive in, here's the whole map</li><li>These are the questions buyers actually bring me, and they're the spine of the talk</li><li>Two things</li><li>One, if one of these is the question you actually care about, tell me and we go straight there</li><li>Two, stop me anywhere, we can camp on any single one</li><li>A mixed room cares about different ones, towers, policy, cost, so let's spend the time where it's useful to you</li><li>Which one is yours?</li></ul>
+    <p class="guard">Interactive contract, set once. "Question N of 8" on each slide maps back here so the room can call a jump. Default order top to bottom unless redirected.</p>
+  </div>
+</div>
+
+<!-- ====== 03 · Q1 · THE COST ====== -->
+<div class="frame">
+  <div class="frame-label">03 · Q1 · the cost · <span class="refresh">⟳ refresh production set from VPS before 6/5</span></div>
+  <div class="slide-wrap">
+  <div class="slide" id="q1">
+    <div class="page-no">03 / 12</div>
+    <div class="slide-nav"><a href="#q1-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 1 of 8 <span class="topic">&middot; the cost</span></div>
+      <div class="q-hero" style="font-size:80px; max-width:22ch;">&ldquo;What does it cost to read <em>every town hall</em> in America?&rdquo;</div>
+      <div class="room-prompt"><span class="arr">&#8618;</span>What do you spend on data today, and what do you actually get for it?</div>
+
+      <div class="support">
+        <div class="support-label">The answer, and what it buys</div>
+        <div style="display:flex; align-items:center; gap:52px;">
+          <div style="display:flex; align-items:baseline; gap:14px; flex-shrink:0;">
+            <div class="hero-num signal" style="font-size:128px;">$391</div>
+            <div class="hero-num" style="font-size:40px; color:var(--ink-40);">/month</div>
+          </div>
+          <div class="body-sm" style="font-size:23px; max-width:48ch;">
+            Solo, no team, no outside capital. That covers <span class="mono-fig">3,355 municipalities</span> across all 50 states, over <span class="mono-fig">634,000 documents</span>, and over <span class="mono-fig">191,000 classified signals</span>. About twelve cents per municipality per month, less than a stamp. Annual cost, roughly one Bloomberg terminal seat.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 3 min · this room evaluates the founder existence proof first</h4>
+    <ul class="tp"><li>Lead with cost, the corpus follows as proof of what it buys</li><li>About three hundred ninety-one dollars a month</li><li>Solo, no team, no outside capital</li><li>That covers roughly thirty-three hundred municipalities across all fifty states, over six hundred thousand documents, over a hundred ninety thousand classified signals</li><li>The amplifier for this room, about twelve cents per municipality per month, less than a stamp, annual cost roughly one Bloomberg seat</li><li>Then the pivot, let me show you what comes out the other side</li></ul>
+    <p class="guard">Figures refreshed from VPS 2026-05-30: 3,355 munis / 634,052 docs / 191,715 signals. Slide rounds DOWN ("over 634,000", "over 191,000"), never up. Re-check the morning of 6/5, the corpus grows daily; bump if materially higher.</p>
+  </div>
+</div>
+
+<!-- ====== 04 · Q2 · THE THESIS ====== -->
+<div class="frame">
+  <div class="frame-label">04 · Q2 · the thesis</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q2">
+    <div class="page-no">04 / 12</div>
+    <div class="slide-nav"><a href="#q2-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 2 of 8 <span class="topic">&middot; the thesis</span></div>
+      <div class="q-hero" style="font-size:70px; max-width:25ch;">&ldquo;Who is reading the <em>30,000 governments</em> under the federal layer?&rdquo;</div>
+      <div class="room-prompt"><span class="arr">&#8618;</span>Does anyone here have a town you are watching right now, for any reason?</div>
+
+      <div class="support">
+        <div class="support-label">The answer: nobody was. So I am.</div>
+        <div class="body-sm" style="max-width:90ch;">
+          They spend a trillion dollars a year, own most of the country's critical infrastructure, and almost everything they do lands in a planning-board minutes file or an accounts-payable export. The records were public the whole time, just scattered across thousands of town websites in incompatible formats, and most never show up in a search engine. <span style="color:var(--ink); font-weight:600;">The signal lands weeks to months before the event a buyer currently reacts to.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min</h4>
+    <ul class="tp"><li>The thesis as a question</li><li>The federal layer is well-instrumented</li><li>Underneath it, thirty thousand local governments spend a trillion dollars a year, own most of the critical infrastructure, and almost everything they do shows up in a minutes file or an AP export nobody's reading</li><li>I'm reading it</li><li>The key property is timing, the signal lands weeks to months before the event a buyer currently reacts to</li><li>Running gag, lightly, none of this is hidden, it was on the town website the whole time, just scattered and un-searchable</li></ul>
+  </div>
+</div>
+
+<!-- ====== 05 · Q3 · THE SUBSTRATE (periodic table) ====== -->
+<div class="frame">
+  <div class="frame-label">05 · Q3 · the substrate · periodic table · <span class="refresh">⟳ refresh abundance column before 6/5</span></div>
+  <div class="slide-wrap">
+  <div class="slide" id="q3">
+    <div class="page-no">05 / 12</div>
+    <div class="slide-nav"><a href="#q3-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body" style="inset:100px 80px 76px 80px;">
+      <div class="q-nav">Question 3 of 8 <span class="topic">&middot; the substrate</span></div>
+      <div class="q-hero" style="font-size:44px; max-width:none; margin-bottom:10px;">&ldquo;What kinds of records are <em>even in there?</em>&rdquo;</div>
+      <div class="room-prompt" style="margin-top:14px; margin-bottom:18px; font-size:26px;"><span class="arr">&#8618;</span>Anyone surprised by what is actually public? What would you pull first?</div>
+
+      <div class="pt-grid">
+        <div class="el g"><span class="st">C</span><div class="sym">Ag</div><div class="nm">Agenda</div><div class="vol">107,605</div></div>
+        <div class="el g"><span class="st">C</span><div class="sym">Mn</div><div class="nm">Minutes</div><div class="vol">104,031</div></div>
+        <div class="el o"><span class="st">C</span><div class="sym">Re</div><div class="nm">Report</div><div class="vol">48,055</div></div>
+        <div class="el p"><span class="st">E</span><div class="sym">Pa</div><div class="nm">Parcel record</div><div class="vol">47,679</div></div>
+        <div class="el g"><span class="st">C</span><div class="sym">Ld</div><div class="nm">Legislative doc</div><div class="vol">29,553</div></div>
+        <div class="el o"><span class="st">C</span><div class="sym">At</div><div class="nm">Attachment</div><div class="vol">17,191</div></div>
+
+        <div class="el g"><span class="st">C</span><div class="sym">Or</div><div class="nm">Ordinance</div><div class="vol">16,563</div></div>
+        <div class="el p"><span class="st">E</span><div class="sym">Tw</div><div class="nm">Tower location</div><div class="vol">15,075</div></div>
+        <div class="el f"><span class="st">E</span><div class="sym">Cr</div><div class="nm">Check register</div><div class="vol">13,421</div></div>
+        <div class="el g"><span class="st">C</span><div class="sym">No</div><div class="nm">Notice</div><div class="vol">12,110</div></div>
+        <div class="el p"><span class="st">E</span><div class="sym">Fa</div><div class="nm">FAA tower filing</div><div class="vol">6,276</div></div>
+        <div class="el f"><span class="st">C</span><div class="sym">Bo</div><div class="nm">Bond statement</div><div class="vol">4,502</div></div>
+
+        <div class="el i"><span class="st">C</span><div class="sym">Fs</div><div class="nm">Fed solicitation</div><div class="vol">3,025</div></div>
+        <div class="el f"><span class="st">C</span><div class="sym">Au</div><div class="nm">Audit report</div><div class="vol">1,668</div></div>
+        <div class="el o"><span class="st">C</span><div class="sym">Rf</div><div class="nm">RFP</div><div class="vol">1,283</div></div>
+        <div class="el o"><span class="st">C</span><div class="sym">Pm</div><div class="nm">Permit</div><div class="vol">913</div></div>
+        <div class="el g"><span class="st">C</span><div class="sym">El</div><div class="nm">Election result</div><div class="vol">706</div></div>
+        <div class="el f"><span class="st">C</span><div class="sym">Ci</div><div class="nm">Capital plan</div><div class="vol">567</div></div>
+
+        <div class="el f"><span class="st">C</span><div class="sym">Pn</div><div class="nm">Pension / OPEB</div><div class="vol">215</div></div>
+        <div class="el p"><span class="st">C</span><div class="sym">Mp</div><div class="nm">Master plan</div><div class="vol">151</div></div>
+        <div class="el l"><span class="st">C</span><div class="sym">St</div><div class="nm">Settlement</div><div class="vol">151</div></div>
+        <div class="el l"><span class="st">C</span><div class="sym">Cb</div><div class="nm">Bargaining agr.</div><div class="vol">133</div></div>
+        <div class="el l"><span class="st">C</span><div class="sym">Ti</div><div class="nm">TIF / PILOT</div><div class="vol">102</div></div>
+        <div class="el n"><span class="st">C</span><div class="sym">Pf</div><div class="nm">PFAS</div><div class="vol">43</div></div>
+
+        <div class="el theo p"><span class="st">T</span><div class="sym">Vd</div><div class="nm">Vendor contract</div><div class="vol">FOIA only</div></div>
+        <div class="el theo i"><span class="st">T</span><div class="sym">Co</div><div class="nm">County deeds</div><div class="vol">not crawled</div></div>
+        <div class="el theo i"><span class="st">T</span><div class="sym">Sd</div><div class="nm">Special district</div><div class="vol">not crawled</div></div>
+        <div class="el theo f"><span class="st">T</span><div class="sym">Iv</div><div class="nm">Investment policy</div><div class="vol">not crawled</div></div>
+        <div class="el theo n"><span class="st">T</span><div class="sym">Em</div><div class="nm">EMS run sheet</div><div class="vol">not crawled</div></div>
+        <div class="el theo o"><span class="st">T</span><div class="sym">Hd</div><div class="nm">Historic desig.</div><div class="vol">not crawled</div></div>
+      </div>
+
+      <div class="pt-legend">
+        <span class="k"><span class="sw" style="background:var(--fam-g)"></span>Governance</span>
+        <span class="k"><span class="sw" style="background:var(--fam-f)"></span>Financial</span>
+        <span class="k"><span class="sw" style="background:var(--fam-o)"></span>Operational</span>
+        <span class="k"><span class="sw" style="background:var(--fam-p)"></span>Property</span>
+        <span class="k"><span class="sw" style="background:var(--fam-i)"></span>Intergovernmental</span>
+        <span class="k"><span class="sw" style="background:var(--fam-n)"></span>Environmental</span>
+        <span class="k"><span class="sw" style="background:var(--fam-l)"></span>Legal</span>
+        <span class="k" style="margin-left:auto;"><span class="mono" style="color:var(--ink);">E</span>&nbsp;extracted &nbsp;&middot;&nbsp; <span class="mono" style="color:var(--ink);">C</span>&nbsp;classified &nbsp;&middot;&nbsp; <span class="mono" style="color:var(--ink);">T</span>&nbsp;not yet crawled</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min · the one slide that explains the substrate · "lands really really well"</h4>
+    <ul class="tp"><li>This is the map I work from, municipal records as a periodic table</li><li>Every kind of record is an element, grouped into families, governance, financial, property, operational</li><li>Sorted by abundance, so the number tells you where the mass actually is, agendas and minutes at the top, a hundred-plus thousand each</li><li>Each element has an extraction status, E means I have a parser and structured output, C means it's classified and queryable, T means I know towns produce it but haven't crawled it yet</li><li>The metaphor isn't decorative, it's the working map, and promotion means moving an element toward extracted</li></ul>
+    <p class="guard">REFRESH abundance: ssh muni-vps sqlite3 ... GROUP BY doc_type. Volumes are the 2026-05-15 snapshot. Don't claim a parser where status is C, that's the honesty point.</p>
+  </div>
+</div>
+
+<!-- ====== 06 · Q4 · TOWERS (Amherst) ====== -->
+<div class="frame">
+  <div class="frame-label">06 · Q4 · towers · Amherst NH · (live: q-tower-lease.html)</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q4">
+    <div class="page-no">06 / 12</div>
+    <div class="slide-nav"><a href="#q4-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 4 of 8 <span class="topic">&middot; towers</span></div>
+      <div class="q-hero" style="font-size:54px; max-width:34ch;">&ldquo;How early can I see a tower lease deal coming in a region I cover?&rdquo;</div>
+      <div class="room-prompt" style="margin-top:18px; font-size:27px;"><span class="arr">&#8618;</span>Anyone in real estate or infrastructure ever find out about a deal too late?</div>
+
+      <div class="support">
+        <div class="support-label">Amherst NH &middot; 32 months &middot; 17 signals &middot; one tower, with a 23-month head start &middot; no FCC registration, no FAA filing</div>
+        <svg viewBox="0 0 1720 250" style="width:100%; display:block;" font-family="DM Sans">
+          <defs><linearGradient id="winFill" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E8512D" stop-opacity="0.08"/><stop offset="1" stop-color="#E8512D" stop-opacity="0.18"/></linearGradient></defs>
+          <g stroke="#0C0C0C" stroke-opacity="0.07" stroke-dasharray="2 5">
+            <line x1="40" y1="170" x2="1680" y2="170"/><line x1="40" y1="134" x2="1680" y2="134"/><line x1="40" y1="98" x2="1680" y2="98"/>
+          </g>
+          <g font-family="IBM Plex Mono" font-size="10" fill="rgba(12,12,12,0.5)" letter-spacing="1">
+            <text x="34" y="207" text-anchor="end">0</text><text x="34" y="172" text-anchor="end">0.33</text><text x="34" y="136" text-anchor="end">0.66</text><text x="34" y="100" text-anchor="end">1.00</text>
+          </g>
+          <rect x="410" y="50" width="1150" height="154" fill="url(#winFill)"/>
+          <text x="985" y="44" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#E8512D" letter-spacing="1.4">23-MONTH WINDOW &middot; VISIBLE TO ANYONE WATCHING MINUTES</text>
+          <line x1="40" y1="204" x2="1680" y2="204" stroke="#0C0C0C" stroke-opacity="0.28" stroke-width="1"/>
+          <g font-family="IBM Plex Mono" font-size="12" fill="rgba(12,12,12,0.55)" letter-spacing="1.2">
+            <line x1="60" y1="200" x2="60" y2="208" stroke="#0C0C0C" stroke-opacity="0.35"/><text x="60" y="228">2023</text>
+            <line x1="360" y1="200" x2="360" y2="208" stroke="#0C0C0C" stroke-opacity="0.35"/><text x="360" y="228">Jan 2024</text>
+            <line x1="660" y1="200" x2="660" y2="208" stroke="#0C0C0C" stroke-opacity="0.35"/><text x="660" y="228">Jul 2024</text>
+            <line x1="960" y1="200" x2="960" y2="208" stroke="#0C0C0C" stroke-opacity="0.35"/><text x="960" y="228">Jan 2025</text>
+            <line x1="1260" y1="200" x2="1260" y2="208" stroke="#0C0C0C" stroke-opacity="0.35"/><text x="1260" y="228">Jul 2025</text>
+            <line x1="1560" y1="200" x2="1560" y2="208" stroke="#0C0C0C" stroke-opacity="0.35"/><text x="1560" y="228">Jan 2026</text>
+          </g>
+          <g>
+            <line x1="60" y1="204" x2="60" y2="188" stroke="#BFA178" stroke-width="4"/><circle cx="60" cy="188" r="5" fill="#BFA178"/>
+            <line x1="117" y1="204" x2="117" y2="176" stroke="#7B9E89" stroke-width="4"/><circle cx="117" cy="176" r="4" fill="#7B9E89"/>
+            <line x1="210" y1="204" x2="210" y2="176" stroke="#7B9E89" stroke-width="4"/><circle cx="210" cy="176" r="4" fill="#7B9E89"/>
+            <line x1="410" y1="204" x2="410" y2="164" stroke="#4E6E81" stroke-width="4"/><circle cx="410" cy="164" r="4" fill="#4E6E81"/>
+            <line x1="510" y1="204" x2="510" y2="164" stroke="#4E6E81" stroke-width="4"/><circle cx="510" cy="164" r="4" fill="#4E6E81"/>
+            <line x1="710" y1="204" x2="710" y2="170" stroke="#4E6E81" stroke-width="4"/><circle cx="710" cy="170" r="4" fill="#4E6E81"/>
+            <line x1="810" y1="204" x2="810" y2="132" stroke="#1B4332" stroke-width="5"/><circle cx="810" cy="132" r="5" fill="#1B4332"/>
+            <line x1="960" y1="204" x2="960" y2="170" stroke="#4E6E81" stroke-width="4"/><circle cx="960" cy="170" r="4" fill="#4E6E81"/>
+            <line x1="1410" y1="204" x2="1410" y2="148" stroke="#0C0C0C" stroke-opacity="0.55" stroke-width="4"/><circle cx="1410" cy="148" r="4" fill="#0C0C0C" fill-opacity="0.55"/>
+            <line x1="1542" y1="204" x2="1542" y2="112" stroke="#E8512D" stroke-width="5"/><circle cx="1542" cy="112" r="5" fill="#E8512D"/>
+            <line x1="1589" y1="204" x2="1589" y2="116" stroke="#E8512D" stroke-width="6"/><circle cx="1589" cy="116" r="6" fill="#E8512D"/>
+            <line x1="1660" y1="204" x2="1660" y2="98" stroke="#E8512D" stroke-width="6"/><circle cx="1660" cy="98" r="7" fill="#E8512D"/>
+          </g>
+          <polyline points="60,188 117,176 210,176 410,164 510,164 710,170 810,132 960,170 1410,148 1542,112 1589,116 1660,98" fill="none" stroke="#E8512D" stroke-opacity="0.32" stroke-width="1.5"/>
+          <g>
+            <rect x="76" y="74" width="300" height="42" fill="#F7F4F0" stroke="#0C0C0C" stroke-opacity="0.2"/>
+            <text x="88" y="91" font-family="IBM Plex Mono" font-size="12" fill="#E8512D" letter-spacing="1.4">START &middot; JUL 24, 2023</text>
+            <text x="88" y="108" font-family="DM Sans" font-size="14" fill="#0C0C0C">Citizen raises cell coverage</text>
+          </g>
+          <g>
+            <rect x="1340" y="64" width="340" height="46" fill="#E8512D"/>
+            <text x="1356" y="83" font-family="IBM Plex Mono" font-size="12" fill="#F7F4F0" letter-spacing="1.4">END &middot; MAR 2026 &middot; CONF 1.00</text>
+            <text x="1356" y="101" font-family="DM Sans" font-size="14" fill="#F7F4F0">AMT 30-yr ground lease &middot; 5-0-0</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 5 min · demonstrate, don't claim · click into q-tower-lease.html live</h4>
+    <ul class="tp"><li>First buyer question, how early can I see a tower deal coming</li><li>Amherst, New Hampshire, population twelve thousand</li><li>July 2023, a resident raises cell coverage at a select-board meeting</li><li>Over thirty-two months the town works through seventeen detectable signals, ending in a 5-0-0 vote this January approving a thirty-year ground lease with American Tower</li><li>The surprise, this tower has no FCC registration, no FAA filing, no federal permit</li><li>The only record is in the minutes of a town of twelve thousand</li><li>There was a twenty-three month window where this was visible to anyone watching town minutes</li><li>I watch town minutes</li><li>Then click into the live gallery card and show the actual source</li></ul>
+    <p class="guard">Honest scope on the demo, "let's see how the system handles this." If a live query stalls, narrate and fall back to the gallery screenshot.</p>
+  </div>
+</div>
+
+<!-- ====== 07 · Q5 · BEFORE THE RFP (Biddeford · replaces DJI) ====== -->
+<div class="frame">
+  <div class="frame-label">07 · Q5 · before the RFP · Biddeford ME (ecosystem-relevant; replaced DJI/NatSec)</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q5">
+    <div class="page-no">07 / 12</div>
+    <div class="slide-nav"><a href="#q5-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 5 of 8 <span class="topic">&middot; before the RFP</span></div>
+      <div class="q-hero" style="font-size:60px; max-width:30ch;">&ldquo;Can I see the opportunity <em>before the RFP posts?</em>&rdquo;</div>
+      <div class="room-prompt" style="margin-top:16px; font-size:27px;"><span class="arr">&#8618;</span>Ever lose a bid because you heard about the RFP the day it dropped?</div>
+
+      <div class="support">
+        <div class="support-label">Biddeford, ME &middot; a joint capital-projects meeting, weeks before any RFP exists</div>
+        <div style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:52px; align-items:start;">
+          <div>
+            <div class="signal-callout">
+              <div class="meta">Signal &middot; pre-RFP capital review</div>
+              <div class="detail">A joint Capital Projects and Wastewater meeting. The agenda lists a UNE utility-expansion proposal and a five-year capital-improvement review. No RFP exists yet.</div>
+              <div class="source">Biddeford, ME &middot; Capital Projects / Operations Committee &middot; 2026-04-08</div>
+            </div>
+            <div class="body-sm" style="margin-top:22px; font-size:22px; max-width:46ch;">
+              The document is public. The ingestion is the work. Three engineering firms and two environmental labs would pay to know this line before the RFP posts.
+            </div>
+          </div>
+          <div style="position:relative;">
+            <div style="position:relative; background:var(--paper-2); padding:14px; box-shadow:0 8px 24px rgba(12,12,12,0.18), 0 1px 2px rgba(12,12,12,0.12); transform:rotate(-1.2deg); transform-origin:top left;">
+              <img src="assets/biddeford-2026-04-08-agenda.png" alt="City of Biddeford Capital Projects / Operations Committee agenda, April 8 2026, listing UNE utility expansion and 5-year CIP review" style="display:block; width:100%; height:auto; border:1px solid var(--ink-12);">
+              <div aria-hidden="true" style="position:absolute; left:14%; top:43%; width:62%; height:3.2%; background:var(--signal); opacity:0.32; mix-blend-mode:multiply; pointer-events:none;"></div>
+              <div aria-hidden="true" style="position:absolute; left:25%; top:71%; width:18%; height:3.2%; background:var(--signal); opacity:0.32; mix-blend-mode:multiply; pointer-events:none;"></div>
+            </div>
+            <div class="mono" style="font-size:11px; letter-spacing:0.06em; color:var(--ink-40); margin-top:10px;">biddefordme.api.civicclerk.com &middot; fileId=8289</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 4 min · the Maine-local, business-relevant signal · demonstrate don't claim</h4>
+    <ul class="tp"><li>Second buyer question, can I see the opportunity before the RFP</li><li>This is a real document from a few weeks ago in Biddeford, Maine, a joint meeting of the Capital Projects and Wastewater committees</li><li>Two lines on the agenda, UNE proposing to extend utilities, and a five-year capital-improvement review</li><li>Neither one has an RFP yet, neither one has shown up in any commercial database, neither one has been in any newspaper</li><li>The next move for an engineering firm or an environmental lab watching this is to call the city manager this week, before the RFP gets written</li><li>The document is public, the ingestion is the work, and that head start is the product</li></ul>
+    <p class="guard">Replaced the DJI/San Miguel example (too NatSec for this room) with Biddeford pre-RFP, Maine-local + business-relevant. Asset: assets/biddeford-2026-04-08-agenda.png. DJI stays in the NENS deck.</p>
+  </div>
+</div>
+
+<!-- ====== 08 · Q6 · POLICY (contagion) ====== -->
+<div class="frame">
+  <div class="frame-label">08 · Q6 · policy contagion · (live: q-data-center-friction.html)</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q6">
+    <div class="page-no">08 / 12</div>
+    <div class="slide-nav"><a href="#q6-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 6 of 8 <span class="topic">&middot; policy</span></div>
+      <div class="q-hero" style="font-size:58px; max-width:30ch;">&ldquo;How does a policy spread <em>before it reaches the state?</em>&rdquo;</div>
+      <div class="room-prompt" style="margin-top:16px; font-size:27px;"><span class="arr">&#8618;</span>Anyone lived near a town that fought a data center, PFAS, or short-term rentals?</div>
+
+      <div class="support">
+        <div class="support-label">The corpus is a listening device for what becomes state policy, about two years out</div>
+        <svg viewBox="0 0 1700 230" style="width:100%; display:block;" font-family="DM Sans">
+          <g font-family="IBM Plex Mono" font-size="14" fill="rgba(12,12,12,0.55)" letter-spacing="1">
+            <text x="0" y="48">SMOKING BANS</text>
+            <text x="0" y="120">SHORT-TERM RENTALS</text>
+            <text x="0" y="192">DATA CENTERS</text>
+          </g>
+          <line x1="360" y1="42" x2="1480" y2="42" stroke="#0C0C0C" stroke-opacity="0.2" stroke-width="1"/>
+          <circle cx="430" cy="42" r="9" fill="#4E6E81"/><text x="430" y="26" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#4E6E81">muni &middot; 2002</text>
+          <circle cx="1180" cy="42" r="9" fill="#0C0C0C" fill-opacity="0.5"/><text x="1180" y="26" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#0C0C0C">state &middot; 2010</text>
+          <line x1="360" y1="114" x2="1480" y2="114" stroke="#0C0C0C" stroke-opacity="0.2" stroke-width="1"/>
+          <circle cx="900" cy="114" r="9" fill="#4E6E81"/><text x="900" y="98" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#4E6E81">muni &middot; 2017</text>
+          <circle cx="1060" cy="114" r="9" fill="#0C0C0C" fill-opacity="0.5"/><text x="1060" y="98" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#0C0C0C">state &middot; 2018</text>
+          <line x1="360" y1="186" x2="1480" y2="186" stroke="#0C0C0C" stroke-opacity="0.2" stroke-width="1"/>
+          <circle cx="1180" cy="186" r="10" fill="#E8512D"/><text x="1180" y="170" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#E8512D">muni &middot; ~2 yrs early</text>
+          <circle cx="1400" cy="186" r="9" fill="none" stroke="#0C0C0C" stroke-width="2" stroke-dasharray="3 3"/><text x="1400" y="170" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="rgba(12,12,12,0.5)">state &middot; the debate now</text>
+          <path d="M 1180 208 L 1400 208" stroke="#E8512D" stroke-width="1.5"/>
+          <path d="M 1180 202 L 1180 214 M 1400 202 L 1400 214" stroke="#E8512D" stroke-width="1.5"/>
+          <text x="1290" y="228" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" fill="#E8512D" letter-spacing="1.2">THE LEAD TIME I SELL</text>
+        </svg>
+        <div class="body-sm" style="font-size:23px; margin-top:16px; max-width:88ch;">
+          Maine's state-level data-center debate started about two years earlier in municipal planning boards. Same shape as Massachusetts smoking bans, 2002 to 2010. Same shape as short-term rentals, 2017 to 2018. Local first, state later.
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 3 min · click q-data-center-friction.html</h4>
+    <ul class="tp"><li>Third buyer question, how does a policy spread before it reaches the state</li><li>Maine's state-level data-center debate didn't start at the state, it started about two years earlier in municipal planning boards, moratoria, zoning fights, utility-load concerns, town by town</li><li>Same shape as Massachusetts smoking bans 2002 to 2010, same shape as short-term rentals 2017 to 2018, local first, state later</li><li>The corpus is a listening device for what becomes state policy roughly two years out, and for anyone with exposure, the lead time is the product</li><li>Data centers are especially live for this room, that's the AI-infrastructure story playing out in town planning boards right now</li></ul>
+    <p class="guard">Smoking-ban / STR years are illustrative-historical, the data-center "2 years early" is the live defensible claim. Don't over-precision the older dates.</p>
+  </div>
+</div>
+
+<!-- ====== 09 · Q7 · BUYER-GRADE ====== -->
+<div class="frame">
+  <div class="frame-label">09 · Q7 · what makes it buyer-grade</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7">
+    <div class="page-no">09 / 12</div>
+    <div class="slide-nav"><a href="#q7-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 7 of 8 <span class="topic">&middot; buyer-grade</span></div>
+      <div class="q-hero" style="font-size:78px; max-width:24ch;">&ldquo;What makes a signal <em>worth paying for?</em>&rdquo;</div>
+      <div class="room-prompt"><span class="arr">&#8618;</span>What would a signal need, for you to actually act on it?</div>
+
+      <div class="support">
+        <div class="support-label">Three properties. Same corpus, multiple revenue streams.</div>
+        <div class="framings">
+          <div>
+            <div class="framing-num">01 &middot; Provenance</div>
+            <div class="framing-title">Traces to source.</div>
+            <p class="framing-body">Every signal links to the exact document. Verified, labeled, or omitted. Nothing fabricated.</p>
+          </div>
+          <div>
+            <div class="framing-num">02 &middot; Coverage ratio</div>
+            <div class="framing-title">Sparsity is scope.</div>
+            <p class="framing-body">Every delivery shows denominator and numerator. A gap is the scope of the question, not embarrassment.</p>
+          </div>
+          <div>
+            <div class="framing-num">03 &middot; Precursor timing</div>
+            <div class="framing-title">Before it is a thing.</div>
+            <p class="framing-body">It lands weeks to months before the event the buyer reacts to today. You see the thing before it becomes a thing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 3 min · name the spine of the title</h4>
+    <ul class="tp"><li>So what makes a signal buyer-grade, three properties</li><li>One, provenance, every signal links back to the exact source document, verified or labeled or omitted, nothing fabricated</li><li>Two, coverage ratio is the product, every delivery shows the denominator and the numerator, a gap is scope, not embarrassment</li><li>Three, precursor timing, it lands weeks to months before the event the buyer currently reacts to</li><li>Who buys it, towers before listing, muni credit before a downgrade, alt-data before earnings, infrastructure before the RFP</li><li>Same corpus, multiple revenue streams</li></ul>
+    <p class="guard">No pricing volunteered. If asked, band only, "$3K to mid-five-figures monthly." No domain-expert claims, corpus plus shaping.</p>
+  </div>
+</div>
+
+<!-- ====== 10 · Q8 · YOUR TURN (live gallery) ====== -->
+<div class="frame">
+  <div class="frame-label">10 · Q8 · your turn · live gallery + Q&amp;A (the centerpiece)</div>
+  <div class="slide-wrap">
+  <div class="slide" id="q8">
+    <div class="page-no">10 / 12</div>
+    <div class="slide-nav"><a href="#q8-dd1">deep dive &#8600;</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Question 8 of 8 <span class="topic">&middot; your turn</span></div>
+      <div class="q-hero" style="font-size:86px; max-width:22ch;">&ldquo;So what do you <em>want to ask it?</em>&rdquo;</div>
+      <div class="room-prompt"><span class="arr">&#8618;</span>Bring me a town, a company, or a topic. Null answers are fine, they are scope, not failure.</div>
+
+      <div class="support">
+        <div class="support-label">Pick a category, let's see how the system handles it, live</div>
+        <div style="display:flex; flex-direction:column; gap:13px; max-width:88ch;">
+          <div class="body-sm" style="font-size:23px;"><span style="color:var(--signal); font-weight:600;">&rarr;</span>&nbsp; Lived near a town that voted on data centers, PFAS, or short-term rentals? I'll show you the signal the year before the vote.</div>
+          <div class="body-sm" style="font-size:23px;"><span style="color:var(--signal); font-weight:600;">&rarr;</span>&nbsp; Tracking a company's exposure across municipal records? Pick a ticker, I'll show you where it appears.</div>
+          <div class="body-sm" style="font-size:23px;"><span style="color:var(--signal); font-weight:600;">&rarr;</span>&nbsp; A town with assessor drama recently? I'll pull the parcel-level movers. Belfast ME, 17 years across 4,215 parcels.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · this is where the value lands · ~15-20 min</h4>
+    <ul class="tp"><li>This is the centerpiece, not the slides</li><li>Switch to the browser gallery</li><li>Each card has a worked example, the prompt a buyer would use, and the data behind it</li><li>Then open the floor, and if the room freezes, prime the pump, anyone live near a town that voted on data centers, PFAS, or short-term rentals, anyone tracking a company's exposure, pick a ticker</li><li>Honest scope framing throughout, "let's see how the system handles this." Every question is buyer signal, capture each one, who asked and whether the corpus could answer, the ones I can't answer are also signal</li></ul>
+    <p class="guard">If asked about coverage I don't have, name it, "concentrated in the Northeast, buyer-led expansion," then the path through it. AI-disruption objection, substrate commoditizes, the corpus / access / relationships / hard-to-index documents don't.</p>
+  </div>
+</div>
+
+<!-- ====== 11 · BRIDGE ====== -->
+<div class="frame">
+  <div class="frame-label">11 · Bridge to the 2:15 methodology talk</div>
+  <div class="slide-wrap">
+  <div class="slide">
+    <div class="page-no">11 / 12</div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">The question a careful buyer asks last</div>
+      <div class="q-hero" style="font-size:74px; max-width:24ch;">&ldquo;How do you know it is not <em>making any of this up?</em>&rdquo;</div>
+
+      <div class="support">
+        <div class="support-label">The answer is the whole 2:15 session</div>
+        <div class="body-sm" style="font-size:28px; color:var(--ink-80); max-width:62ch;">
+          Everything I just showed you is buyer-grade because the system refuses to ship a claim it cannot trace to a source. If you want to see how an AI builds a company without lying about what it built, that is the next session in this room.
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 20s bridge · so attendees of both get a through-line</h4>
+    <ul class="tp"><li>The question a careful buyer asks last, how do I know it's not making any of this up</li><li>That's the honest hinge, everything I just showed you is buyer-grade because the system refuses to ship a claim it can't trace to a source</li><li>If you want to see how an AI builds a company without lying about what it built, that's the 2:15 session, same room</li></ul>
+  </div>
+</div>
+
+<!-- ====== 12 · CLOSE (ink) ====== -->
+<div class="frame">
+  <div class="frame-label">12 · Close + asks</div>
+  <div class="slide-wrap">
+  <div class="slide ink">
+    <div aria-hidden="true" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end; padding-right:80px; pointer-events:none; font-family:var(--font-display); font-weight:500; font-style:italic; font-size:1100px; line-height:1; color:var(--paper); opacity:0.05; letter-spacing:-0.04em; user-select:none;">&alpha;</div>
+    <div style="position:absolute; left:100px; right:100px; top:150px; z-index:1;">
+      <div class="wordmark inv" style="font-size:30px;">municip<span>&alpha;</span>l</div>
+    </div>
+    <div style="position:absolute; left:100px; right:120px; top:300px; z-index:1;">
+      <div style="display:flex; gap:80px;">
+        <div style="max-width:32ch;">
+          <div class="mono" style="font-size:15px; letter-spacing:0.08em; color:var(--signal); text-transform:uppercase; margin-bottom:14px;">Ask one</div>
+          <div style="font-family:var(--font-display); font-size:38px; line-height:1.2; color:rgba(247,244,240,0.88);">If you look at the federal layer for a living and wonder what is underneath it, talk to me. I'll show you the layer.</div>
+        </div>
+        <div style="max-width:32ch;">
+          <div class="mono" style="font-size:15px; letter-spacing:0.08em; color:var(--signal); text-transform:uppercase; margin-bottom:14px;">Ask two</div>
+          <div style="font-family:var(--font-display); font-size:38px; line-height:1.2; color:rgba(247,244,240,0.88);">Know an operator or investor in towers, infrastructure, muni credit, or alt-data, or a Maine town that wants to be a model? Get me on their radar.</div>
+        </div>
+      </div>
+      <div style="margin-top:56px; font-family:var(--font-display); font-style:italic; font-size:34px; color:var(--signal);">The signal was in the record. I found it first.</div>
+    </div>
+    <div style="position:absolute; left:100px; right:100px; bottom:60px;">
+      <div style="height:1px; background:rgba(247,244,240,0.18); margin-bottom:24px;"></div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:14px; letter-spacing:0.10em; color:rgba(247,244,240,0.55); text-transform:uppercase;">
+        <div>Matt MacDonald &middot; matt@municipalalpha.com &middot; municipalalpha.com</div>
+        <div>12 / 12</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Speaker · 2 min close</h4>
+    <ul class="tp"><li>Two asks</li><li>One, if you look at the federal layer for a living and wonder what's underneath it, talk to me, I'll show you the layer</li><li>Two, if you know an operator or investor in towers, infrastructure, muni credit, or alt-data, or a Maine municipality that wants to be a model town, I want to be on their radar</li><li>I'll send anyone here the gallery URL</li><li>Thank you, and thank you Chris and Jim for the spot</li></ul>
+    <p class="guard">Post-event, same day, log every question + who asked + use-case read into the prospect DB, run Buyer Signal Follow-Through for buyer-adjacent contacts, thank Chris Torina.</p>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q1 · 1 of 3 · THE SPEND ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q1 · 1 of 3 · the spend · ⟳ refresh 6/5</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q1-dd1">
+    <div class="page-no">Deep dive &middot; Q1 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q1">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the cost</span> : capital efficiency</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;"><span style="color:var(--signal);">the spend</span> &rarr; the margin &rarr; the asymmetry</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:48px; line-height:1.05; color:var(--paper); max-width:28ch; margin-bottom:8px;">
+        Under $400 a month. <em style="font-style:italic; color:var(--signal);">The AI is most of it.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:70ch;">Where the money actually goes, every month:</div>
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:84ch;">
+        <div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;">
+          <div style="font-family:var(--font-display); font-size:26px; color:var(--paper);">The AI model calls <span style="color:var(--signal); font-size:18px; font-style:italic;">the biggest line by far</span></div>
+          <div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6);">classifying 600,000+ documents and answering buyer queries, Gemini for review, the rest for the bulk read.</div>
+        </div>
+        <div style="border-left:3px solid rgba(247,244,240,0.3); padding:6px 0 6px 22px;">
+          <div style="font-family:var(--font-display); font-size:26px; color:var(--paper);">One cloud server</div>
+          <div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6);">the entire pipeline, crawl through delivery, runs on a single commodity VPS.</div>
+        </div>
+        <div style="border-left:3px solid rgba(247,244,240,0.3); padding:6px 0 6px 22px;">
+          <div style="font-family:var(--font-display); font-size:26px; color:var(--paper);">Domain, email, tools &middot; records-request postage</div>
+          <div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6);">FOAA stamps when a town has to be asked for data it doesn't post. Everything here is rounding.</div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px;">The machine that reads every town hall in America costs less than a phone bill.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q1 · 1 of 3 · the spend</h4>
+    <ul class="tp"><li>If they want the cost broken down: under four hundred a month, all in, and the AI model calls are the biggest line by far</li><li>Classifying six hundred thousand documents plus answering buyer queries, Gemini for the review pass, a cheaper model for the bulk read</li><li>The whole pipeline runs on one commodity cloud server, then domain, email, tools, and records-request postage when a town has to be asked, all rounding</li><li>The line to land: the machine that reads every town hall in America costs less than a phone bill</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q1 · 2 of 3 · THE MARGIN ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q1 · 2 of 3 · the margin</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q1-dd2">
+    <div class="page-no">Deep dive &middot; Q1 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q1">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the cost</span> : capital efficiency</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 22px;">the spend &rarr; <span style="color:var(--signal);">the margin</span> &rarr; the asymmetry</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:48px; line-height:1.05; color:var(--paper); max-width:28ch; margin-bottom:30px;">
+        The cost is fixed. <em style="font-style:italic; color:var(--signal);">The coverage compounds.</em>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:22px; max-width:86ch;">
+        <div style="display:flex; gap:22px; align-items:baseline;"><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); width:16ch; flex-shrink:0;">runs regardless</div><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.25;">The pipeline crawls every night whether I have zero customers or thirty. A new customer adds almost nothing to the bill.</div></div>
+        <div style="display:flex; gap:22px; align-items:baseline;"><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); width:16ch; flex-shrink:0;">compounds</div><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.25;">Every town I onboard for one buyer is live for every future buyer in that region. The cost is paid once; the coverage is permanent.</div></div>
+        <div style="display:flex; gap:22px; align-items:baseline;"><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); width:16ch; flex-shrink:0;">85 to 97%</div><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.25;">Gross margin, because the corpus already exists. Each incremental customer is nearly pure margin.</div></div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px;">I'm not paying to serve customers. I'm paying to run the machine, and it runs whether anyone is watching or not.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q1 · 2 of 3 · the margin</h4>
+    <ul class="tp"><li>Why it's that cheap, and why it scales: the cost is fixed and the coverage compounds</li><li>The pipeline runs every night regardless of customer count, so a new customer adds almost nothing</li><li>Every town onboarded for one buyer is live for every future buyer in that region, the cost is paid once and the coverage is permanent, CAPEX that converts straight to OPEX</li><li>Eighty-five to ninety-seven percent gross margin because the corpus already exists</li><li>I'm not paying to serve customers, I'm paying to run the machine</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q1 · 3 of 3 · THE ASYMMETRY ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q1 · 3 of 3 · the asymmetry · ⟳ refresh prospect count 6/5</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q1-dd3">
+    <div class="page-no">Deep dive &middot; Q1 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q1">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the cost</span> : capital efficiency</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the spend &rarr; the margin &rarr; <span style="color:var(--signal);">the asymmetry</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:6px;">
+        It costs $391 to run. One subscription is priced at <em style="font-style:italic; color:var(--signal);">$3,000 a month.</em>
+      </div>
+      <div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:76ch;">What a buyer-grade signal is worth, by how they buy it:</div>
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(3,1fr); gap:30px;">
+        <div style="border-top:2px solid var(--signal); padding-top:14px;">
+          <div style="font-family:var(--font-mono); font-size:13px; color:var(--signal); letter-spacing:0.05em;">SUBSCRIPTION</div>
+          <div style="font-family:var(--font-mono); font-weight:500; font-size:30px; color:var(--paper); margin-top:8px;">$36&ndash;96K<span style="font-size:17px; color:rgba(247,244,240,0.5);">/yr</span></div>
+          <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.6); margin-top:6px;">engineering, infrastructure, PFAS monitoring &middot; $3&ndash;8K/mo</div>
+        </div>
+        <div style="border-top:2px solid var(--signal); padding-top:14px;">
+          <div style="font-family:var(--font-mono); font-size:13px; color:var(--signal); letter-spacing:0.05em;">LEAD GEN</div>
+          <div style="font-family:var(--font-mono); font-weight:500; font-size:30px; color:var(--paper); margin-top:8px;">$60&ndash;120K<span style="font-size:17px; color:rgba(247,244,240,0.5);">/yr</span></div>
+          <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.6); margin-top:6px;">towers, solar, siting &middot; retainer + $5&ndash;15K per closed deal</div>
+        </div>
+        <div style="border-top:2px solid var(--signal); padding-top:14px;">
+          <div style="font-family:var(--font-mono); font-size:13px; color:var(--signal); letter-spacing:0.05em;">LICENSING</div>
+          <div style="font-family:var(--font-mono); font-weight:500; font-size:30px; color:var(--paper); margin-top:8px;">$25&ndash;150K<span style="font-size:17px; color:rgba(247,244,240,0.5);">/yr</span></div>
+          <div class="body-sm" style="font-size:16px; color:rgba(247,244,240,0.6); margin-top:6px;">alt-data, muni credit, training corpus</div>
+        </div>
+      </div>
+      <div class="support" style="margin-top:auto;">
+        <div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:92ch;"><span style="color:var(--paper);">167 prospects tracked across these sectors today,</span> most surfaced by the corpus itself. Same corpus feeds every stream, and the cost doesn't move whether one closes or all of them do.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="notes">
+    <h4>Deep dive · Q1 · 3 of 3 · the asymmetry</h4>
+    <ul class="tp"><li>The capital-efficiency punchline: it costs about three hundred ninety-one a month to run, and a single subscription is priced at three thousand a month</li><li>What a buyer-grade signal is worth depends on how they buy it: subscription for engineering, infra, PFAS at thirty-six to ninety-six thousand a year; lead gen for towers, solar, siting at sixty to a hundred twenty thousand a year; licensing for alt-data and muni credit at twenty-five to a hundred fifty thousand a year</li><li>These are list ranges from the deal-economics model, not booked revenue, say so if asked</li><li>A hundred sixty-seven prospects tracked across these sectors right now, most surfaced by the corpus itself</li><li>Same corpus feeds every stream, the Echo Nest model, and the cost doesn't move whether one closes or all of them do</li></ul>
+  </div>
+</div>
+
+<!-- ====== DEEP DIVE · Q2 · 1 of 3 · THE WATCHED LAYER ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q2 · 1 of 3 · the watched layer</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2-dd1">
+    <div class="page-no">Deep dive &middot; Q2 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q2">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the thesis</span> : the layer underneath</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">the watched layer</span> &rarr; the layer under &rarr; who reads it</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">The federal layer is <em style="font-style:italic; color:var(--signal);">crowded with watchers.</em></div><div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:78ch;">Everyone is reading Washington:</div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Bloomberg terminals, EDGAR, lobbying disclosure, FedScoop, a thousand analysts.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">If a federal agency moves, the market knows within the hour.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Every federal filing is instrumented, indexed, and resold.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">It is the most-read layer of government in the world.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">That layer is saturated. The edge there was priced in years ago.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q2 · 1 of 3 · the watched layer</h4><ul class="tp"><li>The federal layer is the most-instrumented layer of government in the world</li><li>Bloomberg, EDGAR, lobbying disclosure, a thousand analysts, if an agency moves the market knows within the hour</li><li>That layer is saturated, the edge was priced in years ago</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q2 · 2 of 3 · THE LAYER UNDER ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q2 · 2 of 3 · the layer under</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2-dd2">
+    <div class="page-no">Deep dive &middot; Q2 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q2">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the thesis</span> : the layer underneath</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the watched layer &rarr; <span style="color:var(--signal);">the layer under</span> &rarr; who reads it</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Underneath it, <em style="font-style:italic; color:var(--signal);">30,000 governments</em> nobody instruments.</div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">They spend about $1 trillion a year and own most of the country's critical infrastructure.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">water, roads, the land towers sit on, the permits that gate every project.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Almost everything they do lands in a planning-board minutes file or an accounts-payable export.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">public the whole time, just scattered across thousands of sites in incompatible formats, and mostly invisible to a search engine.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">The records were never hidden. They were just unreadable at scale. That is the gap.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q2 · 2 of 3 · the layer under</h4><ul class="tp"><li>Thirty thousand local governments, about a trillion dollars a year, and they own most of the critical infrastructure</li><li>Almost everything they do lands in a minutes file or an AP export</li><li>Public the whole time, just scattered and un-searchable, that is the gap</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q2 · 3 of 3 · WHO READS IT ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q2 · 3 of 3 · who reads it</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q2-dd3">
+    <div class="page-no">Deep dive &middot; Q2 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q2">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the thesis</span> : the layer underneath</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the watched layer &rarr; the layer under &rarr; <span style="color:var(--signal);">who reads it</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Who is reading it, systematically? <em style="font-style:italic; color:var(--signal);">Almost no one.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Washington is watched. Your town is not. I am reading the town.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">634,000 documents, 3,355 municipalities, 50 states, one operator.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">And the timing is the whole point: the signal lands weeks to months before the event a buyer currently reacts to.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">you see the thing before it becomes a thing.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">The thesis in one line: the most-watched layer of government sits on top of the least-watched one, and the least-watched one is where things actually start.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q2 · 3 of 3 · who reads it</h4><ul class="tp"><li>Who reads the municipal layer systematically, almost no one</li><li>Washington is watched, your town is not, I'm reading the town</li><li>The timing is the point, the signal lands weeks to months before the event a buyer reacts to</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q3 · 1 of 3 · THE ELEMENTS ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q3 · 1 of 3 · the elements</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q3-dd1">
+    <div class="page-no">Deep dive &middot; Q3 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q3">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the substrate</span> : the periodic table</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">the elements</span> &rarr; the families &rarr; what they yield</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Public records, <em style="font-style:italic; color:var(--signal);">as atomic units.</em></div><div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:78ch;">A real count of what is in the corpus, the most abundant elements first:</div><div style="flex:1; display:flex; align-items:center;"><div style="display:grid; grid-template-columns:repeat(6,1fr); gap:14px; width:100%;"><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Ag</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Agendas</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">107,605</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Mn</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Minutes</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">104,031</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Re</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Reports</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">48,055</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Pa</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Parcel records</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">47,679</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Ld</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Legislative</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">29,553</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Or</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Ordinances</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">16,563</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Tw</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Tower locations</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">15,075</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Cr</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Check registers</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">13,421</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">No</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Notices</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">12,110</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Fa</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">FAA tower filings</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">6,276</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Bo</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Bond statements</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">4,502</div></div><div style="border:1px solid rgba(247,244,240,0.16); padding:12px 14px;"><div style="font-family:var(--font-mono); color:var(--signal); font-size:22px;">Fs</div><div style="font-family:var(--font-display); color:var(--paper); font-size:16px; margin-top:3px; line-height:1.1;">Fed solicitations</div><div style="font-family:var(--font-mono); font-size:13px; color:rgba(247,244,240,0.5); margin-top:5px;">3,025</div></div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Not a pile of PDFs. A structured substrate, every element typed, counted, and addressable.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q3 · 1 of 3 · the elements</h4><ul class="tp"><li>I treat municipal records as atomic units, a periodic table</li><li>Real counts, agendas a hundred seven thousand, minutes a hundred four thousand, reports forty-eight thousand, parcel records forty-seven thousand, on down through ordinances, tower locations, check registers, FAA filings, bond statements</li><li>Not a pile of PDFs, a structured substrate, every element typed and counted</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q3 · 2 of 3 · THE FAMILIES ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q3 · 2 of 3 · the families</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q3-dd2">
+    <div class="page-no">Deep dive &middot; Q3 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q3">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the substrate</span> : the periodic table</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the elements &rarr; <span style="color:var(--signal);">the families</span> &rarr; what they yield</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">They group into <em style="font-style:italic; color:var(--signal);">families.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Governance, financial, property, infrastructure, notices.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">agendas and minutes are governance; check registers and bond statements are financial; parcels and tower locations are property.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Each element carries an extraction status: classified, extracted, or still harvestable.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">the corpus knows what it has read and what it has not, and says so.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">The families are how a buyer navigates it: tell me your question, I tell you which elements answer it.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q3 · 2 of 3 · the families</h4><ul class="tp"><li>The elements group into families, governance, financial, property, infrastructure, notices</li><li>Each carries an extraction status, classified, extracted, or still harvestable, the corpus knows what it has read</li><li>Families are how a buyer navigates, tell me your question and I tell you which elements answer it</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q3 · 3 of 3 · WHAT THEY YIELD ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q3 · 3 of 3 · what they yield</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q3-dd3">
+    <div class="page-no">Deep dive &middot; Q3 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q3">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">the substrate</span> : the periodic table</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the elements &rarr; the families &rarr; <span style="color:var(--signal);">what they yield</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Each record type is a <em style="font-style:italic; color:var(--signal);">different signal.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Minutes &rarr; decisions, before they are announced.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Check registers and AP &rarr; vendor payments &rarr; public-company tickers.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Permits and parcels &rarr; activity and ownership. Bond statements &rarr; fiscal health.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Same substrate, many questions. The element you pull depends on what you are trying to see coming.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q3 · 3 of 3 · what they yield</h4><ul class="tp"><li>Each record type is a different signal</li><li>Minutes give you decisions before they're announced, check registers and AP give you vendor payments that map to public tickers, permits and parcels give activity and ownership, bond statements give fiscal health</li><li>Same substrate, many questions, the element you pull depends on what you're trying to see coming</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q4 · 1 of 3 · THE DEAL ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q4 · 1 of 3 · the deal</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q4-dd1">
+    <div class="page-no">Deep dive &middot; Q4 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q4">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">towers</span> : pre-listing timing</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">the deal</span> &rarr; the curve &rarr; buyer-grade</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">A 30-year tower lease, <em style="font-style:italic; color:var(--signal);">with no federal paper trail.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Amherst, New Hampshire, population about 12,000. July 2023, a resident raises cell coverage at a select-board meeting.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Over 32 months the town works through 17 detectable signals, ending this January in a 5-0-0 vote approving a 30-year ground lease with American Tower.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">No FCC registration. No FAA filing. No federal permit. The only record is in the minutes.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">CFIUS, the FCC, the FAA, none of them reach this. A town of 12,000's minutes file does.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q4 · 1 of 3 · the deal</h4><ul class="tp"><li>Amherst New Hampshire, population about twelve thousand</li><li>July 2023 a resident raises cell coverage, over thirty-two months the town works through seventeen detectable signals, ending this January in a five-nothing vote approving a thirty-year ground lease with American Tower</li><li>No FCC registration, no FAA filing, no federal permit, the only record is in the minutes</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q4 · 2 of 3 · THE CURVE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q4 · 2 of 3 · the curve</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q4-dd2">
+    <div class="page-no">Deep dive &middot; Q4 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q4">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">towers</span> : pre-listing timing</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the deal &rarr; <span style="color:var(--signal);">the curve</span> &rarr; buyer-grade</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Watch the <em style="font-style:italic; color:var(--signal);">confidence curve</em> over 32 months.</div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">The signal builds, dips during the design pivot, then resolves into the lease.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">a real chain has a shape, it is not one document, it is the accumulation.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">There was a 23-month window where this was visible to anyone reading the minutes.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">I was reading the minutes.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">The dip is the tell. A model that smoothed it would have lied; the curve shows the doubt, because the record did.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q4 · 2 of 3 · the curve</h4><ul class="tp"><li>Watch the confidence curve over thirty-two months, it builds, dips during the design pivot, then resolves into the lease</li><li>A twenty-three month window where it was visible to anyone reading the minutes</li><li>The dip is the tell, the curve shows the doubt because the record did</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q4 · 3 of 3 · BUYER-GRADE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q4 · 3 of 3 · buyer-grade</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q4-dd3">
+    <div class="page-no">Deep dive &middot; Q4 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q4">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">towers</span> : pre-listing timing</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the deal &rarr; the curve &rarr; <span style="color:var(--signal);">buyer-grade</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">A tower aggregator would pay to see this <em style="font-style:italic; color:var(--signal);">before the lease is signed.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Pre-listing timing is the whole edge: a lessor, an aggregator, a competitor, all currently find out when the deal is public.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">18 tower-sector prospects tracked today. The corpus surfaced the question; the minutes hold the answer.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">This is buyer-grade because it is specific, sourced, and early. The same shape exists in every region I cover.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q4 · 3 of 3 · buyer-grade</h4><ul class="tp"><li>A tower aggregator or lessor would pay to see this before the lease is signed, pre-listing timing is the edge</li><li>Eighteen tower-sector prospects tracked today</li><li>Buyer-grade because it's specific, sourced, and early, and the same shape exists in every region I cover</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q5 · 1 of 3 · THE PRECURSOR ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q5 · 1 of 3 · the precursor</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q5-dd1">
+    <div class="page-no">Deep dive &middot; Q5 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q5">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">before the RFP</span> : precursor timing</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">the precursor</span> &rarr; the example &rarr; the buyers</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">The project exists <em style="font-style:italic; color:var(--signal);">before the RFP does.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">It shows up first in a capital plan, a committee agenda, a budget line, weeks to months before anything goes out to bid.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">By the time the RFP posts, every competitor sees it at once. The edge is gone.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">the edge is the precursor, the conversation that precedes the solicitation.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">The RFP is the starting gun everyone hears. The capital meeting is the one almost no one is in the room for.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q5 · 1 of 3 · the precursor</h4><ul class="tp"><li>The project exists before the RFP does, it shows up first in a capital plan, a committee agenda, a budget line</li><li>By the time the RFP posts every competitor sees it at once, the edge is gone</li><li>The edge is the precursor, the meeting nobody's in the room for</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q5 · 2 of 3 · THE EXAMPLE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q5 · 2 of 3 · the example</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q5-dd2">
+    <div class="page-no">Deep dive &middot; Q5 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q5">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">before the RFP</span> : precursor timing</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the precursor &rarr; <span style="color:var(--signal);">the example</span> &rarr; the buyers</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Biddeford, Maine. A meeting, <em style="font-style:italic; color:var(--signal);">no RFP yet.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">A joint Capital Projects and Wastewater committee meeting, April 8, 2026.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">The agenda lists a UNE utility-expansion proposal and a five-year capital-improvement review. No RFP exists.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">The document is public. The ingestion is the work.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Weeks before any solicitation, the shape of the work is already on a public agenda.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q5 · 2 of 3 · the example</h4><ul class="tp"><li>Biddeford Maine, a joint Capital Projects and Wastewater meeting, April eighth</li><li>The agenda lists a UNE utility-expansion proposal and a five-year capital-improvement review, no RFP exists yet</li><li>The document is public, the ingestion is the work</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q5 · 3 of 3 · THE BUYERS ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q5 · 3 of 3 · the buyers</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q5-dd3">
+    <div class="page-no">Deep dive &middot; Q5 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q5">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">before the RFP</span> : precursor timing</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the precursor &rarr; the example &rarr; <span style="color:var(--signal);">the buyers</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Three engineering firms and two labs would pay <em style="font-style:italic; color:var(--signal);">for that line.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">An AEC firm, a geotech, an environmental lab, each bidding the eventual work, want the project before it is out to bid.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">52 infrastructure and 14 engineering-environmental prospects tracked today.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">precursor timing is the bid edge.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Same mechanism as the tower: see it in the record before it becomes a deal everyone is chasing.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q5 · 3 of 3 · the buyers</h4><ul class="tp"><li>Three engineering firms and two environmental labs would pay to know that line before the RFP posts</li><li>Fifty-two infrastructure and fourteen engineering-environmental prospects tracked today</li><li>Precursor timing is the bid edge, same mechanism as the tower</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q6 · 1 of 3 · THE SHAPE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q6 · 1 of 3 · the shape</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q6-dd1">
+    <div class="page-no">Deep dive &middot; Q6 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q6">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">policy</span> : regulatory contagion</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">the shape</span> &rarr; the precedents &rarr; the listening device</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Statewide rules <em style="font-style:italic; color:var(--signal);">do not start at the state.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">They start in town planning boards and select-board meetings, years earlier, one jurisdiction at a time.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">By the time it is a state bill, it has been litigated in fifty town halls already.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">the state is the lagging indicator, the towns are the leading one.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">If you only watch the statehouse, you are reading the box score, not the game.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q6 · 1 of 3 · the shape</h4><ul class="tp"><li>Statewide rules don't start at the state, they start in town planning boards years earlier</li><li>By the time it's a state bill it's been litigated in fifty town halls already</li><li>The state is the lagging indicator, the towns are the leading one</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q6 · 2 of 3 · THE PRECEDENTS ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q6 · 2 of 3 · the precedents</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q6-dd2">
+    <div class="page-no">Deep dive &middot; Q6 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q6">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">policy</span> : regulatory contagion</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the shape &rarr; <span style="color:var(--signal);">the precedents</span> &rarr; the listening device</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Same shape, <em style="font-style:italic; color:var(--signal);">every time.</em></div><div class="body-sm" style="color:rgba(247,244,240,0.6); max-width:78ch;">Municipal first, state second, with a measurable lead:</div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width:92ch;"><div style="display:grid; grid-template-columns:0.9fr 1.6fr 0.6fr; gap:24px; align-items:baseline; border-bottom:1px solid rgba(247,244,240,0.12); padding:14px 0;"><div style="font-family:var(--font-mono); font-size:15px; color:rgba(247,244,240,0.6); letter-spacing:0.04em;">SMOKING BANS</div><div style="font-family:var(--font-display); font-size:24px; color:var(--paper);">muni 2002 &rarr; <span style="color:rgba(247,244,240,0.55);">state 2010</span></div><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); text-align:right;">8 years</div></div><div style="display:grid; grid-template-columns:0.9fr 1.6fr 0.6fr; gap:24px; align-items:baseline; border-bottom:1px solid rgba(247,244,240,0.12); padding:14px 0;"><div style="font-family:var(--font-mono); font-size:15px; color:rgba(247,244,240,0.6); letter-spacing:0.04em;">SHORT-TERM RENTALS</div><div style="font-family:var(--font-display); font-size:24px; color:var(--paper);">muni 2017 &rarr; <span style="color:rgba(247,244,240,0.55);">state 2018</span></div><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); text-align:right;">~1 year</div></div><div style="display:grid; grid-template-columns:0.9fr 1.6fr 0.6fr; gap:24px; align-items:baseline; border-bottom:1px solid rgba(247,244,240,0.12); padding:14px 0;"><div style="font-family:var(--font-mono); font-size:15px; color:rgba(247,244,240,0.6); letter-spacing:0.04em;">DATA CENTERS</div><div style="font-family:var(--font-display); font-size:24px; color:var(--paper);">muni now &rarr; <span style="color:rgba(247,244,240,0.55);">state ~2 yrs out</span></div><div style="font-family:var(--font-mono); font-size:15px; color:var(--signal); text-align:right;">live</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Data centers are mid-contagion right now, in town planning boards about two years ahead of the state debate.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q6 · 2 of 3 · the precedents</h4><ul class="tp"><li>Same shape every time, municipal first, state second</li><li>Smoking bans, town 2002 to state 2010; short-term rentals, town 2017 to state 2018; data centers, in town planning boards right now, about two years ahead of the state</li><li>Measurable lead, every time</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q6 · 3 of 3 · THE LISTENING DEVICE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q6 · 3 of 3 · the listening device</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q6-dd3">
+    <div class="page-no">Deep dive &middot; Q6 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q6">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">policy</span> : regulatory contagion</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the shape &rarr; the precedents &rarr; <span style="color:var(--signal);">the listening device</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">The corpus is a <em style="font-style:italic; color:var(--signal);">listening device</em> for state policy, two years out.</div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Anyone with exposure to the policy, an operator, an investor, an advocacy group, pays for the lead time.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Pick a policy and I show you which towns are debating it right now, before it has a name at the state level.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">This is buyer-grade because the timing is impossible to get any other way, the signal only exists in the town record.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q6 · 3 of 3 · the listening device</h4><ul class="tp"><li>The corpus is a listening device for what becomes state policy, about two years out</li><li>Anyone with exposure to the policy pays for the lead time</li><li>Pick a policy and I show you which towns are debating it now, before it has a name at the state level</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q7 · 1 of 3 · PROVENANCE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q7 · 1 of 3 · provenance</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7-dd1">
+    <div class="page-no">Deep dive &middot; Q7 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q7">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">buyer-grade</span> : the three properties</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">provenance</span> &rarr; coverage ratio &rarr; precursor timing</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Every signal <em style="font-style:italic; color:var(--signal);">traces to source.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Each one links to the exact document it came from. Verified, labeled, or omitted. Nothing fabricated.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">This is the same discipline as the 2:15 talk: the system refuses to ship a claim it cannot trace.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">provenance is what makes a number safe to act on.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">A signal you cannot trace is a rumor. Provenance is the difference between intelligence and a guess.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q7 · 1 of 3 · provenance</h4><ul class="tp"><li>Property one, provenance, every signal links to the exact source document, verified, labeled, or omitted</li><li>Same discipline as the 2:15 talk, the system refuses to ship a claim it can't trace</li><li>A signal you can't trace is a rumor</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q7 · 2 of 3 · COVERAGE RATIO ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q7 · 2 of 3 · coverage ratio</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7-dd2">
+    <div class="page-no">Deep dive &middot; Q7 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q7">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">buyer-grade</span> : the three properties</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">provenance &rarr; <span style="color:var(--signal);">coverage ratio</span> &rarr; precursor timing</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;"><em style="font-style:italic; color:var(--signal);">Sparsity is scope,</em> not embarrassment.</div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Every delivery shows the denominator and the numerator. 41 hits across 10 states from a 51-entity screen, stated plainly.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">A gap is the scope of the question, not a failure. On stage I say let's see how the system handles this, not watch this work.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Honesty about coverage is what makes the hits credible. If I hid the gaps, you could not trust the hits.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q7 · 2 of 3 · coverage ratio</h4><ul class="tp"><li>Property two, coverage ratio is the product, every delivery shows denominator and numerator</li><li>A gap is scope, not embarrassment, let's see how the system handles this, not watch this work</li><li>Honesty about coverage is what makes the hits credible</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q7 · 3 of 3 · PRECURSOR TIMING ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q7 · 3 of 3 · precursor timing</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q7-dd3">
+    <div class="page-no">Deep dive &middot; Q7 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q7">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">buyer-grade</span> : the three properties</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">provenance &rarr; coverage ratio &rarr; <span style="color:var(--signal);">precursor timing</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">You see the thing <em style="font-style:italic; color:var(--signal);">before it becomes a thing.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">The signal lands weeks to months before the event the buyer currently reacts to. The tower before the lease, the project before the RFP, the policy before the state.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Provenance plus coverage ratio plus precursor timing. That is the whole definition of buyer-grade.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Sourced, honest about its gaps, and early. Take any one away and it stops being worth paying for.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q7 · 3 of 3 · precursor timing</h4><ul class="tp"><li>Property three, precursor timing, the signal lands before the event the buyer currently reacts to</li><li>The tower before the lease, the project before the RFP, the policy before the state</li><li>Provenance plus coverage ratio plus precursor timing is the whole definition of buyer-grade</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q8 · 1 of 3 · THE GALLERY ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q8 · 1 of 3 · the gallery</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8-dd1">
+    <div class="page-no">Deep dive &middot; Q8 &middot; 1/3</div>
+    <div class="slide-nav"><a href="#q8">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">your turn</span> : the live gallery</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;"><span style="color:var(--signal);">the gallery</span> &rarr; bring anything &rarr; null is scope</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">The answer is <em style="font-style:italic; color:var(--signal);">live, in the browser.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Each card is a worked example: the question, the prompt a buyer would actually use, and the data behind the answer.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Not slides about the system. The system, running, on a real corpus.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">This is the centerpiece. Everything before it was setup for the part where the room drives.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q8 · 1 of 3 · the gallery</h4><ul class="tp"><li>The answer is live, in the browser, the question gallery</li><li>Each card is a worked example, the question, the prompt a buyer would use, and the data behind it</li><li>Not slides about the system, the system running on a real corpus</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q8 · 2 of 3 · BRING ANYTHING ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q8 · 2 of 3 · bring anything</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8-dd2">
+    <div class="page-no">Deep dive &middot; Q8 &middot; 2/3</div>
+    <div class="slide-nav"><a href="#q8">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">your turn</span> : the live gallery</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the gallery &rarr; <span style="color:var(--signal);">bring anything</span> &rarr; null is scope</div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">Bring a town, a company, or a <em style="font-style:italic; color:var(--signal);">topic.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Pick a ticker and I show you where that company appears across municipal records.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Pick a policy, PFAS, data centers, short-term rentals, and I show you which towns are debating it.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Pick a town and I show you what is moving in it right now.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">The question you bring is the demo. It is also the most honest test, because I do not know what you will ask.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q8 · 2 of 3 · bring anything</h4><ul class="tp"><li>Bring a town, a company, or a topic</li><li>Pick a ticker and see where it appears, pick a policy and see which towns are debating it, pick a town and see what's moving</li><li>The question you bring is the demo, and the most honest test because I don't know what you'll ask</li></ul></div>
+</div>
+
+<!-- ====== DEEP DIVE · Q8 · 3 of 3 · NULL IS SCOPE ====== -->
+<div class="frame">
+  <div class="frame-label">Deep dive · Q8 · 3 of 3 · null is scope</div>
+  <div class="slide-wrap">
+  <div class="slide ink" id="q8-dd3">
+    <div class="page-no">Deep dive &middot; Q8 &middot; 3/3</div>
+    <div class="slide-nav"><a href="#q8">&#8593; the question</a><a href="#menu">&#8801; all questions</a></div>
+    <div class="top-mark"><a href="https://municipalalpha.com" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;"><span class="wordmark inv" style="font-size:22px;">municip<span>&alpha;</span>l</span></a></div>
+    <div class="slide-body">
+      <div class="q-nav">Deeper &middot; <span style="font-style:italic;">your turn</span> : the live gallery</div>
+      <div style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.08em; color:rgba(247,244,240,0.4); margin:-4px 0 20px;">the gallery &rarr; bring anything &rarr; <span style="color:var(--signal);">null is scope</span></div>
+      <div style="font-family:var(--font-display); font-weight:500; font-size:46px; line-height:1.06; color:var(--paper); max-width:30ch; margin-bottom:8px;">A null answer is <em style="font-style:italic; color:var(--signal);">scope, not failure.</em></div><div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:16px; max-width:88ch;"><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">If the corpus does not have it, it says so. It tells you what it does not have as honestly as what it does.</div><div class="body-sm" style="font-size:17px; color:rgba(247,244,240,0.6); margin-top:4px;">that honesty is the product, same as the coverage ratio.</div></div><div style="border-left:3px solid var(--signal); padding:6px 0 6px 22px;"><div style="font-family:var(--font-display); font-size:25px; color:var(--paper); line-height:1.22;">Then the ask: if you look at the federal layer for a living, come see the layer underneath. If you know an operator in towers, infrastructure, muni credit, or alt-data, get me on their radar.</div></div></div><div class="support" style="margin-top:auto;"><div class="body-sm" style="color:rgba(247,244,240,0.74); font-size:21px; max-width:94ch;">Every question asked is buyer signal. The room is not the audience here, the room is the next page of the roadmap.</div></div>
+    </div>
+  </div>
+  </div>
+  <div class="notes"><h4>Deep dive · Q8 · 3 of 3 · null is scope</h4><ul class="tp"><li>A null answer is scope, not failure, the corpus tells you what it doesn't have as honestly as what it does</li><li>Then the ask, come see the layer underneath, and get me on the radar of operators in towers, infra, muni credit, alt-data</li><li>Every question asked is buyer signal, the room is the next page of the roadmap</li></ul></div>
+</div>
+
+</div>
+
+<!-- ===== PRESENTER MODE (single-slide, keyboard nav, notes toggle) ===== -->
+<style>
+body.present { overflow: hidden; height: 100vh; background: #0f0f0f; }
+body.present .deck { padding: 0; gap: 0; height: 100vh; justify-content: center; }
+body.present .frame { display: none; max-width: none; width: auto; }
+body.present .frame.active { display: flex; align-items: center; justify-content: center; }
+body.present .frame-label { display: none; }
+body.present .notes { display: none; }
+body.present.notes-on .deck { justify-content: flex-start; padding-top: 2vh; }
+body.present.notes-on .frame.active .notes {
+  display: block; position: fixed; left: 0; right: 0; bottom: 0; width: auto;
+  max-height: 34vh; overflow: auto; z-index: 60; border-left: none; border-top: 4px solid #E8512D;
+  box-shadow: 0 -6px 30px rgba(0,0,0,0.45);
+}
+.hud { position: fixed; bottom: 14px; right: 16px; z-index: 70; display: none; align-items: center; gap: 16px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55); background: rgba(0,0,0,0.5); padding: 8px 13px; border-radius: 5px; user-select: none; }
+body.present .hud { display: flex; }
+.hud b { color: #fff; font-weight: 500; }
+.hud .k { color: #E8512D; }
+.hud a { color: rgba(255,255,255,0.55); text-decoration: none; cursor: pointer; }
+.hud a:hover { color: #E8512D; }
+@media print {
+  body.present .frame { display: flex !important; }
+  body.present .deck { display: flex; height: auto; padding: 0; }
+  body.present .notes, .hud { display: none !important; }
+}
+</style>
+<script>
+(function(){
+  var body = document.body;
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.deck > .frame'));
+  if(!frames.length) return;
+  var cur = 0;
+  body.classList.add('present');
+
+  var hud = document.createElement('div');
+  hud.className = 'hud';
+  hud.innerHTML = '<span><b id="hud-n">1</b> / ' + frames.length + '</span>' +
+    '<a id="hud-notes"><span class="k">N</span> notes</a>' +
+    '<a id="hud-full"><span class="k">F</span> full</a>' +
+    '<span><span class="k">&larr; &rarr;</span> move</span>';
+  body.appendChild(hud);
+
+  function fit(){
+    var notesOn = body.classList.contains('notes-on');
+    var availW = window.innerWidth * 0.96;
+    var availH = window.innerHeight * (notesOn ? 0.62 : 0.94);
+    var scale = Math.min(availW/1920, availH/1080);
+    document.documentElement.style.setProperty('--scale', scale);
+  }
+  function show(i){
+    cur = Math.max(0, Math.min(frames.length-1, i));
+    for(var k=0;k<frames.length;k++){ frames[k].classList.toggle('active', k===cur); }
+    var hn = document.getElementById('hud-n'); if(hn) hn.textContent = cur+1;
+    fit();
+    var n = frames[cur].querySelector('.notes'); if(n) n.scrollTop = 0;
+  }
+  function idxForHash(h){
+    if(!h) return -1;
+    var el = document.getElementById(h.replace('#',''));
+    if(!el) return -1;
+    var fr = el.closest('.frame');
+    return frames.indexOf(fr);
+  }
+  function toggleNotes(){ body.classList.toggle('notes-on'); fit(); }
+  function full(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen(); } else { document.exitFullscreen(); } }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); show(cur+1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); show(cur-1); }
+    else if(e.key==='Home'){ e.preventDefault(); show(0); }
+    else if(e.key==='End'){ e.preventDefault(); show(frames.length-1); }
+    else if(e.key==='n'||e.key==='N'){ toggleNotes(); }
+    else if(e.key==='f'||e.key==='F'){ full(); }
+  });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if(a){ var i = idxForHash(a.getAttribute('href')); if(i>=0){ e.preventDefault(); history.replaceState(null,'',a.getAttribute('href')); show(i); } }
+  });
+  var bn = document.getElementById('hud-notes'); if(bn) bn.addEventListener('click', toggleNotes);
+  var bf = document.getElementById('hud-full'); if(bf) bf.addEventListener('click', full);
+  window.addEventListener('resize', fit);
+  window.addEventListener('DOMContentLoaded', fit);
+
+  var start = idxForHash(location.hash);
+  show(start >= 0 ? start : 0);
+})();
+</script>
+
+</body>
+</html>
