@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for ready.net</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 36px 80px 36px;
+  }
+
+  /* sticky header keeps the toggle reachable on a long phone scroll */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0 16px 0;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--signal);
+    background: var(--signal-06);
+    border: 1px solid var(--signal);
+    border-radius: 2px;
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+  .mode-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    margin: 16px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-12);
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  /* quick-read scannable bullet list */
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+  }
+  .quick-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 7px; height: 7px;
+    background: var(--signal);
+    border-radius: 1px;
+  }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .rel-card {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .rel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 6px;
+  }
+  .rel-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .rel-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--ink-12);
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-strip {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .stat { flex: 1 1 120px; }
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat .lab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(247,244,240,0.6);
+    margin-top: 6px;
+  }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question \00B7 ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  /* lead-time concept visual - the core thesis made visual */
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  /* problem-first pull quote (state the pain in the buyer's words) */
+  .problem-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 31px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--signal);
+  }
+  .problem-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin: 0 0 22px 20px;
+  }
+
+  /* chunked facts (labeled key/value, replaces prose walls) */
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  /* chips (doc types, segments) */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  /* proof cards (show the validation with numbers + the buyer's own words) */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .proof-card { padding: 16px 18px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .proof-num { font-family: var(--font-display); font-size: 25px; font-weight: 500; color: var(--ink); line-height: 1.1; }
+  .proof-lab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-60); margin: 7px 0 9px; line-height: 1.45; }
+  .proof-quote { font-family: var(--font-display); font-style: italic; font-size: 12.5px; line-height: 1.4; color: var(--ink-80); }
+  .block-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-60); margin: 22px 0 0; }
+
+  /* chain-of-custody stepper */
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .proof-grid { grid-template-columns: 1fr; }
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; }
+  }
+
+  /* overt objection-handling block (acknowledge the steel-man, then deploy) */
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  /* bulleted list to support a prose block */
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  /* scale-of-problem band (the overwhelming number, then "we do") */
+  .scale {
+    margin: 22px 0 4px;
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .scale-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--signal);
+    flex: 0 0 auto;
+  }
+  .scale-text {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--paper);
+    flex: 1 1 260px;
+  }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  /* early teaser: one concrete live signal, surfaced in the problem section */
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  /* scan-anchor highlight: the point-driving phrase of a longer paragraph */
+  .hl {
+    background: rgba(232, 81, 45, 0.15);
+    font-weight: 500;
+    padding: 0.04em 0.26em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* ── toggle mechanics (lifts cleanly into the DESRI rebuild + future template) ── */
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-40);
+    margin: 8px 0 0 0;
+  }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-right">
+      <div class="header-meta">Discussion guide<br>ready.net &middot; Tue 2026-06-02</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for ready.net</h1>
+    <p class="lede">
+      The municipal layer that moves ahead of a broadband buildout. ready.net maps the gaps, runs the grant programs, and gives state offices and ISPs the system of record. Municipal Alpha reads the town-level governance that decides where and when a buildout actually happens: the franchise agreements, the pole and easement votes, the fiber-route approvals, the broadband-grant money landing on a town, surfaced the night the agenda drops, months before any of it reaches a public dataset.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chains, every source link, and the integration notes &#9656;</p>
+  </div>
+
+  <!-- ───────── 0. THE PROBLEM (in the buyer's words) ───────── -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p class="problem-quote">"We don't even know what we don't know. You'd learn things you would otherwise never learn. Not just late, never."</p>
+    <p class="problem-cite">Economic-development director, on the signal he was missing</p>
+    <p>
+      A broadband buildout gets decided in town rooms long before it is a buildout: a franchise at a competitive hearing, a fiber easement on a consent agenda, a state-broadband grant that turns up in a finance report. It is all public, in the narrowest sense of the word: a handful of people in a half-empty room, and only if you happened to know the item was on the agenda at all. After that the record sits unread on one of twenty thousand separate town websites. So the ISP, the state office, and the platform serving them find out at the public event, <span class="hl">on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">90,000+</span>
+      <span class="scale-text">local governments in this country publish their decisions in public, the night they happen. No team of people could read them all. Municipal Alpha does.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">One Municipal Alpha caught this week</div>
+      <div class="teaser-body">A Minnesota city council put a <strong>fiber-optic installation contract</strong> on its consent agenda. Unless you were in the half-empty room, or read the packet, you would never know it happened. The system read it the night it posted.</div>
+      <div class="teaser-where">Mendota Heights, MN &middot; City Council &middot; Jun 2, 2026 &middot; <a class="source-link" href="https://www.mendotaheightsmn.gov/AgendaCenter/ViewFile/Agenda/_06022026-439?html=true" target="_blank" rel="noopener">view the agenda &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- ───────── 1. WHAT MUNICIPAL ALPHA IS (universal preamble) ───────── -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city, town, county, and district in the country publishes the decisions that move infrastructure, capital, and credit before they happen: the franchise, the permit, the budget line, the vendor payment, the fund balance that moves a rating. Those records land months ahead of the public event, and they sit on roughly twenty thousand separate town websites, in incompatible formats, where <span class="hl">ninety-nine percent of them never reach a search engine</span>. So the people those decisions affect find out late, on the same day as everyone else, or they never find out at all.
+    </p>
+    <p>
+      Municipal Alpha reads all of them the night they post, across more than three thousand municipalities in multiple states, classifies what matters, verifies every signal against the source document, and routes it to whoever needs it early. The thing you would otherwise catch late, or never catch, arrives <span class="hl">while there is still time to do something with it</span>.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Precursor &middot; minutes &middot; franchise vote &middot; fiber easement &middot; budget line</div>
+        </div>
+        <div class="lt-gap">6 to 23 months</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">Public event &middot; RFP posted &middot; permit filed &middot; buildout</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the two-minute version: what it reads, why it is possible now, and what is already working &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Minutes, agendas, budget transmittals, check registers, permit and franchise decisions, the night they post.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each scored for confidence and linked back to the source record.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Who pays</div>
+          <div class="fact-v">Six segments buy the same upstream signal:</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip sig">Broadband</span>
+        <span class="chip">Infrastructure / tower REITs</span>
+        <span class="chip">Hedge funds / quant</span>
+        <span class="chip">Insurance</span>
+        <span class="chip">Environmental labs</span>
+        <span class="chip">Wealth / probate</span>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The obvious question</div>
+        <div class="obj-q">"In a year, given the pace of AI, can't an agent just do this? Set an alert on a model and get the same thing?"</div>
+        <p>Fair question, and the honest answer starts by conceding the part that is true: reading a document and classifying it is the cheap step, and it probably does commoditize. The value is in the four layers underneath it that a model starting from a prompt does not have.</p>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> A model with perfect extraction skills starting today still does not have 2010 through 2026 on Monday. The history has to be accumulating now to exist in eighteen months. It has been.</li>
+          <li><strong>The hard part is upstream of the model, and it is not AI work.</strong> Step zero is a registry mapping each local government to its actual digital footprint, the specific site or portal where its records live. Then you fingerprint that footprint to know which platform it runs (CivicPlus, Granicus, WordPress, Catalis, and a long tail) and how to pull from it. Then you extract, often from behind authenticated portals or PDFs indexed nowhere. Registry, fingerprinting, extraction: these are workflow and data-engineering problems, not LLM problems. The model only helps at the very end, once the document is already in hand.</li>
+          <li><strong>A feed, not a question.</strong> You do not want to ask a model on Monday. You want something that fires the night the agenda posts. The product is a continuously running pipeline, not a query you have to remember to run.</li>
+          <li><strong>The specific signal, and an honest one.</strong> Ask any model today which towns opened a competitive cable franchise this month, or approved a fiber easement. It cannot answer without the corpus and the resolved entities behind it, and if you ask anyway it will not tell you it does not know. It will confidently invent a town, a date, a citation. That is worse than no answer, because it looks like one. Every Municipal Alpha signal links back to the source document, so you get an answer you can defend instead of one you have to trust.</li>
+        </ul>
+        <p>And if the bet is wrong and this does commoditize, the corpus accumulated by then is still the one a later entrant does not have. <span class="hl">The cost of being early is overhead. The cost of being late is no corpus.</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ───────── 2. WHAT THE SIGNAL LOOKS LIKE ───────── -->
+  <div class="section">
+    <h2>What the signal looks like</h2>
+    <ul class="quick-points">
+      <li><strong>Municipal franchise and cable governance.</strong> Franchise renewals, competitive-franchise hearings, ownership transfers, standing cable and broadband committees.</li>
+      <li><strong>Buildout-route decisions.</strong> Fiber easements, pole-attachment and make-ready items, small-cell siting in the public right-of-way.</li>
+      <li><strong>Grant money at the town end.</strong> State broadband-office grants landing on a town, plus the broadband bills moving through the state legislatures.</li>
+    </ul>
+
+    <div class="custody">
+      <span class="custody-step">Discovery</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Classification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Verification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step last">Delivery</span>
+    </div>
+
+    <p class="detail-cue">Show details for how the system reads it &#9656;</p>
+    <div class="detail">
+      <p style="margin-top:18px">
+        Every municipality in the country produces a stream of agenda packets, meeting minutes, RFPs, franchise renewals, pole-attachment agreements, easement authorizations, and broadband-committee minutes. Most of them never get read by anyone outside the meeting room. The decisions that determine where fiber gets built, which provider wins a town, and when the grant match comes together almost all start in those documents, months before they reach the FCC Broadband Data Collection, a public award list, or the trade press.
+      </p>
+      <p>
+        Municipal Alpha reads those meetings the night the agenda drops, across more than three thousand municipalities in multiple states, classifies the documents, and follows the chain forward. A competitive cable franchise shows up first as a single public-hearing notice, then a board review, then a signed ten-year agreement. A fiber route shows up first as an easement authorization on a council consent agenda. <span class="hl">The system reads all of that, links it together, and surfaces the chain itself as the signal. For a broadband platform, that is the layer upstream of the map and the grant.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 3. WORKED EXAMPLE ───────── -->
+  <div class="section">
+    <h2>A worked example: the chain shape</h2>
+    <p class="section-sub">
+      One town, thirty-two months, from a single citizen comment to a unanimous vote authorizing a thirty-year infrastructure ground lease. The example is a tower, because it is the cleanest fully-documented chain I have. Swap the tower for a fiber route, a competitive franchise, or a pole agreement and the shape is identical.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Jul 24, 2023 &middot; Board of Selectmen</div>
+          <div class="step-text">A resident raises coverage as a public-safety issue. The chair's response: the town "does not have the ability to install a tower." That sentence is the entire institutional position on the day.</div>
+          <a class="detail source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-5" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Feb 12, 2024 &middot; Board of Selectmen</div>
+          <div class="step-text">Six months later. A company has approached the town with a no-cost build at the emergency-services complex. The fire chief has reviewed three siting candidates.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-22" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Jan 13, 2025 &middot; Board of Selectmen</div>
+          <div class="step-text">The design pivots. The combined approach is "not viable." A standalone build is now the path. A second vendor wins a separate component.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-48" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Oct 15, 2025 &middot; Planning Board</div>
+          <div class="step-text">A 175-foot structure at the rear of the municipal property goes to public hearing. Third-party build at no cost. Lease revenue accrues to the town.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/planning-board/minutes/planning-board-minutes-65" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jan 20, 2026 &middot; Board of Selectmen</div>
+          <div class="step-text">Article 41. Thirty-year ground lease, 180-foot structure, specific tax map and lot, no town funds. Vote: 5-0-0.</div>
+          <a class="detail source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/bos-minutes-approved-2" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        No FCC registration. No federal filing. The only public record of this thirty-year infrastructure deal lived in municipal meeting minutes, and the system read it twenty-three months before the vote. The live broadband signal below is the same chain at step one: the Jamestown fiber easement, the Deerfield competitive-franchise hearing, the Moses Lake franchise transfer.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 4. LIVE BROADBAND SIGNAL ───────── -->
+  <div class="section">
+    <h2>Live broadband signal this week</h2>
+    <p class="section-sub">
+      Pulled from the corpus on the morning of this conversation, dated to the meeting, every link checked live. The point is depth and currency, not "we cover broadband."
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="num">92</div><div class="lab">municipalities with town-level broadband activity, 2026</div></div>
+      <div class="stat"><div class="num">30</div><div class="lab">states</div></div>
+      <div class="stat"><div class="num">122</div><div class="lab">broadband bills across 25 legislatures</div></div>
+    </div>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Mendota Heights, MN: Council awarding a fiber-optic installation contract</div>
+        <p class="sig-quote">"Award a Professional Services Contract for a Fiber Optic Installation Project."</p>
+        <div class="sig-body detail">A municipal fiber build moving through procurement, on the council consent agenda. The kind of "a town is building" signal an ISP or a state office would want before it is a press release.</div>
+        <div class="sig-where">Mendota Heights MN &middot; City Council &middot; Jun 2, 2026</div>
+        <a class="source-link" href="https://www.mendotaheightsmn.gov/AgendaCenter/ViewFile/Agenda/_06022026-439?html=true" target="_blank" rel="noopener">View agenda packet &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Jamestown, ND: fiber easement with Dakota Central Telecommunications</div>
+        <p class="sig-quote">"a Resolution to approve the Underground Fiber Optic Cable Easement Authorization Form with Dakota Central Telecommunications."</p>
+        <div class="sig-body detail">An ISP securing a route through a town, the night the council approves it. It moved through the Finance &amp; Legal committee and the council on the same day, the easement step of a buildout the FCC map will not show for months.</div>
+        <div class="sig-where">Jamestown ND &middot; City Council &middot; May 19, 2026</div>
+        <a class="source-link" href="https://jamestownnd.gov/AgendaCenter/ViewFile/Minutes/_05192026-311?html=true" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Deerfield, NH: public hearing on a competitive cable franchise</div>
+        <p class="sig-quote">"holding a public hearing on the proposal for a competitive cable television franchise agreement."</p>
+        <div class="sig-body detail">A second provider entering a town that has had one. A buildout opportunity, and a churn risk, depending on which side of it a customer sits.</div>
+        <div class="sig-where">Deerfield NH &middot; Board of Selectmen &middot; May 18, 2026</div>
+        <a class="source-link" href="https://deerfieldnh.gov/AgendaCenter/ViewFile/Agenda/_05182026-300?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Easthampton, MA: awarded a Massachusetts Broadband Institute grant</div>
+        <p class="sig-quote">"the partnership has been awarded a grant from the Massachusetts Broadband Institute (MBI)."</p>
+        <div class="sig-body detail">State-broadband-office money landing at the town level, the end of the grant lifecycle ready.net manages, visible the day the town announces it.</div>
+        <div class="sig-where">Easthampton MA &middot; Press Release &middot; May 20, 2026</div>
+        <a class="source-link" href="https://easthamptonma.gov/ArchiveCenter/ViewFile/Item/5303" target="_blank" rel="noopener">View release &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Moses Lake, WA: cable franchise transfer of ownership</div>
+        <p class="sig-quote">"Northland Cable Franchise Transfer of Ownership Ordinance 3096."</p>
+        <div class="sig-body">A franchise changing hands, the local-ISP M&amp;A layer that rarely surfaces anywhere public until the ordinance is on the agenda.</div>
+        <div class="sig-where">Moses Lake WA &middot; City Council &middot; Apr 28, 2026</div>
+        <a class="source-link" href="https://moseslakewa.gov/AgendaCenter/ViewFile/Agenda/_04282026-989?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Lockport, NY: small-cell siting in the City right-of-way</div>
+        <p class="sig-quote">"looking to install a small cell facility on the existing pole in the City right-of-way in front of 485 East Ave."</p>
+        <div class="sig-body">The pole-attachment and make-ready layer at parcel granularity, the conversation that precedes a deployment.</div>
+        <div class="sig-where">Lockport NY &middot; Common Council &middot; Apr 2026</div>
+        <a class="source-link" href="https://lockportny.gov/wp-content/uploads/2026/04/april2026.pdf" target="_blank" rel="noopener">View record &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Strafford, NH: Comcast franchise agreement RFP</div>
+        <p class="sig-quote">"Comcast Franchise Agreement - proposal."</p>
+        <div class="sig-body">A town actively procuring its cable franchise terms, posted May 26.</div>
+        <div class="sig-where">Strafford NH &middot; Town RFP &middot; May 26, 2026</div>
+        <a class="source-link" href="https://strafford.nh.gov/wp-content/uploads/2026/05/SB20260609Comcast-Franchise-Agreement-proposal.pdf" target="_blank" rel="noopener">View RFP &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Biddeford, ME: a standing Cable TV Committee</div>
+        <p class="sig-quote">"Danica asked if anyone knew if the franchise agreement would require the cable company to pay for such an effort."</p>
+        <div class="sig-body">A town with a permanent governance body for cable and broadband, meeting through 2026 (Mar 6, Mar 23, May 18). The kind of recurring municipal venue where buildout and franchise terms are negotiated in the open.</div>
+        <div class="sig-where">Biddeford ME &middot; Cable TV Committee &middot; May 18, 2026</div>
+        <a class="source-link" href="https://biddefordme.portal.civicclerk.com/" target="_blank" rel="noopener">View committee portal &#8594;</a>
+      </li>
+    </ul>
+
+    <div class="detail">
+      <p style="margin-top:20px"><strong>The state legislative layer, relevant to your state-broadband-office customers.</strong> Separate from the town signal, the system reads every broadband bill moving through the state legislatures: 122 of them across 25 states this session. Pole-attachment and double-pole reform, municipal-broadband authorization, broadband-grant program changes, and new state broadband offices. A state office tracking its own legislative environment, or ready.net building for thirty of them, gets the same picture across all of them at once, dated and linked.</p>
+      <p class="chain-summary" style="border:none;padding-top:0">
+        Coverage note: 184 town-level broadband documents across 92 municipalities and 30 states so far in 2026. Honest caveat, that count is the portion of the corpus with fully extracted text behind it; the true footprint is larger, because the system is still backfilling text on older documents. The methodology is more than three thousand municipalities read on the night their agendas post, classified, and linked back to the original record.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 5. THE OTHER THREAD: CREDIT ───────── -->
+  <div class="section">
+    <h2>The other thread: municipal credit</h2>
+    <p>
+      Separate from the day job, and more your background than Brian's. Municipal credit gets priced on data that lands six to nine months late. What I have built reads the underlying budget cycle and fund-balance trend as they happen. Given your time at Fidelity and on the Green Bond Principles committee, I would value your read on whether that is a thread worth pulling.
+    </p>
+    <div class="detail">
+      <p>
+        CAFRs land two to three quarters after the period they describe. MSRB voluntary filings are spotty. Regional analyst notes lag by quarters. The underlying budget cycle, the capital improvement plan, the fund-balance trend, the infrastructure-distress signals, all of them live in the documents this system reads in real time. If a Maine issuance comes to mind, recent or upcoming, GO or revenue or green, I am happy to cut the underlying municipal-document chain the system reads for that issuer and let you tell me whether it would have changed your read of the credit.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── TWO WAYS WE FIT (options, before the Q&A) ───────── -->
+  <div class="section">
+    <h2>Two ways ready.net and Municipal Alpha could fit together</h2>
+    <p class="section-sub">
+      Two distinct relationships, each a different shape of conversation. Worth naming both up front.
+    </p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">Path A</div>
+        <div class="rel-title">Feedback partner</div>
+        <div class="rel-body">
+          You and Brian tell me where the municipal precursor layer maps onto ready.net's map, grant, and ISP products, and where it is just noise next to the FCC BDC and provider data you already ingest. That read shapes what I build for the broadband vertical, for every state office and ISP that comes after.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">Path B</div>
+        <div class="rel-title">A broadband-precursor feed</div>
+        <div class="rel-body">
+          Town-level franchise, pole, fiber-route, and grant signal across the states ready.net operates in, tagged by town, the day it surfaces. Feeds the map, the grant work, or an ISP customer's build planning. Sample first, no build cost on your side.
+        </div>
+      </div>
+    </div>
+    <div class="detail">
+      <p style="margin-top:20px"><strong>Path A is the more valuable one to me right now.</strong> ready.net sits at exactly the seam I am trying to understand:</p>
+      <ul class="blist">
+        <li>You already hold the authoritative coverage and grant picture, so you can tell me in five minutes whether a competitive-franchise hearing or a fiber-easement vote is a leading indicator your customers would act on, or whether it lands too late next to the data you have.</li>
+        <li>That one distinction decides whether the broadband vertical is a real product or a dead end.</li>
+        <li>You are better positioned to answer it than anyone I have talked to.</li>
+      </ul>
+      <p><strong>Path B is concrete:</strong> a content-hash change-watch on the municipal documents that move ahead of a buildout, scoped to a state or an ISP footprint, delivered as a tagged feed. It would:</p>
+      <ul class="blist">
+        <li>feed a map as a "watch this town" layer,</li>
+        <li>feed the grant side early notice of where local match and political will are forming,</li>
+        <li>feed an ISP a list of towns opening a franchise or a pole process before the RFP.</li>
+      </ul>
+      <p>None of it competes with what ready.net does. It sits upstream of it.</p>
+    </div>
+  </div>
+
+  <!-- ───────── 6. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions where your read would change what I build</h2>
+    <p class="section-sub">
+      Genuine discussion topics, not a checklist. Your answers route whether the broadband vertical is a feed into ready.net, a product for ISPs, or neither.
+    </p>
+
+    <div class="question">
+      <div class="q-text">Does the municipal franchise, pole, and fiber layer map onto ready.net's map and grant products, or is it noise next to the FCC BDC and provider data you already hold?</div>
+      <div class="why">This is the load-bearing question. You can tell me in five minutes whether a town-level precursor is a leading indicator your customers would act on, or whether it arrives too late to matter next to your existing data. The answer decides whether I build this vertical out or step back from it.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">For an ISP customer: would knowing a town is opening a franchise, a pole process, or a fiber easement three to six months early change where they build or bid?</div>
+      <div class="why">Tests whether precursor timing is load-bearing on the ISP side, where acquiring and retaining subscribers is the whole game. If yes, the feed is a buildout-planning input. If no, it is a state-office tool only.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">From your seat, Brian: what is the lowest-friction shape for ready.net to consume this? A tagged feed or API into the platform, a per-state extract, a dashboard? Where does external municipal data usually die on the vine for you?</div>
+      <div class="why">The delivery surface matters more than the signal for adoption. A brilliant precursor that lands in the wrong format is invisible. Your answer tells me whether to build toward a feed, an extract, or an integration.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">For the credit thread, Mike: would the underlying budget cycle and fund-balance trend in real time change how you would read a Maine GO or a revenue bond?</div>
+      <div class="why">Routes whether the credit vector is worth building deeper or treating as a niche use case. You are the most qualified person I know to give that a real answer.</div>
+    </div>
+  </div>
+
+  <!-- ───────── 7. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">A few concrete shapes the next step could take, depending on which direction this pulls.</p>
+
+    <div class="path">
+      <div class="path-title">A broadband-precursor sample for a state ready.net operates in</div>
+      <div class="path-body">You name a state, I cut a month of town-level franchise, pole, fiber-easement, and grant signal across it, tagged by town and dated. No build cost on your side. One-week loop, and it tells us fast whether the layer is real for ready.net.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">A pole-and-franchise feed scoped to an ISP customer's footprint</div>
+      <div class="path-body">If one ISP customer's build map is the sharpest test, I scope the watch to their towns and surface franchise, pole, and easement activity the day it posts. The question is whether that timing changes a build or a bid.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">A municipal-credit read on a Maine issuance</div>
+      <div class="path-body">You name a Maine bond, recent or upcoming, and I cut the underlying municipal-document chain the system reads for the issuer. Not a sales call, a feedback loop on whether that chain would have moved your read.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for ready.net &middot; Mike Faloon + Brian Grass</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      // depth-interest telemetry, no-op if GoatCounter is absent
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'readynet-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
