@@ -866,6 +866,68 @@ a.solution-featured:hover {
     margin-bottom: 32px;
 }
 
+/* Buyer-pain band (homepage — between hero and case study) */
+.pain-band {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 8px 0 72px;
+}
+.pain-band-head {
+    font-family: 'Newsreader', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 0 0 10px;
+}
+.pain-band-head em {
+    color: var(--signal);
+    font-style: italic;
+}
+.pain-band-sub {
+    font-size: 16px;
+    color: var(--slate);
+    margin: 0 0 36px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+.pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 28px;
+    max-width: 880px;
+}
+.pain-quote {
+    background: rgba(232, 81, 45, 0.04);
+    border-left: 3px solid var(--signal);
+    border-radius: 0 6px 6px 0;
+    padding: 20px 26px;
+}
+.pain-quote p {
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0 0 12px;
+}
+.pain-quote .pain-attr {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.pain-bridge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 36px 0 0;
+}
+
 /* Case study teaser (homepage) */
 .cs-teaser-bookends {
     display: grid;
@@ -925,6 +987,11 @@ a.solution-featured:hover {
 
     /* Page titles */
     .page h1 { font-size: 26px; }
+
+    /* Buyer-pain band (homepage) */
+    .pain-band { padding: 4px 0 48px; }
+    .pain-band-head { font-size: 24px; }
+    .pain-grid { grid-template-columns: 1fr; gap: 16px; }
 
     /* Case study teaser (homepage) */
     .cs-teaser-bookends { grid-template-columns: 1fr; gap: 24px; }
