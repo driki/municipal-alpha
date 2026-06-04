@@ -11,6 +11,10 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits re
 .lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
 .lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
+.lp-peer-quote { background: rgba(232,81,45,0.04); border-left: 3px solid #E8512D; border-radius: 0 6px 6px 0; padding: 20px 28px; margin: 0 0 48px; max-width: 660px; }
+.lp-peer-quote p { font-family: 'Newsreader', serif; font-size: 19px; font-style: italic; color: #0C0C0C; line-height: 1.55; margin: 0 0 10px; }
+.lp-peer-quote .lp-peer-attr { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
 .lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
 .lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
@@ -61,6 +65,11 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits re
 <p>When Grainger ships to Geneva, Illinois, it shows up in their check register weeks before it shows up in quarterly earnings. I built a system that reads municipal payment records daily across 2,500+ municipalities and resolves vendor names to 128 public company tickers. You see the transaction before it becomes an earnings surprise.</p>
 </div>
 <img class="lp-hero-img" src="/images/story-company-footprint.png" alt="Company footprint signal">
+</div>
+
+<div class="lp-peer-quote">
+<p>"If you're already issuing the building permit, maybe it's a little too late, in terms of us being able to trade on it."</p>
+<span class="lp-peer-attr">Quant, systematic equities desk, global asset manager</span>
 </div>
 
 <div class="lp-case-study">

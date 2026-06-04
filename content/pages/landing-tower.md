@@ -11,6 +11,10 @@ Summary: Pre-listing lease intelligence. Qualified tower lease prospects with pa
 .lp-hero-img { width: 320px; flex-shrink: 0; border-radius: 6px; }
 .lp-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E8512D; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
 
+.lp-peer-quote { background: rgba(232,81,45,0.04); border-left: 3px solid #E8512D; border-radius: 0 6px 6px 0; padding: 20px 28px; margin: 0 0 48px; max-width: 660px; }
+.lp-peer-quote p { font-family: 'Newsreader', serif; font-size: 19px; font-style: italic; color: #0C0C0C; line-height: 1.55; margin: 0 0 10px; }
+.lp-peer-quote .lp-peer-attr { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
 .lp-case-study { background: #0C0C0C; color: #F7F4F0; border-radius: 6px; padding: 28px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .lp-case-study h4 { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; color: #F7F4F0; }
 .lp-case-study p { font-size: 13px; color: #aaa; margin: 0; line-height: 1.5; }
@@ -61,6 +65,11 @@ Summary: Pre-listing lease intelligence. Qualified tower lease prospects with pa
 <p>Tower lease aggregation is a land rush. A lease that hits the open market gets bid up 30-40%. I cross-reference assessor records, planning board votes, FCC registrations, and check register payments to identify tower prospects months before a renewal hits the market. You get to the landowner first.</p>
 </div>
 <img class="lp-hero-img" src="/images/story-data-center-zoning.png" alt="Data center zoning signal">
+</div>
+
+<div class="lp-peer-quote">
+<p>"You'll find out about them, it closed two months ago, and we didn't know about it. It's really about getting in early."</p>
+<span class="lp-peer-attr">Competitive intelligence lead, national tower REIT</span>
 </div>
 
 <div class="lp-case-study">
