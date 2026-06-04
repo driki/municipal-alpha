@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for Verogy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 36px 80px 36px; }
+
+  .header {
+    position: sticky; top: 0; z-index: 10; background: var(--paper);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0 16px 0; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px;
+  }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .header-meta {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink-60); text-align: right; line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--signal); background: var(--signal-06); border: 1px solid var(--signal);
+    border-radius: 2px; padding: 7px 13px; cursor: pointer; white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .mode-cue {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-40); margin: 16px 0 0 0; padding-top: 12px; border-top: 1px dashed var(--ink-12);
+  }
+
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li { font-family: var(--font-body); font-size: 14.5px; line-height: 1.5; color: var(--ink); padding-left: 18px; position: relative; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; background: var(--signal); border-radius: 1px; }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .rel-card { padding: 18px 20px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .rel-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 6px; }
+  .rel-title { font-family: var(--font-display); font-weight: 500; font-size: 18px; margin-bottom: 8px; }
+  .rel-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .chain { margin: 18px 0; padding: 22px 24px; background: var(--signal-06); border-left: 3px solid var(--signal); }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--signal); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+  .step-text { font-family: var(--font-display); font-size: 15.5px; line-height: 1.5; color: var(--ink); margin-bottom: 6px; }
+  .chain-summary { font-family: var(--font-body); font-size: 13.5px; color: var(--ink-60); margin: 10px 0 0 0; padding-top: 12px; border-top: 1px solid var(--ink-12); }
+
+  .source-link { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; color: var(--signal); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 14px 16px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13px; line-height: 1.5; color: var(--ink-80); margin-bottom: 6px; }
+  .signal-list .sig-quote { font-family: var(--font-display); font-style: italic; font-size: 13.5px; line-height: 1.5; color: var(--ink); margin: 0 0 6px 0; padding-left: 12px; border-left: 2px solid var(--ink-12); }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .stat-strip { margin-top: 16px; padding: 16px 18px; background: var(--ink); color: var(--paper); border-radius: 2px; display: flex; flex-wrap: wrap; gap: 22px; }
+  .stat { flex: 1 1 120px; }
+  .stat .num { font-family: var(--font-display); font-size: 28px; font-weight: 500; line-height: 1; }
+  .stat .lab { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(247,244,240,0.6); margin-top: 6px; }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why { font-family: var(--font-body); font-size: 12.5px; line-height: 1.55; color: var(--ink-60); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--ink-12); }
+  .question .why::before { content: "Why this question \00B7 "; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); font-weight: 500; }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  .problem-quote { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 34px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 4px 0 0 0; padding: 26px 28px 22px; background: var(--signal-06); border-left: 5px solid var(--signal); border-radius: 0 3px 3px 0; }
+  .problem-cite { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-60); margin: 13px 0 22px 28px; }
+
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; line-height: 1.25; padding: 20px 20px 18px; }
+  }
+
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  .scale { margin: 22px 0 4px; padding: 24px 28px; background: var(--ink); color: var(--paper); border-radius: 2px; display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
+  .scale-num { font-family: var(--font-display); font-size: 48px; font-weight: 500; line-height: 0.95; color: var(--signal); flex: 0 0 auto; }
+  .scale-text { font-family: var(--font-display); font-size: 19px; line-height: 1.35; color: var(--paper); flex: 1 1 260px; }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  .hl { background: rgba(232, 81, 45, 0.15); font-weight: 500; padding: 0.04em 0.26em; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.03em; color: var(--ink-40); margin: 8px 0 0 0; }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municip&#945;l</div>
+    <div class="header-right">
+      <div class="header-meta">Prepared for Verogy<br>Bryan Fitzgerald</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for Verogy</h1>
+    <p class="lede">
+      I sent you a note in May about Winthrop, Maine putting a moratorium on utility-scale solar, and the pattern of towns quietly restricting it, and promised the running list. Rather than just send the list, better to show what the signal actually is, starting in Connecticut where you build. I read the planning, zoning, and town-meeting records across more than two thousand municipalities every day, and surface the moves that decide whether a parcel is viable or dead: the moratorium a town is about to pass, the ordinance that resets setbacks, the competitor whose project just cleared the planning board. Below is a recent run of that signal, starting in your home state and across the Northeast, caught the night the agenda posted, months before it reaches an interconnection queue, a denial, or a press release.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chain, every source link, and how a feed would run &#9656;</p>
+  </div>
+
+  <!-- 0. THE PROBLEM -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p class="problem-quote">"A solar moratorium tells me someone applied at the planning board and they already don't like it."</p>
+    <p class="problem-cite">Platform decision-maker at a renewables developer, on the signal he wants before he commits capital</p>
+    <p>
+      A developer commits capital to a parcel based on what is visible today. The thing that kills the parcel, a town drafting a moratorium, a zoning board rewriting setbacks, an abutter coalition forming, almost always shows up in the municipal record first, in a subcommittee line item or a planning-board agenda, months before it is a denial or a public fight. It is all public, in the narrowest sense: a handful of people in a half-empty room, and only if you happened to know the item was on the agenda. After that the record sits unread on one of twenty thousand separate town websites. So the developer scouting the next site finds out <span class="hl">when the project is already dead, on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">90,000+</span>
+      <span class="scale-text">local governments in this country decide where solar and storage can go, and publish those decisions the night they happen. No development team could read them all. Municipal Alpha reads more than two thousand of them, the night they post, and the count climbs.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">One Municipal Alpha caught in your home state this spring</div>
+      <div class="teaser-body">Enfield's General Government Subcommittee has carried a <strong>moratorium on solar farms</strong> as an agenda item, with a draft attached, across three meetings since January. The kind of local restriction that freezes a parcel while it is still a committee line item, before it is ever an ordinance or a public vote. Scout a site in town without knowing it, and you find out at the planning counter. The system read it the night the subcommittee posted.</div>
+      <div class="teaser-where">Enfield, CT &middot; General Government Subcommittee &middot; Jan 16 to Mar 20, 2026 &middot; <a class="source-link" href="https://enfieldct.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13532,plainText=false)" target="_blank" rel="noopener">view the agenda &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- 1. WHAT MUNICIPAL ALPHA IS -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city, town, and county in the country publishes the decisions that decide where a project can live before they happen: the moratorium, the setback ordinance, the overlay district, the comprehensive-plan amendment, the planning-board site review. Those records land months ahead of the public event, and they sit on roughly twenty thousand separate town websites, in incompatible formats, where <span class="hl">ninety-nine percent of them never reach a search engine</span>. So the people those decisions affect find out late, on the same day as everyone else, or they never find out at all.
+    </p>
+    <p>
+      Municipal Alpha reads them the night they post, across more than two thousand municipalities in multiple states, classifies what matters, verifies every signal against the source document, and routes it to whoever needs it early. The thing you would otherwise catch at the denial, or never catch, arrives <span class="hl">while there is still time to do something with it</span>: to reroute capital off a parcel about to freeze, to get in the room before the ordinance is written, or to know a competitor cleared the board before they are public.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Energy-committee discussion &middot; comp-plan amendment &middot; draft moratorium &middot; setback ordinance &middot; site-plan filing</div>
+        </div>
+        <div class="lt-gap">6 to 24 months</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">Moratorium adopted &middot; application denied &middot; competitor announces &middot; interconnection queue &middot; press release</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the two-minute version: what it reads, who else buys it, and the question every sophisticated buyer asks &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Planning and zoning agendas, town-meeting warrants, conservation and energy-committee minutes, comp plans, site-plan reviews, ordinances and moratoria, the night they post. Plus state PUC siting and interconnection dockets and FAA filings above the height threshold.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each scored for confidence and linked back to the source record, indexed by town, project type, and named developer.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Who pays</div>
+          <div class="fact-v">Several segments buy the same upstream signal, each cutting it for their own geography:</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip sig">Solar / storage developers</span>
+        <span class="chip">Renewable infrastructure funds</span>
+        <span class="chip">Hedge funds / quant</span>
+        <span class="chip">Retail / REITs</span>
+        <span class="chip">Tower / infrastructure</span>
+        <span class="chip">Environmental labs</span>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The obvious question</div>
+        <div class="obj-q">"My team could pull this themselves, and in a year an AI agent does it for nothing. Why pay for it?"</div>
+        <p>Fair, and the honest answer starts by conceding the part that is true: reading one town's agenda and classifying it is the cheap step, and that step probably does commoditize. The value is in the four layers underneath it that an analyst with a Google alert, or a model starting from a prompt, does not have.</p>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> A system with perfect extraction skills starting today still does not have the last sixteen years of the record on Monday. The history of which towns turned hostile, which ones quietly opened a door, and what came before each vote, has to have been accumulating to exist at all. It has been.</li>
+          <li><strong>The hard part is upstream, and it is not AI work.</strong> Step zero is a registry mapping each local government to its actual digital footprint, the specific site or portal where its records live. Then you fingerprint that footprint to know which platform it runs and how to pull from it. Then you extract, often from behind authenticated portals or scanned PDFs indexed nowhere. Registry, fingerprinting, extraction: these are workflow and data-engineering problems across thousands of inconsistent sites, not a prompt.</li>
+          <li><strong>A feed, not a search.</strong> You do not want to remember to check a town. You want something that fires the night a moratorium is drafted in any jurisdiction your pipeline touches. The product is a continuously running pipeline, not a query.</li>
+          <li><strong>The specific signal, and an honest one.</strong> Ask any model today which Connecticut towns opened a solar moratorium or rewrote setbacks this month. It cannot answer without the corpus and the resolved entities behind it, and if you ask anyway it will not tell you it does not know. It will confidently invent a town, a date, a citation. That is worse than no answer, because it looks like one. <span class="hl">Every Municipal Alpha signal links back to the source document, so you get an answer you can defend, not one you have to trust.</span></li>
+        </ul>
+        <p>And if the bet is wrong and this commoditizes, the corpus accumulated by then is still the one a later entrant does not have. The cost of being early is overhead. The cost of being late is a dead parcel and no corpus.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. WHAT THE SIGNAL LOOKS LIKE -->
+  <div class="section">
+    <h2>What the signal looks like for a developer</h2>
+    <ul class="quick-points">
+      <li><strong>Towns about to slam the door.</strong> Draft moratoria, large-scale-solar bans, and BESS freezes, surfaced while they are still a committee discussion or a first-read ordinance, months before adoption.</li>
+      <li><strong>The rules that govern your parcel.</strong> Setback rewrites, use-table amendments, decommissioning and screening requirements, the standards a town resets that turn a viable site into a dead one, or the reverse.</li>
+      <li><strong>Competitors advancing.</strong> Named developers and projects landing on planning-board and zoning agendas: who filed where, at what scale, on what site, before it is common knowledge.</li>
+      <li><strong>Towns turning friendly.</strong> Energy committees inventorying town-owned land, landfill and brownfield reuse studies, solar-on-municipal-property RFPs, the early tell that a jurisdiction is being shopped or is shopping itself.</li>
+    </ul>
+
+    <div class="custody">
+      <span class="custody-step">Discovery</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Classification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Verification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step last">Delivery</span>
+    </div>
+
+    <p class="detail-cue">Show details for how the system follows it forward &#9656;</p>
+    <div class="detail">
+      <p style="margin-top:18px">
+        Most of these documents never get read by anyone outside the meeting room. The decisions that determine which towns are buildable, which competitor is ahead of you on a site, and where a jurisdiction is steering or freezing renewable development, almost all start there, months before they reach an interconnection queue, a PUC docket, or the trade press. Municipal Alpha reads those meetings the night the agenda drops, classifies them, and follows the chain forward. A moratorium shows up first as a committee concern, then a draft ordinance, then a town-meeting warrant, then a vote. <span class="hl">The system reads all of it, links it together, and surfaces the chain itself as the signal, tagged to the town and dated to the meeting.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. WORKED EXAMPLE -->
+  <div class="section">
+    <h2>A worked example: the chain shape</h2>
+    <p class="section-sub">
+      One town, thirty months, from a single citizen comment to a unanimous vote authorizing a thirty-year infrastructure ground lease. The example is a tower, because it is the cleanest fully-documented chain I have. Swap the tower for a utility-scale solar or BESS siting and the shape is identical: an early precursor, a long quiet middle, a public vote at the end. The system enters at the top.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Jul 24, 2023 &middot; Board of Selectmen</div>
+          <div class="step-text">A resident raises coverage as a public-safety issue. The chair's response: the town "does not have the ability to install a tower." That sentence is the entire institutional position on the day.</div>
+          <a class="detail source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-5" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Feb 12, 2024 &middot; Board of Selectmen</div>
+          <div class="step-text">Six months later. A company has approached the town with a no-cost build at the emergency-services complex. The fire chief has reviewed three siting candidates.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-22" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Jan 13, 2025 &middot; Board of Selectmen</div>
+          <div class="step-text">The design pivots. The combined approach is "not viable." A standalone build is now the path. A second vendor wins a separate component.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-48" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Oct 15, 2025 &middot; Planning Board</div>
+          <div class="step-text">A 175-foot structure at the rear of the municipal property goes to public hearing. Third-party build at no cost. Lease revenue accrues to the town.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/planning-board/minutes/planning-board-minutes-65" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jan 20, 2026 &middot; Board of Selectmen</div>
+          <div class="step-text">Article 41. Thirty-year ground lease, 180-foot structure, specific tax map and lot, no town funds. Vote: 5-0-0.</div>
+          <a class="detail source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/bos-minutes-approved-2" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        No federal filing. The only public record of this thirty-year infrastructure deal lived in municipal meeting minutes, and the system read it twenty-three months before the vote. For a solar or storage project the same rungs fire: the energy-committee mention, the draft ordinance, the site-plan review, the warrant, the vote. The live signal below is that chain at different rungs, in your region right now.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. LIVE SIGNAL -->
+  <div class="section">
+    <h2>Live signal, starting in Connecticut</h2>
+    <p class="section-sub">
+      Pulled from the corpus on the morning of this note, dated to the meeting, every link checked. Starting in your home state, then across the Northeast where you build. The point is depth and currency, not "we cover solar."
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="num">2,000+</div><div class="lab">municipalities read the night their agendas post</div></div>
+      <div class="stat"><div class="num">5</div><div class="lab">Northeast states in the run below</div></div>
+      <div class="stat"><div class="num">Daily</div><div class="lab">the cadence, not a one-time pull</div></div>
+    </div>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Enfield, CT: a moratorium on solar farms working through subcommittee</div>
+        <p class="sig-quote">"Old Business Items: Moratorium on Solar Farms (attachments)", the same item carried from the January 16 agenda to February 20 to March 20.</p>
+        <div class="sig-body">Not adopted, in committee, with a draft attached, carried month over month. A local restriction at exactly the stage where it is still a subcommittee line item, before it is an ordinance or a public vote. A parcel in Enfield is exposed to it before anyone outside the room knows.</div>
+        <div class="sig-where">Enfield CT &middot; General Government Subcommittee &middot; Jan 16 &ndash; Mar 20, 2026</div>
+        <a class="source-link" href="https://enfieldct.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=13532,plainText=false)" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Lincoln, RI: Revity Energy advancing a ground-mount at a country club</div>
+        <p class="sig-quote">"Master Plan, Kirkbrae CC Solar, 208 Old River Road (AP 31 Lot 23), Revity Energy LLC for Kirkbrae Country Club... Special Use Permit for Renewable Energy, Minor Scale, Ground Mount."</p>
+        <div class="sig-body">A competitor's project at the master-plan and special-use stage, named and sited. The applicant, the parcel, and the permit path surfaced in one place.</div>
+        <div class="sig-where">Lincoln RI &middot; Planning Board &middot; May 27, 2026</div>
+        <a class="source-link" href="https://www.lincolnri.gov/DocumentCenter/View/2707/052726-PB-Agenda" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Eliot, ME: a town's use table deciding where larger-scale solar is allowed at all</div>
+        <p class="sig-quote">"Solar energy system, larger-scale: SPR / SPR / no / no / SPR"</p>
+        <div class="sig-body">Not a project, the rulebook. A use table that allows larger-scale solar by site-plan review in some districts and bars it outright in others is the difference between a buildable parcel and a wasted option payment.</div>
+        <div class="sig-where">Eliot ME &middot; Planning Board &middot; May 19, 2026</div>
+        <a class="source-link" href="https://www.eliotme.gov/AgendaCenter/ViewFile/Agenda/_05192026-1611?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Bow, NH: a 1.76 MW ground-mount advancing on a former landfill</div>
+        <p class="sig-quote">"a 1.76-megawatt alternating current ground-mounted solar photovoltaic array on the former White Rock Hill Road Landfill... Application no. 404-26: Kearsarge Bow LF LLC."</p>
+        <div class="sig-body">A named developer, a named site, on the planning-board agenda. The kind of competitor filing, and the kind of landfill-reuse parcel, that is the whole game to know about early.</div>
+        <div class="sig-where">Bow NH &middot; Planning Board &middot; May 21, 2026</div>
+        <a class="source-link" href="https://bownh.gov/AgendaCenter/ViewFile/Agenda/_05212026-2719?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Amsterdam, NY: a city extending its moratorium on industrial solar and storage</div>
+        <p class="sig-quote">"A Local Law Extending a Temporary Moratorium on the Submission and Processing of Building Permits, Certificates of Occupancy, Certificates of Use and Land Use Approvals for Industrial Solar and Battery Storage Systems in the City of Amsterdam."</p>
+        <div class="sig-body">The door closing, on the record, before it is anywhere else. A parcel inside this city is frozen until the law lapses or the rules are rewritten.</div>
+        <div class="sig-where">Amsterdam NY &middot; Common Council &middot; May 19, 2026</div>
+        <a class="source-link" href="https://www.amsterdamny.gov/AgendaCenter/ViewFile/Agenda/_05192026-255?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+    </ul>
+
+    <div class="detail">
+      <p class="chain-summary" style="border:none;padding-top:14px">
+        Coverage note: this is a hand-pulled run across five Northeast states, dated to the meeting, every link checked. The honest caveat is that it is the portion of the corpus with fully extracted text behind it, so the true footprint is larger, the system is still backfilling text on older documents. The methodology is more than two thousand municipalities read the night their agendas post, classified, and linked back to the original record.
+      </p>
+    </div>
+  </div>
+
+  <!-- 5. THE FEED -->
+  <div class="section">
+    <h2>What a standing feed would deliver</h2>
+    <p class="section-sub">
+      The running list I promised, made real and continuous. You pick the geography, I do the work, you judge it against the parcels you are actually chasing.
+    </p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">You choose</div>
+        <div class="rel-title">Your states</div>
+        <div class="rel-body">
+          The states and regions where your development pipeline and site-acquisition watchlist sit, Connecticut and across the Northeast. I scope the read to the jurisdictions inside them, the towns and counties your projects actually touch.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">You receive</div>
+        <div class="rel-title">A running feed</div>
+        <div class="rel-body">
+          Draft moratoria and bans, setback and use-table changes, named competitor filings, and town-posture shifts in those jurisdictions, tagged by town and dated to the meeting, the day they surface. Each one linked to the source record, an answer you can defend.
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:18px">
+      A signal is only an edge if you have it before the developer across the table does, so the feed is built to prove the timing, not just the coverage. Get to a friendly town first, or off a freezing one early, and the option payment you do not waste is the whole return. And not every early mention is worth acting on, so each signal carries how far it has advanced, a committee musing to watch, a draft ordinance to track, a scheduled vote to act on, so the feed reads as signal rather than a firehose of every town that has said the word solar.
+    </p>
+    <div class="detail">
+      <p><strong>How I would run it.</strong> You name the geography. I confirm the jurisdiction list with you so we are reading the towns your pipeline actually touches, not a generic state dump. From there it is the live feed plus a short weekly read of what moved and why it matters for siting. No build cost on your side, no integration to stand up, just the signal in a form your development team can act on.</p>
+    </div>
+  </div>
+
+  <!-- 6. QUESTIONS -->
+  <div class="section">
+    <h2>Questions</h2>
+    <p class="section-sub">
+      Your answers decide what the feed reads first. Worth a reply even before a call.
+    </p>
+
+    <div class="question">
+      <div class="q-text">Which states or regions matter most right now, your active development pipeline in Connecticut and the Northeast, or where you are looking to acquire next?</div>
+      <div class="why">This is the load-bearing one. It scopes the feed to the jurisdictions your projects actually touch, and it tells me whether you are buying signal to protect sites in motion or to find the next ones.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">What is the document that, three months earlier, would have changed a site-acquisition or capital call you made in the last year, the draft moratorium, the setback ordinance, the competitor filing, or something further upstream?</div>
+      <div class="why">Different developers act on different rungs. Your answer calibrates how far upstream the feed should reach to be useful rather than just early.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">Would a sample cut for one state, Connecticut before a standing feed, be the faster way to judge this?</div>
+      <div class="why">If you would rather see one state proven cold before committing, I can cut a single state this week. Lower friction, same test.</div>
+    </div>
+  </div>
+
+  <!-- 7. PATHS FORWARD -->
+  <div class="section">
+    <h2>Two ways to take the next step</h2>
+    <p class="section-sub">Whichever is the lower-friction test from where you sit.</p>
+
+    <div class="path">
+      <div class="path-title">Name your states, and the feed starts</div>
+      <div class="path-body">Reply with the geography, I confirm the jurisdiction list with you, and the running list becomes a live feed of moratoria, ordinance changes, and competitor filings scoped to where you build.</div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">Or a single-state sample first</div>
+      <div class="path-body">Name one state, Connecticut, Rhode Island, Massachusetts, wherever the read matters most, and I cut a recent run of solar and storage restriction, rules, and competitor signal across it this week. No commitment, just proof in a market you know cold.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for Verogy &middot; Bryan Fitzgerald</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'verogy-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
