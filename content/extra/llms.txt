@@ -2,13 +2,13 @@
 
 > Structured, investable data from US municipal public records. A knowledge graph of 19,500 municipalities built from daily automated collection of agendas, minutes, check registers, permits, RFPs, capital plans, and assessor records.
 
-Municipal Alpha monitors 2,100+ municipalities across 50 states, collecting 300,000+ documents from municipal CMS platforms. Documents are classified by type, entities are resolved to public company tickers, and signals are structured for investment research, infrastructure prospecting, and government intelligence.
+Municipal Alpha monitors 2,300+ municipalities across 50 states, with records from 3,400+ municipalities, collecting 705,000+ documents from municipal CMS platforms. Documents are classified by type, entities are resolved to public company tickers, and signals are structured for investment research, infrastructure prospecting, and government intelligence.
 
 ## What Municipal Alpha Does
 
 - Reads municipal government portals daily across 15+ CMS platforms (CivicPlus, Granicus, BoardDocs, WordPress, Catalis, Revize, and others)
 - Classifies documents into 14 canonical types: agenda, minutes, check_register, budget, capital_plan, ordinance, permit, rfp, bid_tabulation, legislative_document, engineering_report, and others
-- Resolves vendor names to public company tickers (100+ tickers across 2,100+ municipalities)
+- Resolves vendor names to public company tickers (100+ tickers across 3,400+ municipalities)
 - Cross-references municipal records against federal databases (FCC, FAA, SAM.gov, FERC, EPA, EMMA)
 - Tracks contagion patterns as policy spreads across jurisdictions (PFAS remediation, housing density, lead pipe replacement)
 
@@ -22,12 +22,12 @@ Municipal Alpha monitors 2,100+ municipalities across 50 states, collecting 300,
 
 ## Coverage
 
-- 2,100+ municipalities monitored daily
+- 2,300+ municipalities monitored daily (records from 3,400+)
 - 50 states
-- 300,000+ documents ingested
-- 53,000+ classified signals
+- 705,000+ documents ingested
+- 212,000+ classified signals
 - 3,800+ tower sites screened with parcel cross-reference
-- 43,000+ building permits structured
+- 44,000+ building permits structured
 - 100+ public company tickers resolved from vendor payment data
 
 ## Key Pages

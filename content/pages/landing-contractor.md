@@ -58,7 +58,7 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits ma
 <div class="lp-hero-text">
 <div class="lp-tag">Equity Research</div>
 <h2>You see the revenue before quarterly reports</h2>
-<p>Analysts model municipal revenue top-down from budget allocations. I read it bottom-up from the actual payment records, 2,500+ municipalities, every day. When a municipality pays AECOM for engineering services, that transaction appears in the check register weeks before it appears in quarterly revenue.</p>
+<p>Analysts model municipal revenue top-down from budget allocations. I read it bottom-up from the actual payment records, 3,400+ municipalities, every day. When a municipality pays AECOM for engineering services, that transaction appears in the check register weeks before it appears in quarterly revenue.</p>
 </div>
 <img class="lp-hero-img" src="/images/story-housing-wave.png" alt="Housing and construction signal">
 </div>
@@ -81,7 +81,7 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits ma
 <span class="lp-metric-label">Permits</span>
 </div>
 <div class="lp-metric">
-<span class="lp-metric-value">2,500+</span>
+<span class="lp-metric-value">3,400+</span>
 <span class="lp-metric-label">Municipalities</span>
 </div>
 <div class="lp-metric">
@@ -107,7 +107,7 @@ Summary: Pre-earnings municipal signals. Vendor payments and building permits ma
 </div>
 <div class="lp-buyer">
 <strong>Sector specialists</strong>
-<span>Government contractor exposure tracked at the transaction level across 2,500+ municipalities.</span>
+<span>Government contractor exposure tracked at the transaction level across 3,400+ municipalities.</span>
 </div>
 <div class="lp-buyer">
 <strong>Alt data buyers</strong>
