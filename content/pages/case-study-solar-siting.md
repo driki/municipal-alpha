@@ -1,6 +1,7 @@
 Title: Case Study: Solar Siting Intelligence, From Moratorium to Permit
 Slug: research/solar-siting
 Sortorder: 14
+Header_image: story-solar-backlash.png
 Summary: How municipal meeting minutes reveal the regulatory pipeline for renewable energy projects. Traced through Caribou ME, Litchfield ME, Enfield CT, and Bangor ME.
 
 <style>
