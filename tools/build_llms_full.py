@@ -1,0 +1,172 @@
+#!/usr/bin/env python3
+"""
+Generate output/llms-full.txt — a single-file plain-text concatenation of the
+site's core informational pages, case studies, and data stories, for AI agents
+that want the full content in one fetch (the companion to the lightweight
+llms.txt index).
+
+Runs AFTER `pelican` builds output/ (wired into the Makefile `html`/`publish`
+targets), so it regenerates on every build/deploy and never drifts from the
+content. Stdlib-only — no extra dependency in the GitHub Actions build.
+
+Inclusion is rule-based (INCLUDE_PREFIXES below): new pages under solutions/,
+research/, stories/, essays/ auto-include; the long-tail town/profile/vendor/
+prospect pages auto-exclude. Add a prefix here to widen the corpus.
+
+Usage:
+    python3 tools/build_llms_full.py            # writes output/llms-full.txt
+    python3 tools/build_llms_full.py --check     # build to stdout, don't write
+"""
+
+import html
+import re
+import sys
+from html.parser import HTMLParser
+from pathlib import Path
+
+SITE_URL = "https://municipalalpha.com"
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+
+# Path prefixes (relative to output/) whose pages belong in the full-text corpus.
+# A page qualifies if its directory is exactly one of these, or nested under one.
+INCLUDE_PREFIXES = (
+    "about",
+    "how-it-works",
+    "methodology",
+    "solutions",
+    "research",
+    "stories",
+    "essays",
+)
+
+# Hard ceiling per page so one runaway page can't bloat the file.
+MAX_CHARS_PER_PAGE = 24_000
+
+
+class MainTextExtractor(HTMLParser):
+    """Collect text inside <main>...</main>, skipping <script>/<style>.
+
+    base.html puts nav/footer OUTSIDE <main>, so extracting <main> already
+    drops the chrome; we only additionally guard against inline script/style.
+    """
+
+    _BREAK_TAGS = {"p", "div", "section", "li", "h1", "h2", "h3", "h4", "h5",
+                   "tr", "br", "ul", "ol", "blockquote", "article"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.in_main = False
+        self.skip = 0
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "main":
+            self.in_main = True
+            return
+        if not self.in_main:
+            return
+        if tag in ("script", "style"):
+            self.skip += 1
+        elif tag in self._BREAK_TAGS:
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag == "main":
+            self.in_main = False
+        elif self.in_main and tag in ("script", "style") and self.skip:
+            self.skip -= 1
+
+    def handle_data(self, data):
+        if self.in_main and not self.skip:
+            self.parts.append(data)
+
+
+def _clean(text: str) -> str:
+    text = html.unescape(text)
+    # collapse runs of spaces/tabs, trim each line, squeeze blank lines
+    text = re.sub(r"[ \t]+", " ", text)
+    lines = [ln.strip() for ln in text.split("\n")]
+    out, blanks = [], 0
+    for ln in lines:
+        if ln:
+            blanks = 0
+            out.append(ln)
+        else:
+            blanks += 1
+            if blanks <= 1:
+                out.append("")
+    return "\n".join(out).strip()
+
+
+def _title(raw_html: str) -> str:
+    m = re.search(r"<title>(.*?)</title>", raw_html, re.S | re.I)
+    if not m:
+        return ""
+    t = html.unescape(m.group(1)).strip()
+    # strip the " · Municipal Alpha" suffix the templates append
+    return re.sub(r"\s*·\s*Municipal Alpha\s*$", "", t).strip()
+
+
+def _url_for(index_html: Path) -> str:
+    rel = index_html.parent.relative_to(OUTPUT_DIR).as_posix()
+    return f"{SITE_URL}/{rel}/"
+
+
+def _included(index_html: Path) -> bool:
+    rel = index_html.parent.relative_to(OUTPUT_DIR).as_posix()
+    if rel == ".":
+        return False
+    top = rel.split("/", 1)[0]
+    return top in INCLUDE_PREFIXES
+
+
+def collect() -> str:
+    if not OUTPUT_DIR.is_dir():
+        print(f"ERROR: {OUTPUT_DIR} not found — run `make html` first.", file=sys.stderr)
+        sys.exit(1)
+
+    pages = sorted(
+        (p for p in OUTPUT_DIR.glob("**/index.html") if _included(p)),
+        key=lambda p: p.parent.relative_to(OUTPUT_DIR).as_posix(),
+    )
+
+    chunks = [
+        "# Municipal Alpha — Full Text",
+        "",
+        "> Plain-text concatenation of the core informational pages, case "
+        "studies, and data stories from municipalalpha.com. Generated at build "
+        "time; the lightweight index is at " + SITE_URL + "/llms.txt.",
+        "",
+    ]
+    for page in pages:
+        raw = page.read_text(encoding="utf-8", errors="replace")
+        extractor = MainTextExtractor()
+        extractor.feed(raw)
+        body = _clean("".join(extractor.parts))
+        if not body:
+            continue
+        if len(body) > MAX_CHARS_PER_PAGE:
+            body = body[:MAX_CHARS_PER_PAGE].rsplit(" ", 1)[0] + " […]"
+        title = _title(raw) or page.parent.name
+        chunks.append("\n" + "=" * 72)
+        chunks.append(f"# {title}")
+        chunks.append(f"URL: {_url_for(page)}")
+        chunks.append("=" * 72 + "\n")
+        chunks.append(body)
+        chunks.append("")
+    return "\n".join(chunks).rstrip() + "\n"
+
+
+def main() -> None:
+    text = collect()
+    if "--check" in sys.argv:
+        sys.stdout.write(text)
+        return
+    out = OUTPUT_DIR / "llms-full.txt"
+    out.write_text(text, encoding="utf-8")
+    n_pages = text.count("\nURL: ")
+    print(f"Wrote {out} ({len(text):,} chars, {n_pages} pages)")
+
+
+if __name__ == "__main__":
+    main()

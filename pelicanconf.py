@@ -59,12 +59,11 @@ MARKDOWN = {
 }
 
 # Static paths
-STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/decks", "extra/llms.txt", "extra/robots.txt", "extra/brand-review", "extra/materials-periodic-table", "extra/hipcamp", "extra/favicon.ico", "extra/favicon-32.png", "extra/apple-touch-icon.png"]
+STATIC_PATHS = ["images", "extra/CNAME", "extra/sample-data", "extra/case-studies", "extra/decks", "extra/robots.txt", "extra/brand-review", "extra/materials-periodic-table", "extra/hipcamp", "extra/favicon.ico", "extra/favicon-32.png", "extra/apple-touch-icon.png"]
 # Prevent Pelican from treating HTML in extra/ as content
 READERS = {"html": None}
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},
-    "extra/llms.txt": {"path": "llms.txt"},
     "extra/robots.txt": {"path": "robots.txt"},
     "extra/sample-data/tower-prospects-sample.csv": {"path": "sample-data/tower-prospects-sample.csv"},
     "extra/sample-data/signals-sample.csv": {"path": "sample-data/signals-sample.csv"},
@@ -127,4 +126,14 @@ ARTICLE_SAVE_AS = "blog/{slug}/index.html"
 # Landing page is custom index.html template at root
 # Article listing (if any) goes to /blog/
 INDEX_SAVE_AS = "index.html"
-DIRECT_TEMPLATES = ["index"]
+
+# Build-time generated artifacts (regenerate on every `make publish`, so they
+# never drift from content/metrics):
+#   - sitemap.xml : loops `pages` + `articles` (hidden pages auto-excluded).
+#                   Advertised in extra/robots.txt; submit in Google Search Console.
+#   - llms.txt    : metrics from data/metrics.json (METRICS) + product/story lists
+#                   looped from the page collection. Replaces the old static
+#                   content/extra/llms.txt.
+DIRECT_TEMPLATES = ["index", "sitemap", "llms"]
+SITEMAP_SAVE_AS = "sitemap.xml"
+LLMS_SAVE_AS = "llms.txt"

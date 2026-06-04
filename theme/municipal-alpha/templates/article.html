@@ -2,6 +2,45 @@
 
 {% block title %}{{ article.title }} · {{ SITENAME }}{% endblock %}
 
+{% block canonical %}<link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ article.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
+    <meta property="og:title" content="{{ article.title|e }}">
+    <meta property="og:description" content="{{ article.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="{{ SITENAME }}">
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}">
+    {% if article.header_image %}
+    <meta property="og:image" content="{{ SITEURL }}/images/{{ article.header_image }}">
+    <meta property="og:image:alt" content="{{ article.title|e }}">
+    {% else %}
+    <meta property="og:image" content="{{ SITEURL }}/images/default-og.png">
+    <meta property="og:image:alt" content="{{ SITENAME }}">
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ article.title|e }}">
+    <meta name="twitter:description" content="{{ article.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
+    {% if article.header_image %}
+    <meta name="twitter:image" content="{{ SITEURL }}/images/{{ article.header_image }}">
+    {% else %}
+    <meta name="twitter:image" content="{{ SITEURL }}/images/default-og.png">
+    {% endif %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ article.title|e }}",
+        "description": "{{ article.summary|default('')|striptags|e }}",
+        "url": "{{ SITEURL }}/{{ article.url }}",
+        "datePublished": "{{ article.date.isoformat() }}",
+        {% if article.modified %}"dateModified": "{{ article.modified.isoformat() }}",{% endif %}
+        "author": {"@type": "Organization", "name": "Municipal Alpha", "url": "https://municipalalpha.com"},
+        "publisher": {"@type": "Organization", "name": "Municipal Alpha", "url": "https://municipalalpha.com"}
+    }
+    </script>
+{% endblock %}
+
 {% block content %}
 <article class="page">
     <div class="container">

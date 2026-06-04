@@ -126,7 +126,7 @@ Sortorder: 1
 <a href="/solutions/alt-data/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>
 <h3>Municipal Alt Data</h3>
-<p>Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. 128 tickers tracked. <span style="color: #E8512D;">Geneva IL case study</span></p>
+<p>Pre-earnings municipal signals. Vendor payments and building permits resolved to public company tickers. 135 tickers tracked. <span style="color: #E8512D;">Geneva IL case study</span></p>
 </a>
 <a href="/solutions/tower-leads/" class="solution-card solution-featured">
 <span class="solution-badge">Case study</span>

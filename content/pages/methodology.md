@@ -65,7 +65,7 @@ Vendor names in municipal documents are messy. "Waste Management of Maine," "WM,
 - **Tier 1 (Watchlist):** Curated ticker-company pairs. Exact string matching. High confidence. Primary source for trading signals.
 - **Tier 2 (Discovery):** Broader matching against subsidiary names, DBAs, and known aliases. Substring and fuzzy matching. Medium confidence. Stored for validation and portfolio expansion.
 
-Current resolution covers 100+ public company tickers across 3,400+ municipalities. Resolution accuracy varies by entity -- large, frequently-appearing companies (AT&T, Verizon, Waste Management) resolve at high accuracy. Smaller or regional companies may not resolve on first appearance and are queued for review.
+Current resolution covers 135 public company tickers across 3,400+ municipalities. Resolution accuracy varies by entity -- large, frequently-appearing companies (AT&T, Verizon, Waste Management) resolve at high accuracy. Smaller or regional companies may not resolve on first appearance and are queued for review.
 
 **Known limitation:** Entity confidence is currently expressed as a tier label, not a numeric probability score. Numeric confidence scoring is planned.
 

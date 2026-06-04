@@ -1,7 +1,7 @@
 Title: Government Contractor Signals
 Slug: solutions/contractor-signals
 Sortorder: 33
-Summary: Pre-earnings municipal signals. Vendor payments and building permits mapped to 128 public company tickers. Primary-source revenue signals for government contractor coverage.
+Summary: Pre-earnings municipal signals. Vendor payments and building permits mapped to 135 public company tickers. Primary-source revenue signals for government contractor coverage.
 
 <style>
 .lp-hero { display: flex; gap: 40px; margin-bottom: 48px; align-items: flex-start; }

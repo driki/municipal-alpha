@@ -8,11 +8,12 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-.PHONY: html clean serve publish copy-static-html
+.PHONY: html clean serve publish copy-static-html llms-full
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 	$(MAKE) copy-static-html
+	$(MAKE) llms-full
 
 clean:
 	rm -rf $(OUTPUTDIR)
@@ -23,6 +24,12 @@ serve: html
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	$(MAKE) copy-static-html
+	$(MAKE) llms-full
+
+# Generate output/llms-full.txt (full-text concatenation for AI agents) from the
+# freshly-built output. Runs after pelican + copy-static-html on every build.
+llms-full:
+	$(PY) tools/build_llms_full.py
 
 # Copy standalone HTML pages from content/extra/ to output/.
 # Pelican's READERS = {"html": None} setting skips HTML in STATIC_PATHS,

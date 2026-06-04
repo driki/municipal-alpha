@@ -2,6 +2,8 @@
 
 {% block title %}{{ page.title }} · {{ SITENAME }}{% endblock %}
 
+{% block canonical %}<link rel="canonical" href="{{ SITEURL }}/{{ page.url }}">{% endblock %}
+
 {% block meta %}
     <meta name="description" content="{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}">
     <meta property="og:title" content="{{ page.title|e }}">
