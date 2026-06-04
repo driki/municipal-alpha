@@ -68,7 +68,7 @@ Summary: Pre-RFP project intelligence. Zoning decisions, planning board approval
 </div>
 
 <div class="lp-peer-quote">
-<p>"A utility-scale solar moratorium tells me someone applied at the planning board and they already don't like it. By the time the load application happens, it's too late."</p>
+<p>"A utility-scale solar moratorium tells me someone applied at the planning board and they already don't like it."</p>
 <span class="lp-peer-attr">Platform lead, renewable-energy investment firm</span>
 </div>
 
