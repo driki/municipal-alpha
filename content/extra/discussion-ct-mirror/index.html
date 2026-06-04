@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for CT Mirror</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 36px 80px 36px; }
+
+  .header {
+    position: sticky; top: 0; z-index: 10; background: var(--paper);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0 16px 0; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px;
+  }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .header-meta {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink-60); text-align: right; line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--signal); background: var(--signal-06); border: 1px solid var(--signal);
+    border-radius: 2px; padding: 7px 13px; cursor: pointer; white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .mode-cue {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-40); margin: 16px 0 0 0; padding-top: 12px; border-top: 1px dashed var(--ink-12);
+  }
+
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li { font-family: var(--font-body); font-size: 14.5px; line-height: 1.5; color: var(--ink); padding-left: 18px; position: relative; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; background: var(--signal); border-radius: 1px; }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .rel-card { padding: 18px 20px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .rel-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 6px; }
+  .rel-title { font-family: var(--font-display); font-weight: 500; font-size: 18px; margin-bottom: 8px; }
+  .rel-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .chain { margin: 18px 0; padding: 22px 24px; background: var(--signal-06); border-left: 3px solid var(--signal); }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--signal); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+  .step-text { font-family: var(--font-display); font-size: 15.5px; line-height: 1.5; color: var(--ink); margin-bottom: 6px; }
+  .chain-summary { font-family: var(--font-body); font-size: 13.5px; color: var(--ink-60); margin: 10px 0 0 0; padding-top: 12px; border-top: 1px solid var(--ink-12); }
+
+  .source-link { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.03em; color: var(--signal); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 14px 16px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13px; line-height: 1.5; color: var(--ink-80); margin-bottom: 6px; }
+  .signal-list .sig-quote { font-family: var(--font-display); font-style: italic; font-size: 13.5px; line-height: 1.5; color: var(--ink); margin: 0 0 6px 0; padding-left: 12px; border-left: 2px solid var(--ink-12); }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .stat-strip { margin-top: 16px; padding: 16px 18px; background: var(--ink); color: var(--paper); border-radius: 2px; display: flex; flex-wrap: wrap; gap: 22px; }
+  .stat { flex: 1 1 120px; }
+  .stat .num { font-family: var(--font-display); font-size: 28px; font-weight: 500; line-height: 1; }
+  .stat .lab { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(247,244,240,0.6); margin-top: 6px; }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why { font-family: var(--font-body); font-size: 12.5px; line-height: 1.55; color: var(--ink-60); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--ink-12); }
+  .question .why::before { content: "Why this question \00B7 "; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); font-weight: 500; }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  .problem-quote { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 34px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 4px 0 0 0; padding: 26px 28px 22px; background: var(--signal-06); border-left: 5px solid var(--signal); border-radius: 0 3px 3px 0; }
+  .problem-cite { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-60); margin: 13px 0 22px 28px; }
+
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; line-height: 1.25; padding: 20px 20px 18px; }
+  }
+
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  .scale { margin: 22px 0 4px; padding: 24px 28px; background: var(--ink); color: var(--paper); border-radius: 2px; display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
+  .scale-num { font-family: var(--font-display); font-size: 48px; font-weight: 500; line-height: 0.95; color: var(--signal); flex: 0 0 auto; }
+  .scale-text { font-family: var(--font-display); font-size: 19px; line-height: 1.35; color: var(--paper); flex: 1 1 260px; }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  .hl { background: rgba(232, 81, 45, 0.15); font-weight: 500; padding: 0.04em 0.26em; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.03em; color: var(--ink-40); margin: 8px 0 0 0; }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municip&#945;l</div>
+    <div class="header-right">
+      <div class="header-meta">Prepared for CT Mirror<br>Elizabeth Hamilton</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for CT Mirror</h1>
+    <p class="lede">
+      I sent the desk a sample week of Connecticut town signal back in May. Rather than just describe it again, here is what a fresh run looks like, the kind of thing the enterprise desk would see early. I read the planning, zoning, council, and finance records across 68 Connecticut towns every day, and surface the decisions that move a town and never reach a desk: the mill-rate fight, the quiet land sale, the rezoning that reshapes a neighborhood, the budget vote that splits a board. Below is a recent run of that signal across Connecticut, caught the night the agenda posted, each one a story sitting in the public record with a link straight to the source.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chain, every source link, and how a standing feed would run &#9656;</p>
+  </div>
+
+  <!-- 0. THE PROBLEM -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p class="problem-quote">"The future-facing trend identification, it's very easy to see the use case. I was expecting more of a readout on current documents."</p>
+    <p class="problem-cite">Chief portfolio officer at a local-news network, on first seeing the feed</p>
+    <p>
+      There are 169 municipalities in Connecticut, and no newsroom can be in every room. The decisions that change a town, a board passing a budget on a split vote, a city selling a public building, a commission approving forty units of housing on a quiet road, happen in half-empty meeting rooms, on a Tuesday night, with no reporter present. It is all public, in the narrowest sense of the word, and only if you happened to know the item was on the agenda. After that the record sits unread on one of 169 separate town websites, in PDFs no search engine indexes. So the desk finds out at the ribbon-cutting, or the angry public hearing, <span class="hl">on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">169</span>
+      <span class="scale-text">Connecticut municipalities publish their decisions in public, the night they happen, on 169 separate sites. No desk could read them all. Municipal Alpha reads the 68 I cover every night, and the count climbs.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">One story sitting in a Connecticut town record this spring</div>
+      <div class="teaser-body">A city is preparing to <strong>sell a public building, the former Fire Company No. 3, for $600,000</strong>, the asking price set by the tax assessor, with abutters to be notified. A small public-asset story that never leaves the council packet unless someone is reading it. The system read it the night the agenda posted.</div>
+      <div class="teaser-where">Bristol, CT &middot; City Council &middot; Apr 14, 2026 &middot; <a class="source-link" href="https://bristolct.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=12207,plainText=false)" target="_blank" rel="noopener">view the agenda &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- 1. WHAT MUNICIPAL ALPHA IS -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city and town in Connecticut publishes the decisions that shape it before they become news: the budget workshop, the mill-rate amendment, the rezoning petition, the special permit, the resolution authorizing a land sale, the school-board capital plan. Those records land days or months ahead of the public event, and they sit on 169 separate town websites, in incompatible formats, where <span class="hl">almost none of them ever reach a search engine</span>. So the people those decisions affect, and the desk that should be covering them, find out late, on the same day as everyone else, or not at all.
+    </p>
+    <p>
+      Municipal Alpha reads all of them the night they post, across more than three thousand municipalities nationally and the 68 I cover in Connecticut, classifies what matters, verifies every signal against the source document, and routes it to whoever needs it early. The story you would otherwise catch at the vote, or never catch, arrives <span class="hl">while there is still time to report it first</span>: to work the budget fight before the hearing, to ask about the land sale before it closes, to be in the room when the rezoning is still contested.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Budget workshop &middot; draft ordinance &middot; special-permit filing &middot; land-sale resolution &middot; capital plan</div>
+        </div>
+        <div class="lt-gap">weeks to months</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">The vote &middot; the ribbon-cutting &middot; the press release &middot; the angry public meeting</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the two-minute version: what it reads, who else reads it, and the question every editor asks &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Planning and zoning agendas, council and board-of-finance minutes, budgets and capital plans, ordinances and resolutions, school-board packets, the night they post, across all 68 Connecticut towns in coverage.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each tagged to the town and dated to the meeting, and linked back to the source record, the primary document ready to verify and cite.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Who else reads it</div>
+          <div class="fact-v">The same upstream records are valuable enough that other segments pay to read them, each cutting them for their own purpose:</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip sig">Local newsrooms</span>
+        <span class="chip">Hedge funds / quant</span>
+        <span class="chip">Retail / REITs</span>
+        <span class="chip">Renewable developers</span>
+        <span class="chip">Tower / infrastructure</span>
+        <span class="chip">Environmental labs</span>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The obvious question</div>
+        <div class="obj-q">"A reporter could pull this, and in a year an AI tool does it for nothing. Why would a desk use it?"</div>
+        <p>Fair, and the honest answer concedes the true part: reading one town's agenda is the cheap step, and that step probably does commoditize. The value is in the four things underneath it that a reporter with a Google alert, or a model starting from a prompt, does not have.</p>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> A system with perfect reading skills starting today still does not have 2010 through 2026 on Monday. The history of what each town decided, and what came before it, has to have been accumulating to exist at all. It has been, so the desk can place a single vote in the arc that led to it.</li>
+          <li><strong>No desk can be in 169 rooms.</strong> The hard part is not reading one agenda, it is reading every covered town's records every night, across the 68 in coverage and growing, and surfacing the three that matter. That is a workflow and data-engineering problem across hundreds of inconsistent sites, not a reporter's time and not a prompt.</li>
+          <li><strong>A feed, not a search.</strong> You do not want to remember to check a town. You want something that fires the night the budget workshop posts in any of the 68. The product is a continuously running pipeline, not a query you have to think to run.</li>
+          <li><strong>A citation you can publish.</strong> Ask any model today which Connecticut towns amended a mill rate or moved to sell public land this month. It cannot answer without the corpus, and if you ask anyway it will not tell you it does not know. It will confidently invent a town, a date, a figure. That is worse than no answer in a newsroom, because it looks like one. <span class="hl">Every Municipal Alpha signal links back to the source document, so what you get is a lead with the primary record attached, where verification starts from the source instead of from scratch.</span></li>
+        </ul>
+        <p>The cost of reading it early is a few minutes a day. The cost of reading it late is the story ran somewhere else first.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. WHAT THE SIGNAL LOOKS LIKE -->
+  <div class="section">
+    <h2>What the signal looks like for a desk</h2>
+    <ul class="quick-points">
+      <li><strong>Budget and mill-rate fights.</strong> Board-of-finance votes, mill-rate amendments, revaluation-year pressure, union concessions, the municipal-finance story before the tax bill lands.</li>
+      <li><strong>Development and housing.</strong> Rezonings, special permits, multifamily and affordable-housing applications, the land-use decisions that reshape a neighborhood before the groundbreaking.</li>
+      <li><strong>Public assets and spending.</strong> Land and building sales, large contracts, settlements, capital plans, where public money and public property are moving, named and dated.</li>
+      <li><strong>The rules changing.</strong> Ordinance rewrites, state-mandate ripple effects, the standards a town resets that change the ground under every resident in it.</li>
+    </ul>
+
+    <div class="custody">
+      <span class="custody-step">Discovery</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Classification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Verification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step last">Delivery</span>
+    </div>
+
+    <p class="detail-cue">Show details for how the system follows a story forward &#9656;</p>
+    <div class="detail">
+      <p style="margin-top:18px">
+        Most of these documents never get read by anyone outside the meeting room. The decisions that determine what a town's budget does, which neighborhood gets reshaped, and where public money and property move, almost all start there, weeks or months before they reach a vote, a tax bill, or the local paper. Municipal Alpha reads those meetings the night the agenda drops, classifies them, and follows the chain forward. A contested rezoning shows up first as a comp-plan note, then a planning-commission hearing, then a council vote. <span class="hl">The system reads all of it, links it together, and surfaces the chain itself as the story, tagged to the town and dated to the meeting.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. WORKED EXAMPLE -->
+  <div class="section">
+    <h2>A worked example: the chain shape</h2>
+    <p class="section-sub">
+      One town, thirty-two months, from a single citizen comment to a unanimous vote authorizing a thirty-year infrastructure ground lease. The example is a tower in New Hampshire, because it is the cleanest fully-documented chain I have. Swap the tower for a school closure, a contested rezoning, or a long-running budget fight, and the shape is identical: an early precursor, a long quiet middle, a public vote at the end. The desk that read it at step one had the story for two years; everyone else got it at the vote.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Jul 24, 2023 &middot; Board of Selectmen</div>
+          <div class="step-text">A resident raises coverage as a public-safety issue. The chair's response: the town "does not have the ability to install a tower." That sentence is the entire institutional position on the day.</div>
+          <a class="detail source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-5" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Feb 12, 2024 &middot; Board of Selectmen</div>
+          <div class="step-text">Six months later. A company has approached the town with a no-cost build at the emergency-services complex. The fire chief has reviewed three siting candidates.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-22" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Jan 13, 2025 &middot; Board of Selectmen</div>
+          <div class="step-text">The design pivots. The combined approach is "not viable." A standalone build is now the path. A second vendor wins a separate component.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/board-selectmen-meeting-minutes-approved-48" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Oct 15, 2025 &middot; Planning Board</div>
+          <div class="step-text">A 175-foot structure at the rear of the municipal property goes to public hearing. Third-party build at no cost. Lease revenue accrues to the town.</div>
+          <a class="source-link" href="https://www.amherstnh.gov/planning-board/minutes/planning-board-minutes-65" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jan 20, 2026 &middot; Board of Selectmen</div>
+          <div class="step-text">Article 41. Thirty-year ground lease, 180-foot structure, specific tax map and lot, no town funds. Vote: 5-0-0.</div>
+          <a class="detail source-link" href="https://www.amherstnh.gov/board-selectmen/minutes/bos-minutes-approved-2" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        No federal filing, no press release until the end. The only public record of this thirty-year, multi-vendor infrastructure deal lived in municipal meeting minutes, and the system read it twenty-three months before the vote. The live signal below is that same kind of record, at step one, in Connecticut right now.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. LIVE SIGNAL -->
+  <div class="section">
+    <h2>Live signal across Connecticut this spring</h2>
+    <p class="section-sub">
+      Pulled from the corpus on the morning of this note, dated to the meeting, every link checked. Six towns, six different beats. The point is depth and currency, not "we cover Connecticut."
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="num">68</div><div class="lab">Connecticut towns read every night</div></div>
+      <div class="stat"><div class="num">6</div><div class="lab">stories below, six different beats</div></div>
+      <div class="stat"><div class="num">Daily</div><div class="lab">the cadence, dated to the meeting</div></div>
+    </div>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Brooklyn: a 40-unit multifamily development at public hearing this week</div>
+        <p class="sig-quote">"SP 26-001 Special Permit application for multi-family development consisting of 40 units at the southwest end of Old Tatnic Hill Road (Map 14, Lot 8). Applicant: Meehan Builders, LLC."</p>
+        <div class="sig-body">A housing-density decision in a small eastern Connecticut town, on the planning-and-zoning record. The kind of land-use story that reshapes a neighborhood and rarely reaches a statewide desk until it is contested.</div>
+        <div class="sig-where">Brooklyn CT &middot; Planning &amp; Zoning Commission &middot; Jun 3, 2026</div>
+        <a class="source-link" href="https://brooklynct.org/AgendaCenter/ViewFile/Agenda/_06032026-4212?html=true" target="_blank" rel="noopener">View hearing notice &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Cheshire: a town amending its adopted mill rate under the new state budget law</div>
+        <p class="sig-quote">"Amendment to FY 2026-2027 adopted mill rate pursuant to Section 178 of Senate Bill No. 1 (State Budget Implementer)... Acceptance of FY 2024-2025 audit report."</p>
+        <div class="sig-body">A local mill rate moving because of a state mandate, the kind of state-to-local fiscal ripple that is a statewide story when you can see it happening in several towns at once.</div>
+        <div class="sig-where">Cheshire CT &middot; Town Council &middot; May 12, 2026</div>
+        <a class="source-link" href="https://cheshirect.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=4057,plainText=false)" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">East Windsor: a budget corrected to $49.5M on a split board vote</div>
+        <p class="sig-quote">"to CORRECT the budget in the amount of $49,512,069 with the Mill Rate of 27.38. In Favor: Lansner, Clifton, Fishman, Austin. Opposed: Talamini. Motion: PASSED."</p>
+        <div class="sig-body detail">A four-to-one board-of-finance vote on a $49.5 million budget, with the dissent named in the minutes. The contested-municipal-finance story, on the record, before the tax bills go out.</div>
+        <div class="sig-where">East Windsor CT &middot; Board of Finance &middot; Apr 9, 2026</div>
+        <a class="source-link" href="https://ct-eastwindsor.civicplus.com/AgendaCenter/ViewFile/Minutes/_04092026-384?html=true" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Bristol: a city moving to sell a former firehouse for $600,000</div>
+        <p class="sig-quote">"the city's intention to sell city-owned property known as 81 Church Avenue (Fire Company No. 3, Map 43, Lot 22). The asking price to be $600,000 as determined by the Tax Assessor."</p>
+        <div class="sig-body">A public-asset sale, named building, named price, abutters to be notified. The accountability beat in its purest form, sitting in a council packet.</div>
+        <div class="sig-where">Bristol CT &middot; City Council &middot; Apr 14, 2026</div>
+        <a class="source-link" href="https://bristolct.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=12207,plainText=false)" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Avon: a union medical-coverage switch reshaping the mill-rate increase</div>
+        <p class="sig-quote">"an agreement to switch the medical coverage from the State and that it has in turn reduced our mill rate increase."</p>
+        <div class="sig-body">The labor-and-finance mechanics behind a tax-rate number, captured in a board-of-finance workshop. The "why the mill rate moved" story that is usually invisible.</div>
+        <div class="sig-where">Avon CT &middot; Board of Finance &middot; Apr 8, 2026</div>
+        <a class="source-link" href="https://avonct.gov/Documents/Government/Boards%20and%20Committees/Board%20of%20Finance/Agendas%20and%20Minutes/2026/Budget%20Workshop%20%26%20Slides%204.8.26.pdf" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Clinton: a budget hearing in a revaluation year</div>
+        <p class="sig-quote">"Tax Levy (including tax credits) $57,757,344. Tentative Mill Rate 22.55. Tentative Tax Rate revaluation year."</p>
+        <div class="sig-body">A shoreline town setting its levy in a revaluation year, the moment when reassessment and budget collide and homeowners feel it. The system had the hearing notice eleven days before the hearing.</div>
+        <div class="sig-where">Clinton CT &middot; Town Council &middot; Apr 20, 2026</div>
+        <a class="source-link" href="https://clintonct.org/AgendaCenter/ViewFile/Agenda/_04202026-8301?html=true" target="_blank" rel="noopener">View notice &#8594;</a>
+      </li>
+    </ul>
+
+    <div class="detail">
+      <p class="chain-summary" style="border:none;padding-top:14px">
+        Coverage note: six towns is a hand-pulled sample to show the texture, not the limit. These came off a single morning's read across the 68 Connecticut towns in coverage, dated to the meeting, every link checked. The honest caveat is that this is the portion of the corpus with fully extracted text behind it, so the true footprint is larger. The methodology is every covered town read the night its agenda posts, classified, and linked back to the original record.
+      </p>
+    </div>
+  </div>
+
+  <!-- 5. THE FEED -->
+  <div class="section">
+    <h2>What a standing feed for the desk would deliver</h2>
+    <p class="section-sub">
+      The sample week, made continuous. You pick the beat, I do the reading, the desk judges it against the stories it is already chasing.
+    </p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">You choose</div>
+        <div class="rel-title">The beats</div>
+        <div class="rel-body">
+          The beats the desk cares about most, municipal finance, development and housing, public spending and assets, schools, or all of them across the 68 towns. I scope the read to what your reporters actually cover.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">You receive</div>
+        <div class="rel-title">A running feed</div>
+        <div class="rel-body">
+          Budget and mill-rate moves, rezonings and housing applications, land sales and large contracts, ordinance changes, tagged by town and dated to the meeting, the day they surface. Each one linked to the source record, the primary document ready to verify and cite.
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:18px">
+      A signal is only a scoop if you have it before the next desk does, so the feed is built to surface the story while it is still early, not to recap what already ran. The point is to put the desk in 68 rooms it cannot physically sit in.
+    </p>
+    <p style="margin-top:14px">
+      And because the system reads every covered town at once, it surfaces the story a single desk could never assemble by hand: the same state mandate moving a dozen mill rates in the same month, one developer's variances across adjacent towns, the pattern that only shows up at scale. The Cheshire mill-rate item below, a local rate moving on a state budget law, is one thread of exactly that kind of statewide story.
+    </p>
+    <div class="detail">
+      <p><strong>How I would run it.</strong> You name the beats. I confirm the town list and the record types with you so the feed reads what your reporters actually work, not a generic dump, and I send the current list of the 68 towns in coverage up front, so the desk knows exactly where the feed sees and where it does not yet. From there it is the live feed plus a short weekly read of what moved and why it might be a story. No build cost on your side, no tool to learn, just the leads in a form the desk can act on, and the source document behind every one.</p>
+    </div>
+  </div>
+
+  <!-- 6. QUESTIONS -->
+  <div class="section">
+    <h2>Questions</h2>
+    <p class="section-sub">
+      Your answers decide what the feed reads first. Worth a reply even before a call.
+    </p>
+
+    <div class="question">
+      <div class="q-text">Which beats does the desk most want to never miss, municipal finance, development and housing, public spending, schools, or something the sample did not show?</div>
+      <div class="why">This is the load-bearing one. It scopes the feed to what your reporters actually cover, so the leads land as stories, not noise.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">What is the story you found out about too late in the last year, the one that had already run elsewhere, or already happened, by the time it reached the desk?</div>
+      <div class="why">That names the gap precisely. If the feed would have surfaced that exact thing early, it is worth the desk's few minutes a day; if not, it tells me what to point coverage at.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">Would a daily feed or a weekly digest fit the desk's workflow better, or a mix, push the urgent, batch the rest?</div>
+      <div class="why">Cadence is the difference between something a reporter opens with their coffee and something that piles up unread. The system can do either, or both by signal type.</div>
+    </div>
+  </div>
+
+  <!-- 7. PATHS FORWARD -->
+  <div class="section">
+    <h2>Two ways to take the next step</h2>
+    <p class="section-sub">Whichever is the lower-friction test from where you sit.</p>
+
+    <div class="path">
+      <div class="path-title">Name the beats, and the feed starts</div>
+      <div class="path-body">Reply with the beats the desk most wants covered, I confirm the town list with you, and the sample week becomes a live feed of Connecticut municipal signal scoped to what your reporters work. A few weeks is enough to judge it against the stories you already run.</div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">Or the source documents behind any of these</div>
+      <div class="path-body">Point at any signal above, or name a town, and I send the underlying record, the full packet, minutes, or ordinance, so a reporter can work it now. No commitment, just proof on a story you can use this week.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for CT Mirror &middot; Elizabeth Hamilton</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'ctmirror-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
