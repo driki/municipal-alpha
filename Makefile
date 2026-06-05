@@ -36,7 +36,7 @@ llms-full:
 # so these need to be copied manually post-build. Each entry pairs a
 # source HTML in content/extra/<dir>/index.html with output/<dir>/index.html.
 copy-static-html:
-	@for d in brand-review materials-periodic-table hipcamp verizon towers discussion-our-katahdin-2026-05-28 discussion-desri-svedlow discussion-desri-nicc-johnson discussion-oskar-serrander-2026-06-01 discussion-ready-net discussion-kite-realty discussion-new-leaf-energy discussion-ac-power discussion-ct-mirror discussion-verogy overview-v4; do \
+	@for d in brand-review materials-periodic-table hipcamp verizon towers discussion-our-katahdin-2026-05-28 discussion-desri-svedlow discussion-desri-nicc-johnson discussion-oskar-serrander-2026-06-01 discussion-ready-net discussion-kite-realty discussion-new-leaf-energy discussion-ac-power discussion-ct-mirror discussion-verogy discussion-cianbro overview-v4; do \
 		if [ -f $(INPUTDIR)/extra/$$d/index.html ]; then \
 			mkdir -p $(OUTPUTDIR)/$$d ; \
 			cp $(INPUTDIR)/extra/$$d/index.html $(OUTPUTDIR)/$$d/index.html ; \

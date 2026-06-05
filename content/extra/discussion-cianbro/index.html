@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for ready.net</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 36px 80px 36px;
+  }
+
+  /* sticky header keeps the toggle reachable on a long phone scroll */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0 16px 0;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--signal);
+    background: var(--signal-06);
+    border: 1px solid var(--signal);
+    border-radius: 2px;
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+  .mode-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    margin: 16px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-12);
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  /* quick-read scannable bullet list */
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+  }
+  .quick-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 7px; height: 7px;
+    background: var(--signal);
+    border-radius: 1px;
+  }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .rel-card {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .rel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 6px;
+  }
+  .rel-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .rel-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--ink-12);
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-strip {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .stat { flex: 1 1 120px; }
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat .lab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(247,244,240,0.6);
+    margin-top: 6px;
+  }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question \00B7 ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  /* lead-time concept visual - the core thesis made visual */
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  /* problem-first pull quote (state the pain in the buyer's words) */
+  .problem-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 31px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--signal);
+  }
+  .problem-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin: 0 0 22px 20px;
+  }
+
+  /* chunked facts (labeled key/value, replaces prose walls) */
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  /* chips (doc types, segments) */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  /* proof cards (show the validation with numbers + the buyer's own words) */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .proof-card { padding: 16px 18px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .proof-num { font-family: var(--font-display); font-size: 25px; font-weight: 500; color: var(--ink); line-height: 1.1; }
+  .proof-lab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-60); margin: 7px 0 9px; line-height: 1.45; }
+  .proof-quote { font-family: var(--font-display); font-style: italic; font-size: 12.5px; line-height: 1.4; color: var(--ink-80); }
+  .block-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-60); margin: 22px 0 0; }
+
+  /* chain-of-custody stepper */
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .proof-grid { grid-template-columns: 1fr; }
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; }
+  }
+
+  /* overt objection-handling block (acknowledge the steel-man, then deploy) */
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  /* bulleted list to support a prose block */
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  /* scale-of-problem band (the overwhelming number, then "we do") */
+  .scale {
+    margin: 22px 0 4px;
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .scale-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--signal);
+    flex: 0 0 auto;
+  }
+  .scale-text {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--paper);
+    flex: 1 1 260px;
+  }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  /* early teaser: one concrete live signal, surfaced in the problem section */
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  /* scan-anchor highlight: the point-driving phrase of a longer paragraph */
+  .hl {
+    background: rgba(232, 81, 45, 0.15);
+    font-weight: 500;
+    padding: 0.04em 0.26em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* ── toggle mechanics (lifts cleanly into the DESRI rebuild + future template) ── */
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-40);
+    margin: 8px 0 0 0;
+  }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-right">
+      <div class="header-meta">Discussion guide<br>Cianbro &middot; Fri 2026-06-05</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for Cianbro</h1>
+    <p class="lede">
+      Cianbro builds what towns decide to build: the bridges and culverts, the water and wastewater plants, the substations and transmission lines, the public and industrial facilities. Municipal Alpha reads the town-level governance that decides which of those projects happens, and when: the capital plan, the bond authorization, the EPA consent-decree program, the planning-board siting hearing, surfaced the night the agenda posts, months before the project reaches an RFP. The point is to see a job while there is still time to position for it, instead of meeting it as a priced-out bid.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chains, every source link, and the breadth behind the examples &#9656;</p>
+  </div>
+
+  <!-- ───────── 0. THE PROBLEM ───────── -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p>
+      A public project is decided long before it is a project. By the time it reaches an RFP, or a Dodge listing, the engineer is chosen, the design is set, and the remaining competition is on price. The decision that the job will happen, and the shape it takes, gets made months to years earlier: a line in a capital plan, a bond article on a town-meeting warrant, an EPA consent-decree program, a planning-board siting hearing. It is all public, in the narrowest sense of the word: a few people in a half-empty town room, and only if you knew the item was on the agenda at all. After that the record sits unread on one of thousands of separate municipal websites. So the builder finds out at the public event, <span class="hl">on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">523</span>
+      <span class="scale-text">New England municipalities, every town in Maine among them, publish the decisions that move infrastructure the night they happen. Thousands more nationwide. No business-development team could read them all. Municipal Alpha does.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">One Municipal Alpha surfaced this week</div>
+      <div class="teaser-body">Bangor put a <strong>$2.8M sewer-separation engineering contract</strong> on its Finance Committee agenda, one piece of a multi-year, EPA-mandated wastewater program. Water and wastewater is one of Cianbro's stated markets, and this is in Cianbro's home region. The system read it the night the agenda posted.</div>
+      <div class="teaser-where">Bangor, ME &middot; Finance Committee &middot; Jun 1, 2026 &middot; <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06012026-812?html=true" target="_blank" rel="noopener">view the agenda &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- ───────── 1. WHAT MUNICIPAL ALPHA IS ───────── -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city, town, county, and district in the country publishes the decisions that move infrastructure, capital, and credit before they happen: the capital plan, the bond authorization, the permit, the siting hearing, the budget line, the vendor payment. Those records land months ahead of the public event, and they sit on thousands of separate municipal websites, in incompatible formats, where <span class="hl">almost none of them reach a search engine</span>. So the people those decisions affect find out late, on the same day as everyone else, or they never find out at all.
+    </p>
+    <p>
+      Municipal Alpha reads them the night they post, across more than three thousand municipalities in all fifty states, classifies what matters, verifies every signal against the source document, and routes it to whoever needs it early. The job you would otherwise catch at the RFP, or never catch at all, arrives <span class="hl">while there is still time to position for it</span>.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Precursor &middot; capital plan &middot; bond article &middot; consent-decree program &middot; siting hearing</div>
+        </div>
+        <div class="lt-gap">6 to 24 months</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">Public event &middot; RFP posted &middot; bid advertised &middot; construction</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the two-minute version: what it reads, why it is possible now, and who else pays for it &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Capital plans, agendas and minutes, bond warrants, RFPs, planning and select-board decisions, permit and siting filings, the night they post.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each scored for confidence and linked back to the source record.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Who pays</div>
+          <div class="fact-v">Several segments buy the same early municipal signal:</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip sig">Heavy civil &amp; AEC</span>
+        <span class="chip">Tower &amp; wireless REITs</span>
+        <span class="chip">Energy &amp; renewables</span>
+        <span class="chip">Hedge funds / quant</span>
+        <span class="chip">Environmental labs</span>
+        <span class="chip">Economic-development orgs</span>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The obvious question</div>
+        <div class="obj-q">"In a year, given the pace of AI, can't an agent just do this? Set an alert on a model and get the same thing?"</div>
+        <p>Fair question, and the honest answer starts by conceding the part that is true: reading a document and classifying it is the cheap step, and it probably does commoditize. The value is in the four layers underneath it that a model starting from a prompt does not have.</p>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> A model with perfect extraction skills starting today still does not have 2010 through 2026 on Monday. The history has to be accumulating now to exist in eighteen months. It has been.</li>
+          <li><strong>The hard part is before the model, and it is not AI work.</strong> Step zero is a registry mapping each local government to its actual digital footprint, the specific site or portal where its records live. Then you fingerprint that footprint to know which platform it runs (CivicPlus, Granicus, WordPress, Catalis, and a long tail) and how to pull from it. Then you extract, often from behind authenticated portals or PDFs indexed nowhere. Registry, fingerprinting, extraction: these are workflow and data-engineering problems, not LLM problems. The model only helps at the very end, once the document is already in hand.</li>
+          <li><strong>A feed, not a question.</strong> You do not want to ask a model on Monday. You want something that fires the night the agenda posts. The product is a continuously running pipeline, not a query you have to remember to run.</li>
+          <li><strong>The specific signal, and an honest one.</strong> Ask any model today which Maine towns are running a sewer-separation program under an EPA consent decree this year, or which New Hampshire towns are planning a bridge replacement for 2027. It cannot answer without the corpus and the resolved entities behind it, and if you ask anyway it will not tell you it does not know. It will confidently invent a town, a date, a citation. That is worse than no answer, because it looks like one. Every Municipal Alpha signal links back to the source document, so you get an answer you can defend instead of one you have to trust.</li>
+        </ul>
+        <p>And if the bet is wrong and this does commoditize, the corpus accumulated by then is still the one a later entrant does not have. <span class="hl">The cost of being early is overhead. The cost of being late is no corpus.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 2. WHAT THE SIGNAL LOOKS LIKE ───────── -->
+  <div class="section">
+    <h2>What the signal looks like</h2>
+    <ul class="quick-points">
+      <li><strong>Infrastructure.</strong> Bridge and culvert programming, water and wastewater plant studies, EPA consent-decree sewer programs, State Revolving Fund applications, bond authorizations for road, water, and sewer work.</li>
+      <li><strong>Power and energy.</strong> Substation and transmission siting, solar and wind facility review, utility wetland and right-of-way permits, grid-hardening capital plans.</li>
+      <li><strong>Buildings and industrial.</strong> Public-safety and public-works facility studies, school building committees, municipal-complex needs assessments, industrial-park and mill-site redevelopment.</li>
+    </ul>
+
+    <div class="custody">
+      <span class="custody-step">Discovery</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Classification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Verification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step last">Delivery</span>
+    </div>
+
+    <p class="detail-cue">Show details for how the system reads it &#9656;</p>
+    <div class="detail">
+      <p style="margin-top:18px">
+        Every municipality in the country produces a stream of agenda packets, meeting minutes, capital plans, RFPs, bond warrants, siting hearings, and permit decisions. Most of them never get read by anyone outside the meeting room. The decisions that determine which infrastructure gets built, who is already positioned on it, and when the money comes together almost all start in those documents, months before they reach Dodge, a state DOT work plan, or the trade press.
+      </p>
+      <p>
+        Municipal Alpha reads those meetings the night the agenda drops, across more than three thousand municipalities in all fifty states, classifies the documents, and follows the chain forward. A treatment-plant program shows up first as a line in a capital plan, then a consent-decree obligation, then an engineering contract, then a bid. A bridge shows up first as a culvert flagged at a CIP committee, then a design year, then a construction year. <span class="hl">The system reads all of that, links it together, and surfaces the chain itself as the signal. For a builder, that is the layer ahead of Dodge and the RFP.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 3. WORKED EXAMPLE: BANGOR ───────── -->
+  <div class="section">
+    <h2>A worked example: Bangor's wastewater program</h2>
+    <p class="section-sub">
+      One city, one legally-mandated program, traced through its own meeting record from January to June 2026. Water and wastewater is a Cianbro market, and Bangor is in Cianbro's home region. This is the chain the system surfaces; the live signal below is the same shape in other towns and other markets.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Jan 21, 2026 &middot; Finance Committee</div>
+          <div class="step-text">The mandate, stated plainly: "The Maine DEP and US EPA administer a consent decree to the City to reduce CSOs. Sewer separation has always been a prevalent method to reduce CSOs in the City." A multi-decade, legally-required program, and a specific opportunity surfacing.</div>
+          <a class="detail source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_01212026-662?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Feb 2, 2026 &middot; Finance Committee</div>
+          <div class="step-text">A coordinated move: "a stormwater trunk line from Main Street to Second Street across the YMCA site that is currently under construction in order to allow for future sewer separation." The work gets done while the ground is already open.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_02022026-672?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">May 6, 2026 &middot; City Council Workshop</div>
+          <div class="step-text">In the FY27 budget, under Engineering and Infrastructure: "Continue to implement EPA Consent Decree requirements for sewer / stormwater separation." The program is funded for the coming year.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_05062026-773?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jun 1, 2026 &middot; Finance Committee</div>
+          <div class="step-text">A specific project moves to an engineering contract: "Cumberland Street Sewer Separation, Engineering, Lou Silver, Inc., $2,803,618 (local share $1,309,432.25)."</div>
+          <a class="detail source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06012026-812?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jun 3, 2026 &middot; City Council Budget Workshop</div>
+          <div class="step-text">The FY27 priorities name what comes next: "Begin Meadowbrook sewer separation project and mall area gravity sewer project," plus a treatment-plant aeration upgrade, all to "Meet obligations of Consent Decree," with bond funding attached.</div>
+          <a class="detail source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06032026-809?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        No press release. No bid advertisement yet. The only record of a multi-year, multi-project wastewater program lived in Bangor's own meeting minutes, and the system read each piece the night it posted, months before any of it reaches an RFP. The next subsections, Meadowbrook and the mall-area gravity sewer and the treatment-plant aeration upgrade, are already named. A builder in this market knows what is coming, and roughly when, before the competition does.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 4. LIVE SIGNAL THIS WEEK ───────── -->
+  <div class="section">
+    <h2>Live signal this week</h2>
+    <p class="section-sub">
+      Pulled from the corpus the morning of this note, dated to the meeting, every link checked live. The point is depth and currency across Cianbro's markets and region, not "we cover construction."
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="num">523</div><div class="lab">New England municipalities read every night they post</div></div>
+      <div class="stat"><div class="num">251</div><div class="lab">with active infrastructure &amp; construction signals in 2026</div></div>
+      <div class="stat"><div class="num">7,000+</div><div class="lab">infrastructure &amp; construction signals surfaced, New England, 2026</div></div>
+    </div>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Salem, NH: a bridge, a sewer pump station, and a water-main extension all moving to 2027</div>
+        <p class="sig-quote">"The design would need to be accelerated in order to do both projects in 2027. If done in coordination with Lake / Bluff St., the bids could get better pricing."</p>
+        <div class="sig-body detail">The Capital Improvements Program committee working the Millville St. Bridge / Culvert, the Haigh Avenue sewer pump station, and the Lake / Bluff St. water-main extension in the same session, openly discussing accelerating design and coordinating bids. Three Cianbro lines of work, named at the planning stage, before any of it is advertised.</div>
+        <div class="sig-where">Salem NH &middot; Capital Improvements Program Committee &middot; May 19, 2026</div>
+        <a class="source-link" href="https://salemnh.gov/AgendaCenter/ViewFile/Minutes/_05192026-1726?html=true" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Kensington, NH: a bridge with a 2027 construction start, on the selectmen's agenda now</div>
+        <p class="sig-quote">"Construction start date of 2027. Bridge located near 201 Amesbury Road."</p>
+        <div class="sig-body detail">A small town working out traffic control and state coordination for a bridge job more than a year before construction. The earliest stage of a project that will eventually go to bid, visible the night the agenda posted.</div>
+        <div class="sig-where">Kensington NH &middot; Board of Selectmen &middot; May 18, 2026</div>
+        <a class="source-link" href="https://kensingtonnh.gov/AgendaCenter/ViewFile/Agenda/_05182026-257?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Bow, NH: Eversource utility work and a solar array on a former landfill</div>
+        <p class="sig-quote">"Application no. 403-26: Eversource Energy, Proposed Wetland CUP for approximately 15,267 sq. ft. of temporary wetland impact."</p>
+        <div class="sig-body">A utility moving on a permit, plus a landfill-to-solar conversion in front of the same board. The power-and-energy precursor layer, at parcel granularity, before any of it is a construction package.</div>
+        <div class="sig-where">Bow NH &middot; Planning Board &middot; May 21, 2026</div>
+        <a class="source-link" href="https://bownh.gov/AgendaCenter/ViewFile/Agenda/_05212026-2719?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Farmington, NH: the Lilac State Solar Project under construction review</div>
+        <p class="sig-quote">"Review of Requested Compliance Materials, Lilac State Solar Project, Chestnut Hill Road."</p>
+        <div class="sig-body">A utility-scale solar project working through site stabilization, construction sequencing, and third-party inspection at the planning board. The renewables build pipeline, in the open.</div>
+        <div class="sig-where">Farmington NH &middot; Planning Board &middot; May 20, 2026</div>
+        <a class="source-link" href="https://www.farmington.nh.us/AgendaCenter/ViewFile/Minutes/_05202026-200?html=true" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Shelburne, VT: a town drafting its Capital Improvements Plan</div>
+        <p class="sig-quote">"Review of draft Capital Improvements Plan (CIP)."</p>
+        <div class="sig-body">The earliest precursor there is: the document where a town's next several years of infrastructure spending first takes shape, read the night it posted. Maine is fully covered; this is the same depth filling in across New England.</div>
+        <div class="sig-where">Shelburne VT &middot; Planning Commission &middot; May 28, 2026</div>
+        <a class="source-link" href="https://www.shelburnevt.org/AgendaCenter/ViewFile/Agenda/_05282026-3069?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+    </ul>
+
+    <div class="detail">
+      <p class="chain-summary" style="margin-top:20px">
+        Coverage note: 7,052 infrastructure and construction signals across 251 New England municipalities so far in 2026. Honest caveat, that count is the keyword-matched subset with fully extracted text behind it; the true footprint is larger, because the system is still backfilling text on older documents. The methodology is 523 New England municipalities, and more than three thousand nationwide, read the night their agendas post, classified, and linked back to the original record. One honest caveat on the early signals: a capital-plan line or a planning-board item is intent, not a commitment. Some slip, some die. The trade for the lead time is that you are reading where a town is headed, not a signed deal. The Bangor chain above is the firmer end of that range, a mandated program with an engineering contract already awarded.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 5. TWO WAYS WE FIT ───────── -->
+  <div class="section">
+    <h2>Two ways Cianbro and Municipal Alpha could fit together</h2>
+    <p class="section-sub">
+      Two distinct relationships, each a different shape of conversation. Worth naming both up front.
+    </p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">Path A</div>
+        <div class="rel-title">Feedback partner</div>
+        <div class="rel-body">
+          You and the people who run pre-construction and business development tell me where the municipal precursor layer maps onto how Cianbro positions for public work, and where it is just noise next to Dodge and the DOT work plans you already track. That read shapes what I build for the heavy-civil and AEC vertical.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">Path B</div>
+        <div class="rel-title">A precursor feed for pre-construction</div>
+        <div class="rel-body">
+          Town-level capital-plan, bond, water and sewer, bridge, and energy-siting signal across the states Cianbro works, tagged by town and market, the day it surfaces. Feeds BD targeting and pre-construction positioning. Sample first, no build cost on your side.
+        </div>
+      </div>
+    </div>
+    <div class="detail">
+      <p style="margin-top:20px"><strong>Path A is the more valuable one to me right now.</strong> Cianbro sits at exactly the seam I am trying to understand:</p>
+      <ul class="blist">
+        <li>You already win public work across these markets, so you can tell me in five minutes whether a consent-decree program, a CIP bridge line, or a substation siting is a leading indicator your BD team would act on, or whether it lands too late next to what you already see in Dodge and the state work plans.</li>
+        <li>That one distinction decides whether the heavy-civil vertical is a real product or a dead end.</li>
+        <li>You are better positioned to answer it than almost anyone I have talked to.</li>
+      </ul>
+      <p><strong>Path B is concrete:</strong> a change-watch on the municipal documents that move ahead of a bid, scoped to a market and a set of states, delivered as a tagged feed. It would:</p>
+      <ul class="blist">
+        <li>feed BD a list of towns programming water, sewer, bridge, or energy work before the RFP,</li>
+        <li>feed pre-construction early notice of where a project is forming and who is already on it,</li>
+        <li>tell you which civil engineers, architects, and developers are active in which towns.</li>
+      </ul>
+      <p>None of it competes with what Cianbro does. It sits ahead of the bid.</p>
+    </div>
+  </div>
+
+  <!-- ───────── 6. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions where your read would change what I build</h2>
+    <p class="section-sub">
+      Genuine discussion topics, not a checklist. Your answers route whether the heavy-civil and AEC vertical is a feed into how Cianbro pursues public work, a BD tool, or neither.
+    </p>
+
+    <div class="question">
+      <div class="q-text">By the time Cianbro sees a public project, through Dodge, a DOT work plan, or an RFP, how much of the positioning is already decided? Would seeing it at the CIP, bond, or consent-decree stage, months earlier, change who you can build a relationship with?</div>
+      <div class="why">This is the load-bearing question. You can tell me in five minutes whether a town-level precursor is a leading indicator your BD team would act on, or whether it arrives too late to matter next to what you already track. The answer decides whether I build this vertical out or step back from it.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">Which markets is the early signal most valuable in: water and wastewater, bridges and heavy civil, power and energy, or buildings and industrial? Where does the lead time actually change a pursuit?</div>
+      <div class="why">Tests where to point the system. Each market has a different keystone document, the CIP line, the consent-decree obligation, the siting hearing, and I would rather go deep where it moves a decision than spread thin across all of them.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">Cianbro works across the Northeast and well beyond it. Where would early municipal signal change a bid or a BD push: Maine, the broader New England growth markets, or wherever a target sector is moving next?</div>
+      <div class="why">Coverage is deepest in Maine and New England today and growing nationally. Your answer tells me which geography to harden first so the signal is dense where Cianbro actually competes.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">For your seat specifically, Pete: an industrial or manufacturing facility job often starts as a municipal economic-development, siting, or TIF conversation long before there is a building to build. Is that a thread worth pulling?</div>
+      <div class="why">Industrial and manufacturing is your market, and it has a distinct precursor shape from the public-works lines. If the early municipal signal there is real, it is a different product than the infrastructure feed, and worth building separately.</div>
+    </div>
+  </div>
+
+  <!-- ───────── 7. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">A few concrete shapes the next step could take, depending on which direction this pulls.</p>
+
+    <div class="path">
+      <div class="path-title">A precursor sample for a market and region you name</div>
+      <div class="path-body">You pick a market and a state, say Maine water and wastewater, or New Hampshire bridges, and I cut a month of real CIP, bond, consent-decree, and siting signal across it, tagged by town and dated, every link checked. No build cost on your side. One-week loop, and it tells us fast whether the layer is real for Cianbro.</div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">A look-back test against Cianbro's own pursuits</div>
+      <div class="path-body">Name a handful of public projects Cianbro chased in the last 18 months. I will show you when each first surfaced in the corpus, and what the lead time would have been against when your team picked it up. The cleanest test of whether this actually beats the intelligence you already have.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">A BD-targeting feed scoped to Cianbro's growth markets</div>
+      <div class="path-body">If a specific set of states or a specific market is the sharpest test, I scope the watch to it and surface capital-plan, bond, and siting activity the day it posts. The question is whether that timing changes where BD spends its effort.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">An entity layer: who is already in the room</div>
+      <div class="path-body">Separate from the project signal, which civil engineers, architects, and developers are active in which towns. The "who is already positioned" piece, built from the same documents. Useful if Cianbro's edge is the relationship as much as the timing.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for Cianbro &middot; Pete Malikowski</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'cianbro-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
