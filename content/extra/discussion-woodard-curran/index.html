@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for Woodard &amp; Curran</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 36px 80px 36px;
+  }
+
+  /* sticky header keeps the toggle reachable on a long phone scroll */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0 16px 0;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--signal);
+    background: var(--signal-06);
+    border: 1px solid var(--signal);
+    border-radius: 2px;
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+  .mode-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    margin: 16px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-12);
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  /* quick-read scannable bullet list */
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+  }
+  .quick-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 7px; height: 7px;
+    background: var(--signal);
+    border-radius: 1px;
+  }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .rel-card {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .rel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 6px;
+  }
+  .rel-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .rel-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--ink-12);
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-strip {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .stat { flex: 1 1 120px; }
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat .lab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(247,244,240,0.6);
+    margin-top: 6px;
+  }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question \00B7 ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  /* lead-time concept visual - the core thesis made visual */
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  /* problem-first pull quote (state the pain in the buyer's words) */
+  .problem-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 31px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--signal);
+  }
+  .problem-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin: 0 0 22px 20px;
+  }
+
+  /* chunked facts (labeled key/value, replaces prose walls) */
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  /* chips (doc types, segments) */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  /* proof cards (show the validation with numbers + the buyer's own words) */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .proof-card { padding: 16px 18px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .proof-num { font-family: var(--font-display); font-size: 25px; font-weight: 500; color: var(--ink); line-height: 1.1; }
+  .proof-lab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-60); margin: 7px 0 9px; line-height: 1.45; }
+  .proof-quote { font-family: var(--font-display); font-style: italic; font-size: 12.5px; line-height: 1.4; color: var(--ink-80); }
+  .block-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-60); margin: 22px 0 0; }
+
+  /* chain-of-custody stepper */
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .proof-grid { grid-template-columns: 1fr; }
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; }
+  }
+
+  /* overt objection-handling block (acknowledge the steel-man, then deploy) */
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  /* bulleted list to support a prose block */
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  /* scale-of-problem band (the overwhelming number, then "we do") */
+  .scale {
+    margin: 22px 0 4px;
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .scale-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--signal);
+    flex: 0 0 auto;
+  }
+  .scale-text {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--paper);
+    flex: 1 1 260px;
+  }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  /* early teaser: one concrete live signal, surfaced in the problem section */
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  /* scan-anchor highlight: the point-driving phrase of a longer paragraph */
+  .hl {
+    background: rgba(232, 81, 45, 0.15);
+    font-weight: 500;
+    padding: 0.04em 0.26em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* toggle mechanics */
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-40);
+    margin: 8px 0 0 0;
+  }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-right">
+      <div class="header-meta">Discussion guide<br>Woodard &amp; Curran &middot; Mary House</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for Woodard &amp; Curran</h1>
+    <p class="lede">
+      Woodard &amp; Curran designs and delivers the water, wastewater, and environmental work that towns decide to fund: the treatment-plant upgrade, the sewer-separation program, the PFAS removal system, the drinking-water compliance project. Municipal Alpha reads the town-level governance that decides which of those projects happens, and when: the capital plan, the State Revolving Fund application, the EPA consent-decree obligation, the PFAS pilot at a water district, the board hearing, surfaced the night the agenda posts, months before any of it reaches an RFP. The point is to be in the conversation while the scope is still forming, instead of meeting the work as a posted RFP another firm has already been shaping for a year.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chains, every source link, and the breadth behind the examples &#9656;</p>
+  </div>
+
+  <!-- ───────── 0. THE PROBLEM ───────── -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p>
+      A public water or wastewater project is decided long before it is a project. By the time it reaches an RFP, the program is scoped, the budget is set, and very often an engineer has already been advising the town on it for a year. The decision that the work will happen, and the shape it takes, gets made months to years earlier: a line in a capital plan, a State Revolving Fund application, an EPA or state consent-decree obligation, a PFAS pilot at a water district, a sewer-separation program on a finance-committee agenda. It is all public, in the narrowest sense of the word: a few people in a half-empty town room, and only if you knew the item was on the agenda at all. After that the record sits unread on one of thousands of separate municipal websites. So the firm that was not already in the room finds out at the RFP, <span class="hl">on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">243</span>
+      <span class="scale-text">New England municipalities put a water, wastewater, or PFAS decision on the public record in the past year, the night it happened. Thousands more nationwide. No business-development team could read them all. Municipal Alpha does.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">One the system surfaced</div>
+      <div class="teaser-body">In Webster, a competing engineering firm presented a <strong>$10.35M WWTF biosolids dewatering design</strong> to the Water &amp; Sewer Commission, the equipment summary and a probable construction-cost estimate and all, at a public meeting. That is the design being shaped, by someone, before any RFP exists. The system read it the night the minutes posted.</div>
+      <div class="teaser-where">Webster, MA &middot; Water &amp; Sewer Commission &middot; Mar 5, 2026 &middot; <a class="source-link" href="https://www.webster-ma.gov/AgendaCenter/ViewFile/Minutes/_03052026-4127?html=true" target="_blank" rel="noopener">view the minutes &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- ───────── 1. WHAT MUNICIPAL ALPHA IS ───────── -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city, town, county, and district in the country publishes the decisions that move infrastructure, capital, and credit before they happen: the capital plan, the State Revolving Fund application, the bond authorization, the permit, the siting hearing, the budget line, the vendor payment. Those records land months ahead of the public event, and they sit on thousands of separate municipal websites, in incompatible formats, where <span class="hl">almost none of them reach a search engine</span>. So the people those decisions affect find out late, on the same day as everyone else, or they never find out at all.
+    </p>
+    <p>
+      Municipal Alpha reads them the night they post, across more than three thousand municipalities in all fifty states, classifies what matters, verifies every signal against the source document, and routes it to whoever needs it early. The water, wastewater, or PFAS program you would otherwise catch at the RFP, or never catch at all, arrives <span class="hl">while there is still time to position for it</span>.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Precursor &middot; capital plan &middot; SRF application &middot; consent-decree program &middot; PFAS pilot &middot; board hearing</div>
+        </div>
+        <div class="lt-gap">6 to 24 months</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">Public event &middot; RFP posted &middot; bid advertised &middot; construction</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the two-minute version: what it reads, why it is possible now, and the honest answer to whether AI just does this in a year &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Capital plans, agendas and minutes, SRF and bond warrants, RFPs, water and sewer commission decisions, permit and siting filings, the night they post.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each scored for confidence and linked back to the source record.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Who pays</div>
+          <div class="fact-v">Several segments buy the same early municipal signal:</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip sig">Water &amp; environmental engineering</span>
+        <span class="chip">Heavy civil &amp; AEC</span>
+        <span class="chip">Environmental &amp; PFAS labs</span>
+        <span class="chip">Energy &amp; renewables</span>
+        <span class="chip">Hedge funds / quant</span>
+        <span class="chip">Economic-development orgs</span>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The obvious question</div>
+        <div class="obj-q">"In a year, given the pace of AI, can't an agent just do this? Set an alert on a model and get the same thing?"</div>
+        <p>Fair question, and the honest answer starts by conceding the part that is true: reading a document and classifying it is the cheap step, and it probably does commoditize. The value is in the four layers underneath it that a model starting from a prompt does not have.</p>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> A model with perfect extraction skills starting today still does not have 2010 through 2026 on Monday. The history has to be accumulating now to exist in eighteen months. It has been.</li>
+          <li><strong>The hard part is before the model, and it is not AI work.</strong> Step zero is a registry mapping each local government to its actual digital footprint, the specific site or portal where its records live. Then you fingerprint that footprint to know which platform it runs (CivicPlus, Granicus, WordPress, Catalis, and a long tail) and how to pull from it. Then you extract, often from behind authenticated portals or PDFs indexed nowhere. Registry, fingerprinting, extraction: these are workflow and data-engineering problems, not LLM problems. The model only helps at the very end, once the document is already in hand.</li>
+          <li><strong>A feed, not a question.</strong> You do not want to ask a model on Monday. You want something that fires the night the agenda posts. The product is a continuously running pipeline, not a query you have to remember to run.</li>
+          <li><strong>The specific signal, and an honest one.</strong> Ask any model today which Maine towns are standing up a PFAS treatment facility this year, or which New Hampshire towns have a sewer pump station scheduled for 2027 construction. It cannot answer without the corpus and the resolved entities behind it, and if you ask anyway it will not tell you it does not know. It will confidently invent a town, a date, a citation. That is worse than no answer, because it looks like one. Every Municipal Alpha signal links back to the source document, so you get an answer you can defend instead of one you have to trust.</li>
+        </ul>
+        <p>And if the bet is wrong and this does commoditize, the corpus accumulated by then is still the one a later entrant does not have. <span class="hl">The cost of being early is overhead. The cost of being late is no corpus.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 2. WHAT THE SIGNAL LOOKS LIKE ───────── -->
+  <div class="section">
+    <h2>What the signal looks like</h2>
+    <ul class="quick-points">
+      <li><strong>Water and wastewater.</strong> Treatment-plant upgrades and studies, sewer-separation and CSO consent-decree programs, biosolids and dewatering, State Revolving Fund applications, bond authorizations for water and sewer work.</li>
+      <li><strong>PFAS and drinking water.</strong> PFAS treatment systems and GAC pilots, well and source remediation, UCMR sampling, the federal Lead and Copper Rule service-line replacement programs every system has to run.</li>
+      <li><strong>Stormwater and environmental.</strong> MS4 and stormwater capital plans, dam and culvert work, brownfield and contaminated-site remediation, wetland and siting permits.</li>
+    </ul>
+
+    <div class="custody">
+      <span class="custody-step">Discovery</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Classification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Verification</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step last">Delivery</span>
+    </div>
+
+    <p class="detail-cue">Show details for how the system reads it &#9656;</p>
+    <div class="detail">
+      <p style="margin-top:18px">
+        Every municipality in the country produces a stream of agenda packets, meeting minutes, capital plans, RFPs, bond warrants, siting hearings, and permit decisions. Most of them never get read by anyone outside the meeting room. The decisions that determine which water and wastewater work gets built, who is already advising on it, and when the money comes together almost all start in those documents, months before they reach a state DOT or revolving-fund work plan or the trade press.
+      </p>
+      <p>
+        Municipal Alpha reads those meetings the night the agenda drops, across more than three thousand municipalities in all fifty states, classifies the documents, and follows the chain forward. A treatment-plant program shows up first as a line in a capital plan, then a consent-decree obligation, then an engineering contract, then a bid. A PFAS problem shows up first as a detection in a board update, then a pilot, then a treatment system, then a funded capital article. <span class="hl">The system reads all of that, links it together, and surfaces the chain itself as the signal. For an engineering firm, that is the layer ahead of the RFP.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 3. WORKED EXAMPLE: BANGOR ───────── -->
+  <div class="section">
+    <h2>A worked example: Bangor's wastewater program</h2>
+    <p class="section-sub">
+      One city, one legally-mandated wastewater program, traced through its own meeting record from January to June 2026. Water and wastewater is Woodard &amp; Curran's core book, and Bangor is in your home state. This is the chain the system surfaces: by the time it is an engineering contract in June, a firm that has been tracking it since January has had five months to position. The recent signal below is the same shape in other towns and across the PFAS work.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Jan 21, 2026 &middot; Finance Committee</div>
+          <div class="step-text">The mandate, stated plainly: "The Maine DEP and US EPA administer a consent decree to the City to reduce CSOs. Sewer separation ... has always been a prevalent method to reduce CSOs in the City." A multi-decade, legally-required program, and a specific opportunity surfacing.</div>
+          <a class="detail source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_01212026-662?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Feb 2, 2026 &middot; Finance Committee</div>
+          <div class="step-text">A coordinated move: "a stormwater trunk line from Main Street to Second Street across the YMCA site that is currently under construction in order to allow for future sewer separation." The work gets done while the ground is already open.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_02022026-672?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">May 6, 2026 &middot; City Council Workshop</div>
+          <div class="step-text">In the FY27 budget, under Engineering and Infrastructure: "Continue to implement EPA Consent Decree requirements for sewer / stormwater separation." The program is funded for the coming year.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_05062026-773?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jun 1, 2026 &middot; Finance Committee</div>
+          <div class="step-text">A specific project moves to an engineering contract: "Cumberland Street Sewer Separation, Engineering, Lou Silver, Inc., $2,803,618 (local share $1,309,432.25)."</div>
+          <a class="detail source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06012026-812?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jun 3, 2026 &middot; City Council Budget Workshop</div>
+          <div class="step-text">The FY27 priorities name what comes next: "Begin Meadowbrook sewer separation project and mall area gravity sewer project," plus a treatment-plant aeration upgrade, all to "Meet obligations of Consent Decree," with bond funding attached.</div>
+          <a class="detail source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06032026-809?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        No press release. No bid advertisement yet. The only record of a multi-year, multi-project wastewater program lived in Bangor's own meeting minutes, and the system read each piece the night it posted, months before any of it reaches an RFP. The next pieces, Meadowbrook and the mall-area gravity sewer and the treatment-plant aeration upgrade, are already named. A firm working this market knows what is coming, and roughly when, before the competition does.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 4. RECENT SIGNAL ───────── -->
+  <div class="section">
+    <h2>Recent signal across water and PFAS</h2>
+    <p class="section-sub">
+      Pulled from the corpus, each item dated to its own meeting, every link checked live. These are recent, not all from this week: the point is depth and currency across Woodard &amp; Curran's water, wastewater, and PFAS book, not "we cover infrastructure."
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="num">243</div><div class="lab">New England municipalities with active water, wastewater, or PFAS signal in the past year</div></div>
+      <div class="stat"><div class="num">1,290</div><div class="lab">water &amp; wastewater signals surfaced, New England, past year</div></div>
+      <div class="stat"><div class="num">102</div><div class="lab">PFAS-specific signals surfaced, New England, past year</div></div>
+    </div>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Norridgewock, ME: a first-in-state PFAS treatment facility and biosolids plant</div>
+        <p class="sig-quote">"It is expected that the PFAS treatment facility will be the first in the state."</p>
+        <div class="sig-body detail">The operator briefed the Select Board on a biosolids processing facility, described as the first in Maine and one of the largest in the country, alongside a PFAS treatment facility, with the plant nearing online status. A major PFAS and residuals project, in your home state, on a select-board record rather than a press release.</div>
+        <div class="sig-where">Norridgewock ME &middot; Select Board &middot; Mar 18, 2026</div>
+        <a class="source-link" href="https://norridgewock.gov/AgendaCenter/ViewFile/Minutes/_03182026-127?html=true" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+      <li>
+        <div class="sig-title">Chelmsford, MA: PFAS treatment-plant upgrades and sewer pump stations, written into the FY27 budget</div>
+        <p class="sig-quote">"Article 9 - PFAS Treatment Plant Upgrades at 54 Richardson Road; Article 11 - Sewer Pump Station Upgrades for Clinton Avenue, Fair Street, and Evergreen Street."</p>
+        <div class="sig-body detail">The Finance Committee reviewing named PFAS and sewer capital articles for the coming fiscal year. The budget stage, where the program is being committed to but the design and build are still ahead.</div>
+        <div class="sig-where">Chelmsford MA &middot; Finance Committee &middot; Mar 5, 2026</div>
+        <a class="source-link" href="https://www.chelmsfordma.gov/AgendaCenter/ViewFile/Agenda/_03052026-7858?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Sandwich, MA: a water district running PFAS treatment pilots and GAC filters across its wells</div>
+        <p class="sig-quote">"PFAS; Treatment systems, pilot test, update. Well 9, PFAS GAC filters, paint failure, update."</p>
+        <div class="sig-body">The Sandwich Water District working PFAS treatment, well by well, alongside tank and site work. A standalone water district, exactly the kind of buyer-of-record that decides a PFAS treatment program, on its own agenda.</div>
+        <div class="sig-where">Sandwich MA &middot; Sandwich Water District &middot; Mar 12, 2026</div>
+        <a class="source-link" href="https://www.sandwichmass.org/AgendaCenter/ViewFile/Agenda/_03122026-4230?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Pepperell, MA: PFAS in the water treatment plant, alongside the Lead and Copper Rule</div>
+        <p class="sig-quote">"PFAS in Pepperell Water Treatment Plant ... Lead Copper Rule."</p>
+        <div class="sig-body">The Board of Public Works carrying both PFAS and Lead and Copper Rule compliance on the same agenda. The two federal forcing functions that put nearly every small water system into a capital program this decade, surfacing at the working level.</div>
+        <div class="sig-where">Pepperell MA &middot; Board of Public Works &middot; Mar 19, 2026</div>
+        <a class="source-link" href="https://town.pepperell.ma.us/AgendaCenter/ViewFile/Agenda/_03192026-4642?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+      </li>
+      <li class="detail">
+        <div class="sig-title">Salem, NH: a sewer pump station and a water-main extension being scheduled for 2027</div>
+        <p class="sig-quote">"The design would need to be accelerated in order to do both projects in 2027. If done in coordination with Lake / Bluff St., the bids could get better pricing."</p>
+        <div class="sig-body">The Capital Improvements Program committee working the Haigh Avenue sewer pump station and the Lake / Bluff St. water-main extension in one session, openly discussing accelerating design and coordinating bids. Water and sewer work named at the planning stage, a year before it is advertised.</div>
+        <div class="sig-where">Salem NH &middot; Capital Improvements Program Committee &middot; May 19, 2026</div>
+        <a class="source-link" href="https://salemnh.gov/AgendaCenter/ViewFile/Minutes/_05192026-1726?html=true" target="_blank" rel="noopener">View minutes &#8594;</a>
+      </li>
+    </ul>
+
+    <div class="detail">
+      <p class="chain-summary" style="margin-top:20px">
+        Coverage note: 1,290 water and wastewater signals across 243 New England municipalities in the past year, 102 of them PFAS-specific. Honest caveat, that count is the keyword-matched subset with fully extracted text behind it; the true footprint is larger, because the system is still backfilling text on older documents. The methodology is more than three thousand municipalities in all fifty states, read the night their agendas post, classified, and linked back to the original record, with coverage deepest in Maine and New England. One honest caveat on the early signals: a capital-plan line or a board update is intent, not a commitment. Some slip, some die. The trade for the lead time is that you are reading where a town is headed, not a signed deal. The Bangor chain above is the firmer end of that range, a mandated program with an engineering contract already awarded.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 5. TWO WAYS WE FIT ───────── -->
+  <div class="section">
+    <h2>Two ways Woodard &amp; Curran and Municipal Alpha could fit together</h2>
+    <p class="section-sub">
+      Two distinct relationships, each a different shape of conversation. Worth naming both up front.
+    </p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">Path A</div>
+        <div class="rel-title">Feedback partner</div>
+        <div class="rel-body">
+          You, on the innovation and technology side, tell me where the municipal precursor layer actually maps onto how Woodard &amp; Curran wins water, wastewater, and PFAS work, and where it is just noise next to the relationships and revolving-fund visibility you already have. That read shapes what I build for the water and environmental vertical.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">Path B</div>
+        <div class="rel-title">A precursor feed for pursuit teams</div>
+        <div class="rel-body">
+          Town-level capital-plan, SRF, consent-decree, PFAS, and water and sewer signal across the states Woodard &amp; Curran works, tagged by town and program, the day it surfaces. Feeds BD targeting and pre-positioning on a project before the RFP. Sample first, no build cost on your side.
+        </div>
+      </div>
+    </div>
+    <div class="detail">
+      <p style="margin-top:20px"><strong>Path A is the more valuable one to me right now.</strong> Woodard &amp; Curran sits at exactly the seam I am trying to understand:</p>
+      <ul class="blist">
+        <li>You already win municipal water and environmental work at scale, so you can tell me in five minutes whether a consent-decree program, a PFAS detection, or an SRF application is a leading indicator your pursuit teams would act on, or whether it lands too late next to what you already see.</li>
+        <li>That one distinction decides whether the water and environmental vertical is a real product or a dead end.</li>
+        <li>You are better positioned to answer it than almost anyone I have talked to.</li>
+      </ul>
+      <p><strong>Path B is concrete:</strong> a change-watch on the municipal documents that move ahead of a water or PFAS RFP, scoped to a market and a set of states, delivered as a tagged feed. It would:</p>
+      <ul class="blist">
+        <li>feed BD a list of towns programming treatment-plant, sewer, PFAS, or stormwater work before the RFP,</li>
+        <li>flag where a project is forming and which firm is already advising on it,</li>
+        <li>tell you which engineers, labs, and contractors are active in which towns.</li>
+      </ul>
+      <p>None of it competes with what Woodard &amp; Curran does. It sits ahead of the RFP.</p>
+    </div>
+  </div>
+
+  <!-- ───────── 6. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions where your read would change what I build</h2>
+    <p class="section-sub">
+      Genuine discussion topics, not a checklist. Your answers route whether the water and environmental vertical is a feed into how Woodard &amp; Curran pursues municipal work, a BD tool, or neither.
+    </p>
+
+    <div class="question">
+      <div class="q-text">By the time Woodard &amp; Curran sees a water or wastewater project, through a public RFP or a known client, how much of the positioning is already decided? Would seeing it at the capital-plan, SRF, or consent-decree stage, months earlier, change which towns you can build a relationship with?</div>
+      <div class="why">This is the load-bearing question. You can tell me in five minutes whether a town-level precursor is a leading indicator your pursuit teams would act on, or whether it arrives too late to matter next to your existing client relationships. The answer decides whether I build this vertical out or step back from it.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">Which work is the early signal most valuable in: water and wastewater treatment, PFAS and drinking-water compliance, or stormwater and environmental remediation? Where does the lead time actually change a pursuit?</div>
+      <div class="why">Tests where to point the system. Each has a different keystone document, the CIP line, the consent-decree obligation, the PFAS detection, the SRF application, and I would rather go deep where it moves a decision than spread thin across all of them.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">Woodard &amp; Curran works across Maine and well beyond it. Where would early municipal signal change a pursuit: Maine, the broader New England base, or the national markets you are growing into?</div>
+      <div class="why">Coverage is deepest in Maine and New England today and growing nationally. Your answer tells me which geography to harden first so the signal is dense where Woodard &amp; Curran actually competes.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">For your seat specifically, Mary: where does an external precursor feed fit against the internal market-intelligence and innovation work you already run? Is it a tool your BD teams would adopt, or raw material for something you would build around?</div>
+      <div class="why">You lead environment innovation and technology, so you see both the buy-and-use case and the build-around-it case. Which one this is changes whether the product is a feed, an integration, or a data layer, and that is a different thing to build.</div>
+    </div>
+  </div>
+
+  <!-- ───────── 7. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">A few concrete shapes the next step could take, depending on which direction this pulls.</p>
+
+    <div class="path">
+      <div class="path-title">A precursor sample for a market and region you name</div>
+      <div class="path-body">You pick a market and a state, say Maine PFAS and drinking water, or Massachusetts wastewater, and I cut a month of real CIP, SRF, consent-decree, and PFAS signal across it, tagged by town and dated, every link checked. No build cost on your side. One-week loop, and it tells us fast whether the layer is real for Woodard &amp; Curran.</div>
+    </div>
+
+    <div class="path">
+      <div class="path-title">A look-back test against your own recent pursuits</div>
+      <div class="path-body">Name a handful of municipal water or PFAS projects Woodard &amp; Curran chased in the last 18 months. I will show you when each first surfaced in the corpus, and what the lead time would have been against when your team picked it up. The cleanest test of whether this actually beats the intelligence you already have.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">A BD-targeting feed scoped to your growth markets</div>
+      <div class="path-body">If a specific set of states or a specific service line is the sharpest test, I scope the watch to it and surface capital-plan, SRF, and PFAS activity the day it posts. The question is whether that timing changes where BD spends its effort.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">An entity layer: who is already in the room</div>
+      <div class="path-body">Separate from the project signal, which engineering firms, labs, and contractors are already advising which towns, built from the same documents. The Webster example above is exactly this: the design was already being shaped by someone before any RFP. Useful if part of the edge is knowing who you are up against, early.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for Woodard &amp; Curran &middot; Mary House</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'woodard-curran-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
