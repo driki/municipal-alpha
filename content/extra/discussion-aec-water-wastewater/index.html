@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for water and wastewater engineering</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 36px 80px 36px;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0 16px 0;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--signal);
+    background: var(--signal-06);
+    border: 1px solid var(--signal);
+    border-radius: 2px;
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+  .mode-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    margin: 16px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-12);
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+  }
+  .quick-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 7px; height: 7px;
+    background: var(--signal);
+    border-radius: 1px;
+  }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .rel-card {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .rel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 6px;
+  }
+  .rel-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .rel-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--ink-12);
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-strip {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .stat { flex: 1 1 120px; }
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat .lab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(247,244,240,0.6);
+    margin-top: 6px;
+  }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question \00B7 ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  .problem-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 31px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--signal);
+  }
+  .problem-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin: 0 0 22px 20px;
+  }
+
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  .block-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-60); margin: 22px 0 0; }
+
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; }
+  }
+
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  .scale {
+    margin: 22px 0 4px;
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .scale-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--signal);
+    flex: 0 0 auto;
+  }
+  .scale-text {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--paper);
+    flex: 1 1 260px;
+  }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  .hl {
+    background: rgba(232, 81, 45, 0.15);
+    font-weight: 500;
+    padding: 0.04em 0.26em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-40);
+    margin: 8px 0 0 0;
+  }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-right">
+      <div class="header-meta">Discussion guide<br>Water &amp; wastewater engineering</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for water and wastewater engineering</h1>
+    <p class="lede">
+      Municipal water and wastewater work is decided in the public record months before it becomes an engineering-services RFP. I read that record across the Northeast every night and surface the projects while there is still time to position.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chain, every source link, and the method &#9656;</p>
+  </div>
+
+  <!-- ───────── 0. THE PROBLEM ───────── -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p class="problem-quote">"you need to go look at the planning board minutes, find out who the civil engineer that presented to the planning board was"</p>
+    <p class="problem-cite">Northeast geotechnical engineering principal, on getting in early</p>
+    <p>
+      By the time a municipal water or wastewater project is a public RFP, the firms already in the conversation have the edge. A second engineering principal put the same dynamic plainly: "they're in the door before we are." The early signal (the workshop, the committee item, the capital plan) is all public, but it sits unread on hundreds of separate town websites, so most firms find out at the RFP, <span class="hl">on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">600+</span>
+      <span class="scale-text">Northeast municipalities publish their water and wastewater decisions in public, the night they meet. No firm could read them all. Municipal Alpha does, every night, and across more than three thousand municipalities in all fifty states.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">What this looks like, one real chain</div>
+      <div class="teaser-body">On <strong>June 3, 2026</strong>, Bangor, Maine put a <strong>4.5 million dollar Sewer Fund capital plan</strong> on a budget-workshop agenda, top priority "begin the wastewater treatment plant aeration upgrade." That is months ahead of any engineering-services RFP. If you were reading the municipal record, Bangor flagged this before it became a competitive procurement.</div>
+      <div class="teaser-where">Bangor ME &middot; City Council Budget Workshop &middot; Jun 3, 2026 &middot; <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06032026-809?html=true" target="_blank" rel="noopener">view the agenda &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- ───────── 1. WHAT MUNICIPAL ALPHA IS ───────── -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city, town, and district publishes the decisions that move water and wastewater infrastructure before they happen: the capital improvement plan, the budget-workshop priority, the committee discussion, the engineering-services contract award. Those records land months ahead of the RFP, scattered across hundreds of separate town websites in incompatible formats where <span class="hl">almost none reach a search engine</span>.
+    </p>
+    <p>
+      Municipal Alpha reads them the night they post, classifies what matters, verifies every signal against the source document, and surfaces the project <span class="hl">while there is still time to position around it</span>.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time, on the Bangor wastewater story</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Late Jan 2026 &middot; City Council workshop on the Bangor Water District</div>
+        </div>
+        <div class="lt-gap">months ahead of the RFP</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">the public engineering-services RFP, after the capital plan is set</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the method, and the question every technical reader asks &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Agendas, minutes, capital improvement plans, budget workshops, committee discussions, engineering-services and construction contract awards, the night they post.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each scored for confidence and linked back to the source record, assembled across time.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">The method, not AI</div>
+          <div class="fact-v">A deterministic navigator and classification layer over a registry of where each government's records actually live. The model labels a document once it is in hand. It is not the moat.</div>
+        </div>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The question a technical reader asks</div>
+        <div class="obj-q">"Given the pace of AI, can't an agent just do this? Point a model at the towns and get the same thing?"</div>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> The history does not exist on a search engine; it has been read and structured night after night. A model started today has no back-record.</li>
+          <li><strong>The upstream work is not AI work.</strong> Finding where each town's records live, fingerprinting the platform, and extracting clean text is a data-engineering problem, not a prompting one.</li>
+          <li><strong>A feed, not a query.</strong> You get the signal pushed the night it posts, not an answer when you remember to ask.</li>
+          <li><strong>The specific signal, and an honest one.</strong> Ask any model which Maine towns opened a wastewater capital plan this quarter and it will invent a town, a date, a citation. Every Municipal Alpha signal links back to the source document, so you get <span class="hl">an answer you can defend, not one you have to trust</span>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 2. THE WORKED EXAMPLE ───────── -->
+  <div class="section">
+    <h2>The record: Bangor, Maine, a sewer and wastewater program in public</h2>
+    <p class="section-sub">
+      Bangor's sewer fund has been visible in the municipal record all year. Here is the chain, every item linked to its source.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Late January 2026 &middot; City Council Workshop</div>
+          <div class="step-text">City Council workshop on the Bangor Water District. The earliest infrastructure-intent signal.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_01262026-671?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Mar 23, 2026 &middot; City Council</div>
+          <div class="step-text">Council authorizes an on-call sewer system maintenance and repair contract (C&amp;C Lynch Excavation, LLC).</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_03232026-723?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jun 1, 2026 &middot; Finance Committee</div>
+          <div class="step-text">Finance Committee awards the Cumberland Street Sewer Separation engineering contract to Lou Silver, Inc., 2.8 million dollars total (1.3 million local share), to separate sewer and stormwater across a roughly 3-acre watershed. This is the award, the decision is made.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06012026-812?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jun 3, 2026 &middot; Budget Workshop</div>
+          <div class="step-text">A 4.5 million dollar Sewer Fund capital plan, top priority "begin the wastewater treatment plant aeration upgrade." This is the forward signal, still pre-RFP.</div>
+          <a class="source-link" href="https://www.bangormaine.gov/AgendaCenter/ViewFile/Agenda/_06032026-809?html=true" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        The Cumberland Street work was awarded June 1, decided. The aeration upgrade is at the budget-workshop stage as of June 3, not yet an RFP. A firm reading this record knows to position for it now.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 3. LIVE THIS WEEK ───────── -->
+  <div class="section">
+    <h2>Live this week</h2>
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Bow, New Hampshire &middot; Drinking Water Protection Committee</div>
+        <div class="sig-body">Agenda items: water main extension to Bow Junction (funding application), water main extension to Hooksett (design plans and SRF funding application), and a Water Rate Study. Design and funding stage, pre-RFP.</div>
+        <div class="sig-where">Bow NH &middot; Jun 10, 2026 &middot; <a class="source-link" href="https://bownh.gov/AgendaCenter/ViewFile/Agenda/_06102026-2725?html=true" target="_blank" rel="noopener">View agenda &#8594;</a></div>
+      </li>
+    </ul>
+    <p class="section-sub" style="margin-top:16px">New Hampshire, the growth market for Maine-anchored firms, surfaced the same night it posted.</p>
+  </div>
+
+  <!-- ───────── 4. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions worth asking</h2>
+    <p class="section-sub">Genuine discussion topics, not a checklist. Your answers define the product for this use case.</p>
+
+    <div class="question">
+      <div class="q-text">What is the document that, three months before an RFP, would tell you to start positioning?</div>
+      <div class="why">It defines where on the timeline the signal has to land for you.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">What do you use today to find early-stage municipal work, and where does it leave you blind?</div>
+      <div class="why">Most firms name Dodge, which is comprehensive but late.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">Which geographies are you trying to grow into?</div>
+      <div class="why">The home market is usually entrenched; the value is in the expansion markets.</div>
+    </div>
+  </div>
+
+  <!-- ───────── 5. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">A few concrete shapes the next step could take.</p>
+
+    <div class="path">
+      <div class="path-title">A sample cut, then a short call</div>
+      <div class="path-body">A sample cut of water and wastewater signals filtered to your service lines and geography, then a short call to see if the early-stage coverage fits how you win work.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; <a href="mailto:matt@municipalalpha.com">matt@municipalalpha.com</a></span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'aec-water-wastewater-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
