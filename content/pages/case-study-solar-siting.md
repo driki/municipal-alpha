@@ -2,7 +2,7 @@ Title: Case Study: Solar Siting Intelligence, From Moratorium to Permit
 Slug: research/solar-siting
 Sortorder: 14
 Header_image: story-solar-backlash.png
-Summary: How municipal meeting minutes reveal the regulatory pipeline for renewable energy projects. Traced through Caribou ME, Litchfield ME, Enfield CT, and Bangor ME.
+Summary: Municipal Alpha tracks US solar and renewable-energy siting from town and county meeting records, surfacing moratoria, setbacks, and denials months before they pass or a project reaches the permit stage. This case study traces one project's full regulatory pipeline, from the first planning-board signal to the permit, across Caribou ME, Litchfield ME, Enfield CT, and Bangor ME, with every source document linked.
 
 <style>
 .cs-intro { font-size: 19px; color: #333; max-width: 640px; line-height: 1.7; margin-bottom: 40px; }

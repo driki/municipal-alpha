@@ -2,7 +2,7 @@ Title: Maine's Data Center Fight Was Visible in Town Halls Five Months Before th
 Slug: research/maine-data-center-moratorium
 Sortorder: 11
 Header_image: story-maine-data-center-moratorium.png
-Summary: Six town halls (out of 173 we monitor in Maine) were already discussing data center restrictions five months before LD 307 reached the Maine House. The House passed it, the Governor vetoed it, the override failed, and a different shape of restriction landed on the same day. Every source document is linked.
+Summary: Municipal Alpha tracks US data-center siting and zoning from municipal meeting records, often months before a state vote or public reporting. Six Maine town halls (out of 173 we monitor in Maine) were already discussing data center restrictions five months before LD 307 reached the Maine House. The House passed it, the Governor vetoed it, the override failed, and a different shape of restriction landed on the same day. Every source document is linked.
 
 <style>
 .cs-intro { font-size: 19px; color: #333; max-width: 640px; line-height: 1.7; margin-bottom: 40px; }

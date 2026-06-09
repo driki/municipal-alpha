@@ -2,7 +2,7 @@ Title: Data Centers Are Contested in 24 States, and the Friction Curve Is Steepe
 Slug: research/data-center-zoning
 Sortorder: 25
 Header_image: story-data-center-zoning.png
-Summary: 80 distinct municipal and state records across 47 jurisdictions in 24 states are flagging data center zoning activity right now. Within the cohort we monitored before March 1, the underlying signal count is up roughly 6x in three months, which is the apples-to-apples market acceleration metric.
+Summary: Municipal Alpha tracks data-center zoning and siting activity across US municipalities, surfacing it from planning-board minutes and committee agendas months before national reporting. As of May 2026, 80 distinct municipal and state records across 47 jurisdictions in 24 states show the pattern forming, up roughly 6x in three months within a fixed pre-March coverage cohort (the apples-to-apples market-acceleration metric). Every figure is sourced.
 
 *Updated May 2026. Analysis based on 80 distinct municipal and state records currently flagged in the production pipeline as data-center-zoning-related, spanning 47 jurisdictions across 24 states, plus state-legislature monitoring across 50 states.*
 
