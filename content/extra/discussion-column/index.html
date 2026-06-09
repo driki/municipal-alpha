@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municipal Alpha for Column</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 36px 80px 36px;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0 16px 0;
+    border-bottom: 1px solid var(--ink-12);
+    margin-bottom: 32px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .toggle-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--signal);
+    background: var(--signal-06);
+    border: 1px solid var(--signal);
+    border-radius: 2px;
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { background: var(--signal); color: var(--paper); }
+
+  .hero { margin-bottom: 18px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px 0;
+  }
+  .hero .lede {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 64ch;
+  }
+  .mode-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    margin: 16px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ink-12);
+  }
+
+  .section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0 0 8px 0;
+  }
+  .section .section-sub {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    max-width: 62ch;
+  }
+  .section p {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px 0;
+    max-width: 62ch;
+  }
+
+  .quick-points { list-style: none; padding: 0; margin: 4px 0 0 0; display: grid; gap: 10px; }
+  .quick-points li {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding-left: 18px;
+    position: relative;
+  }
+  .quick-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 7px; height: 7px;
+    background: var(--signal);
+    border-radius: 1px;
+  }
+  .quick-points li strong { font-weight: 600; }
+
+  .two-rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .rel-card {
+    padding: 18px 20px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .rel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 6px;
+  }
+  .rel-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .rel-body {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-80);
+  }
+
+  .chain {
+    margin: 18px 0;
+    padding: 22px 24px;
+    background: var(--signal-06);
+    border-left: 3px solid var(--signal);
+  }
+  .chain-steps { list-style: none; padding: 0; margin: 0 0 14px 0; position: relative; }
+  .chain-steps::before { content: ""; position: absolute; left: 5px; top: 16px; bottom: 16px; width: 2px; background: var(--ink-12); }
+  .chain-steps li { padding: 12px 0 12px 26px; border-bottom: 1px dashed var(--ink-12); position: relative; }
+  .chain-steps li::before { content: ""; position: absolute; left: 0; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--signal); border: 2px solid var(--paper); }
+  .chain-steps li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .step-meta {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--signal);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-text {
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chain-summary {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-60);
+    margin: 10px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink-12);
+  }
+
+  .source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    color: var(--signal);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); }
+
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--ink-12);
+    border-radius: 2px;
+  }
+  .signal-list .sig-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .signal-list .sig-body {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-80);
+    margin-bottom: 6px;
+  }
+  .signal-list .sig-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--ink-12);
+  }
+  .signal-list .sig-where {
+    color: var(--ink-60);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-strip {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .stat { flex: 1 1 120px; }
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .stat .lab {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(247,244,240,0.6);
+    margin-top: 6px;
+  }
+
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--ink-12);
+  }
+  .question .why::before {
+    content: "Why this question \00B7 ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 500;
+  }
+
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink-12);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-40);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  .leadtime { margin: 24px 0; padding: 22px 26px 20px; background: var(--ink); color: var(--paper); border-radius: 2px; }
+  .lt-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,240,0.5); margin-bottom: 18px; }
+  .lt-rail { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .lt-rail::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: rgba(247,244,240,0.22); }
+  .lt-end { position: relative; flex: 1 1 0; min-width: 0; }
+  .lt-end.right { text-align: right; }
+  .lt-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); border: 3px solid var(--ink); position: relative; z-index: 1; }
+  .lt-end.right .lt-dot { background: rgba(247,244,240,0.45); }
+  .lt-when { font-family: var(--font-display); font-size: 15.5px; font-weight: 500; margin-top: 9px; line-height: 1.2; }
+  .lt-what { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.02em; text-transform: uppercase; color: rgba(247,244,240,0.55); margin-top: 6px; line-height: 1.5; }
+  .lt-gap { flex: 0 0 auto; align-self: center; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: var(--signal); white-space: nowrap; padding: 0 4px; }
+  @media (max-width: 560px) {
+    .lt-rail { flex-direction: column; gap: 12px; }
+    .lt-rail::before { display: none; }
+    .lt-end, .lt-end.right { text-align: left; }
+    .lt-gap { align-self: flex-start; }
+  }
+
+  .problem-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 31px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--signal);
+  }
+  .problem-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin: 0 0 22px 20px;
+  }
+
+  .facts { display: grid; gap: 13px; margin-top: 16px; }
+  .fact { display: grid; grid-template-columns: 128px 1fr; gap: 16px; align-items: baseline; }
+  .fact-k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); padding-top: 2px; }
+  .fact-v { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px 144px; }
+  .chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-80); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 4px 9px; }
+  .chip.sig { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+
+  .block-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-60); margin: 22px 0 0; }
+
+  .custody { display: flex; align-items: center; margin: 14px 0 4px; flex-wrap: wrap; gap: 4px 0; }
+  .custody-step { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); background: var(--ink-06); border: 1px solid var(--ink-12); border-radius: 2px; padding: 7px 12px; }
+  .custody-step.last { color: var(--signal); border-color: var(--signal); background: var(--signal-06); }
+  .custody-arrow { color: var(--signal); padding: 0 8px; }
+
+  @media (max-width: 560px) {
+    .fact { grid-template-columns: 1fr; gap: 3px; }
+    .chips { margin-left: 0; }
+    .problem-quote { font-size: 25px; }
+  }
+
+  .objection { margin: 22px 0 4px; padding: 22px 24px; border: 1px solid var(--ink-12); border-radius: 2px; background: #fff; }
+  .obj-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; }
+  .obj-q { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.35; color: var(--ink); margin: 0 0 14px 0; }
+  .objection p { margin: 0 0 12px 0; }
+  .objection .blist { margin-top: 6px; }
+
+  .blist { margin: 8px 0 14px; padding-left: 20px; }
+  .blist li { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 7px; }
+  .blist li::marker { color: var(--signal); }
+
+  .scale {
+    margin: 22px 0 4px;
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .scale-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--signal);
+    flex: 0 0 auto;
+  }
+  .scale-text {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--paper);
+    flex: 1 1 260px;
+  }
+  @media (max-width: 560px) { .scale-num { font-size: 38px; } }
+
+  .teaser { margin: 22px 0 4px; padding: 18px 20px; background: var(--signal-06); border-left: 3px solid var(--signal); border-radius: 0 2px 2px 0; }
+  .teaser-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); margin-bottom: 8px; }
+  .teaser-body { font-family: var(--font-display); font-size: 18px; line-height: 1.42; color: var(--ink); margin-bottom: 9px; }
+  .teaser-body strong { font-weight: 600; }
+  .teaser-where { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+
+  .hl {
+    background: rgba(232, 81, 45, 0.15);
+    font-weight: 500;
+    padding: 0.04em 0.26em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .detail { display: none; }
+  body.show-details .detail { display: block; }
+  .detail-cue {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-40);
+    margin: 8px 0 0 0;
+  }
+  body.show-details .detail-cue { display: none; }
+
+  @media (max-width: 560px) {
+    .container { padding: 0 20px 60px 20px; }
+    .two-rel { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media print {
+    .detail { display: block !important; }
+    .detail-cue, .toggle-btn { display: none !important; }
+    .header { position: static; }
+    .container { max-width: none; padding: 24px; }
+    .section { page-break-inside: avoid; }
+    .rel-card, .path, .question, .chain { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-right">
+      <div class="header-meta">Discussion guide<br>Column, PBC &middot; Tue 2026-06-09</div>
+      <button id="toggle" class="toggle-btn" type="button" aria-pressed="false">Show details &#9656;</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for Column</h1>
+    <p class="lede">
+      Column runs the marketplace that connects the people legally required to publish a notice with the newspapers that print them. As you grow into the government market, the first question is which jurisdictions are worth selling to, and that number is hiding in plain sight: what each county and town actually budgets for legal notices, a line item in the records they already publish. Municipal Alpha reads those records across more than three thousand municipalities, so you can size the market and tier the accounts, and the same engine catches the rule changes and procurements that move the market early, before they are public.
+    </p>
+    <p class="mode-cue">Quick read by default. Show details for the full chain, every source link, and the method &#9656;</p>
+  </div>
+
+  <!-- ───────── 0. THE PROBLEM ───────── -->
+  <div class="section">
+    <h2>The problem</h2>
+    <p class="problem-quote">"The introduction of legislation that may impact public notice statutes, which actions require notices to be published, and how."</p>
+    <p class="problem-cite">Column, on the first thing it needs to track &middot; June 8, 2026</p>
+    <p>
+      A marketplace built on the legal requirement to publish a notice lives and dies by who changes that requirement, and when. And the change almost never starts as law. It starts as a bill in a statehouse, or as a quiet line on a planning-commission agenda proposing to amend the code: which paper qualifies, whether a website will do, what has to run at all. It is public, in the narrowest sense, a handful of people in a half-empty room, and only if you knew the item was on the agenda. After that it sits unread on one of thousands of separate government sites. So the business whose market it reshapes finds out <span class="hl">when it is already law, on the same day as everyone else, or never</span>.
+    </p>
+
+    <div class="scale">
+      <span class="scale-num">90,000+</span>
+      <span class="scale-text">local governments, plus fifty state legislatures, decide who must publish a notice, where, and what it costs, in public, the night they meet. No team could read them all. Municipal Alpha reads more than three thousand of them, every night.</span>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-label">What this looks like, one real line item</div>
+      <div class="teaser-body">On <strong>June 1, 2026</strong>, Dayton, Kentucky published its general-fund budget-vs-actuals. Line <strong>50-209, Legal Advertising: $1,350</strong>. That one line, multiplied across the counties and towns you want to sell into, is the thing nobody has handed you yet, <strong>who spends what on public notices</strong>, so you know which jurisdiction is a tier-1 account and which is a tier-3. The legal-advertising line is in the budgets and check registers we already read, Dayton here, Borger TX and Portage MI in their check registers.</div>
+      <div class="teaser-where">Dayton KY &middot; General Fund Budget vs Actuals &middot; Jun 1, 2026 &middot; <a class="source-link" href="https://daytonky.com/wp-content/uploads/2026/06/Gen-Fund-Budget-vs-Actuals.pdf" target="_blank" rel="noopener">view the line &#8594;</a></div>
+    </div>
+  </div>
+
+  <!-- ───────── 1. WHAT MUNICIPAL ALPHA IS ───────── -->
+  <div class="section">
+    <h2>What Municipal Alpha is</h2>
+    <p>
+      Every city, town, county, and district in the country publishes the decisions that reshape public noticing before they happen: the code amendment, the procurement, the budget line, the move to a website. Those records land months ahead of the public event, and they sit on roughly twenty thousand separate government sites, in incompatible formats, where <span class="hl">ninety-nine percent of them never reach a search engine</span>. So the people those decisions affect find out late, or never.
+    </p>
+    <p>
+      Municipal Alpha reads all of them the night they post, across more than three thousand municipalities in all fifty states, classifies what matters, verifies every signal against the source document, and routes it to whoever needs it early. The change to the notice rules you would otherwise catch when it is law, or the procurement you would catch at the RFP, arrives <span class="hl">while there is still time to act on it</span>.
+    </p>
+
+    <div class="leadtime">
+      <div class="lt-head">The lead time, on the Maui chain</div>
+      <div class="lt-rail">
+        <div class="lt-end left">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Municipal Alpha enters</div>
+          <div class="lt-what">Nov 12, 2025 &middot; commission staff report &middot; "change the newspaper requirement to general circulation"</div>
+        </div>
+        <div class="lt-gap">months, and counting</div>
+        <div class="lt-end right">
+          <span class="lt-dot"></span>
+          <div class="lt-when">Everyone else enters</div>
+          <div class="lt-what">County Council adoption &middot; the day it becomes enforceable law</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="detail-cue">Show details for the method, and the question every technical reader asks &#9656;</p>
+
+    <div class="detail">
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-k">What it reads</div>
+          <div class="fact-v">Agendas, minutes, ordinances, code amendments, RFPs and procurement items, budgets, and state legislation, the night they post, plus a predictive 50-state legislature monitor that catches bills three to six months before a municipality acts.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What it produces</div>
+          <div class="fact-v">Classified signals, each scored for confidence and linked back to the source record, assembled into the chain across time.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">The method, not AI</div>
+          <div class="fact-v">A deterministic navigator and classification layer over a registry of where each government's records actually live. The model labels a document once it is in hand. It is not the moat.</div>
+        </div>
+      </div>
+
+      <div class="objection">
+        <div class="obj-label">The question a technical reader asks</div>
+        <div class="obj-q">"Given the pace of AI, can't an agent just do this? Point a model at the governments and get the same thing?"</div>
+        <p>Fair question, and the honest answer starts by conceding the part that is true: reading a document and classifying it is the cheap step, and it probably does commoditize. The value is in the layers underneath that a model starting from a prompt does not have.</p>
+        <ul class="blist">
+          <li><strong>The corpus.</strong> A model with perfect extraction skills starting today still does not have 2010 through 2026 on Monday. Tracking where the notice rules have already moved needs the history to exist. Ours has been accumulating.</li>
+          <li><strong>The hard part is upstream of the model, and it is not AI work.</strong> Step zero is a registry mapping each government to its actual digital footprint, the specific portal where its records live. Then you fingerprint that footprint to know the platform it runs and how to pull from it. Then you extract, often from behind authenticated portals or PDFs indexed nowhere. Registry, fingerprinting, extraction: workflow and data-engineering problems, not LLM problems.</li>
+          <li><strong>A feed, not a question.</strong> You do not want to ask a model on Monday. You want something that fires the night the agenda posts, across thousands of jurisdictions, continuously.</li>
+          <li><strong>The specific signal, and an honest one.</strong> Ask any model today which counties amended their public-notice publication rules this quarter. It cannot answer without the corpus and the resolved entities behind it, and it will not tell you it does not know. It will invent a county, a date, a citation. Every Municipal Alpha signal links back to the source document, so you get <span class="hl">an answer you can defend, not one you have to trust</span>.</li>
+        </ul>
+        <p>And if the bet is wrong and this does commoditize, the corpus accumulated by then is still the one a later entrant does not have. The cost of being early is overhead. The cost of being late is no corpus.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── 2. THE WORKED CHAIN ───────── -->
+  <div class="section">
+    <h2>The chain: Maui County changes the rule for legal notices</h2>
+    <p class="section-sub">
+      One real chain from the corpus, the kind of change that moves your market, reconstructed to "what could we have known, and when." Every date is off the meeting record and every link was checked live before this page. The same method runs on any market you name.
+    </p>
+
+    <div class="chain">
+      <ul class="chain-steps">
+        <li>
+          <div class="step-meta">Nov 12, 2025 &middot; Moloka&#699;i Planning Commission</div>
+          <div class="step-text">The earliest signal. A staff report proposes amending the Maui County Code to change the legal-notice requirement from a newspaper "printed and issued at least twice weekly" to one "of general circulation," so the county can publish in either the Maui News or the Honolulu Star-Advertiser, "since the Maui News is currently less expensive." The draft ordinance is attached.</div>
+          <a class="source-link" href="https://www.mauicounty.gov/DocumentCenter/View/156289/111225_A1_PC-Staff-Report-Public-Notice" target="_blank" rel="noopener">View staff report &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Nov 19, 2025 &middot; Lana&#699;i Planning Commission</div>
+          <div class="step-text">The same ordinance goes to public hearing on the next island commission. No public testimony, the amendment keeps moving.</div>
+          <a class="source-link" href="https://www.mauicounty.gov/ArchiveCenter/ViewFile/Item/33230" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li class="detail">
+          <div class="step-meta">Nov 25, 2025 &middot; Maui Planning Commission</div>
+          <div class="step-text">The ordinance reaches the main island commission. Three commissions are now reviewing one change to the notice rules in the span of two weeks.</div>
+          <a class="source-link" href="https://www.mauicounty.gov/ArchiveCenter/ViewFile/Item/33258" target="_blank" rel="noopener">View agenda &#8594;</a>
+        </li>
+        <li>
+          <div class="step-meta">Jan 28, 2026 &middot; Moloka&#699;i Planning Commission</div>
+          <div class="step-text">The commission moves, seconds, and unanimously carries its recommendation on the ordinance. The change is now on its way to the County Council for the vote that makes it law.</div>
+          <a class="source-link" href="https://www.mauicounty.gov/ArchiveCenter/ViewFile/Item/33450" target="_blank" rel="noopener">View minutes &#8594;</a>
+        </li>
+      </ul>
+      <p class="chain-summary">
+        The earliest knowable signal was the November 12 staff report, months before the change reaches the County Council and becomes enforceable. No press, no filing, the only record of this change to the notice rules lived in planning-commission packets, and the system read each one the night it posted.
+      </p>
+    </div>
+  </div>
+
+  <!-- ───────── 3. WHAT IT MEANS FOR COLUMN ───────── -->
+  <div class="section">
+    <h2>What you track, ordered the way you ranked it</h2>
+    <p class="section-sub">An honest read of where each of your needs maps, in your priority order from the call: the spend first, then the procurement, then the rules.</p>
+    <ul class="quick-points">
+      <li><strong>What each jurisdiction spends on public notices. Your number one.</strong> The legal-advertising line is in the budgets and check registers we already read, Dayton KY's $1,350, Borger TX and Portage MI in their check registers. Pulling that one line cleanly across your target states is a parsing pass, not a coverage gap, and it gives you the market map: who to call first, who is a tier-1 account, who is a tier-3. Notice volume you hold from your own marketplace; <span class="hl">the spend is the part you cannot see, and we can</span>.</li>
+      <li><strong>Governments procuring their way out of newspaper noticing. Sharp.</strong> The RFP is public the day it posts, the same day your competitors see it. The edge is the committee discussion, the budget move, and the renewal coming up, all of which this corpus surfaces early, so your salespeople get in before the bid instead of after.</li>
+      <li><strong>Legislation that changes the notice rules. Sharp.</strong> The Maui chain below is exactly this at the local-code level, and the same engine runs a predictive 50-state legislature monitor for the statehouse version, bills flagged three to six months before they land. You ranked this below the spend, and the doc now follows that order.</li>
+      <li><strong>Governments stuck with manual publication where newspaper is still the law. We would shape this with you.</strong> It lives in meeting text, an official raising the burden, a pilot floated. There is no clean document type for it, so it is a search we would tune to your definition rather than a switch we flip.</li>
+    </ul>
+  </div>
+
+  <!-- ───────── 4. ALSO IN THE CORPUS ───────── -->
+  <div class="section">
+    <h2>Not a one-off: the same change, several states at once</h2>
+    <p class="section-sub">Maui is the worked example, not the only one. The notice rules are being rewritten town by town, and the procurement and budget signals are live right now.</p>
+
+    <div class="two-rel">
+      <div class="rel-card">
+        <div class="rel-label">Same shape, other states</div>
+        <div class="rel-title">A multi-state wave</div>
+        <div class="rel-body">
+          The same "amend the public-hearing-notice publication rule" item is moving through Bothell WA (Planning Commission, May 20), Falmouth and Fairfield ME, and Carpentersville IL, this spring. The Maui pattern is a wave the system is catching jurisdiction by jurisdiction, not a single county.
+        </div>
+      </div>
+      <div class="rel-card">
+        <div class="rel-label">The other three, live this month</div>
+        <div class="rel-title">Procurement and budgets</div>
+        <div class="rel-body">
+          Bristol VT circulated a draft procurement policy on June 3. Dayton KY's monthly budget-vs-actuals carries an explicit "Legal Advertising" line, refreshed June 1. The full range of what you track is already in the record, dated this month.
+        </div>
+      </div>
+    </div>
+
+    <div class="block-label">How the live run works when you name a market</div>
+    <div class="custody">
+      <span class="custody-step">Name the market</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Confirm coverage</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step">Pull the signals</span>
+      <span class="custody-arrow">&#8594;</span>
+      <span class="custody-step last">Assemble the feed</span>
+    </div>
+    <p style="margin-top:14px">
+      We confirm corpus coverage of that state or region first. If it is thin, <span class="hl">I will say so on the call and offer to backfill, rather than fake depth</span>. Then we pull the four signal types for the window you care about, the notice-rule changes, the procurements, the manual-process discussions, and the budget lines, and assemble them into the feed: "this town is changing the rule, on this date, this many months before it is law."
+    </p>
+  </div>
+
+  <!-- ───────── 5. THE SCALE ───────── -->
+  <div class="section">
+    <h2>The coverage behind one chain</h2>
+    <p class="section-sub">The Maui chain is one of many. The reason it exists at all is the footprint underneath it.</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">3,400+</div><div class="lab">municipalities read on the night their records post</div></div>
+      <div class="stat"><div class="num">50</div><div class="lab">states, plus a predictive legislature monitor</div></div>
+      <div class="stat"><div class="num">700K+</div><div class="lab">public records, 200K+ classified signals</div></div>
+    </div>
+    <p class="detail-cue" style="margin-top:16px">Show details for the honest caveat on coverage &#9656;</p>
+    <p class="detail" style="margin-top:16px">
+      The wedge for Column is the upstream layer, the change to the notice rules and the procurement before either is public. The system runs deterministically over roughly three thousand four hundred municipalities of the ninety thousand nationally, and the coverage of any specific state or region is a real number we check, not a claim. Where a market you care about is thin, the path is to backfill it, on a defined window, as part of a pilot.
+    </p>
+  </div>
+
+  <!-- ───────── 6. QUESTIONS ───────── -->
+  <div class="section">
+    <h2>Questions where your read changes what I build</h2>
+    <p class="section-sub">Genuine discussion topics, not a checklist. Your answers define the product for this use case.</p>
+
+    <div class="question">
+      <div class="q-text">Of the four, which one fires an action for Column the moment you see it, the bill, the procurement, the manual-process complaint, or the budget line, and what does your team do with it?</div>
+      <div class="why">This is the load-bearing question. It decides whether the deliverable is a strategic watch on the notice rules, a lead feed for your sales team, or both, and it is the difference between a useful tool and a data dump.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text">Coverage: which markets matter most, your newspaper partners' footprints, specific states, or national, and which record types do you want first?</div>
+      <div class="why">Your partners run multi-state. Naming the markets and the record types keeps a pilot scoped to what moves your business, instead of a national firehose.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">Depth: do you want the change itself, the bill or the RFP, or the whole chain from the first committee mention to adoption?</div>
+      <div class="why">The Maui chain is four meetings deep. If you only need the final ordinance, that is a lighter product, if you need the early warning, the depth is the point.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">Recency: a one-time map of where the rules are changing, or an ongoing feed the night it posts? What does a week late cost you on a procurement lead?</div>
+      <div class="why">The three vectors price the work. A one-time backtrack and a daily feed are different products, and the cost of being a week late on a lead tells us which cadence is worth paying for.</div>
+    </div>
+
+    <div class="question detail">
+      <div class="q-text">The two we would shape most: how would you want the "this town is struggling with manual publication" signal to look, and is notice volume something you already hold from your own marketplace?</div>
+      <div class="why">These are the fuzzier two of your four. Defining them with you, rather than guessing, is what keeps the product honest about where it is sharp and where it is a search we are tuning.</div>
+    </div>
+  </div>
+
+  <!-- ───────── 7. PATHS FORWARD ───────── -->
+  <div class="section">
+    <h2>Possible paths forward</h2>
+    <p class="section-sub">A few concrete shapes the next step could take.</p>
+
+    <div class="path">
+      <div class="path-title">Map your market from public-notice spend</div>
+      <div class="path-body">You name the states. I pull the legal-advertising line from the budgets and check registers across those jurisdictions and hand you the market map: what each one spends on public notices, so your team knows who is a tier-1 account and who is a tier-3. This is your number one, and it starts as a one-time pull you can size the market with, then waterfall down.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">A lead feed for your sales team</div>
+      <div class="path-body">The procurement and manual-process signals, the second and third of your four, as an ongoing feed scoped to your markets, surfaced the night the committee item posts. The point is to reach the government before the RFP, when you are the only one who knows it is coming.</div>
+    </div>
+
+    <div class="path detail">
+      <div class="path-title">A standing watch on the notice rules</div>
+      <div class="path-body">The legislative and local-code changes to public-notice requirements, the first of your four, surfaced across the states you operate in the night they post, so a rule change is something Column sees forming, not something it reads about once it is law.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for Column, PBC &middot; Alex Lutz</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggle');
+    function set(on) {
+      document.body.classList.toggle('show-details', on);
+      btn.textContent = on ? 'Quick read ◂' : 'Show details ▸';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('ma_details', on ? '1' : '0'); } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var on = !document.body.classList.contains('show-details');
+      set(on);
+      if (on && window.goatcounter && window.goatcounter.count) {
+        try { window.goatcounter.count({ path: 'column-show-details', title: 'show details', event: true }); } catch (e) {}
+      }
+    });
+    try { if (localStorage.getItem('ma_details') === '1') set(true); } catch (e) {}
+  })();
+</script>
+</body>
+</html>
