@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Katahdin, the watch-list run against the record</title>
+<script data-goatcounter="https://stats.municipalalpha.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root {
+    --ink:#0C0C0C; --paper:#F7F4F0; --signal:#E8512D; --edge:#1B4332;
+    --ink-80:rgba(12,12,12,.80); --ink-60:rgba(12,12,12,.60); --ink-40:rgba(12,12,12,.40);
+    --ink-12:rgba(12,12,12,.12); --ink-06:rgba(12,12,12,.06); --signal-06:rgba(232,81,45,.06);
+    --font-display:'Newsreader',Georgia,serif; --font-body:'DM Sans',-apple-system,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .container{max-width:780px;margin:0 auto;padding:0 36px 80px;}
+  .header{position:sticky;top:0;z-index:10;background:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:22px 0 16px;border-bottom:1px solid var(--ink-12);margin-bottom:32px;}
+  .wordmark{font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.005em;}
+  .header-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-60);text-align:right;line-height:1.4;}
+  .hero{margin-bottom:18px;}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:37px;line-height:1.1;letter-spacing:-.01em;margin:0 0 14px;}
+  .hero .lede{font-size:15.5px;line-height:1.55;color:var(--ink-60);margin:0;max-width:64ch;}
+  .hero .lede strong{color:var(--ink);font-weight:600;}
+  .stat-strip{margin-top:22px;padding:16px 18px;background:var(--ink);color:var(--paper);border-radius:2px;display:flex;flex-wrap:wrap;gap:22px;}
+  .stat{flex:1 1 110px;}
+  .stat .num{font-family:var(--font-display);font-size:26px;font-weight:500;line-height:1;color:var(--signal);}
+  .stat .lab{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:rgba(247,244,240,.6);margin-top:6px;line-height:1.4;}
+  .section{margin-top:46px;padding-top:26px;border-top:1px solid var(--ink-12);}
+  .section h2{font-family:var(--font-display);font-weight:500;font-size:25px;line-height:1.2;letter-spacing:-.005em;margin:0 0 8px;}
+  .section .section-sub{font-size:14px;color:var(--ink-60);line-height:1.5;margin:0 0 18px;max-width:62ch;}
+  .section p{font-size:14.5px;line-height:1.65;margin:0 0 14px;max-width:62ch;}
+  .source-link{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;color:var(--signal);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;}
+  .source-link:hover{color:var(--ink);}
+  .hl{background:rgba(232,81,45,.14);font-weight:500;padding:.04em .26em;border-radius:2px;}
+  .signal-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:12px;}
+  .signal-list li{padding:15px 17px;background:var(--paper);border:1px solid var(--ink-12);border-radius:2px;}
+  .signal-list li.star{border-left:3px solid var(--signal);}
+  .sig-title{font-family:var(--font-display);font-size:16.5px;font-weight:500;color:var(--ink);margin-bottom:3px;}
+  .sig-where-top{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:8px;}
+  .sig-body{font-size:13.5px;line-height:1.5;color:var(--ink-80);margin-bottom:8px;}
+  .sig-quote{font-family:var(--font-display);font-style:italic;font-size:14px;line-height:1.5;color:var(--ink);margin:0 0 9px;padding-left:13px;border-left:2px solid var(--ink-12);}
+  .caveats{margin-top:16px;padding:18px 20px;background:var(--ink-06);border:1px solid var(--ink-12);border-radius:2px;}
+  .caveats .cv-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60);margin-bottom:10px;}
+  .caveats ul{margin:0;padding-left:18px;}
+  .caveats li{font-size:13px;line-height:1.55;color:var(--ink-80);margin-bottom:7px;}
+  .caveats li::marker{color:var(--signal);}
+  .pilot{margin-top:18px;padding:20px 22px;background:var(--signal-06);border-left:3px solid var(--signal);}
+  .pilot .pl-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);margin-bottom:10px;}
+  .pilot ul{margin:0;padding-left:18px;}
+  .pilot li{font-size:14px;line-height:1.55;margin-bottom:8px;}
+  .pilot li::marker{color:var(--signal);}
+  .footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--ink-12);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-40);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .footer a{color:var(--ink-60);text-decoration:none;}
+  @media (max-width:560px){.container{padding:0 20px 60px;}.hero h1{font-size:29px;}}
+  @media print{.header{position:static;}.container{max-width:none;padding:24px;}.section,.signal-list li{page-break-inside:avoid;}}
+  /* condensed (working-backwards one-pager) vs full-detail toggle */
+  .viewtoggle{display:inline-flex;border:1px solid var(--ink-12);border-radius:2px;overflow:hidden;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 8px;}
+  .viewtoggle button{background:var(--paper);color:var(--ink-60);border:0;border-right:1px solid var(--ink-12);padding:8px 16px;cursor:pointer;transition:background .12s,color .12s;font:inherit;letter-spacing:inherit;text-transform:inherit;}
+  .viewtoggle button:last-child{border-right:0;}
+  .viewtoggle button.active{background:var(--ink);color:var(--paper);}
+  .viewtoggle button:not(.active):hover{background:var(--ink-06);}
+  .toggle-hint{font-family:var(--font-mono);font-size:11px;color:var(--ink-40);line-height:1.5;margin:0 0 6px;max-width:62ch;}
+  .summary-view{display:none;}
+  body.condensed .summary-view{display:block;}
+  body.condensed .detail-view{display:none;}
+  .pr-frame{font-size:13.5px;color:var(--ink-60);background:var(--ink-06);border:1px solid var(--ink-12);border-radius:2px;padding:16px 18px;margin:14px 0 28px;line-height:1.6;}
+  .pr-frame strong{color:var(--ink);font-weight:600;}
+  .pr-head{font-family:var(--font-display);font-weight:500;font-size:34px;line-height:1.12;letter-spacing:-.01em;margin:0 0 14px;}
+  .pr-sub{font-family:var(--font-display);font-size:17px;line-height:1.45;color:var(--ink-80);font-style:italic;margin:0 0 18px;max-width:64ch;}
+  .summary-view p{font-size:14.5px;line-height:1.65;margin:0 0 14px;max-width:62ch;}
+  .pr-quote{border-left:2px solid var(--signal);padding-left:15px;margin:18px 0;font-family:var(--font-display);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink);max-width:60ch;}
+  .pr-quote .who{display:block;font-style:normal;font-family:var(--font-mono);font-size:11px;letter-spacing:.02em;text-transform:none;color:var(--ink-60);margin-top:8px;line-height:1.5;}
+  .summary-strip{margin:22px 0;padding:16px 18px;background:var(--ink);color:var(--paper);border-radius:2px;font-family:var(--font-mono);font-size:12px;line-height:1.9;}
+  .summary-strip b{color:var(--signal);font-weight:600;}
+  .summary-cta{margin-top:24px;padding-top:16px;border-top:1px solid var(--ink-12);font-size:14px;color:var(--ink-60);max-width:62ch;}
+  .summary-cta a{color:var(--signal);}
+  @media print{.viewtoggle,.toggle-hint{display:none!important;}body.condensed .detail-view{display:block!important;}body.condensed .summary-view{display:none!important;}}
+</style>
+</head>
+<body class="condensed">
+<noscript><style>body.condensed .detail-view{display:block;}body.condensed .summary-view{display:none;}.viewtoggle,.toggle-hint{display:none;}</style></noscript>
+<div class="container">
+
+  <div class="header">
+    <span class="wordmark">Municipal&nbsp;Alpha</span>
+    <span class="header-meta">For Our Katahdin / One North<br>Sample &middot; 10 Jun 2026</span>
+  </div>
+
+  <div class="viewtoggle" role="group" aria-label="View density">
+    <button id="btn-condensed" class="active" type="button" onclick="setView('condensed')">One-pager</button>
+    <button id="btn-detail" type="button" onclick="setView('detail')">Full detail</button>
+  </div>
+  <p class="toggle-hint">The one-screen version, written for your board and funders. Switch to full detail for the 13 real sourced hits and the sample in full.</p>
+
+  <div class="summary-view">
+
+    <div class="pr-frame">
+      <strong>A working-backwards note.</strong> Amazon writes the announcement first, before building the thing, then works back to whether they can earn it. Below is the note we'd want Our Katahdin to be able to put in front of its board and its funders a few months from now, written as if the watch has been running since this summer, and framed the way a funder reads it: how Our Katahdin is using this to deliver on its mission, and where the grant dollars show their work. <strong>Read it as the bar we're setting together, not a victory lap. If it can't earn a line like this in your next funder report, it doesn't belong in your grant.</strong>
+    </div>
+
+    <h1 class="pr-head">Our Katahdin is reaching the region's opportunities earlier, and turning the public record into action for the Katahdin economy.</h1>
+    <p class="pr-sub">A single weekly read of the scattered municipal record across northern Maine now puts development, funding, and retention signals in front of Our Katahdin early enough to act on them, in service of the region's recovery.</p>
+
+    <p>A few months into the pilot, Our Katahdin works from a weekly digest of what's moving across its watch-towns and target sectors, biofuel, mass timber, mill-site redevelopment, every item sourced to the municipal filing it came from. The organization is catching competitive redevelopments, retention risks, and funding openings earlier than its news-and-word-of-mouth channels ever allowed, and putting that lead time straight into its economic-development work for the region.</p>
+
+    <p><strong>What it means for a funder.</strong> The value-add is concrete and the line from spend to mission is short: the monthly cost buys earlier, wider sight across the region, which the team converts into site attraction, employer retention, and policy work, the core of what the grant funds. The same dollars reach further because Our Katahdin is acting on what's happening across the region, not reacting to it after the fact.</p>
+
+    <p><strong>The gap it closed.</strong> A regional development organization can only act on what it hears about in time. By the time a mill closure or a competing redevelopment reached the news, the moment to attract an employer or get ahead of a retention risk had often passed, and the activity in the small jurisdictions no one is watching, the corners Shane pointed to on the call, never reached the team at all. That is lost mission impact, and it stays invisible until you see what you were missing.</p>
+
+    <p><strong>How it works.</strong> Municipal Alpha runs Our Katahdin's own action-words, watch-towns, and target companies against the Maine municipal corpus continuously, and turns the hits into a readable weekly digest: what's new, what moved, and where it stands, every item carrying the public filing it came from. It tunes to what Our Katahdin actually acts on, so it sharpens to the region's real work and the noise drops over time. No system to babysit, just the digest in the inbox.</p>
+
+    <p class="pr-quote">The whole point was to put the regional picture in Our Katahdin's hands while they can still act on it, in service of the work they're already funded to do. The coverage we could show on day one. What the pilot proved is that the early warning holds up on the ground Steve and Shane actually work.
+      <span class="who">Matt MacDonald, founder, Municipal Alpha</span></p>
+
+    <p class="pr-quote">We're reaching the region's opportunities while there's still time to act, and catching things out of the small towns we'd never have seen, and it's showing up directly in the development work.
+      <span class="who">The bar we're aiming at, in Shane's own framing from the call: not just hearing things late, but no longer missing them entirely. Illustrative of the target, not a recorded quote.</span></p>
+
+    <div class="summary-strip">
+      Already real today, from this sample:&nbsp; <b>62,561</b> Maine documents in the corpus &middot; <b>174</b> municipalities &middot; <b>7 of 12</b> of your watch-towns already live &middot; <b>13</b> sourced hits behind the toggle, every one linked to its filing
+    </div>
+
+    <p><strong>The shape of it.</strong> A simple paid pilot, no lock and no gate, it earns its place or it doesn't. We'd kick off at $200 a month through the calibration period, then $600 a month for single-state coverage once it's proven, both your nonprofit rate, around 80 percent below what a commercial buyer pays. Starting doesn't wait on anything: you can begin however works best on your end, and as it proves out we'd actively help you build it into an NBRC, EDA, or similar grant the way we did with another Maine nonprofit, so over time a funder can see exactly what their dollars buy. That grant support is real effort we'd put in if the opening is there, not a precondition for getting started.</p>
+
+    <p class="summary-cta"><strong>That's the one-screen version.</strong> Switch to <a href="#" onclick="setView('detail');return false;">full detail</a> for the 13 real sourced hits, your own backyard already in the record, the data-center moratorium wave as it spreads, and how we'd both know it's working. Or a quick call works just as well.</p>
+
+  </div>
+
+  <div class="detail-view">
+
+  <div class="hero">
+    <h1>You sent the list. Here is what the system already pulls back.</h1>
+    <p class="lede">Run against the action-words, target companies, and watch-towns Steve and Shane sent, swept across the Maine corpus. Every hit below links to the actual municipal document it came from. This is a <strong>hand-picked sample to show the shape</strong>, not the full pilot, and it is real, not illustrative.</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">62,561</div><div class="lab">ME documents in corpus</div></div>
+      <div class="stat"><div class="num">174</div><div class="lab">ME municipalities</div></div>
+      <div class="stat"><div class="num">7 / 12</div><div class="lab">watch-towns already live</div></div>
+      <div class="stat"><div class="num">13</div><div class="lab">sourced hits below</div></div>
+    </div>
+  </div>
+
+  <!-- 1. THEIR OWN BACKYARD -->
+  <div class="section">
+    <h2>Your own backyard is already in the record</h2>
+    <p class="section-sub">Before anything else: the system is already picking up One North's own activity, surfaced straight from Millinocket's public filings.</p>
+    <ul class="signal-list">
+      <li class="star">
+        <div class="sig-where-top">Millinocket &middot; Town Manager's Report &middot; Jan 22, 2026</div>
+        <div class="sig-body">Your biofuel project moving through the local approval chain, captured the moment it hit the planning board.</div>
+        <p class="sig-quote">"Presented Subdivision plan for <span class="hl">Our Katahdin Biofuel</span> to planning board and was approved."</p>
+        <a class="source-link" href="https://millinocket.org/wp-content/uploads/2026/01/1-2026.01.22-Town-Managers-Report-merged.pdf">Source PDF &#9656;</a>
+      </li>
+      <li class="star">
+        <div class="sig-where-top">Millinocket &middot; Organizational / Regular Meeting Agenda &middot; Nov 11, 2024</div>
+        <div class="sig-body">The One North greenfield biofuel facility, the manufacturer holding an option to lease, on the record more than a year earlier.</div>
+        <p class="sig-quote">"the <span class="hl">One North</span> greenfield development project in Millinocket, Maine will host a new biofuel manufacturing facility; and the biofuel manufacturer has an option to lease certain premises on the greenfield of the One North site."</p>
+        <a class="source-link" href="https://millinocket.org/wp-content/uploads/2024/11/11-11-2024-TentAgenaOrganizationalRegula.pdf">Source PDF &#9656;</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2. PEER MILL SITE -->
+  <div class="section">
+    <h2>A peer mill site, redeveloping into your exact target sectors</h2>
+    <p class="section-sub">Lincoln is on your competitive-watch list. Its former paper mill is being rebuilt into a wood-to-fuels biorefinery, the precise sector mix One North is chasing. This is the "what types of development are moving at sites like ours" use case, sourced.</p>
+    <ul class="signal-list">
+      <li class="star">
+        <div class="sig-where-top">Lincoln &middot; Biofine Update to Town Council &middot; Jan 15, 2026</div>
+        <div class="sig-body">A biorefinery developer presenting its plan to the council, with the company's own framing.</div>
+        <p class="sig-quote">"Biofine is a developer of <span class="hl">biorefinery</span> capacity, and marketer of diverse biochemicals and fuels. Our proprietary technology represents a disruptive change in fuels and biochemicals markets."</p>
+        <a class="source-link" href="https://www.lincolnmaine.org/wp-content/uploads/2026/01/Biofine-Update-Lincoln-Town-Council-January-2026.pdf">Source PDF &#9656;</a>
+      </li>
+      <li class="star">
+        <div class="sig-where-top">Lincoln &middot; Town Council Packet &middot; Jan 6, 2026</div>
+        <div class="sig-body">The offtake and siting detail, the kind of signal that tells you a project is real, not just proposed.</div>
+        <p class="sig-quote">"Biofine announced a long-term Offtake Agreement with Sprague Operating Resources for the full output of its <span class="hl">first commercial biorefinery, planned for the Lincoln Technology Park</span>."</p>
+        <a class="source-link" href="https://www.lincolnmaine.org/wp-content/uploads/2026/01/Lincoln_Council_Packet_FINAL.pdf">Source PDF &#9656;</a>
+      </li>
+      <li class="star">
+        <div class="sig-where-top">Lincoln &middot; RFP, Mill Building 23 / Powerhouse &middot; Mar 16, 2026</div>
+        <div class="sig-body">The physical redevelopment in motion: a demolition RFP for the old powerhouse to clear the site.</div>
+        <p class="sig-quote">"Request for Proposals, Demolition Services, Former Lincoln Paper &amp; Tissue Building 23 (former Powerhouse), Town of Lincoln, ME."</p>
+        <a class="source-link" href="https://www.lincolnmaine.org/wp-content/uploads/2026/03/2026-03-16-Lincoln-Mill-Building-23-Powerhouse-RFP-Q-A.pdf">Source PDF &#9656;</a>
+      </li>
+      <li class="star">
+        <div class="sig-where-top">Lincoln &middot; Vision and Strategic Overview &middot; Jan 7, 2026</div>
+        <div class="sig-body">Hits four of your sector keywords in one paragraph: biofuel, mass timber, CLT, wood processing.</div>
+        <p class="sig-quote">"Forest products, to include: biofuel development, derived from wood cellulose; <span class="hl">mass timber products (e.g., cross-laminated timber)</span>; and wood product processing and manufacturing."</p>
+        <a class="source-link" href="https://www.lincolnmaine.org/wp-content/uploads/2026/01/Vision-and-Strategic-Overview.pdf">Source PDF &#9656;</a>
+      </li>
+      <li>
+        <div class="sig-where-top">Lincoln &middot; Public Notice, Lagoon / Powerhouse &middot; May 15, 2026</div>
+        <div class="sig-body">The brownfield-grant cleanup that precedes redevelopment, the kind of precursor you would want flagged early.</div>
+        <p class="sig-quote">"the Town of Lincoln has received funding from the EPA <span class="hl">Brownfield Grant</span> to perform cleanup activities for the Lagoon &hellip; and the Powerhouse Building #23 &hellip;"</p>
+        <a class="source-link" href="https://www.lincolnmaine.org/wp-content/uploads/2026/05/Public-notice-for-Lagoon-Powerhouse-051326.pdf">Source PDF &#9656;</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 3. DATA CENTER MORATORIUM WAVE -->
+  <div class="section">
+    <h2>The data-center moratorium wave, as it spreads</h2>
+    <p class="section-sub">Your spec asks to flag data centers only when paired with a power signal. Here is the policy side of that, three Maine towns moving on data-center moratoriums within two weeks of each other. This is what watching a trend ripple across municipalities looks like.</p>
+    <ul class="signal-list">
+      <li class="star">
+        <div class="sig-where-top">Brunswick &middot; Town Council &middot; May 18, 2026</div>
+        <div class="sig-body">A target-region town drafting its moratorium.</div>
+        <p class="sig-quote">"66. <span class="hl">Data Center Moratorium</span>. The draft moratorium will be updated here closer to the 5/18/26 meeting."</p>
+        <a class="source-link" href="https://www.brunswickme.gov/AgendaCenter/ViewFile/Agenda/_05182026-3838?html=true">Source &#9656;</a>
+      </li>
+      <li>
+        <div class="sig-where-top">Westbrook &middot; City Council &middot; Jun 1, 2026</div>
+        <div class="sig-body">Two weeks later, an ordinance up for adoption.</div>
+        <p class="sig-quote">"Order 2026-66 <span class="hl">Adopting a Data Center Moratorium Ordinance</span> ... Request to refer a review of Data Center definitions."</p>
+        <a class="source-link" href="https://www.westbrookmaine.gov/AgendaCenter/ViewFile/Agenda/_06012026-1008?html=true">Source &#9656;</a>
+      </li>
+      <li>
+        <div class="sig-where-top">Belfast &middot; Climate, Energy &amp; Utilities Committee &middot; Jun 1, 2026</div>
+        <div class="sig-body">Same day, a third town taking it up at committee.</div>
+        <p class="sig-quote">"Discussion on <span class="hl">proposed moratorium on Data Center development</span>, advice to Council."</p>
+        <a class="source-link" href="https://www.cityofbelfast.org/ArchiveCenter/ViewFile/Item/5356">Source &#9656;</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. SECTOR + DISTRESS -->
+  <div class="section">
+    <h2>Sector activity and distress signals</h2>
+    <p class="section-sub">Energy infrastructure on the move, and the early fiscal tremor when a mill goes dark, the retention signal you said you only learned about too late.</p>
+    <ul class="signal-list">
+      <li class="star">
+        <div class="sig-where-top">Livermore Falls &middot; Planning Board Minutes &middot; Nov 19, 2025</div>
+        <div class="sig-body">A resident's question at the planning board references a 33 MW biomass plant, in a target-region town.</div>
+        <p class="sig-quote">"A Resident asked: The <span class="hl">Biomass plant is a 33 mega watt plant</span>, is there any communication between the two ... any possibility of the two projects working [together]."</p>
+        <a class="source-link" href="https://lfme.org/wp-content/uploads/2025/12/PB-11.19.-2025-Minutes.pdf">Source PDF &#9656;</a>
+      </li>
+      <li class="star">
+        <div class="sig-where-top">Old Town &middot; FY 2025-2026 General Budget</div>
+        <div class="sig-body">The fiscal fingerprint of a mill closure, visible in the town's own budget line items (a $1.5M tax-base hit in one line).</div>
+        <p class="sig-quote">"B.E.T.E. reduced $1,500,000, <span class="hl">due to mill closure</span>."</p>
+        <a class="source-link" href="https://old-town.org/vertical/sites/%7BF7FABD96-D29C-4681-A9ED-8F3156759DC9%7D/uploads/FY_2025-2026_General_Budget_06.16.25.pdf">Source PDF &#9656;</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. POLICY COMPARABLES -->
+  <div class="section">
+    <h2>Policy and comparables</h2>
+    <p class="section-sub">The deal-structure terms from your list, surfacing in how other towns run them, the comparables you said you assemble by hand.</p>
+    <ul class="signal-list">
+      <li>
+        <div class="sig-where-top">Norridgewock &middot; TIF Advisory Committee Agenda &middot; May 26, 2026</div>
+        <div class="sig-body">A standing TIF advisory committee, a live comparable for how a peer town governs a district.</div>
+        <p class="sig-quote">"Town of Norridgewock <span class="hl">Tax Increment Financing (TIF) Advisory Committee</span> Remote Meeting and Participation Policy."</p>
+        <a class="source-link" href="https://norridgewock.gov/AgendaCenter/ViewFile/Agenda/_05262026-144?html=true">Source &#9656;</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- HONESTY -->
+  <div class="section">
+    <h2>What is covered, and what isn't</h2>
+    <div class="caveats">
+      <div class="cv-label">Read this before the rest</div>
+      <ul>
+        <li><strong>This is a curated sample, not an exhaustive sweep.</strong> It shows that the watch-list returns real, sourced signal today. The full pilot runs the whole list on a standing cadence.</li>
+        <li><strong>7 of your 12 watch-towns are already in the corpus</strong> (Millinocket, Old Town, Lincoln, Livermore Falls, Bucksport, Milo, Brunswick). The 5 gaps, Jay, Limestone/Loring, East Millinocket, Patten, Medway, are not yet onboarded. They are part of the pilot scope, not a limit.</li>
+        <li><strong>Depth is uneven by design.</strong> We have discovered far more documents than we have yet read in full, so body-text search today reaches a fraction of the corpus. Extracting your target towns deeper is exactly what a pilot prioritizes, and recall climbs as it does.</li>
+        <li><strong>Two of your signals live outside municipal minutes.</strong> WARN Act layoffs are state filings, and unorganized-territory activity routes through state LUPC. Both are reachable, on a different recipe than the town-record sweep above.</li>
+        <li>Every date is the document's own date. Every link was checked live before this was sent.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PILOT -->
+  <div class="section">
+    <h2>What the full pilot adds</h2>
+    <div class="pilot">
+      <div class="pl-label">From sample to standing watch</div>
+      <ul>
+        <li>Onboard the missing watch-towns that publish their records online, to round out your competitive set, and flag plainly any small town that doesn't post online (a records-request path, not a quiet gap).</li>
+        <li>Wire your full action-word, company, and policy list as a standing filter, delivered as a readable weekly digest.</li>
+        <li>It becomes a living watchlist: every item carries where it stands and when it last moved, so each week you see what is new and what changed, not the same list over again.</li>
+        <li>Named-entity alerts on your watch companies (Tanbark, Great Northern Salmon, Highland Pellets, and the rest) so a filing anywhere in the region surfaces.</li>
+        <li>You shape it the easy way: reply to the digest with what landed, and it tunes to what Our Katahdin actually acts on, the noise drops over time. You get a sharper digest, we get a better product, so it earns the couple of minutes. Nothing is gated on it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>How we'd know it's working</h2>
+    <p class="section-sub">No scorecard, just a shared read. We'd agree at the start what earning its place looks like for you. In your own words from the call, it comes down to four plain things.</p>
+    <p><strong>We're watching the right ground.</strong> Your towns and your sectors, the ones on your action-words list, are actually being covered.</p>
+    <p><strong>What we surface is useful.</strong> You're acting on it, carrying it into site attraction, retention, or policy, not just reading it. You tell us what landed and we tune to it.</p>
+    <p><strong>You're hearing it early.</strong> Ahead of it, before it's on your plate fully cooked. The Milo mill closure is the kind of thing you heard about too late through the news; we'd show how early it was already on the public record. One honest note: a look-back like Milo shows the method works, it doesn't prove a batting average, the live pilot does that, by flagging things before the outcome and checking the lead.</p>
+    <p><strong>You're learning things you'd never have caught.</strong> Shane put it as not just hearing things late but never hearing them at all, from the small-jurisdiction corners no one's watching.</p>
+    <p>That is the whole of it. The short answer to how we know it worked: you're acting on what we surface, you're earlier than you'd otherwise be, and you're catching things you'd have missed.</p>
+  </div>
+
+  <div class="section">
+    <h2>The shape of it</h2>
+    <p class="section-sub">Nothing heavy, and priced as a nonprofit, well below what a commercial buyer pays.</p>
+    <p>A simple paid pilot, no lock and no gate, it earns its place or it doesn't. We'd kick off at <strong>$200 a month</strong> through the calibration period, kept lower while we dial the feed in to you and you tell us what's landing. Once it's proven and running, the ongoing nonprofit rate is <strong>$600 a month</strong> for single-state coverage like yours. Both are your nonprofit rate, <strong>around 80% below what a commercial buyer pays</strong> for the same single-state coverage, the mission discount for an organization like yours.</p>
+    <p>You can start whenever works for you, funded however is easiest on your end, without waiting on a funding cycle. And as it proves out, we'd actively help you build it into an NBRC, EDA, or similar grant, the way we did with another Maine nonprofit, so over time it's funded alongside the rest of your work rather than from operating dollars. That grant support is something we'd put real effort into if the opening is there; it isn't a precondition for getting started. Scaling follows your pace, not a procurement process, and we'd shape the specifics together. The point is a clear shared read, not a contract you have to wrestle out of.</p>
+  </div>
+
+  </div><!-- /detail-view -->
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; prepared for Our Katahdin / One North &middot; Steve + Shane</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    var fired = false;
+    window.setView = function(v){
+      var condensed = (v === 'condensed');
+      document.body.classList.toggle('condensed', condensed);
+      var bc = document.getElementById('btn-condensed'), bd = document.getElementById('btn-detail');
+      if (bc) bc.classList.toggle('active', condensed);
+      if (bd) bd.classList.toggle('active', !condensed);
+      if (!condensed && !fired && window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({path: 'our-katahdin-show-details', title: 'Our Katahdin watch-list: expanded to full detail', event: true});
+        fired = true;
+      }
+    };
+  })();
+</script>
+</body>
+</html>
