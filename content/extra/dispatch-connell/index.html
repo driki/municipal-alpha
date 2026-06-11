@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Park, found in the public record</title>
+<script data-goatcounter="https://stats.municipalalpha.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root {
+    --ink:#0C0C0C; --paper:#F7F4F0; --card:#FFFFFF; --signal:#E8512D; --edge:#1B4332;
+    --ink-80:rgba(12,12,12,.80); --ink-60:rgba(12,12,12,.60); --ink-40:rgba(12,12,12,.40);
+    --ink-12:rgba(12,12,12,.12); --ink-06:rgba(12,12,12,.06); --signal-06:rgba(232,81,45,.06);
+    --font-display:'Newsreader',Georgia,serif; --font-body:'DM Sans',-apple-system,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .container{max-width:800px;margin:0 auto;padding:0 32px 96px;}
+  .topbar{display:flex;justify-content:space-between;align-items:baseline;padding:26px 0 14px;border-bottom:1px solid var(--ink-12);margin-bottom:36px;}
+  .wordmark{font-family:var(--font-display);font-weight:600;font-size:21px;letter-spacing:-.01em;}
+  .wordmark .dot{color:var(--signal);}
+  .topbar .meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-60);text-align:right;line-height:1.5;}
+  h1{font-family:var(--font-display);font-weight:600;font-size:32px;line-height:1.15;letter-spacing:-.015em;margin:0 0 10px;}
+  h2{font-family:var(--font-display);font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.01em;margin:52px 0 6px;padding-top:20px;border-top:2px solid var(--ink);}
+  h2 .num{color:var(--signal);font-variant-numeric:tabular-nums;margin-right:10px;}
+  h3{font-family:var(--font-body);font-weight:600;font-size:16px;margin:30px 0 6px;}
+  h4{font-family:var(--font-body);font-weight:600;font-size:14px;margin:20px 0 4px;color:var(--ink-80);}
+  p{margin:10px 0;}
+  a{color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(232,81,45,.35);}
+  strong{font-weight:600;}
+  ul,ol{margin:10px 0;padding-left:22px;}
+  li{margin:5px 0;}
+  .lede{font-family:var(--font-display);font-size:19px;line-height:1.45;color:var(--ink-80);margin:0 0 8px;}
+  .sub{color:var(--ink-60);font-size:14px;}
+  .kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin:0 0 14px;}
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--ink-12);vertical-align:top;}
+  th{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-60);border-bottom:2px solid var(--ink);font-weight:500;}
+  td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .big{font-weight:600;color:var(--signal);}
+  .note{font-size:13px;color:var(--ink-60);border-left:2px solid var(--ink-12);padding-left:14px;margin:14px 0;}
+  code{font-family:var(--font-mono);font-size:12.5px;background:var(--ink-06);padding:1px 5px;border-radius:3px;}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ink-12);font-size:12px;color:var(--ink-40);font-family:var(--font-mono);}
+  @media (max-width:620px){.container{padding:0 18px 60px;}h1{font-size:26px;}}
+  .viewtoggle{display:inline-flex;border:1px solid var(--ink-12);border-radius:7px;overflow:hidden;font-family:var(--font-mono);font-size:11.5px;margin:22px 0 6px;}
+  .viewtoggle button{background:var(--card);color:var(--ink-60);border:0;border-right:1px solid var(--ink-12);padding:8px 18px;cursor:pointer;letter-spacing:.02em;transition:background .12s,color .12s;}
+  .viewtoggle button:last-child{border-right:0;}
+  .viewtoggle button.active{background:var(--ink);color:var(--paper);}
+  .viewtoggle button:not(.active):hover{background:var(--ink-06);}
+  .toggle-hint{font-family:var(--font-mono);font-size:11px;color:var(--ink-40);margin:0 0 10px;}
+  .summary-view{display:none;}
+  body.condensed .summary-view{display:block;}
+  body.condensed .detail-view{display:none;}
+  .summary-strip{font-family:var(--font-mono);font-size:12px;color:var(--ink-60);background:var(--signal-06);border:1px solid var(--ink-12);border-radius:7px;padding:13px 16px;margin:18px 0 22px;line-height:1.95;}
+  .summary-strip b{color:var(--signal);font-weight:600;}
+  .summary-view p{margin:14px 0;}
+  .summary-cta{margin-top:26px;padding-top:16px;border-top:1px solid var(--ink-12);font-size:14px;color:var(--ink-60);}
+  .pr-frame{font-size:13.5px;color:var(--ink-60);background:var(--ink-06);border-radius:7px;padding:13px 16px;margin:6px 0 28px;line-height:1.62;}
+  .pr-frame strong{color:var(--ink);}
+  .pr-head{font-family:var(--font-display);font-weight:600;font-size:27px;line-height:1.18;letter-spacing:-.015em;margin:0 0 10px;}
+  .pr-sub{font-family:var(--font-display);font-size:18px;line-height:1.4;color:var(--ink-80);font-style:italic;margin:0 0 6px;}
+  .pr-quote{border-left:2px solid var(--signal);padding-left:16px;margin:20px 0;font-size:15px;color:var(--ink-80);font-style:italic;}
+  .pr-quote .who{display:block;font-style:normal;font-size:12px;color:var(--ink-60);font-family:var(--font-mono);margin-top:7px;letter-spacing:.01em;}
+  @media print{.viewtoggle,.toggle-hint{display:none!important;}body.condensed .detail-view{display:block!important;}body.condensed .summary-view{display:none!important;}}
+</style>
+</head>
+<body class="condensed">
+<noscript><style>body.condensed .detail-view{display:block;}body.condensed .summary-view{display:none;}.viewtoggle,.toggle-hint{display:none;}</style></noscript>
+<div class="container">
+
+  <div class="topbar">
+    <div class="wordmark">Municipal Alpha<span class="dot">.</span></div>
+    <div class="meta">For Josh MacDonald<br>The Connell Company<br>2026-06-11</div>
+  </div>
+
+  <p class="kicker">A dispatch, not a pitch</p>
+  <h1>The Park, found in the public record</h1>
+  <p class="lede">I rebuilt the entire entitlement story of The Park from the Township of Berkeley Heights' own published record, with no insider access, on a town we don't even crawl yet, including the zoning ordinance moving through the boards this quarter.</p>
+  <p class="note">You lived every one of these meetings, so this is not me telling you your own project's history. It is the lens, run on something you can check line by line, so the next part lands: the value is the same read on a town you do <em>not</em> know yet.</p>
+
+  <div class="viewtoggle" role="group" aria-label="View density">
+    <button id="btn-condensed" class="active" type="button" onclick="setView('condensed')">The dispatch</button>
+    <button id="btn-detail" type="button" onclick="setView('detail')">The sourced record</button>
+  </div>
+  <p class="toggle-hint">The short version is a headline. Switch to the sourced record for the full arc, the live ordinance, and who decides, every line linked to the township's own documents.</p>
+
+  <div class="summary-view">
+
+    <div class="pr-frame">
+      <strong>A working-backwards note.</strong> Amazon writes the announcement before building the thing, then works back to whether they can earn it. Below is the headline I would want to help Connell earn, written as if it is a year out. <strong>Read it as the shape of the win, not a claim, and not a pitch.</strong> The proof that the lens is real is one toggle away, and it is your own campus.
+    </div>
+
+    <h3 class="pr-head">The Connell Company found its next New Jersey campus before the site was on anyone's list.</h3>
+    <p class="pr-sub">A municipal signal flagged the town's openness to mixed-use development eleven months before a broker packaged it, while there was still room to move first.</p>
+
+    <p>Origination at Connell's scale depends on knowing a place is ready before everyone else does. A town quietly redraws a zone, commissions a redevelopment study, reexamines its master plan, or floats an overlay. That intent sits in the public record for months before it becomes a listing or an RFP, but only if someone is reading every town's record instead of one. Connell now reads all of them, on a schedule, sourced.</p>
+
+    <p><strong>How it works.</strong> Municipal Alpha crawls the municipal record continuously, classifies every document, and tracks how zoning and redevelopment activity moves from town to town. The result is an early read on which municipalities are opening up, surfaced before the market prices it in, each item linked to the council action or planning-board referral it came from.</p>
+
+    <p class="pr-quote">I built this off Berkeley Heights' public record, a town we don't even crawl, because the point was never your own campus. It is the next one you haven't picked, read the same way, early.
+      <span class="who">Matt MacDonald, founder, Municipal Alpha</span></p>
+
+    <p class="pr-quote">We were already talking to the right people in town while everyone else was still waiting for it to be listed.
+      <span class="who">Illustrative of the target outcome, not a recorded quote</span></p>
+
+    <div class="summary-strip">
+      Already real today, on your own campus:&nbsp; <b>2017&ndash;2026</b> board record reconstructed &middot; <b>5</b> governing bodies read &middot; the <b>MU Overlay</b> ordinance caught at its March 4, 2026 referral &middot; <b>0</b> insider access
+    </div>
+
+    <p>That headline is the shape of a win, not a claim. What is not hypothetical is the read underneath it. I pulled the full history of The Park, and the ordinance the boards are weighing right now, from nothing but the township's published documents.</p>
+
+    <p class="summary-cta"><strong>That's the dispatch.</strong> Switch to <a href="#" onclick="setView('detail');return false;">the sourced record</a> for the full entitlement arc, the live MU Overlay ordinance with the quote from the minutes, and the decision-maker map, every line linked to a township document. No pitch attached.</p>
+
+  </div>
+
+  <div class="detail-view">
+
+  <h2><span class="num">1</span>The proof, on your own campus</h2>
+  <p>Everything in this section, you already know, because you built it. That is the point. It is reconstructed entirely from the Township of Berkeley Heights' published ordinances, council actions, and planning-board referrals, with no insider access, on a town that is not even in our active crawl set. If the lens is this complete on a project you can audit line by line, picture it on a town you are evaluating for the next site.</p>
+
+  <h3>1.1&nbsp; The arc, reconstructed from the record</h3>
+  <table>
+    <thead><tr><th class="num">When</th><th>What the record shows</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2017</td><td><strong>Ordinance 27-2017</strong> creates the OR-A1 Zone (85,000 sq ft retail plus multi-family), the first zoning step.</td></tr>
+      <tr><td class="num">Apr 2020</td><td>Township proposes the integrated <strong>Mixed-Use (MU) Zone</strong> (185,000 sq ft retail plus 60,000 sq ft entertainment). A Neglia Engineering traffic review and an Econsult affordable-housing analysis are on the record.</td></tr>
+      <tr><td class="num">Dec 2020</td><td>Township Council and Planning Board <strong>approve the rezoning</strong>, after the retail footage was negotiated down through the fall.</td></tr>
+      <tr><td class="num">2022&ndash;23</td><td>Planning Board approval to expand; construction begins on The District (328 rental units, 250,000 sq ft retail and entertainment).</td></tr>
+      <tr><td class="num">Aug 19 2025</td><td><strong>Shane Connell</strong> presents the Phase-4 zoning ask to the Mayor and Council.</td></tr>
+      <tr><td class="num">Mar 2026</td><td>That ask becomes a live ordinance, see 1.2.</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Source: the Township of Berkeley Heights' own <a href="https://www.berkeleyheights.gov/1405/10-Connell-Development">Connell Development record</a>.</p>
+
+  <h3>1.2&nbsp; What is moving right now</h3>
+  <p class="sub">A timeline you can pull is interesting. A read that catches what is happening this quarter is the point. From the Planning Board minutes dated March 4, 2026:</p>
+  <p class="pr-quote">Ordinance to be introduced by the Township Council at the public meeting on March 3, 2026, to amend the Mixed-Use (MU) Zone of the Connell Park and establish the Mixed Use (MU) Overlay Zone. The Planning Board is directed to make and transmit to the Township Council, within 35 days after referral... a report... concerning these inconsistencies.
+    <span class="who">Berkeley Heights Planning Board minutes, March 4, 2026</span></p>
+  <p>So as of this read: the Council <strong>introduced the MU Overlay ordinance on March 3, 2026</strong>, and the Planning Board took the mandatory 35-day master-plan-consistency referral on March 4, with <strong>Township Planner Michael Mistretta</strong> as the reviewer. That is the Phase-4 follow-through from the August 2025 presentation, caught at the referral stage, before adoption. The public ask came roughly seven months before the ordinance, and every step of it sat in the open the whole time.</p>
+  <p class="note">Source: <a href="https://www.berkeleyheights.gov/AgendaCenter/ViewFile/Minutes/_03042026-1510">Planning Board minutes, March 4, 2026</a>.</p>
+
+  <h3>1.3&nbsp; The record carries the room, not just the votes</h3>
+  <p>The same read also surfaces the sentiment and the named concerns that shape these meetings. Around the expansion, the public record and local coverage carry recurring resident concerns about infrastructure strain, school capacity, traffic, sewer capacity, and property taxes. On your own campus that is context you already hold. The point is what it represents: walking into a town you do not know, this is exactly the layer you would want first, who will be a problem and why, what the last similar project ran into, where the friction sits, all sourced rather than guessed.</p>
+
+  <h3>1.4&nbsp; Who decides</h3>
+  <table>
+    <thead><tr><th>Level</th><th>Who</th><th>Role on the record</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Developer</strong></td><td>Shane Connell, EVP, The Connell Company</td><td>presented the Phase-4 zoning ask, Aug 19 2025</td></tr>
+      <tr><td><strong>Township</strong></td><td>Planner Michael Mistretta</td><td>reviewing the MU Overlay ordinance for the board</td></tr>
+      <tr><td><strong>Planning Board</strong></td><td>Chair Jeanne Kingsley; members Popolo, Sternheim, Johnson, Hall</td><td>holds the 35-day master-plan-consistency referral</td></tr>
+      <tr><td><strong>Consultants</strong></td><td>Neglia Engineering; Econsult</td><td>traffic review; affordable-housing analysis, on the zoning record</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">2</span>Where this points</h2>
+  <p>Not a proposal, just the two places the same lens would aim for a company like Connell.</p>
+  <h3>Next-site origination</h3>
+  <p>Which Union, Morris, and wider New Jersey municipalities are signaling openness to mixed-use or redevelopment, the overlays, redevelopment-area studies, master-plan reexaminations, and rezonings, surfaced before a broker or an RFP makes it competitive. And for any town already on your list, the read you just saw for Berkeley Heights, the prior-project record and the board's posture, sourced.</p>
+  <h3>CELCO, a separate thread</h3>
+  <p>Mining, quarry, excavation, and mineral-rights permits move through planning-board agendas before the equipment is sourced. The same pipeline can surface them as early lead signals for the leasing side. Different signal, different internal owner, a second thread to pull only if it is useful.</p>
+
+  <p class="note"><strong>One honest note on coverage.</strong> Berkeley Heights and Florham Park are not in our active crawl set, this read was pulled on demand. That is the point, not a gap: a town you name can be stood up quickly, because the engine is built to read any municipality that publishes a record.</p>
+
+  <p class="note"><strong>No pitch attached.</strong> I built this off the public record to show you the lens, not to sell you anything today. If finding the next one first is worth a look, name a town Connell is actually eyeing and I will run this same read on it, sourced, so you are looking at a place you do not already know.</p>
+
+  </div><!-- /detail-view -->
+
+  <footer>
+    Municipal Alpha &middot; for Josh MacDonald, The Connell Company &middot; 2026-06-11 &middot; every claim in the sourced record traces to the Township of Berkeley Heights' own published documents (berkeleyheights.gov). The forward headline is illustrative, labeled, and not a claim of a past event.
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var fired = false;
+    window.setView = function(v){
+      var condensed = (v === 'condensed');
+      document.body.classList.toggle('condensed', condensed);
+      var bc = document.getElementById('btn-condensed'), bd = document.getElementById('btn-detail');
+      if (bc) bc.classList.toggle('active', condensed);
+      if (bd) bd.classList.toggle('active', !condensed);
+      if (!condensed && !fired && window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({path: 'connell-show-details', title: 'Connell dispatch: expanded to sourced record', event: true});
+        fired = true;
+      }
+    };
+  })();
+</script>
+</body>
+</html>
