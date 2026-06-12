@@ -8,6 +8,8 @@ Allow: /
 # as standalone files but unlinked and not in the sitemap. Disallow is the only
 # search-exclusion lever available for head-less content on GitHub Pages.
 Disallow: /qa-startup-maine-2026-05-18/answers/
+# Non-HTML buyer artifacts (a CSV can't carry a noindex meta). Same lever.
+Disallow: /ready-net-pilot/onboarding-calibration-2026-06-12.csv
 
 # Anthropic (Claude)
 User-agent: ClaudeBot
