@@ -34,6 +34,17 @@
   .terms{padding:18px 20px;background:var(--ink);color:var(--paper);border-radius:2px;}
   .terms p{color:var(--paper);max-width:none;margin:0;font-size:14.5px;line-height:1.65;}
   .terms b{color:var(--signal);}
+  .example{padding:14px 17px;background:var(--paper);border:1px solid var(--ink-12);border-left:3px solid var(--ink-40);border-radius:2px;margin:8px 0 12px;}
+  .ex-where{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:5px;}
+  .ex-title{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+  .ex-quote{font-family:var(--font-display);font-style:italic;font-size:13.5px;line-height:1.5;color:var(--ink);margin:0 0 8px;padding-left:12px;border-left:2px solid var(--ink-12);}
+  .ex-why{font-size:13px;line-height:1.55;color:var(--ink-80);margin-bottom:8px;}
+  .source-link{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;color:var(--signal);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;}
+  .fields-line{font-size:13.5px;line-height:1.6;color:var(--ink-80);margin:0 0 10px;max-width:62ch;}
+  .delivery{font-size:14px;line-height:1.6;color:var(--ink);margin:0;max-width:62ch;}
+  .tier ul{margin:6px 0 0;padding-left:18px;}
+  .tier li{font-size:14px;line-height:1.55;margin-bottom:5px;}
+  .tier li::marker{color:var(--signal);}
   .footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--ink-12);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-40);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
   .footer a{color:var(--ink-60);text-decoration:none;}
   @media (max-width:560px){.container{padding:0 20px 60px;}.hero h1{font-size:27px;}}
@@ -56,21 +67,38 @@
   <div class="section">
     <h2>1. What we are watching</h2>
     <p>The scope is whatever you configure in the calibration sheet, which I have pre-filled from the action-words doc you sent and our conversation: your watch-towns, sector keywords, target companies, geography, policy comparables, and retention signals. You and Shane adjust it, set the priorities, and what comes back is the scope. <strong>The thing you configure is the thing you get</strong>, and it is what we measure against.</p>
-    <p>You fill the sheet <strong>once</strong>, and that is the starting scope. It does not need to be perfect, it needs to be a good start, because from there the sharpening happens by reacting to the weekly brief, you tell me which items landed and which missed and it tunes, not by editing this sheet again. You already saw the shape of the results in the sample, so the first brief will look familiar. The first week or two is the baseline we tune from, not the finished article.</p>
-    <p>Two things move at different speeds here. <strong>Relevance</strong>, which of the surfaced items matter, sharpens continuously through that weekly loop. <strong>Scope</strong>, the set of towns, keywords, and companies we watch, is what you lock in the sheet, and we hold it fixed for the 90 days so the pilot stays a clean read. The list you send back is the definition, that is exactly what is covered. Widening it later, more towns, other states, eventually national, is the coverage step we take at the full term. So the pilot covers your core locked set, and the full contract is where coverage grows.</p>
-    <p>Starting focus is your locked set across Maine. National analogs and complementary-industry matching are a later coverage add, kept out of the pilot to keep scope and cost sane.</p>
+    <p>The goal of the sheet is to <strong>get started with enough to produce useful results, not to be exhaustively complete on day one.</strong> Put in the towns, words, and companies that matter most, enough for a useful first brief, and send it back. It does not need to be perfect, you already saw the shape of the results in the sample, so the first brief will look familiar, and the first week or two is the baseline we tune from, not the finished article.</p>
+    <p>From there, two things move at different speeds. <strong>Relevance</strong>, which of the surfaced items matter, sharpens continuously as you react to the weekly brief, that is the loop and where the real tuning happens, not in reworking this sheet. <strong>Scope</strong>, the set we watch, is the list you sent back, and we run with it rather than keep perfecting it, because the point is to get moving and let results show. Widening it in a real way, more towns, other states, eventually national, is the coverage step we take at the full term. So the pilot covers a good-enough starting set, and the full contract is where coverage grows.</p>
+    <p>Starting focus is your set across Maine. National analogs and complementary-industry matching are a later coverage add, kept out of the pilot to keep scope and cost sane.</p>
+    <p><strong>What each week looks like.</strong> Here is one real item from your sample, and the fields every item carries.</p>
+    <div class="example">
+      <div class="ex-where">Lincoln, ME &middot; Town Council (Biofine Update) &middot; Jan 15, 2026</div>
+      <div class="ex-title">A biorefinery developer presenting its plan to the council</div>
+      <div class="ex-quote">"Biofine is a developer of biorefinery capacity, and marketer of diverse biochemicals and fuels."</div>
+      <div class="ex-why"><strong>Why it matters:</strong> a peer mill site redeveloping into your exact target sector. <strong>Matched on:</strong> action-word "biorefinery" + watch-town "Lincoln".</div>
+      <a class="source-link" href="https://www.lincolnmaine.org/wp-content/uploads/2026/01/Biofine-Update-Lincoln-Town-Council-January-2026.pdf">Source filing &#9656;</a>
+    </div>
+    <p class="fields-line">Every item carries the same fields: <strong>Town &middot; Source and date &middot; What it is &middot; Quote &middot; Why it matters &middot; Matched on &middot; Source link &middot; Status</strong> (new, updated, or unchanged) <strong>&middot; Useful?</strong> (you mark it).</p>
+    <p class="delivery">You get each week two ways: a readable <strong>email</strong>, and a <strong>CSV</strong> of the same items with those fields. The CSV is also the dial, you mark the Useful column on the ones that landed and send it back, and next week sharpens to them. It works like training a Spotify or Netflix feed, the more you tell it what hit, the more it serves up what matters and drops what does not, only here it is tuned on what Our Katahdin actually acts on.</p>
   </div>
 
   <div class="section">
-    <h2>2. What success looks like</h2>
-    <p>Three layers, deliberately separated by who controls what, so this is fair to hold both of us to.</p>
+    <h2>2. What success looks like, and how we measure it</h2>
+    <p>Three layers, separated by who controls what, so we both know what each of us is on the hook for. The weekly CSV is the measurement surface for all of it.</p>
     <div class="tier">
-      <div class="lab">What you hold me to (my job)</div>
-      <p>A weekly, source-linked brief covering your configured towns, filtered to your action-words and companies, every item linked to the municipal filing it came from. Over the 90 days it tunes to what you flag as useful, so relevance climbs and the noise drops. This is the part I own and can show from day one.</p>
+      <div class="lab">My end (measurable, and it is mine)</div>
+      <p>This is what you hold me to:</p>
+      <ul>
+        <li><strong>Coverage</strong>, every configured town and topic actually represented, no silent gaps.</li>
+        <li><strong>Relevance</strong>, you flag what is useful and the feed tunes toward it. I am deliberately not chasing a "useful score" by sending only safe, obvious items, that would quietly cost you the small-jurisdiction catches that are the whole point. Relevance and completeness move together.</li>
+        <li><strong>Earlier</strong>, for items that later surface publicly, how far ahead we flagged them, your surfaced date against when it hit the news. Date math on real events, so it cannot be inflated.</li>
+        <li><strong>More complete</strong>, how many items came from the small jurisdictions you would not otherwise have seen. The counterweight that keeps the feed from quietly narrowing.</li>
+        <li><strong>Actionable</strong>, every item carries a why-it-matters and a plausible next step. If I cannot name what you would do with it, it does not belong in the brief.</li>
+      </ul>
     </div>
     <div class="tier">
-      <div class="lab">The proof it is working (ours together)</div>
-      <p>You are acting on it, carrying what we surface into tenant attraction, retention, and your regional and NBRC positioning, not just reading it. And you are earlier (ahead of things before they reach the news) and more complete (catching the small-jurisdiction items you would otherwise miss entirely).</p>
+      <div class="lab">The shared proof (the one we read together)</div>
+      <p>You are acting on it, carrying items into tenant attraction, retention, and your regional and NBRC positioning, not just reading them. I measure it two ways: the Useful flags you send back each week, and a quick "which of these did you actually pursue" at the 30/60/90 check. It takes both of us, so I am not gated on it, but it is the truest signal the thing is working.</p>
     </div>
     <div class="tier">
       <div class="lab">Outcomes (yours to close, I report the contribution)</div>
