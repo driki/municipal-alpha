@@ -8,11 +8,12 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-.PHONY: html clean serve publish copy-static-html llms-full
+.PHONY: html clean serve publish copy-static-html noindex-extra llms-full
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 	$(MAKE) copy-static-html
+	$(MAKE) noindex-extra
 	$(MAKE) llms-full
 
 clean:
@@ -24,7 +25,17 @@ serve: html
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	$(MAKE) copy-static-html
+	$(MAKE) noindex-extra
 	$(MAKE) llms-full
+
+# Inject <meta name="robots" content="noindex"> into the unlinked standalone
+# pages under content/extra/ (prospect/buyer pages, dispatches, decks). They are
+# absent from sitemap.xml and unlinked, so without noindex they are protected
+# only by obscurity. Runs after copy-static-html so it sees the copied output.
+# Scoped to content/extra-derived pages only — never touches public Pelican
+# pages. See tools/inject_noindex.py header for the full rationale.
+noindex-extra:
+	$(PY) tools/inject_noindex.py
 
 # Generate output/llms-full.txt (full-text concatenation for AI agents) from the
 # freshly-built output. Runs after pelican + copy-static-html on every build.

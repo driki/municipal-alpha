@@ -4,6 +4,10 @@
 
 User-agent: *
 Allow: /
+# Headless HTML fragments (no <head>, so a noindex meta can't reach them) served
+# as standalone files but unlinked and not in the sitemap. Disallow is the only
+# search-exclusion lever available for head-less content on GitHub Pages.
+Disallow: /qa-startup-maine-2026-05-18/answers/
 
 # Anthropic (Claude)
 User-agent: ClaudeBot
