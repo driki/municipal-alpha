@@ -2,6 +2,9 @@ Title: Of Moose, Men and Minutes
 Slug: stories/of-moose-men-and-minutes
 Sortorder: 30
 Header_image: story-of-moose-men-and-minutes.jpg
+Header_image_width: 1280
+Header_image_height: 670
+Header_image_type: image/jpeg
 Date: 2026-05-14
 Category: stories
 Tags: maine, new-hampshire, connecticut, wildlife, municipal-records, found-it-first
