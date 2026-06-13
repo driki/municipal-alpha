@@ -24,6 +24,12 @@ Summary: Economic developers say retaining an existing employer is far easier th
 .tl-end{ position:relative; margin-top:6px; }
 .tl-end::before{ content:''; position:absolute; left:-31px; top:4px; width:14px; height:14px; background:#1a1a1a; border-radius:2px; transform:rotate(45deg); }
 .tl-end .t{ font-size:15px; font-weight:600; }
+.lp-bottom-cta{ text-align:center; padding:40px 0 8px; border-top:1px solid #E8E4DF; margin-top:42px; }
+.lp-bottom-cta h3{ font-family:'Newsreader',serif; font-size:24px; font-weight:500; color:#0C0C0C; margin-bottom:12px; }
+.lp-bottom-cta p{ font-size:15px; color:#555; margin-bottom:24px; }
+.lp-bottom-cta .lp-or{ display:block; margin:16px 0; font-size:13px; color:#888; }
+.lp-bottom-cta a.lp-email{ color:#E8512D; text-decoration:none; font-size:14px; font-weight:600; }
+.lp-bottom-cta a.lp-email:hover{ text-decoration:underline; }
 </style>
 
 Old Town, Maine's current city budget contains a line that explains the whole problem in four words. A revenue line for BETE, the state program that reimburses towns for tax-exempt business equipment, drops by $1,500,000, and the published budget notes give the reason: "reduced $1,500,000, due to mill closure." The same document trims another $91,204 from a tax-increment district "due to mill closure," and adjusts revenue sharing by $259,828 under a state provision whose formal name says everything about how often this happens to Maine towns: the adjustment for [sudden and severe disruption of valuation](https://legislature.maine.gov/statutes/36/title36sec208-A.html). Maine property-tax law has a standing form for losing your biggest taxpayer.
@@ -92,4 +98,10 @@ Closure dates and employment figures for the Bucksport, Wisconsin Rapids, and Ol
 
 Back in Old Town, the budget lines will keep carrying the mill for years, the way Bucksport's records still carry theirs a decade later. The retention conversation, the one where the story could still have changed, happens much earlier than that, and it happens in the same records. The story is being written in public, town by town, while it can still change. We read it there.
 
-If business retention is part of your mandate, at a regional development organization, a growth council, or a state agency, and you want the weekly read for your region, the inbox is open: matt@municipalalpha.com
+<div class="lp-bottom-cta">
+<h3>Get the weekly retention read for your region</h3>
+<p>If business retention is part of your mandate, at a regional development organization, a growth council, or a state agency, tell me your region and I'll walk through what the record shows there, live.</p>
+<a class="cta-button" href="https://calendar.app.google/s6wDVSaJuqCkwcmg9">Book a 15-minute walkthrough</a>
+<span class="lp-or">or</span>
+<a class="lp-email" href="mailto:matt@municipalalpha.com?subject=Retention%20read%20%28via%20research%20article%29">matt@municipalalpha.com</a>
+</div>
