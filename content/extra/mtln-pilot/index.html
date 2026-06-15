@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Maine Trust for Local News + Municipal Alpha: Pilot Definition</title>
+<script data-goatcounter="https://stats.municipalalpha.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root{
+    --ink:#0C0C0C; --paper:#F7F4F0; --signal:#E8512D; --edge:#1B4332;
+    --ink-80:rgba(12,12,12,.80); --ink-60:rgba(12,12,12,.60); --ink-40:rgba(12,12,12,.40);
+    --ink-12:rgba(12,12,12,.12); --ink-06:rgba(12,12,12,.06); --signal-06:rgba(232,81,45,.06);
+    --font-display:'Newsreader',Georgia,serif; --font-body:'DM Sans',-apple-system,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .container{max-width:760px;margin:0 auto;padding:0 36px 80px;}
+  .header{display:flex;justify-content:space-between;align-items:center;padding:22px 0 16px;border-bottom:1px solid var(--ink-12);margin-bottom:30px;}
+  .wordmark{font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.005em;}
+  .header-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-60);text-align:right;line-height:1.4;}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:33px;line-height:1.12;letter-spacing:-.01em;margin:0 0 12px;}
+  .hero .lede{font-size:15px;line-height:1.55;color:var(--ink-60);margin:0;max-width:62ch;font-style:italic;}
+  .meta-strip{margin-top:18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-60);}
+  .meta-strip b{color:var(--signal);}
+  .reuse{font-size:13.5px;line-height:1.6;color:var(--ink-80);background:var(--signal-06);border:1px solid var(--ink-12);border-radius:2px;padding:14px 17px;margin:22px 0 0;max-width:none;}
+  .reuse b{color:var(--signal);font-weight:600;}
+  .section{margin-top:40px;padding-top:24px;border-top:1px solid var(--ink-12);}
+  .section h2{font-family:var(--font-display);font-weight:500;font-size:23px;line-height:1.2;letter-spacing:-.005em;margin:0 0 12px;}
+  .section p{font-size:14.5px;line-height:1.65;margin:0 0 13px;max-width:62ch;}
+  .section p strong{font-weight:600;}
+  .tier{padding:15px 18px;border-left:3px solid var(--signal);background:var(--signal-06);border-radius:2px;margin:0 0 12px;}
+  .tier .lab{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:6px;}
+  .tier p{margin:0;font-size:14px;line-height:1.6;max-width:none;}
+  .terms{padding:18px 20px;background:var(--ink);color:var(--paper);border-radius:2px;}
+  .terms p{color:var(--paper);max-width:none;margin:0;font-size:14.5px;line-height:1.65;}
+  .terms b{color:var(--signal);}
+  .example{padding:14px 17px;background:var(--paper);border:1px solid var(--ink-12);border-left:3px solid var(--ink-40);border-radius:2px;margin:8px 0 12px;}
+  .ex-where{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:5px;}
+  .ex-title{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+  .ex-quote{font-family:var(--font-display);font-style:italic;font-size:13.5px;line-height:1.5;color:var(--ink);margin:0 0 8px;padding-left:12px;border-left:2px solid var(--ink-12);}
+  .ex-why{font-size:13px;line-height:1.55;color:var(--ink-80);margin-bottom:8px;}
+  .source-link{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;color:var(--signal);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;}
+  .fields-line{font-size:13.5px;line-height:1.6;color:var(--ink-80);margin:0 0 10px;max-width:62ch;}
+  .delivery{font-size:14px;line-height:1.6;color:var(--ink);margin:0;max-width:62ch;}
+  .tier ul{margin:6px 0 0;padding-left:18px;}
+  .tier li{font-size:14px;line-height:1.55;margin-bottom:5px;}
+  .tier li::marker{color:var(--signal);}
+  .section ul{margin:4px 0 13px;padding-left:20px;}
+  .section li{font-size:14px;line-height:1.6;margin-bottom:7px;max-width:62ch;}
+  .section li::marker{color:var(--signal);}
+  .footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--ink-12);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-40);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  .footer a{color:var(--ink-60);text-decoration:none;}
+  @media (max-width:560px){.container{padding:0 20px 60px;}.hero h1{font-size:27px;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <span class="wordmark">Municipal&nbsp;Alpha</span>
+    <span class="header-meta">Pilot Definition<br>For Maine Trust for Local News &middot; Scott Monroe &middot; 15 Jun 2026</span>
+  </div>
+
+  <div class="hero">
+    <h1>What we are building together, and how we will both know it is working.</h1>
+    <p class="lede">The shared reference for the engagement. We point back to this at any time, and at the 30, 60, and 90 day check, to line up what we agreed to deliver against what we delivered.</p>
+    <div class="meta-strip"><b>12-month funded engagement</b> &nbsp;&middot;&nbsp; weekly cadence &nbsp;&middot;&nbsp; 10 to 12 Maine communities</div>
+    <p class="reuse"><b>A quick note on where things stand.</b> When you put the grant together, Municipal Alpha was earlier in its shape, and you backed it on the promise of what it would grow into. It has come a long way since. The weekly brief, the way we tune it, and the way we measure whether it is working have all sharpened, in good part because it is now running live for other clients, a broadband operator in Texas and a development nonprofit in northern Maine. So think of this page less as a new plan and more as a catch-up: where the product actually is today, next to the snapshot you had when you applied. The reassuring part is that what your newsroom gets is the matured version, already proven in the field rather than promised, and it runs on one engine I have built for everyone, which is why it keeps deepening over the twelve months, and why, if it proves out here, the same engine is ready to extend to other NTLN papers whenever that is a direction you would want to explore.</p>
+  </div>
+
+  <div class="section">
+    <h2>1. What we are watching</h2>
+    <p>The scope is whatever you configure in the calibration sheet, which I pre-fill from your grant application and our conversation: your pilot communities, the beats your reporters cover, the kinds of stories that matter to your readers, and the topics worth tracking across town lines. <a href="https://municipalalpha.com/mtln-pilot/onboarding-calibration-2026-06-15.csv">The pre-filled sheet</a> travels with this page, your pilot communities, beats, story topics, and watch institutions already seeded from your grant and our call. You and the newsroom adjust it, set the priorities, and what comes back is the scope. <strong>The thing you configure is the thing you get</strong>, and it is what we measure against.</p>
+    <p>The goal of the sheet is to <strong>get started with enough to produce useful leads, not to be exhaustively complete on day one.</strong> Put in the communities and beats that matter most, enough for a useful first brief, and send it back. The first week or two is the baseline we tune from, not the finished article.</p>
+    <p>From there, two things move at different speeds. <strong>Relevance</strong>, which of the surfaced items are real story-leads, sharpens continuously as your reporters react to the weekly brief, that is the loop and where the real tuning happens. <strong>Scope</strong>, the set of communities we watch, is the list you sent back, and we run with it rather than keep perfecting it. The grant's training line is the runway to deepen coverage where it is thin and to widen the set, which is the work of the twelve months, not a day-one demand.</p>
+    <p><strong>What each week looks like.</strong> Here is one real lead from your coverage area this month, and the fields every item carries.</p>
+    <div class="example">
+      <div class="ex-where">Waterville, ME &middot; Planning Board agenda &middot; Jun 9, 2026</div>
+      <div class="ex-title">A 159,000 sq ft Amazon distribution center proposed at 301 Junction Road</div>
+      <div class="ex-quote">"Camber Development is requesting Preliminary and Final Plan Review for a 159,000 square foot Amazon distribution center to be constructed at 301 Junction Road."</div>
+      <div class="ex-why"><strong>Why it matters:</strong> a major economic-development story for the Morning Sentinel's readers, on the public record at the agenda stage, before it is news anywhere else. <strong>Matched on:</strong> development activity + your watch community "Waterville." A reporter gets the lead with the source in hand; the story is theirs to write.</div>
+      <a class="source-link" href="https://www.waterville-me.gov/AgendaCenter/ViewFile/Agenda/_06092026-48?html=true">Source agenda &#9656;</a>
+    </div>
+    <p class="fields-line">Every item carries the same fields: <strong>Town &middot; Source and date &middot; What it is &middot; Quote from the record &middot; Why it matters &middot; Matched on &middot; Source link &middot; Status</strong> (new, updated, or unchanged) <strong>&middot; Useful?</strong> (your reporter marks it).</p>
+    <p class="delivery">You get each week two ways: a readable <strong>email digest</strong> a reporter can scan in a few minutes, and a <strong>CSV</strong> of the same items with those fields, ready to drop into your workflow. Each lead arrives as a scannable summary; for a story a reporter decides to chase, we can go deeper on the signal chain behind it. The CSV is also the dial, your reporters mark the Useful column on the leads that turned into real reporting and send it back, and next week sharpens to them. It works like training a Spotify or Netflix feed, the more you tell it what landed, the more it serves up what matters and drops what does not, only here it is tuned on what your newsroom actually pursues.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. What success looks like, and how we measure it</h2>
+    <p>Three layers, separated by who controls what, so we both know what each of us is on the hook for. The whole point is to hold me accountable for the part I can move, and to report the part your funnel owns together rather than pin it on me. The weekly CSV is the measurement surface for all of it.</p>
+    <div class="tier">
+      <div class="lab">My end (measurable, and it is mine)</div>
+      <p>This is what you hold me to:</p>
+      <ul>
+        <li><strong>Coverage</strong>, every pilot community and configured beat actually represented in the brief, no silent gaps.</li>
+        <li><strong>Relevance</strong>, your reporters flag what is a real lead and the feed tunes toward it. I am deliberately not chasing a "useful score" by sending only safe, obvious items, that would quietly cost you the small-town catches no newsroom can staff for, which are the whole point. Relevance and completeness move together.</li>
+        <li><strong>Earlier</strong>, for leads that later surface publicly, how far ahead we flagged them, your surfaced date against when the story hit elsewhere. Date math on real events, so it cannot be inflated.</li>
+        <li><strong>More complete</strong>, how many leads came from the communities your staff cannot get to every week. The counterweight that keeps the feed from quietly narrowing to the easy towns.</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="lab">The shared proof (the one we read together)</div>
+      <p>Your reporters are acting on it: a surfaced lead becomes a published story, tagged MA-sourced. This is the headline proof, and it is the literal measure of <strong>enhancing, not replacing, your reporting</strong>, your team shifts from scanning forty agendas to chasing the three real follow-ups the brief surfaced. I measure it two ways, the Useful flags your reporters send back each week, and a quick "which of these did you publish from" at the 30/60/90 check. It takes both of us, so I am not gated on it alone, but it is the truest signal the thing is working, and it is the leading indicator that feeds whatever outcome you are aiming at below.</p>
+    </div>
+    <div class="tier">
+      <div class="lab">Your outcome (yours to define and to close, I report the contribution)</div>
+      <p>This is the layer we should pin down together, because I do not want to assume it. Your grant talks about enhancing reporting and freeing your reporters' time, so the outcome that matters most to you may be coverage and capacity, more towns reached and more real stories per reporter. Subscription lift may be what matters more at the portfolio level. Those are not the same goal, and you may be held to one, the other, both, or something else again. So tell me which one you are actually measured on, and that is the one I will report, in your own stack and your own language. Whatever it is, I report it with you rather than carry it as a pass/fail on the platform, because the funnel that turns a story into a subscriber, or a reporter's freed time into wider coverage, is yours, not mine. Hold me accountable for surfacing the right things and for your reporters using them.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. The shape of the engagement</h2>
+    <p>This is a twelve-month engagement, already funded by your LSF AI Indigo Fund grant, in your own words to <strong>enhance, not replace, staff reporting.</strong> It is not a pilot to price or to extend, so we spend our energy on what it contains, not on terms.</p>
+    <p>What it contains: a weekly story-lead brief across the <strong>10 to 12 Maine communities</strong> we map to your papers, the newsroom onboarding session that gets your reporters using it inside their day, and the runway the grant's training and integration line funds, deepening coverage where a community is thin and folding the brief into your CMS. Picking the communities is the real scoping decision on this call, and there is an honest depth question behind it: coverage is dense in some towns and thinner in others, and the training line is exactly the runway to deepen the pilot set over the year.</p>
+    <p>One longer-horizon note, entirely at your pace: because this runs on the same engine for everyone, if it proves out across your Maine communities it is built to extend to other NTLN papers, whenever and however you would want to take that forward. That is a possibility the Maine work can earn, not a plan riding on it, and nothing here depends on it. For now the work is simply to make these communities the strongest version of it we can.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. The timeline</h2>
+    <p>The engagement runs twelve months. The only two dates we need to lock today are the <strong>official start</strong> and the <strong>newsroom onboarding session</strong>. Everything after that follows from the start date, and we will line the formal checkpoints up with your LSF grant's own reporting dates once you have them in front of you, so the two calendars never fight.</p>
+    <ul>
+      <li><strong>The two weeks before start.</strong> I bring your pilot communities fully online and seed the first brief, so week one is a populated feed rather than a cold stream, and we hold the newsroom onboarding session in this window so your reporters are using it on day one.</li>
+      <li><strong>Official start, proposed the week of July 6, 2026, to confirm today.</strong> The first weekly brief goes out, and the twelve months and the weekly cadence start here.</li>
+      <li><strong>30, 60, and 90 days, roughly August, September, and October 2026.</strong> The shared reads in the next section, each pointed back at this document.</li>
+      <li><strong>Months four through eleven.</strong> Weekly cadence, a quarterly read, and coverage deepening in the communities where it is thin, which is what the grant's training line funds.</li>
+      <li><strong>Around month nine to twelve.</strong> We look at renewal, and, only if it has proven out and you want to, whether to take it wider inside NTLN.</li>
+      <li><strong>End of term, proposed early July 2027.</strong> Twelve months complete, and you renew, adjust, or wrap, your call against what the checks have shown.</li>
+    </ul>
+    <p>The only commitments I am asking for today are the community list, the start date, and a date for the onboarding session. The rest of this arc is a proposal, and it bends to your grant calendar and your newsroom's rhythm.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. How we check it</h2>
+    <p>A quick read at <strong>30, 60, and 90 days</strong>, pointed back at this document: are the right communities and beats covered, is what we surface a real lead and improving, are your reporters publishing from it, and is the outcome you care about starting to move. At each check we line up what we agreed here against what arrived. No scorecard theater, just a shared read against what we agreed. And if you ever want to make the case for this more widely inside NTLN, this same record is what would back it.</p>
+  </div>
+
+  <div class="footer">
+    <span>Municipal Alpha &middot; for Maine Trust for Local News &middot; Scott Monroe &middot; corpus figures current as of 15 Jun 2026 (174 Maine municipalities, ~62,800 documents, ~46,700 classified signals)</span>
+    <span><a href="https://municipalalpha.com">municipalalpha.com</a></span>
+  </div>
+
+</div>
+</body>
+</html>
