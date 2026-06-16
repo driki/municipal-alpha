@@ -8,12 +8,13 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-.PHONY: html clean serve publish copy-static-html noindex-extra llms-full
+.PHONY: html clean serve publish copy-static-html noindex-extra goatcounter-extra llms-full
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 	$(MAKE) copy-static-html
 	$(MAKE) noindex-extra
+	$(MAKE) goatcounter-extra
 	$(MAKE) llms-full
 
 clean:
@@ -26,6 +27,7 @@ publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	$(MAKE) copy-static-html
 	$(MAKE) noindex-extra
+	$(MAKE) goatcounter-extra
 	$(MAKE) llms-full
 
 # Inject <meta name="robots" content="noindex"> into the unlinked standalone
@@ -36,6 +38,14 @@ publish:
 # pages. See tools/inject_noindex.py header for the full rationale.
 noindex-extra:
 	$(PY) tools/inject_noindex.py
+
+# Inject the GoatCounter loader <script> into the content/extra standalone pages.
+# They bypass base.html (which carries the loader on public Pelican pages), so
+# without this they record no pageviews and their on-page depth-event JS no-ops.
+# Runs after copy-static-html so it sees the copied output. Byte-identical loader
+# to base.html. See tools/inject_goatcounter.py header for the full rationale.
+goatcounter-extra:
+	$(PY) tools/inject_goatcounter.py
 
 # Generate output/llms-full.txt (full-text concatenation for AI agents) from the
 # freshly-built output. Runs after pelican + copy-static-html on every build.
