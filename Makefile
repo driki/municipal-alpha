@@ -64,7 +64,7 @@ copy-static-html:
 			echo "Copied $$d/index.html" ; \
 		fi ; \
 	done
-	@for d in qa-startup-maine-2026-05-18 ai-in-action ready-net-pilot mtln-pilot; do \
+	@for d in qa-startup-maine-2026-05-18 ai-in-action ready-net-pilot mtln-pilot katahdin-salmon; do \
 		if [ -d $(INPUTDIR)/extra/$$d ]; then \
 			mkdir -p $(OUTPUTDIR)/$$d ; \
 			cp -R $(INPUTDIR)/extra/$$d/. $(OUTPUTDIR)/$$d/ ; \
