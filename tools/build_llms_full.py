@@ -107,6 +107,25 @@ def _title(raw_html: str) -> str:
     return re.sub(r"\s*·\s*Municipal Alpha\s*$", "", t).strip()
 
 
+def _md_title(md_text: str) -> str:
+    for line in md_text.splitlines():
+        if line.startswith("# "):
+            return line[2:].strip()
+    return ""
+
+
+def _md_body(md_text: str) -> str:
+    """Markdown twin body: drop the leading H1 (printed separately), squeeze blanks."""
+    lines = md_text.splitlines()
+    start = 0
+    for i, ln in enumerate(lines):
+        if ln.startswith("# "):
+            start = i + 1
+            break
+    body = "\n".join(lines[start:])
+    return re.sub(r"\n{3,}", "\n\n", body).strip()
+
+
 def _url_for(index_html: Path) -> str:
     rel = index_html.parent.relative_to(OUTPUT_DIR).as_posix()
     return f"{SITE_URL}/{rel}/"
@@ -154,6 +173,28 @@ def collect() -> str:
         chunks.append("=" * 72 + "\n")
         chunks.append(body)
         chunks.append("")
+
+    # Standalone content/extra pages that ship a clean index.md twin (the
+    # AI-facing markdown alternate, linked via <link rel="alternate"
+    # type="text/markdown">). The presence of an index.md is the public-content
+    # marker: discussion/prospect pages carry no twin, so they never join the
+    # feed. Mirrors the rule-based inclusion above (Commandment VIII — one rule,
+    # not a per-page list to maintain).
+    for md in sorted(OUTPUT_DIR.glob("**/index.md"),
+                     key=lambda p: p.parent.relative_to(OUTPUT_DIR).as_posix()):
+        body = _md_body(md.read_text(encoding="utf-8", errors="replace"))
+        if not body:
+            continue
+        if len(body) > MAX_CHARS_PER_PAGE:
+            body = body[:MAX_CHARS_PER_PAGE].rsplit(" ", 1)[0] + " […]"
+        title = _md_title(md.read_text(encoding="utf-8", errors="replace")) or md.parent.name
+        chunks.append("\n" + "=" * 72)
+        chunks.append(f"# {title}")
+        chunks.append(f"URL: {_url_for(md)}")
+        chunks.append("=" * 72 + "\n")
+        chunks.append(body)
+        chunks.append("")
+
     return "\n".join(chunks).rstrip() + "\n"
 
 
