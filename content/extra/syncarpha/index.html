@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Municipal Alpha for Syncarpha Capital</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .container { max-width: 780px; margin: 0 auto; padding: 44px 36px 80px 36px; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px; }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .header-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); text-align: right; }
+  .hero { margin-bottom: 40px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 16px 18px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); margin-bottom: 8px; }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .chain-summary { font-family: var(--font-body); font-size: 13.5px; color: var(--ink-60); margin: 16px 0 0 0; padding-top: 14px; border-top: 1px solid var(--ink-12); line-height: 1.6; max-width: 64ch; }
+  .quick-points { list-style: none; padding: 0; margin: 8px 0 0 0; }
+  .quick-points li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-80); max-width: 62ch; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; background: var(--signal); }
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why { font-family: var(--font-body); font-size: 12.5px; line-height: 1.55; color: var(--ink-60); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--ink-12); }
+  .question .why::before { content: "Why this question · "; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); font-weight: 500; }
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+  .stat-strip { display: flex; gap: 32px; flex-wrap: wrap; margin: 20px 0; padding: 22px 26px; background: var(--ink); border-radius: 2px; }
+  .stat-strip .stat-num { font-family: var(--font-display); font-weight: 500; font-size: 27px; color: var(--signal); line-height: 1; }
+  .stat-strip .stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(247,244,240,0.6); margin-top: 6px; }
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+  @media print { .container { max-width: none; padding: 24px; } .section, .signal-list li, .path, .question { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-meta">Prepared for Syncarpha Capital<br>Chris Savastano · 2026-06-17</div>
+  </div>
+
+  <div class="hero">
+    <h1>Municipal Alpha for Syncarpha Capital</h1>
+    <p class="lede">You build community solar where the land is, in small towns whose planning and zoning records almost no one reads. Here is the municipal coverage I mapped around your three New Jersey projects, and where I would point it next.</p>
+  </div>
+
+  <div class="section">
+    <h2>The layer where a project lives or dies</h2>
+    <p>A solar project is won or lost at the local level long before it is public: an overlay district, a utility-scale moratorium, a special-use denial at the planning board, a setback ordinance that quietly takes a parcel off the table. That layer is spread across hundreds of small jurisdictions, each with its own agenda, and almost no one aggregates it. By the time it reaches an RFP or a trade headline, the decision is already made.</p>
+    <p>I read that layer, every planning board and council and zoning agenda, across hundreds of towns, every day.</p>
+  </div>
+
+  <div class="section">
+    <h2>What I mapped, on your own projects</h2>
+    <p class="section-sub">Before sending you a list of towns you do not operate in, I pointed the engine at the three New Jersey sites you already know, so you can judge the coverage against ground you can check.</p>
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Gloucester Township · GEMS Landfill (4.5 MW)</div>
+        <div class="sig-body">789 documents on the municipal record, reaching back to 2007: Planning Board, Zoning Board of Appeals, and Council agendas and minutes.</div>
+        <div class="sig-where">Camden County, NJ · 2007–2026</div>
+      </li>
+      <li>
+        <div class="sig-title">Vineland · Boscovs (962 kW)</div>
+        <div class="sig-body">208 documents across the Planning Board, Zoning Board, and Town Council, spanning 2008 to today.</div>
+        <div class="sig-where">Cumberland County, NJ · 2008–2026</div>
+      </li>
+      <li>
+        <div class="sig-title">Eastampton · Alethea (3 MW)</div>
+        <div class="sig-body">200 documents across the Township Council and the Land Use Planning Board, the full meeting record since 2022.</div>
+        <div class="sig-where">Burlington County, NJ · 2022–2026</div>
+      </li>
+    </ul>
+    <p class="chain-summary">These sites are built, so their records read quiet today, and that is the honest point: this is the <em>depth</em> of coverage, on towns you can verify yourself. The same engine, pointed at a town where a project is still being fought, surfaces the overlay and the moratorium and the denial months before any of it is public.</p>
+  </div>
+
+  <div class="section">
+    <h2>What it surfaces when a project is live</h2>
+    <p>On an active site, that quiet layer is anything but. What I flag, with the source document attached:</p>
+    <ul class="quick-points">
+      <li>A planning board adopting, or rejecting, a solar overlay district.</li>
+      <li>A council enacting or extending a utility-scale or ground-mount moratorium.</li>
+      <li>A zoning board denying a special-use permit, with the reasoning in the minutes.</li>
+      <li>An ordinance change to setbacks, acreage caps, or screening that takes parcels off the table.</li>
+      <li>The first informal appearance of a competing project on an agenda, before it is filed.</li>
+    </ul>
+    <p>Every one carries a link to the signed document on the town's own portal, dated to the meeting it came from. Not a summary, the record.</p>
+  </div>
+
+  <div class="section">
+    <h2>Where would you apply this next?</h2>
+    <p class="section-sub">Your built sites are quiet. The value is on what is in front of you.</p>
+    <div class="question">
+      <div class="q-text">Where are you developing next, and in which towns or counties across NY, NJ, MD, and IL?</div>
+      <div class="why">That is where the siting signal is live, and where this coverage is worth the most. Name the geography and I will map the same local layer there.</div>
+    </div>
+    <div class="question">
+      <div class="q-text">By the time a moratorium or an RFP is public, is it already too late for you?</div>
+      <div class="why">Tells me how far upstream you need to see. The planning-board layer runs months ahead of either, which is the window I can give you.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Two ways to start</h2>
+    <div class="path">
+      <div class="path-title">Point me at your active pipeline towns</div>
+      <div class="path-body">Send the towns or counties where you are scouting. I map the same local layer there and send back what is already moving, overlays, moratoria, special-use actions, before any of it reaches an RFP.</div>
+    </div>
+    <div class="path">
+      <div class="path-title">A standing watch on your markets</div>
+      <div class="path-body">If a town turns hostile, a moratorium petition, a setback change, a competing application, you hear it from me first, not from a deal that quietly went sideways.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>The coverage behind this</h2>
+    <div class="stat-strip">
+      <div><div class="stat-num">3,300+</div><div class="stat-label">municipalities</div></div>
+      <div><div class="stat-num">50</div><div class="stat-label">states</div></div>
+      <div><div class="stat-num">700K+</div><div class="stat-label">public records</div></div>
+    </div>
+    <p>I read the small towns most aggregators skip, which is exactly where you build. Your operating sites read quiet because they are finished. This is a tool for the next ones.</p>
+  </div>
+
+  <div class="footer">
+    <div>Municipal Alpha · prepared for Syncarpha Capital</div>
+    <div><a href="https://municipalalpha.com">municipalalpha.com</a></div>
+  </div>
+
+</div>
+</body>
+</html>
