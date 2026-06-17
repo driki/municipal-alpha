@@ -90,6 +90,37 @@
     }
     </script>
     {% endif %}
+    {% if page.slug.startswith('research/') or page.slug.startswith('stories/') or page.slug.startswith('essays/') %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ page.title|e }}",
+        "description": "{{ page.summary|default('A knowledge graph of US public records, built by AI agents.', true)|striptags|e }}",
+        "url": "{{ SITEURL }}/{{ page.url }}",
+        "mainEntityOfPage": "{{ SITEURL }}/{{ page.url }}",
+        {% if page.date %}"datePublished": "{{ page.date.strftime('%Y-%m-%d') }}",{% endif %}
+        {% if page.modified %}"dateModified": "{{ page.modified.strftime('%Y-%m-%d') }}",{% endif %}
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        {% if page.header_image %}"image": "{{ SITEURL }}/images/{{ page.header_image }}"{% else %}"image": "{{ SITEURL }}/images/default-og.png"{% endif %},
+        "author": {
+            "@type": "Organization",
+            "name": "Municipal Alpha",
+            "url": "https://municipalalpha.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Municipal Alpha",
+            "url": "https://municipalalpha.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ SITEURL }}/images/default-og.png"
+            }
+        }
+    }
+    </script>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
