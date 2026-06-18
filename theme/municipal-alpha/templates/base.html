@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    {% if page is defined and page and page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
     {% block meta %}
     <meta name="description" content="The signal was in the record. We found it first. Municipal Alpha. Alpha, extracted.">
     <meta property="og:title" content="{{ SITENAME }}">
