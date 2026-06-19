@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Municipal Alpha for Syncarpha Capital: New York storage siting</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .container { max-width: 780px; margin: 0 auto; padding: 44px 36px 80px 36px; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px; }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .header-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); text-align: right; }
+  .hero { margin-bottom: 40px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 16px 18px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); margin-bottom: 8px; }
+  .signal-list .sig-quote { font-family: var(--font-display); font-style: italic; font-size: 13.5px; line-height: 1.5; color: var(--ink); border-left: 2px solid var(--signal); padding: 2px 0 2px 12px; margin: 8px 0; }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .signal-list .sig-where a { color: var(--signal); text-decoration: none; }
+  .chain-summary { font-family: var(--font-body); font-size: 13.5px; color: var(--ink-60); margin: 16px 0 0 0; padding-top: 14px; border-top: 1px solid var(--ink-12); line-height: 1.6; max-width: 64ch; }
+  .quick-points { list-style: none; padding: 0; margin: 8px 0 0 0; }
+  .quick-points li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-80); max-width: 62ch; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; background: var(--signal); }
+  .question { margin: 14px 0; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink-12); }
+  .question .q-text { font-family: var(--font-display); font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .question .why { font-family: var(--font-body); font-size: 12.5px; line-height: 1.55; color: var(--ink-60); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--ink-12); }
+  .question .why::before { content: "Why this question · "; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal); font-weight: 500; }
+  .pullquote { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); margin: 22px 0; padding: 6px 0 6px 22px; border-left: 3px solid var(--signal); max-width: 58ch; }
+  .path { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .path-title { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin-bottom: 6px; }
+  .path-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); }
+  .stat-strip { display: flex; gap: 32px; flex-wrap: wrap; margin: 20px 0; padding: 22px 26px; background: var(--ink); border-radius: 2px; }
+  .stat-strip .stat-num { font-family: var(--font-display); font-weight: 500; font-size: 27px; color: var(--signal); line-height: 1; }
+  .stat-strip .stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(247,244,240,0.6); margin-top: 6px; }
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+  @media print { .container { max-width: none; padding: 24px; } .section, .signal-list li, .path, .question { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">municipαl</div>
+    <div class="header-meta">Prepared for Syncarpha Capital<br>Chris Savastano · 2026-06-19</div>
+  </div>
+
+  <div class="hero">
+    <h1>You're building storage into towns writing battery moratoria</h1>
+    <p class="lede">You told me where it hurts: standalone storage in New York, into towns that are extending battery moratoria and rewriting their zoning codes right now. That local layer decides a project long before it is public. Here is what I am already reading across New York, dated and sourced, and what it looks like once it is pointed at your own pipeline.</p>
+  </div>
+
+  <div class="section">
+    <h2>The layer where a storage project lives or dies</h2>
+    <p>A standalone storage project is won or lost at the local level long before it is public: a battery moratorium, a fire-code or setback ordinance written after a single thermal-runaway headline, a special-use denial at the planning board, a zoning-code amendment that quietly takes a class of parcel off the table. That layer is spread across hundreds of small jurisdictions, each moving on its own agenda, and almost no one aggregates it. By the time it reaches an RFP or a trade headline, the decision is already made.</p>
+    <p>I read that layer, every planning board and council and zoning board agenda, across the New York towns where this is being fought, every day.</p>
+  </div>
+
+  <div class="section">
+    <h2>What I am already reading in New York</h2>
+    <p class="section-sub">Four current examples, pulled from our New York record this morning. These are not my towns or your towns yet, they are proof of the layer. Every one links to the municipality's own signed document, dated to the meeting it came from. Open any of them.</p>
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">Harrison: BESS moratorium extended, and the zoning code being rewritten</div>
+        <div class="sig-body">The Town Board moved to extend its battery moratorium six more months, to September 11, 2026, and referred the matter to the Planning Board to amend the zoning code around storage. A parcel here is frozen into the fall, and the rules that will govern it after are being written right now.</div>
+        <div class="sig-quote">"...extend the Battery Energy Storage Systems ('BESS') Moratorium for an additional six (6) month period, to expire on September 11, 2026. Also requesting to adopt a Resolution referring the matter to the Town Planning Board, to perform a thorough review and recommendation on Town Zoning Code amendments to address Battery Energy Storage Systems."</div>
+        <div class="sig-where">Town Board · Westchester County · Meeting 2026-03-05 · <a href="https://ny-harrison.civicplus.com/AgendaCenter/ViewFile/Agenda/_03052026-98?html=true">source &#8599;</a></div>
+      </li>
+      <li>
+        <div class="sig-title">Amsterdam: moratorium on solar and battery storage, being extended</div>
+        <div class="sig-body">The Common Council held a public hearing on a local law extending a temporary moratorium on permits, certificates, and land-use approvals for industrial solar and battery energy storage, introduced as Ordinance "F" of 2026.</div>
+        <div class="sig-quote">"A Local Law extending a temporary moratorium on the submission and processing of Building Permits, Certificates of Occupancy, Certificates of Use and Land Use Approvals for Industrial Solar and Battery Energy Storage Systems in the City of Amsterdam."</div>
+        <div class="sig-where">Common Council · Montgomery County · Meeting 2026-05-19 · <a href="https://www.amsterdamny.gov/AgendaCenter/ViewFile/Agenda/_05192026-255?html=true">source &#8599;</a></div>
+      </li>
+      <li>
+        <div class="sig-title">Troy: a battery policy moving through City Council</div>
+        <div class="sig-body">The City Council ran a "BESS Check-In" in its Science and Technology committee, with a proposed Local Law moving through Public Safety the same night. This is the early stage, the discussion that becomes the ordinance, caught while it is still a committee line item.</div>
+        <div class="sig-quote">"Public Safety: Discussion on proposed Local Law #3 ... Science &amp; Technology: BESS Check in."</div>
+        <div class="sig-where">City Council · Rensselaer County · Meeting 2026-05-21 · <a href="https://troyny.gov/AgendaCenter/ViewFile/Agenda/_05212026-1827?packet=true">source &#8599;</a></div>
+      </li>
+      <li>
+        <div class="sig-title">Brookhaven: residents organizing on storage at public comment</div>
+        <div class="sig-body">At the Town Board's public comment, resident after resident rose specifically on battery storage. On Long Island, where siting is contested, that public temperature is an early read on which way a board is about to move.</div>
+        <div class="sig-quote">"Joyce Chen, Resident, Supports BESS ... Tim McCarthy, Resident, Supports BESS ... August Ruckdeschel, Resident, Supports BESS ... Jane Fasullo, Resident, Supports BESS."</div>
+        <div class="sig-where">Town Board · Suffolk County · Meeting 2026-04-30 · <a href="https://brookhavenny.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=8190,plainText=false)">source &#8599;</a></div>
+      </li>
+    </ul>
+    <p class="chain-summary">Four signal types in four towns: a moratorium plus a code rewrite, a moratorium extension, a policy still in committee, and the public temperature before a vote. That is the range of what decides your projects, and it is all sitting in the municipal record, unaggregated, until now. None of these are your towns, so open any of them and check me against the source. That is the point: prove the accuracy here, where it costs you nothing.</p>
+  </div>
+
+  <div class="section">
+    <h2>What I am seeing in your own territory</h2>
+    <!-- FINAL-PASS FILL, after Chris names his NY counties. Tier 2 = existence-teaser + ONE freebie.
+         · Lead with counts ONLY: "In <his counties/towns>, I am already tracking <N> signals: <X> battery moratoria, <Y> zoning-code amendments, <Z> special-use actions." Categories + dates, NOT specifics or sources.
+         · Then ONE freebie card below: a single fully-sourced, checkable signal in his territory, deliberately one already public / likely on his radar, proves accuracy on HIS ground without gifting net-new edge.
+         · Close: "The rest, each one dated and sourced, is what the pilot puts in front of you every week."
+         Do NOT expose net-new actionable specifics here. Strategy: give away the proof, sell the alpha. -->
+    <p class="section-sub" style="color:var(--signal);"><strong>[ Scaffold, awaiting your NY counties. ]</strong> This is where your own pipeline goes: the count of what I am already tracking in your towns, one signal you can open and verify, and the rest reserved for the pilot.</p>
+    <div class="stat-strip">
+      <div><div class="stat-num">N</div><div class="stat-label">signals in your towns</div></div>
+      <div><div class="stat-num">N</div><div class="stat-label">active moratoria</div></div>
+      <div><div class="stat-num">N</div><div class="stat-label">code rewrites underway</div></div>
+    </div>
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">[ One verifiable freebie in your territory ]</div>
+        <div class="sig-body">[ A single sourced signal in one of your towns, chosen because it is already public, so it proves accuracy without giving away net-new edge. ]</div>
+        <div class="sig-where">[ Board &middot; County &middot; Meeting YYYY-MM-DD &middot; source link ]</div>
+      </li>
+    </ul>
+    <p class="chain-summary">Everything above this line is proof you can check on neutral ground. This block is the same engine pointed at <em>your</em> towns. The full, dated, sourced feed of what is moving in your pipeline is the pilot.</p>
+  </div>
+
+  <div class="section">
+    <h2>On accuracy, because you asked</h2>
+    <p>You said it depends on the accuracy of the analysis. That is the right test, so here is the standard I hold to. Every signal above links to the town's own signed record, dated to the meeting it came from. Not my summary of it, the document itself. You can open any one and check it against the source right now.</p>
+    <p>What I can prove to you today is coverage and freshness: that this layer exists, that I am reading it across the New York towns where storage is being fought, and that it is current. What a pilot proves is the part that actually matters to you, that I catch these in <em>your</em> towns, the week they happen, before they are on your radar. That is a forward claim, so I will not dress up a backtest as one. I will show it to you live, on your own pipeline.</p>
+  </div>
+
+  <div class="section">
+    <h2>Why not just do this in-house?</h2>
+    <p class="section-sub">The fair question, and you should ask it. Here is the honest version: what an internal effort gets you, and where it runs out.</p>
+    <p>None of this is magic, and I will not pretend it is. For one town, one time, you can do it yourself. How hard that gets depends entirely on what you draw: one town hands you searchable agendas and clean text, the next buries the packet behind a vendor portal, in scanned images no parser likes, behind a crawler block, in a layout that changed since you last looked. You do not get to choose which one you get. Pick the town, fight through its site, get past the bot-blocks, parse the PDFs that do not want to be parsed, then strip the noise down to the handful of lines that actually decide a project. It is all doable. I have done it, town after town, the clean ones and the ugly ones, and built the machine that now does it on its own.</p>
+    <p>So the real question was never whether you can. It is whether it is worth your team rebuilding that machine and running it across your whole pipeline, versus pointing at the one that already does. Here is where a do-it-yourself version runs out:</p>
+    <ul class="quick-points">
+      <li><strong>It only watches the towns you already know to watch.</strong> The siting fight does not stay put. A moratorium one county over is the model the town you are bidding adopts a quarter later. I read every New York jurisdiction's planning, zoning, and council record, not the handful already on your list, so you see it coming before it is your problem.</li>
+      <li><strong>The pull you did once is stale by the next meeting.</strong> A moratorium or a code amendment surfaces as a line in a committee agenda, once, weeks before the vote. A one-time read does not catch it. I scan the record every day, so the line gets caught when it posts, not the month after it passed, and the watch never skips the week someone is on a deal or out of office.</li>
+      <li><strong>One town shows you one town. Reading all of it is what makes the pattern visible.</strong> Which towns are adopting which model law, where the fire-setback language is spreading, which way a county is turning. Your own towns can only ever tell you about your own towns.</li>
+      <li><strong>Your analysts are worth more using this than collecting it.</strong> Wrangling town websites and re-pulling records is the low-value half of the job. Let me carry the collection, and your team spends its time on what it is actually good at: working the data, feeding it into your own siting models and tools, making the call. You augment what you have already built with the layer, you do not rebuild the plumbing to get it.</li>
+    </ul>
+    <p>And here is the tell that settles it.</p>
+    <p class="pullquote">Has a project ever stalled on you, and no one could say exactly why?</p>
+    <p>When that happens, the answer is almost always sitting in the local record: a moratorium that landed, an overlay that shifted, a setback that moved, weeks before anyone tied it back to the deal. Sometimes it is not even this project. It is the one before it, a contested application a town or two over, the resistance it left behind, waiting for you when you file. That history is in the public record before it is in your deal. The data was always gettable. It just was not in front of the person working the deal, in time to matter. Closing that gap is the whole product.</p>
+  </div>
+
+  <div class="section">
+    <h2>The other questions I usually get</h2>
+    <div class="path">
+      <div class="path-title">"Is this affordable for a project like ours?"</div>
+      <div class="path-body">It is a scoped subscription that sits inside a development budget, not enterprise software, and the pilot is bounded so you see the value before any ongoing commitment. I set the level once I know how much ground you need watched.</div>
+    </div>
+    <div class="path">
+      <div class="path-title">"Won't AI just commoditize this in a year?"</div>
+      <div class="path-body">The model is the easy part. The work is reading thousands of small-town records that never standardize, catching the one line that matters in a routine agenda, and tracing every signal back to the town's own document. Doing that across every jurisdiction, and getting sharper the more of it is read, is the part that does not commoditize.</div>
+    </div>
+    <div class="path">
+      <div class="path-title">"Our built sites are quiet. What would this even catch?"</div>
+      <div class="path-body">The value is not the sites you have already finished, it is the next ones. This watches the pipeline ahead of you, the towns you are about to enter, while the rules there are still being written and there is still time to act.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Where would you point this?</h2>
+    <p class="section-sub">The examples above are proof of the layer. The value is on the ground you are actually working.</p>
+    <div class="question">
+      <div class="q-text">Which New York counties and towns is your standalone-storage pipeline in right now?</div>
+      <div class="why">That is where this is worth the most. Name them on the call and I will map the same local layer there, the moratoria, the code rewrites, the special-use actions, on the towns you actually care about, and have it back to you within the day.</div>
+    </div>
+    <div class="question">
+      <div class="q-text">By the time a moratorium or a code amendment is on the public agenda, is it already too late for you?</div>
+      <div class="why">Tells me how far upstream you need to see. Harrison referred its battery zoning rewrite to the planning board months before the new rules will exist. That window is what I can give you.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Two ways to start</h2>
+    <div class="path">
+      <div class="path-title">A scoped pilot on your New York pipeline</div>
+      <div class="path-body">Pick your active counties. I run a bounded pilot watching exactly those towns for battery moratoria, setback and fire-code changes, special-use actions, and competing applications, each one dated and sourced, for a fixed window. You see whether the signal is real and useful before committing to anything ongoing.</div>
+    </div>
+    <div class="path">
+      <div class="path-title">A standing watch on your markets</div>
+      <div class="path-body">Once it is delivering, it becomes an ongoing watch. When a town turns on storage, a moratorium, a code amendment, a denial, you hear it from me first, not from a project that quietly died at the planning board.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>The coverage behind this</h2>
+    <div class="stat-strip">
+      <div><div class="stat-num">25,000+</div><div class="stat-label">New York records</div></div>
+      <div><div class="stat-num">3,300+</div><div class="stat-label">municipalities</div></div>
+      <div><div class="stat-num">700K+</div><div class="stat-label">public records</div></div>
+    </div>
+    <p>I read the small towns most aggregators skip, which is exactly where storage gets sited and exactly where it gets stopped. Point me at your New York counties and I will turn this on your own pipeline.</p>
+  </div>
+
+  <div class="footer">
+    <div>Municipal Alpha · prepared for Syncarpha Capital</div>
+    <div><a href="https://municipalalpha.com">municipalalpha.com</a></div>
+  </div>
+
+</div>
+</body>
+</html>
