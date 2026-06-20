@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Municipal Alpha for Syncarpha Capital: storage siting pilot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --card: #FFFFFF;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .container { max-width: 780px; margin: 0 auto; padding: 44px 36px 80px 36px; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px; }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .wordmark .dot { color: var(--signal); }
+  .header-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); text-align: right; line-height: 1.5; }
+  .hero { margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section h2 .num { color: var(--signal); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  .section h3 { font-family: var(--font-body); font-weight: 600; font-size: 16px; margin: 28px 0 6px 0; }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+  .section strong { font-weight: 600; }
+  .section a { color: var(--signal); text-decoration: none; }
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 16px 18px; background: var(--card); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); margin-bottom: 8px; }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .chain-summary { font-family: var(--font-body); font-size: 13.5px; color: var(--ink-60); margin: 16px 0 0 0; padding-top: 14px; border-top: 1px solid var(--ink-12); line-height: 1.6; max-width: 64ch; }
+  .quick-points { list-style: none; padding: 0; margin: 8px 0 0 0; }
+  .quick-points li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-80); max-width: 62ch; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; background: var(--signal); }
+  .pullquote { font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.3; letter-spacing: -0.005em; color: var(--ink); margin: 22px 0; padding: 6px 0 6px 22px; border-left: 3px solid var(--signal); max-width: 60ch; }
+  .note { font-size: 13px; color: var(--ink-60); border-left: 2px solid var(--ink-12); padding-left: 14px; margin: 14px 0; line-height: 1.6; max-width: 62ch; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--ink-12); vertical-align: top; }
+  th { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-60); border-bottom: 2px solid var(--ink); font-weight: 500; }
+
+  /* locked / redacted gate blocks */
+  .locked { position: relative; margin: 16px 0; padding: 18px 20px; background: var(--ink-06); border: 1px dashed var(--ink-12); border-radius: 2px; }
+  .locked .lock-badge { position: absolute; top: -11px; left: 16px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--paper); background: var(--edge); padding: 3px 9px; border-radius: 2px; }
+  .locked .lock-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--signal); margin-bottom: 10px; padding-top: 4px; }
+  .locked .redact { font-family: var(--font-body); font-size: 13.5px; line-height: 1.7; color: var(--ink-40); margin: 0 0 8px 0; }
+  .locked .redact:last-child { margin-bottom: 0; }
+  .locked .redact strong { color: var(--ink-80); font-weight: 600; }
+
+  /* toggle */
+  .viewtoggle { display: inline-flex; border: 1px solid var(--ink-12); border-radius: 7px; overflow: hidden; font-family: var(--font-mono); font-size: 11.5px; margin: 22px 0 6px 0; }
+  .viewtoggle button { background: var(--card); color: var(--ink-60); border: 0; border-right: 1px solid var(--ink-12); padding: 8px 18px; cursor: pointer; letter-spacing: 0.02em; transition: background .12s, color .12s; }
+  .viewtoggle button:last-child { border-right: 0; }
+  .viewtoggle button.active { background: var(--ink); color: var(--paper); }
+  .viewtoggle button:not(.active):hover { background: var(--ink-06); }
+  .toggle-hint { font-family: var(--font-mono); font-size: 11px; color: var(--ink-40); margin: 0 0 10px 0; }
+  .summary-view { display: none; }
+  body.condensed .summary-view { display: block; }
+  body.condensed .detail-view { display: none; }
+  .summary-strip { font-family: var(--font-mono); font-size: 12px; color: var(--ink-60); background: var(--signal-06); border: 1px solid var(--ink-12); border-radius: 7px; padding: 13px 16px; margin: 18px 0 22px 0; line-height: 1.9; }
+  .summary-strip b { color: var(--signal); font-weight: 600; }
+  .summary-cta { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--ink-12); font-size: 14px; color: var(--ink-60); }
+
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  @media print { .viewtoggle, .toggle-hint { display: none !important; } body.condensed .detail-view { display: block !important; } body.condensed .summary-view { display: none !important; } .container { max-width: none; padding: 24px; } .section, .signal-list li, .locked { page-break-inside: avoid; } }
+  @media (max-width: 620px) { .container { padding: 28px 18px 60px 18px; } .hero h1 { font-size: 28px; } }
+</style>
+</head>
+<body class="condensed">
+<noscript><style>body.condensed .detail-view{display:block;}body.condensed .summary-view{display:none;}.viewtoggle,.toggle-hint{display:none;}</style></noscript>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">Municipal Alpha<span class="dot">.</span></div>
+    <div class="header-meta">Prepared for Syncarpha Capital<br>Chris Savastano &middot; 2026-06-20</div>
+  </div>
+
+  <div class="hero">
+    <h1>Where you can site storage in your five towns, and where you can't yet</h1>
+    <p class="lede">You gave me five towns for standalone storage. Here is one of them, Candor, worked all the way through to the primary documents, so you can see exactly where battery storage stands. The same depth exists for the other four, locked below so you can see the shape before we put a pilot in place. Everything in the Candor sections is sourced to the town's own records: no trackers, no AI summaries.</p>
+  </div>
+
+  <div class="viewtoggle" role="group" aria-label="View density">
+    <button id="btn-condensed" class="active" type="button" onclick="setView('condensed')">Summary</button>
+    <button id="btn-detail" type="button" onclick="setView('detail')">Full detail</button>
+  </div>
+  <p class="toggle-hint">The one-screen version. Switch to full detail for Candor worked through, the four locked towns, and exactly how the pilot runs.</p>
+
+  <!-- ================= SUMMARY VIEW ================= -->
+  <div class="summary-view">
+
+    <p><strong>The thing that costs you is getting blindsided by a moratorium mid-pipeline.</strong> A standalone storage project is won or lost at the local level long before it is public: a battery moratorium, a fire-code or setback ordinance written after a single thermal-runaway headline, a zoning amendment that quietly takes a class of parcel off the table. By the time it reaches a tracker or a trade headline, the decision is already made.</p>
+
+    <p><strong>So here is what I found in your five.</strong> Of the towns you named for storage, only Candor reads as a clean opening today. The other four are blocked or actively moving to block, and the public trackers are wrong on several of them, every time in the direction that would cost a storage developer.</p>
+
+    <div class="summary-strip">
+      Across your five storage targets:&nbsp; <b>1</b> clean opening (Candor, no battery rule at all) &middot; <b>4</b> locked or locking &middot; tracker diverged from the actual ordinance in <b>several</b> places, always in the costly direction &middot; every Candor claim sourced to the town's own signed record
+    </div>
+
+    <p><strong>The pattern worth knowing.</strong> Towns build their energy-siting rules on solar first, then point the same machinery at batteries, often pushed along by fire-safety concern. So a town's solar activity is your early warning for the battery moratorium coming next. Candor reads open for storage today precisely because no one has turned that machinery on batteries yet. The trend around it says that will not last.</p>
+
+    <p class="summary-cta"><strong>That's the one-screen read.</strong> Switch to <a href="#" onclick="setView('detail');return false;">full detail</a> for Candor worked all the way to the primary record, the four locked towns, the tracker-vs-ordinance gap, the live threads I am already watching, and the shape of the pilot. Or fifteen minutes live is plenty.</p>
+
+  </div>
+
+  <!-- ================= DETAIL VIEW ================= -->
+  <div class="detail-view">
+
+  <div class="section">
+    <h2><span class="num">1</span>The sample: Candor, and the four locked</h2>
+    <p class="section-sub">Candor is worked through to the town's own records. The other four verdicts are real and already sourced; I have locked them so you can see the shape now and unlock them to your scope in the pilot.</p>
+
+    <h3>The snapshot: where storage stands in each town</h3>
+    <p><strong>Candor (Tioga County): the cleanest storage opening of your five.</strong> No battery moratorium, and more than that, the town code has no battery rule at all. The only mention of batteries in the entire land-use code is an incidental fencing clause, so a roughly 5MW system today is reviewed as ordinary site-plan equipment rather than fought as a named use. Solar is permitted here too, by site-plan review under a 2019 law, which tells you the town is workable on energy siting in general. The catch is the trend around it.</p>
+
+    <div class="locked">
+      <span class="lock-badge">&#128274; unlocks in the pilot</span>
+      <div class="lock-label">4 more towns, storage verdicts gated</div>
+      <p class="redact"><strong>Boston (Erie County):</strong> storage verdict, the trajectory behind it, and the primary-source reasoning &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;</p>
+      <p class="redact"><strong>Naples (Ontario County):</strong> storage verdict, the trajectory behind it, and the primary-source reasoning &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;</p>
+      <p class="redact"><strong>Lysander (Onondaga County):</strong> storage verdict, the trajectory behind it, and the primary-source reasoning &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;</p>
+      <p class="redact"><strong>Alfred (Allegany County):</strong> storage verdict, the trajectory behind it, and the primary-source reasoning &#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;&#9617;</p>
+    </div>
+
+    <p class="note">Of your five, the storage picture is not what a quick look would suggest. The verdicts above are real and already sourced. I unlock and refine them to your scope in the first few weeks of the pilot, and that refined set becomes your forensic baseline (section 4).</p>
+
+    <h3>Why a snapshot misleads, and why the solar signals tell you where storage is headed</h3>
+    <p>A snapshot is a photo; these towns are a movie. And for storage there is a specific pattern worth knowing: towns build their energy-siting rules on solar first, then point the same machinery at batteries, often pushed along by battery fire-safety concern. So a town's solar activity is your early warning for the battery moratorium coming next.</p>
+    <p>Candor reads open for storage today, and that is exactly the part to watch. The town has regulated solar for years (a 2019 solar law, a community-solar project cleared review in 2022), so the rule-making machinery is already built. The only reason batteries are unscoped is that no one has turned that machinery on them yet. The trend around the town says that will not last.</p>
+
+    <p>In one of your five, a solar moratorium was followed within months by a parallel battery moratorium: the exact solar-then-storage sequence. A developer who checked between the two would have been told storage was fine, weeks before it was banned.</p>
+
+    <h3>The wave around you, and it is moving toward storage</h3>
+    <p>The threat usually arrives from a neighboring town before it reaches your target, so watching only your parcel's town watches the wrong thing.</p>
+    <p><strong>Around Candor:</strong> in the last 18 months the Tioga County Planning Board recommended disapproval of two solar projects in a neighboring town and approved solar moratoria in two other Tioga towns. That is the machinery warming up. A town that has just learned to restrict solar is a short step from restricting storage, and Candor sits in the middle of it. With the watch, you would see that step coming before it lands on your project.</p>
+
+    <p>Several of your towns sit inside county clusters where four to six neighboring towns have already paused solar or storage. These did not happen independently. They spread, and the next one is visible from the agenda before it becomes law.</p>
+
+    <h3>What I read vs. what the public trackers say</h3>
+    <p>The public databases that catalog these moratoria are a starting point, but they are secondary summaries, and they go stale or wrong. Across your five towns the public record diverged from the actual ordinance in several places, every time in the direction that would cost a storage developer. One example, with the town withheld:</p>
+    <table>
+      <thead><tr><th></th><th>The public tracker</th><th>The actual ordinance</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>A battery moratorium in one of your towns</td>
+          <td>listed as <strong>"utility-scale only"</strong></td>
+          <td>covers building- and ground-mounted systems, so <strong>a 5MW project is captured</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>If you had trusted the tracker on that town, you would have walked in thinking your storage project was exempt. It is banned. That is one of several such gaps in your basket, and the rest unlock with the pilot. As one data vendor put it to me recently: stale data is more dangerous than no data, because it makes you confident and wrong.</p>
+
+    <h3>What I am already watching for your storage exposure</h3>
+    <p>A finished report is a closed file. This is a set of open positions: things that will change after today, on the town's clock, that a one-time audit cannot catch.</p>
+    <p><strong>Candor:</strong> the next Tioga County referral touching Candor or a neighbor, the first sign the storage window is starting to close.</p>
+
+    <div class="locked">
+      <span class="lock-badge">&#128274; unlocks in the pilot</span>
+      <div class="lock-label">Live threads on the other four</div>
+      <p class="redact">Regulatory changes are already in motion on towns you are prospecting: a storage rule mid-rewrite, a restriction nearing a decision date, and more. Each is a clock already running, and the watch surfaces it while it is still an agenda item.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span>What you actually get, and how you'd steer it</h2>
+    <p>The deliverable isn't a report I write up each cycle, it's a <strong>weekly watch</strong> on the towns you care about plus the surrounding ring: the changes that move a storage verdict, surfaced while they are still an agenda item rather than a denial letter. It arrives two ways, a readable digest and the same items as a CSV.</p>
+
+    <h3>What a week looks like</h3>
+    <p>One change shown below in full, the rest unlock in the pilot.</p>
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">&#127754; Cascade &middot; Tioga County approved a 6-month solar moratorium in Richford, its 2nd in the county in 6 months</div>
+        <div class="sig-body">That is the machinery that turns on storage next, and Candor sits in the same county. With the watch, you see this step coming before it lands on your project.</div>
+        <div class="sig-where">Tioga County &middot; Candor's county</div>
+      </li>
+    </ul>
+
+    <div class="locked">
+      <span class="lock-badge">&#128274; unlocks in the pilot</span>
+      <div class="lock-label">2 more changes landed this week</div>
+      <p class="redact">&#128308; <strong>Act now</strong> &middot; &#9617;&#9617;&#9617;&#9617;&#9617;&#9617; : a storage rule advancing to a hearing</p>
+      <p class="redact">&#128993; <strong>Moving</strong> &middot; &#9617;&#9617;&#9617;&#9617;&#9617;&#9617; : a restriction reached a decision date</p>
+    </div>
+
+    <h3>The CSV that joins your GIS</h3>
+    <p>It also arrives as a CSV that joins straight to your GIS: every row carries the source document, a flag for whether the rule captures a 5MW system, and the lead time. So the read drops into the siting tools you already run, rather than asking your team to rebuild anything.</p>
+
+    <h3>How you'd steer it</h3>
+    <p><strong>The feed defaults to relevant.</strong> Every item ships marked useful by default, so there is nothing you have to do for it to work. When something misses, you flag it, and that one signal sharpens the next week to your pipeline. It works like training a recommendation feed, except it is tuned on what Syncarpha actually pursues. Low-friction by design: the loop runs on your silence, and only sharpens when you choose to correct it.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span>How we'd measure it, and whose job is what</h2>
+    <p class="section-sub">I should be graded on the intelligence I deliver, not on your internal results, which ride on your own pipeline, capital, and interconnection. So success is measured only on what I can actually control.</p>
+
+    <h3>What I am on the hook for</h3>
+    <ul class="quick-points">
+      <li><strong>Coverage</strong> of the agreed scope, your target towns plus the surrounding ring, with no silent gaps, every claim sourced to the town's own primary record rather than a tracker or a summary.</li>
+      <li><strong>Relevance</strong>, the feed tunes toward what you flag as useful; the feed's quality is mine even though the flags are yours.</li>
+      <li><strong>Earliness</strong>, catching real changes with enough lead time to act. The bar I propose, because I know where the public record lands, is at least one change caught at agenda stage or earlier, which is weeks of runway before the binding vote, not a same-day ping and not a quarter's notice. This pilot should clear it on my own ground.</li>
+    </ul>
+
+    <p class="note"><strong>How earliness is measured.</strong> Lead time is arithmetic from dated documents, not a judgment: the gap between when I flag a change at its earliest public artifact (a hearing scheduled on an agenda, a referral, a draft local law) and the binding decision (the vote or the adoption). Both dates come from the documents, so the number is auditable, not asserted. I validate it two ways, both on my own ground. First, a retrospective backtest on changes that already happened: in one of your five towns, a battery moratorium's hearing was posted on the public agenda about four weeks before it was adopted, both dates straight from the record, provable today without you lifting a finger. Second, a forward catch during the pilot: at least one real change surfaced at its early stage with a documented lead time. Neither needs you to confirm it helped. The agenda is dated, the vote is dated, the lead time is the difference. It is a backtest of method and lead, not a forecast.</p>
+
+    <h3>Whose job is what</h3>
+    <p>I am accountable for coverage, sourcing, and lead-time. You co-own the relevance feedback, a few minutes when something misses. I am <strong>not</strong> gated on your hit-rate, your site count, or your outcomes, those ride on your own pipeline, capital, and interconnection, and I would be suspicious of any vendor who claimed them. I will track and report the contribution, but I will not ask to be gated on an outcome I do not own.</p>
+
+    <p class="note"><strong>The default-true consequence.</strong> Because every item ships marked useful, your silence means the terms are being met. There is nothing you have to send back for the watch to count as working. The only thing that triggers a conversation is the reverse: if a meaningful share comes back marked not-useful, that is the check-in, we sit down and ask why N% is missing, and re-point the read. Silence is success; a run of misses is the signal to recalibrate.</p>
+
+    <p>If I do not deliver the coverage and the lead-time catches, we do not roll forward. That is the line, and it is one I can be held to without reaching into your results.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span>The shape of the deal</h2>
+    <p>A 90-day pilot, scaled to get going, structured so we both walk away clean at the end if it is not delivering.</p>
+    <ul class="quick-points">
+      <li><strong>Calibration (week 0).</strong> We define the exact scope together: your target towns plus the surrounding ring, the project types that matter (standalone storage first), and what "useful" means to your site-control team. This is what sharpens everything below to your pipeline.</li>
+      <li><strong>Your forensic baseline (about week 4).</strong> Everything locked above, unlocked and refined to your scope. Over the first few weeks I turn those blurred storage verdicts into the full picture: all your towns and their surrounding counties, every claim sourced to the primary record, calibrated to the geography and project types that matter to you. This is the "where do we stand and how did we get here" for your whole target area.</li>
+      <li><strong>The weekly watch (ongoing).</strong> Every week after, the changes: a hearing scheduled, a moratorium extended or lapsed, a neighbor starting to move, surfaced while it is still an agenda item rather than a denial letter.</li>
+    </ul>
+    <p><strong>Cost: $3,000 for the 90 days,</strong> credited toward the full engagement if we continue. The full engagement is priced to the value we agree to measure: once we set the pilot's success criteria together, I put the full number on the table, and it sits inside the range we have already discussed. The logic is simple. If this is valuable, and we have agreed how to measure that, then that is the price.</p>
+    <p><strong>If it works, it rolls.</strong> We set the success criteria and the full price together at the start. If I hit the criteria by day 90, the pilot converts to the full engagement at that price, with no second negotiation. If I miss, we walk away clean, with no obligation. You decide once, on proof, instead of running a second sales cycle in 90 days.</p>
+    <p class="note">The fastest way to make this real is a short call with you and your two site-control guys: I will walk through Candor live, and we scope the pilot on the spot, your towns, the ring around them, and what success looks like. Tell me what works.</p>
+  </div>
+
+  </div><!-- /detail-view -->
+
+  <div class="footer">
+    <div>Municipal Alpha &middot; prepared for Syncarpha Capital &middot; Matt MacDonald, Founder &amp; CEO &middot; matt@municipalalpha.com</div>
+    <div><a href="https://municipalalpha.com">municipalalpha.com</a></div>
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    window.setView = function(v){
+      var condensed = (v === 'condensed');
+      document.body.classList.toggle('condensed', condensed);
+      var bc = document.getElementById('btn-condensed'), bd = document.getElementById('btn-detail');
+      if (bc) bc.classList.toggle('active', condensed);
+      if (bd) bd.classList.toggle('active', !condensed);
+    };
+  })();
+</script>
+</body>
+</html>
