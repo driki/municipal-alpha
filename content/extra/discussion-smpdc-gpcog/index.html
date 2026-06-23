@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Municipal Alpha &amp; Maine's regional planning agencies, read from the public record</title>
+<script data-goatcounter="https://stats.municipalalpha.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root {
+    --ink:#0C0C0C; --paper:#F7F4F0; --signal:#E8512D; --edge:#1B4332;
+    --ink-80:rgba(12,12,12,.80); --ink-60:rgba(12,12,12,.60); --ink-40:rgba(12,12,12,.40);
+    --ink-12:rgba(12,12,12,.12); --ink-06:rgba(12,12,12,.06); --signal-06:rgba(232,81,45,.06);
+    --font-display:'Newsreader',Georgia,serif; --font-body:'DM Sans',-apple-system,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .container{max-width:780px;margin:0 auto;padding:0 36px 80px 36px;}
+  .header{position:sticky;top:0;z-index:10;background:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:22px 0 16px 0;border-bottom:1px solid var(--ink-12);margin-bottom:32px;}
+  .wordmark{font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.005em;}
+  .header-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-60);text-align:right;line-height:1.4;}
+  .hero{margin-bottom:18px;}
+  .hero .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);margin-bottom:14px;}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:38px;line-height:1.1;letter-spacing:-.01em;margin:0 0 14px 0;}
+  .hero .lede{font-family:var(--font-body);font-size:15.5px;line-height:1.55;color:var(--ink-60);margin:0;max-width:64ch;}
+  .hero .lede strong{color:var(--ink);font-weight:600;}
+  .stat-strip{margin-top:22px;padding:16px 18px;background:var(--ink);color:var(--paper);border-radius:2px;display:flex;flex-wrap:wrap;gap:22px;}
+  .stat{flex:1 1 110px;}
+  .stat .num{font-family:var(--font-display);font-size:28px;font-weight:500;line-height:1;color:var(--signal);}
+  .stat .lab{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:rgba(247,244,240,.6);margin-top:6px;}
+  .section{margin-top:48px;padding-top:28px;border-top:1px solid var(--ink-12);}
+  .kicker{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin:0 0 10px 0;}
+  .section h2{font-family:var(--font-display);font-weight:500;font-size:26px;line-height:1.2;letter-spacing:-.005em;margin:0 0 8px 0;}
+  .section .section-sub{font-family:var(--font-body);font-size:14px;color:var(--ink-60);line-height:1.5;margin:0 0 20px 0;max-width:62ch;}
+  .section p{font-family:var(--font-body);font-size:14.5px;line-height:1.65;color:var(--ink);margin:0 0 14px 0;max-width:62ch;}
+  .section p strong{font-weight:600;}
+  .regions{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+  @media (max-width:680px){.regions{grid-template-columns:1fr;}}
+  .region{border:1px solid var(--ink-12);border-radius:2px;padding:20px 20px 22px;background:var(--paper);}
+  .region .rname{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:4px;}
+  .region h3{font-family:var(--font-display);font-weight:500;font-size:19px;line-height:1.2;margin:0 0 10px 0;color:var(--ink);}
+  .region .rnums{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-60);line-height:1.7;margin-bottom:12px;}
+  .region .rnums b{color:var(--ink);font-weight:600;}
+  .region p{font-family:var(--font-body);font-size:13px;line-height:1.55;color:var(--ink-80);margin:0 0 8px 0;}
+  .source-link{display:inline-block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.03em;color:var(--signal);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;margin-top:2px;}
+  .source-link:hover{color:var(--ink);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .chip{font-family:var(--font-mono);font-size:11px;letter-spacing:.02em;color:var(--ink-80);background:var(--ink-06);border-radius:2px;padding:7px 11px;}
+  .turn{margin-top:56px;padding:30px 28px;background:var(--ink);color:var(--paper);border-radius:2px;}
+  .turn .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);margin-bottom:14px;}
+  .turn h2{font-family:var(--font-display);font-weight:500;font-size:27px;line-height:1.15;margin:0 0 14px 0;color:var(--paper);}
+  .turn p{font-family:var(--font-body);font-size:14.5px;line-height:1.65;color:rgba(247,244,240,.82);margin:0 0 12px 0;max-width:62ch;}
+  .turn p strong{color:var(--paper);font-weight:600;}
+  .probes{display:grid;gap:13px;margin-top:8px;}
+  .probe{border-left:2px solid var(--ink-12);padding:2px 0 2px 16px;}
+  .probe .q{font-family:var(--font-display);font-size:15.5px;line-height:1.4;color:var(--ink);margin:0;}
+  .footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--ink-12);font-family:var(--font-mono);font-size:11px;line-height:1.6;color:var(--ink-40);}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="wordmark">Municipal Alpha</div>
+    <div class="header-meta">For SMPDC &amp; GPCOG<br>Southern Maine &amp; Greater Portland &middot; 2026-06-23</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Looking forward to Thursday &middot; James, Paul, and Matt</div>
+    <h1>Two regions, one read of the public record</h1>
+    <p class="lede">Ahead of our call, a shared view to anchor the conversation. Municipal Alpha reads the published record of every municipality it can reach and surfaces what is moving <strong>before it is obvious.</strong> Between SMPDC and GPCOG you cover most of southern Maine, and most of it is already in the corpus, sourced. I sent each of you a closer read of your own region, framed around economic development because that is one clear fit. <strong>But I am genuinely not sure that is the angle that matters most to you</strong>, so this page stays higher up, and Thursday is mostly for me to listen.</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">47</div><div class="lab">Member towns across both regions already read</div></div>
+      <div class="stat"><div class="num">46,522</div><div class="lab">Documents in those towns</div></div>
+      <div class="stat"><div class="num">2</div><div class="lab">Regional agencies, one engine</div></div>
+      <div class="stat"><div class="num">0</div><div class="lab">Records requests needed for any of it</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="kicker">The two regions</p>
+    <h2>Same read, pointed at each of your footprints</h2>
+    <p class="section-sub">Every figure is the count we actually hold today, sourced to each town's own published record. The two memberships overlap a little around the PACTS towns; these are each agency's own footprint.</p>
+    <div class="regions">
+      <div class="region">
+        <div class="rname">SMPDC &middot; James Rather</div>
+        <h3>Southern Maine, Kittery to Stoneham</h3>
+        <div class="rnums"><b>25</b> of 39 member towns read &middot; <b>28,878</b> documents &middot; <b>23</b> active in the last 90 days</div>
+        <p>Recent in the record: <strong>Saco</strong> took up comprehensive-plan action items on May 20, 2026, and <strong>North Berwick</strong> has 2026 zoning ordinance amendments on the table.</p>
+        <a class="source-link" href="https://play.champds.com/ATT/sacome/2026-05/31bd46b76c5a5bb3b962121ac71ce869444a3bbc.pdf">Saco Comp Plan, 2026-05-20</a>
+      </div>
+      <div class="region">
+        <div class="rname">GPCOG &middot; Paul Johnson</div>
+        <h3>Greater Portland, Cumberland County</h3>
+        <div class="rnums"><b>22</b> member towns read &middot; <b>17,644</b> documents &middot; <b>22</b> active in the last 90 days</div>
+        <p>Recent in the record: <strong>Falmouth</strong> has a Route One South TIF district on the council's table, April 13, 2026, and reworked its comprehensive-plan growth-area mapping in February.</p>
+        <a class="source-link" href="https://play.champds.com/ATT/falmouthme/2026-04/8072683c48d4fe18b7c009a4e3e2a8e2e7a7701e.pdf">Falmouth Route One South TIF, 2026-04-13</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="kicker">What the record holds</p>
+    <h2>Economic development is one slice of it, not the whole thing</h2>
+    <p class="section-sub">The municipal record is wider than any single use case. Between the two of you the work spans long-range planning, housing, infrastructure, broadband, fiscal health, and workforce, and all of it leaves a paper trail in the same agendas and minutes we already read. Different seats care about different slices.</p>
+    <div class="chips">
+      <span class="chip">economic development</span>
+      <span class="chip">housing &amp; zoning</span>
+      <span class="chip">infrastructure &amp; broadband</span>
+      <span class="chip">fiscal health &amp; budgets</span>
+      <span class="chip">long-range &amp; comprehensive planning</span>
+      <span class="chip">workforce &amp; grants</span>
+      <span class="chip">transportation &amp; PACTS</span>
+    </div>
+    <p style="margin-top:18px;">The point of the shared engine is that you do not have to pick the angle up front. The same read can be pointed at whichever of these is the real pressure for your region this year, and re-pointed as that changes. The individual pages I sent each of you take the economic-development cut as one worked example; the conversation is open to any of the others.</p>
+  </div>
+
+  <div class="section">
+    <p class="kicker">What the product is</p>
+    <h2>A living read, not a static dataset or a hand-written brief</h2>
+    <p>New municipal activity matching what you care about, surfaced as it posts with a source quote and link; the historical record pulled on demand for the fights and comparables; and a relevance loop where you mark what was useful and the feed sharpens to your region. You define the topics, the towns, and what counts as a signal. We keep the read current, and a town you name can be stood up quickly because the engine reads any municipality that publishes.</p>
+  </div>
+
+  <div class="turn">
+    <div class="eyebrow">The agenda for Thursday</div>
+    <h2>Mostly, I want to listen</h2>
+    <p>You each have a region-specific page with the detail, so we do not need to spend the call on what the tool is. The point of the conversation is the other direction, understanding your world well enough to know whether and where this is useful. <strong>I am deliberately not assuming a pathway.</strong> A few open questions I will be asking:</p>
+    <div class="probes">
+      <div class="probe"><p class="q">What lands on your desk later than you would like, that you wish you had seen at the front end?</p></div>
+      <div class="probe"><p class="q">Across everything your agencies do, where would a wide, current read of the municipal record actually change a decision?</p></div>
+      <div class="probe"><p class="q">Is this most useful for your own planning and analysis, or as something you would put in front of your member towns?</p></div>
+      <div class="probe"><p class="q">And if economic development is not the first thing this is for, what is?</p></div>
+    </div>
+    <p style="margin-top:16px;">The fastest way to make it concrete: each of you name one town, or one topic you are tracking right now, and I will run the read and show you what the record surfaces in your own backyard.</p>
+  </div>
+
+  <div class="footer">
+    Municipal Alpha &middot; The signals named above are sourced to each town's own published record, link-checked on 2026-06-23, built from the public record alone with no insider access and no records requests. Per-region coverage figures reflect SMPDC's 39 member municipalities and GPCOG's roughly 25 Cumberland County member communities as of 2026-06-23. Prepared for a joint conversation with James Rather (SMPDC) and Paul Johnson (GPCOG). Not a forecast; the activity sits in the record regardless of outcome.
+  </div>
+</div>
+</body>
+</html>
