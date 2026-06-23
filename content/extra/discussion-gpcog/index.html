@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Municipal Alpha &amp; GPCOG, Greater Portland read from the public record</title>
+<script data-goatcounter="https://stats.municipalalpha.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  :root {
+    --ink:#0C0C0C; --paper:#F7F4F0; --signal:#E8512D; --edge:#1B4332;
+    --ink-80:rgba(12,12,12,.80); --ink-60:rgba(12,12,12,.60); --ink-40:rgba(12,12,12,.40);
+    --ink-12:rgba(12,12,12,.12); --ink-06:rgba(12,12,12,.06); --signal-06:rgba(232,81,45,.06);
+    --font-display:'Newsreader',Georgia,serif; --font-body:'DM Sans',-apple-system,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .container{max-width:780px;margin:0 auto;padding:0 36px 80px 36px;}
+  .header{position:sticky;top:0;z-index:10;background:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:22px 0 16px 0;border-bottom:1px solid var(--ink-12);margin-bottom:32px;}
+  .wordmark{font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.005em;}
+  .header-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-60);text-align:right;line-height:1.4;}
+  .hero{margin-bottom:18px;}
+  .hero .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);margin-bottom:14px;}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:38px;line-height:1.1;letter-spacing:-.01em;margin:0 0 14px 0;}
+  .hero .lede{font-family:var(--font-body);font-size:15.5px;line-height:1.55;color:var(--ink-60);margin:0;max-width:64ch;}
+  .hero .lede strong{color:var(--ink);font-weight:600;}
+  .stat-strip{margin-top:22px;padding:16px 18px;background:var(--ink);color:var(--paper);border-radius:2px;display:flex;flex-wrap:wrap;gap:22px;}
+  .stat{flex:1 1 110px;}
+  .stat .num{font-family:var(--font-display);font-size:28px;font-weight:500;line-height:1;color:var(--signal);}
+  .stat .lab{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:rgba(247,244,240,.6);margin-top:6px;}
+  .section{margin-top:48px;padding-top:28px;border-top:1px solid var(--ink-12);}
+  .kicker{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin:0 0 10px 0;}
+  .section h2{font-family:var(--font-display);font-weight:500;font-size:26px;line-height:1.2;letter-spacing:-.005em;margin:0 0 8px 0;}
+  .section .section-sub{font-family:var(--font-body);font-size:14px;color:var(--ink-60);line-height:1.5;margin:0 0 20px 0;max-width:62ch;}
+  .section p{font-family:var(--font-body);font-size:14.5px;line-height:1.65;color:var(--ink);margin:0 0 14px 0;max-width:62ch;}
+  .section p strong{font-weight:600;}
+  .quote{font-family:var(--font-display);font-style:italic;font-size:15px;line-height:1.55;color:var(--ink-80);border-left:2px solid var(--signal);padding:2px 0 2px 16px;margin:0 0 14px 0;max-width:60ch;}
+  .quote .attr{display:block;font-family:var(--font-mono);font-style:normal;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-40);margin-top:8px;}
+  .facts{display:grid;gap:13px;margin-top:4px;}
+  .fact{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline;}
+  .fact-k{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);padding-top:2px;}
+  .fact-v{font-family:var(--font-body);font-size:14px;line-height:1.55;color:var(--ink);}
+  .fact-v strong{font-weight:600;}
+  .source-link{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;color:var(--signal);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;margin-top:2px;}
+  .source-link:hover{color:var(--ink);}
+  .complist{display:grid;gap:10px;margin-top:6px;}
+  .comp{display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:baseline;}
+  .comp .n{font-family:var(--font-mono);font-size:12px;color:var(--signal);}
+  .comp .d{font-family:var(--font-body);font-size:13.5px;line-height:1.5;color:var(--ink);}
+  .comp .d strong{font-weight:600;}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-family:var(--font-mono);font-size:11px;}
+  .flow .step{padding:7px 11px;background:var(--ink-06);border-radius:2px;color:var(--ink-80);}
+  .flow .arr{color:var(--signal);align-self:center;}
+  .turn{margin-top:56px;padding:30px 28px;background:var(--ink);color:var(--paper);border-radius:2px;}
+  .turn .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);margin-bottom:14px;}
+  .turn h2{font-family:var(--font-display);font-weight:500;font-size:27px;line-height:1.15;margin:0 0 14px 0;color:var(--paper);}
+  .turn p{font-family:var(--font-body);font-size:14.5px;line-height:1.65;color:rgba(247,244,240,.82);margin:0 0 12px 0;max-width:62ch;}
+  .turn p strong{color:var(--paper);font-weight:600;}
+  .probes{display:grid;gap:14px;margin-top:8px;}
+  .probe{border-left:2px solid var(--ink-12);padding:2px 0 2px 16px;}
+  .probe .q{font-family:var(--font-display);font-size:16px;line-height:1.4;color:var(--ink);margin:0 0 4px 0;}
+  .probe .why{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-40);}
+  .footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--ink-12);font-family:var(--font-mono);font-size:11px;line-height:1.6;color:var(--ink-40);}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="wordmark">Municipal Alpha</div>
+    <div class="header-meta">For GPCOG &middot; Paul Johnson<br>Greater Portland &middot; 2026-06-23</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">A working read of your region, and a conversation about what you actually need</div>
+    <h1>What the public record of Greater Portland already says, read at machine scale</h1>
+    <p class="lede">Municipal Alpha reads the published record of every municipality it can reach, the council and planning and zoning and economic-development bodies, and surfaces what is moving <strong>before it is obvious.</strong> James suggested I bring you the same read I built for SMPDC, pointed at your region instead. So this page is half a demonstration and half a set of questions. The demonstration is that Greater Portland is already in the corpus, sourced. The questions are the point of Thursday's call: <strong>I would rather hear which of these problems is actually yours than assume it.</strong></p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">22</div><div class="lab">Greater Portland member towns already read</div></div>
+      <div class="stat"><div class="num">17,644</div><div class="lab">Documents in those towns</div></div>
+      <div class="stat"><div class="num">22</div><div class="lab">With new activity in the last 90 days</div></div>
+      <div class="stat"><div class="num">0</div><div class="lab">Records requests needed for any of it</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="kicker">Overview</p>
+    <h2>What this is, in one breath</h2>
+    <p class="section-sub">GPCOG wears three hats at once, a regional planning organization, the metropolitan planning organization for PACTS, and a federally designated economic development district. We read the same Cumberland County towns the way a planner would, if a planner could read every agenda, minute, ordinance, and RFP across the region every week.</p>
+    <p>The corpus is national, roughly 3,400 municipalities across all 50 states, but the part that matters today is local: <strong>nearly all of your member communities are already in it</strong>, with Portland, South Portland, Westbrook, Scarborough, Falmouth, Yarmouth, Windham, Freeport, Gorham, and Cape Elizabeth among them. Every item is sourced to the town's own published record, with a link, so you can trust it and re-derive it. Nothing here came from inside any town hall.</p>
+    <p>Because you are also the MPO, the land-use and the transportation pictures are the same picture for you, a corridor rezoning or a Route One TIF is both an economic-development event and a transportation one. The read below does not separate them, which is the point.</p>
+  </div>
+
+  <div class="section">
+    <p class="kicker">Problem</p>
+    <h2>By the time it reaches your plate, it is usually fully cooked</h2>
+    <p class="section-sub">This is the framing we have heard from economic-development leaders, not a diagnosis of GPCOG. Treat it as the menu of things we think we can help with, and tell us which ones are real for you and which ones miss.</p>
+    <p class="quote">A statewide pulse on selective groups, weekly or even monthly, to get ahead of anything before it ends up on our plate fully cooked. By the time the state relays something, we are not at the front end. You would learn things you would not learn otherwise, ever, not just late.
+      <span class="attr">An economic-development leader at a peer Maine region, in conversation with us</span></p>
+    <p>Three jobs kept surfacing, and they are different enough that they want different data:</p>
+    <div class="facts">
+      <div class="fact"><div class="fact-k">Attraction</div><div class="fact-v"><strong>Matchmaking.</strong> Out of a long list of companies you might court, which ones are actually showing expansion signals, anywhere, so the outreach goes to the dozen that are real instead of the hundreds that are not.</div></div>
+      <div class="fact"><div class="fact-k">Retention</div><div class="fact-v"><strong>Pre-distress warning.</strong> When a regional employer is heading for trouble, you usually learn it from the news, after it is decided. Retaining an existing employer is far cheaper than attracting a new one, but only if you see it early.</div></div>
+      <div class="fact"><div class="fact-k">Credibility</div><div class="fact-v"><strong>Policy ammunition.</strong> Walking into a board fight, a funder, a CEDS update, or a PACTS prioritization with defensible comparables instead of assertions, whether the topic is a corridor, a TIF, or a housing mandate.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="kicker">Product</p>
+    <h2>What Municipal Alpha actually is</h2>
+    <p class="section-sub">Not a static dataset you buy once, and not a brief someone writes up by hand each cycle. A living read of municipal activity, kept current, delivered as structured data you assemble your own way.</p>
+    <div class="complist">
+      <div class="comp"><div class="n">01</div><div class="d"><strong>Coverage map</strong> &middot; which bodies we read in each town, council, planning, zoning, economic development, with doc counts and freshness. The honest denominator.</div></div>
+      <div class="comp"><div class="n">02</div><div class="d"><strong>Precursor feed</strong> &middot; new ordinances, rezonings, comprehensive-plan updates, TIFs, RFPs, and decisions matching what you care about, surfaced as they post, each with a source quote and link.</div></div>
+      <div class="comp"><div class="n">03</div><div class="d"><strong>Retroactive pull</strong> &middot; the historical record for the fights and comparables, assembled on demand rather than reconstructed by hand.</div></div>
+      <div class="comp"><div class="n">04</div><div class="d"><strong>Relevance feedback</strong> &middot; you mark which items were useful, the feed sharpens, the noise drops, and what you flag stays private to you.</div></div>
+    </div>
+    <div class="flow">
+      <span class="step">we find new activity</span><span class="arr">&rarr;</span>
+      <span class="step">surface it for review</span><span class="arr">&rarr;</span>
+      <span class="step">you mark what is relevant</span><span class="arr">&rarr;</span>
+      <span class="step">the feed learns your region</span><span class="arr">&rarr;</span>
+      <span class="step">noise drops</span>
+    </div>
+    <p>The important property for a regional planner: a town you name can be stood up quickly, because the engine is built to read any municipality that publishes. You define the keywords, the target sectors, the corridors, the watch list. We do not need to know in advance what you will find valuable, which is the whole reason the relevance loop exists.</p>
+  </div>
+
+  <div class="section">
+    <p class="kicker">Solution</p>
+    <h2>What it looks like pointed at your region, today</h2>
+    <p class="section-sub">Three things already moving in your member towns, pulled from their own records this year and link-checked. Not a curated highlight reel, just what the read surfaces when you ask it about Greater Portland.</p>
+    <div class="facts">
+      <div class="fact"><div class="fact-k">Falmouth</div><div class="fact-v"><strong>Route One South TIF district</strong>, the final clean version on the council's table April 13, 2026. A corridor TIF is both an economic-development instrument and a transportation-corridor decision, the exact place your two hats overlap, and the kind of thing worth tracking across every member town at once.<br><a class="source-link" href="https://play.champds.com/ATT/falmouthme/2026-04/8072683c48d4fe18b7c009a4e3e2a8e2e7a7701e.pdf">Falmouth &middot; Route One South TIF, 2026-04-13</a></div></div>
+      <div class="fact"><div class="fact-k">Falmouth</div><div class="fact-v"><strong>Comprehensive Plan future-land-use and growth-area mapping</strong>, February 23, 2026. Where a town decides it will and will not grow is the upstream signal for everything that follows, and it sits in the record long before a project does.<br><a class="source-link" href="https://play.champds.com/ATT/falmouthme/2026-02/0bf0ce995b3c4c3457a77c39b62d516cf60d09f8.pdf">Falmouth &middot; Future Land Use Map / Growth Areas, 2026-02-23</a></div></div>
+      <div class="fact"><div class="fact-k">Scarborough</div><div class="fact-v"><strong>Tree Care ordinance</strong>, November 5, 2025. A land-clearing and site-development constraint that shapes what a parcel can become, an example of the kind of local rule that is invisible to a regional view until it is already in force.<br><a class="source-link" href="https://resources.finalsite.net/images/v1762441519/scarboroughmaineorg/emkbfof1kt6n6qxnhhsu/1106-TreeCareOrdinance.pdf">Scarborough &middot; Tree Care Ordinance, 2025-11-05</a></div></div>
+    </div>
+    <p>Coverage is already broad here, nearly all of your member communities are read. The few that are not are simply not stood up yet rather than a wall, so name the ones that matter and I can point the crawler at them. For any genuinely hard small town, the one with a part-time clerk who posts to a Facebook page or whose website lapsed, the way in is not a scraper. It is a note from the regional organization it already trusts, which is to say, you.</p>
+  </div>
+
+  <div class="turn">
+    <div class="eyebrow">Where a pilot like this has started before</div>
+    <h2>One Maine ED region is already shaping a version of this</h2>
+    <p>A peer economic-development organization in the Katahdin region is defining a weekly read against their own target sectors and watch towns, on a nonprofit footing. The shape is the same one that would fit GPCOG: <strong>you supply the keywords, the target companies, the corridors, and the towns; we supply the read and keep it current.</strong> It is deliberately light to start, because the value is in the feedback loop, not in a heavy build up front.</p>
+    <p>I am not trying to close a pilot on Thursday. I want to understand your region well enough to know whether the shape is even right, and what it would have to do to be worth your time.</p>
+  </div>
+
+  <div class="section">
+    <p class="kicker">Discussion</p>
+    <h2>What I want to hear from you</h2>
+    <p class="section-sub">The real agenda. These are the questions I will be listening for. The page above exists so we can spend the call on these instead of on what Municipal Alpha is.</p>
+    <div class="probes">
+      <div class="probe"><p class="q">What is the thing that most often reaches you fully cooked, that you wish you had seen at the front end?</p><p class="why">The open one &middot; your pain in your words, not our menu</p></div>
+      <div class="probe"><p class="q">Of attraction, retention, and policy ammunition, which is the actual day-job, and which barely matters?</p><p class="why">Which problem is real &middot; do not assume all three</p></div>
+      <div class="probe"><p class="q">Does the transportation and PACTS side change what you would watch, corridors, freight, transit-adjacent development?</p><p class="why">Your MPO hat &middot; a dimension SMPDC does not carry</p></div>
+      <div class="probe"><p class="q">Is this for GPCOG's own CEDS and planning work, or a service you would want to offer your member communities?</p><p class="why">Own-use vs channel &middot; changes the whole shape</p></div>
+      <div class="probe"><p class="q">How wide does the lens need to be, just the region, or national company-expansion and policy comparables too, and how often, weekly or monthly?</p><p class="why">Coverage, depth, recency &middot; the three levers</p></div>
+      <div class="probe"><p class="q">Who in your orbit, the businesses and developers you work with, would find this valuable on their own?</p><p class="why">Channel &middot; an ED relationship reaches commercial buyers too</p></div>
+    </div>
+    <p style="margin-top:24px;">And the concrete next step, whenever you are ready: <strong>name one town you want watched, or hand me a rough list of target sectors, corridors, or companies</strong>, and I will run the read and show you exactly what the record surfaces. That is the fastest way to find out whether this is useful to you, against your own region rather than my example.</p>
+  </div>
+
+  <div class="footer">
+    Municipal Alpha &middot; Every signal above is sourced to the named town's own published record, link-checked on 2026-06-23, built from the public record alone with no insider access and no records requests. Coverage figures reflect GPCOG's roughly 25 Cumberland County member communities as of 2026-06-23. Prepared for a conversation with Paul Johnson, GPCOG. Not a forecast; the activity sits in the record regardless of outcome.
+  </div>
+</div>
+</body>
+</html>
