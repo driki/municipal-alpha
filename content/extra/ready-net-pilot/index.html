@@ -4,352 +4,333 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Ready.net Texas Signal Pilot</title>
-<script data-goatcounter="https://stats.municipalalpha.com/count" async src="//gc.zgo.at/count.js"></script>
+<title>Municipal Alpha for Ready.net: Texas broadband signal pilot</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
   :root {
-    --ink:#0C0C0C; --paper:#F7F4F0; --card:#FFFFFF; --signal:#E8512D; --edge:#1B4332;
-    --ink-80:rgba(12,12,12,.80); --ink-60:rgba(12,12,12,.60); --ink-40:rgba(12,12,12,.40);
-    --ink-12:rgba(12,12,12,.12); --ink-06:rgba(12,12,12,.06); --signal-06:rgba(232,81,45,.06);
-    --font-display:'Newsreader',Georgia,serif; --font-body:'DM Sans',-apple-system,sans-serif; --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --card: #FFFFFF;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   }
-  *,*::before,*::after{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-  .container{max-width:800px;margin:0 auto;padding:0 32px 96px;}
-  .topbar{display:flex;justify-content:space-between;align-items:baseline;padding:26px 0 14px;border-bottom:1px solid var(--ink-12);margin-bottom:36px;}
-  .wordmark{font-family:var(--font-display);font-weight:600;font-size:21px;letter-spacing:-.01em;}
-  .wordmark .dot{color:var(--signal);}
-  .topbar .meta{font-family:var(--font-mono);font-size:11px;color:var(--ink-60);text-align:right;line-height:1.5;}
-  h1{font-family:var(--font-display);font-weight:600;font-size:32px;line-height:1.15;letter-spacing:-.015em;margin:0 0 10px;}
-  h2{font-family:var(--font-display);font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.01em;margin:52px 0 6px;padding-top:20px;border-top:2px solid var(--ink);}
-  h2 .num{color:var(--signal);font-variant-numeric:tabular-nums;margin-right:10px;}
-  h3{font-family:var(--font-body);font-weight:600;font-size:16px;margin:30px 0 6px;}
-  h4{font-family:var(--font-body);font-weight:600;font-size:14px;margin:20px 0 4px;color:var(--ink-80);}
-  p{margin:10px 0;}
-  a{color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(232,81,45,.35);}
-  strong{font-weight:600;}
-  ul,ol{margin:10px 0;padding-left:22px;}
-  li{margin:5px 0;}
-  .lede{font-family:var(--font-display);font-size:19px;line-height:1.45;color:var(--ink-80);margin:0 0 8px;}
-  .sub{color:var(--ink-60);font-size:14px;}
-  .kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin:0 0 14px;}
-  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;}
-  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--ink-12);vertical-align:top;}
-  th{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-60);border-bottom:2px solid var(--ink);font-weight:500;}
-  td.num,th.num{font-variant-numeric:tabular-nums;}
-  .big{font-weight:600;color:var(--signal);}
-  .note{font-size:13px;color:var(--ink-60);border-left:2px solid var(--ink-12);padding-left:14px;margin:14px 0;}
-  code{font-family:var(--font-mono);font-size:12.5px;background:var(--ink-06);padding:1px 5px;border-radius:3px;}
-  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ink-12);font-size:12px;color:var(--ink-40);font-family:var(--font-mono);}
-  @media (max-width:620px){.container{padding:0 18px 60px;}h1{font-size:26px;}}
-  /* condensed (executive summary) vs full-detail toggle */
-  .viewtoggle{display:inline-flex;border:1px solid var(--ink-12);border-radius:7px;overflow:hidden;font-family:var(--font-mono);font-size:11.5px;margin:22px 0 6px;}
-  .viewtoggle button{background:var(--card);color:var(--ink-60);border:0;border-right:1px solid var(--ink-12);padding:8px 18px;cursor:pointer;letter-spacing:.02em;transition:background .12s,color .12s;}
-  .viewtoggle button:last-child{border-right:0;}
-  .viewtoggle button.active{background:var(--ink);color:var(--paper);}
-  .viewtoggle button:not(.active):hover{background:var(--ink-06);}
-  .toggle-hint{font-family:var(--font-mono);font-size:11px;color:var(--ink-40);margin:0 0 10px;}
-  .summary-view{display:none;}
-  body.condensed .summary-view{display:block;}
-  body.condensed .detail-view{display:none;}
-  .summary-strip{font-family:var(--font-mono);font-size:12px;color:var(--ink-60);background:var(--signal-06);border:1px solid var(--ink-12);border-radius:7px;padding:13px 16px;margin:18px 0 22px;line-height:1.95;}
-  .summary-strip b{color:var(--signal);font-weight:600;}
-  .summary-view p{margin:14px 0;}
-  .summary-cta{margin-top:26px;padding-top:16px;border-top:1px solid var(--ink-12);font-size:14px;color:var(--ink-60);}
-  .pr-frame{font-size:13.5px;color:var(--ink-60);background:var(--ink-06);border-radius:7px;padding:13px 16px;margin:6px 0 28px;line-height:1.62;}
-  .pr-frame strong{color:var(--ink);}
-  .pr-head{font-family:var(--font-display);font-weight:600;font-size:27px;line-height:1.18;letter-spacing:-.015em;margin:0 0 10px;}
-  .pr-sub{font-family:var(--font-display);font-size:18px;line-height:1.4;color:var(--ink-80);font-style:italic;margin:0 0 6px;}
-  .pr-quote{border-left:2px solid var(--signal);padding-left:16px;margin:20px 0;font-size:15px;color:var(--ink-80);font-style:italic;}
-  .pr-quote .who{display:block;font-style:normal;font-size:12px;color:var(--ink-60);font-family:var(--font-mono);margin-top:7px;letter-spacing:.01em;}
-  .tier{padding:15px 18px;border-left:3px solid var(--signal);background:var(--signal-06);border-radius:2px;margin:0 0 12px;}
-  .tier .lab{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:6px;}
-  .tier p{margin:0;font-size:14px;line-height:1.6;}
-  .example{padding:14px 17px;background:var(--card);border:1px solid var(--ink-12);border-left:3px solid var(--ink-40);border-radius:2px;margin:8px 0 12px;}
-  .ex-where{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:5px;}
-  .ex-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:6px;}
-  .ex-why{font-size:13px;line-height:1.55;color:var(--ink-80);}
-  .fields-line{font-size:13.5px;line-height:1.6;color:var(--ink-80);margin:0 0 10px;}
-  .prompt-block{font-family:var(--font-mono);font-size:12px;background:var(--ink-06);border:1px solid var(--ink-12);border-radius:7px;padding:13px 16px;line-height:1.7;color:var(--ink-80);margin:10px 0 14px;}
-  @media print{.viewtoggle,.toggle-hint{display:none!important;}body.condensed .detail-view{display:block!important;}body.condensed .summary-view{display:none!important;}}
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .container { max-width: 780px; margin: 0 auto; padding: 44px 36px 80px 36px; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px; }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .wordmark .dot { color: var(--signal); }
+  .header-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); text-align: right; line-height: 1.5; }
+  .hero { margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section h2 .num { color: var(--signal); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  .section h3 { font-family: var(--font-body); font-weight: 600; font-size: 16px; margin: 28px 0 6px 0; }
+  .section h4 { font-family: var(--font-body); font-weight: 600; font-size: 14px; margin: 20px 0 4px 0; color: var(--ink-80); }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+  .section strong { font-weight: 600; }
+  .section a { color: var(--signal); text-decoration: none; }
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 16px 18px; background: var(--card); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); margin-bottom: 8px; }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .quick-points { list-style: none; padding: 0; margin: 8px 0 0 0; }
+  .quick-points li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-80); max-width: 62ch; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; background: var(--signal); }
+  .note { font-size: 13px; color: var(--ink-60); border-left: 2px solid var(--ink-12); padding-left: 14px; margin: 14px 0; line-height: 1.6; max-width: 62ch; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--ink-12); vertical-align: top; }
+  th { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-60); border-bottom: 2px solid var(--ink); font-weight: 500; }
+  td.num, th.num { font-variant-numeric: tabular-nums; }
+  .big { font-weight: 600; color: var(--signal); }
+  code { font-family: var(--font-mono); font-size: 12.5px; background: var(--ink-06); padding: 1px 5px; border-radius: 3px; }
+
+  /* example item card */
+  .example { padding: 14px 17px; background: var(--card); border: 1px solid var(--ink-12); border-left: 3px solid var(--ink-40); border-radius: 2px; margin: 8px 0 12px 0; }
+  .ex-where { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); margin-bottom: 5px; }
+  .ex-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .ex-why { font-size: 13px; line-height: 1.55; color: var(--ink-80); }
+  .fields-line { font-size: 13.5px; line-height: 1.6; color: var(--ink-80); margin: 0 0 10px 0; max-width: 62ch; }
+  .tier { padding: 15px 18px; border-left: 3px solid var(--signal); background: var(--signal-06); border-radius: 2px; margin: 0 0 12px 0; }
+  .tier .lab { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--signal); margin-bottom: 6px; }
+  .tier p { margin: 0; font-size: 14px; line-height: 1.6; max-width: 62ch; }
+
+  /* toggle */
+  .viewtoggle { display: inline-flex; border: 1px solid var(--ink-12); border-radius: 7px; overflow: hidden; font-family: var(--font-mono); font-size: 11.5px; margin: 22px 0 6px 0; }
+  .viewtoggle button { background: var(--card); color: var(--ink-60); border: 0; border-right: 1px solid var(--ink-12); padding: 8px 18px; cursor: pointer; letter-spacing: 0.02em; transition: background .12s, color .12s; }
+  .viewtoggle button:last-child { border-right: 0; }
+  .viewtoggle button.active { background: var(--ink); color: var(--paper); }
+  .viewtoggle button:not(.active):hover { background: var(--ink-06); }
+  .toggle-hint { font-family: var(--font-mono); font-size: 11px; color: var(--ink-40); margin: 0 0 10px 0; }
+  .summary-view { display: none; }
+  body.condensed .summary-view { display: block; }
+  body.condensed .detail-view { display: none; }
+  .summary-strip { font-family: var(--font-mono); font-size: 12px; color: var(--ink-60); background: var(--signal-06); border: 1px solid var(--ink-12); border-radius: 7px; padding: 13px 16px; margin: 18px 0 22px 0; line-height: 1.9; }
+  .summary-strip b { color: var(--signal); font-weight: 600; }
+  .summary-cta { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--ink-12); font-size: 14px; color: var(--ink-60); }
+
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  @media print { .viewtoggle, .toggle-hint { display: none !important; } body.condensed .detail-view { display: block !important; } body.condensed .summary-view { display: none !important; } .container { max-width: none; padding: 24px; } .section, .signal-list li, .example, .tier { page-break-inside: avoid; } }
+  @media (max-width: 620px) { .container { padding: 28px 18px 60px 18px; } .hero h1 { font-size: 28px; } }
 </style>
 </head>
 <body class="condensed">
 <noscript><style>body.condensed .detail-view{display:block;}body.condensed .summary-view{display:none;}.viewtoggle,.toggle-hint{display:none;}</style></noscript>
 <div class="container">
 
-  <div class="topbar">
+  <div class="header">
     <div class="wordmark">Municipal Alpha<span class="dot">.</span></div>
-    <div class="meta">Prepared for Ready.net<br>Mike Faloon &middot; Brian Grass<br>2026-06-12</div>
+    <div class="header-meta">Prepared for Ready.net<br>VP, Government Sales &middot; 2026-06-20</div>
   </div>
 
-  <p class="kicker">Ready.net &middot; Texas Signal Pilot</p>
-  <h1>Texas coverage, real rows, and how we'd both know it worked</h1>
-  <p class="lede">Your Texas Signal Pilot proposal, answered in kind: the coverage snapshot and sample rows you asked for, what the weekly watchlist looks like in practice, and how we'd both know it worked.</p>
-  <p class="note">Every figure is a live count from the corpus as of 2026-06-10. Every sample row is a real record. Signal dates are the document's own meeting or filing date, not the date we discovered it.</p>
+  <div class="hero">
+    <h1>Where your Texas team can get ahead of the broadband decision, instead of behind it</h1>
+    <p class="lede">The thing that costs your field team is hearing about a Texas project after the decision is already made: the RFP closed, the pole-attachment terms set, the council award booked. This is a weekly watch on the Texas permitting and infrastructure activity that maps to broadband, surfaced while there is still a decision to influence. Everything below is real: live counts from the corpus and sample rows that each trace to a town's own record.</p>
+  </div>
 
   <div class="viewtoggle" role="group" aria-label="View density">
-    <button id="btn-condensed" class="active" type="button" onclick="setView('condensed')">One-pager</button>
+    <button id="btn-condensed" class="active" type="button" onclick="setView('condensed')">Summary</button>
     <button id="btn-detail" type="button" onclick="setView('detail')">Full detail</button>
   </div>
-  <p class="toggle-hint">The one-screen version. Switch to full detail for the six real Texas signals, the datasets, and exactly how we'd measure success.</p>
+  <p class="toggle-hint">The one-screen version. Switch to full detail for the synthesized broadband baseline, the datasets behind it, exactly how the watch runs, and how we both measure it.</p>
 
+  <!-- ================= SUMMARY VIEW ================= -->
   <div class="summary-view">
 
-    <p><strong>What you get.</strong> A living watchlist of the Texas permitting and infrastructure activity that maps to your three areas: the jurisdiction directory (the cities, counties, pole owners, utility agencies, and DOTs, with contacts, the cold-start fix), the permit and project watchlist against it, and the early warning, a status on every item so you see a permit drifting toward the 90-day clock or a project advancing while there's still a decision to influence. It arrives weekly, two ways: a readable digest, and the same items as a CSV or read-access pull with the exact fields below.</p>
+    <p><strong>The thing that costs you is finding out late.</strong> A Texas broadband opportunity is won or lost in the local record long before it reaches a tracker or a trade headline: a pole-attachment make-ready item entering the queue, a capital-projects fund line, a permit drifting toward the 90-day clock, a council moving to apply for a grant. By the time it reaches the public channel you rely on, the window to position has often already closed, and the opportunities a small team never heard about at all never entered the pipeline. Coverage ends up a function of who happened to know what, when.</p>
 
-    <p><strong>What each weekly item looks like.</strong> One of the six real rows from the data review, in the shape every item arrives:</p>
-    <div class="example">
-      <div class="ex-where">Seabrook, TX &middot; Council agenda &middot; Apr 7, 2026</div>
-      <div class="ex-title">Council moving to apply for FEMA Hazard Mitigation Grants for outdoor warning siren systems</div>
-      <div class="ex-why"><strong>Why it matters:</strong> new public-safety spend entering the pipeline at the application stage, while there's still a decision to influence, the RFP and the award come later. <strong>Matched on:</strong> your public-program funding and procurement area, at a watched jurisdiction.</div>
-    </div>
-    <p class="fields-line">Every item carries the same fields: <strong>Jurisdiction &middot; Source and date &middot; What it is &middot; Quote from the record &middot; Why it matters &middot; Matched on &middot; Source link &middot; Status</strong> (new, updated, or unchanged) <strong>&middot; Useful?</strong> (you mark it). The CSV is also the dial: mark the Useful column on what landed and drop it back, and next week sharpens to it, like training a Spotify or Netflix feed, only tuned on what Ready.net actually pursues.</p>
+    <p><strong>So here is what you actually get: the read, not the raw record.</strong> For each community on your list I synthesize the current broadband state, who is in the ground and competing, any muni-broadband or franchise moves, BEAD and grant posture, the pole-attachment and right-of-way stance, recent buildout, and the council signals that move it. That synthesis is built on what is already real for Texas today: a living corpus of the municipal record, classified into signals, with the towers, the policy-spread, and the parcel matching that broadband siting needs to read the ground.</p>
 
     <div class="summary-strip">
       Already real today, not at the finish line:&nbsp; <b>265</b> Texas jurisdictions in the corpus &middot; <b>7,160</b> classified signals (<b>1,384</b> high-priority) &middot; current through <b>June 2026</b> &middot; <b>17,415</b> Texas tower sites, the largest state in the dataset
     </div>
 
-    <p><strong>The scope is yours to set, and I've pre-filled it.</strong> The watchlist runs off a calibration sheet, your jurisdictions, program keywords, target entities, and early-warning triggers, and I've seeded it from your proposal and our call: <a href="https://municipalalpha.com/ready-net-pilot/onboarding-calibration-2026-06-12.csv">download the pre-filled sheet</a>. The one thing only you can add is the jurisdiction list, and it needs to be enough to start, not exhaustive. Since you have your own AI tooling on top of your Texas pipeline, the fastest path may be to hand it the sheet with a prompt like this:</p>
-    <div class="prompt-block">Here is a calibration sheet for a weekly Texas municipal-signal watchlist (CSV attached). Using our Texas pipeline and program data, add a Watch jurisdiction row for every Texas county, city, or named district we serve or are pursuing, with a High/Medium/Low priority and one line on why it matters to us. Then adjust the pre-filled program keywords, target entities, and early-warning rows to match how we'd actually use this. Keep the columns exactly as they are: Category, Item, Priority, Detail, Keep, Your notes.</div>
-    <p>Send it back and that's the scope. The thing you configure is the thing you get, and it's what we measure against.</p>
-
-    <div class="pr-frame">
-      <strong>That's the what. Here's the benefit, written from the far end.</strong> Amazon writes the launch announcement before building the thing, then works back to whether they can earn it. Below is the internal note I'd want Ready.net to be able to send about 90 days in, written as if it's already October 2026. <strong>Read it as the bar we're both setting, not a victory lap. If the data can't earn it, it isn't worth your budget, and the full pack behind the toggle is the evidence that it can.</strong>
+    <p><strong>What each weekly item looks like.</strong> One of the real Texas rows from the data review, in the shape every item arrives:</p>
+    <div class="example">
+      <div class="ex-where">Seabrook, TX &middot; Council agenda &middot; Apr 7, 2026</div>
+      <div class="ex-title">Council moving to apply for FEMA Hazard Mitigation Grants for outdoor warning siren systems</div>
+      <div class="ex-why"><strong>Why it matters:</strong> new public-safety spend entering the pipeline at the application stage, while there is still a decision to influence, the RFP and the award come later. <strong>Matched on:</strong> your public-program funding and procurement area, at a watched jurisdiction.</div>
     </div>
 
-    <h3 class="pr-head">Ready.net's Texas team stopped finding out about projects after the decision was already made.</h3>
-    <p class="pr-sub">A weekly Texas signal feed now surfaces permitting, siting, and program-funding activity while there's still a decision to influence, not after the RFP closes.</p>
+    <p><strong>The pattern worth knowing.</strong> The earliest public artifact, a hearing scheduled on an agenda, a grant application, a pre-construction tower filing, lands weeks before the binding vote or the award. The whole point of the watch is to put that artifact in front of your team while it is still an agenda item, not a denial letter. The full detail works each real row through to its source and shows exactly how early the signal sits.</p>
 
-    <p>Ninety days into a paid Texas pilot, Ready.net's field and program teams work from a living weekly watchlist of municipal permitting and infrastructure activity across the Texas jurisdictions that matter to their pipeline. Each item is source-linked, scored for relevance, and carries a status as it moves toward a clock or an award. The brief that used to arrive too late now arrives early enough to act on.</p>
-
-    <p><strong>The problem it solved.</strong> The work depended on hearing about projects in time. By the time an RFP, a permit, or a council award reached the public channel, the window to position had often already closed, and the opportunities a small team never heard about at all never entered the pipeline. Coverage was a function of who happened to know what, when.</p>
-
-    <p class="pr-quote">I wanted to move the brief upstream of the decision, where there's still time to do something with it. Coverage and freshness we could prove on day one. What the pilot proved is that the lead time holds up against real Texas outcomes Ready.net picked themselves.
-      <span class="who">Matt MacDonald, founder, Municipal Alpha</span></p>
-
-    <p class="pr-quote">We're getting to these while there's still a decision to influence, instead of reading about the award after it's made.
-      <span class="who">Illustrative of the target outcome, not a recorded quote</span></p>
-    <p class="note">The bar is yours to bring to kickoff: the lead time, the reach, and the net-new that would make this worth continuing. You know those numbers better than I do, and I'll tell you straight which ones I can commit to before the clock starts. The full detail makes each one measurable, and splits them by who controls what: the parts you hold me to, the proof we read together, and the pipeline outcomes that stay yours, where I only report the contribution.</p>
-
-    <p><strong>The deal, in one line.</strong> A paid Texas pilot, the fee credited toward the contract. At kickoff we agree two things, the success bar (the four questions below) and the standing-contract terms; hit the bar and the pilot rolls straight into the contract at those terms, so there's no second negotiation, miss it and you walk free, with no clawback and nothing owed back. Proposed start July 1, with the two weeks before it spent bringing your jurisdictions online so the feed is warm on day one, and 90 days recommended as calibration room. To start I need three things from you: the calibration sheet back with your jurisdictions in it, two or three known past Texas outcomes I can reverse-engineer from public records, and read-access or API delivery so engagement is observable.</p>
-
-    <p class="summary-cta"><strong>That's the one-screen read.</strong> Switch to <a href="#" onclick="setView('detail');return false;">full detail</a> for the six real Texas signals, the tower and policy-spread datasets, the tower-to-landowner matching, and exactly how we'd both measure coverage, relevance, earliness, and net-new. Or fifteen minutes live is plenty.</p>
+    <p class="summary-cta"><strong>That is the one-screen read.</strong> Switch to <a href="#" onclick="setView('detail');return false;">full detail</a> for the synthesized broadband baseline worked to its source, the tower and policy-spread datasets, exactly how the watch runs and how you would steer it, and how we both measure coverage, relevance, and earliness. Or fifteen minutes live is plenty.</p>
 
   </div>
 
+  <!-- ================= DETAIL VIEW ================= -->
   <div class="detail-view">
 
-  <h2><span class="num">1</span>The data review</h2>
+  <div class="section">
+    <h2><span class="num">1</span>The forensic baseline for your target communities</h2>
+    <p class="section-sub">The baseline is the synthesized broadband state of a community, the read, not a row-dump for your team to interpret. I do that work. Below I have worked two real Texas communities through to their actual broadband state, each fact sourced to its origin (FCC coverage data, the Texas BDO, the local record), so you can see the shape. The full per-community baseline across your target list is the pilot's ~week-4 deliverable. Nothing here is locked: you are mid-pilot, so the substance is on the page. Every broadband claim below carries its source and date inline; where a fact is not yet sourceable I say so rather than fill it in.</p>
 
-  <h3>1.1&nbsp; What's in the corpus for Texas today</h3>
-  <table>
-    <thead><tr><th>Dimension</th><th>Texas, today</th></tr></thead>
-    <tbody>
-      <tr><td>Jurisdictions with documents</td><td class="big">265</td></tr>
-      <tr><td>Jurisdictions producing classified signals</td><td class="big">233</td></tr>
-      <tr><td>Classified signals</td><td><span class="big">7,160</span> (1,384 high-priority)</td></tr>
-      <tr><td>Signal recency</td><td>continuous through <strong>June 2026</strong></td></tr>
-      <tr><td>Tower sites</td><td><span class="big">17,415</span>, the single largest state in the tower dataset</td></tr>
-      <tr><td>Policy-spread events</td><td><strong>366</strong> across 19 jurisdictions (early layer, see 1.4)</td></tr>
-      <tr><td>Document types</td><td>agendas, minutes, budgets, capital plans, RFPs, ordinances, notices, check registers, CAFRs, tax-rate recaps, FAA tower filings</td></tr>
-    </tbody>
-  </table>
-  <p class="note"><strong>On the denominator, so the 265 is honest:</strong> Texas has roughly 1,200 incorporated cities and 254 counties. The 265 above are the jurisdictions actively producing a crawlable public record in the corpus today; coverage concentrates where the municipal record is published online and current. Onboarding the specific jurisdictions on your target list is exactly what the pilot ramp prioritizes, which is why the first thing I'd want from you is that list.</p>
+    <h3>League City, TX (Galveston County): a fiber-saturated suburb where the competitive front has already moved</h3>
+    <p><strong>The read.</strong> League City is a built-out Houston-metro suburb where the broadband market is already three-deep and the fiber race is live. The cable incumbent, Xfinity, reaches essentially the whole city; the differentiator is fiber, and Frontier has pushed symmetrical fiber across the large majority of the city while AT&amp;T fiber covers most of it. For your team, the read is that this is not a "win the first build" market, it is a "win the next franchise/ROW cycle and the anchor-institution accounts" market: the council's infrastructure and right-of-way governance is where the next move happens, and the local body that touches it is meeting now. None of this comes from BEAD subsidy: a city this served is funded by private competition, so the public-record angle here is ROW, franchise terms, and the council's posture toward the providers already in the ground.</p>
+    <p class="fields-line">The broadband state, each fact sourced and dated:</p>
+    <table>
+      <thead><tr><th>Dimension</th><th>State, sourced</th></tr></thead>
+      <tbody>
+        <tr><td>Incumbent + competing ISPs</td><td>Five wired providers. <strong>Xfinity (cable) 98.4%</strong> coverage to 2&nbsp;Gbps; <strong>Frontier (fiber) 92.6%</strong> coverage to 7&nbsp;Gbps symmetrical; <strong>AT&amp;T (fiber/5G) 73.9%</strong> coverage to 5&nbsp;Gbps. <em>Source: BroadbandNow, FCC Broadband Data Collection derived, broadbandnow.com/Texas/League-City, valid as of 2026-06-20.</em></td></tr>
+        <tr><td>BEAD / grant posture</td><td>Not a BEAD market: with three competitive wired networks across nearly the whole city, League City is served, not the unserved/underserved footprint Texas's $1.3B BEAD allocation targets (~243,000 locations statewide). <em>Source: Texas Comptroller / BDO BEAD approval release, 2025-11-20.</em></td></tr>
+        <tr><td>Pole / ROW posture</td><td>The competitive layer here is right-of-way and franchise, not subsidy. League City runs a standing Transportation &amp; Infrastructure Committee that governs ROW and infrastructure work; it met 2026-06-08. <em>Source: League City corpus record, meeting date 2026-06-08.</em> The state-level pole-attachment / ROW docket record is the Texas PUC Interchange (interchange.puc.texas.gov), searchable by utility and keyword; no League City pole docket has been pulled yet (residual gap, noted in the manifest).</td></tr>
+      </tbody>
+    </table>
+    <p class="fields-line">Local supporting evidence under the read, from the city's own record, dated to the meeting:</p>
+    <table>
+      <thead><tr><th>Date</th><th>Source</th><th>What the record shows</th></tr></thead>
+      <tbody>
+        <tr><td class="num">2026-06-08</td><td>Transportation &amp; Infrastructure Committee agenda</td><td>The standing body that governs right-of-way and infrastructure work, the local venue where pole and ROW posture toward broadband providers is set. Current as of June 2026.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Why this is the honest read: League City is the kind of market where the public-record value is not "find the gap before the subsidy lands," it is "be in the room for the ROW and franchise cycle, and read the council's posture toward the three networks already competing." The weekly watch on this jurisdiction is tuned to that: infrastructure-committee and council activity that touches ROW, franchise, and the anchor-institution accounts, not BEAD application chatter that will not come here.</p>
 
-  <h4>Mapped to the three areas in your proposal</h4>
-  <p><strong>Infrastructure siting, strongest fit today.</strong> 17,415 Texas tower sites with owner and location, plus FAA pre-construction filings, plus the zoning, moratoria, and site-plan activity that shows up in the policy-spread layer. This is where the data is deepest right now and maps directly to siting field infrastructure.</p>
-  <p><strong>Public-program funding and procurement, good coverage, taxonomy work on the ramp.</strong> Budgets, capital plans, RFPs, check registers, and council agendas and minutes are well covered across Texas. The signals exist; today they're classified against general municipal activity, not pre-filtered to your program taxonomy (NG911/PSAP, Capital Projects Fund). A program-tagging pass over the Texas corpus is the single highest-value build in the pilot, and it's on the ramp (1.4).</p>
-  <p><strong>Rural-health and community access, thinnest today, biggest ramp upside.</strong> This is where targeted onboarding of additional Texas jurisdictions plus program tagging will move the number most. Honest read: don't expect dense rural-health signal on day one; expect it to build through the pilot.</p>
+    <h3>Lake Jackson, TX (Brazoria County): a cable-dominant town with the fiber question still open</h3>
+    <p><strong>The read.</strong> Lake Jackson is the opposite shape from League City. The cable incumbent, Xfinity, reaches almost the whole city, but fiber is only partial: AT&amp;T fiber covers a bit over a third of it, and no second fiber network has saturated the town the way Frontier has in League City. That gap is the story, this is a market where the next fiber build is still contestable, where a provider expanding fiber footprint or competing for the underserved pockets has room to move. And the town is in an active capital cycle: its March 2026 council record shows infrastructure work (waterline boring, street-repair engineering, a bond project), the kind of dig-once, shared-trench, pole-make-ready timing a fiber builder wants to be early on.</p>
+    <p class="fields-line">The broadband state, each fact sourced and dated:</p>
+    <table>
+      <thead><tr><th>Dimension</th><th>State, sourced</th></tr></thead>
+      <tbody>
+        <tr><td>Incumbent + competing ISPs</td><td>Five wired providers. <strong>Xfinity (cable) 96.2%</strong> coverage to 2&nbsp;Gbps; <strong>AT&amp;T Fiber 38.7%</strong> coverage to 5&nbsp;Gbps, the only fiber network listed. Fiber availability city-wide is 38.7%. <em>Source: BroadbandNow, FCC Broadband Data Collection derived, broadbandnow.com/Texas/Lake-Jackson, valid as of 2026-06-20.</em></td></tr>
+        <tr><td>BEAD / grant posture</td><td>A mostly-served town with a fiber gap rather than a wholesale unserved footprint, so the BEAD relevance is the pockets, not the whole city. Texas's BEAD program ($1.3B, NTIA-approved Nov 2025) funds ~243,000 unserved/underserved locations statewide, of which ~123,000 are slated for end-to-end fiber; per-county subgrantee awards are releasing as agreements execute and are the thing to watch for Brazoria-County pockets. <em>Source: Texas Comptroller / BDO BEAD approval release, 2025-11-20.</em> No Lake Jackson-specific BEAD award is confirmed yet, do not assume one.</td></tr>
+        <tr><td>Pole / ROW posture</td><td>Lake Jackson is in an active capital/infrastructure cycle (see the local record below), which is where dig-once and pole-make-ready timing lives. State pole-attachment / ROW dockets are on the Texas PUC Interchange (interchange.puc.texas.gov); no Lake Jackson docket pulled yet (residual gap).</td></tr>
+      </tbody>
+    </table>
+    <p class="fields-line">Local supporting evidence under the read, from the town's own record, dated to the meeting:</p>
+    <table>
+      <thead><tr><th>Date</th><th>Source</th><th>What the record shows</th></tr></thead>
+      <tbody>
+        <tr><td class="num">2026-03-16</td><td>City Council agenda</td><td>Waterline boring, street-repair engineering, HVAC pre-orders, and a bond project, an active capital cycle. The dig-once / shared-trench / pole-make-ready timing a fiber builder wants to be early on. <em>Source: lakejackson-tx.gov AgendaCenter, agenda _03162026-1486 (verified live 2026-06-20).</em></td></tr>
+      </tbody>
+    </table>
+    <p class="note">Why this is the honest read: the contrast with League City is the point. League City is won on ROW and franchise because the networks are already built; Lake Jackson still has an open fiber question and an active dig cycle, so the watch here leans toward capital-plan and infrastructure timing plus any BEAD subgrantee award that reaches Brazoria County. Same engine, different posture, because the two markets are at different points in the broadband buildout.</p>
 
-  <h3>1.2&nbsp; Sample extract: real Texas signals (high-priority, 2026)</h3>
-  <p class="sub">Each row traces to a source document. Dates are the meeting or filing date.</p>
-  <table>
-    <thead><tr><th>Jurisdiction</th><th>Date</th><th>Type</th><th>What the signal caught</th></tr></thead>
-    <tbody>
-      <tr><td>Southlake</td><td class="num">2026-04-06</td><td>FAA filing</td><td>T-Mobile filed for a new 83&nbsp;ft tower (FAA OE/AAA case 2026-ASW-4961-OE). The 7460-1 lands at least 45 days before construction, a clean pre-build siting signal.</td></tr>
-      <tr><td>San Ygnacio</td><td class="num">2026-03-17</td><td>FAA filing</td><td>American Towers LLC filed for planned tower construction (case 2026-ASW-4144-OE). Same pre-construction lead time.</td></tr>
-      <tr><td>Seabrook</td><td class="num">2026-04-07</td><td>Council agenda</td><td>Council moving to apply for FEMA Hazard Mitigation Grants for outdoor warning siren systems, new public-safety spend entering the pipeline at the application stage. (Same meeting also recorded a $320k street-reconstruction award, for context.)</td></tr>
-      <tr><td>Seabrook</td><td class="num">2026-03-17</td><td>Council agenda</td><td>Wastewater treatment plant upgrades, lift-station odor control, and early-warning systems (line items $6,500 to $164,588).</td></tr>
-      <tr><td>Taylor County</td><td class="num">2026-04-21</td><td>Commissioners' minutes</td><td>RV park development approved contingent on a Road Use Agreement; resolution opposing Oncor transmission lines ($374,627 among the orders), utility-siting and land-use activity.</td></tr>
-      <tr><td>Lake Jackson</td><td class="num">2026-03-16</td><td>Council agenda</td><td>Waterline boring, street-repair engineering, HVAC pre-orders, and a bond project.</td></tr>
-    </tbody>
-  </table>
-  <p class="note"><strong>Why these matter, and how to read them.</strong> Two kinds, and the difference matters. The two FAA filings are <em>structural</em>: a 7460-1 is on the public record a fixed stretch before construction, so the lead time is a fact of the filing process, nothing inferred. The Seabrook, Taylor County, and Lake Jackson items are <em>planning-stage</em>: the record shows the activity and the RFP or award comes later. These rows show the <strong>shape</strong> of the precursor signal; they are not a hit-rate claim, because they're drawn from cases where the activity is already on the record. How often a flagged precursor turns into the event is what the pilot measures forward (Section 3, Earliness).</p>
-  <p class="note"><strong>How cleanly this is logged, so earliness is auditable, not asserted.</strong> Every signal carries three dates, kept distinct: the document's own meeting or filing date, the timestamp we first crawled it, and <code>detected_at</code>, the timestamp our system classified it. The lead time I'd claim is the gap between <code>detected_at</code> and the later public downstream event, two dated facts, neither reconstructed after the outcome was known. That timestamp discipline is what lets earliness be measured rather than remembered.</p>
+    <h3>What the full per-community baseline covers (the ~week-4 deliverable)</h3>
+    <p>The two reads above are samples of the shape. For each community on your target list, the forensic baseline is the synthesized current broadband state: who is in the ground and who is competing, any municipal-broadband or franchise moves on the record, BEAD and grant posture, the pole-attachment and right-of-way stance the council has taken, recent buildout activity, and the council and regulatory signals that move all of it. Each read is built from the community's own primary records, and the supporting datasets below feed it. This is the "where do we stand and how did we get here" for your whole Texas target area, the orientation your team walks in with before the weekly watch takes over.</p>
 
-  <p class="note"><strong>One ask that does double duty.</strong> Look at these six and tell me, even loosely, which you'd actually pursue and which are noise to you. That single reaction pre-calibrates what "relevant" means for Ready.net, so week one of the pilot is already pointed at your kind of signal instead of starting cold. Two follow-ons worth talking through live: of the ones you'd chase, what is catching one early actually worth to you, and how early would you need to know it, a week, a month, the moment it posts? What's relevant, what it's worth, and how fast you need it are the three answers that shape both the feed and the terms.</p>
+    <h3>The corpus and datasets the baseline is built from</h3>
+    <p class="section-sub">Every figure is a live count from the corpus as of 2026-06-10. Each signal date is the document's own meeting or filing date, not the date I discovered it.</p>
 
-  <h4>Live right now, downstream decision still pending</h4>
-  <p>The rows above are recent, but the most honest earliness demo is a signal whose downstream event <em>hasn't happened yet</em>, so you can watch it resolve in real time rather than take a resolved look-back on faith. At send I include the freshest still-pending Texas signals, a planning-stage grant application, a capital-plan line, a fresh FAA filing inside its pre-build window, each stamped with its <code>detected_at</code> timestamp and a live source link, and treat them as the pilot's first forward-logged calls: flagged now, before the RFP or award, and scored later when it lands.</p>
+    <h4>What is in the corpus for Texas today</h4>
+    <table>
+      <thead><tr><th>Dimension</th><th>Texas, today</th></tr></thead>
+      <tbody>
+        <tr><td>Jurisdictions with documents</td><td class="big">265</td></tr>
+        <tr><td>Jurisdictions producing classified signals</td><td class="big">233</td></tr>
+        <tr><td>Classified signals</td><td><span class="big">7,160</span> (1,384 high-priority)</td></tr>
+        <tr><td>Signal recency</td><td>continuous through <strong>June 2026</strong></td></tr>
+        <tr><td>Tower sites</td><td><span class="big">17,415</span>, the single largest state in the tower dataset</td></tr>
+        <tr><td>Policy-spread events</td><td><strong>366</strong> across 19 jurisdictions (early layer)</td></tr>
+        <tr><td>Document types</td><td>agendas, minutes, budgets, capital plans, RFPs, ordinances, notices, check registers, CAFRs, tax-rate recaps, FAA tower filings</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>On the denominator, so the 265 is honest:</strong> Texas has roughly 1,200 incorporated cities and 254 counties. The 265 above are the jurisdictions actively producing a crawlable public record in the corpus today; coverage concentrates where the municipal record is published online and current. Onboarding the specific jurisdictions on your target list is exactly what the pilot ramp prioritizes, which is why the first thing I would want from you is that list.</p>
 
-  <h3>1.3&nbsp; Supporting datasets</h3>
-  <h4>Texas tower sites (17,415 total; owner + jurisdiction + structure height)</h4>
-  <table>
-    <thead><tr><th>Jurisdiction</th><th>Owner</th><th class="num">Height (m)</th></tr></thead>
-    <tbody>
-      <tr><td>Midland</td><td>Crown Castle Inc</td><td class="num">94.5</td></tr>
-      <tr><td>San Antonio</td><td>AT&amp;T</td><td class="num">94.4</td></tr>
-      <tr><td>Houston</td><td>T-Mobile USA, Inc.</td><td class="num">94.2</td></tr>
-      <tr><td>Marble Falls</td><td>SBA Towers IX, LLC</td><td class="num">92.0</td></tr>
-      <tr><td>Sonora</td><td>Vertical Bridge REIT LLC</td><td class="num">91.4</td></tr>
-    </tbody>
-  </table>
-  <p class="note">These are representative commercial structures. Across the 17,415 Texas towers the statewide average height is 71m and over 80% are under 100m, with the major tower operators and carriers well represented: Crown Castle (~1,950 sites), American Tower (~1,900), Tillman, and Verizon, AT&amp;T, and T-Mobile among them. The dataset's tail does include a handful of 600m broadcast masts; this sample is the cellular-scale infrastructure relevant to siting, not that tail.</p>
+    <h4>More evidence from the corpus, the signals a baseline reads (high-priority, 2026)</h4>
+    <p class="section-sub">Further real rows beyond the two communities above, each tracing to a source document. Dates are the meeting or filing date. These are the kind of raw signal that feeds a community read.</p>
+    <table>
+      <thead><tr><th>Jurisdiction</th><th>Date</th><th>Type</th><th>What the signal caught</th></tr></thead>
+      <tbody>
+        <tr><td>Southlake</td><td class="num">2026-04-06</td><td>FAA filing</td><td>T-Mobile filed for a new 83&nbsp;ft tower (case 2026-ASW-4961-OE). A 7460-1 lands at least 45 days before construction, a clean pre-build siting signal, the lead time a fact of the filing process.</td></tr>
+        <tr><td>San Ygnacio</td><td class="num">2026-03-17</td><td>FAA filing</td><td>American Towers LLC filed for planned tower construction (case 2026-ASW-4144-OE). The same structural pre-construction lead time.</td></tr>
+        <tr><td>Taylor County</td><td class="num">2026-04-21</td><td>Commissioners' minutes</td><td>RV park development approved contingent on a Road Use Agreement; resolution opposing Oncor transmission lines ($374,627 among the orders), utility-siting and land-use activity.</td></tr>
+        <tr><td>Seabrook</td><td class="num">2026-04-07</td><td>Council agenda</td><td>Council moving to apply for FEMA Hazard Mitigation Grants for outdoor warning siren systems, public-safety spend at the application stage. Same meeting recorded a $320k street-reconstruction award.</td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Why these matter, and how to read them.</strong> Two kinds, and the difference matters. The FAA filings are <em>structural</em>: a 7460-1 is on the public record a fixed stretch before construction, so the lead time is a fact of the filing process, nothing inferred. The Taylor County and Seabrook items are <em>planning-stage</em>: the record shows the activity and the RFP or award comes later. These rows show the <strong>shape</strong> of the precursor signal that the community baseline synthesizes; they are not a hit-rate claim, because they are drawn from cases where the activity is already on the record. How often a flagged precursor turns into the event is what the pilot measures forward (section 3, Earliness).</p>
+    <p class="note"><strong>How cleanly this is logged, so earliness is auditable, not asserted.</strong> Every signal carries three dates, kept distinct: the document's own meeting or filing date, the timestamp I first crawled it, and <code>detected_at</code>, the timestamp my system classified it. The lead time I would claim is the gap between <code>detected_at</code> and the later public downstream event, two dated facts, neither reconstructed after the outcome was known. That timestamp discipline is what lets earliness be measured rather than remembered.</p>
 
-  <h4>Texas policy-spread, tracked by topic across jurisdictions</h4>
-  <p class="sub">Shown as topic coverage rather than per-event dates (the per-event adoption dates aren't yet reliable enough to publish; the topic and jurisdiction tracking is solid).</p>
-  <table>
-    <thead><tr><th>Policy topic spreading across TX jurisdictions</th><th class="num">Events tracked</th></tr></thead>
-    <tbody>
-      <tr><td>Zoning &amp; site plan</td><td class="num">68</td></tr>
-      <tr><td>Dark-sky lighting</td><td class="num">61</td></tr>
-      <tr><td>Environmental protection (general)</td><td class="num">31</td></tr>
-      <tr><td>Accessory dwelling units</td><td class="num">19</td></tr>
-      <tr><td>Watershed protection overlay</td><td class="num">18</td></tr>
-      <tr><td>Property tax &amp; fees</td><td class="num">18</td></tr>
-      <tr><td>PFAS &amp; contaminant</td><td class="num">6</td></tr>
-    </tbody>
-  </table>
+    <h3>Supporting datasets</h3>
+    <h4>Texas tower sites (17,415 total; owner + jurisdiction + structure height)</h4>
+    <table>
+      <thead><tr><th>Jurisdiction</th><th>Owner</th><th class="num">Height (m)</th></tr></thead>
+      <tbody>
+        <tr><td>Midland</td><td>Crown Castle Inc</td><td class="num">94.5</td></tr>
+        <tr><td>San Antonio</td><td>AT&amp;T</td><td class="num">94.4</td></tr>
+        <tr><td>Houston</td><td>T-Mobile USA, Inc.</td><td class="num">94.2</td></tr>
+        <tr><td>Marble Falls</td><td>SBA Towers IX, LLC</td><td class="num">92.0</td></tr>
+        <tr><td>Sonora</td><td>Vertical Bridge REIT LLC</td><td class="num">91.4</td></tr>
+      </tbody>
+    </table>
+    <p class="note">These are representative commercial structures. Across the 17,415 Texas towers the statewide average height is 71m and over 80% are under 100m, with the major tower operators and carriers well represented: Crown Castle (~1,950 sites), American Tower (~1,900), Tillman, and Verizon, AT&amp;T, and T-Mobile among them. The dataset's tail does include a handful of 600m broadcast masts; this sample is the cellular-scale infrastructure relevant to siting, not that tail.</p>
 
-  <h4>Parcels + tower-to-landowner matching, proven in Maine, on the Texas ramp</h4>
-  <p class="sub">Texas parcels aren't loaded yet; Maine is the working model. The capability is matching a tower structure to the parcel and landowner beneath it, so you see who controls the ground at a siting location. A few of the 133 Maine matches:</p>
-  <table>
-    <thead><tr><th>Tower operator</th><th>Landowner beneath (ME)</th><th>Municipality</th></tr></thead>
-    <tbody>
-      <tr><td>American Tower Investments LLC</td><td>7 County Road LLC</td><td>Gorham</td></tr>
-      <tr><td>Crown Atlantic Company, LLC (Crown Castle)</td><td>SB Holdings, Inc.</td><td>Gorham</td></tr>
-      <tr><td>US Cellular</td><td>Brookwood Associates</td><td>Gorham</td></tr>
-    </tbody>
-  </table>
-  <p>Each match carries the operator, the landowner and owner type (carrier, private, commercial, utility, municipal), the parcel ID and mailing address, and an estimated annual ground-rent where assessor data supports it. That's the structures-matched-to-landowners-for-siting-context capability your proposal asks for, and it's the model we'd stand up for Texas, where the parcel layer comes from a licensed statewide source rather than per-county collection.</p>
+    <h4>Texas policy-spread, tracked by topic across jurisdictions</h4>
+    <p class="section-sub">Shown as topic coverage rather than per-event dates (the per-event adoption dates are not yet reliable enough to publish; the topic and jurisdiction tracking is solid).</p>
+    <table>
+      <thead><tr><th>Policy topic spreading across TX jurisdictions</th><th class="num">Events tracked</th></tr></thead>
+      <tbody>
+        <tr><td>Zoning &amp; site plan</td><td class="num">68</td></tr>
+        <tr><td>Dark-sky lighting</td><td class="num">61</td></tr>
+        <tr><td>Environmental protection (general)</td><td class="num">31</td></tr>
+        <tr><td>Accessory dwelling units</td><td class="num">19</td></tr>
+        <tr><td>Watershed protection overlay</td><td class="num">18</td></tr>
+        <tr><td>Property tax &amp; fees</td><td class="num">18</td></tr>
+        <tr><td>PFAS &amp; contaminant</td><td class="num">6</td></tr>
+      </tbody>
+    </table>
 
-  <h3>1.4&nbsp; Live today vs. on the pilot ramp (honest scoping)</h3>
-  <table>
-    <thead><tr><th>Data category</th><th>Texas status</th></tr></thead>
-    <tbody>
-      <tr><td>Document signals (budgets, capital plans, RFPs, ordinances, minutes)</td><td><strong>Live</strong>, 7,160 signals, 233 jurisdictions</td></tr>
-      <tr><td>Tower sites</td><td><strong>Live</strong>, 17,415</td></tr>
-      <tr><td>Policy-spread</td><td><strong>Emerging</strong>, topic + jurisdiction tracking across 366 events / 19 jurisdictions; per-event dating and tagging to your programs are on the ramp</td></tr>
-      <tr><td>Program tagging (NG911, broadband, water/PFAS, rural-health, library/telehealth)</td><td><strong>On ramp</strong>, keyword + classifier overlay over the TX corpus during the pilot</td></tr>
-      <tr><td>Construction permit records (location + status)</td><td><strong>On ramp</strong>, same pipeline used in other states, stood up for TX</td></tr>
-      <tr><td>Parcels (assessor, zoning, acreage, value) + tower-parcel matching</td><td><strong>On ramp</strong>, proven in Maine; loaded for TX on the pilot ramp</td></tr>
-    </tbody>
-  </table>
-  <p>I scale coverage to committed demand rather than building it on spec, so the on-ramp items come online against a confirmed pilot start. With a July 1 start, I bring your target jurisdictions online in the two weeks beforehand and seed the watchlist, so the feed is already populated on day one instead of a cold stream, and the 90-day clock starts on signal that's already flowing.</p>
-  <p class="note"><strong>Coverage and methodology.</strong> Municipal Alpha continuously crawls municipal sources (council and commission agendas, minutes, budgets, capital plans, RFPs, ordinances, notices) plus federal layers (FAA tower filings, federal grants and solicitations), classifies each document, and tracks how policies spread across jurisdictions. Updates run weekly, delivered as CSV/JSON or via read access.</p>
+    <h4>Parcels + tower-to-landowner matching, proven in Maine, on the Texas ramp</h4>
+    <p class="section-sub">Texas parcels are not loaded yet; Maine is the working model. The capability is matching a tower structure to the parcel and landowner beneath it, so you see who controls the ground at a siting location. A few of the 133 Maine matches:</p>
+    <table>
+      <thead><tr><th>Tower operator</th><th>Landowner beneath (ME)</th><th>Municipality</th></tr></thead>
+      <tbody>
+        <tr><td>American Tower Investments LLC</td><td>7 County Road LLC</td><td>Gorham</td></tr>
+        <tr><td>Crown Atlantic Company, LLC (Crown Castle)</td><td>SB Holdings, Inc.</td><td>Gorham</td></tr>
+        <tr><td>US Cellular</td><td>Brookwood Associates</td><td>Gorham</td></tr>
+      </tbody>
+    </table>
+    <p>Each match carries the operator, the landowner and owner type (carrier, private, commercial, utility, municipal), the parcel ID and mailing address, and an estimated annual ground-rent where assessor data supports it. That is the structures-matched-to-landowners-for-siting-context capability your proposal asks for, and it is the model I would stand up for Texas, where the parcel layer comes from a licensed statewide source rather than per-county collection.</p>
 
-  <h2><span class="num">2</span>What you actually get, and how you'd steer it</h2>
-  <p>The deliverable isn't a report I write up each cycle, it's a <strong>living watchlist</strong> of the Texas permitting and infrastructure activity that maps to your two modes: the jurisdiction directory (the cities, counties, pole owners, utility agencies, and DOTs, with contacts, the cold-start fix), the permit and project watchlist against it (each item source-linked, with where it sits and who decides), and the early warning, every item carrying a status and a last-updated date so when a permit drifts toward the 90-day clock or a project advances, you see it. New items get introduced as we find them, the existing ones get a weekly refresh, and that weekly change is what you consume. Delivered as a structured weekly pull (API or a cloud file location), the low-overhead place to source data you described.</p>
-  <p><strong>What each weekly item looks like.</strong> Here is one of the six real rows from the data review, in the shape every item arrives.</p>
-  <div class="example">
-    <div class="ex-where">Seabrook, TX &middot; Council agenda &middot; Apr 7, 2026</div>
-    <div class="ex-title">Council moving to apply for FEMA Hazard Mitigation Grants for outdoor warning siren systems</div>
-    <div class="ex-why"><strong>Why it matters:</strong> new public-safety spend entering the pipeline at the application stage, while there's still a decision to influence, the RFP and the award come later. <strong>Matched on:</strong> your public-program funding and procurement area, at a watched jurisdiction.</div>
+    <h3>Mapped to your three areas, with an honest read on each</h3>
+    <p><strong>Infrastructure siting, strongest fit today.</strong> 17,415 Texas tower sites with owner and location, plus FAA pre-construction filings, plus the zoning, moratoria, and site-plan activity in the policy-spread layer. This is where the data is deepest right now and maps directly to siting field infrastructure.</p>
+    <p><strong>Public-program funding and procurement, good coverage, taxonomy work on the ramp.</strong> Budgets, capital plans, RFPs, check registers, and council agendas and minutes are well covered across Texas. The signals exist; today they are classified against general municipal activity, not pre-filtered to your program taxonomy (NG911/PSAP, Capital Projects Fund, broadband/BEAD). A program-tagging pass over the Texas corpus is the single highest-value build in the pilot.</p>
+    <p><strong>Rural-health and community access, thinnest today, biggest ramp upside.</strong> This is where targeted onboarding of additional Texas jurisdictions plus program tagging will move the number most. Honest read: do not expect dense rural-health signal on day one; expect it to build through the pilot.</p>
   </div>
-  <p class="fields-line">Every item carries the same fields: <strong>Jurisdiction &middot; Source and date &middot; What it is &middot; Quote from the record &middot; Why it matters &middot; Matched on &middot; Source link &middot; Status</strong> (new, updated, or unchanged) <strong>&middot; Useful?</strong> (you mark it).</p>
-  <p class="note"><strong>How you steer it, the loop that makes it yours.</strong> You tell us what landed, the feed sharpens to your pipeline, the noise drops. Returning it is low-touch: each row ships with a stable id and the <strong>useful</strong> column, you mark a few and drop the file back in the same shared location, or we just read it from what you exported and pursued. It works like training a Spotify or Netflix feed, the more you tell it what hit, the more it serves up what matters and drops what doesn't, only here it's tuned on what Ready.net actually pursues. It cuts both ways, you get better results and I get a better product, so it's mutual, not a favor and not a hoop. Nothing is gated on it; if a week slips the passive signal carries the loop. What you flag as relevant stays yours; only the generic real-signal-vs-noise quality signal is ever shared.</p>
-  <p><strong>Scope and relevance move at different speeds, and that's by design.</strong> Relevance, which of the surfaced items matter, sharpens continuously as you react to the weekly pull, that's the loop above and where the real tuning happens. Scope, the jurisdiction list we watch, is the list you send back, and we run with it rather than keep perfecting it, because the point is to get moving and let results show. Your target list needs to be enough to produce a useful first pull, not exhaustively complete on day one. Widening it in a real way, more jurisdictions, more states, is the coverage step we take at the standing contract, so the pilot covers a good-enough starting set and the contract is where coverage grows.</p>
 
-  <h2><span class="num">3</span>How we'd measure the four questions</h2>
-  <p class="sub">Your four evaluation questions are the right ones. This turns each into something we can both <em>measure</em>, so the end evaluation is arithmetic instead of a gut feel. The measurement method below is my proposal; the bars themselves we set together at kickoff, and I'd rather you propose them, you know what makes this worth continuing better than I do, and I'll tell you honestly which ones I can commit to before the clock starts.</p>
-  <p>Before the mechanics, the structure: the four questions split into three layers by who controls what, so we both know what each of us is on the hook for.</p>
-  <div class="tier">
-    <div class="lab">My end (measurable, and it is mine)</div>
-    <p>This is what you hold me to: <strong>coverage</strong> of your named jurisdiction list, no silent gaps; <strong>relevance tuning</strong>, you flag what's useful and the feed tunes toward it, the feed's quality is mine even though the flags are yours; the <strong>discovery lead</strong> on real public events, date math that can't be inflated; <strong>completeness</strong>, the items from small jurisdictions you wouldn't otherwise have seen; and that every item carries a <strong>why-it-matters</strong>, if I can't name what you'd do with it, it doesn't belong in the feed. One thing I'm deliberately not doing: chasing a "useful score" by sending only safe, obvious items. That would quietly cost you the small-jurisdiction catches that are the whole point, relevance and completeness move together. What's shared is whether you <em>act</em> on it, and that's the next tier.</p>
+  <div class="section">
+    <h2><span class="num">2</span>What you actually get, and how you'd steer it</h2>
+    <p>The deliverable is not a report I write up each cycle, it is a <strong>weekly watch</strong> on the Texas jurisdictions you care about: the permitting and infrastructure activity that maps to broadband, surfaced while it is still an agenda item rather than a denial letter. New items get introduced as I find them, the existing ones get a weekly refresh with a status, and that weekly change is what you consume. It arrives two ways.</p>
+
+    <h3>Mode one: the email digest</h3>
+    <p>A readable weekly digest your field and program teams can scan: each item with where it sits, who decides, and why it matters to broadband, scored for relevance and carrying a status as it moves toward a clock or an award.</p>
+
+    <h3>Mode two: the CSV that joins your systems</h3>
+    <p>The same items as a structured weekly pull, a CSV or read-access feed, that drops into the Texas pipeline and tooling you already run rather than asking your team to rebuild anything. Since you have your own AI tooling on top of your Texas pipeline, the feed is built to be machine-joined, not just read.</p>
+    <p class="fields-line">Every item carries the same fields: <strong>Jurisdiction &middot; Source and date &middot; What it is &middot; Quote from the record &middot; Why it matters &middot; Matched on &middot; Source link &middot; Status</strong> (new, updated, or unchanged) <strong>&middot; Useful?</strong> (you mark it). The status and last-updated on every item are the early warning: you see a permit drifting toward the 90-day clock, or a project advancing from planning to procurement, while there is still a decision to influence.</p>
+
+    <h3>How you'd steer it</h3>
+    <p><strong>The feed defaults to relevant.</strong> Every item ships marked useful by default, so there is nothing you have to do for it to work. When something misses, you mark the Useful column and drop the file back in the same shared location, and that one signal sharpens the next week to your pipeline. It works like training a Netflix recommendation feed, except it is tuned on what Ready.net actually pursues. Low-friction by design: the loop runs on your silence, and only sharpens when you choose to correct it. What you flag as relevant stays yours; only the generic real-signal-versus-noise quality signal is ever shared.</p>
   </div>
-  <div class="tier">
-    <div class="lab">The shared proof (the one we read together)</div>
-    <p>You're acting on it: the <strong>acted-on rate</strong> (your Relevance question) and the <strong>net-new</strong> opportunities you'd actually pursue. Both take your eyes, your flags and the blind reconciliation against your pipeline, so I'm not gated on them alone, but they're the truest signal the thing is working.</p>
+
+  <div class="section">
+    <h2><span class="num">3</span>How we'd measure it, and whose job is what</h2>
+    <p class="section-sub">I should be graded on the intelligence I deliver, not on your internal results, which ride on your own pipeline, capital, and relationships. So success is measured on three things, each one only on what I can actually control, so the end evaluation is arithmetic instead of a gut feel.</p>
+
+    <h3>What I am on the hook for</h3>
+    <ul class="quick-points">
+      <li><strong>Coverage</strong> of the agreed scope, your named Texas jurisdictions plus the surrounding ring, with no silent gaps, every claim sourced to the town's own primary record rather than a tracker or a summary. Measured as the share of your target jurisdictions actively monitored with at least one relevant signal in a trailing 12-month look-back. The look-back matters because the pilot runs over a Texas summer recess, so anchoring on in-window yield would penalize us for a town's calendar, not our reach. Target is yours to propose once we both see the jurisdiction list.</li>
+      <li><strong>Relevance</strong>, the feed tunes toward what you flag as useful; the feed's quality is mine even though the flags are yours. Read always next to completeness, the small-jurisdiction items you would not otherwise have seen, so the feed cannot inflate its useful-rate by narrowing to safe, obvious items.</li>
+      <li><strong>Earliness</strong>, catching real changes with enough lead time to act. The bar I propose, because I know where the public record lands, is at least one change caught at agenda stage or earlier, which is weeks of runway before the binding vote or the award, not a same-day ping and not a quarter's notice. This pilot should clear it on my own ground.</li>
+    </ul>
+
+    <p class="note"><strong>The rolling scorecard.</strong> These three, coverage, relevance, and earliness, are not a one-time end-of-pilot reckoning. Each weekly digest carries them at the top as a small rolling scorecard, so terms-met is continuously visible rather than argued at day 90. By the time we get to the conversion decision the numbers are pre-validated, you have watched them every week, and the auto-roll below is just confirming what the scorecard already showed.</p>
+
+    <p class="note"><strong>How earliness is measured, and validated.</strong> Lead time is arithmetic from dated documents, not a judgment: the gap between when I flag a change at its earliest public artifact (a hearing scheduled on an agenda, a grant application, a 7460-1 inside its pre-build window) and the binding decision (the vote, the RFP, or the award). Both dates come from the documents, so the number is auditable, not asserted. I validate it two ways, both on my own ground. First, a retrospective backtest: name two or three known past Texas outcomes and I reverse-engineer the precursor chain from public records, dates straight from the record, provable today without you lifting a finger. Because you pick the case, it cannot be cherry-picked. Second, a forward catch during the pilot: at least one real change surfaced at its early stage with a documented lead time, logged before the outcome and scored after, so there is no crediting hindsight. The backtest proves method and lead; the forward catch is the only test that cannot cheat. Neither needs you to confirm it helped.</p>
+
+    <h3>Whose job is what</h3>
+    <p>I am accountable for coverage, sourcing, and lead-time. You co-own the relevance feedback, a few minutes when something misses. I am <strong>not</strong> gated on your hit-rate, your deal count, or your outcomes, those ride on your own pipeline, capital, and relationships, and I would be suspicious of any vendor who claimed them. I will track and report the contribution, but I will not ask to be gated on an outcome I do not own.</p>
+
+    <p class="note"><strong>The default-true consequence.</strong> Because every item ships marked useful, your silence means the terms are being met. There is nothing you have to send back for the watch to count as working. The only thing that triggers a conversation is the reverse: if a meaningful share comes back marked not-useful, that is the check-in, we sit down and ask why that share is missing, and re-point the read. Silence is success; a run of misses is the signal to recalibrate.</p>
+
+    <p>If I do not deliver the coverage and the lead-time catches, we do not roll forward. That is the line, and it is one I can be held to without reaching into your results.</p>
   </div>
-  <div class="tier">
-    <div class="lab">Your outcomes (yours to close, I report the contribution)</div>
-    <p>Pipeline opened, deals won, a state customer renewed where the feed played a part. I can't close those for you, that's your team and your relationships, but I'll show where something we surfaced was the early thread, so the chain from signal to outcome stays visible. Those numbers never sit on my scorecard, and I'd be suspicious of any vendor who claimed them.</p>
+
+  <div class="section">
+    <h2><span class="num">4</span>The shape of the deal</h2>
+    <p>A paid Texas pilot, scaled to get going, structured so we both walk away clean at the end if it is not delivering. The start keys off your three inputs rather than a fixed date: from the day I have them in hand I spend about two weeks bringing your jurisdictions online so the feed is live and tuned to you on day one, so if they are back to me by the end of June the feed goes live around mid-July.</p>
+    <ul class="quick-points">
+      <li><strong>Calibration (week 0).</strong> We define the exact scope together off the pre-filled calibration sheet: your Texas jurisdictions, the program keywords (NG911/PSAP, Capital Projects Fund, broadband/BEAD, pole attachments), the target entities (pole owners, utility agencies, TxDOT districts), and what "useful" means to your field team. This is what sharpens everything below to your pipeline.</li>
+      <li><strong>Your Texas baseline (about week 4).</strong> The full picture for your scope: your target jurisdictions and the surrounding ring, the program-tagging pass over the Texas corpus, every claim sourced to the primary record. This is the "where do we stand and how did we get here" for your whole Texas target area, the equivalent of a forensic baseline before the weekly watch takes over.</li>
+      <li><strong>The weekly watch (ongoing).</strong> Every week after, the changes: a permit drifting toward the 90-day clock, a project advancing from planning to procurement, a grant application posted, a fresh FAA filing inside its pre-build window, surfaced while there is still a decision to influence.</li>
+    </ul>
+    <p><strong>Cost: a paid pilot, kept simple, with the fee credited toward the standing contract on conversion,</strong> so it is not re-litigated later. The full engagement is priced to the value we agree to measure: once we set the pilot's success criteria together, I put the full number on the table. The logic is simple. If this is valuable, and we have agreed how to measure that, then that is the price.</p>
+    <p><strong>If it works, it rolls; if it misses, we walk clean.</strong> At kickoff we agree two things together: the success bar (the three metrics above: coverage, relevance, earliness) and the standing-contract terms. If I hit the bar by the end of the pilot, it converts to the full engagement at those terms, with no second negotiation. If I miss, you walk away clean, with no clawback and nothing owed back, and the pilot fee already bought you the Texas signal. You decide once, on proof, instead of running a second sales cycle in 90 days.</p>
+    <p class="note">On length: 60 days works if that fits your side, but I would recommend 90 as the minimum, and to be clear that is calibration room, not a longer commitment. The feed tunes to you over the pilot, so you want to be judging the tuned version, not the cold start, and 90 days gives the forward earliness signals room to settle over a slow Texas summer. To start I need three things from you: the calibration sheet back with your jurisdictions in it, two or three known past Texas outcomes I can reverse-engineer from public records, and read-access or API delivery so engagement is observable. The fastest way to make this real is a short call: I will walk through the Texas data live, and we scope the pilot on the spot. Tell me what works.</p>
   </div>
-  <p class="sub">The mechanics of each question, below.</p>
-
-  <h3>1. Coverage <span class="sub">(is there usable signal volume across the jurisdictions that matter?)</span></h3>
-  <ul>
-    <li><strong>Metric:</strong> jurisdiction coverage ratio = (named target jurisdictions <strong>actively monitored</strong> AND with &ge;1 relevant signal in a <strong>trailing 12-month look-back</strong>) / (your named target list, frozen at delivery). Measures reach to <em>proven signal-producing</em> jurisdictions, separate from whether a town happens to meet during a summer window.</li>
-    <li><strong>Target:</strong> yours to propose at kickoff, once we both see the jurisdiction list. A fair bar depends on how many of your targets publish a rich online record versus a thin rural one, so neither of us should pick the number blind.</li>
-    <li><strong>Why look-back:</strong> the pilot runs July to August, peak summer recess for small munis. Anchoring on in-window yield would penalize us for a town's calendar, not our reach. In-window yield is reported separately; the live, in-window proof is carried by Earliness + Net-new.</li>
-    <li><strong>Carve-outs (mutual, not scored against us):</strong> a named entity with no crawlable public record; a jurisdiction that posted nothing during the window.</li>
-    <li><strong>What we need from you:</strong> (a) the TX jurisdiction list that matters, the Watch jurisdiction rows of the calibration sheet, which becomes the frozen denominator; (b) your current TX coverage today, so we know whether Coverage is even where the value lies. The list needs to be enough to start, not exhaustive, put in the jurisdictions that matter most, and we treat it as the baseline we tune from, not the finished article.</li>
-  </ul>
-
-  <h3>2. Relevance <span class="sub">(what share of signals are genuinely useful?)</span></h3>
-  <ul>
-    <li><strong>Metric (behavioral):</strong> acted-on rate = share of delivered signals you <em>engage with or advance</em> (opened or exported via the read-access feed, entered into pipeline, or pursued), reconciled against the pipeline at mid-pilot and end. A signal you use counts as relevant regardless of any label.</li>
-    <li><strong>Tuning input (not a trigger):</strong> a <code>useful? y/n/note</code> field stays, but only to tune next week's feed, separate from any gate, so there's no incentive to under-mark a signal.</li>
-    <li><strong>Anti-loophole:</strong> any signal that appears in your pursued pipeline counts as useful even if marked not useful. Use overrides the checkbox.</li>
-    <li><strong>The counterweight:</strong> relevance is always read next to completeness, how many items came from the small jurisdictions and filings you wouldn't otherwise have seen. A feed can inflate its useful-rate by narrowing to safe, obvious items; pairing the two means gaming one tanks the other, and you'd feel the thinning feed immediately.</li>
-    <li><strong>Target:</strong> calibrated at kickoff once delivery is set (read-access or API makes engagement observable; an opaque CSV does not).</li>
-    <li><strong>What we need from you:</strong> 2-3 examples of what genuinely useful looks like, and read-access or API delivery so engagement is observable.</li>
-  </ul>
-
-  <h3>3. Earliness <span class="sub">(how much lead time do the signals give?)</span></h3>
-  <p class="sub">Earliness is two claims, and they need two proofs. Splitting them is the honest way to measure it, and it's where most backtests quietly cheat.</p>
-  <h4>3a. Discovery lead, provable day one, no hindsight</h4>
-  <ul>
-    <li><strong>Metric:</strong> realized lead (days) = (objective public downstream event: RFP, permit, or award date) minus (the timestamp our system logged the precursor, <code>detected_at</code>, written the moment we classify it). Two dated facts, neither reconstructed. Plus a count of cases &ge; 60-day and &ge; 90-day lead.</li>
-    <li><strong>Target:</strong> yours to propose at kickoff. For scale, the FAA-filing class alone carries a built-in 45-day-plus pre-construction lead, and planning-stage precursors lead by months, so the data gives us a visible floor to set it against.</li>
-    <li><strong>What it proves, and doesn't:</strong> that the precursor was in the record, and in my feed, well before the public event, and how large the lead is. It does <em>not</em> by itself prove a hit rate, because the cases are picked already knowing the outcome. That's what 3b is for.</li>
-  </ul>
-  <h4>3b. Predictive hit rate, proved forward, inside the pilot</h4>
-  <ul>
-    <li><strong>Metric:</strong> of the precursors I flag forward-looking during the pilot (this points at an RFP, permit, or award, ~N days out), the share that resolve into the named event, each scored when it settles. Logged before the outcome, scored after, so there's no crediting hindsight.</li>
-    <li><strong>Target:</strong> calibrated at kickoff, reported as a running tally, since few precursors settle inside a short summer window (one reason I'd recommend 90 days, see Section 4).</li>
-    <li><strong>Why it's the rigorous one:</strong> it's tempting to label a document this-meant-X-was-coming when you already know X happened. The only test that can't cheat is one where the prediction is on the record before the outcome is. That test is the pilot.</li>
-  </ul>
-  <ul>
-    <li><strong>What we need from you (the easy ask):</strong> name 2-3 <strong>known past TX outcomes</strong> (a project, RFP, or award that happened). I reverse-engineer the precursor chain from public records for the 3a proof; because you pick the case, it can't be cherry-picked. We do <em>not</em> ask you to reconstruct internal we-learned-on-X dates.</li>
-    <li><strong>On the window:</strong> precursors lead by months and the pilot runs over a slow summer, so if earliness is the metric that matters most, the honest fix is to size the window to settled outcomes (90 days, or 60 signal-active days), not to lean harder on look-backs. The 3a discovery-lead proof is there day one regardless.</li>
-  </ul>
-
-  <h3>4. Net-new <span class="sub">(does it surface opportunities you weren't tracking?)</span></h3>
-  <ul>
-    <li><strong>Metric:</strong> net-new count = items you flag as <strong>both new to you and worth pursuing</strong>, by <strong>blind, client-side reconciliation</strong>: you mark each delivered item on your side and report the tally, your pipeline never leaves your hands. (The "worth pursuing" is what separates this from Relevance: new <em>and</em> actionable, not just unseen.)</li>
-    <li><strong>Target:</strong> calibrated at kickoff, anchored to what an opportunity is worth to you, not a generic count. For a book where individual deals are large, even <strong>one</strong> net-new opportunity you'd otherwise have missed can clear the cost of the pilot, so we set the number together rather than assert one. Reported as a running tally.</li>
-    <li><strong>What we need from you (low-exposure):</strong> roughly what one "opportunity" looks like for Ready.net and what it's worth, so the target means something, plus the new-or-known flag on the items I deliver. Zero-exposure fallback: net-new measured against the public channel you rely on.</li>
-  </ul>
-
-  <p class="note"><strong>Mutual participation.</strong> A pilot is a two-party experiment, and the feedback loop is the part that makes it work. I deliver and tune; you spend a few minutes a week on what landed. That cuts both ways: you get better results when you tell us what landed, and I get a better product from it, so it's mutual, not a favor. We name the light inputs (the kickoff inputs, the mid-pilot check-in, the weekly feedback), kept light and non-punitive: if a week slips, the clock pauses and the subjective metrics fall back to passive telemetry, never a penalty. The objective metrics still give a clean shared read.</p>
-
-  <h2><span class="num">4</span>The shape of the deal</h2>
-  <p>A <strong>paid</strong> Texas pilot, kept simple: at kickoff we agree two things, how we'd both know it worked (the four questions above) and the terms of the standing contract. I deliver and tune, and if the pilot hits that agreed bar, it <strong>carries straight into the contract at those terms</strong>, so neither of us re-opens a negotiation from zero and you're never left deciding cold whether to keep going. <strong>Proposed start: July 1</strong>, with the two weeks before it spent bringing your jurisdictions online so the feed is warm on day one, not a dry stream.</p>
-  <p><strong>What this is, and what it isn't.</strong> It's a convenience, not a lock. The bar is objective and we set it together, so conversion is the data clearing a line you helped draw, not my call. If the data doesn't clear it, you walk, owe nothing further, and the pilot fee already bought you the Texas signal (and is credited if you do continue). There's no clawback and nothing to pay back, the only thing the roll-over removes is a second negotiation.</p>
-  <p><strong>On length:</strong> 60 days works if that's what fits your side, but I'd recommend <strong>90 days as the minimum</strong>, and to be clear that's calibration room, not a longer commitment. The feed tunes to you over the pilot, so the first couple of weekly cycles are calibration, and you want to be judging the tuned version, not the cold start. 90 days also gives the forward signals room to settle, so the earliness number means something over a slow summer. <strong>If it's clearly landing before then, we can accelerate to a standing engagement early</strong>; the 90 is the runway to get it dialed in, not a clock you have to wait out.</p>
-  <p>If the pilot lands, we already agreed what good looked like and what comes next, so there's no fresh scaling conversation to have, it just continues. If it doesn't, you're free and clear.</p>
-  <ul>
-    <li>Paid pilot, the fee <strong>credited</strong> toward the contract on conversion, so it isn't re-litigated later.</li>
-    <li>Pre-agreed on both sides: we set the success bar <strong>and</strong> the standing-contract terms at kickoff. Hit the bar, the pilot converts at those terms; miss it, you walk free. No clawback, no penalty, nothing owed back, the only thing settled in advance is that we don't re-negotiate from zero.</li>
-    <li>One evaluation at the end, plus a mid-pilot check-in that reads the relevance trend so there are no surprises. Both point back at this page: a shared read against what we agreed here, not scorecard theater.</li>
-    <li>Texas only, weekly delivery (CSV/JSON or read access), internal use only.</li>
-  </ul>
-  <p class="note">The commercials (pilot and full-contract pricing, payment terms, and the data categories in scope) are a short kickoff conversation once we've agreed what success looks like. Happy to walk through any of this live; 15 minutes is plenty.</p>
 
   </div><!-- /detail-view -->
 
-  <footer>
-    Municipal Alpha &middot; prepared for Ready.net &middot; 2026-06-12 &middot; every figure is a live corpus count as of 2026-06-10; every sample row is a real record.
-  </footer>
+  <div class="footer">
+    <div>Municipal Alpha &middot; prepared for Ready.net &middot; Matt MacDonald, Founder &amp; CEO &middot; matt@municipalalpha.com</div>
+    <div><a href="https://municipalalpha.com">municipalalpha.com</a></div>
+  </div>
 
 </div>
 
 <script>
   (function(){
-    var fired = false;
     window.setView = function(v){
       var condensed = (v === 'condensed');
       document.body.classList.toggle('condensed', condensed);
       var bc = document.getElementById('btn-condensed'), bd = document.getElementById('btn-detail');
       if (bc) bc.classList.toggle('active', condensed);
       if (bd) bd.classList.toggle('active', !condensed);
-      if (!condensed && !fired && window.goatcounter && window.goatcounter.count) {
-        window.goatcounter.count({path: 'ready-net-show-details', title: 'Ready.net pilot pack: expanded to full detail', event: true});
-        fired = true;
-      }
     };
   })();
 </script>
