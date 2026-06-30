@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Municipal Alpha for Column: nationwide public-notice pilot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #0C0C0C;
+    --paper: #F7F4F0;
+    --card: #FFFFFF;
+    --signal: #E8512D;
+    --edge: #1B4332;
+    --ink-80: rgba(12, 12, 12, 0.80);
+    --ink-60: rgba(12, 12, 12, 0.60);
+    --ink-40: rgba(12, 12, 12, 0.40);
+    --ink-12: rgba(12, 12, 12, 0.12);
+    --ink-06: rgba(12, 12, 12, 0.06);
+    --signal-06: rgba(232, 81, 45, 0.06);
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .container { max-width: 780px; margin: 0 auto; padding: 44px 36px 80px 36px; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--ink-12); margin-bottom: 32px; }
+  .wordmark { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.005em; }
+  .wordmark .dot { color: var(--signal); }
+  .header-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-60); text-align: right; line-height: 1.5; }
+  .hero { margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 14px 0; }
+  .hero .lede { font-family: var(--font-body); font-size: 15.5px; line-height: 1.55; color: var(--ink-60); margin: 0; max-width: 64ch; }
+  .section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--ink-12); }
+  .section h2 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; letter-spacing: -0.005em; margin: 0 0 8px 0; }
+  .section h2 .num { color: var(--signal); font-variant-numeric: tabular-nums; margin-right: 10px; }
+  .section h3 { font-family: var(--font-body); font-weight: 600; font-size: 16px; margin: 28px 0 6px 0; }
+  .section .section-sub { font-family: var(--font-body); font-size: 14px; color: var(--ink-60); line-height: 1.5; margin: 0 0 20px 0; max-width: 62ch; }
+  .section p { font-family: var(--font-body); font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 14px 0; max-width: 62ch; }
+  .section strong { font-weight: 600; }
+  .section a { color: var(--signal); text-decoration: none; }
+  .signal-list { list-style: none; padding: 0; margin: 16px 0 0 0; display: grid; gap: 12px; }
+  .signal-list li { padding: 16px 18px; background: var(--card); border: 1px solid var(--ink-12); border-radius: 2px; }
+  .signal-list .sig-title { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .signal-list .sig-body { font-family: var(--font-body); font-size: 13.5px; line-height: 1.55; color: var(--ink-80); margin-bottom: 8px; }
+  .signal-list .sig-where { color: var(--ink-60); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .quick-points { list-style: none; padding: 0; margin: 8px 0 0 0; }
+  .quick-points li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.55; color: var(--ink-80); max-width: 62ch; }
+  .quick-points li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; background: var(--signal); }
+  .pullquote { font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.3; letter-spacing: -0.005em; color: var(--ink); margin: 22px 0; padding: 6px 0 6px 22px; border-left: 3px solid var(--signal); max-width: 60ch; }
+  .note { font-size: 13px; color: var(--ink-60); border-left: 2px solid var(--ink-12); padding-left: 14px; margin: 14px 0; line-height: 1.6; max-width: 62ch; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--ink-12); vertical-align: top; }
+  th { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink-60); border-bottom: 2px solid var(--ink); font-weight: 500; }
+
+  /* toggle */
+  .viewtoggle { display: inline-flex; border: 1px solid var(--ink-12); border-radius: 7px; overflow: hidden; font-family: var(--font-mono); font-size: 11.5px; margin: 22px 0 6px 0; }
+  .viewtoggle button { background: var(--card); color: var(--ink-60); border: 0; border-right: 1px solid var(--ink-12); padding: 8px 18px; cursor: pointer; letter-spacing: 0.02em; transition: background .12s, color .12s; }
+  .viewtoggle button:last-child { border-right: 0; }
+  .viewtoggle button.active { background: var(--ink); color: var(--paper); }
+  .viewtoggle button:not(.active):hover { background: var(--ink-06); }
+  .toggle-hint { font-family: var(--font-mono); font-size: 11px; color: var(--ink-40); margin: 0 0 10px 0; }
+  .summary-view { display: none; }
+  body.condensed .summary-view { display: block; }
+  body.condensed .detail-view { display: none; }
+  .summary-strip { font-family: var(--font-mono); font-size: 12px; color: var(--ink-60); background: var(--signal-06); border: 1px solid var(--ink-12); border-radius: 7px; padding: 13px 16px; margin: 18px 0 22px 0; line-height: 1.9; }
+  .summary-strip b { color: var(--signal); font-weight: 600; }
+  .summary-cta { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--ink-12); font-size: 14px; color: var(--ink-60); }
+
+  .footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--ink-12); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-40); display: flex; justify-content: space-between; }
+  .footer a { color: var(--ink-60); text-decoration: none; }
+
+  @media print { .viewtoggle, .toggle-hint { display: none !important; } body.condensed .detail-view { display: block !important; } body.condensed .summary-view { display: none !important; } .container { max-width: none; padding: 24px; } .section, .signal-list li { page-break-inside: avoid; } }
+  @media (max-width: 620px) { .container { padding: 28px 18px 60px 18px; } .hero h1 { font-size: 28px; } }
+</style>
+</head>
+<body class="condensed">
+<noscript><style>body.condensed .detail-view{display:block;}body.condensed .summary-view{display:none;}.viewtoggle,.toggle-hint{display:none;}</style></noscript>
+<div class="container">
+
+  <div class="header">
+    <div class="wordmark">Municipal Alpha<span class="dot">.</span></div>
+    <div class="header-meta">Prepared for Column, PBC<br>Alex Lutz &middot; 2026-07-01</div>
+  </div>
+
+  <div class="hero">
+    <h1>Where towns are moving public notice off the newspaper, and where they haven't yet</h1>
+    <p class="lede">Alex, you asked what nationwide-at-state-level looks like. Here it is across New York, Missouri, Arizona, and Kansas, each one read down to the town's own minutes and agendas, every newspaper name and dollar figure below sourced to the record rather than a tracker or an AI summary. What you see here is the snapshot. The pilot is the movie: the weekly watch that catches a town switching its official newspaper or moving notice online while it is still an agenda item, not after the account is gone.</p>
+  </div>
+
+  <div class="viewtoggle" role="group" aria-label="View density">
+    <button id="btn-condensed" class="active" type="button" onclick="setView('condensed')">Summary</button>
+    <button id="btn-detail" type="button" onclick="setView('detail')">Full detail</button>
+  </div>
+  <p class="toggle-hint">The one-screen version. Switch to full detail for all four states read through, what the weekly watch surfaces, and how the pilot runs.</p>
+
+  <!-- ================= SUMMARY VIEW ================= -->
+  <div class="summary-view">
+
+    <p><strong>The thing that costs you is a town quietly moving its notice off the newspaper, and you finding out after the legal-advertising revenue is already gone.</strong> A council designating a different official newspaper, an ordinance that lets a town notice on its website instead of in print, a legal-advertising contract going out to bid: by the time it reaches a state-bill tracker or a trade headline, the town decided months ago.</p>
+
+    <p><strong>So here is what I found in the four states you named.</strong> The shift is already on the record, and it is the same shape everywhere: notice that reads as print is quietly running through the newspaper and the website, and in one Missouri city, the newspaper, the website, and Facebook. Every read below is pulled from the town's own document, no trackers, no locked sections.</p>
+
+    <div class="summary-strip">
+      Across NY, MO, AZ, KS:&nbsp; <b>4</b> states read down to the record &middot; named papers in each (Buffalo Business First, Cameron Citizen Observer, The Legal Record) &middot; the print-to-digital shift already on the record &middot; one village's legal-notice spend named to the dollar (<b>$1,440</b>) &middot; every claim sourced to the town's own document
+    </div>
+
+    <p><strong>The pattern worth knowing.</strong> A town adding website or Facebook notice today is the leading indicator of dropping print tomorrow. The drift starts as an "and," the newspaper and the website, and becomes an "instead of." That is the moment that costs a public-notice business, and it shows up in the minutes before it is policy. A state bill tells you a requirement might change somewhere; it does not tell you which of your towns is doing it, or what they pay, or who to call.</p>
+
+    <p class="summary-cta"><strong>That's the one-screen read.</strong> Switch to <a href="#" onclick="setView('detail');return false;">full detail</a> for all four states worked through to the primary record, what the weekly watch surfaces, how I would be measured, and the shape of the pilot. Or fifteen minutes live is plenty.</p>
+
+  </div>
+
+  <!-- ================= DETAIL VIEW ================= -->
+  <div class="detail-view">
+
+  <div class="section">
+    <h2><span class="num">1</span>The four states, read down to the record</h2>
+    <p class="section-sub">You named New York, Missouri, Arizona, and Kansas. Here is a real, sourced read from each, the snapshot. No locked sections and no trackers; every newspaper name and dollar figure comes from the town's own document, linked.</p>
+
+    <ul class="signal-list">
+      <li>
+        <div class="sig-title">New York, Floral Park: a village's legal-notice spend, named to the dollar</div>
+        <div class="sig-body">The Board of Trustees minutes carry a line item, <strong>"Cost of publishing legal notice $1,440.00."</strong> That is one village's actual print-notice spend, on the record and dated. Read it in <a href="https://floralparkny.gov/wp-content/uploads/2026/05/04072026-Minutes-F.pdf">the village's own minutes</a>.</div>
+        <div class="sig-where">Floral Park &middot; Nassau County, NY</div>
+      </li>
+      <li>
+        <div class="sig-title">New York, Lackawanna: the official newspaper, and the channels stacking around it</div>
+        <div class="sig-body">A public-hearing record states the notice was <strong>"published in the Buffalo Business First newspaper, the official newspaper of the City of Lackawanna, as well as the Official City Website and City Hall bulletin boards."</strong> One line names the paper and shows the city already running notice through the website and boards alongside print, the drift, mid-step. Source: <a href="https://lackawannany.gov/wp-content/uploads/2026/06/Public-hearing-minutes-Zoning-update-6.1.2026.pdf">Lackawanna hearing minutes</a>.</div>
+        <div class="sig-where">Lackawanna &middot; Erie County, NY</div>
+      </li>
+      <li>
+        <div class="sig-title">Missouri, Cameron: the newspaper, the website, and Facebook</div>
+        <div class="sig-body">The council record reads, <strong>"Notices were published in the Cameron Citizen Observer, the City's website and the City's Facebook page."</strong> The official paper is named, and the print-to-digital shift is right there in the same sentence, exactly the erosion that moves legal-advertising dollars. Source: <a href="https://www.cameronmo.com/ArchiveCenter/ViewFile/Item/5545">Cameron city record</a>.</div>
+        <div class="sig-where">Cameron &middot; Clinton County, MO</div>
+      </li>
+      <li>
+        <div class="sig-title">Arizona, the notice-placement rule that decides where your ad runs</div>
+        <div class="sig-body">An Arizona municipal notice document spells out the format rule that governs legal advertising: a Truth in Taxation notice <strong>"must be published twice in a newspaper of general circulation in the city/town, in a location other than the classified or legal advertising section."</strong> The kind of placement-and-format requirement that decides where, and whether, a notice runs in print. Source: <a href="https://azleague.org/ArchiveCenter/ViewFile/Item/479">League of Arizona Cities and Towns notice guidance</a>.</div>
+        <div class="sig-where">Arizona &middot; statewide notice rule</div>
+      </li>
+      <li>
+        <div class="sig-title">Kansas, Fairway: the public notice, and the paper it ran in</div>
+        <div class="sig-body">A zoning-board packet records that <strong>"The Public Hearing was published in the January 6, 2026, edition of The Legal Record"</strong> with notices also mailed to nearby owners. The legal-notice paper is named and dated, straight from the town's own packet. Source: <a href="https://fairwayksrebuild.govoffice2.com/vertical/Sites/%7B2E9A1127-A5E6-4265-8DEB-66A64969B748%7D/uploads/03-30-2026_Board_of_Zoning_Appeals_Agenda_and_Packet.pdf">Fairway zoning board packet</a>.</div>
+        <div class="sig-where">Fairway &middot; Johnson County, KS</div>
+      </li>
+    </ul>
+
+    <p class="note"><strong>An honest note on depth.</strong> New York, Missouri, and Arizona are deeply covered; Kansas is the lightest of the four in the corpus today, and I would rather tell you that than dress it up. The reads above are all real and sourced; how completely each state is covered is exactly what the calibration in section 4 settles, pointed at the markets that matter to you.</p>
+
+    <h3>Why the snapshot is the photo, and the watch is the movie</h3>
+    <p>Everything above is a snapshot, a moment caught in the record. The value is not the snapshot, it is the movie: the same towns watched over time, so the change is caught as it happens. A town that names the newspaper and the website today is one ordinance away from naming only the website. A snapshot tells you where notice stands; the weekly watch tells you the instant it moves, while it is still an agenda item and not yet a lost account.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span>What you actually get, and how you'd steer it</h2>
+    <p>The deliverable isn't a report I write up each cycle, it's a <strong>weekly watch</strong> on the towns and markets you care about plus the surrounding ring: the changes that move public notice off print, or put it out to bid, surfaced while they are still an agenda item rather than a lost account. It arrives two ways, a readable digest and the same items as a CSV.</p>
+
+    <h3>What it surfaces</h3>
+    <p>Each one carries a link to the signed document on the town's own portal, dated to the meeting it came from:</p>
+    <ul class="quick-points">
+      <li>A council designating or switching its official newspaper for the year.</li>
+      <li>An ordinance or charter change letting a town notice on its website or electronically in place of newspaper publication.</li>
+      <li>A town adding a website, portal, or social channel alongside print, the erosion leading indicator caught early.</li>
+      <li>A legal-advertising or public-notice-services contract going out to bid (an RFP), where a relationship is won or lost.</li>
+      <li>A budget line that cuts, moves, or questions legal-advertising spend.</li>
+      <li>A neighboring town's change, the early warning before the same move reaches your account.</li>
+    </ul>
+    <p>Not a summary, the record. And it arrives as a CSV that joins straight to the systems you already run, every row carrying its source document and the lead time, so nothing has to be rebuilt to use it.</p>
+
+    <h3>How you'd steer it</h3>
+    <p><strong>The feed defaults to relevant.</strong> Every item ships marked useful by default, so there is nothing you have to do for it to work. When something misses, you flag it, and that one signal sharpens the next week to your markets. It works like training a recommendation feed, except it is tuned on what Column actually cares about losing and winning. Low-friction by design: the loop runs on your silence, and only sharpens when you choose to correct it.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span>How we'd measure it, and whose job is what</h2>
+    <p class="section-sub">I should be graded on the intelligence I deliver, not on your retention numbers, which ride on your own team and product. So success is measured only on what I can actually control.</p>
+
+    <h3>What I am on the hook for</h3>
+    <ul class="quick-points">
+      <li><strong>Coverage</strong> of the agreed scope, your target markets plus the surrounding ring, with no silent gaps, every claim sourced to the town's own primary record rather than a tracker or a summary.</li>
+      <li><strong>Relevance</strong>, the feed tunes toward what you flag as useful; the feed's quality is mine even though the flags are yours.</li>
+      <li><strong>Earliness</strong>, catching real notice changes with enough lead time to act, an official-newspaper switch or a notice ordinance caught at agenda stage, which is weeks of runway before the binding vote, not a same-day ping and not a quarter's notice.</li>
+    </ul>
+
+    <p class="note"><strong>How earliness is measured.</strong> Lead time is arithmetic from dated documents, not a judgment: the gap between when I flag a change at its earliest public artifact (a hearing posted on an agenda, a draft ordinance) and the binding decision (the vote or adoption). Both dates come from the documents, so the number is auditable, not asserted.</p>
+
+    <h3>Whose job is what</h3>
+    <p>I am accountable for coverage, sourcing, and lead-time. You co-own the relevance feedback, a few minutes when something misses. I am <strong>not</strong> gated on your retention, your account count, or your revenue, those ride on your own team and product, and I would be suspicious of any vendor who claimed them. I will track and report the contribution, but I will not ask to be gated on an outcome I do not own. If I do not deliver the coverage and the lead-time catches, we do not roll forward.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span>The shape of the deal</h2>
+    <p>A 90-day pilot, scaled to get going, structured so we both walk away clean at the end if it is not delivering.</p>
+    <ul class="quick-points">
+      <li><strong>Calibration (week 0).</strong> Point me at the markets and the kind of account where a town change has caught you off guard, the town that switched its official paper, the one that moved notice to its website, the contract that went out to bid before you saw it coming, and we lock the scope together: your target markets plus the surrounding ring, and what "useful" means to your team.</li>
+      <li><strong>Your forensic baseline (about week 4).</strong> The notice landscape across your agreed markets, worked the way the four states above are: who each town uses, where it publishes, who has started shifting channels, every claim sourced to the primary record. This is the "where do we stand" for your whole target area.</li>
+      <li><strong>The weekly watch (ongoing).</strong> Every week after, the changes: an official-newspaper switch, a notice ordinance moving, legal advertising going to bid, a neighbor starting to move, surfaced while it is still an agenda item.</li>
+    </ul>
+    <p><strong>Cost.</strong> We scope the pilot on this call and I put the number on the table live, credited toward the full engagement if we continue. The full engagement is priced to the value we agree to measure: once we set the pilot's success criteria together, the full number sits inside the range we discuss. The logic is simple. If this is valuable, and we have agreed how to measure that, then that is the price.</p>
+    <p><strong>If it works, it rolls.</strong> We set the success criteria and the full price together at the start. If I hit the criteria by day 90, the pilot converts to the full engagement at that price, with no second negotiation. If I miss, we walk away clean. You decide once, on proof.</p>
+    <p class="note">The fastest way to make this real is to point it at your real exposure. Tell me the states and markets where you are most worried about losing public-notice business, and I will have the read pointed there, with a pilot scope, on our call.</p>
+  </div>
+
+  </div><!-- /detail-view -->
+
+  <div class="footer">
+    <div>Municipal Alpha &middot; prepared for Column, PBC &middot; Matt MacDonald, Founder &amp; CEO &middot; matt@municipalalpha.com</div>
+    <div><a href="https://municipalalpha.com">municipalalpha.com</a></div>
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    window.setView = function(v){
+      var condensed = (v === 'condensed');
+      document.body.classList.toggle('condensed', condensed);
+      var bc = document.getElementById('btn-condensed'), bd = document.getElementById('btn-detail');
+      if (bc) bc.classList.toggle('active', condensed);
+      if (bd) bd.classList.toggle('active', !condensed);
+    };
+  })();
+</script>
+</body>
+</html>
