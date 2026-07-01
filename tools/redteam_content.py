@@ -33,6 +33,14 @@ TICKER_PATTERNS = [
     (r'\bNASDAQ:\s*[A-Z]+', 'NASDAQ ticker reference'),
 ]
 
+# Generic government/document acronyms that are NOT stock tickers. The
+# parenthetical-ticker heuristic (r'\([A-Z]{2,5}\)') is skipped for these only.
+# Keep this set TIGHT and unambiguous — real or ticker-shaped acronyms
+# (WM, STN, XYL, TTEK, CG=Carlyle, CNM, VEOEY, ...) must still flag, since the
+# whole point of this gate is to stop leaking that we track public companies.
+NONTICKER_ACRONYMS = {'MRRA', 'BRAC', 'RFP', 'RFQ', 'CSV', 'PDF'}
+GENERIC_PARENS_PATTERN = r'\([A-Z]{2,5}\)'
+
 # Pipeline/architecture leaks
 PIPELINE_PATTERNS = [
     (r'\bnavigator[s]?\b', 'Navigator reference (pipeline architecture)'),
@@ -155,9 +163,17 @@ def scan_file(filepath, strict=False):
 
         # Ticker patterns (ERROR in digests, WARNING in stories)
         for pattern, desc in TICKER_PATTERNS:
-            if re.search(pattern, line):
-                severity = 'ERROR' if is_digest else 'WARNING'
-                violations.append((i, severity, f'{desc}: "{line.strip()[:80]}"'))
+            if pattern == GENERIC_PARENS_PATTERN:
+                # Generic parenthetical heuristic: skip known non-ticker acronyms
+                # (RFP, MRRA, BRAC, ...) so government/document terms don't false-flag,
+                # but still flag any parenthetical that could be a real ticker.
+                if not [m for m in re.findall(pattern, line)
+                        if m.strip('()') not in NONTICKER_ACRONYMS]:
+                    continue
+            elif not re.search(pattern, line):
+                continue
+            severity = 'ERROR' if is_digest else 'WARNING'
+            violations.append((i, severity, f'{desc}: "{line.strip()[:80]}"'))
 
         # FOAA strategy (ERROR in digests, WARNING in stories)
         for pattern, desc in FOAA_PATTERNS:
